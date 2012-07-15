@@ -4,6 +4,7 @@ gem 'rails', '3.2.6'
 gem 'pg'
 gem 'jquery-rails'
 gem 'rails-i18n'
+gem 'devise'
 
 # Gems used only for assets and not required in production environments by default.
 group :assets do
@@ -15,13 +16,16 @@ group :assets do
   gem 'i18n-js'
 end
 
+group :test, :development do
+  gem 'rspec-rails'
+end
+
 group :development do
-  gem 'annotate'
+  gem 'annotate', '2.4.1.beta1'
   gem 'faker'
 end
 
 group :test do
-  gem 'rspec-rails'
   gem 'spork'
   gem 'autotest'
   gem 'autotest-growl'
