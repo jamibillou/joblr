@@ -205,7 +205,11 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
+  config.omniauth :linkedin, 'z9dzn1xi6wkb', '6W2HDTovO9TMOp8U'
+  config.omniauth :facebook, '419105881446208', 'da2d28bdb403ec994d97e6aaa3f826b7'
+  config.omniauth :twitter,  'RVIx8OtoSwXbBFborkg65w', 'yWna2wCekbQT73rG4xYDuArm5Wj2yblBditIyCR8pM'
+  require 'openid/store/filesystem'
+  config.omniauth :open_id, :store => OpenID::Store::Filesystem.new('/tmp'), :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id', :require => 'omniauth-openid'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

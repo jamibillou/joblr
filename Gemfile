@@ -8,6 +8,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'omniauth-facebook'
+gem 'omniauth-openid'
 gem 'omniauth-twitter'
 
 # Gems used only for assets and not required in production environments by default.
