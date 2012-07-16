@@ -55,30 +55,30 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def connect(name, uid, provider, email = '')
       if uid != '' && provider != ''
         unless user_signed_in?
-          auth = Authentification.find_by_uid_and_provider(uid, provider)
+          auth = Authentification.find_by_uid_and_provider(uid.to_s, provider)
           if auth
             flash[:notice] = "Signed in successfully using #{provider}!"
             sign_in_and_redirect(:user, auth.user)
           else
-            if email != ''
-              existing_user = User.find_by_email(email)
-              if existing_user
-                existing_user.authentifications.create(:provider => provider, :uid => uid, :uname => name, :uemail => email)
-                flash[:notice] = "Sign in via #{provider} has been added to your account #{email}. Signed in successfully!"
-              else
-                user = User.new :email => email, :password => Devise.friendly_token[0,20]
-                user.authentifications.build(:provider => provider, :uid => uid, :uname => name, :uemail => email)
-                user.skip_confirmation!
-                user.save!
-                user.confirm!
-
-                flash[:notice] = "Account created via #{provider}!"
-                sign_in_and_redirect(:user, user)
-              end
+            ##if email != ''
+            existing_user = User.find_by_email(email)
+            if existing_user
+              existing_user.authentifications.create(:provider => provider, :uid => uid, :uname => name, :uemail => email)
+              flash[:notice] = "Sign in via #{provider} has been added to your account #{email}. Signed in successfully!"
             else
-              flash[:error] = 'Unable to sign you up without any email address. Please sign_in with another service'
-              redirect_to new_user_session_path
+              user = User.new :email => email, :password => Devise.friendly_token[0,20]
+              user.authentifications.build(:provider => provider, :uid => uid, :uname => name, :uemail => email)
+              #user.skip_confirmation!
+              user.save!
+              #user.confirm!
+
+              flash[:notice] = "Account created via #{provider}!"
+              sign_in_and_redirect(:user, user)
             end
+            ##else
+            ##  flash[:error] = 'Unable to sign you up without any email address. Please sign_in with another service'
+            ##  redirect_to new_user_session_path
+            ##end
           end
         else
           auth = Authentification.find_by_uid_and_provider(uid, provider)
