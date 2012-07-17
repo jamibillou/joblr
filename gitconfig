@@ -1,0 +1,12 @@
+[color]
+	ui = true
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+	editor = vim
+[user]
+	name = Franck Sabattier
+	email = franck.sabattier@gmail.com
+[push]
+	default = current

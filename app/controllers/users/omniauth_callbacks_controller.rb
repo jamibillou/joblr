@@ -74,14 +74,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
             end
           end
         else
-          auth = Authentification.find_by_uid_and_provider(uid, provider)
+          auth = Authentification.find_by_uid_and_provider(uid.to_s, provider)
           if auth
             flash[:notice] = "#{provider} is already linked to your account."
-            redirect_to authentifications_path
+            redirect_to edit_user_registration_path
           else
             current_user.authentifications.create(:provider => provider, :uid => uid, :uname => name, :uemail => email)
-            flash[:notice] = "Sign in via #{provider} has been added to your account."
-            redirect_to authentifications_path
+            flash[:notice] = "You added your #{provider} account to your profile."
+            redirect_to edit_user_registration_path
           end 
         end
       else

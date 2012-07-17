@@ -36,13 +36,13 @@
     = link_to 'Delete', authentification_path(authentification), :confirm => 'Are you sure?', :method => :delete
 
   - unless current_user.has_provider?('facebook')
-    = link_to image_tag 'facebook2.png', :title => 'Link your Facebook account'
+    = link_to image_tag('facebook2.png', :title => 'Link your Facebook account'), omniauth_authorize_path(current_user,'facebook')
   - unless current_user.has_provider?('linkedin')
-    = link_to image_tag 'linkedin2.png', :title => 'Link your Linkedin account'
+    = link_to image_tag('linkedin2.png', :title => 'Link your Linkedin account'), omniauth_authorize_path(current_user,'linkedin')
   - unless current_user.has_provider?('twitter')
-    = link_to image_tag 'twitter2.png', :title => 'Link your Twitter account'
+    = link_to image_tag('twitter2.png', :title => 'Link your Twitter account'), omniauth_authorize_path(current_user,'twitter')
   - unless current_user.has_provider?('google')
-    = link_to image_tag 'google.png', :title => 'Link your Google+ account'
+    = link_to image_tag('google.png', :title => 'Link your Google+ account'), omniauth_authorize_path(current_user,'google')
 %br/
 %br/
 %h3 Cancel my account
