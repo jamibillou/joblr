@@ -10,3 +10,4 @@ doc/
 .settings/org.eclipse.ltk.core.refactoring.prefs
 public/uploads/
 config/database.yml
+.rvmrc
