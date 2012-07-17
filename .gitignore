@@ -11,3 +11,4 @@ doc/
 public/uploads/
 config/database.yml
 .rvmrc
+log/development.log
