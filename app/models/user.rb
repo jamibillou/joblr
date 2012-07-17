@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :authentifications
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
 end
 
 # == Schema Information
