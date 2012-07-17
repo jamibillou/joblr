@@ -1,10 +1,26 @@
 class User < ActiveRecord::Base
   
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :fullname, :email, :password, :password_confirmation, :remember_me
 
-  has_many :authentifications
+  has_many :authentifications, :dependent => :destroy
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
+
+	def password_required?
+		super && self.authentifications.empty?
+	end
+
+	def update_with_password(params, *options)
+	  if encrypted_password.blank?
+	    update_attributes(params, *options)
+	  else
+	    super
+	  end
+	end
+
+	def has_provider?(provider)
+		!self.authentifications.where(:provider => provider).empty?
+	end
 end
 
 # == Schema Information

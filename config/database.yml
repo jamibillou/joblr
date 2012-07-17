@@ -6,8 +6,8 @@ development:
   database: joblr_development
   host: localhost
   pool: 5
-  username: dominic_m
-  password:
+  username: franck
+  password: franck
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -33,8 +33,8 @@ test:
   database: joblr_test
   host: localhost
   pool: 5
-  username: dominic_m
-  password:
+  username: franck
+  password: franck
 
 # production:
 #   adapter: postgresql

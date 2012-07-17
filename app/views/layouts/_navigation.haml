@@ -2,6 +2,8 @@
 %ul.nav.pull-right
   - if user_signed_in?
     %li
+      = link_to "Connected as #{current_user.fullname}", '#'
+    %li
       = link_to 'Logout', destroy_user_session_path, method: 'delete'
     %li
       = link_to 'Edit account', edit_user_registration_path
