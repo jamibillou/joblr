@@ -1,7 +1,7 @@
 %h2 Account settings
 %br/
 
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = devise_error_messages! 
 
   %div
@@ -15,7 +15,7 @@
   - if f.object.encrypted_password.present? 
     %div
       = f.label :new_password 
-      = f.password_field :password, :autocomplete => "off"
+      = f.password_field :password, :autocomplete => 'off'
 
     %div
       = f.label :new_password_confirmation
@@ -30,14 +30,18 @@
   %br/
 
 - unless current_user.authentifications.empty?
-  %h3 Social profiles
+  %h2 Social profiles
+  %br/
   - current_user.authentifications.each do |authentification|
-    = link_to(image_tag("#{authentification.provider}2.png", :title => "Unlink your #{authentification.provider.humanize} account"), authentification_path(authentification), :confirm => 'Are you sure?', :method => :delete)
+    = link_to(image_tag("#{authentification.provider}2.png", :title => "Unlink your #{authentification.provider.titleize} account"), authentification_path(authentification), :confirm => 'Are you sure?', :method => :delete)
   |
   = link_to(image_tag('facebook.png', :title => 'Link your Facebook account'), omniauth_authorize_path(current_user,'facebook')) unless current_user.has_provider?('facebook')
   = link_to(image_tag('linkedin.png', :title => 'Link your Linkedin account'), omniauth_authorize_path(current_user,'linkedin')) unless current_user.has_provider?('linkedin')
   = link_to(image_tag('twitter.png', :title => 'Link your Twitter account'), omniauth_authorize_path(current_user,'twitter')) unless current_user.has_provider?('twitter')
   = link_to(image_tag('google.png', :title => 'Link your Google+ account'), omniauth_authorize_path(current_user,'google')) unless current_user.has_provider?('google')
+  %br/
+  %br/
+  %br/
 
 %button.btn.btn-large= link_to "Back", :back
 %br/

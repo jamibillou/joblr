@@ -1,0 +1,24 @@
+%h2 Sign in with a Joblr account
+%br/
+
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+
+  %div
+    #{f.label :email, class: 'inline'} *
+    %br/
+    = f.email_field :email
+  
+  %div
+    #{f.label :password, class: 'inline'} *
+    %br/
+    = f.password_field :password
+
+  - if devise_mapping.rememberable?
+    %div
+      = f.label :remember_me, class: 'inline'
+      &nbsp;
+      = f.check_box :remember_me, class: 'inline', style: 'margin-top:0'
+
+  %div= f.submit 'Sign in', class: 'btn'
+
+= render partial: 'devise/shared/links', locals: { title: 'or use' }
