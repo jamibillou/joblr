@@ -58,19 +58,21 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           auth = Authentification.find_by_uid_and_provider(uid.to_s, provider)
           if auth
             flash[:notice] = "Signed in successfully using #{provider.titleize}!"
-            sign_in_and_redirect(:user, auth.user)
+            sign_in auth.user
+            redirect_to auth.user
           else
             existing_user = User.find_by_email(email)
             if existing_user
               existing_user.authentifications.create(:provider => provider, :uid => uid, :uname => name, :uemail => email)
-              flash[:notice] = "Sign in via #{provider.titleize} has been added to your account #{email}. Signed in successfully!"
+              flash[:notice] = "You can now sign in with #{provider.titleize} too!"
             else
               user = User.new :fullname => name, :email => email
               user.authentifications.build(:provider => provider, :uid => uid, :uname => name, :uemail => email)
               user.save!
               
               flash[:notice] = "Account created via #{provider.titleize}!"
-              sign_in_and_redirect(:user, user)
+              sign_in user
+              redirect_to user
             end
           end
         else
