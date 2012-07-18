@@ -1,7 +1,8 @@
 .bundle
 log/*.log
 *.log
-tmp/
+tmp/*/*
+tmp/i18n-js.cache
 doc/
 *.swp
 *~
