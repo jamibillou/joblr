@@ -37,13 +37,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end  
   end
 
-  def google
+  def google_oauth2
     omniauth = request.env['omniauth.auth']
     if omniauth
       omniauth['info']['email'] ? email =  omniauth['info']['email'] : email = ''
       omniauth['info']['name'] ? name =  omniauth['info']['name'] : name = ''
       omniauth['uid'] ? uid =  omniauth['uid'] : uid = ''
-      omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
+      omniauth['provider'] ? provider =  'google' : provider = ''
       connect(name, uid, provider, email)
     else
       render :text => 'Omniauth is empty :/'
