@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   
   attr_accessible :fullname, :email, :password, :password_confirmation, :remember_me
 
-  has_many :authentifications, :dependent => :destroy
+  has_many :authentifications, dependent: :destroy
+  has_many :profiles, dependent: :destroy
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
 
