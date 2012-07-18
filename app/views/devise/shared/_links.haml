@@ -23,4 +23,7 @@
   %h2= title
   %br/
   - resource_class.omniauth_providers.each do |provider|
-    = link_to image_tag("#{provider.to_s}.png"), omniauth_authorize_path(resource_name, provider)
+    - if provider.to_s == 'google_oauth2'
+      = link_to image_tag("google.png"), omniauth_authorize_path(resource_name, provider)
+    - else
+      = link_to image_tag("#{provider.to_s}.png"), omniauth_authorize_path(resource_name, provider)

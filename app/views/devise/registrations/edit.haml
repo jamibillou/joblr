@@ -38,7 +38,7 @@
   = link_to(image_tag('facebook.png', :title => 'Link your Facebook account'), omniauth_authorize_path(current_user,'facebook')) unless current_user.has_provider?('facebook')
   = link_to(image_tag('linkedin.png', :title => 'Link your Linkedin account'), omniauth_authorize_path(current_user,'linkedin')) unless current_user.has_provider?('linkedin')
   = link_to(image_tag('twitter.png', :title => 'Link your Twitter account'), omniauth_authorize_path(current_user,'twitter')) unless current_user.has_provider?('twitter')
-  = link_to(image_tag('google.png', :title => 'Link your Google+ account'), omniauth_authorize_path(current_user,'google')) unless current_user.has_provider?('google')
+  = link_to(image_tag('google.png', :title => 'Link your Google+ account'), omniauth_authorize_path(current_user,'google_oauth2')) unless current_user.has_provider?('google')
   %br/
   %br/
   %br/
