@@ -6,21 +6,21 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
 
-	def password_required?
-		super && self.authentifications.empty?
-	end
+  def password_required?
+    super && self.authentifications.empty?
+  end
 
-	def update_with_password(params, *options)
-	  if encrypted_password.blank?
-	    update_attributes(params, *options)
-	  else
-	    super
-	  end
-	end
+  def update_with_password(params, *options)
+    if encrypted_password.blank?
+      update_attributes(params, *options)
+    else
+      super
+    end
+  end
 
-	def has_provider?(provider)
-		!self.authentifications.where(:provider => provider).empty?
-	end
+  def has_provider?(provider)
+    !self.authentifications.where(:provider => provider).empty?
+  end
 end
 
 # == Schema Information
