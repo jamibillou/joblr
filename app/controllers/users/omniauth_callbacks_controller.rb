@@ -82,6 +82,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
             redirect_to edit_user_registration_path
           else
             current_user.authentifications.create(:provider => provider, :uid => uid, :uname => name, :uemail => email)
+            current_user.update_attribute(:email,email) if(email != "" && current_user.email == "") 
             flash[:notice] = "You added your #{provider.titleize} account to your profile."
             redirect_to edit_user_registration_path
           end 
