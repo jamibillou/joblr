@@ -4,5 +4,37 @@ class Profile < ActiveRecord::Base
 
   belongs_to :user
 
-  validates :user, presence: true
+  validates :user,          presence: true
+  validates :education,     length: { maximum: 100 }
+  validates :experience,    length: { maximum: 100 }
+  validates :skill_1,       length: { maximum: 50 }
+  validates :skill_2,       length: { maximum: 50 }
+  validates :skill_3,       length: { maximum: 50 }
+  validates :skill_1_level, level_format: true
+  validates :skill_2_level, level_format: true
+  validates :skill_3_level, level_format: true
+  validates :quality_1,     length: { maximum: 50 }
+  validates :quality_2,     length: { maximum: 50 }
+  validates :quality_3,     length: { maximum: 50 }
 end
+
+# == Schema Information
+#
+# Table name: profiles
+#
+#  id            :integer         not null, primary key
+#  user_id       :integer
+#  experience    :string(255)
+#  education     :string(255)
+#  skill_1       :string(255)
+#  skill_1_level :string(255)
+#  skill_2       :string(255)
+#  skill_2_level :string(255)
+#  skill_3       :string(255)
+#  skill_3_level :string(255)
+#  quality_1     :string(255)
+#  quality_2     :string(255)
+#  quality_3     :string(255)
+#  created_at    :datetime        not null
+#  updated_at    :datetime        not null
+#

@@ -1,0 +1,6 @@
+en:
+
+  activerecord:
+    errors:
+      messages:
+        level_format: 'is not formatted properly (Beginner, Intermediate, Advanced or Expert)'
