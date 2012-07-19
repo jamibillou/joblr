@@ -41,7 +41,7 @@ describe Profile do
   describe 'validations' do
 
     before :each do
-      @level = { valid: [:beginner, :intermediate,  :advanced, :expert], invalid: ['crap', 'good', 'okish'] }
+      @level = { valid: %w(Beginner Intermediate Advanced Expert), invalid: %w(crap good okish) }
     end
 
     it { should validate_presence_of :user }
