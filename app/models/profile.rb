@@ -10,12 +10,21 @@ class Profile < ActiveRecord::Base
   validates :skill_1,       length: { maximum: 50 }
   validates :skill_2,       length: { maximum: 50 }
   validates :skill_3,       length: { maximum: 50 }
-  validates :skill_1_level, level_format: true
-  validates :skill_2_level, level_format: true
-  validates :skill_3_level, level_format: true
+  validates :skill_1_level, level_format: true, allow_blank: true
+  validates :skill_2_level, level_format: true, allow_blank: true
+  validates :skill_3_level, level_format: true, allow_blank: true
   validates :quality_1,     length: { maximum: 50 }
   validates :quality_2,     length: { maximum: 50 }
   validates :quality_3,     length: { maximum: 50 }
+
+  # def blank?
+  #   (education.nil? || education.blank?) && (experience.nil? || experience.blank?) &&
+  #   (skill_1.nil? || skill_1.blank?) && (skill_2.nil? || skill_2.blank?) &&
+  #   (skill_3.nil? || skill_3.blank?) && (skill_1_level.nil? || skill_1_level.blank?) &&
+  #   (skill_2_level.nil? || skill_2_level.blank?) && (skill_3_level.nil? || skill_3_level.blank?) &&
+  #   (quality_1.nil? || quality_1.blank?) && (quality_2.nil? || quality_2.blank?) &&
+  #   (quality_3.nil? || quality_3.blank?)
+  # end
 end
 
 # == Schema Information

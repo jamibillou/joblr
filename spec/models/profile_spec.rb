@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Profile do
-  
+
   before :each do
     @user = FactoryGirl.create :user
     @profile = FactoryGirl.create :profile, user: @user
@@ -16,22 +16,26 @@ describe Profile do
               quality_1: 'Drive',
               quality_2: 'Work ethics',
               quality_3: 'Punctuality' }
+    @empty = { education: '', experience: '', skill_1: '', skill_2: '', skill_3: '', skill_1_level: '',
+               skill_2_level: '', skill_3_level: '', quality_1: '', quality_2: '', quality_3: '' }
+    @blank = { education: ' ', experience: ' ', skill_1: ' ', skill_2: ' ', skill_3: ' ', skill_1_level: ' ',
+               skill_2_level: ' ', skill_3_level: ' ', quality_1: ' ', quality_2: ' ', quality_3: ' ' }
   end
 
   describe 'users associations' do
 
     it { @profile.should respond_to :user }
-    
+
     it 'should not be valid without a candidate' do
       profile_without_user = Profile.new @attr
       profile_without_user.should_not be_valid
     end
-    
+
     it 'should have the right associated user' do
       @profile.user_id.should == @user.id
       @profile.user.should    == @user
     end
-    
+
     it 'should not destroy associated user' do
       @profile.destroy
       User.find_by_id(@user.id).should_not be_nil
@@ -60,6 +64,35 @@ describe Profile do
     it { should ensure_length_of(:quality_2).is_at_most 50 }
     it { should ensure_length_of(:quality_3).is_at_most 50 }
   end
+
+  # describe 'blank? method' do
+
+  #   it { respond_to :blank? }
+
+  #   it 'should be true for profiles with all attributes empty' do
+  #     FactoryGirl.create(:profile, @empty.merge(user: @user)).blank?.should be_true
+  #   end
+
+  #   it 'should be true for profiles with all attributes blank' do
+  #     FactoryGirl.create(:profile, @blank.merge(user: @user)).blank?.should be_true
+  #   end
+
+  #   it 'should be true for profiles with all attributes nil' do
+  #     nil_profile = @user.profiles.build
+  #     nil_profile.save!
+  #     nil_profile.blank?.should be_true
+  #   end
+
+  #   it 'should be false for profiles with one attribute filled' do
+  #     FactoryGirl.create(:profile, @blank.merge(user: @user, education: 'BA (Hons)')).blank?.should be_false
+  #     FactoryGirl.create(:profile, @empty.merge(user: @user, education: 'BA (Hons)')).blank?.should be_false
+  #     FactoryGirl.create(:profile, user: @user, education: 'BA (Hons)').blank?.should be_false
+  #   end
+
+  #   it 'should be false for profiles with all attributes filled' do
+  #     FactoryGirl.create(:profile, @attr.merge(user: @user)).blank?.should be_false
+  #   end
+  # end
 end
 
 # == Schema Information

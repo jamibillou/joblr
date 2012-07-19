@@ -1,0 +1,10 @@
+%h1=t 'users.edit.title'
+%br/
+
+= form_for current_user, do |f|
+  = f.text_field :fullname
+  = f.text_field :email
+  - f.fields_for :profiles do |profile_builder|
+    = render 'fields_profile', :f => profile_builder
+  - end
+- end
