@@ -20,7 +20,7 @@
 
 - if devise_mapping.omniauthable?
   %br/
-  %h2= title
+  %h2 or signin with
   %br/
   - resource_class.omniauth_providers.each do |provider|
     - if provider.to_s == 'google_oauth2'
