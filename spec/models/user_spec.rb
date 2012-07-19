@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  
+
   before :each do
     @user = FactoryGirl.create :user
     @profile = FactoryGirl.create :profile, user: @user
@@ -10,7 +10,7 @@ describe User do
   describe 'profiles associations' do
 
     it { @user.should respond_to :profiles }
-    
+
     it 'should destroy associated profiles' do
       @user.destroy
       Profile.find_by_id(@profile.id).should be_nil
@@ -18,7 +18,7 @@ describe User do
   end
 end
 
-# == Schema Information
+## == Schema Information
 #
 # Table name: users
 #
@@ -37,3 +37,4 @@ end
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
 #
+

@@ -63,39 +63,11 @@ describe Profile do
     it { should ensure_length_of(:quality_1).is_at_most 50 }
     it { should ensure_length_of(:quality_2).is_at_most 50 }
     it { should ensure_length_of(:quality_3).is_at_most 50 }
+    it { should ensure_length_of(:text).is_at_most 140 }
   end
-
-  # describe 'blank? method' do
-
-  #   it { respond_to :blank? }
-
-  #   it 'should be true for profiles with all attributes empty' do
-  #     FactoryGirl.create(:profile, @empty.merge(user: @user)).blank?.should be_true
-  #   end
-
-  #   it 'should be true for profiles with all attributes blank' do
-  #     FactoryGirl.create(:profile, @blank.merge(user: @user)).blank?.should be_true
-  #   end
-
-  #   it 'should be true for profiles with all attributes nil' do
-  #     nil_profile = @user.profiles.build
-  #     nil_profile.save!
-  #     nil_profile.blank?.should be_true
-  #   end
-
-  #   it 'should be false for profiles with one attribute filled' do
-  #     FactoryGirl.create(:profile, @blank.merge(user: @user, education: 'BA (Hons)')).blank?.should be_false
-  #     FactoryGirl.create(:profile, @empty.merge(user: @user, education: 'BA (Hons)')).blank?.should be_false
-  #     FactoryGirl.create(:profile, user: @user, education: 'BA (Hons)').blank?.should be_false
-  #   end
-
-  #   it 'should be false for profiles with all attributes filled' do
-  #     FactoryGirl.create(:profile, @attr.merge(user: @user)).blank?.should be_false
-  #   end
-  # end
 end
 
-# == Schema Information
+## == Schema Information
 #
 # Table name: profiles
 #
@@ -114,4 +86,6 @@ end
 #  quality_3     :string(255)
 #  created_at    :datetime        not null
 #  updated_at    :datetime        not null
+#  text          :string(255)
 #
+
