@@ -1,9 +1,80 @@
-%h2=t 'users.edit.title'
-%br/
-
-= form_for @user do |f|
-  = f.text_field :fullname, placeholder: 'Fullname'
+.header
+  %h1 Complete you profile!
   %br/
 
-  = f.fields_for :profiles do |profile_builder|
-    = render 'fields_profile', f: profile_builder
+%form
+  = form_for @user do |f|
+
+    .row
+      .span5
+        .card
+          .row
+            .span4.well
+              .row
+                .span1= image_tag 'default_user.jpg'
+                .span3
+                  =f.text_field :fullname, placeholder: 'Full name', style: 'height:13px; font-size:15px'
+                  %br/
+                  %input.input-small{type: 'text', placeholder: 'City',    style: 'height:9px; margin-top:-4px; font-size:15px;' }
+                  %input.input-small{type: 'text', type: 'text', placeholder: 'Country', style: 'width: 105px; height:9px; margin-top: -4px; font-size:15px;' }
+                  %input.input-small{type: 'text', placeholder: 'Role',   :style => 'height:9px; margin-top: -4px; font-size:15px;'}
+                  %input.input-small{type: 'text', placeholder: 'Company', :style => 'width: 105px; height:9px; margin-top: -4px; font-size:15px;'}
+
+          = f.fields_for(:profiles) { |profile_builder| render 'fields_profile', f: profile_builder }
+
+      .span5.offset1
+        .lead
+          Import your information from
+          %strong LinkedIn
+          or
+          %strong Facebook
+        %a.btn.btn-large{'data-toggle' => 'modal', href: '#linkedin-modal'} Import from Linkedin
+        &nbsp;
+        %a.btn.btn-large{'data-toggle' => 'modal', href: '#facebook-modal'} Import from Facebook
+
+        %br/
+        %br/
+        %br/
+        %br/
+        %br/
+        %br/
+        %br/
+        %br/
+        %br/
+        %br/
+        %br/
+        %br/
+        %br/
+
+      .row
+        .span5.offset1
+          %textarea.lead{placeholder: 'Describe your goals, or your motto.', rows: 4, style: 'width:450px;'}
+          .pull-right= f.submit 'Save your profile!', class: 'btn btn-gigantic btn-primary'
+
+  .modal.hide#facebook-modal
+    .modal-header
+      %button.close{type: 'button', "data-dismiss" => 'modal'} ×
+      %h3
+        = image_tag 'facebook.png', :style => 'margin-right:5px'
+        Import from Facebook
+    .modal-body
+      %input{type: 'text', placeholder: 'Email address'}
+      %br/
+      %input{type: 'password', placeholder: 'Password'}
+    .modal-footer
+      %a.btn{href: '#', "data-dismiss" => 'modal'} Close
+      %a.btn.btn-primary{href: '#', onclick: "$('#facebook-modal').modal('hide'); import_data('candidate')"} Sign in
+
+  .modal.hide#linkedin-modal
+    .modal-header
+      %button.close{type: 'button', "data-dismiss" => 'modal'} ×
+      %h3
+        = image_tag 'linkedin.png', :style => 'margin-right:5px'
+        Import from LinkedIn
+    .modal-body
+      %input{type: 'text', placeholder: 'Email address'}
+      %br/
+      %input{type: 'password', placeholder: 'Password'}
+    .modal-footer
+      %a.btn{href: '#', "data-dismiss" => 'modal'} Close
+      %a.btn.btn-primary{href: '#', onclick: "$('#linkedin-modal').modal('hide'); import_data('candidate')"} Sign in

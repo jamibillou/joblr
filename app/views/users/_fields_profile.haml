@@ -1,18 +1,32 @@
-= f.text_field :experience
-%br/
-= f.text_field :education
-%br/
-= f.text_field :skill_1
-= f.text_field :skill_1_level
-%br/
-= f.text_field :skill_2
-= f.text_field :skill_2_level
-%br/
-= f.text_field :skill_3
-= f.text_field :skill_3_level
-%br/
-= f.text_field :quality_1
-%br/
-= f.text_field :quality_2
-%br/
-= f.text_field :quality_3
+.row
+  .span1.well
+    %h6 Experience
+    =f.text_field :experience, style: 'height:30px; width:40px; margin-bottom:0; font-size:30px; font-weight:bold'
+    %h2 yrs
+  .span3.well{style: 'padding-right:0'}
+    %h6 Highest Education
+    =f.text_area :education, rows: 3, style: 'margin-bottom:12px; width:240px;'
+    %br/
+
+.row
+  .span4.well{style: 'padding-bottom:5px'}
+    %h6 Skills
+    .row
+      .span2
+        =f.text_field :skill_1, style: 'font-size:15px'
+        .select= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert)
+        =f.text_field :skill_2, style: 'font-size:15px'
+        .select= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert)
+        =f.text_field :skill_3, style: 'font-size:15px'
+        .select= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert)
+
+.row
+  .span4.well{style: 'padding-bottom:0'}
+    %h6 Qualities
+    .lead
+      .row
+        .span3= f.text_field :quality_1, style: 'font-size:15px'
+      .row
+        .span3= f.text_field :quality_2, style: 'font-size:15px'
+      .row
+        .span3= f.text_field :quality_3, style: 'font-size:15px'
