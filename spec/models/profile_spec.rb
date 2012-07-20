@@ -16,10 +16,6 @@ describe Profile do
               quality_1: 'Drive',
               quality_2: 'Work ethics',
               quality_3: 'Punctuality' }
-    @empty = { education: '', experience: '', skill_1: '', skill_2: '', skill_3: '', skill_1_level: '',
-               skill_2_level: '', skill_3_level: '', quality_1: '', quality_2: '', quality_3: '' }
-    @blank = { education: ' ', experience: ' ', skill_1: ' ', skill_2: ' ', skill_3: ' ', skill_1_level: ' ',
-               skill_2_level: ' ', skill_3_level: ' ', quality_1: ' ', quality_2: ' ', quality_3: ' ' }
   end
 
   describe 'users associations' do
