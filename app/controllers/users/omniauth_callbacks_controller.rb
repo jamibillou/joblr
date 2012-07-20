@@ -50,19 +50,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end       
   end
 
-#  def viadeo
-#    omniauth = request.env['omniauth.auth']
-#    raise omniauth.to_yaml
-#    if omniauth
-#      omniauth['info']['name'] ? name =  omniauth['info']['name'] : name = ''
-#      omniauth['extra']['raw_info']['id'] ?  uid =  omniauth['extra']['raw_info']['id'] : uid = ''
-#      omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
-#      connect(name, uid, provider)      
-#    else
-#      render :text => 'Omniauth is empty :/'
-#    end  
-#  end
-
   private
 
     def connect(name, uid, provider, email = '')
