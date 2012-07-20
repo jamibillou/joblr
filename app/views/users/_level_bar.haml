@@ -1,0 +1,10 @@
+.progress.progress-success
+  - case level
+    - when 'Beginner'
+      .bar{style: 'width:40%'}
+    - when 'Intermediate'
+      .bar{style: 'width:60%'}
+    - when 'Advanced'
+      .bar{style: 'width:80%'}
+    - when 'Expert'
+      .bar{style: 'width:100%'}
