@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
   def show
-    @user = User.find params[:id]
-    # redirect_to edit_user_path(@user) if @user.profiles.empty?
+    @user = params[:id] ? User.find(params[:id]) : current_user
+    redirect_to edit_user_path(@user) if @user.profiles.empty?
   end
 
   def edit
