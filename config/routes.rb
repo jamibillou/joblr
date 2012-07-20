@@ -9,6 +9,8 @@ Joblr::Application.routes.draw do
     resources :profiles
   end
 
-  root :to => 'users#show', :constraints => SingedIn.new(true)
-  root :to => 'pages#home', :constraints => SingedIn.new(false) 
+  match 'home', to: 'pages#home'
+
+  root to: 'users#show', constraints: SingedIn.new(true)
+  root to: 'pages#home', constraints: SingedIn.new(false)
 end
