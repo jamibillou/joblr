@@ -19,8 +19,7 @@
       .row
         .span1.well
           %h6 Experience
-          .gigantic= @user.profiles.first.experience
-          %h2 yrs
+          .gigantic= @user.profiles.first.experience+'yrs'
         .span3.well{style:'padding-right:0'}
           %h6 Highest Education
           .lead= @user.profiles.first.education
@@ -49,3 +48,27 @@
               .span3= @user.profiles.first.quality_2
             .row
               .span3= @user.profiles.first.quality_3
+
+  .span5.offset1
+    .pull-right
+      %a.btn.btn-primary{ href: edit_user_path }
+        .icon-edit.icon-white
+        Edit
+    %br/
+    %br/
+    %br/
+    %br/
+    %br/
+    %br/
+    %br/
+    %br/
+    %br/
+    %br/
+    %br/
+    %br/
+    %br/
+    .row
+      %h2{ style: 'text-align:right' }
+        .icon-comment
+        &nbsp;
+        = @user.profiles.first.text

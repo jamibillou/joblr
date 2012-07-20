@@ -30,3 +30,8 @@
         .span3= f.text_field :quality_2, style: 'font-size:15px'
       .row
         .span3= f.text_field :quality_3, style: 'font-size:15px'
+
+.row
+  .span5.offset5.pull-right{ style: 'margin-top:-550px;'}
+    =f.text_area :text, class: 'lead',placeholder: 'Describe your goals, or your motto.', rows: 4, style: 'width:450px;'
+    .pull-right= f.submit 'Save your profile!', class: 'btn btn-gigantic btn-primary'
