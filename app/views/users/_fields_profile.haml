@@ -12,13 +12,12 @@
   .span4.well{style: 'padding-bottom:5px'}
     %h6 Skills
     .row
-      .span2
-        =f.text_field :skill_1, style: 'font-size:15px'
-        .select= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert)
-        =f.text_field :skill_2, style: 'font-size:15px'
-        .select= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert)
-        =f.text_field :skill_3, style: 'font-size:15px'
-        .select= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert)
+      .span2=f.text_field :skill_1, style: 'font-size:15px'
+      .span1= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level'}
+      .span2=f.text_field :skill_2, style: 'font-size:15px'
+      .span1= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level' }
+      .span2=f.text_field :skill_3, style: 'font-size:15px'
+      .span1=f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level' }
 
 .row
   .span4.well{style: 'padding-bottom:0'}
