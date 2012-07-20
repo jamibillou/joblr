@@ -11,6 +11,6 @@ Joblr::Application.routes.draw do
 
   match 'home', to: 'pages#home'
 
-  root to: 'users#show', constraints: SingedIn.new(true)
-  root to: 'pages#home', constraints: SingedIn.new(false)
+  root to: 'users#show', constraints: SignedIn.new(true)
+  root to: 'pages#home', constraints: SignedIn.new(false)
 end
