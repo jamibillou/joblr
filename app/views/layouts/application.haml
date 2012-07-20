@@ -11,12 +11,14 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
     = yield(:head)
+
   %body
     %header.navbar.navbar-fixed-top
       %nav.navbar-inner
         .container
           = render 'layouts/left_navigation'
           = render 'layouts/right_navigation'
+
     #main{ role: 'main' }
       .container
         .content
@@ -24,4 +26,7 @@
             .span12
               = render 'layouts/messages'
               = yield
+
           %footer
+            .row
+              .span6= debug(params) if Rails.env.development?
