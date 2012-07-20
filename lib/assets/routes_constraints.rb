@@ -1,5 +1,5 @@
 class SingedIn < Struct.new(:value)
   def matches?(request)
-    request.cookies.key?('remember_token') == value
+    !request.session['warden.user.user.key'].nil? == value
   end
 end
