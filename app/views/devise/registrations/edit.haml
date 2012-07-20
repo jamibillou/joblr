@@ -1,53 +1,54 @@
-%h2 Account settings
-%br/
+.well
+  %h2 Account settings
+  %br/
 
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages! 
-
-  %div
-    = f.label :fullname 
-    = f.text_field :fullname
-
-  %div
-    = f.label :email
-    = f.email_field :email
-
-  - if f.object.encrypted_password.present? 
-    %div
-      = f.label :new_password 
-      = f.password_field :password, :autocomplete => 'off'
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+    = devise_error_messages!
 
     %div
-      = f.label :new_password_confirmation
-      = f.password_field :password_confirmation
+      = f.label :fullname
+      = f.text_field :fullname
 
     %div
-      #{f.label :current_password, class: 'inline'} *
-      %br/
-      = f.password_field :current_password
-  
-  %div= f.submit "Update", class: 'btn'
-  %br/
+      = f.label :email
+      = f.email_field :email
 
-- unless current_user.authentifications.empty?
-  %h2 Social profiles
-  %br/
-  - current_user.authentifications.each do |authentification|
-    = link_to(image_tag("#{authentification.provider}2.png", :title => "Unlink your #{authentification.provider.titleize} account"), authentification_path(authentification), :confirm => "Unlink your #{authentification.provider.titleize} account?", :method => :delete)
-  |
-  = link_to(image_tag('facebook.png', :title => 'Link your Facebook account'), omniauth_authorize_path(current_user,'facebook')) unless current_user.has_provider?('facebook')
-  = link_to(image_tag('linkedin.png', :title => 'Link your Linkedin account'), omniauth_authorize_path(current_user,'linkedin')) unless current_user.has_provider?('linkedin')
-  = link_to(image_tag('twitter.png', :title => 'Link your Twitter account'), omniauth_authorize_path(current_user,'twitter')) unless current_user.has_provider?('twitter')
-  = link_to(image_tag('google.png', :title => 'Link your Google+ account'), omniauth_authorize_path(current_user,'google_oauth2')) unless current_user.has_provider?('google')
-  %br/
-  %br/
-  %br/
+    - if f.object.encrypted_password.present?
+      %div
+        = f.label :new_password
+        = f.password_field :password, :autocomplete => 'off'
 
-%button.btn.btn-large= link_to "Back", :back
-%br/
-%br/
-%br/
-%p
-  Unhappy?
+      %div
+        = f.label :new_password_confirmation
+        = f.password_field :password_confirmation
+
+      %div
+        #{f.label :current_password, class: 'inline'} *
+        %br/
+        = f.password_field :current_password
+
+    %div= f.submit "Update", class: 'btn'
+    %br/
+
+  - unless current_user.authentifications.empty?
+    %h2 Social profiles
+    %br/
+    - current_user.authentifications.each do |authentification|
+      = link_to(image_tag("#{authentification.provider}2.png", :title => "Unlink your #{authentification.provider.titleize} account"), authentification_path(authentification), :confirm => "Unlink your #{authentification.provider.titleize} account?", :method => :delete)
+    |
+    = link_to(image_tag('facebook.png', :title => 'Link your Facebook account'), omniauth_authorize_path(current_user,'facebook')) unless current_user.has_provider?('facebook')
+    = link_to(image_tag('linkedin.png', :title => 'Link your Linkedin account'), omniauth_authorize_path(current_user,'linkedin')) unless current_user.has_provider?('linkedin')
+    = link_to(image_tag('twitter.png', :title => 'Link your Twitter account'), omniauth_authorize_path(current_user,'twitter')) unless current_user.has_provider?('twitter')
+    = link_to(image_tag('google.png', :title => 'Link your Google+ account'), omniauth_authorize_path(current_user,'google_oauth2')) unless current_user.has_provider?('google')
+    %br/
+    %br/
+    %br/
+
+  %button.btn.btn-large= link_to "Back", :back
   %br/
-  = link_to "Cancel your account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete
+  %br/
+  %br/
+  %p
+    Unhappy?
+    %br/
+    = link_to "Cancel your account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete
