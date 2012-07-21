@@ -19,7 +19,7 @@
       .row
         .span1.well
           %h6 Experience
-          .gigantic= @user.profiles.first.experience+'yrs'
+          .gigantic #{@user.profiles.first.experience} yrs
         .span3.well{style:'padding-right:0'}
           %h6 Highest Education
           .lead= @user.profiles.first.education
@@ -29,13 +29,13 @@
           %h6 Skills
           .lead
             .row
-              .span3= @user.profiles.first.skill_1
+              .span3 #{@user.profiles.first.skill_1}
               .span1= render 'level_bar', level: @user.profiles.first.skill_1_level
             .row
-              .span3= @user.profiles.first.skill_2
+              .span3 #{@user.profiles.first.skill_2}
               .span1= render 'level_bar', level: @user.profiles.first.skill_2_level
             .row
-              .span3= @user.profiles.first.skill_3
+              .span3 #{@user.profiles.first.skill_3}
               .span1= render 'level_bar', level: @user.profiles.first.skill_3_level
 
       .row
@@ -43,11 +43,11 @@
           %h6 Qualities
           .lead
             .row
-              .span3= @user.profiles.first.quality_1
+              .span3 #{@user.profiles.first.quality_1}
             .row
-              .span3= @user.profiles.first.quality_2
+              .span3 #{@user.profiles.first.quality_2}
             .row
-              .span3= @user.profiles.first.quality_3
+              .span3 #{@user.profiles.first.quality_3}
 
   .span5.offset1
     .pull-right
@@ -72,3 +72,10 @@
         .icon-comment
         &nbsp;
         = @user.profiles.first.text
+%br/
+- unless current_user.authentifications.empty?
+  .row
+    .span4
+      %h6= "More about #{current_user.fullname}"
+      - current_user.authentifications.each do |authentification|
+        = link_to image_tag("#{authentification.provider}.png" ,title: "Go to his #{authentification.provider.titleize} page"), "#{authentification.url}", { target: '_new'}

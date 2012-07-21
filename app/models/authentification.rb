@@ -1,6 +1,6 @@
 class Authentification < ActiveRecord::Base
 
-  attr_accessible :provider, :uemail, :uid, :uname, :user_id
+  attr_accessible :provider, :uemail, :uid, :uname, :user_id, :url
 
   belongs_to :user
 end
@@ -16,5 +16,6 @@ end
 #  uemail     :string(255)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
+#  url        :string(255)
 #
 

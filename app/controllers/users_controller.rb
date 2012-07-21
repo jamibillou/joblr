@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def edit
   	@user = User.find params[:id]
+    @user.profiles.build if @user.profiles.empty?
   end
 
   def update
