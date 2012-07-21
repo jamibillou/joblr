@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   attr_accessible :fullname, :email, :city, :country, :role, :company, :profiles_attributes,
-                  :password, :password_confirmation, :remember_me
+                  :password, :password_confirmation, :remember_me, :image
 
   has_many :authentifications, dependent: :destroy
   has_many :profiles, dependent: :destroy
@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   validates :company,  length: { maximum: 50 }
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
+
+  mount_uploader :image, UserImageUploader
 
   def password_required?
     super && self.authentifications.empty?

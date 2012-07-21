@@ -5,6 +5,8 @@ gem 'pg'
 gem 'jquery-rails'
 gem 'rails-i18n'
 gem 'devise'
+gem 'carrierwave', git: "git://github.com/jnicklas/carrierwave.git"
+gem 'rmagick'
 gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'omniauth-facebook'
