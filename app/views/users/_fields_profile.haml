@@ -13,9 +13,9 @@
     %h6 Skills
     .row
       .span2=f.text_field :skill_1, style: 'font-size:15px'
-      .span1= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level'}
+      .span1=f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level'}
       .span2=f.text_field :skill_2, style: 'font-size:15px'
-      .span1= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level' }
+      .span1=f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level' }
       .span2=f.text_field :skill_3, style: 'font-size:15px'
       .span1=f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level' }
 
@@ -31,6 +31,6 @@
         .span3= f.text_field :quality_3, style: 'font-size:15px'
 
 .row
-  .span5.offset5.pull-right{ style: 'margin-top:-550px;'}
+  .span5.offset5.pull-right{ style: 'margin-top:-450px;'}
     =f.text_area :text, class: 'lead',placeholder: 'Describe your goals, or your motto.', rows: 4, style: 'width:450px;'
     .pull-right= f.submit 'Save your profile!', class: 'btn btn-gigantic btn-primary'

@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def edit
   	@user = User.find params[:id]
-    @user.profiles.build
   end
 
   def update

@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   has_many :authentifications, dependent: :destroy
   has_many :profiles, dependent: :destroy
 
-  accepts_nested_attributes_for :profiles, allow_destroy: true
+  accepts_nested_attributes_for :profiles, allow_destroy: true, 
+                                :reject_if => lambda { |attr| attr['experience'].blank? && attr['education'].blank? }
 
   validates :fullname, length: { maximum: 100 }
   validates :city,     length: { maximum: 50 }
