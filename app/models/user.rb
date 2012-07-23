@@ -58,5 +58,6 @@ end
 #  country                :string(255)
 #  role                   :string(255)
 #  company                :string(255)
+#  image                  :string(255)
 #
 

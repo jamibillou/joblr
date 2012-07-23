@@ -2,12 +2,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def linkedin
     omniauth = request.env['omniauth.auth']
+    auth_info = {}
     if omniauth
-      omniauth['info']['name'] ? name =  omniauth['info']['name'] : name = ''
-      omniauth['extra']['raw_info']['id'] ?  uid =  omniauth['extra']['raw_info']['id'] : uid = ''
-      omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
-      omniauth['info']['urls']['public_profile'] ? url =  omniauth['info']['urls']['public_profile'] : url = ''
-      connect(name, uid, provider, url)      
+      omniauth['info']['name'] ? auth_info[:name] = omniauth['info']['name'] : auth_info[:name] = ''
+      omniauth['extra']['raw_info']['id'] ?  auth_info[:uid] =  omniauth['extra']['raw_info']['id'] : auth_info[:uid] = ''
+      omniauth['provider'] ? auth_info[:provider] =  omniauth['provider'] : auth_info[:provider] = ''
+      omniauth['info']['image'] ?  auth_info[:upic] =  omniauth['info']['image'] : auth_info[:upic] = ''
+      omniauth['info']['urls']['public_profile'] ? auth_info[:url] =  omniauth['info']['urls']['public_profile'] : auth_info[:url] = ''
+      connect(auth_info)      
     else
       render :text => 'Omniauth is empty :/'
     end
@@ -15,13 +17,15 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
     omniauth = request.env['omniauth.auth']
+    auth_info = {}
     if omniauth
       omniauth['extra']['raw_info']['email'] ? email =  omniauth['extra']['raw_info']['email'] : email = ''
-      omniauth['extra']['raw_info']['name'] ? name =  omniauth['info']['name'] : name = ''
-      omniauth['extra']['raw_info']['id'] ?  uid =  omniauth['extra']['raw_info']['id'] : uid = ''
-      omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
-      omniauth['info']['urls']['Facebook'] ? url =  omniauth['info']['urls']['Facebook'] : url = ''
-      connect(name, uid, provider, url, email)
+      omniauth['extra']['raw_info']['name'] ? auth_info[:name] =  omniauth['info']['name'] : auth_info[:name] = ''
+      omniauth['extra']['raw_info']['id'] ?  auth_info[:uid] =  omniauth['extra']['raw_info']['id'] : auth_info[:uid] = ''
+      omniauth['provider'] ? auth_info[:provider] =  omniauth['provider'] : auth_info[:provider] = ''
+      omniauth['info']['image'] ?  auth_info[:upic] =  omniauth['info']['image'] : auth_info[:upic] = ''
+      omniauth['info']['urls']['Facebook'] ? auth_info[:url] =  omniauth['info']['urls']['Facebook'] : auth_info[:url] = ''
+      connect(auth_info)
     else
       render :text => 'Omniauth is empty :/'
     end   
@@ -29,12 +33,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def twitter
     omniauth = request.env['omniauth.auth']
+    auth_info = {}
     if omniauth
-      omniauth['info']['name'] ? name =  omniauth['info']['name'] : name = ''
-      omniauth['extra']['raw_info']['id'] ?  uid =  omniauth['extra']['raw_info']['id'] : uid = ''
-      omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
-      omniauth['info']['urls']['Twitter'] ? url =  omniauth['info']['urls']['Twitter'] : url = ''
-      connect(name, uid, provider, url)      
+      omniauth['info']['name'] ? auth_info[:name] =  omniauth['info']['name'] : auth_info[:name] = ''
+      omniauth['extra']['raw_info']['id'] ?  auth_info[:uid] =  omniauth['extra']['raw_info']['id'] : auth_info[:uid] = ''
+      omniauth['provider'] ? auth_info[:provider] =  omniauth['provider'] : auth_info[:provider] = ''
+      omniauth['info']['image'] ?  auth_info[:upic] =  omniauth['info']['image'] : auth_info[:upic] = ''
+      omniauth['info']['urls']['Twitter'] ? auth_info[:url] =  omniauth['info']['urls']['Twitter'] : auth_info[:url] = ''
+      connect(auth_info)      
     else
       render :text => 'Omniauth is empty :/'
     end  
@@ -42,13 +48,15 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def google_oauth2
     omniauth = request.env['omniauth.auth']
+    auth_info = {}
     if omniauth
       omniauth['info']['email'] ? email =  omniauth['info']['email'] : email = ''
-      omniauth['info']['name'] ? name =  omniauth['info']['name'] : name = ''
-      omniauth['uid'] ? uid =  omniauth['uid'] : uid = ''
-      omniauth['provider'] ? provider =  'google' : provider = ''
-      omniauth['extra']['raw_info']['link'] ?  url =  omniauth['extra']['raw_info']['link'] : url = ''
-      connect(name, uid, provider, url, email)
+      omniauth['info']['name'] ? auth_info['name'] =  omniauth['info']['name'] : auth_info['name'] = ''
+      omniauth['uid'] ? auth_info[:uid] =  omniauth['uid'] : auth_info[:uid] = ''
+      omniauth['provider'] ? auth_info[:provider] =  'google' : auth_info[:provider] = ''
+      omniauth['info']['image'] ?  auth_info[:upic] =  omniauth['info']['image'] : auth_info[:upic] = ''
+      omniauth['extra']['raw_info']['link'] ?  auth_info[:url] =  omniauth['extra']['raw_info']['link'] : auth_info[:url] = ''
+      connect(auth_info)
     else
       render :text => 'Omniauth is empty :/'
     end       
@@ -56,38 +64,40 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   private
 
-    def connect(name, uid, provider,url,email = '')
-      if uid != '' && provider != ''
+    def connect(auth_info)
+      if auth_info[:uid] != '' && auth_info[:provider] != ''
         unless user_signed_in?
-          auth = Authentification.find_by_uid_and_provider(uid.to_s, provider)
+          auth = Authentification.find_by_uid_and_provider(auth_info[:uid].to_s, auth_info[:provider])
           if auth
-            flash[:notice] = "Signed in successfully using #{provider.titleize}!"
+            flash[:notice] = "Signed in successfully using #{auth_info[:provider].titleize}!"
             sign_in auth.user
             redirect_to auth.user
           else
-            existing_user = User.find_by_email(email)
+            existing_user = User.find_by_email(auth_info[:email])
             if existing_user
-              existing_user.authentifications.create(:provider => provider, :uid => uid, :uname => name, :uemail => email, :url => url)
-              flash[:notice] = "You can now sign in with #{provider.titleize} too!"
+              existing_user.authentifications.create(provider: auth_info[:provider], uid: auth_info[:uid], uname: auth_info[:name], 
+                uemail: auth_info[:email], url: auth_info[:url], upic: auth_info[:upic])
+              flash[:notice] = "You can now sign in with #{auth_info[:provider].titleize} too!"
             else
-              user = User.new :fullname => name, :email => email
-              user.authentifications.build(:provider => provider, :uid => uid, :uname => name, :uemail => email, :url => url)
+              user = User.new :fullname => auth_info[:name], :email => auth_info[:email]
+              user.authentifications.build(auth_info)
               user.save!
               
-              flash[:notice] = "Account created via #{provider.titleize}!"
+              flash[:notice] = "Account created via #{auth_info[:provider].titleize}!"
               sign_in user
               redirect_to user
             end
           end
         else
-          auth = Authentification.find_by_uid_and_provider(uid.to_s, provider)
+          auth = Authentification.find_by_uid_and_provider(auth_info[:uid].to_s, auth_info[:provider])
           if auth
-            flash[:notice] = "#{provider.titleize} is already linked to your account."
+            flash[:notice] = "#{auth_info[:provider].titleize} is already linked to your account."
             redirect_to edit_user_registration_path
           else
-            current_user.authentifications.create(:provider => provider, :uid => uid, :uname => name, :uemail => email, :url => url)
-            current_user.update_attribute(:email,email) if(email != "" && current_user.email == "") 
-            flash[:notice] = "You added your #{provider.titleize} account to your profile."
+            current_user.authentifications.create(provider: auth_info[:provider], uid: auth_info[:uid], uname: auth_info[:name], 
+              uemail: auth_info[:email], url: auth_info[:url], upic: auth_info[:upic])
+            current_user.update_attribute(:email,auth_info[:email]) if(auth_info[:email] != "" && current_user.email == "") 
+            flash[:notice] = "You added your #{auth_info[:provider].titleize} account to your profile."
             redirect_to edit_user_registration_path
           end 
         end
