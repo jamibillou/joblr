@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
   def has_provider?(provider)
     !self.authentifications.where(:provider => provider).empty?
   end
+
+  def authentifications_with_picture
+    self.authentifications.where("upic != ''")
+  end
 end
 
 # == Schema Information
