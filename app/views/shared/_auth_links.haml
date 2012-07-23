@@ -1,0 +1,15 @@
+- unless user.authentifications.empty?
+  - user.authentifications.each do |auth|
+    = link_to image_tag("#{auth.provider}2.png", title:"Remove your #{auth.provider.titleize} account"), authentification_path(auth), confirm:"Remove your #{auth.provider.titleize} account?", method: :delete
+
+= '|' if !user.authentifications.empty? && !user.has_provider?(:all)
+
+- unless user.has_provider? :all
+  - unless user.has_provider? 'facebook'
+    = link_to image_tag('facebook.png', title:'Add your Facebook account'), omniauth_authorize_path(user, 'facebook')
+  - unless user.has_provider? 'linkedin'
+    = link_to image_tag('linkedin.png', title:'Add your Linkedin account'), omniauth_authorize_path(user, 'linkedin')
+  - unless user.has_provider? 'twitter'
+    = link_to image_tag('twitter.png', title:'Add your Twitter account'), omniauth_authorize_path(user, 'twitter')
+  - unless user.has_provider? 'google'
+    = link_to image_tag('google.png', title:'Add your Google+ account'), omniauth_authorize_path(user, 'google_oauth2')

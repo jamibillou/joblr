@@ -32,16 +32,7 @@
 
   %h2 Social profiles
   %br/
-    
-  - unless current_user.authentifications.empty?
-    - current_user.authentifications.each do |authentification|
-      = link_to(image_tag("#{authentification.provider}2.png", :title => "Unlink your #{authentification.provider.titleize} account"), authentification_path(authentification), :confirm => "Unlink your #{authentification.provider.titleize} account?", :method => :delete)
-    |
-
-  = link_to(image_tag('facebook.png', :title => 'Link your Facebook account'), omniauth_authorize_path(current_user,'facebook')) unless current_user.has_provider?('facebook')
-  = link_to(image_tag('linkedin.png', :title => 'Link your Linkedin account'), omniauth_authorize_path(current_user,'linkedin')) unless current_user.has_provider?('linkedin')
-  = link_to(image_tag('twitter.png', :title => 'Link your Twitter account'), omniauth_authorize_path(current_user,'twitter')) unless current_user.has_provider?('twitter')
-  = link_to(image_tag('google.png', :title => 'Link your Google+ account'), omniauth_authorize_path(current_user,'google_oauth2')) unless current_user.has_provider?('google')
+  = render 'shared/auth_links', user: current_user
 
   %br/
   %br/

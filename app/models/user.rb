@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :authentifications, dependent: :destroy
   has_many :profiles, dependent: :destroy
 
-  accepts_nested_attributes_for :profiles, allow_destroy: true, 
+  accepts_nested_attributes_for :profiles, allow_destroy: true,
                                 :reject_if => lambda { |attr| attr['experience'].blank? && attr['education'].blank? }
 
   validates :fullname, length: { maximum: 100 }
@@ -32,7 +32,11 @@ class User < ActiveRecord::Base
   end
 
   def has_provider?(provider)
-    !self.authentifications.where(:provider => provider).empty?
+    unless provider == :all
+      !self.authentifications.where(:provider => provider).empty?
+    else
+      has_provider?('linkedin') && has_provider?('twitter') && has_provider?('facebook') && has_provider?('google')
+    end
   end
 
   def authentifications_with_picture

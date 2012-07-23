@@ -34,4 +34,11 @@
 
         = f.fields_for(:profiles) { |profile_builder| render 'fields_profile', f: profile_builder }
 
+      - unless @user.has_provider?(:all)
+        .row
+          .span4
+            %br/
+            %h6{style:'margin-bottom:10px'}= "More online presence"
+            = render 'shared/auth_links', user: @user
+
 = render 'edit_modals'

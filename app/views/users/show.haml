@@ -52,10 +52,11 @@
           Edit
       %h1{ style:'margin-top:50%; text-align:right' }
         %i= @user.profiles.first.text
-%br/
+
 - unless current_user.authentifications.empty?
   .row
     .span4
+      %br/
       %h6{style:'margin-bottom:10px'}= "More about #{current_user.fullname}"
       - current_user.authentifications.each do |authentification|
         = link_to image_tag("#{authentification.provider}.png", title:"Go to #{current_user.fullname}'s #{authentification.provider.titleize} page"), authentification.url, target:'_new'
