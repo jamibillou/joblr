@@ -1,36 +1,36 @@
 .row
-  .span1.well
+  .span1.well{style:'padding:14px'}
     %h6 Experience
     =f.text_field :experience, style: 'height:30px; width:40px; margin-bottom:0; font-size:30px; font-weight:bold'
     %h2 yrs
-  .span3.well{style: 'padding-right:0'}
+  .span3.well{style:'padding:14px'}
     %h6 Highest Education
-    =f.text_area :education, rows: 3, style: 'margin-bottom:12px; width:240px;'
+    =f.text_area :education, rows:2, style:'margin-bottom:12px; width:240px;', class:'lead'
     %br/
 
 .row
-  .span4.well{style: 'padding-bottom:5px'}
+  .span4.well{style: 'padding-bottom:14px'}
     %h6 Skills
     .row
-      .span2=f.text_field :skill_1, style: 'font-size:15px'
-      .span1=f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level'}
-      .span2=f.text_field :skill_2, style: 'font-size:15px'
-      .span1=f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level' }
-      .span2=f.text_field :skill_3, style: 'font-size:15px'
-      .span1=f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level' }
+      .span2= f.text_field :skill_1, style: 'font-size:15px'
+      .span1= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level'}
+      .span2= f.text_field :skill_2, style: 'font-size:15px'
+      .span1= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level' }
+      .span2= f.text_field :skill_3, style: 'font-size:15px'
+      .span1= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level' }
 
 .row
-  .span4.well{style: 'padding-bottom:0'}
+  .span4.well{style:'padding-bottom:6px'}
     %h6 Qualities
     .lead
       .row
-        .span3= f.text_field :quality_1, style: 'font-size:15px'
+        .span3= f.text_field :quality_1, style:'font-size:15px'
       .row
-        .span3= f.text_field :quality_2, style: 'font-size:15px'
+        .span3= f.text_field :quality_2, style:'font-size:15px'
       .row
-        .span3= f.text_field :quality_3, style: 'font-size:15px'
+        .span3= f.text_field :quality_3, style:'font-size:15px'
 
-.row
-  .span5.offset5.pull-right{ style: 'margin-top:-450px;'}
-    =f.text_area :text, class: 'lead',placeholder: 'Describe your goals, or your motto.', rows: 4, style: 'width:450px;'
-    .pull-right= f.submit 'Save your profile!', class: 'btn btn-gigantic btn-primary'
+.row{style:'margin-left:0'}
+  .span5.offset6{style:'margin-top:-400px'}
+    = f.text_area :text, class:'lead', placeholder:'Describe your goals, or your motto.', rows:4, style:'width:450px;'
+    .pull-right= f.submit 'Save your profile!', class:'btn btn-gigantic btn-primary'

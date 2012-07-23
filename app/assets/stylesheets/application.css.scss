@@ -21,11 +21,16 @@ footer { padding-top:50px }
   // box-shadow:0 1px 2px rgba(0,0,0,.15);
 }
 
-.card       { margin-left:25px;
-  .well     { margin:5px }
-  h6        { margin-bottom:10px }
-  .lead     { margin-bottom:10px; }
-  .progress { margin-top:6px }
+.card          { margin-left:25px;
+  .well        { margin:5px }
+  h6           { margin-bottom:10px }
+  .lead        { margin-bottom:10px; }
+  .progress    { margin-top:6px }
+  .input-small {
+    height:9px;
+    margin-top:-4px;
+    font-size:15px;
+  }
 }
 
 .inline {
