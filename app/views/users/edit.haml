@@ -11,7 +11,7 @@
             .row
               .span1    
                 =f.file_field :image, id: 'image_click', style: 'position:absolute;z-index:-1'            
-                = image_tag (current_user.image_url.nil? ? 'default_user.jpg' : current_user.image_url(:thumb).to_s), onclick: "$('#image_click').click()"
+                %a=image_tag (current_user.image_url.nil? ? 'default_user.jpg' : current_user.image_url(:thumb).to_s), { href: '#picture-modal', 'data-toggle' => 'modal' }
               .span3
                 =f.text_field :fullname, placeholder: 'Full name', style: 'height:13px; font-size:15px'
                 %br/
@@ -58,3 +58,20 @@
   .modal-footer
     %a.btn{href: '#', "data-dismiss" => 'modal'} Close
     %a.btn.btn-primary{href: '#', onclick: "$('#linkedin-modal').modal('hide'); import_data('candidate')"} Sign in
+
+.modal.hide#picture-modal
+  .modal-header
+    %button.close{type: 'button', "data-dismiss" => 'modal'} ×
+    %h3 Select your profile picture
+  .modal-body
+    - unless current_user.authentifications_with_picture.nil?
+      %h4 Get it from your social network
+      - current_user.authentifications_with_picture.each do |authentification|
+        =image_tag authentification.upic, {style: 'width:70px;height:70px;'}
+      %br/
+      %br/
+    %h4 Or from your computer
+    =file_field :image, id: 'image_click', style: 'position:absolute;z-index:-1'
+  .modal-footer
+    %a.btn{href: '#', "data-dismiss" => 'modal'} Close
+    %a.btn.btn-primary{href: '#', onclick: "$('#picture-modal').modal('hide');"} Submit
