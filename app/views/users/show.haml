@@ -2,30 +2,25 @@
   .span5
     .card
       .row
-        .span4.well
+        .span4.well{style:'padding-bottom:14px'}
           .row
             .span1= image_tag (current_user.image_url.nil? ? 'default_user.jpg' : current_user.image_url(:thumb).to_s)
             .span3
               %h3= @user.fullname
-              %p
-                = @user.city
-                = ',' unless @user.city.nil? || @user.country.nil?
-                = @user.country
-              %p
-                = @user.role
-                = ',' unless @user.role.nil? || @user.company.nil?
-                = @user.company
+              %p #{@user.city}#{', ' unless @user.city.nil? || @user.country.nil?}#{@user.country}
+              %p #{@user.role}#{', ' unless @user.role.nil? || @user.company.nil?}#{@user.company}
 
       .row
-        .span1.well
+        .span1.well{style:'padding:14px'}
           %h6 Experience
-          .gigantic #{@user.profiles.first.experience} yrs
-        .span3.well{style:'padding-right:0'}
+          .gigantic
+            = pluralize @user.profiles.first.experience, 'yr'
+        .span3.well{style:'padding:14px'}
           %h6 Highest Education
           .lead= @user.profiles.first.education
 
       .row
-        .span4.well{style: 'padding-bottom:0'}
+        .span4.well{style:'padding-bottom:0'}
           %h6 Skills
           .lead
             .row
@@ -39,7 +34,7 @@
               .span1= render 'level_bar', level: @user.profiles.first.skill_3_level
 
       .row
-        .span4.well{style: 'padding-bottom:0'}
+        .span4.well{style:'padding-bottom:14px'}
           %h6 Qualities
           .lead
             .row
@@ -49,33 +44,18 @@
             .row
               .span3 #{@user.profiles.first.quality_3}
 
-  .span5.offset1
-    .pull-right
-      %a.btn.btn-primary{ href: edit_user_path }
-        .icon-edit.icon-white
-        Edit
-    %br/
-    %br/
-    %br/
-    %br/
-    %br/
-    %br/
-    %br/
-    %br/
-    %br/
-    %br/
-    %br/
-    %br/
-    %br/
+  .span5.offset2
     .row
-      %h2{ style: 'text-align:right' }
-        .icon-comment
-        &nbsp;
-        = @user.profiles.first.text
+      .pull-right
+        %a.btn.btn-primary{ href: edit_user_path }
+          .icon-pencil.icon-white
+          Edit
+      %h1{ style:'margin-top:50%; text-align:right' }
+        %i= @user.profiles.first.text
 %br/
 - unless current_user.authentifications.empty?
   .row
     .span4
-      %h6= "More about #{current_user.fullname}"
+      %h6{style:'margin-bottom:10px'}= "More about #{current_user.fullname}"
       - current_user.authentifications.each do |authentification|
-        = link_to image_tag("#{authentification.provider}.png" ,title: "Go to his #{authentification.provider.titleize} page"), "#{authentification.url}", { target: '_new'}
+        = link_to image_tag("#{authentification.provider}.png", title:"Go to #{current_user.fullname}'s #{authentification.provider.titleize} page"), authentification.url, target:'_new'
