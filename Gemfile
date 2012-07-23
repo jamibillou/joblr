@@ -23,16 +23,13 @@ group :assets do
   gem 'i18n-js'
 end
 
-group :test, :development do
-  gem 'rspec-rails'
-end
-
 group :development do
   gem 'annotate', '2.4.1.beta1'
   gem 'faker'
 end
 
 group :test do
+  gem 'rspec-rails'
   gem 'spork'
   gem 'autotest'
   gem 'autotest-growl'
