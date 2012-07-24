@@ -2,7 +2,7 @@
   %h1 Complete you profile!
   %br/
 
-= form_for @user do |f|
+= form_for @user, html: { id:'edit_form' } do |f|
   .row
     .span12
       .card
