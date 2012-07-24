@@ -11,9 +11,15 @@ describe UsersController do
 
   describe "GET 'edit'" do
 
-    before(:each) { get :edit, id: @user }
+    before :each do
+      get :edit, id: @user
+    end
 
     it { response.should be_success }
+
+    it 'should have an edit form' do
+      response.should have_selector('edit_user')
+    end
   end
 
   describe "PUT 'update" do
