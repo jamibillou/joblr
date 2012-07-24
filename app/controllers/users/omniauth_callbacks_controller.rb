@@ -92,13 +92,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           auth = Authentification.find_by_uid_and_provider(auth_info[:uid].to_s, auth_info[:provider])
           if auth
             flash[:notice] = "#{auth_info[:provider].titleize} is already linked to your account."
-            redirect_to edit_user_registration_path
+            redirect_to edit_user_path(current_user)
           else
             current_user.authentifications.create(provider: auth_info[:provider], uid: auth_info[:uid], uname: auth_info[:name], 
               uemail: auth_info[:email], url: auth_info[:url], upic: auth_info[:upic])
             current_user.update_attribute(:email,auth_info[:email]) if(auth_info[:email] != "" && current_user.email == "") 
             flash[:notice] = "You added your #{auth_info[:provider].titleize} account to your profile."
-            redirect_to edit_user_registration_path
+            redirect_to edit_user_path(current_user)
           end 
         end
       else
