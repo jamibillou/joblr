@@ -23,26 +23,33 @@
         .span4.well{style:'padding-bottom:0'}
           %h6 Skills
           .lead
-            .row
-              .span3 #{@user.profiles.first.skill_1}
-              .span1= render 'level_bar', level: @user.profiles.first.skill_1_level
-            .row
-              .span3 #{@user.profiles.first.skill_2}
-              .span1= render 'level_bar', level: @user.profiles.first.skill_2_level
-            .row
-              .span3 #{@user.profiles.first.skill_3}
-              .span1= render 'level_bar', level: @user.profiles.first.skill_3_level
+            - unless @user.profiles.first.skill_1.blank?
+              .row
+                .span3 #{@user.profiles.first.skill_1}
+                .span1= render 'level_bar', level: @user.profiles.first.skill_1_level
+            - unless @user.profiles.first.skill_2.blank?
+              .row
+                .span3 #{@user.profiles.first.skill_2}
+                .span1= render 'level_bar', level: @user.profiles.first.skill_2_level
+            - unless @user.profiles.first.skill_3.blank?
+              .row
+                .span3 #{@user.profiles.first.skill_3}
+                .span1= render 'level_bar', level: @user.profiles.first.skill_3_level
+
 
       .row
         .span4.well{style:'padding-bottom:14px'}
           %h6 Qualities
           .lead
-            .row
-              .span3 #{@user.profiles.first.quality_1}
-            .row
-              .span3 #{@user.profiles.first.quality_2}
-            .row
-              .span3 #{@user.profiles.first.quality_3}
+            - unless @user.profiles.first.quality_1.blank?
+              .row
+                .span3 #{@user.profiles.first.quality_1}
+            - unless @user.profiles.first.quality_2.blank?
+              .row
+                .span3 #{@user.profiles.first.quality_2}
+            - unless @user.profiles.first.quality_3.blank?
+              .row
+                .span3 #{@user.profiles.first.quality_3}
 
     - unless @user.authentifications.empty? && @user.profiles.first.file.nil? && @user.profiles.first.url.nil?
       .row
@@ -56,7 +63,7 @@
           - unless @user.authentifications.empty?
             - @user.authentifications.each do |authentification|
               = link_to image_tag("#{authentification.provider}.png", title:"Go to #{@user.fullname}'s #{authentification.provider.titleize} page"), authentification.url, target:'_new'
-          - unless @user.profiles.first.url.nil?
+          - unless @user.profiles.first.url.blank?
             %a.btn.btn-large.btn-danger{href:@user.profiles.first.url, target:'_blank', style:'margin-left:2px'}
               .icon-globe.icon-white
               Site
