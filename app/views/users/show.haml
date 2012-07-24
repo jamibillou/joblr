@@ -56,7 +56,7 @@
         .span4
           %br/
           %h6{style:'margin-bottom:10px'}= "More about #{@user.fullname}"
-          - unless @user.profiles.first.file.nil?
+          - unless @user.profiles.first.file.nil? || @user.profiles.first.file.blank?
             %a.btn.btn-large{href: @user.profiles.first.file_url.to_s, style:'margin-right:2px'}
               .icon-upload
               Download CV
