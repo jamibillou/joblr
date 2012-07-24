@@ -4,7 +4,7 @@
       .row
         .span4.well{style:'padding-bottom:14px'}
           .row
-            .span1= image_tag (current_user.image_url.nil? ? 'default_user.jpg' : current_user.image_url(:thumb).to_s)
+            .span1= image_tag (@user.image_url.nil? ? 'default_user.jpg' : @user.image_url(:thumb).to_s)
             .span3
               %h3= @user.fullname
               %p #{@user.city}#{', ' unless @user.city.nil? || @user.country.nil?}#{@user.country}
@@ -44,6 +44,22 @@
             .row
               .span3 #{@user.profiles.first.quality_3}
 
+    - unless @user.authentifications.empty? && @user.profiles.first.file.nil? && @user.profiles.first.url.nil?
+      .row
+        .span4
+          %br/
+          %h6{style:'margin-bottom:10px'}= "More about #{@user.fullname}"
+          - unless @user.profiles.first.file.nil?
+            %a.btn.btn-large{href: @user.profiles.first.file_url.to_s, style:'margin-right:2px'}
+              .icon-upload
+              Download CV
+          - unless @user.authentifications.empty?
+            - @user.authentifications.each do |authentification|
+              = link_to image_tag("#{authentification.provider}.png", title:"Go to #{@user.fullname}'s #{authentification.provider.titleize} page"), authentification.url, target:'_new'
+          - unless @user.profiles.first.url.nil?
+            %a.btn.btn-large.btn-danger{href:"http://#{@user.profiles.first.url}", target:'_blank', style:'margin-left:2px'}
+              .icon-globe.icon-white
+              Site
   .span5.offset2
     .row
       .pull-right
@@ -52,11 +68,3 @@
           Edit
       %h1{ style:'margin-top:50%; text-align:right' }
         %i= @user.profiles.first.text
-
-- unless current_user.authentifications.empty?
-  .row
-    .span4
-      %br/
-      %h6{style:'margin-bottom:10px'}= "More about #{current_user.fullname}"
-      - current_user.authentifications.each do |authentification|
-        = link_to image_tag("#{authentification.provider}.png", title:"Go to #{current_user.fullname}'s #{authentification.provider.titleize} page"), authentification.url, target:'_new'

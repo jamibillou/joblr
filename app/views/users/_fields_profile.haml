@@ -30,7 +30,22 @@
       .row
         .span3= f.text_field :quality_3, style:'font-size:15px'
 
+.row{style:'margin:19px 0 0 -25px'}
+  .span4{style:'margin-left:0'}
+    %h6{style:'margin-bottom:10px'} Social profiles
+    = render 'shared/auth_links', user: @user
+
+.row{style:'margin:19px 0 0 -25px'}
+  .span2{style:'margin-left:0'}
+    %h6{style:'margin-bottom:5px'} Upload your CV
+    = f.file_field :file
+
+.row{style:'margin:19px 0 0 -25px'}
+  .span4{style:'margin-left:0'}
+    %h6{style:'margin-bottom:10px'} Add a website or blog
+    = f.text_field :url, placeholder:'http://', class:'input-medium'
+
 .row{style:'margin-left:0'}
-  .span5.offset6{style:'margin-top:-400px'}
+  .span5.offset6{style:'margin-top:-600px'}
     = f.text_area :text, class:'lead', placeholder:'Describe your goals, or your motto.', rows:4, style:'width:450px;'
     .pull-right= f.submit 'Save your profile!', class:'btn btn-gigantic btn-primary'

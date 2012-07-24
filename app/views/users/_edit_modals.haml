@@ -29,15 +29,15 @@
 #picture-modal.modal.hide
   .modal-header
     %button.close{type:'button', 'data-dismiss' => 'modal'} ×
-    %h3 Select your profile picture
+    %h3 Select or upload a pic!
   .modal-body
-    - unless @user.authentifications_with_picture.nil?
-      %h4 Get it from your social network
-      - @user.authentifications_with_picture.each do |authentification|
-        = image_tag authentification.upic, style:'width:70px; height:70px;'
+    - unless @user.auths_w_pic.nil?
+      %h5{style:'margin-bottom:5px'} Social profiles:
+      - @user.auths_w_pic.each do |authentification|
+        = image_tag authentification.upic, style:'width:50px; height:50px; margin-right:5px'
       %br/
       %br/
-    %h4 Or from your computer
+    %h5 Upload:
     = file_field :image, id:'image_click', style:'position:absolute; z-index:-1'
   .modal-footer
     %a.btn{href:'#', 'data-dismiss' => 'modal'} Close

@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   mount_uploader :image, UserImageUploader
 
   def password_required?
-    super && self.authentifications.empty?
+    super && authentifications.empty?
   end
 
   def update_with_password(params, *options)
@@ -33,14 +33,14 @@ class User < ActiveRecord::Base
 
   def has_provider?(provider)
     unless provider == :all
-      !self.authentifications.where(:provider => provider).empty?
+      !authentifications.where(:provider => provider).empty?
     else
       has_provider?('linkedin') && has_provider?('twitter') && has_provider?('facebook') && has_provider?('google')
     end
   end
 
-  def authentifications_with_picture
-    self.authentifications.where("upic != ''")
+  def auths_w_pic
+    authentifications.where("upic != ''")
   end
 end
 

@@ -42,6 +42,8 @@ describe Profile do
 
     before :each do
       @level = { valid: %w(Beginner Intermediate Advanced Expert), invalid: %w(crap good okish) }
+      @url   = { valid: %(http://www.engaccino.com https://engaccino.com https://dom.engaccino.com http://franck.engaccino.com http://www.engaccino.co.uk https://dom.engaccino.com.hk http://engaccino.me http://www.engaccino.ly http://fr.engaccino/users/1/edit),
+                 invalid: %w(invalid_url engaccino.com pouetpouetpouet http:www.engaccino.com http//engaccino.com http/ccino.co htp://ccino.me http:/www.engaccino.com) }
     end
 
     it { should validate_presence_of :user }
@@ -60,6 +62,8 @@ describe Profile do
     it { should ensure_length_of(:quality_2).is_at_most 50 }
     it { should ensure_length_of(:quality_3).is_at_most 50 }
     it { should ensure_length_of(:text).is_at_most 140 }
+    it { should validate_format_of(:url).not_with(@url[:invalid]).with_message(I18n.t('activerecord.errors.messages.url_format')) }
+    it { should validate_format_of(:url).with @url[:valid] }
   end
 end
 
