@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  include ApplicationHelper
+
   def show
     @user = params[:id] ? User.find(params[:id]) : current_user
     redirect_to edit_user_path(@user) if @user.profiles.empty?
@@ -13,9 +15,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find params[:id]
     unless @user.update_attributes params[:user]
-      redirect_to edit_user_path(@user), error: 'Houston we have a problem!'
+      redirect_to edit_user_path(@user), flash: { error: error_messages(@user) }
     else
-      redirect_to @user, success: 'You have a profile man!'
+      redirect_to @user, flash: { success: t('flash.success.profile_updated') }
     end
   end
 end
