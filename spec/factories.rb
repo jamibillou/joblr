@@ -24,6 +24,7 @@ FactoryGirl.define do
     quality_1 'Drive'
     quality_2 'Work ethics'
     quality_3 'Punctuality'
+    text "I'm extremely brilliant, motivated and genuinely modest."
     association :user
   end
 end

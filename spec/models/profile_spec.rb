@@ -59,6 +59,7 @@ describe Profile do
     it { should ensure_length_of(:quality_2).is_at_most 50 }
     it { should ensure_length_of(:quality_3).is_at_most 50 }
     it { should ensure_length_of(:text).is_at_most 140 }
+    it { should validate_presence_of :text }
     it { should validate_format_of(:url).not_with(@url[:invalid]).with_message(I18n.t('activerecord.errors.messages.url_format')) }
     it { should validate_format_of(:url).with @url[:valid] }
   end

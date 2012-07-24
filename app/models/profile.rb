@@ -16,7 +16,7 @@ class Profile < ActiveRecord::Base
   validates :quality_1,     length: { maximum: 50 }
   validates :quality_2,     length: { maximum: 50 }
   validates :quality_3,     length: { maximum: 50 }
-  validates :text,          length: { maximum: 140 }
+  validates :text,          length: { maximum: 140 }, presence: true
   validates :url,           url_format: true,         allow_blank: true
 
   mount_uploader :file, ProfileFileUploader
