@@ -3,7 +3,11 @@ class Authentification < ActiveRecord::Base
   attr_accessible :provider, :uemail, :uid, :uname, :user_id, :url, :upic
 
   belongs_to :user
+
+  validates :user, :provider, :uid,  presence: true
+  validates :url,  url_format: true, allow_blank: true
 end
+
 # == Schema Information
 #
 # Table name: authentifications

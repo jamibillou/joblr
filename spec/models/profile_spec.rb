@@ -22,11 +22,6 @@ describe Profile do
 
     it { @profile.should respond_to :user }
 
-    it 'should not be valid without a candidate' do
-      profile_without_user = Profile.new @attr
-      profile_without_user.should_not be_valid
-    end
-
     it 'should have the right associated user' do
       @profile.user_id.should == @user.id
       @profile.user.should    == @user

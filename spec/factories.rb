@@ -1,8 +1,15 @@
 FactoryGirl.define do
 
   factory :user do
-    fullname 'John Doe' 
+    fullname 'John Doe'
     email 'j.doe@example.com'
+  end
+
+  factory :authentification do
+    provider 'twitter'
+    uid 'john_d'
+    uname 'John Doe'
+    association :user
   end
 
   factory :profile do
