@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe UsersController do
 
+  render_views
+
   before :each do
     @user = FactoryGirl.create :user
     sign_in @user
@@ -18,7 +20,7 @@ describe UsersController do
     it { response.should be_success }
 
     it 'should have an edit form' do
-      response.should have_selector('edit_user')
+      response.body.should have_selector 'form', class: 'edit_user', id: 'edit_form'
     end
   end
 
