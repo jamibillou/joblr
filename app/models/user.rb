@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   validates_presence_of     :username, :on => :create
   validates_presence_of     :password, :on => :create
   validates_confirmation_of :password, :on => :create
-  validates_length_of       :password, :within => Devise.password_length
+  validates_length_of       :password, :within => Devise.password_length, :on => :create
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
 

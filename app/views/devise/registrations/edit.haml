@@ -6,7 +6,8 @@
     = devise_error_messages!
 
     %div
-      = f.label :username
+      #{f.label :username, class: 'inline'} *
+      %br/
       = f.text_field :username
 
     %div
@@ -29,7 +30,7 @@
       %div
         #{f.label :current_password, class: 'inline'} *
         %br/
-        = f.password_field :current_password
+        = f.password_field :current_password, placeholder: "Type your password to confirm"
 
     %div= f.submit "Update", class: 'btn'
     %br/
