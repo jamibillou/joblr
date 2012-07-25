@@ -6,20 +6,19 @@
     = devise_error_messages!
 
     %div
-      #{f.label :email, class: 'inline'} *
+      #{f.label :username, class: 'inline'} *
       %br/
-      = f.email_field :email
+      = f.text_field :username
 
-    - if f.object.password_required?
-      %div
-        #{f.label :password, class: 'inline'} *
-        %br/
-        = f.password_field :password
+    %div
+      #{f.label :password, class: 'inline'} *
+      %br/
+      = f.password_field :password
 
-      %div
-        #{f.label :password_confirmation, class: 'inline'} *
-        %br/
-        = f.password_field :password_confirmation
+    %div
+      #{f.label :password_confirmation, class: 'inline'} *
+      %br/
+      = f.password_field :password_confirmation
 
     %div= f.submit 'Sign up', class: 'btn'
 

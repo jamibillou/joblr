@@ -16,7 +16,15 @@ class User < ActiveRecord::Base
   validates :role,     length: { maximum: 100 }
   validates :company,  length: { maximum: 50 }
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable, :validatable
+  validates_uniqueness_of   :email, :case_sensitive => false,      :allow_blank => true, :if => :email_changed?
+  validates_format_of       :email, :with  => Devise.email_regexp, :allow_blank => true, :if => :email_changed?
+  
+  validates_presence_of     :username, :on => :create
+  validates_presence_of     :password, :on => :create
+  validates_confirmation_of :password, :on => :create
+  validates_length_of       :password, :within => Devise.password_length
+
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
 
   mount_uploader :image, UserImageUploader
 
@@ -29,24 +37,16 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.new_with_session(params, session)
-    if session["devise.user_attributes"]
-      new(session["devise.user_attributes"], without_protection: true) do |user|
-        user.attributes = params
-        user.valid?
-      end
-    else
-      super
-    end
-  end
-
-  def password_required?
-    super && fullname.nil?
-  end
-
-  def email_required?
-    super && fullname.nil?
-  end
+#  def self.new_with_session(params, session)
+#    if session["devise.user_attributes"]
+#      new(session["devise.user_attributes"], without_protection: true) do |user|
+#        user.attributes = params
+#        user.valid?
+#      end
+#    else
+#      super
+#    end
+#  end
 
   def update_with_password(params, *options)
     if encrypted_password.blank?
