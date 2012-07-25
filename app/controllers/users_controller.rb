@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = subdomain_user(request) if request.subdomain.present?
   rescue ActiveRecord::RecordNotFound
-    redirect_to root_url(subdomain: 'www')
+    redirect_to root_url(subdomain: false)
   end
 
   def edit

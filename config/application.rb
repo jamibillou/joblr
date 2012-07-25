@@ -14,7 +14,7 @@ module Joblr
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    
+
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/lib/assets/validators)
 
@@ -37,7 +37,7 @@ module Joblr
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
+    config.filter_parameters += [:password, :password_confirmation]
 
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
@@ -59,7 +59,7 @@ module Joblr
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    # Devise: forces the application to not access the DB or load models when 
+    # Devise: forces the application to not access the DB or load models when
     # precompiling your assets. Good idea when deploying Rails 3.1 on Heroku.
     config.assets.initialize_on_precompile = false
   end
