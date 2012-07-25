@@ -10,7 +10,7 @@ Joblr::Application.routes.draw do
   end
 
   match 'home', to: 'pages#home'
-  match '',     to: 'users#show', constraints: lambda { |request| request.subdomain.present? && request.subdomain != 'www' }
+  match '',     to: 'users#show', constraints: HasSubdomain.new(true)
 
   root to: 'users#show',          constraints: SignedIn.new(true)
   root to: 'pages#home',          constraints: SignedIn.new(false)

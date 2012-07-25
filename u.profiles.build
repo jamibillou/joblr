@@ -1,0 +1,89 @@
+require 'base64'
+Base64.decode64 'ZXBpbWVub3Y6aG91bmFoOHk='
+Faraday.methods(false)
+Faraday.default_connection
+Faraday.default_connection.ssl
+Device.last.slow_sync!
+Device.last
+Device.last.viadeo
+Device.last.update_attributes :active => true, :last_sync_at => Time.now
+Contact.all.map{|c| c.meta}
+Device.last.sync!
+Device.first
+Device.last.device_contacts.all
+Device.last.device_contacts.all.map{|c| c.meta}
+User.last.devices.count
+User.last.devices
+User.last.devices.last
+User.last.devices.first
+Device.find 18
+Device.find(18).slow_sync!
+User.last.contacts.find_by_fn 'Lya Matheron'
+User.last.contacts.find_by_fn 'Nicolas Coulon'
+User.last.contacts.all.select{|c| !c.meta[:connections].nil? }
+User.last.contacts
+Contact.find 189
+Contact.find 265
+Contact.find 623
+DeviceContact.find 623
+Contact.find 82
+Device.find(18).contacts
+I18n.t 'contacts.edit_header_and_menu.editing_contact'
+I18n.t 'contacts.edit_header_and_menu.save'
+reload!
+I18n.methods
+I18n.load
+I18n.reload
+I18n.methods - Object.methods
+I18n.t 'contacts.edit_header_and_menu.delete'
+I18n.reload!
+s = Time.now; I18n.t 'contacts.edit_header_and_menu.delete'; e = Time.now
+e -s 
+e - s
+I18n.backend
+I18n.backend.methods
+I18n.backend.methods(false)
+I18n.backend.methods - Object.methods
+User.last.devices.each(&:sync!)
+User.last.devices.each(&:slow_sync!)
+User.all.each(&:destroy)
+dom = User.last
+dom.devices
+dom.devices.last.contacts.count
+dom.devices.first.contacts.count
+dom.devices.each(&:id)
+dom.devices.map(&:id)
+Device.find(19).contacts.count
+Device.find(20).contacts.count
+Device.find(18).contacts.count
+Contact.find 594
+DeviceContact.find 594
+current_user.profiles.first.blank?
+I18n.t '.users.edit.title'
+I18n.t 'pages.home.welcome'
+I18n.t 'users.edit.title'
+p = Profile.create(user: FactoryGirl.create(:user))
+u = User.create!
+u
+p = Profile.create(user: u)
+u.profiles.build
+p = u.profiles.build
+p.save!
+p
+session
+user = current_user
+user = User.last
+user = User.first
+user = User.find 8
+user.persisted?
+signin_in user
+Devise.signin_in user
+Devise.sign_in user
+User.all
+User.last
+User.find 8
+User.find(8).update_attributes subdomain:'dm'
+exit
+User.find(8).profiles
+@user = User.find_by_subdomain! 'dm'
+@user.profiles.empty?
