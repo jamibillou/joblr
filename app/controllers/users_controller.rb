@@ -3,8 +3,9 @@ class UsersController < ApplicationController
   include ApplicationHelper
 
   def show
-    @user = params[:id] ? User.find(params[:id]) : current_user
-    redirect_to edit_user_path(@user) if @user.profiles.empty?
+    @user = User.find_by_subdomain! request.subdomain
+    # @user = params[:id] ? User.find(params[:id]) : current_user
+    # redirect_to edit_user_path(@user) if @user.profiles.empty?
   end
 
   def edit
