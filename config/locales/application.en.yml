@@ -5,3 +5,4 @@ en:
       profile_updated: 'Your profile has been updated successfully.'
     error:
       base: 'Error:'
+      subdomain_doesnt_exist: "The subdomain you are trying to access doesn't exist."

@@ -1,20 +1,19 @@
 class UsersController < ApplicationController
-
   include ApplicationHelper
 
+  before_filter :retrieve_user
+
   def show
-    @user = User.find_by_subdomain! request.subdomain
-    # @user = params[:id] ? User.find(params[:id]) : current_user
-    # redirect_to edit_user_path(@user) if @user.profiles.empty?
+    @user = subdomain_user(request) if request.subdomain.present?
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_url(subdomain: 'www')
   end
 
   def edit
-  	@user = User.find params[:id]
     @user.profiles.build if @user.profiles.empty?
   end
 
   def update
-    @user = User.find params[:id]
     unless @user.update_attributes params[:user]
       redirect_to edit_user_path(@user), flash: { error: error_messages(@user) }
     else
@@ -25,6 +24,10 @@ class UsersController < ApplicationController
 
   private
 
+    def retrieve_user
+      @user = User.find params[:id] unless params[:id].nil?
+    end
+
     def remove_file?(params)
       params[:user][:profiles_attributes]['0'][:remove_file].to_i == 1
     end
@@ -32,5 +35,9 @@ class UsersController < ApplicationController
     def remove_file!(profile)
       profile.remove_file!
       profile.update_attributes file: nil
+    end
+
+    def subdomain_user(request)
+      User.find_by_subdomain! request.subdomain
     end
 end
