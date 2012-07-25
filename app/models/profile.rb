@@ -1,23 +1,23 @@
 class Profile < ActiveRecord::Base
 
-  attr_accessible :education, :experience, :quality_1, :quality_2, :quality_3, :skill_1, :skill_1_level, :skill_2, :skill_2_level, :skill_3, :skill_3_level, :text, :url, :file, :user_id
+  attr_accessible :education, :experience, :quality_1, :quality_2, :quality_3, :skill_1, :skill_1_level, :skill_2, :skill_2_level, :skill_3, :skill_3_level, :text, :url, :file, :remove_file, :user_id
 
   belongs_to :user
 
-  validates :user,          presence: true
-  validates :education,     length: { maximum: 100 }
-  validates :experience,    length: { maximum: 100 }
+  validates :user,                                    presence: true
+  validates :education,     length: { maximum: 100 }, presence: true
+  validates :experience,    length: { maximum: 100 }, presence: true
   validates :skill_1,       length: { maximum: 50 }
   validates :skill_2,       length: { maximum: 50 }
   validates :skill_3,       length: { maximum: 50 }
-  validates :skill_1_level, level_format: true, allow_blank: true
-  validates :skill_2_level, level_format: true, allow_blank: true
-  validates :skill_3_level, level_format: true, allow_blank: true
+  validates :skill_1_level, level_format: true,       allow_blank: true
+  validates :skill_2_level, level_format: true,       allow_blank: true
+  validates :skill_3_level, level_format: true,       allow_blank: true
   validates :quality_1,     length: { maximum: 50 }
   validates :quality_2,     length: { maximum: 50 }
   validates :quality_3,     length: { maximum: 50 }
-  validates :text,          length: { maximum: 140 }
-  validates :url,           url_format: true, allow_blank: true
+  validates :text,          length: { maximum: 140 }, presence: true
+  validates :url,           url_format: true,         allow_blank: true
 
   mount_uploader :file, ProfileFileUploader
 end

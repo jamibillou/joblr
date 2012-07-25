@@ -8,7 +8,7 @@ describe UsersController do
     @user = FactoryGirl.create :user
     sign_in @user
     @attr = { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China', role: 'Mole', company: 'HK triads',
-              profiles_attributes: { '0' => { experience: '10', education: 'none' } } }
+              profiles_attributes: { '0' => { experience: '10', education: 'none', text: 'A good and highly motivated guy.' } } }
   end
 
   describe "GET 'edit'" do

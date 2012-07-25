@@ -24,3 +24,4 @@ pickle-email-*.html
 .DS_Store
 /config/database.yml
 /public/uploads/*
+.powrc
