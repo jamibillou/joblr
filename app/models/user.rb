@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :email, :case_sensitive => false,      :allow_blank => true, :if => :email_changed?
   validates_format_of       :email, :with  => Devise.email_regexp, :allow_blank => true, :if => :email_changed?
   
+  validates_uniqueness_of   :username, :case_sensitive => true
   validates_presence_of     :username, :on => :create
   validates_presence_of     :password, :on => :create
   validates_confirmation_of :password, :on => :create
@@ -27,26 +28,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
 
   mount_uploader :image, UserImageUploader
-
-  def self.from_omniauth(auth)
-    authentification = Authentification.find_by_provider_and_uid(auth.provider,auth.uid)
-    if authentification.nil?
-      user = User.new(:fullname => auth.info.nickname)
-    else
-      user = authentification.first.user
-    end
-  end
-
-#  def self.new_with_session(params, session)
-#    if session["devise.user_attributes"]
-#      new(session["devise.user_attributes"], without_protection: true) do |user|
-#        user.attributes = params
-#        user.valid?
-#      end
-#    else
-#      super
-#    end
-#  end
 
   def update_with_password(params, *options)
     if encrypted_password.blank?
