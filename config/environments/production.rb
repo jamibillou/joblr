@@ -64,4 +64,9 @@ Joblr::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  # Allows cookies to be shared across subdomains. Important: :all only works on
+  # localhost. :all defaults to a TLD length of 1, production and Pow (eg: joblr.dev)
+  # have a TLD of length 2 or more.
+  config.session_store :cookie_store, key: '_joblr_session', domain: 'joblr.co'
 end

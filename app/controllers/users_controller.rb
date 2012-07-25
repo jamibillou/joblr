@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = subdomain_user(request) if request.subdomain.present?
   rescue ActiveRecord::RecordNotFound
-    redirect_to root_url(subdomain: false)
+    redirect_to root_url(subdomain: false), flash: { error: t('flash.error.subdomain_doesnt_exist') }
   end
 
   def edit
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   private
 
     def retrieve_user
-      @user = User.find params[:id] unless params[:id].nil?
+      @user = params[:id] ? User.find(params[:id]) : current_user
     end
 
     def remove_file?(params)
