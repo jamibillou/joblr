@@ -1,5 +1,17 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
+  def all
+    omniauth = request.env['omniauth.auth']
+    user = User.from_omniauth(omniauth)
+    if user.persisted?
+      flash[:notice] = "Signed in successfully using #{auth_info[:provider].titleize}!"
+      sign_in_and_redirect edit_user_path(user)
+    else
+      session["devise.user_attributes"] = user.attributes
+      redirect_to new_user_registration_url
+    end
+  end
+
   def linkedin
     omniauth = request.env['omniauth.auth']
     auth_info = {}
@@ -31,20 +43,20 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end   
   end
 
-  def twitter
-    omniauth = request.env['omniauth.auth']
-    auth_info = {}
-    if omniauth
-      omniauth['info']['name'] ? auth_info[:name] =  omniauth['info']['name'] : auth_info[:name] = ''
-      omniauth['extra']['raw_info']['id'] ?  auth_info[:uid] =  omniauth['extra']['raw_info']['id'] : auth_info[:uid] = ''
-      omniauth['provider'] ? auth_info[:provider] =  omniauth['provider'] : auth_info[:provider] = ''
-      omniauth['info']['image'] ?  auth_info[:upic] =  omniauth['info']['image'] : auth_info[:upic] = ''
-      omniauth['info']['urls']['Twitter'] ? auth_info[:url] =  omniauth['info']['urls']['Twitter'] : auth_info[:url] = ''
-      connect(auth_info)      
-    else
-      render :text => 'Omniauth is empty :/'
-    end  
-  end
+#  def twitter
+#    omniauth = request.env['omniauth.auth']
+#    auth_info = {}
+#    if omniauth
+#      omniauth['info']['name'] ? auth_info[:name] =  omniauth['info']['name'] : auth_info[:name] = ''
+#      omniauth['extra']['raw_info']['id'] ?  auth_info[:uid] =  omniauth['extra']['raw_info']['id'] : auth_info[:uid] = ''
+#      omniauth['provider'] ? auth_info[:provider] =  omniauth['provider'] : auth_info[:provider] = ''
+#      omniauth['info']['image'] ?  auth_info[:upic] =  omniauth['info']['image'] : auth_info[:upic] = ''
+#      omniauth['info']['urls']['Twitter'] ? auth_info[:url] =  omniauth['info']['urls']['Twitter'] : auth_info[:url] = ''
+#      connect(auth_info)      
+#    else
+#      render :text => 'Omniauth is empty :/'
+#    end  
+#  end
 
   def google_oauth2
     omniauth = request.env['omniauth.auth']
@@ -61,6 +73,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       render :text => 'Omniauth is empty :/'
     end       
   end
+
+  alias_method :twitter, :all
+  alias_method :google_oauth2, :all
+  alias_method :linkedin, :all
+  alias_method :facebook, :all
 
   private
 
@@ -80,8 +97,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
               flash[:notice] = "You can now sign in with #{auth_info[:provider].titleize} too!"
             else
               user = User.new :fullname => auth_info[:name], :email => auth_info[:email]
-              user.authentifications.build(auth_info)
               user.save!
+              user.authentifications.create(provider: auth_info[:provider], uid: auth_info[:uid], uname: auth_info[:name], 
+                uemail: auth_info[:email], url: auth_info[:url], upic: auth_info[:upic])
               
               flash[:notice] = "Account created via #{auth_info[:provider].titleize}!"
               sign_in user

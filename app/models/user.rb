@@ -15,12 +15,36 @@ class User < ActiveRecord::Base
   validates :role,     length: { maximum: 100 }
   validates :company,  length: { maximum: 50 }
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable, :validatable
 
   mount_uploader :image, UserImageUploader
 
+  def self.from_omniauth(auth)
+    authentification = Authentification.find_by_provider_and_uid(auth.provider,auth.uid)
+    if authentification.nil?
+      user = User.new(:fullname => auth.info.nickname)
+    else
+      user = authentification.first.user
+    end
+  end
+
+  def self.new_with_session(params, session)
+    if session["devise.user_attributes"]
+      new(session["devise.user_attributes"], without_protection: true) do |user|
+        user.attributes = params
+        user.valid?
+      end
+    else
+      super
+    end
+  end
+
   def password_required?
-    super && authentifications.empty?
+    super && fullname.nil?
+  end
+
+  def email_required?
+    super && fullname.nil?
   end
 
   def update_with_password(params, *options)
