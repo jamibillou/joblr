@@ -4,9 +4,7 @@ class UsersController < ApplicationController
   before_filter :retrieve_user
 
   def show
-    @user = subdomain_user(request) if request.subdomain.present?
-  rescue ActiveRecord::RecordNotFound
-    redirect_to root_url(subdomain: false), flash: { error: t('flash.error.subdomain_doesnt_exist') }
+    @user = subdomain_user(request) if has_subdomain?(request)
   end
 
   def edit
@@ -35,9 +33,5 @@ class UsersController < ApplicationController
     def remove_file!(profile)
       profile.remove_file!
       profile.update_attributes file: nil
-    end
-
-    def subdomain_user(request)
-      User.find_by_subdomain! request.subdomain
     end
 end
