@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20120725202458) do
     t.string   "role"
     t.string   "company"
     t.string   "image"
+    t.string   "subdomain"
     t.string   "username"
   end
 

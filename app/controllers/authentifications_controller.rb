@@ -4,8 +4,8 @@ class AuthentificationsController < ApplicationController
     if omniauth = Authentification.find_by_provider_and_uid(auth_hash.provider, auth_hash.uid)
       user = omniauth.user
     else
-      if user = current_user || user = User.find_by_username(create_username)
-      	create_omniauth(user)      	
+      if user = current_user
+      	create_omniauth(user)
       else
         user = create_user
       end
@@ -14,14 +14,14 @@ class AuthentificationsController < ApplicationController
   end
 
   def failure
-  	flash[:error] = "Pb during the connexion with #{params[:provider]}"
+  	flash[:error] = t('flash.error.auth_problem', provider: params[:provider])
   	redirect_to new_user_session_path
   end
 
   def destroy
-  	@authentification = current_user.authentifications.find(params[:id])
-  	flash[:notice] = "You removed your #{@authentification.provider.titleize} account to your profile."
-  	@authentification.destroy
+  	omniauth = current_user.authentifications.find(params[:id])
+  	flash[:notice] = t('flash.notice.provider_removed', provider: omniauth.provider.titleize)
+  	omniauth.destroy
   	redirect_to edit_user_path(current_user)
   end
 
@@ -32,19 +32,18 @@ class AuthentificationsController < ApplicationController
 
   private
     def create_user
-    	session["uid"] = auth_hash.uid
     	user = User.create!(username: create_username, fullname: auth_hash.info.name, password: Devise.friendly_token.first(6))
       create_omniauth(user)
-      user
     end
 
     def create_omniauth(user)
     	user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid)
+      user
     end
 
     def create_username
     	auth_hash.info.name.split.first.first.downcase+auth_hash.info.name.split.last.downcase
-    end	
+    end
 
     def auth_hash
       request.env['omniauth.auth']
