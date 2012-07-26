@@ -11,5 +11,5 @@
     = link_to image_tag('linkedin.png', title:'Add your Linkedin account'), omniauth_authorize_path(user, 'linkedin')
   - unless user.has_provider? 'twitter'
     = link_to image_tag('twitter.png', title:'Add your Twitter account'), omniauth_authorize_path(user, 'twitter')
-  - unless user.has_provider? 'google'
-    = link_to image_tag('google.png', title:'Add your Google+ account'), omniauth_authorize_path(user, 'google_oauth2')
+  - unless user.has_provider? 'google_oauth2'
+    = link_to image_tag('google_oauth2.png', title:'Add your Google+ account'), omniauth_authorize_path(user, 'google_oauth2')

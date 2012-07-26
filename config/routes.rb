@@ -2,12 +2,15 @@ require File.expand_path('../../lib/assets/routes_constraints', __FILE__)
 
 Joblr::Application.routes.draw do
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'authentifications' }
 
   resources :authentifications, only: [:index, :destroy]
   resources :users do
     resources :profiles
   end
+
+  
+  get 'users/auth/failure' => 'authentifications#failure'
 
   match 'home', to: 'pages#home'
 

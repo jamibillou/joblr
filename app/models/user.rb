@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   attr_accessible :fullname, :email, :city, :country, :role, :company, :profiles_attributes,
-                  :password, :password_confirmation, :remember_me, :image
+                  :password, :password_confirmation, :remember_me, :image, :username
 
   has_many :authentifications, dependent: :destroy
   has_many :profiles, dependent: :destroy
@@ -9,19 +9,25 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profiles, allow_destroy: true,
                                 :reject_if => lambda { |attr| attr['experience'].blank? && attr['education'].blank? }
 
+  validates :username, length: { maximum: 100 }
   validates :fullname, length: { maximum: 100 }
   validates :city,     length: { maximum: 50 }
   validates :country,  length: { maximum: 50 }
   validates :role,     length: { maximum: 100 }
   validates :company,  length: { maximum: 50 }
 
+  validates_uniqueness_of   :email, :case_sensitive => false,      :allow_blank => true, :if => :email_changed?
+  validates_format_of       :email, :with  => Devise.email_regexp, :allow_blank => true, :if => :email_changed?
+  
+  validates_uniqueness_of   :username, :case_sensitive => true
+  validates_presence_of     :username, :on => :create
+  validates_presence_of     :password, :on => :create
+  validates_confirmation_of :password, :on => :create
+  validates_length_of       :password, :within => Devise.password_length, :on => :create
+
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
 
   mount_uploader :image, UserImageUploader
-
-  def password_required?
-    super && authentifications.empty?
-  end
 
   def update_with_password(params, *options)
     if encrypted_password.blank?
