@@ -6,5 +6,5 @@ en:
     error:
       base: 'Error:'
       subdomain:
-        page: "The page or subdomain doesn't exist."
-        not_found: "The profile doesn't seem to exsit."
+        page_doesnt_exist: "The page you are trying to access doesn't exist."
+        profile_doesnt_exist: "The profile you are trying to access doesn't exist."
