@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_locale
-  before_filter :redirect_subdomain_requests
+  before_filter :redirect_to_domain
 
   def set_locale
     I18n.default_locale = params[:locale] if !params[:locale].nil?
@@ -12,9 +12,9 @@ class ApplicationController < ActionController::Base
 
   private
 
-    def redirect_subdomain_requests
+    def redirect_to_domain
       if has_subdomain?(request) && request.path != '/'
-        redirect_to root_url(subdomain: false), flash: { error: t('flash.error.not_a_subdomain_page') }
+        redirect_to root_url(subdomain: false), flash: { error: t('flash.error.subdomain.page') }
       end
     end
 
@@ -25,6 +25,6 @@ class ApplicationController < ActionController::Base
     def subdomain_user(request)
       User.find_by_subdomain! request.subdomain
     rescue ActiveRecord::RecordNotFound
-      redirect_to root_url(subdomain: false), flash: { error: t('flash.error.not_a_subdomain') }
+      redirect_to root_url(subdomain: false), flash: { error: t('flash.error.subdomain.not_found') }
     end
 end

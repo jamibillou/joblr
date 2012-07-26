@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include ApplicationHelper
 
-  before_filter :retrieve_user
+  before_filter :find_user
 
   def show
     @user = subdomain_user(request) if has_subdomain?(request)
@@ -22,8 +22,8 @@ class UsersController < ApplicationController
 
   private
 
-    def retrieve_user
-      @user = params[:id] ? User.find(params[:id]) : current_user
+    def find_user
+      @user = params[:id] ? User.find(params[:id]) : current_user unless has_subdomain?(request)
     end
 
     def remove_file?(params)
