@@ -32,17 +32,14 @@ class AuthentificationsController < ApplicationController
 
   private
     def create_user
-    	user = User.create!(username: create_username, fullname: auth_hash.info.name, password: Devise.friendly_token.first(6))
+    	user = User.find_or_create_by_username(auth_hash.info.name.parameterize,username: auth_hash.info.name.parameterize, 
+    		fullname: auth_hash.info.name)
       create_omniauth(user)
     end
 
     def create_omniauth(user)
     	user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid)
       user
-    end
-
-    def create_username
-    	auth_hash.info.name.split.first.first.downcase+auth_hash.info.name.split.last.downcase
     end
 
     def auth_hash

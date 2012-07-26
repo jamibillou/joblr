@@ -21,13 +21,17 @@ class User < ActiveRecord::Base
   
   validates_uniqueness_of   :username, :case_sensitive => true
   validates_presence_of     :username, :on => :create
-  validates_presence_of     :password, :on => :create
-  validates_confirmation_of :password, :on => :create
-  validates_length_of       :password, :within => Devise.password_length, :on => :create
-
+  validates_presence_of     :password, :on => :create, :if => :check_password
+  validates_confirmation_of :password, :on => :create, :if => :check_password
+  validates_length_of       :password, :within => Devise.password_length, :on => :create, :if => :check_password
+  
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
 
   mount_uploader :image, UserImageUploader
+
+  def check_password
+    false
+  end
 
   def update_with_password(params, *options)
     if encrypted_password.blank?
