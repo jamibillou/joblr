@@ -10,8 +10,7 @@
           .span4.well{style:'padding-bottom:14px'}
             .row
               .span1
-                = f.file_field :image, id: 'image_click', style: 'position:absolute;z-index:-1'
-                %a{href: '#picture-modal', 'data-toggle' => 'modal'}
+                %a{href: '#image-modal', 'data-toggle' => 'modal'}
                   = image_tag (@user.image_url.nil? ? 'default_user.jpg' : @user.image_url(:thumb).to_s)
               .span3
                 = f.text_field :fullname, placeholder: 'Full name', style: 'height:13px; font-size:15px'
@@ -41,4 +40,6 @@
 
         = f.fields_for(:profiles) { |profile_builder| render 'fields_profile', f: profile_builder }
 
-= render 'edit_modals'
+        = render 'image_modal', f: f
+
+= render 'import_modals'
