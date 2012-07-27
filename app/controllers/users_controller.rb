@@ -1,19 +1,18 @@
 class UsersController < ApplicationController
+  include UsersHelper
 
-  include ApplicationHelper
+  before_filter :find_user,           unless: :has_subdomain
+  before_filter :find_subdomain_user, if: :has_subdomain
 
   def show
-    @user = params[:id] ? User.find(params[:id]) : current_user
-    redirect_to edit_user_path(@user) if @user.profiles.empty?
+    redirect_to edit_user_path(@user) unless signed_up?(@user)
   end
 
   def edit
-  	@user = User.find params[:id]
-    @user.profiles.build if @user.profiles.empty?
+    @user.profiles.build unless signed_up?(@user)
   end
 
   def update
-    @user = User.find params[:id]
     unless @user.update_attributes params[:user]
       redirect_to edit_user_path(@user), flash: { error: error_messages(@user) }
     else
@@ -23,6 +22,16 @@ class UsersController < ApplicationController
   end
 
   private
+
+    def find_user
+      @user = params[:id] ? User.find(params[:id]) : current_user
+    end
+
+    def find_subdomain_user
+      @user = User.find_by_subdomain! request.subdomain
+    rescue ActiveRecord::RecordNotFound
+      redirect_to root_url(subdomain: false), flash: { error: t('flash.error.subdomain.profile_doesnt_exist') }
+    end
 
     def remove_file?(params)
       params[:user][:profiles_attributes]['0'][:remove_file].to_i == 1

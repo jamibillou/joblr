@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
-  attr_accessible :fullname, :email, :city, :country, :role, :company, :profiles_attributes,
-                  :password, :password_confirmation, :remember_me, :image
+  attr_accessible :fullname, :email, :city, :country, :role, :company, :image, :subdomain,
+                  :password, :password_confirmation, :remember_me, :profiles_attributes
 
   has_many :authentifications, dependent: :destroy
   has_many :profiles, dependent: :destroy
@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
 
   def auths_w_pic
     authentifications.where("upic != ''")
+  end
+
+  def profile
+    profiles.first
   end
 end
 

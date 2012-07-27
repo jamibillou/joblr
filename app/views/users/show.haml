@@ -14,65 +14,69 @@
         .span1.well{style:'padding:14px'}
           %h6 Experience
           .gigantic
-            = pluralize @user.profiles.first.experience, 'yr'
-        .span3.well{style:'padding:14px'}
+            = pluralize @user.profile.experience, 'yr'
+        .span3.well{style:'min-height:92px; padding:14px'}
           %h6 Highest Education
-          .lead= @user.profiles.first.education
+          .lead= @user.profile.education
 
       .row
         .span4.well{style:'padding-bottom:0'}
           %h6 Skills
           .lead
-            - unless @user.profiles.first.skill_1.blank?
+            - unless @user.profile.skill_1.blank?
               .row
-                .span3 #{@user.profiles.first.skill_1}
-                .span1= render 'level_bar', level: @user.profiles.first.skill_1_level
-            - unless @user.profiles.first.skill_2.blank?
+                .span3 #{@user.profile.skill_1}
+                .span1= render 'level_bar', level: @user.profile.skill_1_level
+            - unless @user.profile.skill_2.blank?
               .row
-                .span3 #{@user.profiles.first.skill_2}
-                .span1= render 'level_bar', level: @user.profiles.first.skill_2_level
-            - unless @user.profiles.first.skill_3.blank?
+                .span3 #{@user.profile.skill_2}
+                .span1= render 'level_bar', level: @user.profile.skill_2_level
+            - unless @user.profile.skill_3.blank?
               .row
-                .span3 #{@user.profiles.first.skill_3}
-                .span1= render 'level_bar', level: @user.profiles.first.skill_3_level
+                .span3 #{@user.profile.skill_3}
+                .span1= render 'level_bar', level: @user.profile.skill_3_level
 
 
       .row
         .span4.well{style:'padding-bottom:14px'}
           %h6 Qualities
           .lead
-            - unless @user.profiles.first.quality_1.blank?
+            - unless @user.profile.quality_1.blank?
               .row
-                .span3 #{@user.profiles.first.quality_1}
-            - unless @user.profiles.first.quality_2.blank?
+                .span3 #{@user.profile.quality_1}
+            - unless @user.profile.quality_2.blank?
               .row
-                .span3 #{@user.profiles.first.quality_2}
-            - unless @user.profiles.first.quality_3.blank?
+                .span3 #{@user.profile.quality_2}
+            - unless @user.profile.quality_3.blank?
               .row
-                .span3 #{@user.profiles.first.quality_3}
+                .span3 #{@user.profile.quality_3}
 
-    - unless @user.authentifications.empty? && @user.profiles.first.file.nil? && @user.profiles.first.url.nil?
-      .row
-        .span4
-          %br/
-          %h6{style:'margin-bottom:10px'}= "More about #{@user.fullname}"
-          - unless @user.profiles.first.file.nil? || @user.profiles.first.file.blank?
-            %a.btn.btn-large{href: @user.profiles.first.file_url.to_s, style:'margin-right:2px'}
-              .icon-upload
-              Download CV
-          - unless @user.authentifications.empty?
-            - @user.authentifications.each do |authentification|
-              = link_to image_tag("#{authentification.provider}.png", title:"Go to #{@user.fullname}'s #{authentification.provider.titleize} page"), authentification.url, target:'_new'
-          - unless @user.profiles.first.url.blank?
-            %a.btn.btn-large.btn-danger{href:@user.profiles.first.url, target:'_blank', style:'margin-left:2px'}
-              .icon-globe.icon-white
-              Site
+    .row
+      .span4
+        %br/
+        %h6{style:'margin-bottom:10px'}= "More about #{@user.fullname}"
+        - unless @user.profile.file.nil? || @user.profile.file.blank?
+          %a.btn.btn-large{href: @user.profile.file_url.to_s, style:'margin-right:2px'}
+            .icon-upload
+            Download CV
+        - unless @user.authentifications.empty?
+          - @user.authentifications.each do |authentification|
+            = link_to image_tag("#{authentification.provider}.png", title:"Go to #{@user.fullname}'s #{authentification.provider.titleize} page"), authentification.url, target:'_new'
+        - unless @user.profile.url.blank?
+          %a.btn.btn-large.btn-danger{href:@user.profile.url, target:'_blank', style:'margin-left:2px'}
+            .icon-globe.icon-white
+            Site
 
   .span5.offset2
     .row
-      .pull-right
-        %a.btn.btn-primary{ href: edit_user_path }
-          .icon-pencil.icon-white
-          Edit
-      %h1{ style:'margin-top:50%; text-align:right' }
-        %i= @user.profiles.first.text
+      - if current_user?(@user) && !has_subdomain
+        .pull-right
+          %a.btn{ href: root_url(subdomain: @user.subdomain), target:'_blank', style:'margin-right:3px' }
+            .icon-globe
+            Public profile
+          %a.btn.btn-primary{ href: edit_user_path(@user) }
+            .icon-pencil.icon-white
+            Edit
+
+      %h1{ style:'margin-top:45%; text-align:right' }
+        %i= @user.profile.text

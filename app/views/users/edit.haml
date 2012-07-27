@@ -1,5 +1,5 @@
 .header
-  %h1 Complete you profile!
+  %h1= signed_up?(@user) ? 'Edit your profile' : 'Complete your profile!'
   %br/
 
 = form_for @user, html: { id:'edit_form' } do |f|
@@ -22,15 +22,22 @@
                 = f.text_field :company, placeholder: 'Company', style: 'width:105px', class:'input-small'
 
           .span5.offset2
-            .lead.pull-right
-              Import your information from
-              %strong LinkedIn
-              or
-              %strong Facebook
-            .pull-right
-              %a.btn.btn-large{'data-toggle' => 'modal', href: '#linkedin-modal'} Import from Linkedin
-              &nbsp;
-              %a.btn.btn-large{'data-toggle' => 'modal', href: '#facebook-modal'} Import from Facebook
+            - if signed_up?(@user)
+              .pull-right
+                %h4
+                  Public profile: http://
+                  = f.text_field :subdomain, class:'input-small', style:'margin-top:5px; font-size:14px; font-weight:bold'
+                  = request.host
+            - else
+              .lead.pull-right
+                Import your information from
+                %strong LinkedIn
+                or
+                %strong Facebook
+              .pull-right
+                %a.btn.btn-large{'data-toggle' => 'modal', href: '#linkedin-modal'} Import from Linkedin
+                &nbsp;
+                %a.btn.btn-large{'data-toggle' => 'modal', href: '#facebook-modal'} Import from Facebook
 
         = f.fields_for(:profiles) { |profile_builder| render 'fields_profile', f: profile_builder }
 
