@@ -1,5 +1,5 @@
 .header
-  %h1= @title
+  %h1= signed_up?(@user) ? 'Edit your profile' : 'Complete your profile!'
   %br/
 
 = form_for @user, html: { id:'edit_form' } do |f|
@@ -21,8 +21,14 @@
                 = f.text_field :role, placeholder: 'Role', class:'input-small'
                 = f.text_field :company, placeholder: 'Company', style: 'width:105px', class:'input-small'
 
-          - unless signed_up?(@user)
-            .span5.offset2
+          .span5.offset2
+            - if signed_up?(@user)
+              .pull-right
+                %h4
+                  Public profile: http://
+                  = f.text_field :subdomain, class:'input-small', style:'margin-top:5px; font-size:14px; font-weight:bold'
+                  = request.host
+            - else
               .lead.pull-right
                 Import your information from
                 %strong LinkedIn

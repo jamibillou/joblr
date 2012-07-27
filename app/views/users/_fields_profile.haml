@@ -51,6 +51,6 @@
     = f.text_field :url, placeholder:'http://', class:'input-medium'
 
 .row{style:'margin-left:0'}
-  .span5.offset6{style:'margin-top:-650px'}
+  .span5.offset6{style:'margin-top:-700px'}
     = f.text_area :text, class:'lead', placeholder:'Describe your goals, or your motto.', rows:4, style:'width:450px;'
-    .pull-right= f.submit @save, class:'btn btn-gigantic btn-primary'
+    .pull-right= f.submit (signed_up?(@user) ? 'Save your profile' : 'Create your profile!'), class:'btn btn-gigantic btn-primary'
