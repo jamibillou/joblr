@@ -5,17 +5,11 @@ class UsersController < ApplicationController
   before_filter :find_subdomain_user, if: :has_subdomain
 
   def show
+    redirect_to edit_user_path(@user) unless signed_up?(@user)
   end
 
   def edit
-    unless signed_up?(@user)
-      @user.profiles.build
-      @title = 'Complete your profile!'
-      @save = 'Create your profile!'
-    else
-      @title = 'Edit your profile'
-      @save = 'Save your profile'
-    end
+    @user.profiles.build unless signed_up?(@user)
   end
 
   def update

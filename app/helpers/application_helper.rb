@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def signed_up?(user)
-    !user.profiles.empty?
+    !user.profiles.empty? && user.profile.valid?
   end
 
   def error_messages(object, options = {})
