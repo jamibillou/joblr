@@ -6,6 +6,8 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
 
+/*** Layout ***/
+
 body { padding-top:60px }
 
 footer { padding-top:100px }
@@ -21,6 +23,14 @@ footer { padding-top:100px }
   // box-shadow:0 1px 2px rgba(0,0,0,.15);
 }
 
+/*** Positions ***/
+
+.inline {
+  display:inline-block;
+}
+
+/*** Page specific blocks ***/
+
 .card          { margin-left:25px;
   .well        { margin:5px }
   h6           { margin-bottom:10px }
@@ -31,35 +41,24 @@ footer { padding-top:100px }
     margin-top:-4px;
     font-size:15px;
   }
+  .select-level {
+    width:110px;
+    margin-bottom:10px;
+    margin-left: 50px;
+  }
 }
 
-.inline {
+/*** Text ***/
+
+.delete {
+  font-size:11px;
   display:inline-block;
 }
-
 .gigantic {
   margin:15px 0 41px 0;
   font-size:32px;
   display:block;
 }
-
-.btn-gigantic {
-  font-size:20px;
-  font-weight:normal;
-  padding:14px 24px 18px;
-  margin-right:10px;
-  -webkit-border-radius:6px;
-  -moz-border-radius:6px;
-  border-radius:6px;
-}
-.dropdown-menu-gigantic { font-size:16px }
-
-.select-level {
-  width:110px;
-  margin-bottom:10px;
-  margin-left: 50px;
-}
-
 .success    { color: #468847;
   a         { color: #468847;
     &:hover { color: #468847 }
@@ -75,3 +74,16 @@ footer { padding-top:100px }
     &:hover { color: #3A87AD }
   }
 }
+
+/*** Buttons ***/
+
+.btn-gigantic {
+  font-size:20px;
+  font-weight:normal;
+  padding:14px 24px 18px;
+  margin-right:10px;
+  -webkit-border-radius:6px;
+  -moz-border-radius:6px;
+  border-radius:6px;
+}
+.dropdown-menu-gigantic { font-size:16px }

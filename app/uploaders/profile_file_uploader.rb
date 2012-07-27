@@ -49,5 +49,4 @@ class ProfileFileUploader < CarrierWave::Uploader::Base
   def filename
     original_filename.downcase if original_filename
   end
-
 end

@@ -4,7 +4,7 @@
       .row
         .span4.well{style:'padding-bottom:14px'}
           .row
-            .span1= image_tag (@user.image_url.nil? ? 'default_user.jpg' : @user.image_url(:thumb).to_s)
+            .span1= image_tag (@user.image.blank? ? 'default_user.jpg' : @user.image_url(:thumb).to_s)
             .span3
               %h3= @user.fullname
               %p #{@user.city}#{', ' unless @user.city.nil? || @user.country.nil?}#{@user.country}
@@ -55,7 +55,7 @@
       .span4
         %br/
         %h6{style:'margin-bottom:10px'}= "More about #{@user.fullname}"
-        - unless @user.profile.file.nil? || @user.profile.file.blank?
+        - unless @user.profile.file.blank?
           %a.btn.btn-large{href: @user.profile.file_url.to_s, style:'margin-right:2px'}
             .icon-upload
             Download CV

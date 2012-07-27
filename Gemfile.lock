@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/jnicklas/carrierwave.git
+  remote: https://github.com/jnicklas/carrierwave.git
   revision: 72f9d09835c4e10e31df3c52e29ec8f699653c96
   specs:
     carrierwave (0.6.2)
