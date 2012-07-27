@@ -15,7 +15,7 @@
           %h6 Experience
           .gigantic
             = pluralize @user.profile.experience, 'yr'
-        .span3.well{style:'padding:14px'}
+        .span3.well{style:'min-height:92px; padding:14px'}
           %h6 Highest Education
           .lead= @user.profile.education
 
