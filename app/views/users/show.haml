@@ -71,7 +71,7 @@
     .row
       - if current_user?(@user) && !has_subdomain
         .pull-right
-          %a.btn{ href: root_url(subdomain: @user.subdomain), target:'_blank', style:'margin-right:5px' }
+          %a.btn{ href: root_url(subdomain: @user.subdomain), target:'_blank', style:'margin-right:3px' }
             .icon-globe
             Public profile
           %a.btn.btn-primary{ href: edit_user_path(@user) }

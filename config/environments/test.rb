@@ -34,9 +34,4 @@ Joblr::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
-
-  # Allows cookies to be shared across subdomains. Important: :all only works on
-  # localhost. :all defaults to a TLD length of 1, production and Pow (eg: joblr.dev)
-  # have a TLD of length 2 or more.
-  config.session_store :cookie_store, key: '_joblr_session', domain: :all
 end
