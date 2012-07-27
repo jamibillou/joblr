@@ -4,6 +4,10 @@ module ApplicationHelper
     request.subdomain.present? && request.subdomain != 'www'
   end
 
+  def signed_up?(user)
+    !user.profiles.empty?
+  end
+
   def error_messages(object, options = {})
     errors = unduplicated_errors(object, options).map! do |attribute, message|
       "#{object.class.human_attribute_name(attribute).downcase} #{message}"

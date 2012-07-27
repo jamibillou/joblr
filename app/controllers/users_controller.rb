@@ -9,7 +9,14 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user.profiles.build if @user.profiles.empty?
+    unless signed_up?(@user)
+      @user.profiles.build
+      @title = 'Complete your profile!'
+      @save = 'Create your profile!'
+    else
+      @title = 'Edit your profile'
+      @save = 'Save your profile'
+    end
     @profile = @user.profiles.first
   end
 

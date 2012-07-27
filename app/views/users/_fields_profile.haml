@@ -53,4 +53,4 @@
 .row{style:'margin-left:0'}
   .span5.offset6{style:'margin-top:-650px'}
     = f.text_area :text, class:'lead', placeholder:'Describe your goals, or your motto.', rows:4, style:'width:450px;'
-    .pull-right= f.submit 'Save your profile!', class:'btn btn-gigantic btn-primary'
+    .pull-right= f.submit @save, class:'btn btn-gigantic btn-primary'
