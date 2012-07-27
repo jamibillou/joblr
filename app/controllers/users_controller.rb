@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   before_filter :find_subdomain_user, if: :has_subdomain
 
   def show
-    @profile = @user.profiles.first
   end
 
   def edit
@@ -17,7 +16,6 @@ class UsersController < ApplicationController
       @title = 'Edit your profile'
       @save = 'Save your profile'
     end
-    @profile = @user.profiles.first
   end
 
   def update

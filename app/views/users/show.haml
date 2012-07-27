@@ -14,56 +14,56 @@
         .span1.well{style:'padding:14px'}
           %h6 Experience
           .gigantic
-            = pluralize @profile.experience, 'yr'
+            = pluralize @user.profile.experience, 'yr'
         .span3.well{style:'padding:14px'}
           %h6 Highest Education
-          .lead= @profile.education
+          .lead= @user.profile.education
 
       .row
         .span4.well{style:'padding-bottom:0'}
           %h6 Skills
           .lead
-            - unless @profile.skill_1.blank?
+            - unless @user.profile.skill_1.blank?
               .row
-                .span3 #{@profile.skill_1}
-                .span1= render 'level_bar', level: @profile.skill_1_level
-            - unless @profile.skill_2.blank?
+                .span3 #{@user.profile.skill_1}
+                .span1= render 'level_bar', level: @user.profile.skill_1_level
+            - unless @user.profile.skill_2.blank?
               .row
-                .span3 #{@profile.skill_2}
-                .span1= render 'level_bar', level: @profile.skill_2_level
-            - unless @profile.skill_3.blank?
+                .span3 #{@user.profile.skill_2}
+                .span1= render 'level_bar', level: @user.profile.skill_2_level
+            - unless @user.profile.skill_3.blank?
               .row
-                .span3 #{@profile.skill_3}
-                .span1= render 'level_bar', level: @profile.skill_3_level
+                .span3 #{@user.profile.skill_3}
+                .span1= render 'level_bar', level: @user.profile.skill_3_level
 
 
       .row
         .span4.well{style:'padding-bottom:14px'}
           %h6 Qualities
           .lead
-            - unless @profile.quality_1.blank?
+            - unless @user.profile.quality_1.blank?
               .row
-                .span3 #{@profile.quality_1}
-            - unless @profile.quality_2.blank?
+                .span3 #{@user.profile.quality_1}
+            - unless @user.profile.quality_2.blank?
               .row
-                .span3 #{@profile.quality_2}
-            - unless @profile.quality_3.blank?
+                .span3 #{@user.profile.quality_2}
+            - unless @user.profile.quality_3.blank?
               .row
-                .span3 #{@profile.quality_3}
+                .span3 #{@user.profile.quality_3}
 
     .row
       .span4
         %br/
         %h6{style:'margin-bottom:10px'}= "More about #{@user.fullname}"
-        - unless @profile.file.nil? || @profile.file.blank?
-          %a.btn.btn-large{href: @profile.file_url.to_s, style:'margin-right:2px'}
+        - unless @user.profile.file.nil? || @user.profile.file.blank?
+          %a.btn.btn-large{href: @user.profile.file_url.to_s, style:'margin-right:2px'}
             .icon-upload
             Download CV
         - unless @user.authentifications.empty?
           - @user.authentifications.each do |authentification|
             = link_to image_tag("#{authentification.provider}.png", title:"Go to #{@user.fullname}'s #{authentification.provider.titleize} page"), authentification.url, target:'_new'
-        - unless @profile.url.blank?
-          %a.btn.btn-large.btn-danger{href:@profile.url, target:'_blank', style:'margin-left:2px'}
+        - unless @user.profile.url.blank?
+          %a.btn.btn-large.btn-danger{href:@user.profile.url, target:'_blank', style:'margin-left:2px'}
             .icon-globe.icon-white
             Site
 
@@ -79,4 +79,4 @@
             Edit
 
       %h1{ style:'margin-top:45%; text-align:right' }
-        %i= @profile.text
+        %i= @user.profile.text

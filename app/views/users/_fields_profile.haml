@@ -38,8 +38,8 @@
 .row{style:'margin:19px 0 0 -25px'}
   .span4{style:'margin-left:0'}
     %h6{style:'margin-bottom:5px'} Upload your CV
-    - unless @profile.file.nil? || @profile.file.blank?
-      .danger.inline{style:'margin-bottom:5px'} delete #{link_to @profile.file_identifier, @profile.file_url, style:'text-decoration:underline'}
+    - unless @user.profile.file.nil? || @user.profile.file.blank?
+      .danger.inline{style:'margin-bottom:5px'} delete #{link_to @user.profile.file_identifier, @user.profile.file_url, style:'text-decoration:underline'}
       &nbsp;
       = f.check_box :remove_file
       %br/

@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
   def auths_w_pic
     authentifications.where("upic != ''")
   end
+
+  def profile
+    profiles.first
+  end
 end
 
 # == Schema Information
