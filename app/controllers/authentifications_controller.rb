@@ -10,7 +10,13 @@ class AuthentificationsController < ApplicationController
         user = create_user
       end
     end
-    sign_in_and_redirect user
+    if user_signed_in?
+      flash[:notice] = t('flash.notice.provider_added', provider: auth_hash.provider.titleize)
+      redirect_to edit_user_path user
+    else
+      flash[:notice] = t('devise.omniauth_callbacks.success', provider: auth_hash.provider.titleize)
+      sign_in_and_redirect user
+    end  
   end
 
   def failure

@@ -5,6 +5,7 @@ en:
       profile_updated: 'Your profile has been updated successfully.'
     notice:
       provider_removed: "Your %{provider} account was removed successfully."
+      provider_added:  "You linked your %{provider} account to your profile."
     error:
       base: 'Error:'
       auth_problem: "There was a problem when authentification with %{provider}"
