@@ -37,7 +37,7 @@ class AuthentificationsController < ApplicationController
     end
 
     def create_omniauth(user)
-    	user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid)
+    	user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url)
       user
     end
 
@@ -64,5 +64,18 @@ class AuthentificationsController < ApplicationController
 
     def auth_name
       auth_hash.info.name.parameterize
-    end  
+    end 
+
+    def auth_url
+      case auth_hash.provider
+        when 'twitter'
+          auth_hash.info.urls.Twitter
+        when 'linkedin'
+          auth_hash.info.urls.public_profile
+        when 'facebook'
+          auth_hash.info.urls.Facebook
+        when 'google_oauth2'
+          auth_hash.extra.raw_info.link
+      end
+    end 
 end
