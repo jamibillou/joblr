@@ -1,5 +1,7 @@
 - unless resource.errors.empty?
-  .alert.alert-error= devise_error_messages!
+  .alert.alert-error
+    = devise_error_messages!
+    %a.close{ "data-dismiss" => 'alert'} &#215;
 .well
   %h2 Account settings
   %br/
@@ -20,12 +22,17 @@
 
     - if f.object.encrypted_password.present?
       %div
-        = f.label :new_password
+        = f.label :password
         = f.password_field :password, :autocomplete => 'off'
 
       %div
         = f.label :new_password_confirmation
         = f.password_field :password_confirmation
+
+      %div
+        #{f.label :current_password, class: 'inline'} *
+        %br/
+        = f.password_field :current_password, placeholder: 'Type your password to confirm'
 
     %div= f.submit "Update", class: 'btn'
     %br/

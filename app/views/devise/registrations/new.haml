@@ -1,5 +1,7 @@
 - unless resource.errors.empty?
-  .alert.alert-error= devise_error_messages!
+  .alert.alert-error
+    = devise_error_messages!
+    %a.close{ "data-dismiss" => 'alert'} &#215;
 .well
   %h2 Create a Joblr account
   %br/
