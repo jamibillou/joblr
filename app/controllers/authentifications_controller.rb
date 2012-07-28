@@ -37,7 +37,7 @@ class AuthentificationsController < ApplicationController
     end
 
     def create_omniauth(user)
-    	user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url)
+    	user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, upic: auth_hash.info.image)
       user
     end
 
@@ -77,5 +77,5 @@ class AuthentificationsController < ApplicationController
         when 'google_oauth2'
           auth_hash.extra.raw_info.link
       end
-    end 
+    end
 end
