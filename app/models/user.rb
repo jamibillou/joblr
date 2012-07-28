@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
 
   attr_accessible :fullname, :email, :city, :country, :role, :company, :profiles_attributes,
-                  :password, :password_confirmation, :remember_me, :image, :username
+                  :password, :password_confirmation, :remember_me, :image, :username, :commit
+
+  attr_accessor :commit
 
   has_many :authentifications, dependent: :destroy
   has_many :profiles, dependent: :destroy
@@ -20,18 +22,14 @@ class User < ActiveRecord::Base
   validates_format_of       :email, :with  => Devise.email_regexp, :allow_blank => true, :if => :email_changed?
   
   validates_uniqueness_of   :username, :case_sensitive => true
-  validates_presence_of     :username, :on => :create
-  validates_presence_of     :password, :on => :create, :if => :check_password
-  validates_confirmation_of :password, :on => :create, :if => :check_password
-  validates_length_of       :password, :within => Devise.password_length, :on => :create, :if => :check_password
+  validates_presence_of     :username
+  validates_presence_of     :password, if: ->(u) { u.commit == 'Sign up' } 
+  validates_confirmation_of :password, if: ->(u) { u.commit == 'Sign up' } 
+  validates_length_of       :password, :within => Devise.password_length, if: ->(u) { u.commit == 'Sign up' } 
   
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
 
   mount_uploader :image, UserImageUploader
-
-  def check_password
-    false
-  end
 
   def update_with_password(params, *options)
     if encrypted_password.blank?
