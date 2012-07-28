@@ -2,31 +2,24 @@ class User < ActiveRecord::Base
 
   attr_accessible :fullname, :email, :city, :country, :role, :company, :profiles_attributes, :subdomain,
                   :password, :password_confirmation, :remember_me, :image, :remove_image, :username, :commit
-
-  attr_accessor :commit
+  attr_accessor   :commit
 
   has_many :authentifications, dependent: :destroy
   has_many :profiles, dependent: :destroy
 
-  accepts_nested_attributes_for :profiles, allow_destroy: true,
-                                :reject_if => lambda { |attr| attr['experience'].blank? && attr['education'].blank? }
+  accepts_nested_attributes_for :profiles, allow_destroy: true
 
-  validates :username, length: { maximum: 100 }
-  validates :fullname, length: { maximum: 100 }
-  validates :city,     length: { maximum: 50 }
-  validates :country,  length: { maximum: 50 }
-  validates :role,     length: { maximum: 100 }
-  validates :company,  length: { maximum: 50 }
+  validates :username, length:     { maximum: 100 }
+  validates :fullname, length:     { maximum: 100 }
+  validates :city,     length:     { maximum: 50 }
+  validates :country,  length:     { maximum: 50 }
+  validates :role,     length:     { maximum: 100 }
+  validates :company,  length:     { maximum: 50 }
+  validates :username, uniqueness: { case_sensitive: true},            presence: true
+  validates :email,    uniqueness: { case_sensitive: false },          allow_blank: false, if: :email_changed?
+  validates :email,    format:     { with: Devise.email_regexp },                          if: :email_changed?
+  validates :password, length:     { within: Devise.password_length }, confirmation: true, presence: true, if: ->(u) { u.commit == 'Sign up' }
 
-  validates_uniqueness_of   :email, :case_sensitive => false,      :allow_blank => true, :if => :email_changed?
-  validates_format_of       :email, :with  => Devise.email_regexp, :allow_blank => true, :if => :email_changed?
-  
-  validates_uniqueness_of   :username, :case_sensitive => true
-  validates_presence_of     :username
-  validates_presence_of     :password, if: ->(u) { u.commit == 'Sign up' } 
-  validates_confirmation_of :password, if: ->(u) { u.commit == 'Sign up' } 
-  validates_length_of       :password, :within => Devise.password_length, if: ->(u) { u.commit == 'Sign up' } 
-  
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
 
   mount_uploader :image, UserImageUploader
