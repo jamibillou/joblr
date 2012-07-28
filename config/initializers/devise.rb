@@ -125,7 +125,7 @@ Devise.setup do |config|
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
   # config.timeout_in = 30.minutes
-  
+
   # If true, expires auth token on session timeout.
   # config.expire_auth_token_on_timeout = false
 
@@ -209,7 +209,7 @@ Devise.setup do |config|
   config.omniauth :facebook, '419105881446208', 'da2d28bdb403ec994d97e6aaa3f826b7'
   config.omniauth :twitter,  'RVIx8OtoSwXbBFborkg65w', 'yWna2wCekbQT73rG4xYDuArm5Wj2yblBditIyCR8pM'
   config.omniauth :google_oauth2, '955258399783.apps.googleusercontent.com', 'X_Ib_1Yg_vXmrZwcn5djW_Gz'
-  
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

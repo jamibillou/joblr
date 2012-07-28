@@ -25,20 +25,3 @@
   .modal-footer
     %a.btn{href:'#', 'data-dismiss' => 'modal'} Close
     %a.btn.btn-primary{href:'#', onclick:"$('#linkedin-modal').modal('hide'); import_data('candidate')"} Sign in
-
-#picture-modal.modal.hide
-  .modal-header
-    %button.close{type:'button', 'data-dismiss' => 'modal'} ×
-    %h3 Select or upload a pic!
-  .modal-body
-    - unless @user.auths_w_pic.nil?
-      %h5{style:'margin-bottom:5px'} Social profiles:
-      - @user.auths_w_pic.each do |authentification|
-        = image_tag authentification.upic, style:'width:50px; height:50px; margin-right:5px'
-      %br/
-      %br/
-    %h5 Upload:
-    = file_field :image, id:'image_click', style:'position:absolute; z-index:-1'
-  .modal-footer
-    %a.btn{href:'#', 'data-dismiss' => 'modal'} Close
-    %a.btn.btn-primary{href:'#', onclick:"$('#picture-modal').modal('hide');"} Submit

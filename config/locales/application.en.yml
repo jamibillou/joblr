@@ -8,3 +8,6 @@ en:
     error:
       base: 'Error:'
       auth_problem: "There was a problem when authentification with %{provider}"
+      subdomain:
+        page_doesnt_exist: "The page you are trying to access doesn't exist."
+        profile_doesnt_exist: "The profile you are trying to access doesn't exist."
