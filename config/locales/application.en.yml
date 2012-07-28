@@ -2,13 +2,13 @@ en:
 
   flash:
     success:
-      profile_updated: 'Your profile has been updated successfully.'
+      profile_updated: 'Your profile was updated successfully.'
     notice:
       provider_removed: "Your %{provider} account was removed successfully."
-      provider_added:  "You linked your %{provider} account to your profile."
+      provider_added:  "Your %{provider} account was added successfully."
     error:
       base: 'Error:'
-      auth_problem: "There was a problem when authentification with %{provider}"
+      auth_problem: "There was a problem when signin you in with %{provider}."
       subdomain:
         page_doesnt_exist: "The page you are trying to access doesn't exist."
         profile_doesnt_exist: "The profile you are trying to access doesn't exist."

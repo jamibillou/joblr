@@ -11,24 +11,22 @@ class AuthentificationsController < ApplicationController
       end
     end
     if user_signed_in?
-      flash[:notice] = t('flash.notice.provider_added', provider: auth_hash.provider.titleize)
-      redirect_to edit_user_path user
+      redirect_to edit_user_path(user),  flash: { notice: t('flash.notice.provider_added', provider: auth_hash.provider.titleize) }
     else
-      flash[:notice] = t('devise.omniauth_callbacks.success', provider: auth_hash.provider.titleize)
-      sign_in_and_redirect user
-    end  
+      sign_in user
+      redirect_to user, flash: { notice: t('devise.omniauth_callbacks.success', provider: auth_hash.provider.titleize) }
+    end
   end
 
   def failure
-  	flash[:error] = t('flash.error.auth_problem', provider: params[:provider])
-  	redirect_to new_user_session_path
+  	redirect_to new_user_session_path, flash: { error: t('flash.error.auth_problem', provider: params[:provider]) }
   end
 
   def destroy
   	omniauth = current_user.authentifications.find(params[:id])
-  	flash[:notice] = t('flash.notice.provider_removed', provider: omniauth.provider.titleize)
+    provider = omniauth.provider.titleize
   	omniauth.destroy
-  	redirect_to edit_user_path(current_user)
+  	redirect_to edit_user_path(current_user), flash: { success: t('flash.notice.provider_removed', provider: provider) }
   end
 
 	alias_method :twitter, 			 :create
@@ -38,7 +36,7 @@ class AuthentificationsController < ApplicationController
 
   private
     def create_user
-    	user = User.find_or_create_by_username(build_username,username: build_username,fullname: auth_hash.info.name)
+    	user = User.find_or_create_by_username(build_username, username: build_username, fullname: auth_hash.info.name)
       create_omniauth(user)
     end
 
@@ -70,7 +68,7 @@ class AuthentificationsController < ApplicationController
 
     def auth_name
       auth_hash.info.name.parameterize
-    end 
+    end
 
     def auth_url
       case auth_hash.provider
