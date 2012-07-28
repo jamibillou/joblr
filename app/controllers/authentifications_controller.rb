@@ -32,8 +32,7 @@ class AuthentificationsController < ApplicationController
 
   private
     def create_user
-    	user = User.find_or_create_by_username(auth_hash.info.name.parameterize,username: auth_hash.info.name.parameterize, 
-    		fullname: auth_hash.info.name)
+    	user = User.find_or_create_by_username(build_username,username: build_username,fullname: auth_hash.info.name)
       create_omniauth(user)
     end
 
@@ -42,7 +41,28 @@ class AuthentificationsController < ApplicationController
       user
     end
 
+    def build_username
+      unless username = username_available?(initials)
+        unless username = username_available?(auth_name)
+          username = "user-#{user.id}"
+        end
+      end
+      username
+    end
+
+    def username_available?(username)
+      username if User.find_by_username(username).nil?
+    end
+
+    def initials
+      auth_name.split('-').map{ |name| name.chars.first }.join
+    end
+
     def auth_hash
       request.env['omniauth.auth']
     end
+
+    def auth_name
+      auth_hash.info.name.parameterize
+    end  
 end
