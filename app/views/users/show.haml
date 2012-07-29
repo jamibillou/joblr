@@ -7,8 +7,8 @@
             .span1= image_tag (@user.image.blank? ? 'default_user.jpg' : @user.image_url(:thumb).to_s)
             .span3
               %h3= @user.fullname
-              %p #{@user.city}#{', ' unless @user.city.nil? || @user.country.nil?}#{@user.country}
-              %p #{@user.role}#{', ' unless @user.role.nil? || @user.company.nil?}#{@user.company}
+              %p #{@user.city}#{', ' unless @user.city.blank? || @user.country.blank?}#{@user.country}
+              %p #{@user.role}#{', ' unless @user.role.blank? || @user.company.blank?}#{@user.company}
 
       .row
         .span1.well{style:'padding:14px'}
