@@ -9,7 +9,6 @@ Joblr::Application.routes.draw do
     resources :profiles
   end
 
-  
   get 'users/auth/failure' => 'authentifications#failure'
 
   match 'home', to: 'pages#home'

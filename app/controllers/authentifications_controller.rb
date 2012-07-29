@@ -7,11 +7,11 @@ class AuthentificationsController < ApplicationController
       if user = current_user
       	create_omniauth(user)
       else
-        user = create_user
+        user = find_or_create_user(build_username)
       end
     end
     if user_signed_in?
-      redirect_to edit_user_path(user),  flash: { notice: t('flash.notice.provider_added', provider: auth_hash.provider.titleize) }
+      redirect_to edit_user_path(user), flash: { notice: t('flash.notice.provider_added', provider: auth_hash.provider.titleize) }
     else
       sign_in user
       redirect_to user, flash: { notice: t('devise.omniauth_callbacks.success', provider: auth_hash.provider.titleize) }
@@ -35,19 +35,14 @@ class AuthentificationsController < ApplicationController
 	alias_method :google_oauth2, :create
 
   private
-    def create_user
-    	user = User.find_or_create_by_username(build_username, username: build_username, fullname: auth_hash.info.name)
+    def find_or_create_user(username)
+      user = User.find_or_create_by_username(username, username: username, fullname: auth_hash.info.name, remote_image_url: auth_hash.info.image)
       create_omniauth(user)
-    end
-
-    def create_omniauth(user)
-    	user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, upic: auth_hash.info.image)
-      user
     end
 
     def build_username
       unless username = username_available?(initials)
-        unless username = username_available?(auth_name)
+        unless username = username_available?(dashed_fullname)
           username = "user-#{user.id}"
         end
       end
@@ -59,15 +54,20 @@ class AuthentificationsController < ApplicationController
     end
 
     def initials
-      auth_name.split('-').map{ |name| name.chars.first }.join
+      dashed_fullname.split('-').map{ |name| name.chars.first }.join
+    end
+
+    def dashed_fullname
+      auth_hash.info.name.parameterize
+    end
+
+    def create_omniauth(user)
+      user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, upic: auth_hash.info.image)
+      user
     end
 
     def auth_hash
       request.env['omniauth.auth']
-    end
-
-    def auth_name
-      auth_hash.info.name.parameterize
     end
 
     def auth_url
