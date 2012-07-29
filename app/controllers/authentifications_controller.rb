@@ -1,11 +1,11 @@
 class AuthentificationsController < ApplicationController
 
   def create
-    if omniauth = Authentification.find_by_provider_and_uid(auth_hash.provider, auth_hash.uid)
-      user = omniauth.user
+    if auth = Authentification.find_by_provider_and_uid(auth_hash.provider, auth_hash.uid)
+      user = auth.user
     else
       if user = current_user
-      	create_omniauth(user)
+      	create_auth(user)
       else
         user = find_or_create_user(build_username)
       end
@@ -23,9 +23,9 @@ class AuthentificationsController < ApplicationController
   end
 
   def destroy
-  	omniauth = current_user.authentifications.find(params[:id])
-    provider = omniauth.provider.titleize
-  	omniauth.destroy
+  	auth = current_user.authentifications.find(params[:id])
+    provider = auth.provider.titleize
+  	auth.destroy
   	redirect_to edit_user_path(current_user), flash: { success: t('flash.notice.provider_removed', provider: provider) }
   end
 
@@ -36,8 +36,8 @@ class AuthentificationsController < ApplicationController
 
   private
     def find_or_create_user(username)
-      user = User.find_or_create_by_username(username, username: username, fullname: auth_hash.info.name, remote_image_url: auth_image)
-      create_omniauth(user)
+      user = User.find_or_create_by_username!(username, username: username, fullname: auth_hash.info.name, remote_image_url: auth_image)
+      create_auth(user)
     end
 
     def build_username
@@ -63,8 +63,9 @@ class AuthentificationsController < ApplicationController
       auth_hash.info.name.parameterize
     end
 
-    def create_omniauth(user)
-      user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, remote_upic_url: auth_image)
+    def create_auth(user)
+      user.authentifications.create!(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, remote_upic_url: auth_image,
+                                     utoken: auth_hash.extra.access_token.token, usecret: auth_hash.extra.access_token.secret)
       user
     end
 

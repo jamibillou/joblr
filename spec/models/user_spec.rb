@@ -79,7 +79,7 @@ end
 #
 #  id                     :integer         not null, primary key
 #  fullname               :string(255)
-#  email                  :string(255)     default(""), not null
+#  email                  :string(255)
 #  encrypted_password     :string(255)     default(""), not null
 #  reset_password_token   :string(255)
 #  reset_password_sent_at :datetime
@@ -95,5 +95,8 @@ end
 #  country                :string(255)
 #  role                   :string(255)
 #  company                :string(255)
+#  image                  :string(255)
+#  subdomain              :string(255)
+#  username               :string(255)
 #
 

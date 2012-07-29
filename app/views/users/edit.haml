@@ -2,6 +2,10 @@
   %h1= signed_up?(@user) ? 'Edit your profile' : 'Complete your profile!'
   %br/
 
+= @linkedin_profile
+%br/
+%br/
+
 = form_for @user, html: { id:'edit_form' } do |f|
   .row
     .span12
