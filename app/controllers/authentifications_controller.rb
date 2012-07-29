@@ -64,7 +64,7 @@ class AuthentificationsController < ApplicationController
     end
 
     def create_omniauth(user)
-      user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, upic: auth_image)
+      user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, remote_upic_url: auth_image)
       user
     end
 

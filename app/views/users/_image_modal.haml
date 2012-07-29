@@ -14,7 +14,7 @@
     - unless @user.auths_w_pic.nil?
       %h5{style:'margin-bottom:5px'} Social profiles:
       - @user.auths_w_pic.each do |authentification|
-        = image_tag authentification.upic, style:'width:50px; height:50px; margin-right:5px'
+        = image_tag authentification.upic_url(:thumb).to_s, style:'width:50px; height:50px; margin-right:5px'
       %br/
       %br/
     %h5 Upload:

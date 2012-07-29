@@ -1,11 +1,13 @@
 class Authentification < ActiveRecord::Base
 
-  attr_accessible :provider, :uemail, :uid, :uname, :user_id, :url, :upic
+  attr_accessible :provider, :uemail, :uid, :uname, :user_id, :url, :upic, :remote_upic_url
 
   belongs_to :user
 
   validates :user, :provider, :uid,  presence: true
   validates :url,  url_format: true, allow_blank: true
+
+  mount_uploader :upic, AuthentificationImageUploader
 end
 
 # == Schema Information
