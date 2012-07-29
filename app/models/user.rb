@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
-  attr_accessible :fullname, :email, :city, :country, :role, :company, :profiles_attributes, :subdomain,
-                  :password, :password_confirmation, :remember_me, :image, :remove_image, :username, :commit
+  attr_accessible :fullname, :email, :city, :country, :role, :company, :subdomain, :password, :password_confirmation,
+                  :remember_me, :image, :username, :profiles_attributes, :remove_image, :commit, :remote_image_url
   attr_accessor   :commit
 
   has_many :authentifications, dependent: :destroy

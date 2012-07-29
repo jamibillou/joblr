@@ -36,14 +36,16 @@ class AuthentificationsController < ApplicationController
 
   private
     def find_or_create_user(username)
-      user = User.find_or_create_by_username(username, username: username, fullname: auth_hash.info.name, remote_image_url: auth_hash.info.image)
+      user = User.find_or_create_by_username(username, username: username, fullname: auth_hash.info.name, remote_image_url: auth_image)
       create_omniauth(user)
     end
 
     def build_username
-      unless username = username_available?(initials)
-        unless username = username_available?(dashed_fullname)
-          username = "user-#{user.id}"
+      unless username = username_available?(auth_hash.info.nickname)
+        unless username = username_available?(initials)
+          unless username = username_available?(dashed_fullname)
+            username = "user-#{user.id}"
+          end
         end
       end
       username
@@ -62,7 +64,7 @@ class AuthentificationsController < ApplicationController
     end
 
     def create_omniauth(user)
-      user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, upic: auth_hash.info.image)
+      user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, upic: auth_image)
       user
     end
 
@@ -80,6 +82,19 @@ class AuthentificationsController < ApplicationController
           auth_hash.info.urls.Facebook
         when 'google_oauth2'
           auth_hash.extra.raw_info.link
+      end
+    end
+
+    def auth_image
+      case auth_hash.provider
+        when 'twitter'
+          "http://api.twitter.com/1/users/profile_image/#{auth_hash.info.nickname}?size=original"
+        when 'linkedin'
+          auth_hash.info.image
+        when 'facebook'
+          auth_hash.info.image
+        when 'google_oauth2'
+          auth_hash.info.image
       end
     end
 end
