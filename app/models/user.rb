@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validates :company,  length:     { maximum: 50 }
   validates :username, uniqueness: { case_sensitive: true},            presence: true
   validates :email,    uniqueness: { case_sensitive: false },          allow_blank: false, if: :email_changed?
-  validates :email,    format:     { with: Devise.email_regexp },                          if: :email_changed?
+  validates :email,    format:     { with:   Devise.email_regexp },                        if: :email_changed?
   validates :password, length:     { within: Devise.password_length }, confirmation: true, presence: true, if: ->(u) { u.commit == 'Sign up' }
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
@@ -32,12 +32,16 @@ class User < ActiveRecord::Base
     end
   end
 
-  def has_provider?(provider)
+  def has_auth?(provider)
     unless provider == :all
-      !authentifications.where(:provider => provider).empty?
+      !auth(provider).nil?
     else
-      has_provider?('linkedin') && has_provider?('twitter') && has_provider?('facebook') && has_provider?('google')
+      has_auth?('linkedin') && has_auth?('twitter') && has_auth?('facebook') && has_auth?('google')
     end
+  end
+
+  def auth(provider)
+    authentifications.find_by_provider(provider)
   end
 
   def auths_w_pic
