@@ -15,7 +15,12 @@ describe Profile do
               skill_3_level: 'Intermediate',
               quality_1: 'Drive',
               quality_2: 'Work ethics',
-              quality_3: 'Punctuality' }
+              quality_3: 'Punctuality',
+              text: 'Do or do not, there is no try.' }
+  end
+
+  it 'should create a profile given valid attributes' do
+    @user.profiles.build(@attr).should be_valid
   end
 
   describe 'users associations' do
