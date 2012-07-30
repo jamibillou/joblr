@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
   def edit
     @user.profiles.build unless signed_up?(@user)
-    @linkedin_profile = Authentification.find_by_user_id_and_provider(@user, 'linkedin').linkedin_client.profile if @user.has_auth?('linkedin')
   end
 
   def update

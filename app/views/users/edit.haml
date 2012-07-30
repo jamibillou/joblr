@@ -2,7 +2,7 @@
   %h1= signed_up?(@user) ? 'Edit your profile' : 'Complete your profile!'
   %br/
 
-= @linkedin_profile
+= @user.linkedin_profile if @user.has_auth?('linkedin')
 %br/
 %br/
 

@@ -1,7 +1,5 @@
 class Authentification < ActiveRecord::Base
 
-  include Authentification::Linkedin
-
   attr_accessible :provider, :uemail, :uid, :uname, :user_id, :url, :upic, :utoken, :usecret
 
   belongs_to :user

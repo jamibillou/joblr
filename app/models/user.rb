@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  include User::LinkedinProfile
+
   attr_accessible :fullname, :email, :city, :country, :role, :company, :subdomain, :password, :password_confirmation,
                   :remember_me, :image, :username, :profiles_attributes, :remove_image, :commit, :remote_image_url
   attr_accessor   :commit
