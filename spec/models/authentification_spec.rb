@@ -52,5 +52,6 @@ end
 #  updated_at :datetime        not null
 #  url        :string(255)
 #  upic       :string(255)
+#  uthumb     :string(255)
 #
 

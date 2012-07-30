@@ -72,5 +72,7 @@ end
 #  role                   :string(255)
 #  company                :string(255)
 #  image                  :string(255)
+#  subdomain              :string(255)
+#  username               :string(255)
 #
 
