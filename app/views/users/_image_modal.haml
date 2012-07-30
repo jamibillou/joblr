@@ -11,12 +11,11 @@
         .pull-right
           .danger.delete delete
           = f.check_box :remove_image
-    - unless @user.auths_w_pic.blank?
-      %h5{style:'margin-bottom:5px'} Social profiles:
-      - @user.auths_w_pic.each do |authentification|
-        = image_tag authentification.uthumb, style:'width:50px; height:50px; margin-right:5px'
-      %br/
-      %br/
+    %h5{style:'margin-bottom:5px'} Social profiles:
+    - @user.authentifications.each do |authentification|
+      = image_tag image_url('thumb',authentification.uid,authentification.provider), style:'width:50px; height:50px; margin-right:5px'
+    %br/
+    %br/
     %h5 Upload:
     = f.file_field :image
   .modal-footer
