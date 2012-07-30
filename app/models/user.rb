@@ -44,10 +44,6 @@ class User < ActiveRecord::Base
     authentifications.find_by_provider(provider)
   end
 
-  def auths_w_pic
-    authentifications.where("upic != ''")
-  end
-
   def profile
     profiles.first
   end

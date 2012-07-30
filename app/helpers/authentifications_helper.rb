@@ -1,6 +1,6 @@
 module AuthentificationsHelper
 
-  def image_url(type,uid,provider)
+  def image_url(type,uid,provider,lk_default=image_path('default_user.jpg'))
     case provider
       when 'twitter'
         if(type == 'thumb')
@@ -9,11 +9,7 @@ module AuthentificationsHelper
           "http://api.twitter.com/1/users/profile_image/#{uid}?size=original"
         end
       when 'linkedin'
-      	if(type == 'original')
-        	auth_hash.info.image
-        else
-        	image_path('default_user.jpg')
-        end
+      	lk_default
       when 'facebook'
         if(type == 'thumb')
           "http://graph.facebook.com/#{uid}/picture?type=square"

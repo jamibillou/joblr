@@ -38,7 +38,8 @@ class AuthentificationsController < ApplicationController
 
   private
     def find_or_create_user(username)
-      user = User.find_or_create_by_username(username, username: username, fullname: auth_hash.info.name, remote_image_url: image_url('original',auth_hash.uid,auth_hash.provider))
+      user = User.find_or_create_by_username(username, username: username, fullname: auth_hash.info.name, 
+        remote_image_url: image_url('original',auth_hash.uid,auth_hash.provider,auth_hash.info.image))
       create_omniauth(user)
     end
 

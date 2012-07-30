@@ -1,3 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+@select_pic = (uid,url) ->
+	$('.social-thumb').css('border','none')
+	$('#remote_image_url').val(url)
+	$('#'+uid).removeAttr('onclick').unbind().click( -> unselect_pic(uid,url))
+
+@unselect_pic = (uid,url) ->
+	$('#remote_image_url').val('')
+	$('#'+uid).unbind().click( -> select_pic(uid,url))
+	
