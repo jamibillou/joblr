@@ -86,10 +86,10 @@ class AuthentificationsController < ApplicationController
       end
     end
 
-    def auth_image
+    def auth_image_url
       case auth_hash.provider
         when 'twitter'
-          "http://api.twitter.com/1/users/profile_image/#{auth_hash.info.nickname}?size=original"
+          "http://api.twitter.com/1/users/profile_image/#{auth_hash.info.nickname}?size=bigger"
         when 'linkedin'
           auth_hash.info.image
         when 'facebook'

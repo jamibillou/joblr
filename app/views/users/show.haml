@@ -1,6 +1,6 @@
 .row
   .span5
-    .card
+    .card{id:"user-#{@user.id}"}
       .row
         .span4.well{style:'padding-bottom:14px'}
           .row
@@ -51,21 +51,22 @@
               .row
                 .span3 #{@user.profile.quality_3}
 
-    .row
-      .span4
-        %br/
-        %h6{style:'margin-bottom:10px'}= "More about #{@user.fullname}"
-        - unless @user.profile.file.blank?
-          %a.btn.btn-large{href: @user.profile.file_url.to_s, style:'margin-right:2px'}
-            .icon-upload
-            Download CV
-        - unless @user.authentifications.empty?
-          - @user.authentifications.each do |authentification|
-            = link_to image_tag("#{authentification.provider}.png", title:"Go to #{@user.fullname}'s #{authentification.provider.titleize} page"), authentification.url, target:'_new'
-        - unless @user.profile.url.blank?
-          %a.btn.btn-large.btn-danger{href:@user.profile.url, target:'_blank', style:'margin-left:2px'}
-            .icon-globe.icon-white
-            Site
+    - unless @user.profile.file.blank? && @user.authentifications.empty? && @user.profile.url.blank?
+      .row
+        .span4
+          %br/
+          %h6{style:'margin-bottom:10px'}= "More about #{@user.fullname}"
+          - unless @user.profile.file.blank?
+            %a.btn.btn-large{href: @user.profile.file_url.to_s, style:'margin-right:2px'}
+              .icon-upload
+              Download CV
+          - unless @user.authentifications.empty?
+            - @user.authentifications.each do |authentification|
+              = link_to image_tag("#{authentification.provider}.png", title:"Go to #{@user.fullname}'s #{authentification.provider.titleize} page"), authentification.url, target:'_new'
+          - unless @user.profile.url.blank?
+            %a.btn.btn-large.btn-danger{href:@user.profile.url, target:'_blank', style:'margin-left:2px'}
+              .icon-globe.icon-white
+              Site
 
   .span5.offset2
     .row

@@ -15,7 +15,12 @@ describe Profile do
               skill_3_level: 'Intermediate',
               quality_1: 'Drive',
               quality_2: 'Work ethics',
-              quality_3: 'Punctuality' }
+              quality_3: 'Punctuality',
+              text: 'Do or do not, there is no try.' }
+  end
+
+  it 'should create a profile given valid attributes' do
+    @user.profiles.build(@attr).should be_valid
   end
 
   describe 'users associations' do
@@ -35,9 +40,9 @@ describe Profile do
 
   describe 'validations' do
 
-    before :each do
+    before :all do
       @level = { valid: %w(Beginner Intermediate Advanced Expert), invalid: %w(crap good okish) }
-      @url   = { valid: %(http://www.engaccino.com https://engaccino.com https://dom.engaccino.com http://franck.engaccino.com http://www.engaccino.co.uk https://dom.engaccino.com.hk http://engaccino.me http://www.engaccino.ly http://fr.engaccino/users/1/edit),
+      @url   = { valid: %w(http://www.engaccino.com https://engaccino.com https://dom.engaccino.com http://franck.engaccino.com http://www.engaccino.co.uk https://dom.engaccino.com.hk http://engaccino.me http://www.engaccino.ly http://fr.engaccino/users/1/edit),
                  invalid: %w(invalid_url engaccino.com pouetpouetpouet http:www.engaccino.com http//engaccino.com http/ccino.co htp://ccino.me http:/www.engaccino.com) }
     end
 
@@ -62,6 +67,21 @@ describe Profile do
     it { should validate_presence_of :text }
     it { should validate_format_of(:url).not_with(@url[:invalid]).with_message(I18n.t('activerecord.errors.messages.url_format')) }
     it { should validate_format_of(:url).with @url[:valid] }
+  end
+
+  describe 'file' do
+
+    it 'should have the right format' # do
+    # end
+
+    it 'should uploaded to the right namespace' # do
+    # end
+
+    it 'should empty the column when remove_file is checked' # do
+    # end
+
+    it 'should delete the uploaded file when remove_file is checked' # do
+    # end
   end
 end
 
