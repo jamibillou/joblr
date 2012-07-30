@@ -2,7 +2,7 @@ FactoryGirl.define do
 
   factory :user do
     fullname 'John Doe'
-    email 'j.doe@example.com'
+    username 'j_doe'
   end
 
   factory :authentification do
