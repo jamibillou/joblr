@@ -63,6 +63,21 @@ describe Profile do
     it { should validate_format_of(:url).not_with(@url[:invalid]).with_message(I18n.t('activerecord.errors.messages.url_format')) }
     it { should validate_format_of(:url).with @url[:valid] }
   end
+
+  describe 'file' do
+
+    it 'should have the right format' # do
+    # end
+
+    it 'should uploaded to the right namespace' # do
+    # end
+
+    it 'should empty the column when remove_file is checked' # do
+    # end
+
+    it 'should delete the uploaded file when remove_file is checked' # do
+    # end
+  end
 end
 
 ## == Schema Information

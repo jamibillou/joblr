@@ -48,6 +48,21 @@ describe User do
     it { should validate_format_of(:email).with @email[:valid] if @user.email_changed? }
   end
 
+  describe 'image' do
+
+    it 'should have the right format' # do
+    # end
+
+    it 'should uploaded to the right namespace' # do
+    # end
+
+    it 'should empty the column when remove_image is checked' # do
+    # end
+
+    it 'should delete the uploaded image when remove_image is checked' # do
+    # end
+  end
+
   describe 'has_auth? method' do
 
     it { @user.has_auth?('twitter').should be_true }
