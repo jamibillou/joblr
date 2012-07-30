@@ -6,7 +6,7 @@ class Authentification < ActiveRecord::Base
 
   validates :user, :provider, :uid,  presence: true
   validates :url,  url_format: true, allow_blank: true
-
+  validates :upic, url_format: true, allow_blank: true
 end
 
 # == Schema Information
