@@ -36,7 +36,7 @@ class AuthentificationsController < ApplicationController
 
   private
     def find_or_create_user(username)
-      user = User.find_or_create_by_username(username, username: username, fullname: auth_hash.info.name, remote_image_url: auth_image)
+      user = User.find_or_create_by_username(username, username: username, fullname: auth_hash.info.name, remote_image_url: auth_image_url)
       create_omniauth(user)
     end
 
@@ -64,8 +64,8 @@ class AuthentificationsController < ApplicationController
     end
 
     def create_omniauth(user)
-      user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, upic: auth_image, 
-        uthumb: auth_thumb)
+      user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, upic: auth_image_url, 
+        uthumb: auth_thumb_url)
       user
     end
 
@@ -99,7 +99,7 @@ class AuthentificationsController < ApplicationController
       end
     end
 
-    def auth_thumb
+    def auth_thumb_url
       case auth_hash.provider
         when 'twitter'
           "http://api.twitter.com/1/users/profile_image/#{auth_hash.info.nickname}?size=bigger"
