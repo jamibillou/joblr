@@ -9,14 +9,14 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profiles, allow_destroy: true
 
-  validates :username, length:     { maximum: 100 }
   validates :fullname, length:     { maximum: 100 }
   validates :city,     length:     { maximum: 50 }
   validates :country,  length:     { maximum: 50 }
   validates :role,     length:     { maximum: 100 }
   validates :company,  length:     { maximum: 50 }
+  validates :username, length:     { maximum: 100 }
   validates :username, uniqueness: { case_sensitive: true},            presence: true
-  validates :email,    uniqueness: { case_sensitive: false },          allow_blank: false, if: :email_changed?
+  validates :email,    uniqueness: { case_sensitive: true },           allow_blank: false, if: :email_changed?
   validates :email,    format:     { with:   Devise.email_regexp },                        if: :email_changed?
   validates :password, length:     { within: Devise.password_length }, confirmation: true, presence: true, if: ->(u) { u.commit == 'Sign up' }
 
