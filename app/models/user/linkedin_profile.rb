@@ -1,23 +1,19 @@
 module User::LinkedinProfile
 
   def linkedin_profile
-    client = linkedin_client
-    client.profile(fields: %w(first_name last_name location positions educations skills))
-
-    # Produces a nicely formatted hash but take 9 to 10s to execute,
-    # too many API calls in a row.
-    #
-    # {
-    #   fullname: "#{client.profile(fields: %w(first_name)).first_name} #{client.profile(fields: %w(last_name)).last_name}",
-    #   city:        client.profile(fields: %w(location)).location.name.split(',').first.gsub(' Area',''),
-    #   country:     client.profile(fields: %w(location)).location.name.split(',').last,
-    #   role:        client.profile(fields: %w(positions)).positions.all.select(&:is_current?).first.title,
-    #   company:     client.profile(fields: %w(positions)).positions.all.select(&:is_current?).first.company.name,
-    #   education:   "#{client.profile(fields: %w(educations)).educations.all.first.degree}, #{client.profile(fields: %w(educations)).educations.all.first.field_of_study}",
-    #   skill_1:     client.profile(fields: %w(skills)).skills.all[0].skill.name,
-    #   skill_2:     client.profile(fields: %w(skills)).skills.all[1].skill.name,
-    #   skill_3:     client.profile(fields: %w(skills)).skills.all[2].skill.name
-    # }
+    raw_hash = linkedin_client.profile(fields: %w(first_name last_name location positions educations skills))
+    clean_hash = {
+      firstname:       raw_hash.first_name,
+      lastname:        raw_hash.last_name,
+      city:            raw_hash.location.name.split(',').first.gsub(' Area',''),
+      country:         raw_hash.location.name.split(',').last,
+      current_role:    raw_hash.positions.all.select(&:is_current?).first.title,
+      current_company: raw_hash.positions.all.select(&:is_current?).first.company.name,
+      experiences:     raw_hash.positions.all.map { |exp| { role: exp.title, company: exp.company.name, current: exp.is_current, desc: exp.summary, start_date: ({ month: exp.start_date.month, year: exp.start_date.year } unless exp.start_date.nil?), end_date: ({ month: exp.end_date.month, year: exp.end_date.year } unless exp.end_date.nil?) } },
+      educations:      raw_hash.educations.all.map{ |edu| { degree: edu.degree, field: edu.field_of_study, school: edu.school_name, start_date: ({ month: edu.start_date.month, year: edu.start_date.year } unless edu.start_date.nil?), end_date: ({ month: edu.end_date.month, year: edu.end_date.year } unless edu.end_date.nil?) } },
+      skills:          raw_hash.skills.all.map { |sk| sk.skill.name }
+    }
+    clean_hash
   end
 
   def linkedin_attribute(attribute, client)
