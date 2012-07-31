@@ -1,5 +1,7 @@
 class AuthentificationsController < ApplicationController
 
+  include AuthentificationsHelper
+
   def create
     if auth = Authentification.find_by_provider_and_uid(auth_hash.provider, auth_hash.uid)
       user = auth.user
@@ -36,7 +38,8 @@ class AuthentificationsController < ApplicationController
 
   private
     def find_or_create_user(username)
-      user = User.find_or_create_by_username!(username, username: username, fullname: auth_hash.info.name, remote_image_url: auth_image_url)
+      user = User.find_or_create_by_username(username, username: username, fullname: auth_hash.info.name,
+                                                       remote_image_url: image_url('original', auth_hash.uid, auth_hash.provider, auth_hash.info.image))
       create_auth(user)
     end
 
@@ -64,8 +67,7 @@ class AuthentificationsController < ApplicationController
     end
 
     def create_auth(user)
-      user.authentifications.create!(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, upic: auth_image_url,
-                                     utoken: auth_hash.extra.access_token.token, usecret: auth_hash.extra.access_token.secret)
+      user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: url, utoken: auth_hash.extra.access_token.token, usecret: auth_hash.extra.access_token.secret)
       user
     end
 
@@ -73,7 +75,7 @@ class AuthentificationsController < ApplicationController
       request.env['omniauth.auth']
     end
 
-    def auth_url
+    def url
       case auth_hash.provider
         when 'twitter'
           auth_hash.info.urls.Twitter
@@ -83,19 +85,6 @@ class AuthentificationsController < ApplicationController
           auth_hash.info.urls.Facebook
         when 'google_oauth2'
           auth_hash.extra.raw_info.link
-      end
-    end
-
-    def auth_image_url
-      case auth_hash.provider
-        when 'twitter'
-          "http://api.twitter.com/1/users/profile_image/#{auth_hash.info.nickname}?size=bigger"
-        when 'linkedin'
-          auth_hash.info.image
-        when 'facebook'
-          auth_hash.info.image
-        when 'google_oauth2'
-          auth_hash.info.image
       end
     end
 end

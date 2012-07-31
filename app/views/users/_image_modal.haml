@@ -11,14 +11,14 @@
         .pull-right
           .danger.delete delete
           = f.check_box :remove_image
-    - unless @user.auths_w_pic.blank?
-      %h5{style:'margin-bottom:5px'} Social profiles:
-      - @user.auths_w_pic.each do |authentification|
-        = image_tag authentification.upic, style:'width:50px; height:50px; margin-right:5px'
-      %br/
-      %br/
+    %h5{style:'margin-bottom:5px'} Social profiles:
+    - @user.authentifications.each do |authentification|
+      = link_to_function image_tag(image_url('thumb', authentification.uid,authentification.provider), style:'width:50px; height:50px;'), "select_pic('#{authentification.uid}','#{image_url('original', authentification.uid, authentification.provider)}')", class:'social-thumb', id: authentification.uid
+    %br/
+    %br/
     %h5 Upload:
     = f.file_field :image
+    = f.text_field :remote_image_url, id: 'remote_image_url'
   .modal-footer
     %a.btn{href:'#', 'data-dismiss' => 'modal'} Close
     %a.btn.btn-primary{href:'#', onclick:"$('#image-modal').modal('hide');"} Submit

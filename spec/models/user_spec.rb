@@ -107,18 +107,6 @@ describe User do
       @user.auth('google_oauth2').id.should == auth.id
     end
   end
-
-  describe 'auths_w_pic method' do
-
-    it 'should be empty for users not having any authentification with pic' # do
-    #   @user.auths_w_pic.should be_empty
-    # end
-
-    it 'should not be empty for users having authentifications with pic' # do
-    #   @auth_w_pic = FactoryGirl.create :authentification, user: @user, provider:'facebook', upic:'default_user.jpg'
-    #   @user.auths_w_pic.should_not be_empty
-    # end
-  end
 end
 
 # == Schema Information
