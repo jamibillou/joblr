@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  include User::LinkedinProfile
+
   attr_accessible :fullname, :email, :city, :country, :role, :company, :subdomain, :password, :password_confirmation,
                   :remember_me, :image, :username, :profiles_attributes, :remove_image, :commit, :remote_image_url
   attr_accessor   :commit
@@ -55,7 +57,7 @@ end
 #
 #  id                     :integer         not null, primary key
 #  fullname               :string(255)
-#  email                  :string(255)     default(""), not null
+#  email                  :string(255)
 #  encrypted_password     :string(255)     default(""), not null
 #  reset_password_token   :string(255)
 #  reset_password_sent_at :datetime

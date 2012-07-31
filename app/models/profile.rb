@@ -22,7 +22,7 @@ class Profile < ActiveRecord::Base
   mount_uploader :file, ProfileFileUploader
 end
 
-## == Schema Information
+# == Schema Information
 #
 # Table name: profiles
 #
@@ -42,6 +42,8 @@ end
 #  created_at    :datetime        not null
 #  updated_at    :datetime        not null
 #  text          :string(255)
+#  url           :string(255)
+#  file          :string(255)
 #
 
 # == Schema Information

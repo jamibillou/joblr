@@ -1,6 +1,7 @@
 class Authentification < ActiveRecord::Base
 
-  attr_accessible :provider, :uemail, :uid, :uname, :user_id, :url
+  attr_accessible :provider, :uemail, :uid, :uname, :user_id, :url, :utoken, :usecret
+
   belongs_to :user
 
   validates :user, :provider, :uid,  presence: true
@@ -21,5 +22,7 @@ end
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #  url        :string(255)
+#  utoken     :string(255)
+#  usecret    :string(255)
 #
 

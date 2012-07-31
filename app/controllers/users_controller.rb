@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def edit
     @user.profiles.build unless signed_up?(@user)
+    @linkedin = @user.linkedin_profile if @user.has_auth?('linkedin')
   end
 
   def update

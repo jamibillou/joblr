@@ -1,22 +1,22 @@
 .row
   .span1.well{style:'padding:14px'}
     %h6 Experience
-    =f.text_field :experience, style: 'height:30px; width:40px; margin-bottom:0; font-size:30px; font-weight:bold'
+    =f.text_field :experience, value: (@user.profile.experience ? @user.profile.experience : (@linkedin[:experience] unless @linkedin.nil?)), style: 'height:30px; width:40px; margin-bottom:0; font-size:30px; font-weight:bold'
     %h2 yrs
   .span3.well{style:'padding:14px'}
     %h6 Highest Education
-    =f.text_area :education, rows:2, style:'margin-bottom:-5px; width:240px;', class:'lead'
+    =f.text_area :education, value: (@user.profile.education ? @user.profile.education : ("#{@linkedin[:education_degree]}, #{@linkedin[:education_field]}" unless @linkedin.nil?)), rows:2, style:'margin-bottom:-5px; width:240px;', class:'lead'
     %br/
 
 .row
   .span4.well{style: 'padding-bottom:14px'}
     %h6 Skills
     .row
-      .span2= f.text_field :skill_1, style: 'font-size:15px'
+      .span2= f.text_field :skill_1, value: (@user.profile.skill_1 ? @user.profile.skill_1 : (@linkedin[:skills][0] unless @linkedin.nil?)), style: 'font-size:15px'
       .span1= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level'}
-      .span2= f.text_field :skill_2, style: 'font-size:15px'
+      .span2= f.text_field :skill_2, value: (@user.profile.skill_2 ? @user.profile.skill_2 : (@linkedin[:skills][1] unless @linkedin.nil?)), style: 'font-size:15px'
       .span1= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level' }
-      .span2= f.text_field :skill_3, style: 'font-size:15px'
+      .span2= f.text_field :skill_3, value: (@user.profile.skill_3 ? @user.profile.skill_3 : (@linkedin[:skills][2] unless @linkedin.nil?)), style: 'font-size:15px'
       .span1= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level' }
 
 .row

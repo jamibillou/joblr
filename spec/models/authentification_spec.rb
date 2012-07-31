@@ -35,8 +35,6 @@ describe Authentification do
     it { should validate_presence_of :uid }
     it { should validate_format_of(:url).not_with(@url[:invalid]).with_message(I18n.t('activerecord.errors.messages.url_format')) }
     it { should validate_format_of(:url).with @url[:valid] }
-    it { should validate_format_of(:upic).not_with(@url[:invalid]).with_message(I18n.t('activerecord.errors.messages.url_format')) }
-    it { should validate_format_of(:upic).with @url[:valid] }
   end
 end
 
@@ -53,5 +51,7 @@ end
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #  url        :string(255)
+#  utoken     :string(255)
+#  usecret    :string(255)
 #
 
