@@ -1,9 +1,13 @@
-@select_pic = (uid,url) ->
-	$('.social-thumb').css('border','none')
+@select_pic = (uid,url,urlThumb) ->
+	$('.social-thumb').removeClass('selected')
+	$('#'+uid).addClass('selected')
 	$('#remote_image_url').val(url)
-	$('#'+uid).removeAttr('onclick').unbind().click( -> unselect_pic(uid,url))
+	$('#current-thumb').attr('src',urlThumb)
+	$('#profile-picture').attr('src',url)
 
-@unselect_pic = (uid,url) ->
+@unselect_pic = (originalUrl) ->
+	$('.social-thumb').removeClass('selected')
 	$('#remote_image_url').val('')
-	$('#'+uid).unbind().click( -> select_pic(uid,url))
+	$('#current-pic').attr('src',originalUrl)
+	$('#profile-picture').attr('src',originalUrl)
 	
