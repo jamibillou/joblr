@@ -67,7 +67,7 @@ class AuthentificationsController < ApplicationController
     end
 
     def create_auth(user)
-      user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: url, utoken: auth_hash.extra.access_token.token, usecret: auth_hash.extra.access_token.secret)
+      user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: url, utoken: auth_hash.credentials.token, usecret: auth_secret)
       user
     end
 
@@ -85,6 +85,15 @@ class AuthentificationsController < ApplicationController
           auth_hash.info.urls.Facebook
         when 'google_oauth2'
           auth_hash.extra.raw_info.link
+      end
+    end
+
+    def auth_secret
+      case auth_hash.provider
+        when 'linkedin','twitter'
+          auth_hash.credentials.secret
+        when 'facebook','google_oauth2'
+          ''
       end
     end
 end
