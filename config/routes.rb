@@ -9,7 +9,8 @@ Joblr::Application.routes.draw do
     resources :profiles
   end
 
-  get 'users/auth/failure' => 'authentifications#failure'
+  get 'users/auth/failure'   => 'authentifications#failure'
+  post 'users/share_profile' => 'users#share_profile'
 
   match 'home', to: 'pages#home'
 

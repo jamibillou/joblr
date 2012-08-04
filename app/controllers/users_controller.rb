@@ -22,6 +22,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def share_profile
+    UserMailer.share_profile(params[:email]).deliver
+    redirect_to @user, flash: { success: t('flash.success.profile_shared') }
+  end
+  
   private
 
     def find_user
