@@ -9,8 +9,10 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user.profiles.build unless signed_up?(@user)
-    @linkedin = @user.linkedin_profile if @user.has_auth?('linkedin')
+    unless signed_up?(@user)
+      @user.profiles.build
+      @linkedin = @user.linkedin_profile if @user.has_auth?('linkedin')
+    end
   end
 
   def update
@@ -26,7 +28,7 @@ class UsersController < ApplicationController
     UserMailer.share_profile(params[:email]).deliver
     redirect_to @user, flash: { success: t('flash.success.profile_shared') }
   end
-  
+
   private
 
     def find_user

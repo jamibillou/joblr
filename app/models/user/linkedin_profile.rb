@@ -1,18 +1,28 @@
 module User::LinkedinProfile
 
+  def li_attr(attribute, linkedin_profile)
+    if read_attribute(attribute)
+      read_attribute(attribute)
+    elsif profile.read_attribute(attribute)
+      profile.read_attribute(attribute)
+    elsif linkedin_profile
+      linkedin_profile[attribute]
+    end
+  end
+
   def linkedin_profile
     raw_hash = linkedin_client.profile(fields: %w(first_name last_name location positions educations skills))
 
-    { first_name:       raw_hash.first_name,
-      last_name:        raw_hash.last_name,
-      city:             raw_hash.location.name.split(',').first.gsub(' Area',''),
-      country:          raw_hash.location.name.split(',').last,
-      current_role:     raw_hash.positions.all.select(&:is_current?).first.title,
-      current_company:  raw_hash.positions.all.select(&:is_current?).first.company.name,
-      experience:       experience_duration(raw_hash.positions.all),
-      education_degree: raw_hash.educations.all.first.degree,
-      education_field:  raw_hash.educations.all.first.field_of_study,
-      skills:           raw_hash.skills.all.map { |sk| sk.skill.name } }
+    { fullname:   "#{raw_hash.first_name} #{raw_hash.last_name}",
+      city:       raw_hash.location.name.split(',').first.gsub(' Area',''),
+      country:    raw_hash.location.name.split(',').last,
+      role:       raw_hash.positions.all.select(&:is_current?).first.title,
+      company:    raw_hash.positions.all.select(&:is_current?).first.company.name,
+      experience: experience_duration(raw_hash.positions.all),
+      education:  "#{raw_hash.educations.all.first.degree} #{raw_hash.educations.all.first.field_of_study}",
+      skill_1:    raw_hash.skills.all[0].skill.name,
+      skill_2:    raw_hash.skills.all[1].skill.name,
+      skill_3:    raw_hash.skills.all[2].skill.name }
   end
 
   def linkedin_client
