@@ -14,9 +14,9 @@
           = f.check_box :remove_image
 
     %h5{style:'margin-bottom:5px'} Social profiles:
-    - @user.authentifications.each do |authentification|
-      = link_to_function image_tag(image_url('thumb', authentification.uid, authentification.provider), class:'social pic', id:authentification.uid),
-                         "select_pic('#{authentification.uid}', '#{image_url('original', authentification.uid, authentification.provider)}', '#{image_url('thumb', authentification.uid, authentification.provider)}')"
+    - @user.authentifications.each do |auth|
+      = link_to_function image_tag(image_url('thumb', auth.uid, auth.provider), class:'social pic', id:auth.uid),
+                         "select_pic('#{auth.uid}', '#{image_url('original', auth.uid, auth.provider)}')"
     %br/
     %br/
 

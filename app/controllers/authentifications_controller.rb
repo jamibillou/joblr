@@ -1,5 +1,4 @@
 class AuthentificationsController < ApplicationController
-
   include AuthentificationsHelper
 
   def create
@@ -37,6 +36,7 @@ class AuthentificationsController < ApplicationController
 	alias_method :google_oauth2, :create
 
   private
+
     def find_or_create_user(username)
       user = User.find_or_create_by_username(username, username: username, fullname: auth_hash.info.name,
                                                        remote_image_url: image_url('original', auth_hash.uid, auth_hash.provider, auth_hash.info.image))

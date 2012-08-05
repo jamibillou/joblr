@@ -10,8 +10,7 @@ class RegistrationsController < Devise::RegistrationsController
       sign_in @user, :bypass => true
       redirect_to @user, flash: { success: t('flash.success.profile_updated') }
     else
-      render "edit"
+      render :edit
     end
   end
-
 end
