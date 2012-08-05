@@ -19,4 +19,4 @@ jQuery ->
   $.ajax '/users/share_profile',
   dataType: 'html'
   type: 'POST'
-  data: {email:$('#email').val()}
+  data: { email:$('#email').val(), user_id: $('#user_id').val()}

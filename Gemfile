@@ -14,6 +14,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem 'linkedin'
 gem 'postmark-rails'
+gem 'roadie'
 
 # Gems used only for assets and not required in production environments by default.
 group :assets do

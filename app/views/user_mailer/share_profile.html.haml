@@ -1,0 +1,14 @@
+%head
+  %link{ rel:'stylesheet', type:'text/css', href:'/assets/application.css'}
+%body 
+  .row
+    .span5
+      .card{ id:"user-#{@user.id}" }
+        .row
+          .span4.well{ style:'padding-bottom:14px' }
+            .row
+              .span1= image_tag (@user.image.blank? ? 'default_user.jpg' : @user.image_url(:thumb).to_s)
+              .span3
+                %h3= @user.fullname
+                %p #{@user.city}#{', ' unless @user.city.blank? || @user.country.blank?}#{@user.country}
+                %p #{@user.role}#{', ' unless @user.role.blank? || @user.company.blank?}#{@user.company}
