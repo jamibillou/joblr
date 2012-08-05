@@ -1,4 +1,4 @@
 en:
-	user_mailer:
-		share_profile:
-			subject: "Please have a look to my profile"
+  user_mailer:
+    share_profile:
+      subject: "Please have a look to my profile"
