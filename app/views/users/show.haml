@@ -92,7 +92,9 @@
               = link_to 'Email', '#', id: 'show_email'
             %li
               = link_to 'Social networks', '#'
-      .pull-right#email_form{style:'margin-top: 130px;display:none'}
+
+      .pull-right#email_form{style:'margin-top:130px; display:none'}
         Email address:
-        %input#email{placeholder:'sent@to.me'}
-        %input#send_email{type:'button', value:'Send'}
+        %input#user_id{type:'hidden', value:"#{@user.id}"}
+        %input#email{placeholder: 'sent@to.me'}
+        %input#send_email{type: 'button', value: 'Send'}
