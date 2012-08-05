@@ -7,7 +7,7 @@
     - unless @user.image.blank?
       .pull-right
         %h5{style:'margin-bottom:5px'} Current pic:
-        .pull-right= image_tag @user.image_url(:thumb).to_s, style:'width:50px; height:50px; margin-bottom:5px', id:'current-thumb'
+        .pull-right= image_tag @user.image_url(:thumb).to_s, class:'current pic'
         %br/
         .pull-right
           .danger.delete delete
@@ -15,17 +15,14 @@
 
     %h5{style:'margin-bottom:5px'} Social profiles:
     - @user.authentifications.each do |authentification|
-      = link_to_function image_tag(image_url('thumb', authentification.uid,authentification.provider),
-        style:'width:50px;height:50px;', class:'social-thumb', id: authentification.uid),
-        "select_pic('#{authentification.uid}','#{image_url('original',authentification.uid,authentification.provider)}',
-        '#{image_url('thumb',authentification.uid,authentification.provider)}')"
-    = link_to_function 'unselect', "unselect_pic('#{@user.image_url(:thumb)}')"
+      = link_to_function image_tag(image_url('thumb', authentification.uid, authentification.provider), class:'social pic', id:authentification.uid),
+                         "select_pic('#{authentification.uid}', '#{image_url('original', authentification.uid, authentification.provider)}', '#{image_url('thumb', authentification.uid, authentification.provider)}')"
     %br/
     %br/
 
     %h5 Upload:
     = f.file_field :image
-    = f.hidden_field :remote_image_url, id: 'remote_image_url'
+    = f.hidden_field :remote_image_url, id:'remote_image_url'
 
   .modal-footer
     %a.btn{href:'#', 'data-dismiss' => 'modal'} Cancel

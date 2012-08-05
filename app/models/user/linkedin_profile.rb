@@ -29,7 +29,7 @@ module User::LinkedinProfile
         positions.first.end_date = {month: Time.now.month, year: Time.now.year}
       end
 
-      # calculates the different between the first and the last positions
+      # calculates the duration between the first and the last positions
       unless positions.first.end_date.nil? || positions.last.start_date.nil?
         duration = positions.first.end_date.year - positions.last.start_date.year - 1
         unless positions.first.end_date.month.nil? || positions.last.start_date.month.nil?
