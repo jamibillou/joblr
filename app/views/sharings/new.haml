@@ -26,15 +26,15 @@
             - unless @user.profile.skill_1.blank?
               .row
                 .span3 #{@user.profile.skill_1}
-                .span1= render 'level_bar', level: @user.profile.skill_1_level
+                .span1= render 'users/level_bar', level: @user.profile.skill_1_level
             - unless @user.profile.skill_2.blank?
               .row
                 .span3 #{@user.profile.skill_2}
-                .span1= render 'level_bar', level: @user.profile.skill_2_level
+                .span1= render 'users/level_bar', level: @user.profile.skill_2_level
             - unless @user.profile.skill_3.blank?
               .row
                 .span3 #{@user.profile.skill_3}
-                .span1= render 'level_bar', level: @user.profile.skill_3_level
+                .span1= render 'users/level_bar', level: @user.profile.skill_3_level
 
 
       .row

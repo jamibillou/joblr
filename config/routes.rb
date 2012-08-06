@@ -7,10 +7,11 @@ Joblr::Application.routes.draw do
   resources :authentifications, only: [:index, :destroy]
   resources :users do
     resources :profiles
+    resources :sharings
   end
 
   get 'users/auth/failure'   => 'authentifications#failure'
-  match 'users/:id/share'      => 'users#share', as: :user_share
+  match 'users/:id/share'    => 'sharings#new', as: :user_share
   post 'users/share_profile' => 'users#share_profile'
 
   match 'home', to: 'pages#home'
