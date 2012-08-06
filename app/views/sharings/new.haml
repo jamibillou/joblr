@@ -68,13 +68,17 @@
               .icon-globe.icon-white
               Site
 
-  .span5.offset2
-    .row
-      %h1{style:'margin-top:45%; text-align:right'}
-        %i= @user.profile.text
-
-      .pull-right#email_form{style:'margin-top:130px;'}
-        Email address:
-        %input#user_id{type:'hidden', value:"#{@user.id}"}
-        %input#email{placeholder: 'sent@to.me'}
-        %input#send_email{type: 'button', value: 'Send'}
+  .span5.offset2.pull_right
+    = form_for @sharing do |f|
+      = f.text_area :text, class: 'lead', rows: 3, style: "width:400px;", value: "Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."
+      %br/
+      = f.hidden_field :user_id, value: "#{@user.id}"
+      = f.email_field :email, class: 'input-large', placeholder: 'sent@to.me'
+      %br/
+      = f.text_field :fullname, placeholder: 'Contact fullname'
+      %br/
+      = f.text_field :role, placeholder: 'Role'
+      %br/
+      = f.text_field :company, placeholder: 'Company'
+      %br/
+      = f.submit 'Send'

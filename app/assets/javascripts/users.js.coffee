@@ -1,6 +1,3 @@
-jQuery ->
-	#$('#send_email').click( -> send_email())
-
 @select_pic = (uid, url) ->
 	$('.social.pic').removeClass('selected')
 	$('#'+uid).addClass('selected')

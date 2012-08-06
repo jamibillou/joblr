@@ -65,6 +65,6 @@ module Joblr
 
     # Postmark emailing configuration
     config.action_mailer.delivery_method   = :postmark
-    config.action_mailer.postmark_settings = { :api_key => "7903f949-2b9a-4d1a-81d7-3c2c36daacd4" }
+    config.action_mailer.postmark_settings = { :api_key => "0d3b84d0-f242-4ab2-b986-13a536d889a2" }
   end
 end

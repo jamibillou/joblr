@@ -5,13 +5,12 @@ Joblr::Application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'authentifications', registrations: 'registrations' }
 
   resources :authentifications, only: [:index, :destroy]
+  resources :sharings
   resources :users do
     resources :profiles
-    resources :sharings
   end
 
   get 'users/auth/failure'   => 'authentifications#failure'
-  match 'users/:id/share'    => 'sharings#new', as: :user_share
   post 'users/share_profile' => 'users#share_profile'
 
   match 'home', to: 'pages#home'

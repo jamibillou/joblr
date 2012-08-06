@@ -1,6 +1,7 @@
 %head
   %link{ rel:'stylesheet', type:'text/css', href:'/assets/application.css'}
 %body 
+  %h1=@sharing.text
   .row
     .span5
       .card{ id:"user-#{@user.id}" }
