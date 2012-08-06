@@ -1,6 +1,5 @@
 jQuery ->
-	$('#show_email').click( -> $('#email_form').show())
-	$('#send_email').click( -> send_email())
+	#$('#send_email').click( -> send_email())
 
 @select_pic = (uid, url) ->
 	$('.social.pic').removeClass('selected')
