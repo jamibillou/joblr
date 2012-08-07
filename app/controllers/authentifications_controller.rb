@@ -54,10 +54,6 @@ class AuthentificationsController < ApplicationController
       username
     end
 
-    def username_available?(username)
-      username if User.find_by_username(username).nil?
-    end
-
     def initials
       dashed_fullname.split('-').map{ |name| name.chars.first }.join
     end

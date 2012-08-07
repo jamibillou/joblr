@@ -1,5 +1,9 @@
 module AuthentificationsHelper
 
+  def username_available?(username)
+    username if User.find_by_username(username).nil?
+  end
+
   def image_url(size, uid, provider, default = image_path('default_user.jpg'))
     case provider
       when 'twitter'
