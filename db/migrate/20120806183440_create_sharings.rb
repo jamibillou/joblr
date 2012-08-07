@@ -1,11 +1,9 @@
 class CreateSharings < ActiveRecord::Migration
   def change
     create_table :sharings do |t|
-      t.integer :user_id
-      t.string :email
-      t.string :fullname
-      t.string :company
-      t.string :role
+      t.integer :author_id
+      t.integer :recipient_id
+      t.string  :text
 
       t.timestamps
     end

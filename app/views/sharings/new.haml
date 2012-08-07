@@ -72,13 +72,13 @@
     = form_for @sharing do |f|
       = f.text_area :text, class: 'lead', rows: 3, style: "width:400px;", value: "Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."
       %br/
-      = f.hidden_field :user_id, value: "#{@user.id}"
-      = f.email_field :email, class: 'input-large', placeholder: 'sent@to.me'
+      = f.hidden_field :author_id, value: "#{@user.id}"
+      %input.input-large{ type: 'text', name: 'email', placeholder: 'sent@to.me' }
       %br/
-      = f.text_field :fullname, placeholder: 'Contact fullname'
+      %input.input-large{ type: 'text', name: 'fullname', placeholder: 'Contact fullname' }
       %br/
-      = f.text_field :role, placeholder: 'Role'
+      %input.input-large{ type: 'text', name: 'role', placeholder: 'Role' }
       %br/
-      = f.text_field :company, placeholder: 'Company'
+      %input.input-large{ type: 'text', name: 'company', placeholder: 'Company' }
       %br/
       = f.submit 'Send'

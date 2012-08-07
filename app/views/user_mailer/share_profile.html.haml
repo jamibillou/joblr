@@ -13,3 +13,61 @@
                 %h3= @user.fullname
                 %p #{@user.city}#{', ' unless @user.city.blank? || @user.country.blank?}#{@user.country}
                 %p #{@user.role}#{', ' unless @user.role.blank? || @user.company.blank?}#{@user.company}
+
+        .row
+          .span1.well{style:'padding:14px'}
+            %h6 Experience
+            .gigantic
+              = pluralize @user.profile.experience, 'yr'
+          .span3.well{style:'min-height:92px; padding:14px'}
+            %h6 Highest Education
+            .lead= @user.profile.education
+
+        .row
+          .span4.well{style:'padding-bottom:0'}
+            %h6 Skills
+            .lead
+              - unless @user.profile.skill_1.blank?
+                .row
+                  .span3 #{@user.profile.skill_1}
+                  .span1= render 'users/level_bar', level: @user.profile.skill_1_level
+              - unless @user.profile.skill_2.blank?
+                .row
+                  .span3 #{@user.profile.skill_2}
+                  .span1= render 'users/level_bar', level: @user.profile.skill_2_level
+              - unless @user.profile.skill_3.blank?
+                .row
+                  .span3 #{@user.profile.skill_3}
+                  .span1= render 'users/level_bar', level: @user.profile.skill_3_level
+
+
+        .row
+          .span4.well{style:'padding-bottom:14px'}
+            %h6 Qualities
+            .lead
+              - unless @user.profile.quality_1.blank?
+                .row
+                  .span3 #{@user.profile.quality_1}
+              - unless @user.profile.quality_2.blank?
+                .row
+                  .span3 #{@user.profile.quality_2}
+              - unless @user.profile.quality_3.blank?
+                .row
+                  .span3 #{@user.profile.quality_3}
+
+      - unless @user.profile.file.blank? && @user.authentifications.empty? && @user.profile.url.blank?
+        .row
+          .span4
+            %br/
+            %h6{style:'margin-bottom:10px'} More about #{@user.fullname}
+            - unless @user.profile.file.blank?
+              %a.btn.btn-large{href: @user.profile.file_url.to_s, style:'margin-right:2px'}
+                .icon-upload
+                Download CV
+            - unless @user.authentifications.empty?
+              - @user.authentifications.each do |authentification|
+                = link_to image_tag("#{authentification.provider}.png", title:"Go to #{@user.fullname}'s #{authentification.provider.titleize} page"), authentification.url, target:'_new'
+            - unless @user.profile.url.blank?
+              %a.btn.btn-large.btn-danger{href:@user.profile.url, target:'_blank', style:'margin-left:2px'}
+                .icon-globe.icon-white
+                Site
