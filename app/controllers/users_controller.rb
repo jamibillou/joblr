@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   include UsersHelper
 
   before_filter :find_user,           unless: :has_subdomain
-  before_filter :find_subdomain_user, if: :has_subdomain
+  #before_filter :find_subdomain_user, if: :has_subdomain
 
   def show
     redirect_to edit_user_path(@user) unless signed_up?(@user)
