@@ -1,0 +1,10 @@
+en:
+  users:
+    edit:
+      title: 'Edit your profile'
+      social_profiles: 'Social Profiles'
+      upload_cv: 'Upload CVV'
+      website_blog: 'Website or Blog'
+      text_placeholder: 'Describe your goals, or your motto.'
+      save_profile: 'Save your profile'
+      create_profile: 'Create your profile'

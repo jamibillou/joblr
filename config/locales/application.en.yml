@@ -1,4 +1,11 @@
 en:
+  update: 'Update'
+  back: 'Back'
+  sure: 'Are you sure?'
+  account: 'Account'
+  account_settings: 'Account settings'
+  send: 'Send'
+
   flash:
     success:
       profile_updated: 'Your profile was updated successfully.'
@@ -13,3 +20,14 @@ en:
       subdomain:
         page_doesnt_exist: "The page you are trying to access doesn't exist."
         profile_doesnt_exist: "The profile you are trying to access doesn't exist."
+
+  card:
+    experience: 'Experience'
+    education: 'Highest Education'
+    skills: 'Skills'
+    qualities: 'Qualities'
+    more_about: 'More about %{fullname}'
+    dowload_cv: 'Download CV'
+    go_to_profile: "Go to %{fullname}'s %{provider} profile"
+    site: 'Site'
+

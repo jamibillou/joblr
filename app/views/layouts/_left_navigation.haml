@@ -3,7 +3,7 @@
 %ul.nav
   - if user_signed_in?
     %li
-      = link_to 'Profile', current_user
+      = link_to t('profile'), current_user
   - else
     %li
-      = link_to 'Home', home_url(subdomain:false)
+      = link_to t('home'), home_url(subdomain:false)

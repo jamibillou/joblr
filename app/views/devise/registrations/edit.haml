@@ -20,14 +20,14 @@
       = f.label :email
       = f.email_field :email
 
-    %div= f.submit "Update", class: 'btn'
+    %div= f.submit t('update'), class: 'btn'
     %br/
 
-  %button.btn.btn-large= link_to "Back", :back
+  %button.btn.btn-large= link_to t('back'), :back
   %br/
   %br/
   %br/
   %p
-    Unhappy?
+    = t('devise.registrations.unhappy')
     %br/
-    = link_to "Cancel your account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete
+    = link_to t('devise.registrations.cancel_account'), registration_path(resource_name), :data => { :confirm => t('sure') }, :method => :delete

@@ -1,5 +1,5 @@
 .well
-  %h2 Sign in with a Joblr account
+  %h2= t('devise.registrations.sign_in_with_joblr_account')
   %br/
 
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -20,6 +20,6 @@
         &nbsp;
         = f.check_box :remember_me, class: 'inline', style: 'margin-top:0'
 
-    %div= f.submit 'Sign in', class: 'btn'
+    %div= f.submit t('devise.registrations.sign_in'), class: 'btn'
 
   = render partial: 'devise/shared/links'
