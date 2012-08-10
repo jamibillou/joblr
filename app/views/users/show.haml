@@ -64,7 +64,7 @@
             - @user.authentifications.each do |authentification|
               = link_to image_tag("#{authentification.provider}.png", title:"Go to #{@user.fullname}'s #{authentification.provider.titleize} page"), authentification.url, target:'_new'
           - unless @user.profile.url.blank?
-            %a.btn.btn-large.btn-danger{href:@user.profile.url, target:'_blank', style:'margin-left:2px'}
+            %a.btn.btn-large.btn-danger{href: "http://#{@user.profile.url}", target:'_blank', style:'margin-left:2px'}
               .icon-globe.icon-white
               Site
 
