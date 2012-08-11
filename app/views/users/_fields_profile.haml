@@ -1,22 +1,22 @@
 .row
   .span1.well{style:'padding:14px'}
     %h6 Experience
-    =f.text_field :experience, value: @user.li_attr(:experience, @linkedin), style: 'height:30px; width:40px; margin-bottom:0; font-size:30px; font-weight:bold'
+    =f.text_field :experience, value: @user.linkedin_attribute(:experience, @linkedin), style: 'height:30px; width:40px; margin-bottom:0; font-size:30px; font-weight:bold'
     %h2 yrs
   .span3.well{style:'padding:14px'}
     %h6 Highest Education
-    =f.text_area :education, value: @user.li_attr(:education, @linkedin), rows:2, style:'margin-bottom:-5px; width:240px;', class:'lead'
+    =f.text_area :education, value: @user.linkedin_attribute(:education, @linkedin), rows:2, style:'margin-bottom:-5px; width:240px;', class:'lead'
     %br/
 
 .row
   .span4.well{style: 'padding-bottom:14px'}
     %h6 Skills
     .row
-      .span2= f.text_field :skill_1, value: @user.li_attr(:skill_1, @linkedin), style: 'font-size:15px'
+      .span2= f.text_field :skill_1, value: @user.linkedin_attribute(:skill_1, @linkedin), style: 'font-size:15px'
       .span1= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level'}
-      .span2= f.text_field :skill_2, value: @user.li_attr(:skill_2, @linkedin), style: 'font-size:15px'
+      .span2= f.text_field :skill_2, value: @user.linkedin_attribute(:skill_2, @linkedin), style: 'font-size:15px'
       .span1= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level' }
-      .span2= f.text_field :skill_3, value: @user.li_attr(:skill_3, @linkedin), style: 'font-size:15px'
+      .span2= f.text_field :skill_3, value: @user.linkedin_attribute(:skill_3, @linkedin), style: 'font-size:15px'
       .span1= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level' }
 
 .row
