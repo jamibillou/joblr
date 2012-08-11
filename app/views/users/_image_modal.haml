@@ -1,29 +1,28 @@
 #image-modal.modal.hide
   .modal-header
     %button.close{type:'button', 'data-dismiss' => 'modal'} ×
-    %h3 Select or upload a pic!
+    %h3= t('users.image_modal.title')
 
   .modal-body
     - unless @user.image.blank?
       .pull-right
-        %h5{style:'margin-bottom:5px'} Current pic:
+        %h5{style:'margin-bottom:5px'}= "#{t('users.image_modal.current_pic')}#{t('punctuations.colon')}"
         .pull-right= image_tag @user.image_url(:thumb).to_s, class:'current pic'
         %br/
         .pull-right
-          .danger.delete delete
+          .danger.delete= t('users.image_modal.delete')
           = f.check_box :remove_image
 
-    %h5{style:'margin-bottom:5px'} Social profiles:
+    %h5{style:'margin-bottom:5px'}= "#{t('users.edit.social_profiles')}#{t('punctuations.colon')}"
     - @user.authentifications.each do |auth|
-      = link_to_function image_tag(image_url('thumb', auth.uid, auth.provider), class:'social pic', id:auth.uid),
-                         "select_pic('#{auth.uid}', '#{image_url('original', auth.uid, auth.provider)}')"
+      = link_to_function image_tag(image_url('thumb', auth.uid, auth.provider), class:'social pic', id:auth.uid), "select_pic('#{auth.uid}', '#{image_url('original', auth.uid, auth.provider)}')"
     %br/
     %br/
 
-    %h5 Upload:
+    %h5= "#{t('upload')}#{t('punctuations.colon')}"
     = f.file_field :image
     = f.hidden_field :remote_image_url, id:'remote_image_url'
 
   .modal-footer
-    %a.btn{href:'#', 'data-dismiss' => 'modal'} Cancel
-    %a.btn.btn-primary{href:'#', onclick:"$('#image-modal').modal('hide');"} OK
+    %a.btn{href:'#', 'data-dismiss' => 'modal'}= t('cancel')
+    %a.btn.btn-primary{href:'#', onclick:"$('#image-modal').modal('hide');"}= t('ok')

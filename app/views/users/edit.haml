@@ -13,27 +13,27 @@
                 %a{href: '#image-modal', 'data-toggle' => 'modal'}
                   = image_tag (@user.image.blank? ? 'default_user.jpg' : @user.image_url(:thumb).to_s)
               .span3
-                = f.text_field :fullname, value: @user.li_attr(:fullname, @linkedin), placeholder: 'Full name', style: 'height:13px; font-size:15px'
+                = f.text_field :fullname, value: @user.li_attr(:fullname, @linkedin), placeholder: t('users.edit.fullname_placeholder'), style: 'height:13px; font-size:15px'
                 %br/
-                = f.text_field :city,    value: @user.li_attr(:city,    @linkedin), placeholder: 'City',                          class:'input-small'
-                = f.text_field :country, value: @user.li_attr(:country, @linkedin), placeholder: 'Country', style: 'width:105px', class:'input-small'
-                = f.text_field :role,    value: @user.li_attr(:role,    @linkedin), placeholder: 'Role',                          class:'input-small'
-                = f.text_field :company, value: @user.li_attr(:company, @linkedin), placeholder: 'Company', style: 'width:105px', class:'input-small'
+                = f.text_field :city,    value: @user.li_attr(:city,    @linkedin), placeholder: t('users.edit.city_placeholder'),                          class:'input-small'
+                = f.text_field :country, value: @user.li_attr(:country, @linkedin), placeholder: t('users.edit.country_placeholder'), style: 'width:105px', class:'input-small'
+                = f.text_field :role,    value: @user.li_attr(:role,    @linkedin), placeholder: t('users.edit.role_placeholder'),                          class:'input-small'
+                = f.text_field :company, value: @user.li_attr(:company, @linkedin), placeholder: t('users.edit.company_placeholder'), style: 'width:105px', class:'input-small'
 
           .span5.offset2
             - if signed_up?(@user)
               .pull-right
                 %h4
-                  Public profile: http://
+                  = t('users.edit.public_profile')
                   = f.text_field :subdomain, class:'input-small', style:'margin-top:5px; font-size:14px; font-weight:bold'
                   = request.host
             - else
               - unless @linkedin
                 .lead.pull-right
-                  Import your information from
+                  = t('users.edit.import_info')
                   %strong LinkedIn
                 .pull-right
-                  %a.btn.btn-large{href: omniauth_authorize_path(:user, 'linkedin')} Import from Linkedin
+                  %a.btn.btn-large{ href: omniauth_authorize_path(:user, 'linkedin') }= t('users.edit.import_linkedin')
 
         = f.fields_for(:profiles) { |profile_builder| render 'fields_profile', f: profile_builder }
 

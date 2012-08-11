@@ -5,8 +5,7 @@
         = current_user.fullname.blank? || current_user.fullname.nil? ? t('account') : current_user.fullname
         %b.caret
       %ul.dropdown-menu
-        %li= link_to "#{current_user.fullname.blank? || current_user.fullname.nil? ? t('settings') : t('account_settings')}",
-                      edit_user_registration_path
+        %li= link_to "#{current_user.fullname.blank? || current_user.fullname.nil? ? t('settings') : t('account_settings')}", edit_user_registration_path
         %li= link_to t('devise.sessions.logout'), destroy_user_session_path, method: 'delete'
   - else
     %li

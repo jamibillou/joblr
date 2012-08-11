@@ -13,11 +13,11 @@
     %h6= t('card.skills')
     .row
       .span2= f.text_field :skill_1, value: @user.li_attr(:skill_1, @linkedin), style: 'font-size:15px'
-      .span1= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level'}
+      .span1= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {prompt: t('prompt')}, { class: 'select-level'}
       .span2= f.text_field :skill_2, value: @user.li_attr(:skill_2, @linkedin), style: 'font-size:15px'
-      .span1= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level' }
+      .span1= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {prompt: t('prompt')}, { class: 'select-level' }
       .span2= f.text_field :skill_3, value: @user.li_attr(:skill_3, @linkedin), style: 'font-size:15px'
-      .span1= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level' }
+      .span1= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), {prompt: t('prompt')}, { class: 'select-level' }
 
 .row
   .span4.well{style:'padding-bottom:6px'}

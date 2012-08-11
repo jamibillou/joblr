@@ -5,6 +5,15 @@ en:
   account: 'Account'
   account_settings: 'Account settings'
   send: 'Send'
+  prompt: 'Select'
+  upload: 'Upload'
+  cancel: 'Cancel'
+  ok: 'OK'
+  edit: 'Edit'
+  share: 'Share'
+
+  punctuations:
+    colon: ':'
 
   flash:
     success:

@@ -1,7 +1,7 @@
-= "Here is the link to the #{@user.fullname}'s profile, please have a look and contact him if you feel interested!"
+= t('user_mailer.text_email.content', fullname: "#{@user.fullname}")
 
 = "http://#{@user.subdomain}.joblr.co"
 
-Regards,
+= t('user_mailer.text_email.regards')
 
-The Joblr Team
+= t('user_mailer.text_email.joblr_team')

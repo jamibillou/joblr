@@ -1,10 +1,28 @@
 en:
   users:
+    show:
+      public_profile: 'Public profile'
+      email: 'Email'
+      social_networks: 'Social networks'
+
     edit:
       title: 'Edit your profile'
       social_profiles: 'Social Profiles'
-      upload_cv: 'Upload CVV'
+      upload_cv: 'Upload CV'
       website_blog: 'Website or Blog'
       text_placeholder: 'Describe your goals, or your motto.'
       save_profile: 'Save your profile'
       create_profile: 'Create your profile'
+      fullname_placeholder: 'Contact fullname'
+      city_placeholder: 'City'
+      country_placeholder: 'Country'
+      role_placeholder: 'Role'
+      company_placeholder: 'Company'
+      public_profile: 'Public profile: http://'
+      import_info: 'Import your information from'
+      import_linkedin: 'Import from Linkedin'
+
+    image_modal:
+      title: 'Select or upload a pic!'
+      delete: 'delete'
+      current_pic: 'Current picture'
