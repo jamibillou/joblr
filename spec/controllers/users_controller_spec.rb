@@ -23,7 +23,7 @@ describe UsersController do
                       text: 'Do or do not, there is no try.' }
   end
 
-  describe "GEt 'show'" do
+  describe "GET 'show'" do
 
     context "user hasn't completed his profile" do
 

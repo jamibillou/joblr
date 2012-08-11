@@ -35,7 +35,7 @@ module User::Linkedin
 
   def experience_duration(positions)
     # fixes nil end_date on current position
-    if positions.first.start_date && positions.first.end_date.nil? && positions.first.is_current
+    if positions.first.start_date && positions.first.is_current && positions.first.end_date.nil?
       positions.first.end_date = {month: Time.now.month, year: Time.now.year}
     end
 

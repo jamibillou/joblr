@@ -2,14 +2,13 @@
   - if user_signed_in?
     %li.dropdown
       %a.dropdown-toggle{src: '#', 'data-toggle' => 'dropdown'}
-        = current_user.fullname.blank? || current_user.fullname.nil? ? 'Account' : current_user.fullname
+        = current_user.fullname.blank? || current_user.fullname.nil? ? t('account') : current_user.fullname
         %b.caret
       %ul.dropdown-menu
-        %li= link_to "#{current_user.fullname.blank? || current_user.fullname.nil? ? 'Settings' : 'Account settings'}",
-                      edit_user_registration_path
-        %li= link_to 'Logout', destroy_user_session_path, method: 'delete'
+        %li= link_to "#{current_user.fullname.blank? || current_user.fullname.nil? ? t('settings') : t('account_settings')}", edit_user_registration_path
+        %li= link_to t('devise.sessions.logout'), destroy_user_session_path, method: 'delete'
   - else
     %li
-      = link_to 'Sign in', new_user_session_url(subdomain:false)
+      = link_to t('devise.registrations.sign_in'), new_user_session_url(subdomain: false)
     %li
-      = link_to 'Sign up', new_user_registration_url(subdomain:false)
+      = link_to t('devise.registrations.sign_up'), new_user_registration_url(subdomain:false)

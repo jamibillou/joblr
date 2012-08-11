@@ -12,16 +12,16 @@
 
       .row
         .span1.well{style:'padding:14px'}
-          %h6 Experience
+          %h6= t('card.experience')
           .gigantic
             = pluralize @user.profile.experience, 'yr'
         .span3.well{style:'min-height:92px; padding:14px'}
-          %h6 Highest Education
+          %h6= t('card.education')
           .lead= @user.profile.education
 
       .row
         .span4.well{style:'padding-bottom:0'}
-          %h6 Skills
+          %h6= t('card.skills')
           .lead
             - unless @user.profile.skill_1.blank?
               .row
@@ -39,7 +39,7 @@
 
       .row
         .span4.well{style:'padding-bottom:14px'}
-          %h6 Qualities
+          %h6= t('card.qualities')
           .lead
             - unless @user.profile.quality_1.blank?
               .row
@@ -55,30 +55,30 @@
       .row
         .span4
           %br/
-          %h6{style:'margin-bottom:10px'} More about #{@user.fullname}
+          %h6{style:'margin-bottom:10px'}= t('card.more_about', fullname: "#{@user.fullname}") 
           - unless @user.profile.file.blank?
             %a.btn.btn-large{href: @user.profile.file_url.to_s, style:'margin-right:2px'}
               .icon-upload
-              Download CV
+              = t('card.download_cv')
           - unless @user.authentifications.empty?
             - @user.authentifications.each do |authentification|
-              = link_to image_tag("#{authentification.provider}.png", title:"Go to #{@user.fullname}'s #{authentification.provider.titleize} page"), authentification.url, target:'_new'
+              = link_to image_tag("#{authentification.provider}.png", title: t('card.go_to_profile', fullname: "#{@user.fullname}", provider: "#{authentification.provider.titleize}")), authentification.url, target:'_new'
           - unless @user.profile.url.blank?
             %a.btn.btn-large.btn-danger{href:@user.profile.url, target:'_blank', style:'margin-left:2px'}
               .icon-globe.icon-white
-              Site
+              = t('card.site')
 
   .span5.offset2.pull_right
     = form_for @sharing do |f|
-      = f.text_area :text, class: 'lead', rows: 3, style: "width:400px;", value: "Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."
+      = f.text_area :text, class: 'lead', rows: 3, style: "width:400px;", value: t('sharings.text_placeholder')
       %br/
       = f.hidden_field :author_id, value: "#{@user.id}"
-      %input.input-large{ type: 'text', name: 'email', placeholder: 'sent@to.me' }
+      %input.input-large{ type: 'text', name: 'email', placeholder: t('sharings.email_placeholder') }
       %br/
-      %input.input-large{ type: 'text', name: 'fullname', placeholder: 'Contact fullname' }
+      %input.input-large{ type: 'text', name: 'fullname', placeholder: t('sharings.fullname_placeholder') }
       %br/
-      %input.input-large{ type: 'text', name: 'role', placeholder: 'Role' }
+      %input.input-large{ type: 'text', name: 'role', placeholder: t('sharings.role_placeholder') }
       %br/
-      %input.input-large{ type: 'text', name: 'company', placeholder: 'Company' }
+      %input.input-large{ type: 'text', name: 'company', placeholder: t('sharings.company_placeholder') }
       %br/
-      = f.submit 'Send'
+      = f.submit t('send')

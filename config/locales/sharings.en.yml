@@ -1,0 +1,7 @@
+en:
+  sharings:
+    text_placeholder: "Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."
+    email_placeholder: 'send@to.me'
+    fullname_placeholder: 'Contact fullname'
+    role_placeholder: 'Role'
+    company_placeholder: 'Company'

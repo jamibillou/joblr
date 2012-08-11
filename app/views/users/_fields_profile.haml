@@ -1,27 +1,26 @@
 .row
   .span1.well{style:'padding:14px'}
-    %h6 Experience
-    =f.text_field :experience, value: @user.linkedin_attribute(:experience, @linkedin), style: 'height:30px; width:40px; margin-bottom:0; font-size:30px; font-weight:bold'
-    %h2 yrs
+    %h6= t('card.experience')
+    = f.text_field :experience, value: @user.linkedin_attribute(:experience, @linkedin), style: 'height:30px; width:40px; margin-bottom:0; font-size:30px; font-weight:bold'
+    %h2= t('card.yrs')
   .span3.well{style:'padding:14px'}
-    %h6 Highest Education
-    =f.text_area :education, value: @user.linkedin_attribute(:education, @linkedin), rows:2, style:'margin-bottom:-5px; width:240px;', class:'lead'
+    %h6= t('card.education')
+    = f.text_area :education, value: @user.linkedin_attribute(:education, @linkedin), rows:2, style:'margin-bottom:-5px; width:240px;', class:'lead'
     %br/
 
 .row
   .span4.well{style: 'padding-bottom:14px'}
-    %h6 Skills
+    %h6= t('card.skills')
     .row
       .span2= f.text_field :skill_1, value: @user.linkedin_attribute(:skill_1, @linkedin), style: 'font-size:15px'
-      .span1= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level'}
+      .span1= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), { prompt: t('prompt') }, { class: 'select-level'}
       .span2= f.text_field :skill_2, value: @user.linkedin_attribute(:skill_2, @linkedin), style: 'font-size:15px'
-      .span1= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level' }
+      .span1= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), { prompt: t('prompt') }, { class: 'select-level' }
       .span2= f.text_field :skill_3, value: @user.linkedin_attribute(:skill_3, @linkedin), style: 'font-size:15px'
-      .span1= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), {prompt: 'Select'}, { class: 'select-level' }
-
+      .span1= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), { prompt: t('prompt') }, { class: 'select-level' }
 .row
   .span4.well{style:'padding-bottom:6px'}
-    %h6 Qualities
+    %h6= t('card.skills')
     .lead
       .row
         .span3= f.text_field :quality_1, style:'font-size:15px'
@@ -32,12 +31,12 @@
 
 .row{style:'margin:19px 0 0 -25px'}
   .span4{style:'margin-left:0'}
-    %h6{style:'margin-bottom:10px'} Social profiles
+    %h6{style:'margin-bottom:10px'}= t('users.edit.social_profiles')
     = render 'shared/auth_links', user: @user
 
 .row{style:'margin:19px 0 0 -25px'}
   .span4{style:'margin-left:0'}
-    %h6{style:'margin-bottom:5px'} Upload your CV
+    %h6{style:'margin-bottom:5px'}= t('users.edit.upload_cv')
     - unless @user.profile.file.nil? || @user.profile.file.blank?
       .danger.delete{style:'margin-bottom:5px'} delete #{link_to @user.profile.file_identifier, @user.profile.file_url, style:'text-decoration:underline'}
       &nbsp;
@@ -47,10 +46,10 @@
 
 .row{style:'margin:19px 0 0 -25px'}
   .span4{style:'margin-left:0'}
-    %h6{style:'margin-bottom:10px'} Website or blog
+    %h6{style:'margin-bottom:10px'}= t('users.edit.website_blog')
     = f.text_field :url, placeholder:'http://', class:'input-medium'
 
 .row{style:'margin-left:0'}
   .span5.offset6{style:'margin-top:-700px'}
-    = f.text_area :text, class:'lead', placeholder:'Describe your goals, or your motto.', rows:4, style:'width:450px;'
-    .pull-right= f.submit (signed_up?(@user) ? 'Save your profile' : 'Create your profile!'), class:'btn btn-gigantic btn-primary'
+    = f.text_area :text, class:'lead', placeholder: t('users.edit.text_placeholder'), rows:4, style:'width:450px;'
+    .pull-right= f.submit (signed_up?(@user) ? t('users.edit.save_profile') : t('users.edit.create_profile')), class:'btn btn-gigantic btn-primary'
