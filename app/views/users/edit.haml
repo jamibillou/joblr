@@ -26,7 +26,7 @@
                 %h4
                   = t('users.edit.public_profile')
                   = f.text_field :subdomain, class:'input-small', style:'margin-top:5px; font-size:14px; font-weight:bold'
-                  = request.host
+                  = request.host.tr('www','')
             - else
               - unless @linkedin
                 .lead.pull-right
