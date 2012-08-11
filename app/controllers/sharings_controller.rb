@@ -4,6 +4,7 @@ class SharingsController < ApplicationController
 	def new
 		@user = current_user
 		@sharing = Sharing.new
+    redirect_to edit_user_path(@user) unless signed_up?(@user)
 	end
 
 	def create
