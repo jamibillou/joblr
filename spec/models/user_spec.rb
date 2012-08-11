@@ -9,7 +9,7 @@ describe User do
     @providers = %w(linkedin twitter facebook google)
   end
 
-  describe 'authetifications associations' do
+  describe 'authentifications associations' do
 
     it { @user.should respond_to :authentifications }
 

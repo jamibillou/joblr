@@ -27,4 +27,18 @@ FactoryGirl.define do
     text "I'm extremely brilliant, motivated and genuinely modest."
     association :user
   end
+
+  factory :sharing do
+    text 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores'
+    association :author
+    association :recipient
+  end
+
+  sequence :fullname do |n|
+    "User #{n}"
+  end
+
+  sequence :username do |n|
+    "user-#{n}"
+  end  
 end
