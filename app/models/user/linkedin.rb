@@ -1,7 +1,7 @@
 module User::Linkedin
 
-  def update_linkedin_status(status)
-    linkedin_client.update_status(status)
+  def linkedin_status(status)
+    linkedin_client.add_share(comment: status)
   end
 
   def linkedin_attribute(attribute, linkedin_profile)

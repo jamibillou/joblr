@@ -11,13 +11,14 @@ en:
   ok: 'OK'
   edit: 'Edit'
   share: 'Share'
+  share_on: 'Share on %{provider}'
 
   punctuations:
     colon: ':'
   flash:
     success:
-      profile_updated: 'Your profile was updated successfully.'
-      profile_shared:  'Your profile was shared successfully.'
+      profile_updated: 'Profile updated successfully.'
+      profile_shared:  'Profile shared successfully.'
     notice:
       provider_removed: "Your %{provider} account was removed successfully."
       provider_added:  "Your %{provider} account was added successfully."
@@ -35,7 +36,7 @@ en:
     skills: 'Skills'
     qualities: 'Qualities'
     more_about: 'More about %{fullname}'
-    dowload_cv: 'Download CV'
+    download_cv: 'Download CV'
     go_to_profile: "Go to %{fullname}'s %{provider} profile"
     site: 'Site'
 

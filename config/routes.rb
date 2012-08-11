@@ -14,6 +14,7 @@ Joblr::Application.routes.draw do
   post 'users/share_profile' => 'users#share_profile'
 
   match 'home', to: 'pages#home'
+  match 'sharings/linkedin'  => 'sharings#linkedin'
 
   # Subdomain constraints
   match '', to: 'users#show', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' && r.path == '/' }

@@ -7,8 +7,7 @@ class Sharing < ActiveRecord::Base
 
   validates :author_id,                      presence: true
   validates :recipient_id,                   presence: true
-  validates :text, length: { maximum: 140 }, presence: true	
-
+  validates :text, length: { maximum: 140 }, presence: true
 end
 
 # == Schema Information
