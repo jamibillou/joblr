@@ -54,8 +54,8 @@ en:
       unlocked: 'Your account has been unlocked successfully. Please sign in to continue.'
       send_paranoid_instructions: 'If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.'
     omniauth_callbacks:
-      success: 'Successfully authenticated from %{provider} account.'
-      failure: 'Could not authenticate you from %{provider} because "%{reason}".'
+      success: 'Successfully signed in with %{provider}.'
+      failure: 'Could not sign you in with %{provider} because "%{reason}".'
     mailer:
       confirmation_instructions:
         subject: 'Confirmation instructions'

@@ -15,35 +15,28 @@ module User::Linkedin
   end
 
   def linkedin_profile
-    hash = linkedin_hash
+    profile = linkedin_client.profile(fields: %w(first_name last_name location positions educations skills))
 
-    { fullname:   "#{hash.first_name} #{hash.last_name}",
-      city:       hash.location.name.split(',').first.gsub(' Area',''),
-      country:    hash.location.name.split(',').last,
-      role:       hash.positions.all.select(&:is_current?).first.title,
-      company:    hash.positions.all.select(&:is_current?).first.company.name,
-      experience: experience_duration(hash.positions.all),
-      education:  ("#{hash.educations.all.first.degree} #{hash.educations.all.first.field_of_study}" unless hash.educations.total == 0),
-      skill_1:    (hash.skills.all[0].skill.name unless hash.skills.nil?),
-      skill_2:    (hash.skills.all[1].skill.name unless hash.skills.nil? || hash.skills.all.size < 2),
-      skill_3:    (hash.skills.all[2].skill.name unless hash.skills.nil? || hash.skills.all.size < 3) }
-  end
-
-  def linkedin_hash
-    linkedin_client.profile(fields: %w(first_name last_name location positions educations skills))
+    { fullname:   "#{profile.first_name} #{profile.last_name}",
+      city:       profile.location.name.split(',').first.gsub(' Area',''),
+      country:    profile.location.name.split(',').last,
+      role:       profile.positions.select(&:is_current).first.title,
+      company:    profile.positions.select(&:is_current).first.company.name,
+      experience: experience_duration(profile.positions),
+      education:  ("#{profile.educations.first.degree} #{profile.educations.first.field_of_study}" unless profile.educations.blank?),
+      skill_1:    (profile.skills[0].name unless profile.skills.blank?),
+      skill_2:    (profile.skills[1].name unless profile.skills.blank? || profile.skills.size < 2),
+      skill_3:    (profile.skills[2].name unless profile.skills.blank? || profile.skills.size < 3) }
   end
 
   def experience_duration(positions)
-    # fixes nil end_date on current position
-    if positions.first.start_date && positions.first.is_current && positions.first.end_date.nil?
-      positions.first.end_date = {month: Time.now.month, year: Time.now.year}
-    end
+    start_date = { month: positions.last.start_month, year: positions.last.start_year }
+    end_date   = positions.first.is_current ? { month: Time.now.month, year: Time.now.year } : { month: positions.first.end_month, year: positions.first.end_year }
 
-    # calculates the duration between the first and the last positions
-    unless positions.first.end_date.nil? || positions.last.start_date.nil?
-      duration = positions.first.end_date.year - positions.last.start_date.year - 1
-      unless positions.first.end_date.month.nil? || positions.last.start_date.month.nil?
-        duration += (13 - positions.first.end_date.month + positions.last.start_date.month) / 12.0
+    unless end_date[:year] == 0 || start_date[:year] == 0
+      duration = end_date[:year] - start_date[:year] - 1
+      unless end_date[:month] == 0 || start_date[:month] == 0
+        duration += (13 - end_date[:month] + start_date[:month]) / 12.0
       end
       duration.round
     end
