@@ -29,7 +29,7 @@ class SharingsController < ApplicationController
 	def linkedin
 		@user = User.find(params[:sharing][:user_id])
 		unless params[:sharing][:text].blank? || params[:sharing][:text].length > 140
-      current_user.linkedin_status "#{params[:sharing][:text]} #{root_url(subdomain: @user.subdomain)}"
+      current_user.linkedin_share title: "#{@user.fullname}'s profile on Joblr", comment: params[:sharing][:text], url: root_url(subdomain: @user.subdomain), image_url: @user.image_url.to_s
       redirect_to root_path, flash: { success: t('flash.success.profile_shared') }
     else
     	redirect_to new_sharing_path(id: @user.id, provider: 'linkedin'), flash: { error: "Text format is incorrect (can't be blank or over 140 characters)" }
