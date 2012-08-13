@@ -30,7 +30,7 @@ class SharingsController < ApplicationController
 		@user = User.find params[:sharing][:user_id]
 		error = params[:sharing][:text].blank? ? t('flash.error.text.blank') : (t('flash.error.text.long') if params[:sharing][:text].length > 140)
     unless error
-      current_user.linkedin_share title: "#{@user.fullname} on Joblr", comment: params[:sharing][:text], url: root_url(subdomain: @user.subdomain), image_url: "http://#{request.domain}#{@user.image_url.to_s}"
+      current_user.linkedin_share comment: params[:sharing][:text], title: "#{@user.fullname} on Joblr", description: @user.profile.text, url: root_url(subdomain: @user.subdomain), image_url: "http://#{request.domain}#{@user.image_url.to_s}"
       redirect_to root_path, flash: { success: t('flash.success.profile_shared') }
     else
     	redirect_to new_sharing_path(id: @user.id, provider: 'linkedin'), flash: { error: error }
