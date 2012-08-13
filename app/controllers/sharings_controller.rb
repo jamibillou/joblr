@@ -9,15 +9,14 @@ class SharingsController < ApplicationController
 
 	def create
 		if params[:email].blank?
-			redirect_to new_sharing_path, flash: { error: t('flash.error.email_missing') }
+			redirect_to new_sharing_path(id: params[:sharing][:author_id]), flash: { error: t('flash.error.email_missing') }
 		else
-			unless @recipient = User.find_or_create_by_email(params[:email], username: build_username_with_email(params[:email]), fullname: params[:fullname], role: params[:role], company: params[:company])
-				redirect_to new_sharing_path, flash: { error: error_messages(@recipient) }
+			unless @recipient = User.find_or_create_by_email(params[:email], username: build_username_with_email(params[:email]), fullname: params[:fullname])
+				redirect_to new_sharing_path(id: params[:sharing][:author_id]), flash: { error: error_messages(@recipient) }
 			else
-				@sharing = Sharing.new params[:sharing]
-				@sharing.recipient = @recipient
+				@sharing = Sharing.new(params[:sharing].merge recipient_id: @recipient.id)
 				unless @sharing.save
-					redirect_to new_sharing_path, flash: { error: error_messages(@sharing) }
+					redirect_to new_sharing_path(id: params[:sharing][:author_id]), flash: { error: error_messages(@sharing) }
 				else
 					UserMailer.share_profile(@sharing).deliver
 		    	redirect_to @sharing.author, flash: { success: t('flash.success.profile_shared') }

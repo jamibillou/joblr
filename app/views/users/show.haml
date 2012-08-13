@@ -92,10 +92,3 @@
               = link_to t('users.show.email'), new_sharing_path(id: @user.id)
             %li
               = link_to 'LinkedIn', new_sharing_path(id: @user.id, provider: 'linkedin')
-
-      / FIX ME! Is this still used?
-      .pull-right#email_form{style:'margin-top:130px; display:none'}
-        Email address:
-        %input#user_id{type:'hidden', value:"#{@user.id}"}
-        %input#email{placeholder: 'sent@to.me'}
-        %input#send_email{type: 'button', value: 'Send'}
