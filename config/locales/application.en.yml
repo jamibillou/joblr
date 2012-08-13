@@ -12,7 +12,6 @@ en:
   edit: 'Edit'
   share: 'Share'
   share_on: 'Share on %{provider}'
-
   punctuations:
     colon: ':'
   flash:
@@ -29,6 +28,9 @@ en:
       subdomain:
         page_doesnt_exist: "The page you are trying to access doesn't exist."
         profile_doesnt_exist: "The profile you are trying to access doesn't exist."
+      text:
+        blank: "Text can't be blank."
+        long: "Text is too long (maximum: 140 characters)"
   card:
     experience: 'Experience'
     yrs: 'yrs'
@@ -39,4 +41,3 @@ en:
     download_cv: 'Download CV'
     go_to_profile: "Go to %{fullname}'s %{provider} profile"
     site: 'Site'
-
