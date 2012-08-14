@@ -39,7 +39,7 @@ class AuthentificationsController < ApplicationController
   private
 
     def find_create_user_auth(username)
-      user = User.find_or_create_by_username(username, username: username, fullname: auth_hash.info.name, remote_image_url: image_url('original', auth_hash.uid, auth_hash.provider, auth_hash.info.image))
+      user = User.find_or_create_by_username(username, username: username, fullname: auth_hash.info.name, remote_image_url: auth_hash.info.image)
       create_auth(user)
     end
 

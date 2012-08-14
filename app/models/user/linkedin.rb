@@ -1,7 +1,7 @@
 module User::Linkedin
 
-  def linkedin_share(options = {})
-    linkedin_client.share(options)
+  def linkedin_share!(options = {})
+    linkedin_client(auth('linkedin')).share(options)
   end
 
   def linkedin_attribute(attribute, linkedin_profile)
@@ -15,9 +15,10 @@ module User::Linkedin
   end
 
   def linkedin_profile
-    profile = linkedin_client.profile(fields: %w(first_name last_name location positions educations skills))
+    profile = linkedin_client(auth('linkedin')).profile(fields: %w(picture_url first_name last_name location positions educations skills))
 
-    { fullname:   "#{profile.first_name} #{profile.last_name}",
+    { image:      profile.picture_url,
+      fullname:   "#{profile.first_name} #{profile.last_name}",
       city:       profile.location.name.split(',').first.gsub(' Area',''),
       country:    profile.location.name.split(',').last,
       role:       profile.positions.select(&:is_current).first.title,
@@ -42,8 +43,7 @@ module User::Linkedin
     end
   end
 
-  def linkedin_client
-    auth = auth('linkedin')
+  def linkedin_client(auth)
     linkedin_client = LinkedIn::Client.new('z9dzn1xi6wkb', '6W2HDTovO9TMOp8U')
     linkedin_client.authorize_from_access(auth.utoken, auth.usecret)
     linkedin_client
