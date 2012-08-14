@@ -5,7 +5,7 @@
         - if current_user.fullname.blank? || current_user.fullname.nil?
           = t('account')
         - else
-          = image_tag current_user.image_url(:thumb), style: 'width:22px; height:22px; margin-right:5px'
+          = image_tag(current_user.image_url(:thumb), style: 'width:22px; height:22px; margin-right:5px') unless current_user.image.blank?
           = current_user.fullname
         %b.caret
       %ul.dropdown-menu
@@ -15,4 +15,4 @@
     %li
       = link_to t('devise.registrations.sign_in'), new_user_session_url(subdomain: false)
     %li
-      = link_to t('devise.registrations.sign_up'), new_user_registration_url(subdomain:false)
+      .btn= link_to t('devise.registrations.sign_up'), new_user_registration_url(subdomain:false), style: 'color:black'

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   include UsersHelper
 
+  before_filter :authenticate_user!
   before_filter :find_user,           unless: :has_subdomain
   before_filter :find_subdomain_user, if: :has_subdomain
 
