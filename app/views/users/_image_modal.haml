@@ -15,7 +15,7 @@
 
     %h5{style:'margin-bottom:5px'}= "#{t('users.edit.social_profiles')}#{t('punctuations.colon')}"
     - @user.authentifications.each do |auth|
-      = link_to_function image_tag(image_url(auth), class: 'social pic', id: auth.uid), "select_pic('#{auth.uid}', '#{image_url(auth, :original)}')"
+      = link_to_function image_tag(auth.image_url, class: 'social pic', id: auth.uid), "select_pic('#{auth.uid}', '#{auth.image_url(:original)}')"
     %br/
     %br/
 

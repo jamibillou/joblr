@@ -1,11 +1,26 @@
 class Authentification < ActiveRecord::Base
 
+  include Authentification::Linkedin
+
   attr_accessible :provider, :uemail, :uid, :uname, :user_id, :url, :utoken, :usecret
 
   belongs_to :user
 
   validates :user, :provider, :uid,  presence: true
   validates :url,  url_format: true, allow_blank: true
+
+  def image_url(size = :thumb)
+    case provider
+      when 'twitter'
+        "http://api.twitter.com/1/users/profile_image/#{uid}?size=#{size == :thumb ? 'bigger' : 'original'}"
+      when 'linkedin'
+        profile[:image]
+      when 'facebook'
+        "http://graph.facebook.com/#{uid}/picture?type=#{size == :thumb ? 'square' : 'large'}"
+      when 'google_oauth2'
+        "https://profiles.google.com/s2/photos/profile/#{uid}"
+    end
+  end
 end
 
 # == Schema Information

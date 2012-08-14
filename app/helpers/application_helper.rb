@@ -32,6 +32,6 @@ module ApplicationHelper
           @errors.push "#{attribute} #{t('activerecord.errors.messages.too_long',  count: v[:maximum])}" if v[:maximum] && value.length > v[:maximum]
       end
     end
-    "#{t('flash.error.base')} #{@errors.to_sentence}."
+    "#{t('flash.error.base')} #{@errors.to_sentence}." unless @errors.empty?
   end
 end

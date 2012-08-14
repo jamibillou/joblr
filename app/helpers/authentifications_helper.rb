@@ -25,17 +25,4 @@ module AuthentificationsHelper
         ''
     end
   end
-
-  def image_url(auth, size = :thumb)
-    case auth.provider
-      when 'twitter'
-        "http://api.twitter.com/1/users/profile_image/#{auth.uid}?size=#{size == :thumb ? 'bigger' : 'original'}"
-      when 'linkedin'
-        User.find(auth.user_id).linkedin_profile[:image]
-      when 'facebook'
-        "http://graph.facebook.com/#{auth.uid}/picture?type=#{size == :thumb ? 'square' : 'large'}"
-      when 'google_oauth2'
-        "https://profiles.google.com/s2/photos/profile/#{auth.uid}"
-    end
-  end
 end

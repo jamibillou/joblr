@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def edit
     unless signed_up?(@user)
       @user.profiles.build
-      @linkedin = @user.linkedin_profile if @user.has_auth?('linkedin')
+      @linkedin = @user.auth('linkedin').profile if @user.has_auth?('linkedin')
     end
   end
 

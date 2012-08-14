@@ -30,12 +30,12 @@ class User < ActiveRecord::Base
 
   mount_uploader :image, UserImageUploader
 
-  def update_with_password(params, *options)
-    if encrypted_password.blank?
-      update_attributes(params, *options)
-    else
-      super
-    end
+  def profile
+    profiles.first
+  end
+
+  def auth(provider)
+    authentifications.find_by_provider(provider)
   end
 
   def has_auth?(provider)
@@ -46,13 +46,15 @@ class User < ActiveRecord::Base
     end
   end
 
-  def auth(provider)
-    authentifications.find_by_provider(provider)
-  end
+  private
 
-  def profile
-    profiles.first
-  end
+    def update_with_password(params, *options)
+      if encrypted_password.blank?
+        update_attributes(params, *options)
+      else
+        super
+      end
+    end
 end
 
 # == Schema Information
