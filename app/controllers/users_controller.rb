@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   include UsersHelper
 
-  before_filter :authenticate_user!
   before_filter :find_user,           unless: :has_subdomain
   before_filter :find_subdomain_user, if: :has_subdomain
+  before_filter :correct_user!,       only: [:edit, :update]
 
   def show
     redirect_to edit_user_path(@user) unless signed_up?(@user)
@@ -18,14 +18,18 @@ class UsersController < ApplicationController
 
   def update
     unless @user.update_attributes params[:user]
-      redirect_to edit_user_path(@user), flash: { error: error_messages(@user) }
+      redirect_to edit_user_path(@user), flash: {error: error_messages(@user)}
     else
-      remove_files!
-      redirect_to @user, flash: { success: t('flash.success.profile_updated') }
+      remove_files! # FIX ME!
+      redirect_to @user, flash: {success: t('flash.success.profile_updated')}
     end
   end
 
   private
+
+    def correct_user!
+      redirect_to root_path, flash: {error: t('flash.error.cant_edit_other')} unless user_signed_in? && current_user == @user
+    end
 
     def find_user
       @user = params[:id] ? User.find(params[:id]) : current_user
@@ -34,13 +38,16 @@ class UsersController < ApplicationController
     def find_subdomain_user
       @user = User.find_by_subdomain! request.subdomain
     rescue ActiveRecord::RecordNotFound
-      redirect_to root_url(subdomain: false), flash: { error: t('flash.error.subdomain.profile_doesnt_exist') }
+      redirect_to root_url(subdomain: false), flash: {error: t('flash.error.subdomain.profile_doesnt_exist')}
     end
 
+    # FIX ME!
+    #
     # Kludge until https://github.com/jnicklas/carrierwave/pull/712 is included the gem
     # Still doesn't work though: the file is deleted as excpected but the column isn't emptied.
     # This isn't needed anyway, :remove_#{attr} check_box should do this automatically.
     # Weirdly it only works for the image, with the above bug of course...
+
     def remove_files!
       remove_file! @user.profile
       remove_image! @user
