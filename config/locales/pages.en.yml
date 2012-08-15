@@ -1,4 +1,10 @@
 en:
   pages:
+    titles:
+      overview: "Overview"
+      tour: "How it works"
+      pricing: "Pricing"
+      team: "Joblr team"
+      contact: "Contact"
     home:
       welcome: "Welcome to Joblr!"

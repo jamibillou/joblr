@@ -25,9 +25,15 @@ Tests
 Features
 --------
 
-- create 1 or more landing pages
+- home page: add smooth scrolling between anchors
 - make beta private?
 - build a dashboard summarizing actions taken by user
 - store feedback from LinkedIn API after sharing
 - user sharing_id (LinkedIn) to display comments, likes, etc.
 - patch LinkedIn API so it supports skill levels
+
+
+Bugfixes
+--------
+
+- email images not displayed in Sparrow.app

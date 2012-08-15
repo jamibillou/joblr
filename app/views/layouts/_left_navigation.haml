@@ -6,4 +6,12 @@
       = link_to t('profile'), current_user
   - else
     %li
-      = link_to t('home'), home_url(subdomain:false)
+      = link_to t('pages.titles.overview'), home_url(subdomain:false)
+    %li
+      = link_to t('pages.titles.tour'), '#tour'
+    %li
+      = link_to t('pages.titles.pricing'), '#pricing'
+    %li
+      = link_to t('pages.titles.team'), '#team'
+    %li
+      = link_to t('pages.titles.contact'), '#contact'
