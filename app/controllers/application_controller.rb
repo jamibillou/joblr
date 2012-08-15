@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
-  include ErrorsHelper
 
   protect_from_forgery
 
