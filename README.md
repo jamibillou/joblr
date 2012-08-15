@@ -1,4 +1,4 @@
-JOBLR
+joblr
 =====
 
 Joblr makes looking for work less of a hassle.
@@ -42,6 +42,7 @@ Features
 Bugfixes
 --------
 
+- protect public pages access from signed_in users
 - manage subdomains on heroku/gandi
 - patch or pull linkedin gem so it supports skill levels
 - patch or pull carrierwave gem so it deletes files properly
