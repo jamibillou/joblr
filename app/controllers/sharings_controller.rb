@@ -1,5 +1,4 @@
 class SharingsController < ApplicationController
-  include AuthentificationsHelper
 
 	def new
 		@user = User.find params[:id]

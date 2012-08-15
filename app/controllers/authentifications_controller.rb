@@ -1,5 +1,4 @@
 class AuthentificationsController < ApplicationController
-  include AuthentificationsHelper
 
   def create
     if auth = Authentification.find_by_provider_and_uid(auth_hash.provider, auth_hash.uid)
