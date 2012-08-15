@@ -10,7 +10,7 @@ class SharingsController < ApplicationController
 		if params[:email].blank?
 			redirect_to new_sharing_path(id: params[:sharing][:author_id]), flash: { error: t('flash.error.email_missing') }
 		else
-			unless @recipient = User.find_or_create_by_email(params[:email], username: build_username_with_email(params[:email]), fullname: params[:fullname])
+			unless @recipient = User.find_or_create_by_email(params[:email], username: params_username, fullname: params[:fullname])
 				redirect_to new_sharing_path(id: params[:sharing][:author_id]), flash: { error: error_messages(@recipient) }
 			else
 				@sharing = Sharing.new(params[:sharing].merge recipient_id: @recipient.id)
@@ -36,10 +36,18 @@ class SharingsController < ApplicationController
 
 	private
 
-		def build_username_with_email(email)
-			unless username = username_available?(email.split('@').first)
-				username = "user-#{User.last.id + 1}"
+		def params_username
+			unless username = username_available?(params[:email].split('@').first)
+				if params[:fullname]
+					unless username = username_available?(params[:fullname].parameterize)
+	          username = username_available?(params_initials)
+					end
+				end
 			end
-			username
+			username ||= "user-#{User.last.id + 1}"
 		end
+
+		def params_initials
+      params[:fullname].parameterize.split('-').map{ |name| name.chars.first }.join
+    end
 end

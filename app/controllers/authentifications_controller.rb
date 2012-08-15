@@ -49,12 +49,10 @@ class AuthentificationsController < ApplicationController
     def auth_username
       unless username = username_available?(auth_hash.info.nickname)
         unless username = username_available?(auth_hash.info.name.parameterize)
-          unless username = username_available?(auth_initials)
-            username = "user-#{user.id}"
-          end
+          username = username_available?(auth_initials)
         end
       end
-      username
+      username ||= "user-#{user.id}"
     end
 
     def auth_initials
