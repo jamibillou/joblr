@@ -6,12 +6,12 @@
       = link_to t('profile'), current_user
   - else
     %li
-      = link_to t('pages.titles.overview'), '#', id: 'overview'
+      = link_to t('pages.titles.overview'), "#{root_url(subdomain: false)}home#overview", id: 'overview-trigger'
     %li
-      = link_to t('pages.titles.tour'), '#', id: 'tour'
+      = link_to t('pages.titles.tour'), "#{root_url(subdomain: false)}home#tour", id: 'tour-trigger'
     %li
-      = link_to t('pages.titles.pricing'), '#', id: 'pricing'
+      = link_to t('pages.titles.pricing'), "#{root_url(subdomain: false)}home#pricing", id: 'pricing-trigger'
     %li
-      = link_to t('pages.titles.team'), '#', id: 'team'
+      = link_to t('pages.titles.team'), "#{root_url(subdomain: false)}home#team", id: 'team-trigger'
     %li
-      = link_to t('pages.titles.contact'), '#', id: 'contact'
+      = link_to t('pages.titles.contact'), "#{root_url(subdomain: false)}home#contact", id: 'contact-trigger'
