@@ -13,7 +13,6 @@ Clean up
 
 - remove CONSUMER_KEY and CONSUMER_SECRET from visible code (now in config/initializers/devise.rb)
   c.f: [Heroku documentation](https://devcenter.heroku.com/articles/config-vars) and [Railscast](http://railscasts.com/episodes/235-devise-and-omniauth-revised)
-- make a build_username method in User model
 
 Tests
 -----
