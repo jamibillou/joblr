@@ -1,4 +1,4 @@
-joblr
+JOBLR
 =====
 
 Joblr makes looking for work less of a hassle.
@@ -7,7 +7,7 @@ Joblr profiles are quick to create, share and reply to.
 Everybody's time is precious, Joblr helps you make the best of it!
 
 
-to do
+TO DO
 =====
 
 Architecture
@@ -37,13 +37,14 @@ Features
 - make beta private
 - build dashboard summarizing actions taken by user
 - use feedback from LinkedIn API to display comments, likes, etc.
-- patch LinkedIn API so it supports skill levels
 
 
 Bugfixes
 --------
 
 - manage subdomains on heroku/gandi
+- patch or pull linkedin gem so it supports skill levels
+- patch or pull carrierwave gem so it deletes files properly
 - handle blank emails better in account settings
 
   *user_observer.rb*
