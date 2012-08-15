@@ -2,21 +2,24 @@
   .span6.offset3
     .row
       .well{style: 'text-align:center'}
-        %h1 Be first to try Joblr!
+        %h1=t '.title'
         %br/
         %br/
         %br/
-        .lead
-          We are currently seeking feedback on our ideas.
-          %br/
-          This is a beta<span class='danger'>*</span> and you need an <u>invitation</u> to access it.
-        %p.danger{style: 'margin-bottom:0'} *early version with a few bugs and not finalized details here and there
+        .lead=t '.subtitle_html'
+        %p.danger{style: 'margin-bottom:0'}=t '.asterisk'
         %br/
         %br/
         %br/
         .input-append
-          = text_field_tag :code, '', placeholder: 'Invitation code'
-          .btn.btn-primary{ :type => 'button', :style => 'margin-left:-5px' } Sign up!
+          = text_field_tag :code, '', placeholder: t('.placeholder')
+          .btn.btn-primary{style: 'margin-left:-5px'}=t '.button'
+
         %br/
-        = link_to "Haven't got your code yet? Get one!", get_invited_path
+        = link_to t('.link'), get_invited_path
         %br/
+
+      - if Rails.env.development?
+        %p{style: 'color:lightgrey'}
+          =t '.development'
+          = link_to t('devise.registrations.sign_up').downcase, new_user_registration_url(subdomain:false), style: 'color:grey; text-decoration:underline'
