@@ -4,6 +4,7 @@ en:
   sure: 'Are you sure?'
   account: 'Account'
   account_settings: 'Account settings'
+  settings: 'Settings'
   send: 'Send'
   prompt: 'Select'
   upload: 'Upload'
@@ -28,6 +29,7 @@ en:
       subdomain:
         page_doesnt_exist: "The page you are trying to access doesn't exist."
         profile_doesnt_exist: "The profile you are trying to access doesn't exist."
+      cant_edit_other: "You can't edit another user's profile."
       text:
         blank: "Text can't be blank."
         long: "Text is too long (maximum: 140 characters)"

@@ -23,19 +23,23 @@ class User < ActiveRecord::Base
   validates :username, length:     { maximum: 100 }
   validates :username, uniqueness: { case_sensitive: true },           presence: true
   validates :email,    uniqueness: { case_sensitive: true },        allow_blank: false,  if: :email_changed?
-  validates :email,    format:     { with:   Devise.email_regexp },                      if: :email_changed?
+  validates :email,    format:     { with:   Devise.email_regexp }, allow_blank: false,  if: :email_changed?
   validates :password, length:     { within: Devise.password_length }, confirmation: true, presence: true, if: ->(u) { u.commit == 'Sign up' }
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
 
   mount_uploader :image, UserImageUploader
 
-  def update_with_password(params, *options)
-    if encrypted_password.blank?
-      update_attributes(params, *options)
-    else
-      super
-    end
+  def profile
+    profiles.first
+  end
+
+  def initials
+    fullname.parametize.split('-').map{ |name| name.chars.first }.join
+  end
+
+  def auth(provider)
+    authentifications.find_by_provider(provider)
   end
 
   def has_auth?(provider)
@@ -46,13 +50,15 @@ class User < ActiveRecord::Base
     end
   end
 
-  def auth(provider)
-    authentifications.find_by_provider(provider)
-  end
+  private
 
-  def profile
-    profiles.first
-  end
+    def update_with_password(params, *options)
+      if encrypted_password.blank?
+        update_attributes(params, *options)
+      else
+        super
+      end
+    end
 end
 
 # == Schema Information

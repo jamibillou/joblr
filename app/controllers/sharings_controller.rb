@@ -1,5 +1,4 @@
 class SharingsController < ApplicationController
-  include AuthentificationsHelper
 
 	def new
 		@user = User.find params[:id]
@@ -8,8 +7,8 @@ class SharingsController < ApplicationController
 	end
 
 	def create
-		## to be changed
-		if @recipient = find_or_create_recipient
+		unless errors = validation_errors(:email, params[:email],presence:true, uniqueness:true, email_format: { with: Devise.email_regexp })
+			@recipient = User.find_or_create_by_email(params[:email], fullname: params[:fullname], username: sharing_username)
 			@sharing = Sharing.new(params[:sharing].merge recipient_id: @recipient.id)
 			unless @sharing.save
 				redirect_to new_sharing_path(id: params[:sharing][:author_id]), flash: { error: error_messages(@sharing) }
@@ -17,38 +16,23 @@ class SharingsController < ApplicationController
 				UserMailer.share_profile(@sharing).deliver
 		  	redirect_to @sharing.author, flash: { success: t('flash.success.profile_shared') }
 			end
-		end
+		else
+			redirect_to new_sharing_path(id: params[:sharing][:author_id]), flash: { error: errors }
+		end	
 	end
 
 	def linkedin
 		@user = User.find params[:sharing][:user_id]
-		error = params[:sharing][:text].blank? ? t('flash.error.text.blank') : (t('flash.error.text.long') if params[:sharing][:text].length > 140)
-    unless error
-      current_user.linkedin_share title: "#{@user.fullname} on Joblr", comment: params[:sharing][:text], url: root_url(subdomain: @user.subdomain), image_url: "http://#{request.domain}#{@user.image_url.to_s}"
+    unless errors = validation_errors(:text, params[:sharing][:text], presence: true, length: { maximum: 140 })
+      current_user.auth('linkedin').share comment: params[:sharing][:text], title: "#{@user.fullname} on Joblr", description: @user.profile.text, url: root_url(subdomain: @user.subdomain), image_url: "http://#{request.domain}#{@user.image_url.to_s}"
       redirect_to root_path, flash: { success: t('flash.success.profile_shared') }
     else
-    	redirect_to new_sharing_path(id: @user.id, provider: 'linkedin'), flash: { error: error }
+    	redirect_to new_sharing_path(id: @user.id, provider: 'linkedin'), flash: { error: errors }
 		end
 	end
 
 	private
-
-		def build_username_with_email(email)
-			unless username = username_available?(email.split('@').first)
-				username = "user-#{User.last.id + 1}"
-			end
-			username
-		end
-
-		def find_or_create_recipient
-			## to be deleted
-			unless recipient = User.find_by_email(params[:email], conditions: "email != ''")
-				recipient = User.new(email: params[:email], username: build_username_with_email(params[:email]))
-				recipient.email_will_change!
-				unless recipient.save
-					redirect_to new_sharing_path(id: params[:sharing][:author_id]), flash: { error: error_messages(recipient) } and return nil
-				end
-			end
-			recipient		
-		end
+	  def sharing_username
+	  	build_username(params[:email].split('@').first, params[:fullname])
+	  end
 end

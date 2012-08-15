@@ -37,7 +37,7 @@ en:
       sign_in_with_joblr_account: 'Sign in with a Joblr account'
       create_joblr_account: 'Create a Joblr account'
       sign_in: 'Sign in'
-      sign_up: 'Sign up'
+      sign_up: 'Sign up!'
       or_signin_with: ' or signin with'
       forgot_password: 'Forgot your password? '
       signed_up: 'Welcome! You have signed up successfully.'
