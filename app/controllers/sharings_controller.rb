@@ -7,21 +7,18 @@ class SharingsController < ApplicationController
 	end
 
 	def create
-		if params[:email].blank?
-			redirect_to new_sharing_path(id: params[:sharing][:author_id]), flash: { error: t('flash.error.email_missing') }
-		else
-			unless @recipient = User.find_or_create_by_email(params[:email], username: sharing_username, fullname: params[:fullname])
-				redirect_to new_sharing_path(id: params[:sharing][:author_id]), flash: { error: error_messages(@recipient) }
+		unless errors = validation_errors(:email, params[:email],presence:true, uniqueness:true, email_format: { with: Devise.email_regexp })
+			@recipient = User.find_or_create_by_email(params[:email], fullname: params[:fullname], username: sharing_username)
+			@sharing = Sharing.new(params[:sharing].merge recipient_id: @recipient.id)
+			unless @sharing.save
+				redirect_to new_sharing_path(id: params[:sharing][:author_id]), flash: { error: error_messages(@sharing) }
 			else
-				@sharing = Sharing.new(params[:sharing].merge recipient_id: @recipient.id)
-				unless @sharing.save
-					redirect_to new_sharing_path(id: params[:sharing][:author_id]), flash: { error: error_messages(@sharing) }
-				else
-					UserMailer.share_profile(@sharing).deliver
-		    	redirect_to @sharing.author, flash: { success: t('flash.success.profile_shared') }
-				end
+				UserMailer.share_profile(@sharing).deliver
+		  	redirect_to @sharing.author, flash: { success: t('flash.success.profile_shared') }
 			end
-		end
+		else
+			redirect_to new_sharing_path(id: params[:sharing][:author_id]), flash: { error: errors }
+		end	
 	end
 
 	def linkedin
@@ -35,7 +32,6 @@ class SharingsController < ApplicationController
 	end
 
 	private
-
 	  def sharing_username
 	  	build_username(params[:email].split('@').first, params[:fullname])
 	  end

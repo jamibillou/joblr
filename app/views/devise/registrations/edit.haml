@@ -7,10 +7,13 @@
   %br/
 
   = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-    %div
-      #{f.label :username, class: 'inline'} *
-      %br/
-      = f.text_field :username
+    - unless signed_up_with_social_network current_user 
+      %div
+        #{f.label :username, class: 'inline'} *
+        %br/
+        = f.text_field :username
+    - else
+      = f.hidden_field :username
 
     %div
       = f.label :fullname

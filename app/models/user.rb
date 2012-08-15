@@ -21,9 +21,9 @@ class User < ActiveRecord::Base
   validates :role,     length:     { maximum: 100 }
   validates :company,  length:     { maximum: 50 }
   validates :username, length:     { maximum: 100 }
-  validates :username, uniqueness: { case_sensitive: true },           presence: true
-  validates :email,    uniqueness: { case_sensitive: true },           allow_blank: false, if: :email_changed?
-  validates :email,    format:     { with:   Devise.email_regexp },                        if: :email_changed?
+  validates :username, uniqueness: { case_sensitive: true },        presence: true
+  validates :email,    uniqueness: { case_sensitive: true },        allow_blank: true, if: :email_changed?
+  validates :email,    format:     { with:   Devise.email_regexp }, allow_blank: true, if: :email_changed?
   validates :password, length:     { within: Devise.password_length }, confirmation: true, presence: true, if: ->(u) { u.commit == 'Sign up' }
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable

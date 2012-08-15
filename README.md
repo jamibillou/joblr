@@ -42,3 +42,18 @@ Features
 
 Bugfixes
 --------
+
+- manage subdomains on heroku/gandi
+- handle blank emails better in account settings
+
+  *user_observer.rb*
+
+  ```ruby
+  before_update :ignore_blank_email
+
+  private
+
+    def ignore_blank_email
+      params[:email] = nil if params[:email].blank
+    end
+  ```

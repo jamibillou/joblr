@@ -23,6 +23,10 @@ module ApplicationHelper
     username ||= "user-#{User.last.id + 1}"
   end
 
+  def signed_up_with_social_network(user)
+    user.email.nil? && user.encrypted_password.nil?
+  end
+
   ### errors helpers
 
   def error_messages(object, options = {})
@@ -47,6 +51,8 @@ module ApplicationHelper
         when :length
           @errors.push "#{attribute} #{t('activerecord.errors.messages.too_short', count: v[:minimum])}" if v[:minimum] && value.length < v[:minimum]
           @errors.push "#{attribute} #{t('activerecord.errors.messages.too_long',  count: v[:maximum])}" if v[:maximum] && value.length > v[:maximum]
+        when :email_format
+          @errors.push "#{attribute} #{t('activerecord.errors.messages.invalid')}" unless value =~ v[:with]
       end
     end
     "#{t('flash.error.base')} #{@errors.to_sentence}." unless @errors.empty?
