@@ -23,6 +23,10 @@ module ApplicationHelper
     username ||= "user-#{User.last.id + 1}"
   end
 
+  def signed_up_with_social_network(user)
+    user.email.nil? && user.encrypted_password.nil?
+  end
+
   ### errors helpers
 
   def error_messages(object, options = {})
