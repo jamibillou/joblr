@@ -37,3 +37,5 @@ Bugfixes
 --------
 
 - email images not displayed in Sparrow.app
+- fix error when empty email is submitted in accounts settings
+- hide username field in account settings (for users authentificating through social account)
