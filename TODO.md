@@ -25,7 +25,6 @@ Tests
 Features
 --------
 
-- home page: add smooth scrolling between anchors
 - make beta private?
 - build a dashboard summarizing actions taken by user
 - store feedback from LinkedIn API after sharing
