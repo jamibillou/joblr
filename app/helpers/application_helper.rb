@@ -12,6 +12,17 @@ module ApplicationHelper
     username if User.find_by_username(username).nil?
   end
 
+  def build_username(desired_username, fullname = nil)
+    unless username = username_available?(desired_username)
+      if fullname
+        unless username = username_available?(fullname.parameterize)
+          username = username_available?(fullname.parameterize.split('-').map{ |name| name.chars.first }.join)
+        end
+      end
+    end
+    username ||= "user-#{User.last.id + 1}"
+  end
+
   ### errors helpers
 
   def error_messages(object, options = {})

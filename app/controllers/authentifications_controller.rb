@@ -7,7 +7,7 @@ class AuthentificationsController < ApplicationController
       if user = current_user
       	create_auth(user)
       else
-        user = find_create_user_auth(auth_username)
+        user = find_create_user_auth(build_username(auth_hash.info.nickname, auth_hash.info.name))
       end
     end
     if user_signed_in?
@@ -44,19 +44,6 @@ class AuthentificationsController < ApplicationController
     def create_auth(user)
       user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, utoken: auth_hash.credentials.token, usecret: auth_secret)
       user
-    end
-
-    def auth_username
-      unless username = username_available?(auth_hash.info.nickname)
-        unless username = username_available?(auth_hash.info.name.parameterize)
-          username = username_available?(auth_initials)
-        end
-      end
-      username ||= "user-#{user.id}"
-    end
-
-    def auth_initials
-      auth_hash.info.name.parameterize.split('-').map{ |name| name.chars.first }.join
     end
 
     def auth_url
