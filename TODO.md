@@ -13,11 +13,7 @@ Clean up
 
 - remove CONSUMER_KEY and CONSUMER_SECRET from visible code (now in config/initializers/devise.rb)
   c.f: [Heroku documentation](https://devcenter.heroku.com/articles/config-vars) and [Railscast](http://railscasts.com/episodes/235-devise-and-omniauth-revised)
-- choose between public_url method in AuthentificationHelper and url column in Authentification
-- move build_username methods (SharingsController & UsersHelper) to User model
-- refactor build_username method so it's better
-- move other methods from UsersHelper to model User too (only username_available? seems to make sense)
-- kill empty helpers
+- make a build_username method in User model
 
 Tests
 -----
@@ -35,3 +31,4 @@ Features
 - build a dashboard summarizing actions taken by user
 - store feedback from LinkedIn API after sharing
 - user sharing_id (LinkedIn) to display comments, likes, etc.
+- patch LinkedIn API so it supports skill levels
