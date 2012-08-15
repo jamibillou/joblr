@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
     profiles.first
   end
 
+  def initials
+    fullname.parametize.split('-').map{ |name| name.chars.first }.join
+  end
+
   def auth(provider)
     authentifications.find_by_provider(provider)
   end
