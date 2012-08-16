@@ -35,7 +35,7 @@ Tests
 Features
 --------
 
-*- make beta private*
+- *make beta private*
 - build dashboard summarising actions taken by user
 - use feedback from LinkedIn API to display comments, likes, etc.
 
@@ -44,7 +44,6 @@ Bugfixes
 --------
 
 - customise error pages
-- fix other flash messages
 - change logos and catchphrases in twitter/fb/li dev center
 - handle subdomains on Heroku
 - patch or pull LinkedIn gem so it supports skill levels

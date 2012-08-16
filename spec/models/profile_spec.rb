@@ -23,7 +23,7 @@ describe Profile do
     @user.profiles.build(@attr).should be_valid
   end
 
-  describe 'users associations' do
+  describe 'user association' do
 
     it { @profile.should respond_to :user }
 

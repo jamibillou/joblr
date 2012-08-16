@@ -8,7 +8,7 @@ describe Authentification do
     @attr = { provider: 'twitter', uid: 'john_d', uname: 'John Doe' }
   end
 
-  describe 'users associations' do
+  describe 'user association' do
 
     it { @auth.should respond_to :user }
 
@@ -42,17 +42,17 @@ end
 #
 # Table name: authentifications
 #
-#  id          :integer         not null, primary key
-#  user_id     :integer
-#  provider    :string(255)
-#  uid         :string(255)
-#  uname       :string(255)
-#  uemail      :string(255)
-#  created_at  :datetime        not null
-#  updated_at  :datetime        not null
-#  url         :string(255)
-#  oauth_token :string(255)
-#  utoken      :string(255)
-#  usecret     :string(255)
+#  id         :integer         not null, primary key
+#  user_id    :integer
+#  provider   :string(255)
+#  uid        :string(255)
+#  uname      :string(255)
+#  uemail     :string(255)
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#  url        :string(255)
+#  upic       :string(255)
+#  utoken     :string(255)
+#  usecret    :string(255)
 #
 

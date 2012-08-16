@@ -34,11 +34,15 @@ FactoryGirl.define do
     association :recipient
   end
 
+  factory :beta_invite do
+    association :user
+  end
+
   sequence :fullname do |n|
     "User #{n}"
   end
 
   sequence :username do |n|
     "user-#{n}"
-  end  
+  end
 end

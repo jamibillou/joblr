@@ -6,6 +6,7 @@ describe User do
     @user      = FactoryGirl.create :user
     @auth      = FactoryGirl.create :authentification, user: @user, provider:'twitter'
     @profile   = FactoryGirl.create :profile, user: @user
+    @invite    = FactoryGirl.create :beta_invite, user: @user
     @providers = %w(linkedin twitter facebook google)
   end
 
@@ -26,6 +27,16 @@ describe User do
     it 'should destroy associated profiles' do
       @user.destroy
       Profile.find_by_id(@profile.id).should be_nil
+    end
+  end
+
+  describe 'beta invite association' do
+
+    it { @user.should respond_to :beta_invite }
+
+    it 'should destroy associated beta_invite' do
+      @user.destroy
+      BetaInvite.find_by_id(@invite.id).should be_nil
     end
   end
 

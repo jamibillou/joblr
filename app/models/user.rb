@@ -6,12 +6,13 @@ class User < ActiveRecord::Base
                   :remember_me, :image, :username, :profiles_attributes, :remove_image, :commit, :remote_image_url
   attr_accessor   :commit
 
-  has_many :authentifications, dependent: :destroy
-  has_many :profiles,          dependent: :destroy
-  has_many :authored_sharings,                                class_name: 'Sharing', foreign_key: 'author_id'
-  has_many :received_sharings,                                class_name: 'Sharing', foreign_key: 'recipient_id'
-  has_many :sharings_authors,    through: :received_sharings, class_name: 'User',    source:      'author'
-  has_many :sharings_recipients, through: :authored_sharings, class_name: 'User',    source:      'recipient'
+  has_many :authentifications,   dependent: :destroy
+  has_many :profiles,            dependent: :destroy
+  has_many :authored_sharings,                                  class_name: 'Sharing', foreign_key: 'author_id'
+  has_many :received_sharings,                                  class_name: 'Sharing', foreign_key: 'recipient_id'
+  has_many :sharings_authors,    through:   :received_sharings, class_name: 'User',    source:      'author'
+  has_many :sharings_recipients, through:   :authored_sharings, class_name: 'User',    source:      'recipient'
+  has_one  :beta_invite,         dependent: :destroy
 
   accepts_nested_attributes_for :profiles, allow_destroy: true
 
