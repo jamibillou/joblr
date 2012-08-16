@@ -1,10 +1,13 @@
 class BetaInvite < ActiveRecord::Base
 
-  attr_accessible :code, :user_id
+  attr_accessible :email, :code, :user_id
 
   belongs_to :user
 
-  validates :code, presence: true
+  validates :code,  presence: true
+  validates :email, presence: true, allow_blank: false
+  validates :email, uniqueness: { case_sensitive: true }
+  validates :email, format:     { with: Devise.email_regexp }
 
   before_validation :make_code
 
@@ -24,5 +27,6 @@ end
 #  code       :string(255)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
+#  email      :string(255)
 #
 

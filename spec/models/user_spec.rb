@@ -54,9 +54,19 @@ describe User do
     it { should ensure_length_of(:username).is_at_most 100 }
     it { should validate_uniqueness_of(:username) }
     it { should validate_presence_of(:username) }
-    it { should validate_uniqueness_of(:email) if @user.email_changed? }
-    it { should validate_format_of(:email).not_with @email[:invalid] if @user.email_changed? }
-    it { should validate_format_of(:email).with @email[:valid] if @user.email_changed? }
+    it { @user.update_attributes(email: @email[:valid][0]) ; should validate_uniqueness_of(:email) }
+
+    lambda do
+      @email[:invalid].each do |invalid_email|
+        it { should validate_format_of(:email).not_with invalid_email }
+      end
+    end
+
+    lambda do
+      @email[:valid].each do |valid_email|
+        it { should validate_format_of(:email).with valid_email }
+      end
+    end
   end
 
   describe 'image' do

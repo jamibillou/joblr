@@ -18,4 +18,8 @@ class ApplicationController < ActionController::Base
         redirect_to root_url(subdomain: request.subdomain), flash: { error: t('flash.error.subdomain.page_doesnt_exist') }
       end
     end
+
+    def not_signed_in
+      redirect_to root_path, flash: {error: t('flash.error.public_only')} if user_signed_in?
+    end
 end

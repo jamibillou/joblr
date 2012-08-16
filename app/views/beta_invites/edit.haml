@@ -12,8 +12,12 @@
         %br/
         %br/
         .input-append
-          = text_field_tag :email, '', placeholder: t('.placeholder')
+          = text_field_tag :code, '', placeholder: t('.placeholder')
           .btn.btn-primary{style: 'margin-left:-5px'}=t '.button'
+
+        %br/
+        = link_to t('.link'), new_beta_invite_path
+        %br/
 
       - if Rails.env.development?
         %p{style: 'color:lightgrey'}

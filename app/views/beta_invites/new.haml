@@ -11,13 +11,10 @@
         %br/
         %br/
         %br/
-        .input-append
-          = text_field_tag :code, '', placeholder: t('.placeholder')
-          .btn.btn-primary{style: 'margin-left:-5px'}=t '.button'
-
-        %br/
-        = link_to t('.link'), get_invited_path
-        %br/
+        = form_for @invite do |f|
+          .input-append
+            =f.text_field :email, placeholder: t('.placeholder')
+            =f.submit t('.button'), class: 'btn btn-primary', style: 'margin-left:-5px'
 
       - if Rails.env.development?
         %p{style: 'color:lightgrey'}

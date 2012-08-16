@@ -35,6 +35,7 @@ FactoryGirl.define do
   end
 
   factory :beta_invite do
+    email 'jdoe@example.com'
     association :user
   end
 
