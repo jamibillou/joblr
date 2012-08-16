@@ -25,3 +25,4 @@ pickle-email-*.html
 /config/database.yml
 /public/uploads/*
 .powrc
+.netrc
