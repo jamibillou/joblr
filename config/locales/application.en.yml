@@ -13,6 +13,7 @@ en:
   edit: 'Edit'
   share: 'Share'
   share_on: 'Share on %{provider}'
+  already_member: "already a member?"
   punctuations:
     colon: ':'
   flash:

@@ -1,0 +1,25 @@
+.row
+  .span6.offset3
+    .row
+      .well{style: 'text-align:center'}
+        %h1=t '.title'
+        %br/
+        %br/
+        %br/
+        .lead=t '.subtitle_html'
+        %p.danger{style: 'margin-bottom:0'}=t '.asterisk'
+        %br/
+        %br/
+        %br/
+        .input-append
+          = text_field_tag :code, '', placeholder: t('.placeholder')
+          .btn.btn-primary{style: 'margin-left:-5px'}=t '.button'
+
+        %br/
+        = link_to t('.link'), get_invited_path
+        %br/
+
+      - if Rails.env.development?
+        %p{style: 'color:lightgrey'}
+          =t '.development'
+          = link_to t('devise.registrations.sign_up').downcase, new_user_registration_url(subdomain:false), style: 'color:grey; text-decoration:underline'

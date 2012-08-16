@@ -13,12 +13,14 @@ Joblr::Application.routes.draw do
   get 'users/auth/failure'   => 'authentifications#failure'
   post 'users/share_profile' => 'users#share_profile'
 
-  match 'home', to: 'pages#home'
-  match 'sharings/linkedin'  => 'sharings#linkedin'
+  match 'home',              to: 'pages#home'
+  match 'beta',              to: 'pages#beta'
+  match 'get_invited',       to: 'pages#get_invited'
+  match 'sharings/linkedin', to: 'sharings#linkedin'
 
   # Subdomain constraints
   match '', to: 'users#show', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' && r.path == '/' }
 
   root to: 'users#show', constraints: SignedIn.new(true)
-  root to: 'pages#home', constraints: SignedIn.new(false)
+  root to: 'pages#beta', constraints: SignedIn.new(false)
 end
