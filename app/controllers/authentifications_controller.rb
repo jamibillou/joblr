@@ -11,7 +11,11 @@ class AuthentificationsController < ApplicationController
       end
     end
     if user_signed_in?
-      redirect_to edit_user_path(user), flash: { notice: t('flash.notice.provider_added', provider: auth_hash.provider.titleize) }
+      if user == current_user
+        redirect_to edit_user_path(user), flash: { notice: t('flash.notice.provider_added', provider: auth_hash.provider.titleize) }
+      else
+        redirect_to edit_user_path(current_user), flash: { error: t('flash.error.other_user_provider', provider: auth_hash.provider.titleize) }
+      end
     else
       sign_in user
       redirect_to user, flash: { notice: t('devise.omniauth_callbacks.success', provider: auth_hash.provider.titleize) }

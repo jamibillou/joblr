@@ -26,11 +26,11 @@ en:
     error:
       base: 'Error:'
       auth_problem: "There was a problem when signin you in with %{provider}."
-      email_missing: "Please type an email!"
+      cant_edit_other: "You can't edit another user's profile."
+      other_user_provider: "This %{provider} account is already used by another Joblr user."
       subdomain:
         page_doesnt_exist: "The page you are trying to access doesn't exist."
         profile_doesnt_exist: "The profile you are trying to access doesn't exist."
-      cant_edit_other: "You can't edit another user's profile."
       text:
         blank: "Text can't be blank."
         long: "Text is too long (maximum: 140 characters)"

@@ -44,10 +44,8 @@ Bugfixes
 
 - field_with_errors class breaks inline *
 - customise error pages
-- fix "you cannot edit another user's profile" message when trying to add a social profile that already belongs to another user
 - fix other flash messages
 - change logos and catchphrases in twitter/fb/li dev center
-- add a flash to failed authentifications
 - handle subdomains on Heroku
 - patch or pull LinkedIn gem so it supports skill levels
 - patch or pull carrierwave gem so it deletes files properly
