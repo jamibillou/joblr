@@ -14,6 +14,6 @@ class PagesController < ApplicationController
   private
 
     def not_signed_in
-      redirect_to root_path, flash: {error: t('flash.error.public_only')}
+      redirect_to root_path, flash: {error: t('flash.error.public_only')} if user_signed_in?
     end
 end
