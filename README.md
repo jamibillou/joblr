@@ -43,6 +43,8 @@ Bugfixes
 --------
 
 - customize error pages
+- fix "you cannot edit another user's profile" message when trying to add a social profile that already belongs to another user
+- fix other flash messages
 - change logos and catchphrases in social media dev centers
 - hide social profiles (title) from image modal if there is none
 - protect public pages access from signed_in users
