@@ -35,33 +35,21 @@ Features
 --------
 
 - make beta private
-- build dashboard summarizing actions taken by user
+- build dashboard summarising actions taken by user
 - use feedback from LinkedIn API to display comments, likes, etc.
 
 
 Bugfixes
 --------
 
-- customize error pages
+- field_with_errors class breaks inline *
+- customise error pages
 - fix "you cannot edit another user's profile" message when trying to add a social profile that already belongs to another user
 - fix other flash messages
-- change logos and catchphrases in social media dev centers
+- change logos and catchphrases in twitter/fb/li dev center
 - hide social profiles (title) from image modal if there is none
 - protect public pages access from signed_in users
-- add a flash to failed linkedin import (authentification)
+- add a flash to failed LinkedIn import (authentification)
 - manage subdomains on heroku/gandi
-- patch or pull linkedin gem so it supports skill levels
+- patch or pull LinkedIn gem so it supports skill levels
 - patch or pull carrierwave gem so it deletes files properly
-- handle blank emails better in account settings
-
-  *user_observer.rb*
-
-  ```ruby
-  before_update :ignore_blank_email
-
-  private
-
-    def ignore_blank_email
-      params[:email] = nil if params[:email].blank
-    end
-  ```

@@ -1,14 +1,15 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  before_filter :ignore_blank_email, only: :update
+
   def edit
     @user = current_user
   end
 
   def update
     @user = User.find(current_user.id)
-    ignore_blank_email
     if @user.update_attributes(params[:user])
-      sign_in @user, :bypass => true
+      sign_in @user, bypass: true
       redirect_to @user, flash: {success: t('flash.success.profile_updated')}
     else
       render :edit
