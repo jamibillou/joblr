@@ -42,6 +42,7 @@ Features
 Bugfixes
 --------
 
+- hide social profiles (title) from image modal if there is none
 - protect public pages access from signed_in users
 - add a flash to failed linkedin import (authentification)
 - manage subdomains on heroku/gandi
