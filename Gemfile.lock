@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:dmatheron/linkedin.git
+  remote: https://github.com/dmatheron/linkedin.git
   revision: 8232ff754d1853ad7ad6583d3cf78175793a6c7b
   branch: 2-0-stable
   specs:
