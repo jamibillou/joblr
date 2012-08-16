@@ -42,7 +42,11 @@ Features
 Bugfixes
 --------
 
+- customize error pages
+- change logos and catchphrases in social media dev centers
+- hide social profiles (title) from image modal if there is none
 - protect public pages access from signed_in users
+- add a flash to failed linkedin import (authentification)
 - manage subdomains on heroku/gandi
 - patch or pull linkedin gem so it supports skill levels
 - patch or pull carrierwave gem so it deletes files properly
