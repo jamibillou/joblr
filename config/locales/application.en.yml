@@ -34,6 +34,7 @@ en:
       text:
         blank: "Text can't be blank."
         long: "Text is too long (maximum: 140 characters)"
+      public_only: "You cannot access this page, you need to sign out first."
   card:
     experience: 'Experience'
     yrs: 'yrs'
