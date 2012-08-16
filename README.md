@@ -47,7 +47,6 @@ Bugfixes
 - fix "you cannot edit another user's profile" message when trying to add a social profile that already belongs to another user
 - fix other flash messages
 - change logos and catchphrases in twitter/fb/li dev center
-- *fix JS image selector in image_modal*
 - *protect public pages access from signed_in users*
 - add a flash to failed authentifications
 - handle subdomains on Heroku
