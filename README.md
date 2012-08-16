@@ -35,7 +35,7 @@ Tests
 Features
 --------
 
-- make beta private
+*- make beta private*
 - build dashboard summarising actions taken by user
 - use feedback from LinkedIn API to display comments, likes, etc.
 
@@ -43,7 +43,6 @@ Features
 Bugfixes
 --------
 
-- field_with_errors class breaks inline *
 - customise error pages
 - fix other flash messages
 - change logos and catchphrases in twitter/fb/li dev center
