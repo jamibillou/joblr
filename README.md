@@ -42,6 +42,7 @@ Features
 Bugfixes
 --------
 
+- customize error pages
 - change logos and catchphrases in social media dev centers
 - hide social profiles (title) from image modal if there is none
 - protect public pages access from signed_in users
