@@ -12,7 +12,7 @@ module ApplicationHelper
     username if User.find_by_username(username).nil?
   end
 
-  def build_username(desired_username, fullname = nil)
+  def make_username(desired_username, fullname = nil)
     unless username = username_available?(desired_username)
       if fullname
         unless username = username_available?(fullname.parameterize)

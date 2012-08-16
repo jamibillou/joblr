@@ -7,7 +7,7 @@ class AuthentificationsController < ApplicationController
       if user_signed_in?
       	create_auth(current_user)
       else
-        find_or_create_user_and_auth(build_username(auth_hash.info.nickname, auth_hash.info.name))
+        find_or_create_user_and_auth(make_username(auth_hash.info.nickname, auth_hash.info.name))
       end
     end
     redirect_authentified_user(user)

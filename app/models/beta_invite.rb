@@ -6,11 +6,11 @@ class BetaInvite < ActiveRecord::Base
 
   validates :code, presence: true
 
-  before_validation :build_code
+  before_validation :make_code
 
   private
 
-    def build_code
+    def make_code
       self.code = Digest::SHA2.hexdigest(Time.now.utc.to_s)
     end
 end

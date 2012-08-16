@@ -18,7 +18,7 @@ class SharingsController < ApplicationController
 			end
 		else
 			redirect_to new_sharing_path(id: params[:sharing][:author_id]), flash: { error: errors }
-		end	
+		end
 	end
 
 	def linkedin
@@ -33,6 +33,6 @@ class SharingsController < ApplicationController
 
 	private
 	  def sharing_username
-	  	build_username(params[:email].split('@').first, params[:fullname])
+	  	make_username(params[:email].split('@').first, params[:fullname])
 	  end
 end
