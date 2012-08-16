@@ -18,16 +18,16 @@ en:
     colon: ':'
   flash:
     success:
+      welcome: 'Welcome to Joblr!'
+      provider_added:  "Your %{provider} account was added successfully."
+      provider_removed: "Your %{provider} account was removed successfully."
       profile_updated: 'Profile updated successfully.'
       profile_shared:  'Profile shared successfully.'
-    notice:
-      provider_removed: "Your %{provider} account was removed successfully."
-      provider_added:  "Your %{provider} account was added successfully."
     error:
       base: 'Error:'
       auth_problem: "There was a problem when signin you in with %{provider}."
-      cant_edit_other: "You can't edit another user's profile."
-      other_user_provider: "This %{provider} account is already used by another Joblr user."
+      other_users_profile: "You can't edit another user's profile."
+      other_users_provider: "This %{provider} account is already used by another Joblr user."
       subdomain:
         page_doesnt_exist: "The page you are trying to access doesn't exist."
         profile_doesnt_exist: "The profile you are trying to access doesn't exist."

@@ -27,7 +27,13 @@ class UsersController < ApplicationController
   private
 
     def correct_user!
-      redirect_to root_path, flash: {error: t('flash.error.cant_edit_other')} unless user_signed_in? && current_user == @user
+      unless user_signed_in? && current_user == @user
+        if signed_up?(current_user)
+          redirect_to root_path, flash: {error: t('flash.error.other_users_profile')}
+        else
+          redirect_to edit_user_path(current_user), flash: {error: t('flash.error.other_users_profile')}
+        end
+      end
     end
 
     def find_user
