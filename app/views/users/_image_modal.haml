@@ -1,7 +1,11 @@
 #image-modal.modal.hide
   .modal-header
     %button.close{type:'button', 'data-dismiss' => 'modal'} ×
-    %h3= t('users.image_modal.title')
+    %h3
+      - if @user.authentifications.empty?
+        =t 'users.image_modal.upload'
+      - else
+        =t 'users.image_modal.select__or_upload'
 
   .modal-body
     - unless @user.image.blank?
@@ -13,11 +17,12 @@
           .danger.delete= t('users.image_modal.delete')
           = f.check_box :remove_image
 
-    %h5{style:'margin-bottom:5px'}= "#{t('users.edit.social_profiles')}#{t('punctuations.colon')}"
-    - @user.authentifications.each do |auth|
-      =# link_to_function image_tag(auth.image_url, class: 'social pic', id: auth.uid), "select_pic('#{auth.uid}', '#{auth.image_url(:original)}')"
-    %br/
-    %br/
+    - unless @user.authentifications.empty?
+      %h5{style:'margin-bottom:5px'}= "#{t('users.edit.social_profiles')}#{t('punctuations.colon')}"
+      - @user.authentifications.each do |auth|
+        =# link_to_function image_tag(auth.image_url, class: 'social pic', id: auth.uid), "select_pic('#{auth.uid}', '#{auth.image_url(:original)}')"
+      %br/
+      %br/
 
     %h5= "#{t('upload')}#{t('punctuations.colon')}"
     = f.file_field :image
