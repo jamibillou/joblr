@@ -12,5 +12,7 @@
         %li= link_to "#{current_user.fullname.blank? || current_user.fullname.nil? ? t('settings') : t('account_settings')}", edit_user_registration_path
         %li= link_to t('devise.sessions.logout'), destroy_user_session_path, method: 'delete'
   - else
+    %li{style: 'margin-top:10px; font-size:11px'}
+      =t 'already_member'
     %li
       = link_to t('devise.registrations.sign_in'), new_user_session_url(subdomain: false)
