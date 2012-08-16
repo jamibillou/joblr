@@ -117,6 +117,7 @@ GEM
       json (>= 1.2.4)
     launchy (2.1.0)
       addressable (~> 2.2.6)
+    libv8 (3.3.10.4)
     libwebsocket (0.1.4)
       addressable
     mail (2.4.4)
@@ -230,6 +231,8 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     term-ansicolor (1.0.7)
+    therubyracer (0.10.2)
+      libv8 (~> 3.3.10)
     thor (0.15.4)
     tilt (1.3.3)
     treetop (1.4.10)
@@ -279,4 +282,5 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   shoulda-matchers
   spork
+  therubyracer
   uglifier (>= 1.0.3)

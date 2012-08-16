@@ -19,6 +19,7 @@ gem 'heroku'
 gem 'haml'
 gem 'bootstrap-sass'
 gem 'i18n-js'
+gem 'therubyracer' # rails apps need javascript runtime for certain features of sass, coffeescript and uglifier to work.
 
 # Gems used only for assets and not required in production environments by default.
 group :assets do
