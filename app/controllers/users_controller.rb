@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_filter :correct_user!,       only: [:edit, :update]
 
   def show
-    redirect_to edit_user_path(@user) unless signed_up?(@user)
+    redirect_to(edit_user_path(@user), flash: {error: t('flash.errors.signup_first')}) unless signed_up?(@user)
   end
 
   def edit
@@ -27,13 +27,7 @@ class UsersController < ApplicationController
   private
 
     def correct_user!
-      unless user_signed_in? && current_user == @user
-        if signed_up?(current_user)
-          redirect_to root_path, flash: {error: t('flash.error.other_users_profile')}
-        else
-          redirect_to edit_user_path(current_user), flash: {error: t('flash.error.other_users_profile')}
-        end
-      end
+      redirect_to root_path, flash: {error: t('flash.error.other_users_profile')} unless user_signed_in? && current_user == @user
     end
 
     def find_user

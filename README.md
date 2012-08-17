@@ -20,7 +20,6 @@ Architecture
 Clean up
 --------
 
-- root to: edit_user_path for signed_in && !signed_up? users and clean up correct_user and redirect_authentified_user methods
 - remove CONSUMER_KEY and CONSUMER_SECRET from config/initializers/devise.rb
   c.f: [Heroku documentation](https://devcenter.heroku.com/articles/config-vars) and [Railscasts](http://railscasts.com/episodes/235-devise-and-omniauth-revised)
 

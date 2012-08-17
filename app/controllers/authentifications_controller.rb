@@ -50,11 +50,7 @@ class AuthentificationsController < ApplicationController
         end
       else
         sign_in user
-        if signed_up?(user)
-          redirect_to user, flash: { success: t('devise.omniauth_callbacks.success', provider: auth_hash.provider.titleize) }
-        else
-          redirect_to edit_user_path(user), flash: { success: t('flash.success.welcome') }
-        end
+        redirect_to root_path, flash: { success: t('devise.omniauth_callbacks.success', provider: auth_hash.provider.titleize) }
       end
     end
 
