@@ -1,13 +1,13 @@
 #slider {
-  height: 15000px;
-  margin: 0;
+  height:15000px;
+  margin:0;
   padding:0;
-  transition: top 1s;
-  -moz-transition: top 1s;
-  -webkit-transition: top 1s;
-  -o-transition: top 1s;
+  transition: top1s;
+  -moz-transition:top 1s;
+  -webkit-transition:top 1s;
+  -o-transition:top 1s;
   position:relative;
-  .well {
+  section {
     min-height:600px;
     margin-bottom:2000px;
   }

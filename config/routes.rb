@@ -20,7 +20,7 @@ Joblr::Application.routes.draw do
   # Subdomain constraints
   match '', to: 'users#show', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' && r.path == '/' }
 
-  root to: 'beta_invites#edit', constraints: SignedIn.new(false)
-  root to: 'users#edit',        constraints: SignedIn.new(true) && SignedUp.new(false)
-  root to: 'users#show',        constraints: SignedIn.new(true) && SignedUp.new(true)
+  root to: 'pages#home', constraints: SignedIn.new(false)
+  root to: 'users#edit', constraints: SignedIn.new(true) && SignedUp.new(false)
+  root to: 'users#show', constraints: SignedIn.new(true) && SignedUp.new(true)
 end

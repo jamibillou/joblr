@@ -1,16 +1,44 @@
 %article#slider
+  .span3.offset9{style: 'margin-left:890px; position:fixed'}
+    .lead{style: 'text-align:right'} Get early access and unique care from the guys at joblr.co. Click #{link_to 'here', new_beta_invite_path} to join out beta!
 
-  %section.well
-    %h1=t 'pages.titles.overview'
+  %section.overview
+    .row
+      .span8
 
-  %section.well
-    %h1=t 'pages.titles.tour'
+        .hero-unit
+          %h1 What is joblr?
+          %br/
+          .lead An online profile that obsoletes resumes & cover letters.
 
-  %section.well
-    %h1=t 'pages.titles.pricing'
+  %section.tour
+    .row
+      .span8
+        .hero-unit
+          %h1 Simple
+          %br/
+          .lead Sign up. Import your info. Share. Get feedback!
 
-  %section.well
-    %h1=t 'pages.titles.team'
+  %section.pricing
+    .row
+      .span8
+        .hero-unit
+          %h1 $99 if you find a job, nothing otherwise
+          %br/
+          .lead No cure no pay.
 
-  %section.well
-    %h1=t 'pages.titles.contact'
+  %section.team
+    .row
+      .span8
+        .hero-unit
+          %h1 Complementary elements
+          %br/
+          .lead Business, Desgin, Code
+
+  %section{style: 'margin-bottom:0'}.contact
+    .row
+      .span8
+        .hero-unit
+          %h1 Get in touch
+          %br/
+          .lead User feedback is precious, please let us know what you think!
