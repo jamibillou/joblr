@@ -23,7 +23,7 @@ en:
       provider_removed: "Your %{provider} account was removed successfully."
       profile_updated: 'Profile updated successfully.'
       profile_shared:  'Profile shared successfully.'
-      invite_sent: 'An invitation was sent to %{email}, paste it here and sign up!'
+      invite_sent: 'An invitation code was sent to %{email}, paste it here and sign up!'
     error:
       base: 'Error:'
       something_wrong: "Oops, something went wrong."
