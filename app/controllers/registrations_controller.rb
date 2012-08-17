@@ -1,5 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  before_filter :check_beta_invite,  only: :new
   before_filter :ignore_blank_email, only: :update
 
   def edit
@@ -17,6 +18,10 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   private
+
+    def check_beta_invite
+      redirect_to new_beta_invite_path, flash: {error: t('flash.error.beta_invite.required')} unless session[:beta_invite]
+    end
 
     def ignore_blank_email
       params[:user][:email] = nil if params[:user][:email].blank?
