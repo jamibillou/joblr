@@ -14,10 +14,12 @@ describe BetaInvitesController do
 
     it { get :new ; be_success }
 
-    it 'should redirect signed_in users' do
-      sign_in @user
-      get :new
-      response.should redirect_to(root_path)
+    context 'for signed_in users' do
+      it 'should redirect to root_path' do
+        sign_in @user
+        get :new
+        response.should redirect_to(root_path)
+      end
     end
 
     it 'should have an email field' do
@@ -44,7 +46,7 @@ describe BetaInvitesController do
     #   post :create, beta_invite: @attr
     # end
 
-    it "should redirect to the 'edit'" do
+    it "should redirect to 'edit'" do
       post :create, beta_invite: @attr
       response.should redirect_to edit_beta_invite_path(BetaInvite.last)
     end
@@ -54,61 +56,64 @@ describe BetaInvitesController do
 
     it { get :edit, id: @invite ; be_success }
 
-    it 'should redirect signed_in users' do
-      sign_in @user
-      get :edit, id: @invite
-      response.should redirect_to(root_path)
+    context 'for signed_in users' do
+      it 'should redirect to root_path' do
+        sign_in @user
+        get :edit, id: @invite
+        response.should redirect_to(root_path)
+      end
+    end
+
+    context 'with incorrect invitation id' do
+      it 'should redirect to root_path' do
+        get :edit, id: 100
+        response.should redirect_to(new_beta_invite_path)
+      end
     end
 
     it 'should have a code field' do
       get :edit, id: @invite
-      response.body.should have_selector 'input#code'
+      response.body.should have_selector 'input#beta_invite_code'
     end
   end
 
   describe "PUT 'update'" do
 
-    context 'nil or incorrect invitation id' do
-
-      it 'should redirect to root_path' do
-        put :update
-        response.should redirect_to(root_path)
-      end
-
-      it 'should redirect to root_path' do
-        put :update, id: 100
-        response.should redirect_to(root_path)
-      end
-    end
-
-    context 'empty or incorrect invitation code' do
-
-      it "should redirect to 'edit'" do
-        put :update, id: @invite, code: ''
-        response.should redirect_to edit_beta_invite_path(@invite)
-      end
-
-      it "should redirect to 'edit'" do
-        put :update, id: @invite, code: 'pouet'
-        response.should redirect_to edit_beta_invite_path(@invite)
-      end
-    end
-
-    context 'invitation code has already been used' do
-
+    context 'with incorrect invitation id' do
       it "should redirect to 'new'" do
-        @invite.update_attributes user_id: @user
-        put :update, id: @invite, code: @invite.code
+        put :update, id: 100, beta_invite: {code: @invite.code}
         response.should redirect_to(new_beta_invite_path)
       end
     end
 
-    context 'invitation code has not been used' do
-
-      it 'should redirect to sign_up' do
-        put :update, id: @invite, code: @invite.code
-        response.should redirect_to(new_user_registration_path(invite: @invite.id))
+    context 'with empty or incorrect invitation code' do
+      it "should redirect to 'edit'" do
+        put :update, id: @invite, beta_invite: {code: ''}
+        response.should redirect_to edit_beta_invite_path(@invite)
       end
+
+      it "should redirect to 'edit'" do
+        put :update, id: @invite, beta_invite: {code: 'pouet'}
+        response.should redirect_to edit_beta_invite_path(@invite)
+      end
+    end
+
+    context 'when invitation code has already been used' do
+      it "should redirect to 'new'" do
+        @invite.user = @user ; @invite.save!
+        put :update, id: @invite, beta_invite: {code: @invite.code}
+        response.should redirect_to(new_beta_invite_path)
+      end
+    end
+
+    it 'should store the invitation into a session' do
+      put :update, id: @invite, beta_invite: {code: @invite.code}
+      session[:invite].should == @invite
+    end
+
+    it 'should redirect to sign_up' do
+      put :update, id: @invite, beta_invite: {code: @invite.code}
+      response.should redirect_to(new_user_registration_path(invite: @invite.id))
     end
   end
 end

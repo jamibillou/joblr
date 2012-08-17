@@ -11,9 +11,10 @@
         %br/
         %br/
         %br/
-        .input-append
-          = text_field_tag :code, '', placeholder: t('.placeholder')
-          .btn.btn-primary{style: 'margin-left:-5px'}=t '.button'
+        = form_for @invite do |f|
+          .input-append
+            = f.text_field :code, placeholder: t('.placeholder')
+            = f.submit t('.button'), class: 'btn btn-primary', style: 'margin-left:-5px'
 
         %br/
         = link_to t('.link'), new_beta_invite_path

@@ -11,6 +11,10 @@ class BetaInvite < ActiveRecord::Base
 
   before_validation :make_code
 
+  def active?
+    user.nil?
+  end
+
   private
 
     def make_code

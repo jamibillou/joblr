@@ -13,8 +13,8 @@
         %br/
         = form_for @invite do |f|
           .input-append
-            =f.text_field :email, placeholder: t('.placeholder')
-            =f.submit t('.button'), class: 'btn btn-primary', style: 'margin-left:-5px'
+            = f.text_field :email, placeholder: t('.placeholder')
+            = f.submit t('.button'), class: 'btn btn-primary', style: 'margin-left:-5px'
 
       - if Rails.env.development?
         %p{style: 'color:lightgrey'}
