@@ -5,8 +5,8 @@ describe BetaInvitesController do
   render_views
 
   before :each do
-    @user   = FactoryGirl.create :user
-    @invite = FactoryGirl.create :beta_invite, user: nil
+    @user        = FactoryGirl.create :user
+    @beta_invite = FactoryGirl.create :beta_invite, user: nil
     @attr   = {email: 'user@example.com'}
   end
 
@@ -54,12 +54,12 @@ describe BetaInvitesController do
 
   describe "GET 'edit'" do
 
-    it { get :edit, id: @invite ; be_success }
+    it { get :edit, id: @beta_invite ; be_success }
 
     context 'for signed_in users' do
       it 'should redirect to root_path' do
         sign_in @user
-        get :edit, id: @invite
+        get :edit, id: @beta_invite
         response.should redirect_to(root_path)
       end
     end
@@ -72,7 +72,7 @@ describe BetaInvitesController do
     end
 
     it 'should have a code field' do
-      get :edit, id: @invite
+      get :edit, id: @beta_invite
       response.body.should have_selector 'input#beta_invite_code'
     end
   end
@@ -81,39 +81,39 @@ describe BetaInvitesController do
 
     context 'with incorrect invitation id' do
       it "should redirect to 'new'" do
-        put :update, id: 100, beta_invite: {code: @invite.code}
+        put :update, id: 100, beta_invite: {code: @beta_invite.code}
         response.should redirect_to(new_beta_invite_path)
       end
     end
 
     context 'with empty or incorrect invitation code' do
       it "should redirect to 'edit'" do
-        put :update, id: @invite, beta_invite: {code: ''}
-        response.should redirect_to edit_beta_invite_path(@invite)
+        put :update, id: @beta_invite, beta_invite: {code: ''}
+        response.should redirect_to edit_beta_invite_path(@beta_invite)
       end
 
       it "should redirect to 'edit'" do
-        put :update, id: @invite, beta_invite: {code: 'pouet'}
-        response.should redirect_to edit_beta_invite_path(@invite)
+        put :update, id: @beta_invite, beta_invite: {code: 'pouet'}
+        response.should redirect_to edit_beta_invite_path(@beta_invite)
       end
     end
 
     context 'when invitation code has already been used' do
       it "should redirect to 'new'" do
-        @invite.user = @user ; @invite.save!
-        put :update, id: @invite, beta_invite: {code: @invite.code}
+        @beta_invite.user = @user ; @beta_invite.save!
+        put :update, id: @beta_invite, beta_invite: {code: @beta_invite.code}
         response.should redirect_to(new_beta_invite_path)
       end
     end
 
     it 'should store the invitation into a session' do
-      put :update, id: @invite, beta_invite: {code: @invite.code}
-      session[:invite].should == @invite
+      put :update, id: @beta_invite, beta_invite: {code: @beta_invite.code}
+      session[:beta_invite].should == @beta_invite
     end
 
     it 'should redirect to sign_up' do
-      put :update, id: @invite, beta_invite: {code: @invite.code}
-      response.should redirect_to(new_user_registration_path(invite: @invite.id))
+      put :update, id: @beta_invite, beta_invite: {code: @beta_invite.code}
+      response.should redirect_to(new_user_registration_path)
     end
   end
 end

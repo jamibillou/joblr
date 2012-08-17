@@ -3,21 +3,21 @@ require 'spec_helper'
 describe BetaInvite do
 
   before :each do
-    @user   = FactoryGirl.create :user
-    @invite = FactoryGirl.create :beta_invite, user: @user
+    @user        = FactoryGirl.create :user
+    @beta_invite = FactoryGirl.create :beta_invite, user: @user
   end
 
   describe 'user association' do
 
-    it { @invite.should respond_to :user }
+    it { @beta_invite.should respond_to :user }
 
     it 'should have the right associated user' do
-      @invite.user_id.should == @user.id
-      @invite.user.should == @user
+      @beta_invite.user_id.should == @user.id
+      @beta_invite.user.should == @user
     end
 
     it 'should not destroy the associated user' do
-      @invite.destroy
+      @beta_invite.destroy
       User.find_by_id(@user.id).should_not be_nil
     end
   end
@@ -42,7 +42,7 @@ describe BetaInvite do
       end
     end
 
-    it { @invite.update_attributes(email: @email[:valid][0]) ; should validate_uniqueness_of(:email) }
+    it { @beta_invite.update_attributes(email: @email[:valid][0]) ; should validate_uniqueness_of(:email) }
   end
 end
 

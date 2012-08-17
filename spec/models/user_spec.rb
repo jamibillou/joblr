@@ -3,11 +3,11 @@ require 'spec_helper'
 describe User do
 
   before :each do
-    @user      = FactoryGirl.create :user
-    @auth      = FactoryGirl.create :authentification, user: @user, provider:'twitter'
-    @profile   = FactoryGirl.create :profile, user: @user
-    @invite    = FactoryGirl.create :beta_invite, user: @user
-    @providers = %w(linkedin twitter facebook google)
+    @user        = FactoryGirl.create :user
+    @auth        = FactoryGirl.create :authentification, user: @user, provider:'twitter'
+    @profile     = FactoryGirl.create :profile, user: @user
+    @beta_invite = FactoryGirl.create :beta_invite, user: @user
+    @providers   = %w(linkedin twitter facebook google)
   end
 
   describe 'authentifications associations' do
@@ -36,7 +36,7 @@ describe User do
 
     it 'should destroy associated beta_invite' do
       @user.destroy
-      BetaInvite.find_by_id(@invite.id).should be_nil
+      BetaInvite.find_by_id(@beta_invite.id).should be_nil
     end
   end
 
