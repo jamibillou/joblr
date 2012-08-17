@@ -33,6 +33,7 @@ en:
       other_users_profile: "You can't edit another user's profile."
       other_users_provider: "This %{provider} account is already used by another Joblr user."
       signup_first: "You have to fill in your profile before accessing this page."
+      public_only: "You cannot access this page, you need to sign out first."
       beta_invite:
         inexistant: "This invitation doesn't exist."
         code_inexistant: "This invitation code doesn't exist. Do you mind double ckecking?"
@@ -44,7 +45,8 @@ en:
       text:
         blank: "Text can't be blank."
         long: "Text is too long (maximum: 140 characters)"
-      public_only: "You cannot access this page, you need to sign out first."
+      email:
+        something_wrong: "Something went wrong with sending the email."
   card:
     experience: 'Experience'
     yrs: 'yrs'

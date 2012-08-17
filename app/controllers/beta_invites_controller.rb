@@ -11,8 +11,8 @@ class BetaInvitesController < ApplicationController
     unless @beta_invite.save
       redirect_to new_beta_invite_path, flash: { error: error_messages(@beta_invite) }
     else
-      BetaInviteMailer.send_beta_invite(@beta_invite).deliver
-      redirect_to edit_beta_invite_path(@beta_invite), flash: { success: t('flash.success.beta_invite.sent', email: @beta_invite.email) }
+      # BetaInviteMailer.send_beta_invite(@beta_invite).deliver
+      redirect_to edit_beta_invite_path(@beta_invite) #, flash: { success: t('flash.success.beta_invite.sent', email: @beta_invite.email) }
     end
   end
 
