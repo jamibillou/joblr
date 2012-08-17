@@ -1,8 +1,10 @@
-= t('beta_invite_mailer.send_invite.content', id: @invite.id)
-%br/
-= t('beta_invite_mailer.send_invite.invitation_code', code: @invite.code)
-%br/
-%br/
-= t('beta_invite_mailer.send_invite.cheers')
-%br/
-= t('beta_invite_mailer.send_invite.joblr_team')
+Congrats, here's your invitation to joblr beta!
+
+
+Thanks for your interest in joblr, we're glad to have you on board. Paste this invitation code at http://joblr.co/beta_invites/#{@invite.id}/edit and sign up!
+
+Invitation code: #{@invite.code}
+
+
+Cheers
+The joblr team

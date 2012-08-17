@@ -1,13 +1,17 @@
 %head
   %link{ rel:'stylesheet', type:'text/css', href:'/assets/application.css'}
 %body
-  %h1=t 'beta_invite_mailer.send_invite.title'
-
-  =t 'beta_invite_mailer.send_invite.content', id: @invite.id
-  %br/
-  =t 'beta_invite_mailer.send_invite.invitation_code', code: @invite.code
+  %h2 Congrats, here's your invitation to joblr beta!
   %br/
   %br/
-  =t 'beta_invite_mailer.send_invite.cheers'
+  %p
+    Thanks for your interest in joblr, we're glad to have you on board. Paste this invitation code at
+    = link_to "http://joblr.co/beta_invites/#{@invite.id}{id}/edit", "http://joblr.co/beta_invites/#{@invite.id}/edit"
+    and sign up!
+  %p Invitation code: #{@invite.code}
   %br/
-  =t 'beta_invite_mailer.send_invite.joblr_team'
+  %br/
+  %p
+    Cheers
+    %br/
+    The joblr team

@@ -3,6 +3,6 @@ class BetaInviteMailer < ActionMailer::Base
 
   def send_invite(invite)
     @invite = invite
-    mail to: invite.email, subject: t('beta_invite_mailer.send_invite.subject')
+    mail to: invite.email, subject: "Invitation to joblr beta"
   end
 end
