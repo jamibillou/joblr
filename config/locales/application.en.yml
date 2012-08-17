@@ -24,6 +24,7 @@ en:
       profile_updated: 'Profile updated successfully.'
       profile_shared:  'Profile shared successfully.'
       invite_sent: 'An invitation code was sent to %{email}, paste it here and sign up!'
+      invite_ok: "Great, you can now sign up to our beta!"
     error:
       base: 'Error:'
       something_wrong: "Oops, something went wrong."
@@ -31,6 +32,8 @@ en:
       other_users_profile: "You can't edit another user's profile."
       other_users_provider: "This %{provider} account is already used by another Joblr user."
       signup_first: "You have to fill in your profile before accessing this page."
+      invite_inexistant: "This invitation code doesn't exist. Do you mind double ckecking?"
+      invite_used: "This invitation code has already been used. Ask another one!"
       subdomain:
         page_doesnt_exist: "The page you are trying to access doesn't exist."
         profile_doesnt_exist: "The profile you are trying to access doesn't exist."

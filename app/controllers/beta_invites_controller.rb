@@ -17,8 +17,20 @@ class BetaInvitesController < ApplicationController
   end
 
   def edit
+    @invite = BetaInvite.find params[:id]
   end
 
   def update
+    if @invite = BetaInvite.find_by_id_and_code(params[:id], params[:code])
+      unless @invite.user
+        redirect_to new_user_registration_path(invite: @invite.id), flash: {success: t('flash.success.invite_ok')}
+      else
+        redirect_to new_invite_path, flash: {error: t('flash.error.invite_used')}
+      end
+    elsif @invite = BetaInvite.find(params[:id])
+      redirect_to edit_beta_invite_path(@invite), flash: {error: t('flash.error.invite_inexistant')}
+    else
+      redirect_to root_path, flash: {error: t('flash.error.something_wrong')}
+    end
   end
 end
