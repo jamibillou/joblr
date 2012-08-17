@@ -30,6 +30,8 @@ class SharingsController < ApplicationController
       if current_user.auth('linkedin')
         current_user.auth('linkedin').share comment: params[:sharing][:text], title: t('sharings.social_title', fullname: @user.fullname), description: @user.profile.text, url: root_url(subdomain: @user.subdomain), image_url: "http://#{request.domain}#{@user.image_url.to_s}"
         redirect_to root_path, flash: { success: t('flash.success.profile_shared') }
+      else
+        redirect_to edit_user_path(current_user), flash {error: "We're having a problem here. Just add your LinkedIn account and it will be solved!"}
       end
     else
     	redirect_to new_sharing_path(id: @user.id, provider: 'linkedin'), flash: { error: errors }

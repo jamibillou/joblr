@@ -5,7 +5,7 @@
       - if @user.authentifications.empty?
         =t 'users.image_modal.upload'
       - else
-        =t 'users.image_modal.select__or_upload'
+        =t 'users.image_modal.select_or_upload'
 
   .modal-body
     - unless @user.image.blank?
@@ -21,7 +21,7 @@
       %h5{style:'margin-bottom:5px'}= "#{t('users.edit.social_profiles')}#{t('punctuations.colon')}"
       - @user.authentifications.each do |auth|
         /// FIX ME! kludge for heroku bug
-        = link_to image_tag(auth.image_url, class: 'social pic', id: auth.uid), '#', # onclick: "select_pic('#{auth.uid}', '#{auth.image_url(:original)}')"
+        ///= link_to image_tag(auth.image_url, class: 'social pic', id: auth.uid), '#', onclick: "select_pic('#{auth.uid}', '#{auth.image_url(:original)}')"
       %br/
       %br/
 
