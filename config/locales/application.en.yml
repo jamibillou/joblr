@@ -26,9 +26,11 @@ en:
       invite_sent: 'An invitation was sent to %{email}, paste it here and sign up!'
     error:
       base: 'Error:'
+      something_wrong: "Oops, something went wrong."
       auth_problem: "There was a problem when signin you in with %{provider}."
       other_users_profile: "You can't edit another user's profile."
       other_users_provider: "This %{provider} account is already used by another Joblr user."
+      signup_first: "You have to fill in your profile before accessing this page."
       subdomain:
         page_doesnt_exist: "The page you are trying to access doesn't exist."
         profile_doesnt_exist: "The profile you are trying to access doesn't exist."

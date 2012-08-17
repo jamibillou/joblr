@@ -22,7 +22,7 @@ describe BetaInvitesController do
 
     it 'should have an email field' do
       get :new
-      response.body.should have_selector 'input#email'
+      response.body.should have_selector 'input#beta_invite_email'
     end
   end
 

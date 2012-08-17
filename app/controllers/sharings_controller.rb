@@ -3,7 +3,9 @@ class SharingsController < ApplicationController
 	def new
 		@user = User.find params[:id]
 		@sharing = Sharing.new
-		redirect_to(edit_user_path(@user), flash: {error: t('flash.errors.signup_first')}) unless signed_up?(@user)
+		redirect_to(edit_user_path(@user), flash: {error: t('flash.error.signup_first')}) unless signed_up?(@user)
+	rescue ActiveRecord::RecordNotFound
+		redirect_to(root_path, flash: {error: t('flash.error.something_wrong')})
 	end
 
 	def create
