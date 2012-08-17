@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
 
-  before_filter :find_user,           unless: :has_subdomain
-  before_filter :find_subdomain_user, if: :has_subdomain
-  before_filter :correct_user!,       only: [:edit, :update]
+  before_filter :find_user,             unless: :has_subdomain
+  before_filter :find_subdomain_user,   if: :has_subdomain
+  before_filter :correct_user!,         only: [:edit, :update]
+  before_filter :associate_beta_invite, only: :update
 
   def show
     redirect_to(edit_user_path(@user), flash: {error: t('flash.error.signup_first')}) unless signed_up?(@user)
@@ -26,10 +27,6 @@ class UsersController < ApplicationController
 
   private
 
-    def correct_user!
-      redirect_to root_path, flash: {error: t('flash.error.other_users_profile')} unless user_signed_in? && current_user == @user
-    end
-
     def find_user
       @user = params[:id] ? User.find(params[:id]) : current_user
     end
@@ -38,6 +35,18 @@ class UsersController < ApplicationController
       @user = User.find_by_subdomain! request.subdomain
     rescue ActiveRecord::RecordNotFound
       redirect_to root_url(subdomain: false), flash: {error: t('flash.error.subdomain.profile_doesnt_exist')}
+    end
+
+    def correct_user!
+      redirect_to root_path, flash: {error: t('flash.error.other_users_profile')} unless user_signed_in? && current_user == @user
+    end
+
+    def associate_beta_invite
+      unless session[:beta_invite].nil? || signed_up?(@user)
+        @user.beta_invite = BetaInvite.find session[:beta_invite][:id]
+        @user.email = session[:beta_invite][:email] if @user.email.blank?
+        session[:beta_invite] = nil
+      end
     end
 
     # FIX ME!

@@ -7,8 +7,8 @@ describe UsersController do
   before :each do
     @user = FactoryGirl.create :user
     sign_in @user
-    @attr = { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China', role: 'Mole', company: 'HK triads',
-              profiles_attributes: { '0' => { experience: '10', education: 'none', text: 'A good and highly motivated guy.' } } }
+    @attr =         { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China', role: 'Mole', company: 'HK triads',
+                      profiles_attributes: { '0' => { experience: '10', education: 'none', text: 'A good and highly motivated guy.' } } }
     @profile_attr = { education: 'Master of Business Administration',
                       experience: '5 yrs',
                       skill_1: 'Financial control',
@@ -21,19 +21,19 @@ describe UsersController do
                       quality_2: 'Work ethics',
                       quality_3: 'Punctuality',
                       text: 'Do or do not, there is no try.' }
+    @beta_invite = FactoryGirl.create :beta_invite, user: nil
   end
 
   describe "GET 'show'" do
 
-    context "user hasn't completed his profile" do
-
+    context "for users who haven't completed their profile" do
       it "should redirect to 'edit'" do
         get :show, id: @user
         response.should redirect_to edit_user_path(@user)
       end
     end
 
-    context 'user has completed his profile' do
+    context "for users who have completed their profile" do
 
       before :each do
         @user.profiles.create @profile_attr
@@ -61,7 +61,7 @@ describe UsersController do
     end
   end
 
-  describe "PUT 'update" do
+  describe "PUT 'update'" do
 
     it 'should update the user' do
       put :update, user: @attr, id: @user
@@ -85,6 +85,33 @@ describe UsersController do
     it "should redirect to the 'show' page" do
       put :update, user: @attr, id: @user
       response.should redirect_to @user
+    end
+
+    context 'for users who signed up with a beta_invite' do
+
+      before(:each) { session[:beta_invite] = @beta_invite }
+
+      it 'should associate the user and the beta_invite' do
+        put :update, user: @attr, id: @user
+        @user.beta_invite.id.should == @beta_invite.id
+        @user.beta_invite.should == @beta_invite
+      end
+
+      it "should update the user's email if he didn't have one !!! FIX ME !!!" # do
+      #   put :update, user: @attr, id: @user
+      #   @user.email.should == @beta_invite.email
+      # end
+
+      it "should not update the user's email if he already had one" do
+        @user.update_attributes email: 'user@example.com'
+        put :update, user: @attr, id: @user
+        @user.email.should_not == @beta_invite.email
+      end
+
+      it 'should destroy the session' do
+        put :update, user: @attr, id: @user
+        session[:beta_invite].should be_nil
+      end
     end
   end
 end
