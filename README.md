@@ -42,6 +42,7 @@ Features
 Bugfixes
 --------
 
+- share on LinkedIN fails if you don't have a LinkedIn auth yet
 - customise error pages
 - change logos and catchphrases in twitter/fb/li dev center
 - handle subdomains on Heroku
