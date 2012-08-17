@@ -1,0 +1,13 @@
+%head
+  %link{ rel:'stylesheet', type:'text/css', href:'/assets/application.css'}
+%body
+  %h1=t 'beta_invite_mailer.send_invite.title'
+
+  =t 'beta_invite_mailer.send_invite.content', id: @invite.id
+  %br/
+  =t 'beta_invite_mailer.send_invite.invitation_code', code: @invite.code
+  %br/
+  %br/
+  =t 'beta_invite_mailer.send_invite.cheers'
+  %br/
+  =t 'beta_invite_mailer.send_invite.joblr_team'

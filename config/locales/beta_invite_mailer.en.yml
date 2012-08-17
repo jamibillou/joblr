@@ -1,0 +1,9 @@
+en:
+  beta_invite_mailer:
+    send_invite:
+      subject: "Congrats, here's your invitation to Joblr beta!"
+      title: "Congrats, here's your invitation to Joblr beta!"
+      content: "Thanks for your interest in Joblr, we're glad to have you on board. Paste this invitation code at http://joblr.co/beta_invites/%{id}/edit and sign up!"
+      invitation_code: "Invitation code: %{code}"
+      cheers: 'Cheers,'
+      joblr_team: 'The joblr team'
