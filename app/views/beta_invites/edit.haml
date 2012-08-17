@@ -13,7 +13,7 @@
         %br/
         = form_for @beta_invite do |f|
           .input-append
-            = f.text_field :code, placeholder: t('.placeholder')
+            = f.text_field :code, placeholder: t('.placeholder'), value: ''
             = f.submit t('.button'), class: 'btn btn-primary', style: 'margin-left:-5px'
 
         %br/
