@@ -34,7 +34,6 @@ Tests
 Features
 --------
 
-- *make beta private*
 - build dashboard summarising actions taken by user
 - use feedback from LinkedIn API to display comments, likes, etc.
 
@@ -42,6 +41,8 @@ Features
 Bugfixes
 --------
 
+- internationalize beta_invite_email
+- make LinkedIn share better in terms of cleanliness
 - share on LinkedIn fails if you don't have a LinkedIn auth yet
 - customise error pages
 - change logos and catchphrases in twitter/fb/li dev center
