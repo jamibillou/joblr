@@ -41,7 +41,7 @@ Features
 Bugfixes
 --------
 
-- customise error pages
-- handle subdomains on Heroku
-- patch or pull LinkedIn gem so it supports skill levels
-- patch or pull carrierwave gem so it deletes files properly
+- *high*       handle subdomains on Heroku
+- *moderate*   customise error pages
+- *low*        patch or pull LinkedIn gem so it supports skill levels
+- *low*        patch or pull carrierwave gem so it deletes files properly
