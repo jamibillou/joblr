@@ -42,8 +42,6 @@ Bugfixes
 --------
 
 - internationalize beta_invite_email
-- make LinkedIn share better in terms of cleanliness
-- share on LinkedIn fails if you don't have a LinkedIn auth yet
 - customise error pages
 - change logos and catchphrases in twitter/fb/li dev center
 - handle subdomains on Heroku

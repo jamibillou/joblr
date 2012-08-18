@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       redirect_to edit_user_path(@user), flash: {error: error_messages(@user)}
     else
       remove_files! # FIX ME!
-      redirect_to @user, flash: {success: t('flash.success.profile_updated')}
+      redirect_to @user, flash: {success: t('flash.success.profile.updated')}
     end
   end
 
@@ -30,11 +30,11 @@ class UsersController < ApplicationController
     def find_subdomain_user
       @user = User.find_by_subdomain! request.subdomain
     rescue ActiveRecord::RecordNotFound
-      redirect_to root_url(subdomain: false), flash: {error: t('flash.error.subdomain.profile_doesnt_exist')}
+      redirect_to root_url(subdomain: false), flash: {error: t('flash.error.subdomain.profile')}
     end
 
     def correct_user!
-      redirect_to root_path, flash: {error: t('flash.error.other_users_profile')} unless user_signed_in? && current_user == @user
+      redirect_to root_path, flash: {error: t('flash.error.other_user.profile')} unless user_signed_in? && current_user == @user
     end
 
     def associate_beta_invite

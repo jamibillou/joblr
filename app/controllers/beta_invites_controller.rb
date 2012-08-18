@@ -33,7 +33,7 @@ class BetaInvitesController < ApplicationController
     elsif @beta_invite = BetaInvite.find_by_id(params[:id])
       redirect_to edit_beta_invite_path(@beta_invite), flash: {error: t('flash.error.beta_invite.code_inexistant')}
     else
-      redirect_to new_beta_invite_path, flash: {error: t('flash.error.something_wrong')}
+      redirect_to new_beta_invite_path, flash: {error: t('flash.error.something_wrong.base')}
     end
   end
 end

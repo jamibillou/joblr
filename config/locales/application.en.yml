@@ -19,34 +19,37 @@ en:
   flash:
     success:
       welcome: 'Welcome to Joblr!'
-      provider_added:  "Your %{provider} account was added successfully."
-      provider_removed: "Your %{provider} account was removed successfully."
-      profile_updated: 'Profile updated successfully.'
-      profile_shared:  'Profile shared successfully.'
+      provider:
+        added:  "Your %{provider} account was added successfully."
+        removed: "Your %{provider} account was removed successfully."
+      profile:
+        updated: 'Profile updated successfully.'
+        shared:  'Profile shared successfully.'
       beta_invite:
         sent: 'An invitation code was sent to %{email}, paste it here and sign up!'
         ok: "Great, you can now sign up to our alpha!"
     error:
       base: 'Error:'
-      something_wrong: "Oops, something went wrong."
-      auth_problem: "There was a problem when signin you in with %{provider}."
-      other_users_profile: "You can't edit another user's profile."
-      other_users_provider: "This %{provider} account is already used by another Joblr user."
-      signup_first: "You have to fill in your profile before accessing this page."
-      public_only: "You cannot access this page, you need to sign out first."
+      something_wrong:
+        base: "Oops, something went wrong."
+        auth: "Something went wrong when signin you in with %{provider}."
+      other_user:
+        profile: "You can't edit another user's profile."
+        provider: "This %{provider} account is already used by another user."
+      only:
+        member: "You have to fill in your profile before accessing this page."
+        public: "You cannot access this page, you need to sign out first."
       beta_invite:
         inexistant: "This invitation doesn't exist."
         code_inexistant: "This invitation code doesn't exist. Do you mind double ckecking?"
         inactive: "This invitation code has already been used. Ask another one!"
         required: "You need an invitation to sign up, you can ask for one here."
       subdomain:
-        page_doesnt_exist: "The page you are trying to access doesn't exist."
-        profile_doesnt_exist: "The profile you are trying to access doesn't exist."
+        page: "The page you are trying to access doesn't exist."
+        profile: "The profile you are trying to access doesn't exist."
       text:
         blank: "Text can't be blank."
         long: "Text is too long (maximum: 140 characters)"
-      email:
-        something_wrong: "Something went wrong with sending the email."
   card:
     experience: 'Experience'
     yrs: 'yrs'

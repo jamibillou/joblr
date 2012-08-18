@@ -2,7 +2,6 @@ class SharingsController < ApplicationController
 
 	before_filter :find_user, :signed_up, only: :new
   before_filter :authenticate,          only: :linkedin
-  after_filter  :reset_session,         only: :linkedin
 
   def new
 		@sharing = Sharing.new
@@ -16,7 +15,7 @@ class SharingsController < ApplicationController
 				redirect_to new_sharing_path(id: params[:sharing][:author_id]), flash: { error: error_messages(@sharing) }
 			else
 				UserMailer.share_profile(@sharing).deliver
-		  	redirect_to @sharing.author, flash: { success: t('flash.success.profile_shared') }
+		  	redirect_to @sharing.author, flash: { success: t('flash.success.profile.shared') }
 			end
 		else
 			redirect_to new_sharing_path(id: params[:sharing][:author_id]), flash: { error: errors }
@@ -27,7 +26,7 @@ class SharingsController < ApplicationController
 		@user = User.find params[:sharing][:user_id]
     unless errors = validation_errors(:text, params[:sharing][:text], presence: true, length: { maximum: 140 })
       current_user.auth('linkedin').share comment: params[:sharing][:text], title: t('sharings.social_title', fullname: @user.fullname), description: @user.profile.text, url: root_url(subdomain: @user.subdomain), image_url: "http://#{request.domain}#{@user.image_url.to_s}"
-      redirect_to root_path, flash: { success: t('flash.success.profile_shared') }
+      redirect_to root_path, flash: { success: t('flash.success.profile.shared') }
     else
     	redirect_to new_sharing_path(id: @user.id, provider: 'linkedin'), flash: { error: errors }
 		end
@@ -40,10 +39,6 @@ class SharingsController < ApplicationController
         session[:user_return_to] = sharings_linkedin_path(sharing: params[:sharing])
         redirect_to omniauth_authorize_path(current_user, 'linkedin') if current_user.auth('linkedin').nil?
       end
-    end
-
-    def reset_session
-      session[:user_return_to] = nil if session[:user_return_to]
     end
 
 	  def sharing_username

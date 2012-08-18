@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
     def redirect_to_domain
       if request.path != '/'
-        redirect_to root_url(subdomain: request.subdomain), flash: { error: t('flash.error.subdomain.page_doesnt_exist') }
+        redirect_to root_url(subdomain: request.subdomain), flash: { error: t('flash.error.subdomain.page') }
       end
     end
 
@@ -24,11 +24,11 @@ class ApplicationController < ActionController::Base
     end
 
     def signed_up
-      redirect_to(edit_user_path(@user), flash: {error: t('flash.error.signup_first')}) unless signed_up?(@user)
+      redirect_to(edit_user_path(@user), flash: {error: t('flash.error.only.member')}) unless signed_up?(@user)
     end
 
     def not_signed_in
-      redirect_to root_path, flash: {error: t('flash.error.public_only')} if user_signed_in?
+      redirect_to root_path, flash: {error: t('flash.error.only.public')} if user_signed_in?
     end
 
     def redirect_to_back(options = {})

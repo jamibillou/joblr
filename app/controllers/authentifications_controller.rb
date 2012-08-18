@@ -14,14 +14,14 @@ class AuthentificationsController < ApplicationController
   end
 
   def failure
-  	redirect_to new_user_session_path, flash: { error: t('flash.error.auth_problem', provider: params[:provider]) }
+  	redirect_to new_user_session_path, flash: { error: t('flash.error.something_wrong.auth', provider: params[:provider]) }
   end
 
   def destroy
   	auth = current_user.authentifications.find(params[:id])
     provider = auth.provider.titleize
   	auth.destroy
-  	redirect_to edit_user_path(current_user), flash: { success: t('flash.success.provider_removed', provider: provider) }
+  	redirect_to edit_user_path(current_user), flash: { success: t('flash.success.provider.removed', provider: provider) }
   end
 
 	alias_method :twitter, 			 :create
@@ -44,17 +44,15 @@ class AuthentificationsController < ApplicationController
     def redirect_authentified_user(user)
       if user_signed_in?
         if user == current_user
-          unless session[:user_return_to]
-            redirect_to_back flash: { success: t('flash.success.provider_added', provider: auth_hash.provider.titleize) }
-          else
-            redirect_to session[:user_return_to], flash: { success: t('flash.success.provider_added', provider: auth_hash.provider.titleize) }
-          end
+          flash[:success] = t('flash.success.provider.added', provider: auth_hash.provider.titleize)
         else
-          redirect_to_back flash: { error: t('flash.error.other_users_provider', provider: auth_hash.provider.titleize) }
+          flash[:error] = t('flash.error.other_user.provider', provider: auth_hash.provider.titleize)
         end
+        redirect_to (session[:user_return_to] ||= :back)
+        session[:user_return_to] = nil
       else
         sign_in user
-        redirect_to root_path, flash: { success: t('devise.omniauth_callbacks.success', provider: auth_hash.provider.titleize) }
+        redirect_to root_path, flash: {success: t('devise.omniauth_callbacks.success', provider: auth_hash.provider.titleize)}
       end
     end
 

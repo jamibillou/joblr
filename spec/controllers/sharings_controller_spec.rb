@@ -25,15 +25,14 @@ describe SharingsController do
 
 	describe "GET 'new'" do
 
-    context "no user id is provided" do
-
-      it "should redirect to root path" do
-        get :new
-        response.should redirect_to root_path
-      end
-    end
-
     context "user hasn't completed his profile" do
+
+      context "no user id is provided" do
+        it "should redirect to 'edit'" do
+          get :new
+          response.should redirect_to edit_user_path(@author)
+        end
+      end
 
       it "should redirect to 'edit'" do
         get :new, id: @author.id
@@ -43,14 +42,22 @@ describe SharingsController do
 
     context 'user has completed his profile' do
 
-      before :each do
-        @author.profiles.create @profile_attr
-        get :new, id: @author.id
+      before(:each) { @author.profiles.create @profile_attr }
+
+      context "no user id is provided" do
+        it "should be http success" do
+          get :new
+          response.should be_success
+        end
       end
 
-	    it { response.should be_success }
+	    it "should be http success" do
+        get :new, id: @author.id
+        response.should be_success
+      end
 
 	    it 'should have a card with the author profile' do
+        get :new, id: @author.id
 	    	response.body.should have_selector 'div', class:'card', id:"show-user-#{@author.id}"
 	    end
     end
