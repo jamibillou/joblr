@@ -34,14 +34,14 @@ Tests
 Features
 --------
 
-- build dashboard summarising actions taken by user
-- use feedback from LinkedIn API to display comments, likes, etc.
-
+- *hight*: customize Twitter bootstrap
+- *moderate*: build dashboard summarising actions taken by user
 
 Bugfixes
 --------
 
-- *high*       handle subdomains on Heroku
-- *moderate*   customise error pages
-- *low*        patch or pull LinkedIn gem so it supports skill levels
-- *low*        patch or pull carrierwave gem so it deletes files properly
+- *high*:     handle subdomains on Heroku
+- *moderate*: tokens should systematically be organized by views, DRY doesn't apply to tranlsations
+- *moderate*: customise error pages, c.f. [Heroku documentation](https://devcenter.heroku.com/articles/error-pages) and [Rambling labs](http://ramblinglabs.com/blog/2012/01/rails-3-1-adding-custom-404-and-500-error-pages)
+- *low*:      patch or pull LinkedIn gem so it supports skill levels
+- *low*:      patch or pull carrierwave gem so it deletes files properly
