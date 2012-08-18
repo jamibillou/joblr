@@ -13,9 +13,9 @@ TO DO
 Architecture
 ------------
 
-- looking into different kinds of sharings (email, social)
+- looking into different kinds of sharings (email, social) and solve the mess
 - rename sharings into messages
-- make sense of social sharings: what do we store?
+- make sense of social sharings: what should we store?
 
 Clean up
 --------
@@ -41,10 +41,7 @@ Features
 Bugfixes
 --------
 
-- internationalize beta_invite_email
 - customise error pages
-- change logos and catchphrases in twitter/fb/li dev center
 - handle subdomains on Heroku
-- fix deprecation warning (Heroku)
 - patch or pull LinkedIn gem so it supports skill levels
 - patch or pull carrierwave gem so it deletes files properly

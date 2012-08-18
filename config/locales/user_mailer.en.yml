@@ -1,8 +1,0 @@
-en:
-  user_mailer:
-    share_profile:
-      subject: "Please have a look at %{fullname}'s profile (%{role})"
-    text_email:
-      content: "Here is the link to the %{fullname}'s profile, please have a look and contact him if you feel interested!"
-      regards: 'Regards,'
-      joblr_team: 'The Joblr Team'

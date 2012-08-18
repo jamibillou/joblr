@@ -1,0 +1,16 @@
+en:
+  mailers:
+    user:
+      share_profile:
+        subject: "%{fullname} on joblr"
+      text_email:
+        content: "%{fullname} would like to talk to you, he is using a joblr so you can go through his profile in a few seconds and tell him wether you are interested or not"
+        cheers: 'Cheers,'
+        team: 'The joblr Team'
+    beta_invite:
+      subject: "Invitation to joblr alpha"
+      title: "Congrats, here's your invitation to joblr alpha!"
+      content_html: "Thanks for your interest in joblr, we're glad to have you on board. Paste this invitation code at %{url} and sign up!"
+      code: "Invitation code: %{code}"
+      cheers: "Cheers,"
+      team: "The joblr team"
