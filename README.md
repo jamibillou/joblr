@@ -42,9 +42,10 @@ Features
 Bugfixes
 --------
 
-- share on LinkedIN fails if you don't have a LinkedIn auth yet
+- share on LinkedIn fails if you don't have a LinkedIn auth yet
 - customise error pages
 - change logos and catchphrases in twitter/fb/li dev center
 - handle subdomains on Heroku
+- fix deprecation warning (Heroku)
 - patch or pull LinkedIn gem so it supports skill levels
 - patch or pull carrierwave gem so it deletes files properly

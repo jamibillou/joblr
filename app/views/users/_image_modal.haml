@@ -20,8 +20,9 @@
     - unless @user.authentifications.empty?
       %h5{style:'margin-bottom:5px'}= "#{t('users.edit.social_profiles')}#{t('punctuations.colon')}"
       - @user.authentifications.each do |auth|
-        /// FIX ME! kludge for heroku bug
-        ///= link_to image_tag(auth.image_url, class: 'social pic', id: auth.uid), '#', onclick: "select_pic('#{auth.uid}', '#{auth.image_url(:original)}')"
+        - unless auth.image_url.blank?
+          = link_to image_tag(auth.image_url, class: 'social pic', id: "auth_#{auth.id}_image"), '#'
+          .hidden{id: "auth_#{auth.id}_image_url"}= auth.image_url(:original)
       %br/
       %br/
 

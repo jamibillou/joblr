@@ -1,10 +1,9 @@
-@select_pic = (uid, url) ->
-	$('.social.pic').removeClass('selected')
-	$('#'+uid).addClass('selected')
-	$('#remote_image_url').val(url)
+$ ->
+  $('.social.pic').each ->
+    $(this).click -> toggleAuthImage($(this).attr('id'))
 
-@send_email = ->
-  $.ajax '/users/share_profile',
-  dataType: 'html'
-  type: 'POST'
-  data: { email:$('#email').val(), user_id: $('#user_id').val()}
+@toggleAuthImage = (imageId) ->
+  authId = imageId.match(/\d+/)[0]
+  authImageUrl = if $('#remote_image_url').val() is '' then $('#auth_'+authId+'_image_url').html() else ''
+  $('#'+imageId).toggleClass('selected')
+  $('#remote_image_url').val(authImageUrl)
