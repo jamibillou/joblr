@@ -14,7 +14,7 @@ module Authentification::Linkedin
       role:       profile.positions.select(&:is_current).first.title,
       company:    profile.positions.select(&:is_current).first.company.name,
       experience: experience(profile.positions),
-      education:  ("#{profile.educations.first.degree} #{profile.educations.first.field_of_study}" unless profile.educations.blank?),
+      education:  ("#{profile.educations.first.degree}, #{profile.educations.first.field_of_study}" unless profile.educations.blank?),
       skill_1:    (profile.skills[0].name unless profile.skills.blank?),
       skill_2:    (profile.skills[1].name unless profile.skills.blank? || profile.skills.size < 2),
       skill_3:    (profile.skills[2].name unless profile.skills.blank? || profile.skills.size < 3) }

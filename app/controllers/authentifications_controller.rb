@@ -44,9 +44,13 @@ class AuthentificationsController < ApplicationController
     def redirect_authentified_user(user)
       if user_signed_in?
         if user == current_user
-          redirect_to edit_user_path(user), flash: { success: t('flash.success.provider_added', provider: auth_hash.provider.titleize) }
+          unless session[:user_return_to]
+            redirect_to_back flash: { success: t('flash.success.provider_added', provider: auth_hash.provider.titleize) }
+          else
+            redirect_to session[:user_return_to], flash: { success: t('flash.success.provider_added', provider: auth_hash.provider.titleize) }
+          end
         else
-          redirect_to edit_user_path(current_user), flash: { error: t('flash.error.other_users_provider', provider: auth_hash.provider.titleize) }
+          redirect_to_back flash: { error: t('flash.error.other_users_provider', provider: auth_hash.provider.titleize) }
         end
       else
         sign_in user

@@ -19,7 +19,21 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def find_user
+      @user = params[:id] ? User.find(params[:id]) : current_user
+    end
+
+    def signed_up
+      redirect_to(edit_user_path(@user), flash: {error: t('flash.error.signup_first')}) unless signed_up?(@user)
+    end
+
     def not_signed_in
       redirect_to root_path, flash: {error: t('flash.error.public_only')} if user_signed_in?
+    end
+
+    def redirect_to_back(options = {})
+      redirect_to :back, options
+    rescue ActionController::RedirectBackError
+      redirect_to root_path, options
     end
 end

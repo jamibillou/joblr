@@ -2,11 +2,11 @@ class UsersController < ApplicationController
 
   before_filter :find_user,             unless: :has_subdomain
   before_filter :find_subdomain_user,   if: :has_subdomain
+  before_filter :signed_up,             only: :show
   before_filter :correct_user!,         only: [:edit, :update]
   before_filter :associate_beta_invite, only: :update
 
   def show
-    redirect_to(edit_user_path(@user), flash: {error: t('flash.error.signup_first')}) unless signed_up?(@user)
   end
 
   def edit
@@ -26,10 +26,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-    def find_user
-      @user = params[:id] ? User.find(params[:id]) : current_user
-    end
 
     def find_subdomain_user
       @user = User.find_by_subdomain! request.subdomain

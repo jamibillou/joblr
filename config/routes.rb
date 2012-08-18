@@ -5,7 +5,7 @@ Joblr::Application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'authentifications', registrations: 'registrations' }
 
   resources :authentifications, only: [:index, :destroy]
-  resources :sharings
+  resources :sharings,          only: [:new, :create]
   resources :beta_invites,      only: [:new, :create, :edit, :update]
   resources :users do
     resources :profiles

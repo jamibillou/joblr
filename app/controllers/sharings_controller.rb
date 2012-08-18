@@ -1,11 +1,11 @@
 class SharingsController < ApplicationController
 
-	def new
-		@user = User.find params[:id]
+	before_filter :find_user, :signed_up, only: :new
+  before_filter :authenticate,          only: :linkedin
+  after_filter  :reset_session,         only: :linkedin
+
+  def new
 		@sharing = Sharing.new
-		redirect_to(edit_user_path(@user), flash: {error: t('flash.error.signup_first')}) unless signed_up?(@user)
-	rescue ActiveRecord::RecordNotFound
-		redirect_to(root_path, flash: {error: t('flash.error.something_wrong')})
 	end
 
 	def create
@@ -26,19 +26,26 @@ class SharingsController < ApplicationController
 	def linkedin
 		@user = User.find params[:sharing][:user_id]
     unless errors = validation_errors(:text, params[:sharing][:text], presence: true, length: { maximum: 140 })
-      # FIX ME! kludge for heroku bug
-      if current_user.auth('linkedin')
-        current_user.auth('linkedin').share comment: params[:sharing][:text], title: t('sharings.social_title', fullname: @user.fullname), description: @user.profile.text, url: root_url(subdomain: @user.subdomain), image_url: "http://#{request.domain}#{@user.image_url.to_s}"
-        redirect_to root_path, flash: { success: t('flash.success.profile_shared') }
-      else
-        redirect_to edit_user_path(current_user), flash: {error: "We're having a problem here. Just add your LinkedIn account and it will be solved!"}
-      end
+      current_user.auth('linkedin').share comment: params[:sharing][:text], title: t('sharings.social_title', fullname: @user.fullname), description: @user.profile.text, url: root_url(subdomain: @user.subdomain), image_url: "http://#{request.domain}#{@user.image_url.to_s}"
+      redirect_to root_path, flash: { success: t('flash.success.profile_shared') }
     else
     	redirect_to new_sharing_path(id: @user.id, provider: 'linkedin'), flash: { error: errors }
 		end
 	end
 
 	private
+
+    def authenticate
+      if current_user.auth('linkedin').nil?
+        session[:user_return_to] = sharings_linkedin_path(sharing: params[:sharing])
+        redirect_to omniauth_authorize_path(current_user, 'linkedin') if current_user.auth('linkedin').nil?
+      end
+    end
+
+    def reset_session
+      session[:user_return_to] = nil if session[:user_return_to]
+    end
+
 	  def sharing_username
 	  	make_username(params[:email].split('@').first, params[:fullname])
 	  end
