@@ -2,10 +2,7 @@
   height:15000px;
   margin:0;
   padding:0;
-  transition: top1s;
-  -moz-transition:top 1s;
-  -webkit-transition:top 1s;
-  -o-transition:top 1s;
+  @include transition(top 1s);
   position:relative;
   section {
     min-height:600px;

@@ -1,0 +1,30 @@
+// NAVBAR (FIXED AND STATIC)
+// -------------------------
+
+
+// COMMON STYLES
+// -------------
+
+.navbar{
+  .navbar-inner{
+    height:$navbarHeight;
+    background:$navbarBackground none;
+  }
+  .brand{
+    width:$navbarBrandWidth;
+    height:$navbarBrandHeight;
+    margin:(($navbarHeight - $navbarBrandHeight) / 2) 0 0 0;
+    background:$navbarBrandLogo;
+    line-height:2;
+  }
+  .nav{
+    font-size:$baseFontSize + 1;
+  }
+  .navbar-text a{
+    margin-right:13px;
+    color:$navbarTextLinkColor;
+    &:hover {
+      color:$navbarTextLinkColorHover;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+// HERO UNIT
+// ---------
+
+.hero-unit{
+  border:0;
+  background-color:$heroUnitBackground;
+  @include border-radius(5px);
+  @include box-shadow(0 0 2px 1px #ccc);
+}
