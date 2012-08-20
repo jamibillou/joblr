@@ -1,0 +1,12 @@
+// Forms.less
+// Base styles for various input types, form layouts, and states
+// -------------------------------------------------------------
+
+
+// INPUT SIZES
+// -----------
+
+// Ensure input-prepend/append never wraps
+.input-append input[type="submit"]{
+  margin-left:-5px;
+}

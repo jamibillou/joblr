@@ -1,0 +1,110 @@
+// Typography.less
+// Headings, body text, lists, code, and more for a versatile and durable typography system
+// ----------------------------------------------------------------------------------------
+
+
+// BODY TEXT
+// ---------
+p{
+  margin-bottom: $baseLineHeight;
+  font-weight:300;
+  small{
+    font-size:$baseFontSize - 2;
+    color:$brownDark;
+  }
+}
+.lead{
+  margin-bottom: $baseLineHeight;
+  font-size:20px;
+  font-weight:200;
+  line-height:$baseLineHeight * 1.5;
+  small{
+    font-size:16px;
+    color:$brownDark;
+  }
+}
+.big{
+  margin-bottom:$baseLineHeight;
+  font-size:16px;
+  font-weight:300;
+  line-height:$baseLineHeight * 1.2;
+  small{
+    font-size:13px;
+    color:$brownDark;
+  }
+}
+.warning-text{
+  color:$warningText;
+}
+.error-text{
+  color:$errorText;
+}
+.success-text{
+  color:$successText;
+}
+.info-text{
+  color:$infoText;
+}
+
+// HEADINGS
+// --------
+
+h1, h2, h3, h4, h5, h6{
+  margin-bottom:$baseLineHeight / 2;
+  font-family:$headingsFontFamily;
+  font-weight:$headingsFontWeight;
+  color:$headingsColor;
+  text-rendering:optimizelegibility; // Fix the character spacing for headings
+  small{
+    font-weight:normal;
+    color:$brownDark;
+  }
+}
+h1{
+  font-size:34px;
+  line-height:$baseLineHeight * 2;
+  small{
+    font-size:20px;
+  }
+}
+h2{
+  font-size:26px;
+  line-height:$baseLineHeight * 2;
+  small{
+    font-size:17px;
+  }
+}
+h3{
+  font-size:20px;
+  line-height:$baseLineHeight * 1.5;
+  small{
+    font-size:14px;
+  }
+}
+h4{
+  width:inherit;
+  padding-bottom:$baseLineHeight / 5;
+  margin-bottom:$baseLineHeight * 1.5;
+  border-bottom:1px solid $textColor;
+  font-size:$baseFontSize + 1;
+  font-weight:500;
+  small {
+    font-size:12px;
+  }
+}
+
+// WELLS & HERO-UNIT
+//------------------
+.well, .hero-unit{
+  h1, h2, h3, h4, h5, h6, p, .lead, .big{
+    color: $grayDark;
+    small{
+      color: $grayLight;
+    }
+  }
+  h4{
+    color:darken($grayLighter,10%);
+    border-bottom:1px solid $grayLighter;
+    font-weight:100;
+  }
+}

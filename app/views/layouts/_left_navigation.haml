@@ -15,3 +15,9 @@
       = link_to t('pages.titles.team'), "#{root_url(subdomain: false)}home#team", id: 'team-trigger'
     %li
       = link_to t('pages.titles.contact'), "#{root_url(subdomain: false)}home#contact", id: 'contact-trigger'
+
+    - if Rails.env.development?
+      %li
+        .navbar-text |
+      %li
+        = link_to t('pages.titles.style_tile'), "#{root_url(subdomain: false)}home#style-tile", id: 'style-tile-trigger'

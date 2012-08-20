@@ -2,14 +2,14 @@ en:
   beta_invites:
     new:
       title: "Get invited!"
-      subtitle_html: "Fill in your email and we'll send you an <u>invitation</u> to our alpha<span class='danger'>*</span>."
+      subtitle_html: "Fill in your email and we'll send you an <u>invitation</u> to our alpha<span class='error-text'>*</span>."
       asterisk: "*very early version with a lot of bugs and not finalized details all around the place"
       placeholder: "Email address"
       button: "Get invite!"
       development: "Developers: you are obviously allowed to"
     edit:
       title: "Be first to try!"
-      subtitle_html: "We are currently seeking feedback on our ideas.<br />This is a alpha<span class='danger'>*</span> and you need an <u>invitation</u> to access it."
+      subtitle_html: "We are currently seeking feedback on our ideas.<br />This is a alpha<span class='error-text'>*</span> and you need an <u>invitation</u> to access it."
       asterisk: "*very early version with a lot of bugs and not finalized details all around the place"
       placeholder: "Invitation code"
       button: "Sign up!"

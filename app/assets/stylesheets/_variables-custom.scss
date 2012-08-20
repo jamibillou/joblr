@@ -13,24 +13,31 @@ $grayDarker:            #222 !default;
 $grayDark:              #444 !default;
 $gray:                  #666 !default;
 $grayLight:             #999 !default;
-$grayLighter:           #eee !default;
+$grayLighter:           #ddd !default;
 $white:                 #fff !default;
 
 // Accent colors
 // ----------------------------
-$blue:                  #049cdb !default;
-$blueDark:              #0064cd !default;
-$green:                 #46a546 !default;
+$blue:                  #0083e0 !default;
+$blueDark:              #0064cd !default; // BS color, not used in Joblr.co
+$green:                 #46a546 !default; // BS color, not used in Joblr.co for now
 $red:                   #dd3b2e !default;
-$yellow:                #ffc40d !default;
-$orange:                #f89406 !default;
-$pink:                  #c3325f !default;
-$purple:                #7a43b6 !default;
+$yellow:                #ffc40d !default; // BS color, not used in Joblr.co for now
+$orange:                #f89406 !default; // BS color, not used in Joblr.co for now
+$pink:                  #c3325f !default; // BS color, not used in Joblr.co for now
+$purple:                #7a43b6 !default; // BS color, not used in Joblr.co for now
+
+// Background colors
+// ----------------------------
+$brown:                 #e4dfcc !default;
+$brownDark:             #cdc7ae !default;
+$brownDarker:           #8c897d !default;
 
 // Scaffolding
 // -------------------------
-$bodyBackground:        $white !default;
-$textColor:             $grayDark !default;
+$bodyBackground:        $brown !default;
+$textColor:             $brownDarker !default;
+$wellTextColor:         $grayDark;
 
 // Links
 // -------------------------
@@ -45,7 +52,7 @@ $monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace !defau
 
 $baseFontSize:          13px !default;
 $baseFontFamily:        $sansFontFamily !default;
-$baseLineHeight:        18px !default;
+$baseLineHeight:        20px !default;
 $altFontFamily:         $serifFontFamily !default;
 
 $headingsFontFamily:    inherit !default; // empty to use BS default, @baseFontFamily
@@ -159,8 +166,8 @@ $navbarBrandColor:                $navbarLinkColor !default;
 // Hero unit
 // -------------------------
 $heroUnitBackground:              $white !default;
-$heroUnitHeadingColor:            inherit !default;
-$heroUnitLeadColor:               inherit !default;
+$heroUnitHeadingColor:            $wellTextColor !default;
+$heroUnitLeadColor:               $wellTextColor !default;
 
 // Form states and alerts
 // -------------------------

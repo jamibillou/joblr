@@ -14,7 +14,7 @@
         .pull-right= image_tag @user.image_url(:thumb).to_s, class:'current pic'
         %br/
         .pull-right
-          .danger.delete= t('users.image_modal.delete')
+          .error-text= t('users.image_modal.delete')
           = f.check_box :remove_image
 
     - unless @user.authentifications.empty?

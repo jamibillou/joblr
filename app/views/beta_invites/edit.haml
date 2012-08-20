@@ -7,20 +7,20 @@
         %br/
         %br/
         .lead=t '.subtitle_html'
-        %p.danger{style: 'margin-bottom:0'}=t '.asterisk'
+        %p.error-text{style: 'margin-bottom:0'}=t '.asterisk'
         %br/
         %br/
         %br/
         = form_for @beta_invite do |f|
           .input-append
             = f.text_field :code, placeholder: t('.placeholder'), value: ''
-            = f.submit t('.button'), class: 'btn btn-primary', style: 'margin-left:-5px'
+            = f.submit t('.button'), class: 'btn btn-primary'
 
         %br/
         = link_to t('.link'), new_beta_invite_path
         %br/
 
       - if Rails.env.development?
-        %p{style: 'color:lightgrey'}
+        %p
           =t '.development'
-          = link_to t('devise.registrations.sign_up').downcase, new_user_registration_url(subdomain:false), style: 'color:grey; text-decoration:underline'
+          = link_to t('devise.registrations.sign_up').downcase, new_user_registration_url(subdomain:false)
