@@ -10,13 +10,3 @@ body{
   padding-top:110px;
   background-image:url('base/background.png');
 }
-
-// Links
-// -----
-
-a {
-  color:$linkColor;
-  &:hover {
-    color:$linkColorHover;
-  }
-}

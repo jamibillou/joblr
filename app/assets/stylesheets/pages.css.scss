@@ -1,11 +1,46 @@
-#slider {
+#slider{
   height:16000px;
   margin:0;
   padding:0;
   @include transition(top 1s);
   position:relative;
-  section {
+  section{
     min-height:600px;
     margin-bottom:2000px;
+  }
+}
+
+#style-tile{
+  .right-pane{
+    .span2 div{
+      width:150px;
+      height:150px;
+    }
+    .well{
+      padding:10px;
+    }
+    #backgrounds{
+      .brow{
+        background-color:$brown;
+      }
+      .browDark{
+        background-color:$brownDark;
+      }
+      .white{
+        background-color:$white;
+      }
+      .grayDark{
+        background-color:$grayDark;
+      }
+    }
+    #colors{
+      margin-top:13px;
+      .red{
+        background-color:$red;
+      }
+      .blue{
+        background-color:$blue;
+      }
+    }
   }
 }

@@ -19,13 +19,7 @@ $white:                 #fff !default;
 // Accent colors
 // ----------------------------
 $blue:                  #0083e0 !default;
-$blueDark:              #0064cd !default; // BS color, not used in Joblr.co
-$green:                 #46a546 !default; // BS color, not used in Joblr.co for now
 $red:                   #dd3b2e !default;
-$yellow:                #ffc40d !default; // BS color, not used in Joblr.co for now
-$orange:                #f89406 !default; // BS color, not used in Joblr.co for now
-$pink:                  #c3325f !default; // BS color, not used in Joblr.co for now
-$purple:                #7a43b6 !default; // BS color, not used in Joblr.co for now
 
 // Background colors
 // ----------------------------
@@ -41,7 +35,7 @@ $wellTextColor:         $grayDark;
 
 // Links
 // -------------------------
-$linkColor:             #0083e0 !default;
+$linkColor:             $blue !default;
 $linkColorHover:        darken($linkColor, 10%) !default;
 
 // Typography
@@ -57,38 +51,22 @@ $altFontFamily:         $serifFontFamily !default;
 
 $headingsFontFamily:    inherit !default; // empty to use BS default, @baseFontFamily
 $headingsFontWeight:    bold !default;    // instead of browser default, bold
-$headingsColor:         inherit !default; // empty to use BS default, @textColor
-
-// Tables
-// -------------------------
-$tableBackground:                   transparent !default; // overall background-color
-$tableBackgroundAccent:             #f9f9f9 !default; // for striping
-$tableBackgroundHover:              #f5f5f5 !default; // for hover
-$tableBorder:                       #ddd !default; // table and cell border
+$headingsColor:         $textColor !default; // empty to use BS default, @textColor
 
 // Buttons
 // -------------------------
 $btnBackground:                     $white !default;
-$btnBackgroundHighlight:            darken($white, 10%) !default;
+$btnBackgroundHighlight:            #dfdfe2 !default;
 $btnBorder:                         #ccc !default;
 
 $btnPrimaryBackground:              $linkColor !default;
-$btnPrimaryBackgroundHighlight:     adjust-hue($btnPrimaryBackground, 15%) !default;
+$btnPrimaryBackgroundHighlight:     #006dba !default;
 
-$btnInfoBackground:                 #5bc0de !default;
-$btnInfoBackgroundHighlight:        #2f96b4 !default;
+$btnDangerBackground:               $red !default;
+$btnDangerBackgroundHighlight:      #b23a31 !default;
 
-$btnSuccessBackground:              #62c462 !default;
-$btnSuccessBackgroundHighlight:     #51a351 !default;
-
-$btnWarningBackground:              lighten($orange, 15%) !default;
-$btnWarningBackgroundHighlight:     $orange !default;
-
-$btnDangerBackground:               #ee5f5b !default;
-$btnDangerBackgroundHighlight:      #bd362f !default;
-
-$btnInverseBackground:              $gray !default;
-$btnInverseBackgroundHighlight:     $grayDarker !default;
+$btnInverseBackground:              $brownDark !default;
+$btnInverseBackgroundHighlight:     $brownDark !default;
 
 // Forms
 // -------------------------
@@ -118,30 +96,6 @@ $navbarBrandWidth:              111px;
 
 // COMPONENT VARIABLES
 // --------------------------------------------------
-
-// Z-index master list
-// -------------------------
-// Used for a bird's eye view of components dependent on the z-axis
-// Try to avoid customizing these :)
-$zindexDropdown:          1000;
-$zindexPopover:           1010;
-$zindexTooltip:           1020;
-$zindexFixedNavbar:       1030;
-$zindexModalBackdrop:     1040;
-$zindexModal:             1050;
-
-// Sprite icons path
-// -------------------------
-$iconSpritePath:          asset-url("glyphicons-halflings.png", image) !default;
-$iconWhiteSpritePath:     asset-url("glyphicons-halflings-white.png", image) !default;
-
-// Input placeholder text color
-// -------------------------
-$placeholderText:         $grayLight !default;
-
-// Hr border color
-// -------------------------
-$hrBorder:                $grayLighter !default;
 
 // Navbar
 // -------------------------
@@ -186,55 +140,3 @@ $successBorder:           darken(adjust-hue($successBackground, -10), 5%) !defau
 $infoText:                #3a87ad !default;
 $infoBackground:          #d9edf7 !default;
 $infoBorder:              darken(adjust-hue($infoBackground, -10), 7%) !default;
-
-
-// FIXED GRID
-// --------------------------------------------------
-
-// Default, 940px
-// -------------------------
-$gridColumns:             12 !default;
-$gridColumnWidth:         60px !default;
-$gridGutterWidth:         20px !default;
-$gridRowWidth:            ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1)) !default;
-
-// Portrait tablet to default desktop
-// -------------------------
-$gridColumnWidthTablet:   42px !default;
-$gridGutterWidthTablet:   20px !default;
-
-// Large desktop and up
-// -------------------------
-$gridColumnWidthLarge:    70px !default;
-$gridGutterWidthLarge:    30px !default;
-
-
-// FLUID GRID
-// --------------------------------------------------
-
-// Default
-// -------------------------
-$fluidGridColumnWidth:         6.382978723% !default;
-$fluidGridGutterWidth:         2.127659574% !default;
-
-// Portrait tablet to default desktop
-// -------------------------
-$fluidGridColumnWidthTablet:   5.801104972% !default;
-$fluidGridGutterWidthTablet:   2.762430939% !default;
-
-// Large desktop and up
-// -------------------------
-$fluidGridColumnWidthLarge:    5.982905983% !default;
-$fluidGridGutterWidthLarge:    2.564102564% !default;
-
-
-// RESPONSIVE DESIGN
-// --------------------------------------------------
-
-// Media widths
-// -------------------------
-// Not supported Sass < 3.2 :(
-// $mediaPhone:              480px !default;
-// $mediaTablet:             768px !default;
-// $mediaDesktop:            980px !default;
-// $mediaLarge:              1200px !default; // and upper
