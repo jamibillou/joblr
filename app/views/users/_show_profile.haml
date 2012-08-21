@@ -53,10 +53,10 @@
       .span4
         %h4= t('card.more_about', fullname: "#{user.fullname}")
         - unless user.profile.file.blank?
-          %a.btn{href: user.profile.file_url.to_s}
+          %a.btn.btn-danger{href: user.profile.file_url.to_s}
             = t('card.download_cv')
         - unless user.profile.url.blank?
-          %a.btn.btn.btn-danger{href: "http://#{user.profile.url}", target:'_blank'}
+          %a.btn.btn{href: "http://#{user.profile.url}", target:'_blank'}
             = t('card.site')
         - unless user.authentifications.empty?
           - user.authentifications.each do |authentification|

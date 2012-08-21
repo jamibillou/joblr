@@ -15,7 +15,7 @@
         = form_for @beta_invite do |f|
           .input-append
             = f.text_field :code, placeholder: t('.placeholder'), value: ''
-            = f.submit t('.button'), class: 'btn btn-small'
+            = f.submit t('.button'), class: 'btn btn-small btn-primary'
 
         %br/
         = link_to t('.link'), new_beta_invite_path

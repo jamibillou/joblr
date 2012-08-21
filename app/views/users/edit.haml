@@ -1,40 +1,43 @@
-.header
-  %h1= signed_up?(@user) ? 'Edit your profile' : 'Complete your profile!'
-  %br/
-
-= form_for @user, html: { id:"edit-user-#{@user.id}" } do |f|
+= form_for @user, html: { id:"edit-form" } do |f|
   .row
-    .span12
-      .card
+    .span5.offset3
+      #text
+        .well
+          .row
+            .span4
+              %h4= t('users.edit.text_label')
+              = text_area :text, :placeholder, value: (@user.profile.text if signed_up?(@user)), placeholder: t('users.edit.text_placeholder'), rows:3
+        .arrow-bottom
+      .well#profile
         .row
-          .span4.well{style:'padding-bottom:14px'}
-            .row
-              .span1
-                %a{href: '#image-modal', 'data-toggle' => 'modal'}
-                  = image_tag (@user.image.blank? ? 'default_user.jpg' : @user.image_url(:thumb).to_s)
-              .span3
-                = f.text_field :fullname, value: @user.linkedin_attr(:fullname, @linkedin), placeholder: t('users.edit.fullname_placeholder'), style: 'height:13px; font-size:15px'
-                %br/
-                = f.text_field :city,    value: @user.linkedin_attr(:city,    @linkedin), placeholder: t('users.edit.city_placeholder'),                          class:'input-small'
-                = f.text_field :country, value: @user.linkedin_attr(:country, @linkedin), placeholder: t('users.edit.country_placeholder'), style: 'width:105px', class:'input-small'
-                = f.text_field :role,    value: @user.linkedin_attr(:role,    @linkedin), placeholder: t('users.edit.role_placeholder'),                          class:'input-small'
-                = f.text_field :company, value: @user.linkedin_attr(:company, @linkedin), placeholder: t('users.edit.company_placeholder'), style: 'width:105px', class:'input-small'
-
-          .span5.offset2
-            - if signed_up?(@user)
-              .pull-right
-                %h4
-                  = t('users.edit.public_profile')
-                  = f.text_field :subdomain, class:'input-small', style:'margin-top:5px; font-size:14px; font-weight:bold'
-                  = request.host.tr('www','')
-            - else
-              - unless @linkedin
-                .lead.pull-right
-                  = t('users.edit.import_info')
-                  %strong LinkedIn
-                .pull-right
-                  %a.btn.btn-large{ href: omniauth_authorize_path(:user, 'linkedin') }= t('users.edit.import_linkedin')
-
+          .span1
+            %a{href: '#image-modal', 'data-toggle' => 'modal'}
+              = image_tag (@user.image.blank? ? 'default_user.jpg' : @user.image_url(:thumb).to_s)
+            = render 'image_modal', f: f
+          .span3
+            %label= t('users.edit.fullname_placeholder')
+            = f.text_field :fullname, value: @user.linkedin_attr(:fullname, @linkedin), placeholder: t('users.edit.fullname_placeholder')
+            %br/
+            %label= t('users.edit.location')
+            = f.text_field :city,    value: @user.linkedin_attr(:city,    @linkedin), placeholder: t('users.edit.city_placeholder'),    class:'input-small'
+            = f.text_field :country, value: @user.linkedin_attr(:country, @linkedin), placeholder: t('users.edit.country_placeholder'), class:'input-small'
+            %br/
+            %label= t('users.edit.headline_label')
+            = f.text_field :role,    value: @user.linkedin_attr(:role,    @linkedin), placeholder: t('users.edit.role_placeholder'),    class:'input-small'
+            = f.text_field :company, value: @user.linkedin_attr(:company, @linkedin), placeholder: t('users.edit.company_placeholder'), class:'input-small'
         = f.fields_for(:profiles) { |profile_builder| render 'fields_profile', f: profile_builder }
-
-        = render 'image_modal', f: f
+    .span2.offset2
+      #buttons
+        .pull-right
+          - unless signed_up?(@user) || @linkedin
+            %label Import from
+            %a.btn.btn-large.btn-top{href: omniauth_authorize_path(:user, 'linkedin')} LinkedIn
+          %a#submit-placeholder.btn.btn-large.btn-primary.btn-top= t('save')
+          - if signed_up?(@user)
+            %a.btn.btn-large{href: user_path(@user)}
+              = t('cancel')
+          - if signed_up?(@user)
+            .explanation
+              %h5= t('users.edit.public_profile')
+              %p= t('users.edit.explanation_html', url: link_to("http://#{@user.subdomain}.#{request.domain}", "http://#{@user.subdomain}.#{request.domain}"))
+              = f.text_field :subdomain, class:'input-medium'

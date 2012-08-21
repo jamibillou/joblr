@@ -34,8 +34,9 @@ Tests
 Styling
 -------
 
-- profile edit
 - Devise views
+- modals
+- flash messages
 
 Features
 --------

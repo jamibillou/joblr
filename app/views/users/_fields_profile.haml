@@ -1,55 +1,57 @@
 .row
-  .span1.well{style:'padding:14px'}
-    %h6= t('card.experience')
-    = f.text_field :experience, value: @user.linkedin_attr(:experience, @linkedin), style: 'height:30px; width:40px; margin-bottom:0; font-size:30px; font-weight:bold'
-    %h2= t('card.yrs')
-  .span3.well{style:'padding:14px'}
-    %h6= t('card.education')
-    = f.text_area :education, value: @user.linkedin_attr(:education, @linkedin), rows:2, style:'margin-bottom:-5px; width:240px;', class:'lead'
+  .span4
+    %h4= t('users.edit.exp_edu')
+  .span1
+    %label= t('card.experience')
+    = f.text_field :experience, value: @user.linkedin_attr(:experience, @linkedin), placeholder: t('users.edit.experience_placeholder'), class: 'input-mini'
+  .span3
+    %label= t('card.education')
+    = f.text_area :education, value: @user.linkedin_attr(:education, @linkedin), placeholder: t('users.edit.education_placeholder'), rows:3
     %br/
-
 .row
-  .span4.well{style: 'padding-bottom:14px'}
-    %h6= t('card.skills')
+  .span4
+    %h4= t('card.skills')
     .row
-      .span2= f.text_field :skill_1, value: @user.linkedin_attr(:skill_1, @linkedin), style: 'font-size:15px'
-      .span1= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), { prompt: t('prompt') }, { class: 'select-level'}
-      .span2= f.text_field :skill_2, value: @user.linkedin_attr(:skill_2, @linkedin), style: 'font-size:15px'
-      .span1= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), { prompt: t('prompt') }, { class: 'select-level' }
-      .span2= f.text_field :skill_3, value: @user.linkedin_attr(:skill_3, @linkedin), style: 'font-size:15px'
-      .span1= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), { prompt: t('prompt') }, { class: 'select-level' }
+      .span2= f.text_field :skill_1, value: @user.linkedin_attr(:skill_1, @linkedin), placeholder: t('users.edit.skill_1_placeholder')
+      .span1= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {prompt: t('prompt')}, {class: 'select-level'}
+      %br/
+      %br/
+      .span2= f.text_field :skill_2, value: @user.linkedin_attr(:skill_2, @linkedin), placeholder: t('users.edit.skill_2_placeholder')
+      .span1= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {prompt: t('prompt')}, {class: 'select-level' }
+      %br/
+      %br/
+      .span2= f.text_field :skill_3, value: @user.linkedin_attr(:skill_3, @linkedin), placeholder: t('users.edit.skill_3_placeholder')
+      .span1= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), {prompt: t('prompt')}, {class: 'select-level' }
 .row
-  .span4.well{style:'padding-bottom:6px'}
-    %h6= t('card.qualities')
-    .lead
-      .row
-        .span3= f.text_field :quality_1, style:'font-size:15px'
-      .row
-        .span3= f.text_field :quality_2, style:'font-size:15px'
-      .row
-        .span3= f.text_field :quality_3, style:'font-size:15px'
-
-.row{style:'margin:19px 0 0 -25px'}
-  .span4{style:'margin-left:0'}
-    %h6{style:'margin-bottom:10px'}= t('users.edit.social_profiles')
+  .span4{style:'padding-bottom:6px'}
+    %h4= t('card.qualities')
+    .row
+      .span3= f.text_field :quality_1, placeholder: t('users.edit.quality_1_placeholder')
+    .row
+      .span3= f.text_field :quality_2, placeholder: t('users.edit.quality_2_placeholder')
+    .row
+      .span3= f.text_field :quality_3, placeholder: t('users.edit.quality_3_placeholder')
+.row
+  .span4
+    %h4= t('users.edit.social_profiles')
     = render 'shared/auth_links', user: @user
-
-.row{style:'margin:19px 0 0 -25px'}
-  .span4{style:'margin-left:0'}
-    %h6{style:'margin-bottom:5px'}= t('users.edit.upload_cv')
+.row
+  .span4
+    %h4= t('users.edit.upload_cv')
     - unless @user.profile.file.nil? || @user.profile.file.blank?
-      .danger-text{style:'margin-bottom:5px'} delete #{link_to @user.profile.file_identifier, @user.profile.file_url, style:'text-decoration:underline'}
+      .delete.danger-text delete #{link_to @user.profile.file_identifier, @user.profile.file_url, style:'text-decoration:underline'}
       &nbsp;
       = f.check_box :remove_file
       %br/
     = f.file_field :file
-
-.row{style:'margin:19px 0 0 -25px'}
-  .span4{style:'margin-left:0'}
-    %h6{style:'margin-bottom:10px'}= t('users.edit.website_blog')
-    = f.text_field :url, placeholder:'http://', class:'input-medium'
-
-.row{style:'margin-left:0'}
-  .span5.offset6{style:'margin-top:-700px'}
-    = f.text_area :text, class:'lead', placeholder: t('users.edit.text_placeholder'), rows:4, style:'width:450px;'
-    .pull-right= f.submit (signed_up?(@user) ? t('users.edit.save_profile') : t('users.edit.create_profile')), class:'btn btn-gigantic btn-primary'
+.row
+  .span4
+    %h4= t('users.edit.website_blog')
+    = f.text_field :url, placeholder:'e.g. http://example.com'
+.row.hidden
+  .span4
+    %h4= t('users.edit.text_label')
+    = f.text_area :text, placeholder: t('users.edit.text_placeholder'), rows:3
+    %br/
+    %br/
+    = f.submit t('save'), class: 'btn btn-large btn-primary'

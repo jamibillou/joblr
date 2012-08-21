@@ -10,15 +10,15 @@
   .modal-body
     - unless @user.image.blank?
       .pull-right
-        %h5{style:'margin-bottom:5px'}= "#{t('users.image_modal.current_pic')}#{t('punctuations.colon')}"
+        %h5{style:'margin-bottom:5px'}= t('users.image_modal.current_pic')
         .pull-right= image_tag @user.image_url(:thumb).to_s, class:'current pic'
         %br/
         .pull-right
-          .danger-text= t('users.image_modal.delete')
+          .delete.danger-text= t('users.image_modal.delete')
           = f.check_box :remove_image
 
     - unless @user.authentifications.empty?
-      %h5{style:'margin-bottom:5px'}= "#{t('users.edit.social_profiles')}#{t('punctuations.colon')}"
+      %h5{style:'margin-bottom:5px'}= t('users.edit.social_profiles')
       - @user.authentifications.each do |auth|
         - unless auth.image_url.blank?
           = link_to image_tag(auth.image_url, class: 'social pic', id: "auth_#{auth.id}_image"), '#'
@@ -31,5 +31,5 @@
     = f.hidden_field :remote_image_url, id:'remote_image_url'
 
   .modal-footer
-    %a.btn{href:'#', 'data-dismiss' => 'modal'}= t('cancel')
-    %a.btn.btn-primary{href: '#', onclick: "$('#image-modal').modal('hide')"}= t('ok')
+    %a.btn.btn-small{href:'#', 'data-dismiss' => 'modal'}= t('cancel')
+    %a.btn.btn-small.btn-primary{href: '#', onclick: "$('#image-modal').modal('hide')"}= t('ok')

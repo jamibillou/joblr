@@ -33,30 +33,38 @@
     margin:6px 0 0 0;
   }
   .input-small{
-    height:9px;
-    margin-top:-4px;
-    font-size:15px;
+    margin-right:15px;
   }
   .select-level {
     width:110px;
     margin-bottom:10px;
     margin-left:50px;
   }
+  .delete{
+    font-size:12px;
+    display:inline-block;
+  }
 }
 
 #buttons{
   margin-top:50px;
   .btn{
-    width:65%;
+    width:70%;
     margin:0;
   }
-  .btn-group{
-    margin-top:10px;
+  input[type="submit"]{
+    width:100%;
+  }
+  .linkedin-import, .btn-top{
+    margin-bottom:10px
   }
   .explanation{
     margin:20px 0 0 15px;
-    h5{
-      margin-bottom:10px;
+    p{
+      margin-bottom:7px;
     }
+  }
+  h5{
+    margin-bottom:10px;
   }
 }
