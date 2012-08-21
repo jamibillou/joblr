@@ -37,6 +37,8 @@ Styling
 - Devise views
 - modals
 - flash messages
+- give buttons (right) a fixed position
+- fix home pages
 
 Features
 --------
