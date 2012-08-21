@@ -31,6 +31,12 @@ Tests
 - check other controller specs
 - start creating cucumber features
 
+Styling
+-------
+
+- profile edit
+- Devise views
+
 Features
 --------
 
@@ -41,7 +47,8 @@ Bugfixes
 --------
 
 - *high*:     handle subdomains on Heroku
-- *moderate*: tokens should systematically be organized by views, DRY doesn't apply to tranlsations
+- *high*:     fix picture uploads on Heroku (they are not stored properly)
+- *moderate*: translation keys should be organized by view, DRY doesn't apply to tranlsations
 - *moderate*: customise error pages, c.f. [Heroku documentation](https://devcenter.heroku.com/articles/error-pages) and [Rambling labs](http://ramblinglabs.com/blog/2012/01/rails-3-1-adding-custom-404-and-500-error-pages)
 - *low*:      patch or pull LinkedIn gem so it supports skill levels
 - *low*:      patch or pull carrierwave gem so it deletes files properly
