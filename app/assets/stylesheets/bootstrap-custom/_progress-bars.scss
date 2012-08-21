@@ -1,0 +1,25 @@
+// PROGRESS BARS
+// -------------
+
+
+// THE BARS
+// --------
+
+// Outer container
+.progress {
+  height: 21px;
+}
+
+// Bar of progress
+.progress .bar {
+  height: 21px;
+}
+
+
+// COLORS
+// ------
+
+// Danger (red)
+.progress-danger .bar {
+  @include gradient-vertical(#dd3b2e, #c33b30);
+}

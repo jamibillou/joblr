@@ -38,7 +38,7 @@
   .span4{style:'margin-left:0'}
     %h6{style:'margin-bottom:5px'}= t('users.edit.upload_cv')
     - unless @user.profile.file.nil? || @user.profile.file.blank?
-      .error-text{style:'margin-bottom:5px'} delete #{link_to @user.profile.file_identifier, @user.profile.file_url, style:'text-decoration:underline'}
+      .danger-text{style:'margin-bottom:5px'} delete #{link_to @user.profile.file_identifier, @user.profile.file_url, style:'text-decoration:underline'}
       &nbsp;
       = f.check_box :remove_file
       %br/

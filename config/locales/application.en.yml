@@ -53,7 +53,7 @@ en:
   card:
     experience: 'Experience'
     yrs: 'yrs'
-    education: 'Highest Education'
+    education: 'Highest education'
     skills: 'Skills'
     qualities: 'Qualities'
     more_about: 'More about %{fullname}'

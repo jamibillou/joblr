@@ -1,0 +1,220 @@
+// BUTTON GROUPS
+// -------------
+
+
+// Make the div behave like a button
+.btn-group {
+  position: relative;
+  @include clearfix(); // clears the floated buttons
+  @include ie7-restore-left-whitespace();
+}
+
+// Space out series of button groups
+.btn-group + .btn-group {
+  margin-left: 5px;
+}
+
+// Optional: Group multiple button groups together for a toolbar
+.btn-toolbar {
+  margin-top: $baseLineHeight / 2;
+  margin-bottom: $baseLineHeight / 2;
+  .btn-group {
+    display: inline-block;
+    @include ie7-inline-block();
+  }
+}
+
+// Float them, remove border radius, then re-add to first and last elements
+.btn-group > .btn {
+  position: relative;
+  float: left;
+  margin-left: -1px;
+  @include border-radius(0);
+}
+// Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
+.btn-group > .btn:first-child {
+  margin-left: 0;
+     -webkit-border-top-left-radius: 7px;
+         -moz-border-radius-topleft: 7px;
+             border-top-left-radius: 7px;
+  -webkit-border-bottom-left-radius: 7px;
+      -moz-border-radius-bottomleft: 7px;
+          border-bottom-left-radius: 7px;
+}
+// Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
+.btn-group > .btn:last-child, .btn-group > .dropdown-toggle {
+     -webkit-border-top-right-radius: 7px;
+         -moz-border-radius-topright: 7px;
+             border-top-right-radius: 7px;
+  -webkit-border-bottom-right-radius: 7px;
+      -moz-border-radius-bottomright: 7px;
+          border-bottom-right-radius: 7px;
+}
+// Reset corners for large buttons
+.btn-group > .btn.large:first-child {
+  margin-left: 0;
+     -webkit-border-top-left-radius: 10px;
+         -moz-border-radius-topleft: 10px;
+             border-top-left-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+      -moz-border-radius-bottomleft: 10px;
+          border-bottom-left-radius: 10px;
+}
+.btn-group > .btn.large:last-child, .btn-group > .large.dropdown-toggle {
+     -webkit-border-top-right-radius: 10px;
+         -moz-border-radius-topright: 10px;
+             border-top-right-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+      -moz-border-radius-bottomright: 10px;
+          border-bottom-right-radius: 10px;
+}
+// Reset corners for small buttons
+.btn-group > .btn.small:first-child {
+  margin-left: 0;
+     -webkit-border-top-left-radius: 6px;
+         -moz-border-radius-topleft: 6px;
+             border-top-left-radius: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+      -moz-border-radius-bottomleft: 6px;
+          border-bottom-left-radius: 6px;
+}
+.btn-group > .btn.small:last-child, .btn-group > .small.dropdown-toggle {
+     -webkit-border-top-right-radius: 6px;
+         -moz-border-radius-topright: 6px;
+             border-top-right-radius: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+      -moz-border-radius-bottomright: 6px;
+          border-bottom-right-radius: 6px;
+}
+// Reset corners for mini buttons
+.btn-group > .btn.mini:first-child {
+  margin-left: 0;
+     -webkit-border-top-left-radius: 5px;
+         -moz-border-radius-topleft: 5px;
+             border-top-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+      -moz-border-radius-bottomleft: 5px;
+          border-bottom-left-radius: 5px;
+}
+.btn-group > .btn.mini:last-child, .btn-group > .mini.dropdown-toggle {
+     -webkit-border-top-right-radius: 5px;
+         -moz-border-radius-topright: 5px;
+             border-top-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+      -moz-border-radius-bottomright: 5px;
+          border-bottom-right-radius: 5px;
+}
+
+// On hover/focus/active, bring the proper btn to front
+.btn-group > .btn:hover, .btn-group > .btn:focus, .btn-group > .btn:active, .btn-group > .btn.active {
+  z-index: 2;
+}
+
+// On active and open, don't show outline
+.btn-group .dropdown-toggle:active, .btn-group.open .dropdown-toggle {
+  outline: 0;
+}
+
+
+
+// Split button dropdowns
+// ----------------------
+
+// Give the line between buttons some depth
+.btn-group > .dropdown-toggle {
+  padding: 8px 16px 8px;
+  margin-right:7px;
+  font-size: $baseFontSize + 2px;
+  @include box-shadow(#{inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)});
+  *padding-top: 4px;
+  *padding-bottom: 4px;
+}
+.btn-group > .btn-mini.dropdown-toggle {
+  padding: 2px 4px 2px;
+  margin-right:1px;
+  font-size: $baseFontSize - 2px;
+}
+.btn-group > .btn-small.dropdown-toggle {
+  padding: 5px 10px 5px;
+  margin-right:3px;
+  font-size: $baseFontSize - 1px;
+  *padding-top: 4px;
+  *padding-bottom: 4px;
+}
+.btn-group > .btn-large.dropdown-toggle {
+  padding: 14px 26px 14px;
+  margin-right:15px;
+  font-size: 21px;
+}
+
+.btn-group.open {
+
+  // The clickable button for toggling the menu
+  // Remove the gradient and set the same inset shadow as the :active state
+  .dropdown-toggle {
+    background-image: none;
+    @include box-shadow(#{inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)});
+  }
+
+  // Keep the hover's background when dropdown is open
+  .btn.dropdown-toggle {
+    background-color: $btnBackgroundHighlight;
+  }
+  .btn-primary.dropdown-toggle {
+    background-color: $btnPrimaryBackgroundHighlight;
+  }
+  .btn-warning.dropdown-toggle {
+    background-color: $btnWarningBackgroundHighlight;
+  }
+  .btn-danger.dropdown-toggle {
+    background-color: $btnDangerBackgroundHighlight;
+  }
+  .btn-success.dropdown-toggle {
+    background-color: $btnSuccessBackgroundHighlight;
+  }
+  .btn-info.dropdown-toggle {
+    background-color: $btnInfoBackgroundHighlight;
+  }
+  .btn-inverse.dropdown-toggle {
+    background-color: $btnInverseBackgroundHighlight;
+  }
+}
+
+
+// Reposition the caret
+.btn .caret {
+  margin-top: 7px;
+  margin-left: 0;
+}
+.btn:hover .caret, .open.btn-group .caret {
+  @include opacity(1);
+}
+// Carets in other button sizes
+.btn-mini .caret {
+  margin-top: 5px;
+}
+.btn-small .caret {
+  margin-top: 6px;
+}
+.btn-large .caret {
+  margin-top: 9px;
+  border-left-width:  5px;
+  border-right-width: 5px;
+  border-top-width:   5px;
+}
+// Upside down carets for .dropup
+.dropup .btn-large .caret {
+  border-bottom: 5px solid $black;
+  border-top: 0;
+}
+
+
+
+// Account for other colors
+.btn-primary, .btn-warning, .btn-danger, .btn-info, .btn-success, .btn-inverse {
+  .caret {
+    border-top-color: $white;
+    border-bottom-color: $white;
+    @include opacity(0.75);
+  }
+}

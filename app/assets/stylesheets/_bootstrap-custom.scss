@@ -34,7 +34,7 @@
 
 // Components: Buttons & Alerts
 @import "bootstrap-custom/buttons";
-// @import "bootstrap-custom/button-groups";
+@import "bootstrap-custom/button-groups";
 // @import "bootstrap-custom/alerts"; // Note: alerts share common CSS with buttons and thus have styles in buttons.css.scss
 
 // Components: Nav
@@ -52,7 +52,7 @@
 // Components: Misc
 // @import "bootstrap-custom/thumbnails";
 // @import "bootstrap-custom/labels-badges";
-// @import "bootstrap-custom/progress-bars";
+@import "bootstrap-custom/progress-bars";
 // @import "bootstrap-custom/accordion";
 // @import "bootstrap-custom/carousel";
 @import "bootstrap-custom/hero-unit";

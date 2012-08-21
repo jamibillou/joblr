@@ -24,21 +24,53 @@ footer{
 // FIXE ME!
 // ---------
 
-// Page specific
+// Profile
 // -------------
-.card{
-  margin-left:25px;
-  .well{
-    margin:5px
+#message{
+  margin-bottom:50px;
+  h1{
+    font-weight:200;
   }
-  h6{
-    margin-bottom:10px;
+  .arrow {
+    position:relative;
+    background:#fff;
+    &:after {
+      top:-21px;
+      border:solid transparent;
+      content:" ";
+      position:absolute;
+    }
+    &:after {
+      left:65px;
+      border-top-color:#fff;
+      border-width:25px;
+      margin-left:-25px;
+    }
+  }
+}
+#profile{
+  &.well{
+    border:10px solid $brownDark;
+    @include box-shadow(none);
+  }
+  img{
+    @include border-radius(4px);
+  }
+  h2{
+    margin-top:-8px;
+  }
+  h4{
+    margin-top:20px;
+  }
+  .headline{
+    margin-top:-5px;
+    font-weight:500;
   }
   .lead{
     margin-bottom:10px;
   }
   .progress{
-    margin-top:6px;
+    margin:6px 0 0 0;
   }
   .input-small{
     height:9px;
@@ -48,7 +80,22 @@ footer{
   .select-level {
     width:110px;
     margin-bottom:10px;
-    margin-left: 50px;
+    margin-left:50px;
+  }
+}
+#share-profile{
+  margin-top:50px;
+  .btn{
+    margin:0;
+  }
+  .btn-group{
+    margin-top:10px;
+  }
+  .tip{
+    margin:20px 0 0 15px;
+    h5{
+      margin-bottom:10px;
+    }
   }
 }
 

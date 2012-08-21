@@ -14,7 +14,6 @@ p{
   }
 }
 .lead{
-  margin-bottom: $baseLineHeight;
   font-size:20px;
   font-weight:200;
   line-height:$baseLineHeight * 1.5;
@@ -24,7 +23,6 @@ p{
   }
 }
 .big{
-  margin-bottom:$baseLineHeight;
   font-size:16px;
   font-weight:300;
   line-height:$baseLineHeight * 1.2;
@@ -36,7 +34,7 @@ p{
 .warning-text{
   color:$warningText;
 }
-.error-text{
+.danger-text{
   color:$errorText;
 }
 .success-text{
@@ -45,12 +43,18 @@ p{
 .info-text{
   color:$infoText;
 }
+.gray-text{
+  color:$gray;
+}
+.graylight-text{
+  color:$grayLight;
+}
+
 
 // HEADINGS
 // --------
 
 h1, h2, h3, h4, h5, h6{
-  margin-bottom:$baseLineHeight / 2;
   font-family:$headingsFontFamily;
   font-weight:$headingsFontWeight;
   small{
@@ -82,7 +86,7 @@ h3{
 h4{
   width:inherit;
   padding-bottom:$baseLineHeight / 5;
-  margin-bottom:$baseLineHeight * 1.5;
+  margin-bottom:$baseLineHeight * 2/3;
   border-bottom:1px solid $textColor;
   font-size:$baseFontSize + 1;
   font-weight:500;
