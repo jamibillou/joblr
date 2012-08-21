@@ -1,8 +1,8 @@
-.row#sharing
+.row
   .span5.offset2
     = render 'users/show_profile', user: @user
 
-  .span4.offset1
+  .span4.offset1#sharing
     .arrow-left
     .well
       - unless params[:provider]
