@@ -1,0 +1,62 @@
+// Profile
+// -------------
+
+#text{
+  margin-bottom:50px;
+  h1{
+    font-weight:200;
+  }
+}
+
+#profile{
+  &.well{
+    border:10px solid $brownDark;
+    @include box-shadow(none);
+  }
+  img{
+    @include border-radius(4px);
+  }
+  h2{
+    margin-top:-8px;
+  }
+  h4{
+    margin-top:20px;
+  }
+  .headline{
+    margin-top:-5px;
+    font-weight:500;
+  }
+  .lead{
+    margin-bottom:10px;
+  }
+  .progress{
+    margin:6px 0 0 0;
+  }
+  .input-small{
+    height:9px;
+    margin-top:-4px;
+    font-size:15px;
+  }
+  .select-level {
+    width:110px;
+    margin-bottom:10px;
+    margin-left:50px;
+  }
+}
+
+#buttons{
+  margin-top:50px;
+  .btn{
+    width:65%;
+    margin:0;
+  }
+  .btn-group{
+    margin-top:10px;
+  }
+  .explanation{
+    margin:20px 0 0 15px;
+    h5{
+      margin-bottom:10px;
+    }
+  }
+}

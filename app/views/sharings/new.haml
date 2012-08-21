@@ -1,104 +1,38 @@
-.row
-  .span5
-    .card{id:"user-#{@user.id}"}
-      .row
-        .span4.well{style:'padding-bottom:14px'}
-          .row
-            .span1= image_tag (@user.image.blank? ? 'default_user.jpg' : @user.image_url(:thumb).to_s)
-            .span3
-              %h3= @user.fullname
-              %p #{@user.city}#{', ' unless @user.city.blank? || @user.country.blank?}#{@user.country}
-              %p #{@user.role}#{', ' unless @user.role.blank? || @user.company.blank?}#{@user.company}
-
-      .row
-        .span1.well{style:'padding:14px'}
-          %h6= t('card.experience')
-          .gigantic
-            = pluralize @user.profile.experience, 'yr'
-        .span3.well{style:'min-height:92px; padding:14px'}
-          %h6= t('card.education')
-          .lead= @user.profile.education
-
-      .row
-        .span4.well{style:'padding-bottom:0'}
-          %h6= t('card.skills')
-          .lead
-            - unless @user.profile.skill_1.blank?
-              .row
-                .span3 #{@user.profile.skill_1}
-                .span1= render 'users/level_bar', level: @user.profile.skill_1_level
-            - unless @user.profile.skill_2.blank?
-              .row
-                .span3 #{@user.profile.skill_2}
-                .span1= render 'users/level_bar', level: @user.profile.skill_2_level
-            - unless @user.profile.skill_3.blank?
-              .row
-                .span3 #{@user.profile.skill_3}
-                .span1= render 'users/level_bar', level: @user.profile.skill_3_level
-
-
-      .row
-        .span4.well{style:'padding-bottom:14px'}
-          %h6= t('card.qualities')
-          .lead
-            - unless @user.profile.quality_1.blank?
-              .row
-                .span3 #{@user.profile.quality_1}
-            - unless @user.profile.quality_2.blank?
-              .row
-                .span3 #{@user.profile.quality_2}
-            - unless @user.profile.quality_3.blank?
-              .row
-                .span3 #{@user.profile.quality_3}
-
-    - unless @user.profile.file.blank? && @user.authentifications.empty? && @user.profile.url.blank?
-      .row
-        .span4
-          %br/
-          %h6{style:'margin-bottom:10px'}= t('card.more_about', fullname: "#{@user.fullname}")
-          - unless @user.profile.file.blank?
-            %a.btn.btn-large{href: @user.profile.file_url.to_s, style:'margin-right:2px'}
-              .icon-upload
-              = t('card.download_cv')
-          - unless @user.authentifications.empty?
-            - @user.authentifications.each do |authentification|
-              = link_to image_tag("#{authentification.provider}.png", title: t('card.go_to_profile', fullname: "#{@user.fullname}", provider: "#{authentification.provider.titleize}")), authentification.url, target:'_new'
-          - unless @user.profile.url.blank?
-            %a.btn.btn-large.btn-danger{href:@user.profile.url, target:'_blank', style:'margin-left:2px'}
-              .icon-globe.icon-white
-              = t('card.site')
-
+.row#sharing
   .span5.offset2
-    %br/
-    %br/
-    %br/
-    %br/
-    %br/
-    %br/
-    %br/
-    %br/
-    %br/
-    %br/
-    .pull-right
+    = render 'users/show_profile', user: @user
+
+  .span4.offset1
+    .arrow-left
+    .well
       - unless params[:provider]
         = form_for @sharing do |f|
-          %h5{style:'margin-bottom:5px'} #{t('sharings.recipient')}#{t('punctuations.colon')}
-          %input{ type: 'text', name: 'fullname', placeholder: t('sharings.fullname_placeholder'), class: 'input-medium', style:'margin-right:5px' }
-          %input{ type: 'text', name: 'email', placeholder: t('sharings.email_placeholder'), class: 'input-medium' }
-          / %br/
-          / %input{ type: 'text', name: 'role', placeholder: t('sharings.role_placeholder'), class: 'input-medium', style:'margin-right:5px' }
-          / %input{ type: 'text', name: 'company', placeholder: t('sharings.company_placeholder'), class: 'input-medium' }
-          %br/
-          %br/
-          = f.text_area :text, class: 'lead', rows: 3, style: 'width:400px', value: t('sharings.email_text')
-          = f.hidden_field :author_id, value: @user.id
-          %br/
-          = f.submit t('send'), class:'btn btn-large btn-primary'
+          .row
+            .span3
+              %label
+                = t('sharings.fullname_label')
+              %input{type: 'text', name: 'fullname', class: 'input-medium'}
+              %br/
+              %label
+                = t('sharings.email_label')
+              %input{type: 'text', name: 'email', class: 'input-medium'}
+          .row
+            .span3
+              %label
+                = t('sharings.text_label')
+              = f.text_area :text, rows: 3, placeholder: t('sharings.email_text')
+              = f.hidden_field :author_id, value: @user.id
+              %br/
+              %br/
+              %a= link_to t('cancel'), @user, class: 'btn'
+              = f.submit t('send'), class:'btn btn-primary'
       - else
         = form_for @sharing, url: { action: params[:provider], controller: 'sharings' } do |f|
-          %br/
-          %br/
-          = f.text_area :text, class: 'lead', rows: 3, style: 'width:400px', value: t('sharings.social_text')
+          %label
+            = t('sharings.text_label')
+          = f.text_area :text, rows: 3, placeholder: t('sharings.social_text')
           = f.hidden_field :user_id, value: @user.id
           %br/
-          = f.submit t('share_on', provider: 'LinkedIn'), class:'btn btn-large btn-primary'
+          %br/
+          %a= link_to t('cancel'), @user, class: 'btn'
+          = f.submit t('share_on', provider: 'LinkedIn'), class:'btn btn-primary'

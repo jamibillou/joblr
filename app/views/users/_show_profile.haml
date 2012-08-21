@@ -1,0 +1,63 @@
+.well#profile
+  .row{id:"user-#{user.id}"}
+    .span1= image_tag (user.image.blank? ? 'default_user.jpg' : user.image_url(:thumb).to_s)
+    .span3{style: 'vertical-align:top'}
+      %h2= user.fullname
+      .big
+        .graylight-text
+          .icon-map-marker
+          &nbsp;
+          #{user.city}#{', ' unless user.city.blank? || user.country.blank?}#{user.country}
+        .headline.danger-text
+          .icon-briefcase
+          &nbsp;
+          #{user.role}#{', ' unless user.role.blank? || user.company.blank?}#{user.company}
+  .row
+    .span1
+      %h4= t('card.experience')
+      .lead= pluralize user.profile.experience, 'yr'
+    .span3
+      %h4= t('card.education')
+      .lead= user.profile.education
+  .row
+    .span4
+      %h4= t('card.skills')
+      .row
+        - unless user.profile.skill_1.blank?
+          .span3
+            .lead #{user.profile.skill_1}
+          .span1= render 'users/level_bar', level: user.profile.skill_1_level
+        - unless user.profile.skill_2.blank?
+          .span3
+            .lead #{user.profile.skill_2}
+          .span1= render 'users/level_bar', level: user.profile.skill_2_level
+        - unless user.profile.skill_3.blank?
+          .span3
+            .lead #{user.profile.skill_3}
+          .span1= render 'users/level_bar', level: user.profile.skill_3_level
+  .row
+    .span4
+      %h4= t('card.qualities')
+      .row
+        - unless user.profile.quality_1.blank?
+          .span3
+            .lead #{user.profile.quality_1}
+        - unless user.profile.quality_2.blank?
+          .span3
+            .lead #{user.profile.quality_2}
+        - unless user.profile.quality_3.blank?
+          .span3
+            .lead #{user.profile.quality_3}
+  - unless user.profile.file.blank? && user.authentifications.empty? && user.profile.url.blank?
+    .row
+      .span4
+        %h4= t('card.more_about', fullname: "#{user.fullname}")
+        - unless user.profile.file.blank?
+          %a.btn{href: user.profile.file_url.to_s}
+            = t('card.download_cv')
+        - unless user.profile.url.blank?
+          %a.btn.btn.btn-danger{href: "http://#{user.profile.url}", target:'_blank'}
+            = t('card.site')
+        - unless user.authentifications.empty?
+          - user.authentifications.each do |authentification|
+            = link_to image_tag("#{authentification.provider}.png", title:t('card.go_to_profile', fullname: "#{user.fullname}", provider: "#{authentification.provider.titleize}")), authentification.url, target:'_new'
