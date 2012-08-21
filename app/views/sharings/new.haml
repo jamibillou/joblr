@@ -28,11 +28,13 @@
               = f.submit t('send'), class:'btn btn-primary'
       - else
         = form_for @sharing, url: { action: params[:provider], controller: 'sharings' } do |f|
-          %label
-            = t('sharings.text_label')
-          = f.text_area :text, rows: 3, placeholder: t('sharings.social_text')
-          = f.hidden_field :user_id, value: @user.id
-          %br/
-          %br/
-          %a= link_to t('cancel'), @user, class: 'btn'
-          = f.submit t('share_on', provider: 'LinkedIn'), class:'btn btn-primary'
+          .row
+            .span3
+              %label
+                = t('sharings.text_label')
+              = f.text_area :text, rows: 3, placeholder: t('sharings.social_text')
+              = f.hidden_field :user_id, value: @user.id
+              %br/
+              %br/
+              %a= link_to t('cancel'), @user, class: 'btn'
+              = f.submit t('share_on', provider: 'LinkedIn'), class:'btn btn-primary'
