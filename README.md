@@ -35,8 +35,8 @@ Styling
 -------
 
 - Devise views
-- responsive design
-- flash messages
+- migrate to fluid grid
+- clean alerts (file x1 + margin-bottom)
 - fix home pages
 
 Features

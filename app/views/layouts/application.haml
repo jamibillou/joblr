@@ -19,12 +19,13 @@
           = render 'layouts/left_navigation'
           = render 'layouts/right_navigation'
 
-    #main{ role: 'main' }
+    = render 'layouts/messages'
+
+    #main{role: 'main'}
       .container
         .content
           .row
             .span12
-              = render 'layouts/messages'
               = yield
 
           %footer= debug(params) if Rails.env.development?
