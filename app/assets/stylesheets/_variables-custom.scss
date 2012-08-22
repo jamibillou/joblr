@@ -125,18 +125,18 @@ $heroUnitLeadColor:               $wellTextColor !default;
 
 // Form states and alerts
 // -------------------------
-$warningText:             $red !default;
-$warningBackground:       lighten($warningText, 30%) !default;
-$warningBorder:           lighten($warningText, 20%) !default;
+$warningText:             lighten($red, 10%) !default;
+$warningBackground:       lighten($warningText, 20%) !default;
+$warningBorder:           lighten($warningText, 14%) !default;
 
-$errorText:               $red !default;
-$errorBackground:         lighten($errorText, 30%) !default;
-$errorBorder:             lighten($errorText, 20%) !default;
+$errorText:               lighten($red, 10%) !default;
+$errorBackground:         lighten($errorText, 20%) !default;
+$errorBorder:             lighten($errorText, 14%) !default;
 
-$successText:             $blue !default;
-$successBackground:       lighten($successText, 40%) !default;
-$successBorder:           lighten($successText, 30%) !default;
+$successText:             lighten($blue, 15%) !default;
+$successBackground:       lighten($successText, 25%) !default;
+$successBorder:           lighten($successText, 19%) !default;
 
-$infoText:                $blue !default;
-$infoBackground:          lighten($infoText, 40%) !default;
-$infoBorder:              lighten($infoText, 30%) !default;
+$infoText:                lighten($blue, 15%) !default;
+$infoBackground:          lighten($infoText, 25%) !default;
+$infoBorder:              lighten($infoText, 19%) !default;

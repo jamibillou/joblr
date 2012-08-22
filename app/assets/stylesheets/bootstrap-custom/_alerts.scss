@@ -1,13 +1,29 @@
 // ALERT STYLES
 // ------------
 
+
+// ALERT STYLES
+// ------------
+
 // Base alert styles
 .alert {
+  padding:4px 12px 4px;
+  margin: -50px 0 50px 0;
+  font-size:12px;
+  font-weight:400;
+  text-shadow:none;
   background-color: $warningBackground;
   border:none;
   border-bottom: 1px solid $warningBorder;
   @include border-radius(0px);
   color: $warningText;
+}
+
+// Adjust close link position
+.alert .close {
+  top:3px;
+  right:0;
+  z-index:$zindexTooltip + 10;
 }
 
 // Alternate styles

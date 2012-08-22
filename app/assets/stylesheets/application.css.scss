@@ -1,5 +1,4 @@
 @import "variables-custom";
-@import "alerts-custom";
 @import "bootstrap";
 @import "bootstrap-responsive";
 @import "bootstrap-custom";
@@ -22,6 +21,18 @@ footer{
   }
 }
 
+// BUTTONS
+// To move in the near future
+
+a.close{
+  height:15px;
+  width:15px;
+  background-image:url('close.png');
+  display:inline-block;
+  &:hover{
+    background-position:-15px 0
+  }
+}
 
 // ARROWS
 // To turn into a mixin

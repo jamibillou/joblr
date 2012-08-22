@@ -37,7 +37,6 @@ Styling
 
 - Devise views
 - migrate to fluid grid
-- clean alerts (file x1 + margin-bottom + padding is overwritter + close button is gone)
 - fix home pages
 
 Features
