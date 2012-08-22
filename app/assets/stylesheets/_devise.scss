@@ -1,0 +1,24 @@
+// DEVISE
+// Styles to personalize Devise views
+// ----------------------------------
+
+
+// Headings
+// --------
+
+h1{
+  margin-bottom:$baseLineHeight * 2;
+}
+
+// Buttons
+// -------
+
+.devise{
+  .buttons{
+    margin-top:20px;
+  }
+  .btn{
+    margin:10px 7px 0 0;
+  }
+}
+

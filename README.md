@@ -35,14 +35,14 @@ Tests
 Styling
 -------
 
-- Devise views
+- Finish Devise views (are confirmations and unlocks are used anywhere?)
 - migrate to fluid grid
 - fix home pages
 
 Features
 --------
 
-- *hight*: customize Twitter bootstrap
+- *high*: customize Twitter bootstrap
 - *moderate*: build dashboard summarising actions taken by user
 
 Bugfixes

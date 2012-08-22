@@ -1,27 +1,31 @@
 - unless resource.errors.empty?
   .alert.alert-error
     = devise_error_messages!
-    %a.close{ "data-dismiss" => 'alert'} &#215;
-.well
-  %h2= t('devise.registrations.create_joblr_account')
-  %br/
-
-  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    %div
-      #{f.label :username, class: 'inline'} *
-      %br/
-      = f.text_field :username
-
-    %div
-      #{f.label :password, class: 'inline'} *
-      %br/
-      = f.password_field :password
-
-    %div
-      #{f.label :password_confirmation, class: 'inline'} *
-      %br/
-      = f.password_field :password_confirmation
-
-    %div= f.submit t('devise.registrations.sign_up'), class: 'btn', name: 'user[commit]'
-
-  = render partial: 'devise/shared/links'
+    %a.close{href: '#', "data-dismiss" => 'alert'} &nbsp;
+.row.devise
+  .span8.offset2
+    .well
+      .row
+        .span3
+          %h1= t('devise.registrations.create_joblr_account')
+          = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+            = f.label :username, class: 'inline'
+            *
+            = f.text_field :username
+            =f.label :password, class: 'inline'
+            *
+            = f.password_field :password
+            = f.label :password_confirmation, class: 'inline'
+            *
+            = f.password_field :password_confirmation
+            .buttons
+              %a.btn{href: url_for(:back)}= t('cancel')
+              = f.submit t('devise.registrations.sign_up'), class: 'btn btn-primary', name: 'user[commit]'
+        .span3.offset1
+          %h4= t('devise.registrations.skip_and_signin')
+          = render partial: 'devise/shared/omniauth_links'
+          %br/
+          %br/
+          %br/
+          %h4= t('devise.registrations.didnt_mean_to')
+          = render partial: 'devise/shared/links'

@@ -1,36 +1,32 @@
 - unless resource.errors.empty?
   .alert.alert-error
     = devise_error_messages!
-    %a.close{ "data-dismiss" => 'alert'} &#215;
-.well
-  %h2= t('account_settings')
-  %br/
-
-  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-    - unless social_user? current_user
-      %div
-        #{f.label :username, class: 'inline'} *
-        %br/
-        = f.text_field :username
-    - else
-      = f.hidden_field :username
-
-    %div
-      = f.label :fullname
-      = f.text_field :fullname
-
-    %div
-      = f.label :email
-      = f.email_field :email
-
-    %div= f.submit t('update'), class: 'btn'
-    %br/
-
-  %button.btn.btn-large= link_to t('back'), :back
-  %br/
-  %br/
-  %br/
-  %p
-    = t('devise.registrations.unhappy')
-    %br/
-    = link_to t('devise.registrations.cancel_account'), registration_path(resource_name), :data => { :confirm => t('sure') }, :method => :delete
+    %a.close{href: '#', "data-dismiss" => 'alert'} &nbsp;
+.row.devise
+  .span8.offset2
+    .well
+      .row
+        .span3
+          %h1= t('account_settings')
+          = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+            - unless social_user? current_user
+              = f.label :username, class: 'inline'
+              *
+              = f.text_field :username
+            - else
+              = f.hidden_field :username
+            = f.label :fullname
+            = f.text_field :fullname
+            = f.label :email
+            = f.email_field :email
+            .buttons
+              %a.btn{href: url_for(:back)}= t('cancel')
+              = f.submit t('update'), class: 'btn btn-primary'
+        .span3.offset1
+          %h4= t('devise.omniauth.add_accounts')
+          = render partial: 'devise/shared/omniauth_links'
+          %br/
+          %br/
+          %br/
+          %h4= t('devise.registrations.unhappy')
+          = link_to t('devise.registrations.cancel_account'), registration_path(resource_name), :data => { :confirm => t('sure') }, :method => :delete

@@ -20,9 +20,13 @@ en:
       timeout: 'Your session expired, please sign in again to continue.'
       inactive: 'Your account was not activated yet.'
     sessions:
+      sign_in: 'Sign in'
+      joblr_signin: 'Sign in with a Joblr account'
+      social_signin: 'Sign in with a social account'
       signed_in: 'Signed in successfully.'
       signed_out: 'Signed out successfully.'
       logout: 'Logout'
+      problem: "Sign in problem"
     passwords:
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
       updated: 'Your password was changed successfully. You are now signed in.'
@@ -34,11 +38,10 @@ en:
       send_paranoid_instructions: 'If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
       confirmed: 'Your account was successfully confirmed. You are now signed in.'
     registrations:
-      sign_in_with_joblr_account: 'Sign in with a Joblr account'
       create_joblr_account: 'Create a Joblr account'
+      skip_and_signin: 'Or skip this step and sign in a social account'
       sign_in: 'Sign in'
       sign_up: 'Sign up!'
-      or_signin_with: ' or signin with'
       forgot_password: 'Forgot your password? '
       signed_up: 'Welcome to joblr!'
       signed_up_but_unconfirmed: 'A message with a confirmation link has been sent to your email address. Please open the link to activate your account.'
@@ -49,6 +52,7 @@ en:
       destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
       unhappy: 'Unhappy?'
       cancel_account: 'Cancel your account'
+      didnt_mean_to: "Didn't mean to signup?"
     unlocks:
       send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
       unlocked: 'Your account has been unlocked successfully. Please sign in to continue.'
@@ -64,6 +68,7 @@ en:
       unlock_instructions:
         subject: 'Unlock Instructions'
     omniauth:
+      add_accounts: "Link your social profiles to easily login and share"
       add_account: 'Add your %{network} account'
       remove_account: 'Remove your %{network} account'
       remove_account_ask: 'Remove your %{network} account?'

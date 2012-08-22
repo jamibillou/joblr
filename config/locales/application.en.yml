@@ -28,7 +28,7 @@ en:
         shared:  'Profile shared successfully.'
       beta_invite:
         sent: 'An invitation code was sent to %{email}, paste it here and sign up!'
-        ok: "Great, you can now sign up to our alpha!"
+        ok: "Great, you can now sign up to Joblr alpha!"
     error:
       base: 'Error:'
       something_wrong:
