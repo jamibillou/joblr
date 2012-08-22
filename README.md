@@ -22,6 +22,7 @@ Clean up
 
 - remove CONSUMER_KEY and CONSUMER_SECRET from config/initializers/devise.rb
   c.f: [Heroku documentation](https://devcenter.heroku.com/articles/config-vars) and [Railscasts](http://railscasts.com/episodes/235-devise-and-omniauth-revised)
+- make sure only the needed translations are loaded in JS
 
 Tests
 -----
@@ -35,8 +36,8 @@ Styling
 -------
 
 - Devise views
-- responsive design
-- flash messages
+- migrate to fluid grid
+- clean alerts (file x1 + margin-bottom + padding is overwritter + close button is gone)
 - fix home pages
 
 Features

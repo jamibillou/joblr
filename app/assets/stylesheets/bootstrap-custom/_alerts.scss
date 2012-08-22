@@ -1,0 +1,30 @@
+// ALERT STYLES
+// ------------
+
+// Base alert styles
+.alert {
+  background-color: $warningBackground;
+  border:none;
+  border-bottom: 1px solid $warningBorder;
+  @include border-radius(0px);
+  color: $warningText;
+}
+
+// Alternate styles
+// ----------------
+
+.alert-success {
+  background-color: $successBackground;
+  border-color: $successBorder;
+  color: $successText;
+}
+.alert-danger, .alert-error {
+  background-color: $errorBackground;
+  border-color: $errorBorder;
+  color: $errorText;
+}
+.alert-info {
+  background-color: $infoBackground;
+  border-color: $infoBorder;
+  color: $infoText;
+}
