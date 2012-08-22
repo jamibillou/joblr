@@ -1,6 +1,6 @@
 #image-modal.modal.hide
   .modal-header
-    %button.close{type:'button', 'data-dismiss' => 'modal'} ×
+    %a.close{href: '#', 'data-dismiss' => 'modal'} &nbsp;
     %h3
       - if @user.authentifications.empty?
         =t 'users.image_modal.upload'
