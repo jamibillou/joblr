@@ -36,7 +36,7 @@ en:
       import_info: 'Import your information from'
       import_linkedin: 'Import from Linkedin'
     image_modal:
-      select_or_upload: 'Select or upload a pic!'
-      upload: 'Upload a pic!'
+      select_or_upload: 'Select or upload a picture!'
+      upload: 'Upload a picture!'
       delete: 'delete'
       current_pic: 'Current picture'
