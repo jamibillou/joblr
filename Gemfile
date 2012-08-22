@@ -18,7 +18,7 @@ gem 'roadie'
 gem 'heroku'
 gem 'haml'
 gem 'bootstrap-sass'
-gem 'i18n-js'
+# gem 'i18n-js' # Disabled for now since we're not using any text in Js and it's taking forever to load stuff from the rails-i18n gem
 
 # Gems used only for assets and not required in production environments by default.
 group :assets do
