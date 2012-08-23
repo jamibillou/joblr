@@ -24,7 +24,7 @@ en:
       text_placeholder: 'e.g. I build quality code for a living and in my spare time, it is a passion rather than an occupation!'
       save_profile: 'Save your profile'
       create_profile: 'Create your profile'
-      fullname_placeholder: 'Fullname'
+      fullname_placeholder: 'Full name'
       location_label: 'Location'
       city_placeholder: 'City'
       country_placeholder: 'Country'
