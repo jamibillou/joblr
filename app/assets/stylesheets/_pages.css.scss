@@ -24,8 +24,11 @@
     .well{
       padding:10px;
     }
+    #backgrounds .big, #colors .big{
+      margin-bottom:$baseLineHeight;
+    }
     #backgrounds{
-      .brow{
+      .brown{
         background-color:$brown;
       }
       .browDark{
