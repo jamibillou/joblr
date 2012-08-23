@@ -1,0 +1,25 @@
+- unless resource.errors.empty?
+  .alert.alert-error
+    = devise_error_messages!
+    %a.close{href: '#', "data-dismiss" => 'alert'} &nbsp;
+.row.devise
+  .span6.offset3
+    .well
+      = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :put}) do |f|
+        .row
+          .span3
+            %h1= t('devise.passwords.title')
+            = f.hidden_field :reset_password_token
+            = f.label :password, "New password", class: 'inline'
+            *
+            = f.password_field :password
+            = f.label :password_confirmation, class: 'inline'
+            *
+            = f.password_field :password_confirmation
+          .span2
+            %h4 Otherwise
+            = render "devise/shared/links"
+        .row
+          .span5
+            %a.btn{href: url_for(:back)}= t('cancel')
+            = f.submit t('devise.password.change_password')
