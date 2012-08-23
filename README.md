@@ -22,7 +22,6 @@ Clean up
 
 - remove CONSUMER_KEY and CONSUMER_SECRET from config/initializers/devise.rb
   c.f: [Heroku documentation](https://devcenter.heroku.com/articles/config-vars) and [Railscasts](http://railscasts.com/episodes/235-devise-and-omniauth-revised)
-- make sure only the needed translations are loaded in JS
 
 Tests
 -----
@@ -42,15 +41,15 @@ Styling
 Features
 --------
 
-- *high*: customize Twitter bootstrap
 - *moderate*: build dashboard summarising actions taken by user
 
 Bugfixes
 --------
 
-- *high*:     handle subdomains on Heroku
-- *high*:     fix picture uploads on Heroku (they are not stored properly)
+- *high*: handle subdomains on Heroku
+- *high*: fix picture uploads on Heroku (they are not stored properly)
+- *high*: handle non signed in users (sharings, cookie)
 - *moderate*: translation keys should be organized by view, DRY doesn't apply to tranlsations
-- *moderate*: customise error pages, c.f. [Heroku documentation](https://devcenter.heroku.com/articles/error-pages) and [Rambling labs](http://ramblinglabs.com/blog/2012/01/rails-3-1-adding-custom-404-and-500-error-pages)
-- *low*:      patch or pull LinkedIn gem so it supports skill levels
-- *low*:      patch or pull carrierwave gem so it deletes files properly
+- *moderate*: customise 404/500 pages, c.f. [Heroku documentation](https://devcenter.heroku.com/articles/error-pages) and [Rambling labs](http://ramblinglabs.com/blog/2012/01/rails-3-1-adding-custom-404-and-500-error-pages)
+- *low*: patch or pull LinkedIn gem so it supports skill levels
+- *low*: patch or pull carrierwave gem so it deletes files properly
