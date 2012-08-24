@@ -48,8 +48,11 @@ class AuthentificationsController < ApplicationController
         else
           flash[:error] = t('flash.error.other_user.provider', provider: auth_hash.provider.titleize)
         end
-        redirect_to (session[:user_return_to] ||= :back)
-        session[:user_return_to] = nil
+        if session[:user_return_to]
+          redirect_to(session[:user_return_to]) ; session[:user_return_to] = nil
+        else
+          redirect_to_back
+        end
       else
         sign_in user
         redirect_to root_path, flash: {success: t('devise.omniauth_callbacks.success', provider: auth_hash.provider.titleize)}
