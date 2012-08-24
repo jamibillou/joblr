@@ -1,6 +1,6 @@
 en:
   sharings:
-    fullname_label: 'Recipient fullname'
+    fullname_label: 'Recipient full name'
     email_label: 'Recipient email address'
     text_label: 'Personal message'
     email_text: "e.g. Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."

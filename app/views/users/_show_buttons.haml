@@ -13,13 +13,13 @@
           %span.caret
         %ul.dropdown-menu
           %li
-            = link_to t('users.show.email'), new_sharing_path(id: user.id)
+            = link_to t('users.show.email'), new_sharing_url(id: user.id, subdomain: false)
           %li
-            = link_to 'LinkedIn', new_sharing_path(id: user.id, provider: 'linkedin')
+            = link_to 'LinkedIn', new_sharing_url(id: user.id, provider: 'linkedin', subdomain: false)
       .explanation
         - if user_signed_in? && current_user == user && !has_subdomain
           %h5= t('users.show.public_profile')
-          %p= t('users.show.explanation_html', url: link_to("http://#{user.subdomain}.#{request.domain}", "http://#{request.domain}/#{user.subdomain}", target: '_new'))
+          %p= t('users.show.explanation_html', url: link_to("http://#{user.subdomain}.#{request.domain}", "http://#{user.subdomain}.#{request.domain}", target: '_new'))
         - else
           %h5 What’s this?
           %p #{user.fullname.split.first} is looking for a job and wants your help. Contact him if you have a job or a tip for him. Otherwise help him out by sharing his profile!

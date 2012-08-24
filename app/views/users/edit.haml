@@ -5,7 +5,7 @@
         .well
           .row
             .span4
-              %h4= t('users.edit.text_label')
+              %label= t('users.edit.text_label')
               = text_area :text, :placeholder, value: (@user.profile.text if signed_up?(@user)), placeholder: t('users.edit.text_placeholder'), rows:3
         .arrow-bottom
       .well#profile

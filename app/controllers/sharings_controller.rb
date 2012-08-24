@@ -35,8 +35,11 @@ class SharingsController < ApplicationController
 	private
 
     def authenticate
-      if current_user.auth('linkedin').nil?
-        session[:user_return_to] = sharings_linkedin_path(sharing: params[:sharing])
+      # FIX ME! needs to handle non signed in users
+      session[:user_return_to] = sharings_linkedin_path(sharing: params[:sharing])
+      if !user_signed_in?
+        redirect_to root_path, flash: {error: t('flash.error.something_wrong.base')}
+      elsif current_user.auth('linkedin').nil?
         redirect_to omniauth_authorize_path(current_user, 'linkedin') if current_user.auth('linkedin').nil?
       end
     end
