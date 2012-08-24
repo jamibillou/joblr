@@ -10,6 +10,7 @@ $ ->
 
 @toggleAuthImage = (imageId) ->
   authId = imageId.match(/\d+/)[0]
-  authImageUrl = if $('#remote_image_url').val() is '' then $('#auth_'+authId+'_image_url').html() else ''
+  authImageUrl = if $('#remote_image_url').val() is $('#auth_'+authId+'_image_url').html() then '' else $('#auth_'+authId+'_image_url').html()
+  $('.social.pic.selected').each -> $(this).toggleClass('selected') if $(this).attr('id') isnt imageId
   $('#'+imageId).toggleClass('selected')
   $('#remote_image_url').val(authImageUrl)
