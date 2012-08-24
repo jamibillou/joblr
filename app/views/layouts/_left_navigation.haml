@@ -1,23 +1,9 @@
 = link_to '', root_path, class: 'brand'
-
 %ul.nav
   - if user_signed_in?
-    %li
-      = link_to t('profile'), current_user
+    %li= link_to t('profile'), current_user
   - else
-    %li
-      = link_to t('pages.titles.overview'), "#{root_url(subdomain: false)}home#overview", id: 'overview-trigger'
-    %li
-      = link_to t('pages.titles.tour'), "#{root_url(subdomain: false)}home#tour", id: 'tour-trigger'
-    %li
-      = link_to t('pages.titles.pricing'), "#{root_url(subdomain: false)}home#pricing", id: 'pricing-trigger'
-    %li
-      = link_to t('pages.titles.team'), "#{root_url(subdomain: false)}home#team", id: 'team-trigger'
-    %li
-      = link_to t('pages.titles.contact'), "#{root_url(subdomain: false)}home#contact", id: 'contact-trigger'
+    %li= link_to t('pages.titles.overview'), "#{root_url(subdomain: false)}home"
 
     - if Rails.env.development?
-      %li
-        .navbar-text |
-      %li
-        = link_to t('pages.titles.style_tile'), style_tile_path
+      %li= link_to t('pages.titles.style_tile'), style_tile_path
