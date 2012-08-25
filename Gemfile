@@ -18,9 +18,11 @@ gem 'roadie'
 gem 'heroku'
 gem 'haml'
 gem 'bootstrap-sass'
-# gem 'i18n-js' # Disabled for now since we're not using any text in Js and it's taking forever to load stuff from the rails-i18n gem
 
-# Gems used only for assets and not required in production environments by default.
+group :production do
+  gem 'google-analytics-rails' # View helpers for custom events: https://github.com/bgarret/google-analytics-rails/blob/master/lib/google-analytics/rails/view_helpers.rb
+end
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'

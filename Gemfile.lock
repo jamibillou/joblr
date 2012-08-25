@@ -96,6 +96,7 @@ GEM
     faraday (0.8.1)
       multipart-post (~> 1.1)
     ffi (1.0.11)
+    google-analytics-rails (0.0.3)
     haml (3.1.6)
     hashie (1.2.0)
     heroku (2.14.0)
@@ -260,6 +261,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   faker
+  google-analytics-rails
   haml
   heroku
   jquery-rails
