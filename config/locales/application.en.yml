@@ -51,13 +51,3 @@ en:
       text:
         blank: "Text can't be blank."
         long: "Text is too long (maximum: 140 characters)"
-  card:
-    experience: 'Experience'
-    yrs: 'yrs'
-    education: 'Highest education'
-    skills: 'Professional skills'
-    qualities: 'Personal qualities'
-    more_about: 'More about %{fullname}'
-    download_cv: 'CV'
-    go_to_profile: "Go to %{fullname}'s %{provider} profile"
-    site: 'www'

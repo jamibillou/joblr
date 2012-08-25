@@ -1,6 +1,22 @@
 en:
   users:
     show:
+      headline:
+        fulltime: 'Looking for a full-time job!'
+        partime: 'Looking for a part-time job!'
+        internship: 'Looking for an internship!'
+        freelance: 'Looking for freelance projects!'
+      experience: 'Experience'
+      yrs: 'yrs'
+      last_job: 'Last or current job'
+      past_companies: 'Aslo worked for:'
+      education: 'Highest education'
+      skills: 'Professional skills'
+      qualities: 'Personal qualities'
+      more_about: 'More about %{fullname}'
+      download_cv: 'CV'
+      view_social: "View %{fullname}'s %{provider} profile"
+      site: 'www'
       public_profile: 'Public profile'
       email: 'Email'
       social_networks: 'Social networks'
@@ -8,12 +24,20 @@ en:
       explanation_html: "Start sharing %{url} around you now!"
     edit:
       title: 'Edit your profile'
-      exp_edu: 'Experience and education'
-      experience_placeholder: 'in years'
+      experience: 'Experience'
+      experience_label: 'Years'
+      experience_placeholder: 'number'
+      education: 'Highest education'
+      last_job: 'Last or current job'
+      last_job_placeholder: 'e.g. Sales at Bank of Scotland'
+      past_companies: 'Other past employers'
+      past_companies_placeholder: 'e.g. KPMG, Nike, Uniliver'
       education_placeholder: "e.g. Master's of Business Administration"
+      skills: 'Professional skills'
       skill_1_placeholder: 'e.g. Book keeping'
       skill_2_placeholder: 'e.g. Heart surgery'
       skill_3_placeholder: 'e.g. General administration'
+      qualities: 'Personal qualities'
       quality_1_placeholder: 'e.g. Drive'
       quality_2_placeholder: 'e.g. Good communication'
       quality_3_placeholder: 'e.g. Honesty'

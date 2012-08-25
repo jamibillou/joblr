@@ -40,16 +40,25 @@
   .lead{
     margin-bottom:10px;
   }
-  .progress{
-    margin:6px 0 0 0;
-  }
   .input-small{
     margin-right:15px;
   }
-  .select-level {
-    width:110px;
-    margin-bottom:10px;
-    margin-left:50px;
+  .input-slim{
+    height:10px;
+    font-size:11px;
+  }
+  .experience p{
+    margin-bottom:0;
+  }
+  .skills{
+    .progress{
+      margin:5px 0 0 0;
+    }
+    select {
+      width:110px;
+      margin-bottom:10px;
+      margin-left:50px;
+    }
   }
   .delete{
     font-size:12px;

@@ -1,9 +1,9 @@
 module ProfilesHelper
 
   def headline_options
-    { t('profiles.headline.fulltime')   => 'fulltime',
-      t('profiles.headline.partime')    => 'partime',
-      t('profiles.headline.internship') => 'internship',
-      t('profiles.headline.freelance')  => 'freelance' }
+    { t('users.show.headline.fulltime') => 'fulltime',
+      t('users.show.headline.partime')  => 'partime',
+      t('users.show.internship')        => 'internship',
+      t('users.show.freelance')         => 'freelance' }
   end
 end

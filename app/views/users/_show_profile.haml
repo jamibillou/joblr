@@ -9,22 +9,39 @@
             .icon-map-marker
             &nbsp;
             #{user.city}#{', ' unless user.city.blank? || user.country.blank?}#{user.country}
-        - unless user.profile.headline.blank?
-          .headline.danger-text
-            .icon-briefcase
-            &nbsp;
-            = t("profiles.headline.#{user.profile.headline}")
-  .row
-    .span1
-      %h4= t('card.experience')
-      .lead= pluralize user.profile.experience, 'yr'
-    .span3
-      %h4= t('card.education')
-      .lead= user.profile.education
-  - unless user.profile.skill_1.blank? && user.profile.skill_2.blank? && user.profile.skill_3.blank?
+        .headline.danger-text
+          .icon-briefcase
+          &nbsp;
+          = t("users.show.headline.#{user.profile.headline}")
+  - unless user.profile.last_job.blank?
+    .row.experience
+      .span1
+        %h4= t('users.show.experience')
+        .lead= pluralize user.profile.experience, 'yr'
+      .span3
+        %h4= t('users.show.last_job')
+        .lead= user.profile.last_job
+        - unless user.profile.past_companies.blank?
+          %p
+            %small= t('users.show.past_companies')
+            %br/
+            = user.profile.past_companies
     .row
       .span4
-        %h4= t('card.skills')
+        %h4= t('users.show.education')
+        .lead= user.profile.education
+  - else
+    .row
+      .span1
+        %h4= t('users.show.experience')
+        .lead= pluralize user.profile.experience, 'yr'
+      .span3
+        %h4= t('users.show.education')
+        .lead= user.profile.education
+  - unless user.profile.skill_1.blank? && user.profile.skill_2.blank? && user.profile.skill_3.blank?
+    .row.skills
+      .span4
+        %h4= t('users.show.skills')
         .row
           - unless user.profile.skill_1.blank?
             .span3
@@ -41,7 +58,7 @@
   - unless user.profile.quality_1.blank? && user.profile.quality_2.blank? && user.profile.quality_3.blank?
     .row
       .span4
-        %h4= t('card.qualities')
+        %h4= t('users.show.qualities')
         .row
           - unless user.profile.quality_1.blank?
             .span3
@@ -55,13 +72,13 @@
   - unless user.profile.file.blank? && user.authentifications.empty? && user.profile.url.blank?
     .row
       .span4
-        %h4= t('card.more_about', fullname: "#{user.fullname}")
+        %h4= t('users.show.more_about', fullname: "#{user.fullname}")
         - unless user.profile.file.blank?
           %a.btn.btn-danger{href: user.profile.file_url.to_s}
-            = t('card.download_cv')
+            = t('users.show.download_cv')
         - unless user.profile.url.blank?
           %a.btn.btn{href: "http://#{user.profile.url}", target:'_blank'}
-            = t('card.site')
+            = t('users.show.site')
         - unless user.authentifications.empty?
           - user.authentifications.each do |authentification|
-            = link_to image_tag("#{authentification.provider}.png", title:t('card.go_to_profile', fullname: "#{user.fullname}", provider: "#{authentification.provider.titleize}")), authentification.url, target:'_new'
+            = link_to image_tag("#{authentification.provider}.png", title:t('users.show.view_social', fullname: "#{user.fullname}", provider: "#{authentification.provider.titleize}")), authentification.url, target:'_new'
