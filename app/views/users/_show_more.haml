@@ -1,13 +1,13 @@
 - unless user.profile.file.blank? && user.authentifications.empty? && user.profile.url.blank?
   .row
     .span4
-      %h4= t('users.show.more_about', fullname: "#{user.fullname}")
+      %h4=t 'users.show.more_about', fullname: "#{user.fullname}"
       - unless user.profile.file.blank?
         %a.btn.btn-danger{href: user.profile.file_url.to_s}
-          = t('users.show.download_cv')
+          =t 'users.show.download_cv'
       - unless user.profile.url.blank?
         %a.btn.btn{href: user.profile.url, target:'_blank'}
-          = t('users.show.site')
+          =t 'users.show.site'
       - unless user.authentifications.empty?
         - user.authentifications.each do |authentification|
           = link_to image_tag("#{authentification.provider}.png", title:t('users.show.view_social', fullname: "#{user.fullname}", provider: "#{authentification.provider.titleize}")), authentification.url, target:'_new'

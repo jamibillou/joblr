@@ -1,40 +1,9 @@
-= form_for @user, html: { id:"edit-form" } do |f|
+= form_for @user, html: {id:"edit-form"} do |f|
   .row
     .span5.offset3
-      #text
-        .well
-          .row
-            .span4
-              %small= t('users.edit.text_label')
-              = text_area :text, :placeholder, value: field_value(:text, @linkedin), placeholder: t('users.edit.text_placeholder'), rows:3
-        .arrow-bottom
+      = render 'edit_text', f: f
       .well#profile
-        .row
-          .span1
-            %a{href: '#image-modal', 'data-toggle' => 'modal'}
-              = image_tag (@user.image.blank? ? 'default_user.jpg' : @user.image_url(:thumb).to_s)
-            = render 'image_modal', f: f
-          .span3
-            = f.text_field :fullname, value: field_value(:fullname, @linkedin), placeholder: t('users.edit.fullname_placeholder')
-            %br/
-            %small= t('users.edit.location')
-            %br/
-            = f.text_field :city,    value: field_value(:city,    @linkedin), placeholder: t('users.edit.city_placeholder'),    class:'input-small'
-            = f.text_field :country, value: field_value(:country, @linkedin), placeholder: t('users.edit.country_placeholder'), class:'input-small'
-        = f.fields_for(:profiles) { |profile_builder| render 'fields_profile', f: profile_builder }
+        = render 'edit_identity', f: f
+        = f.fields_for(:profiles) {|profile_builder| render 'fields_profile', f: profile_builder}
     .span2.offset2
-      #buttons
-        .row
-          .span2
-            - unless signed_up?(@user) || @linkedin
-              %label Import from
-              %a.btn.btn-large.btn-top{href: omniauth_authorize_path(:user, 'linkedin')} LinkedIn
-            %a#submit-placeholder.btn.btn-large.btn-primary.btn-top= t('save')
-            - if signed_up?(@user)
-              %a.btn.btn-large{href: user_path(@user)}
-                = t('cancel')
-            - if signed_up?(@user)
-              .explanation
-                %h5= t('users.edit.public_profile')
-                %p= t('users.edit.explanation_html', url: link_to("http://#{@user.subdomain}.#{request.domain}", "http://#{@user.subdomain}.#{request.domain}"))
-                = f.text_field :subdomain, class:'input-medium'
+      = render 'edit_buttons', f: f

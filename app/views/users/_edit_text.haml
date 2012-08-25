@@ -1,0 +1,7 @@
+#text
+  .well
+    .row
+      .span4
+        %small=t 'users.edit.text_label'
+        = text_area :text, :placeholder, value: field_value(:text, @linkedin), placeholder: t('users.edit.text_placeholder'), rows: 3
+  .arrow-bottom

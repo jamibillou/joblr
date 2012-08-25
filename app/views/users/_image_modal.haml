@@ -18,13 +18,11 @@
           = f.check_box :remove_image
 
     - unless @user.authentifications.empty?
-      %h5{style:'margin-bottom:5px'}= t('users.edit.social_profiles')
+      %h5= t('users.edit.social_profiles')
       - @user.authentifications.each do |auth|
         - unless auth.image_url.blank?
           = link_to image_tag(auth.image_url, class: 'social pic', id: "auth_#{auth.id}_image"), '#'
           .hidden{id: "auth_#{auth.id}_image_url"}= auth.image_url(:original)
-      %br/
-      %br/
 
     %h5= "#{t('upload')}#{t('punctuations.colon')}"
     = f.file_field :image

@@ -1,71 +1,8 @@
-.row
-  .span3.offset1
-    %small= t('users.edit.headline_label')
-    = f.select :headline, headline_options, {selected: (t("users.show.headline.#{field_value(:headline, @linkedin)}") unless field_value(:headline, @linkedin).blank? )}
-.row.experience
-  .span4
-    %h4= t('users.edit.experience')
-    .row
-      .span1
-        %small= t('users.edit.experience_label')
-        = f.text_field :experience, value: field_value(:experience, @linkedin), placeholder: t('users.edit.experience_placeholder'), class: 'input-mini'
-      .span3
-        %small= t('users.edit.last_job')
-        = f.text_area :last_job, value: field_value(:last_job, @linkedin), placeholder: t('users.edit.last_job_placeholder'), rows: 3, class: 'big'
-    .row
-      .span3.offset1
-        %p
-          %small= t('users.edit.past_companies')
-          = f.text_field :past_companies, value: field_value(:past_companies, @linkedin), placeholder: t('users.edit.past_companies_placeholder'), class: 'input-slim'
-.row
-  .span3
-    %h4= t('users.edit.education')
-    = f.text_area :education, value: field_value(:education, @linkedin), placeholder: t('users.edit.education_placeholder'), rows: 3, class: 'big'
-    %br/
-.row.skills
-  .span4
-    %h4= t('users.edit.skills')
-    .row
-      .span2= f.text_field :skill_1, value: field_value(:skill_1, @linkedin), placeholder: t('users.edit.skill_1_placeholder')
-      .span1= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {selected: (field_value(:skill_1_level, @linkedin).blank? ? 'Intermediate' : field_value(:skill_1_level, @linkedin))}
-      %br/
-      %br/
-      .span2= f.text_field :skill_2, value: field_value(:skill_2, @linkedin), placeholder: t('users.edit.skill_2_placeholder')
-      .span1= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {selected: (field_value(:skill_2_level, @linkedin).blank? ? 'Intermediate' : field_value(:skill_2_level, @linkedin))}
-      %br/
-      %br/
-      .span2= f.text_field :skill_3, value: field_value(:skill_3, @linkedin), placeholder: t('users.edit.skill_3_placeholder')
-      .span1= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), {selected: (field_value(:skill_3_level, @linkedin).blank? ? 'Intermediate' : field_value(:skill_3_level, @linkedin))}
-.row
-  .span4{style:'padding-bottom:6px'}
-    %h4= t('users.edit.qualities')
-    .row
-      .span3= f.text_field :quality_1, value: field_value(:quality_1, @linkedin), placeholder: t('users.edit.quality_1_placeholder')
-    .row
-      .span3= f.text_field :quality_2, value: field_value(:quality_2, @linkedin), placeholder: t('users.edit.quality_2_placeholder')
-    .row
-      .span3= f.text_field :quality_3, value: field_value(:quality_3, @linkedin), placeholder: t('users.edit.quality_3_placeholder')
-.row
-  .span4
-    %h4= t('users.edit.social_profiles')
-    = render 'shared/auth_links', user: @user
-.row
-  .span4
-    %h4= t('users.edit.upload_cv')
-    - unless @user.profile.file.nil? || @user.profile.file.blank?
-      .delete.danger-text delete #{link_to @user.profile.file_identifier, @user.profile.file_url, style:'text-decoration:underline'}
-      &nbsp;
-      = f.check_box :remove_file
-      %br/
-    = f.file_field :file
-.row
-  .span4
-    %h4= t('users.edit.website_blog')
-    #url_field= f.text_field :url, value: field_value(:url, @linkedin), placeholder:'e.g. http://example.com'
-.row.hidden
-  .span4
-    %h4= t('users.edit.text_label')
-    = f.text_area :text, value: field_value(:text, @linkedin), placeholder: t('users.edit.text_placeholder'), rows:3
-    %br/
-    %br/
-    = f.submit t('save'), class: 'btn btn-large btn-primary'
+= render 'fields_headline_experience', f: f
+= render 'fields_education_skills',    f: f
+= render 'fields_qualities',           f: f
+= render 'fields_more',                f: f
+
+.hidden
+  = f.text_field :text, value: field_value(:text, @linkedin)
+  = f.submit t('save'), class: 'btn btn-large btn-primary'

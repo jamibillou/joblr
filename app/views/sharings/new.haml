@@ -1,6 +1,11 @@
 .row
   .span5.offset2
-    = render 'users/show_profile', user: @user
+    .well#profile
+      = render 'users/show_identity',             user: @user
+      = render 'users/show_experience_education', user: @user
+      = render 'users/show_skills',               user: @user
+      = render 'users/show_qualities',            user: @user
+      = render 'users/show_more',                 user: @user
 
   .span4.offset1#sharing
     .arrow-left
