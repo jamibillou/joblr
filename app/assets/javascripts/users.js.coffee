@@ -8,6 +8,9 @@ $ ->
   $('#text_placeholder').blur ->
     $('#user_profiles_attributes_0_text').val($(this).val())
 
+  $('#url_field input').focus -> $(this).val('http://') unless $(this).val() isnt ''
+  $('#url_field input').blur -> $(this).val('') if $(this).val() is 'http://'
+
 @toggleAuthImage = (imageId) ->
   authId = imageId.match(/\d+/)[0]
   authImageUrl = if $('#remote_image_url').val() is $('#auth_'+authId+'_image_url').html() then '' else $('#auth_'+authId+'_image_url').html()

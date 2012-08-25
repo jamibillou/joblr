@@ -77,7 +77,7 @@
           %a.btn.btn-danger{href: user.profile.file_url.to_s}
             = t('users.show.download_cv')
         - unless user.profile.url.blank?
-          %a.btn.btn{href: "http://#{user.profile.url}", target:'_blank'}
+          %a.btn.btn{href: user.profile.url, target:'_blank'}
             = t('users.show.site')
         - unless user.authentifications.empty?
           - user.authentifications.each do |authentification|

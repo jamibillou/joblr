@@ -61,7 +61,7 @@
 .row
   .span4
     %h4= t('users.edit.website_blog')
-    = f.text_field :url, value: field_value(:url, @linkedin), placeholder:'e.g. http://example.com'
+    #url_field= f.text_field :url, value: field_value(:url, @linkedin), placeholder:'e.g. http://example.com'
 .row.hidden
   .span4
     %h4= t('users.edit.text_label')
