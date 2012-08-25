@@ -1,50 +1,50 @@
 .row
   .span3.offset1
     %small= t('users.edit.headline_label')
-    = f.select :headline, headline_options
+    = f.select :headline, headline_options, {selected: (t("users.show.headline.#{field_value(:headline, @linkedin)}") unless field_value(:headline, @linkedin).blank? )}
 .row.experience
   .span4
     %h4= t('users.edit.experience')
     .row
       .span1
         %small= t('users.edit.experience_label')
-        = f.text_field :experience, value: @user.linkedin_attr(:experience, @linkedin), placeholder: t('users.edit.experience_placeholder'), class: 'input-mini'
+        = f.text_field :experience, value: field_value(:experience, @linkedin), placeholder: t('users.edit.experience_placeholder'), class: 'input-mini'
       .span3
         %small= t('users.edit.last_job')
-        = f.text_area :last_job, value: @user.linkedin_attr(:last_job, @linkedin), placeholder: t('users.edit.last_job_placeholder'), rows: 3, class: 'big'
+        = f.text_area :last_job, value: field_value(:last_job, @linkedin), placeholder: t('users.edit.last_job_placeholder'), rows: 3, class: 'big'
     .row
       .span3.offset1
         %p
           %small= t('users.edit.past_companies')
-          = f.text_field :past_companies, value: @user.linkedin_attr(:past_companies, @linkedin), placeholder: t('users.edit.past_companies_placeholder'), class: 'input-slim'
+          = f.text_field :past_companies, value: field_value(:past_companies, @linkedin), placeholder: t('users.edit.past_companies_placeholder'), class: 'input-slim'
 .row
   .span3
     %h4= t('users.edit.education')
-    = f.text_area :education, value: @user.linkedin_attr(:education, @linkedin), placeholder: t('users.edit.education_placeholder'), rows: 3, class: 'big'
+    = f.text_area :education, value: field_value(:education, @linkedin), placeholder: t('users.edit.education_placeholder'), rows: 3, class: 'big'
     %br/
 .row.skills
   .span4
     %h4= t('users.edit.skills')
     .row
-      .span2= f.text_field :skill_1, value: @user.linkedin_attr(:skill_1, @linkedin), placeholder: t('users.edit.skill_1_placeholder')
-      .span1= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {selected: (@user.profile.skill_1_level ||= 'Intermediate')}
+      .span2= f.text_field :skill_1, value: field_value(:skill_1, @linkedin), placeholder: t('users.edit.skill_1_placeholder')
+      .span1= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {selected: (field_value(:skill_1_level, @linkedin).blank? ? 'Intermediate' : field_value(:skill_1_level, @linkedin))}
       %br/
       %br/
-      .span2= f.text_field :skill_2, value: @user.linkedin_attr(:skill_2, @linkedin), placeholder: t('users.edit.skill_2_placeholder')
-      .span1= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {selected: (@user.profile.skill_2_level ||= 'Intermediate')}
+      .span2= f.text_field :skill_2, value: field_value(:skill_2, @linkedin), placeholder: t('users.edit.skill_2_placeholder')
+      .span1= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {selected: (field_value(:skill_2_level, @linkedin).blank? ? 'Intermediate' : field_value(:skill_2_level, @linkedin))}
       %br/
       %br/
-      .span2= f.text_field :skill_3, value: @user.linkedin_attr(:skill_3, @linkedin), placeholder: t('users.edit.skill_3_placeholder')
-      .span1= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), {selected: (@user.profile.skill_3_level ||= 'Intermediate')}
+      .span2= f.text_field :skill_3, value: field_value(:skill_3, @linkedin), placeholder: t('users.edit.skill_3_placeholder')
+      .span1= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), {selected: (field_value(:skill_3_level, @linkedin).blank? ? 'Intermediate' : field_value(:skill_3_level, @linkedin))}
 .row
   .span4{style:'padding-bottom:6px'}
     %h4= t('users.edit.qualities')
     .row
-      .span3= f.text_field :quality_1, placeholder: t('users.edit.quality_1_placeholder')
+      .span3= f.text_field :quality_1, value: field_value(:quality_1, @linkedin), placeholder: t('users.edit.quality_1_placeholder')
     .row
-      .span3= f.text_field :quality_2, placeholder: t('users.edit.quality_2_placeholder')
+      .span3= f.text_field :quality_2, value: field_value(:quality_2, @linkedin), placeholder: t('users.edit.quality_2_placeholder')
     .row
-      .span3= f.text_field :quality_3, placeholder: t('users.edit.quality_3_placeholder')
+      .span3= f.text_field :quality_3, value: field_value(:quality_3, @linkedin), placeholder: t('users.edit.quality_3_placeholder')
 .row
   .span4
     %h4= t('users.edit.social_profiles')
@@ -61,11 +61,11 @@
 .row
   .span4
     %h4= t('users.edit.website_blog')
-    = f.text_field :url, placeholder:'e.g. http://example.com'
+    = f.text_field :url, value: field_value(:url, @linkedin), placeholder:'e.g. http://example.com'
 .row.hidden
   .span4
     %h4= t('users.edit.text_label')
-    = f.text_area :text, placeholder: t('users.edit.text_placeholder'), rows:3
+    = f.text_area :text, value: field_value(:text, @linkedin), placeholder: t('users.edit.text_placeholder'), rows:3
     %br/
     %br/
     = f.submit t('save'), class: 'btn btn-large btn-primary'

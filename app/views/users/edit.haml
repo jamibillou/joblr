@@ -6,7 +6,7 @@
           .row
             .span4
               %small= t('users.edit.text_label')
-              = text_area :text, :placeholder, value: (@user.profile.text if signed_up?(@user)), placeholder: t('users.edit.text_placeholder'), rows:3
+              = text_area :text, :placeholder, value: field_value(:text, @linkedin), placeholder: t('users.edit.text_placeholder'), rows:3
         .arrow-bottom
       .well#profile
         .row
@@ -15,12 +15,12 @@
               = image_tag (@user.image.blank? ? 'default_user.jpg' : @user.image_url(:thumb).to_s)
             = render 'image_modal', f: f
           .span3
-            = f.text_field :fullname, value: @user.linkedin_attr(:fullname, @linkedin), placeholder: t('users.edit.fullname_placeholder')
+            = f.text_field :fullname, value: field_value(:fullname, @linkedin), placeholder: t('users.edit.fullname_placeholder')
             %br/
             %small= t('users.edit.location')
             %br/
-            = f.text_field :city,    value: @user.linkedin_attr(:city,    @linkedin), placeholder: t('users.edit.city_placeholder'),    class:'input-small'
-            = f.text_field :country, value: @user.linkedin_attr(:country, @linkedin), placeholder: t('users.edit.country_placeholder'), class:'input-small'
+            = f.text_field :city,    value: field_value(:city,    @linkedin), placeholder: t('users.edit.city_placeholder'),    class:'input-small'
+            = f.text_field :country, value: field_value(:country, @linkedin), placeholder: t('users.edit.country_placeholder'), class:'input-small'
         = f.fields_for(:profiles) { |profile_builder| render 'fields_profile', f: profile_builder }
     .span2.offset2
       #buttons

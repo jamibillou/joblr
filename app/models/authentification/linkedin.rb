@@ -4,8 +4,12 @@ module Authentification::Linkedin
     client.share(options)
   end
 
+  def raw_hash
+    client.profile
+  end
+
   def profile
-    profile = client.profile(fields: %w(picture_url first_name last_name location positions educations skills))
+    profile = client.profile(fields: %w(picture_url first_name last_name location positions educations skills summary))
 
     { image:          profile.picture_url,
       fullname:       "#{profile.first_name} #{profile.last_name}",
@@ -17,7 +21,8 @@ module Authentification::Linkedin
       education:      ("#{profile.educations.first.degree}, #{profile.educations.first.field_of_study}" unless profile.educations.blank?),
       skill_1:        (profile.skills[0].name unless profile.skills.blank?),
       skill_2:        (profile.skills[1].name unless profile.skills.blank? || profile.skills.size < 2),
-      skill_3:        (profile.skills[2].name unless profile.skills.blank? || profile.skills.size < 3) }
+      skill_3:        (profile.skills[2].name unless profile.skills.blank? || profile.skills.size < 3),
+      text:           profile.summary[0..139] }
   end
 
   def experience(positions)
