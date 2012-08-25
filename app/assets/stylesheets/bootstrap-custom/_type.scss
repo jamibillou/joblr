@@ -23,6 +23,7 @@ p{
   }
 }
 .big{
+  margin-bottom: $baseLineHeight * 2/3;
   font-size:16px;
   font-weight:300;
   line-height:$baseLineHeight * 1.2;

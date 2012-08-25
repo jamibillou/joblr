@@ -3,18 +3,6 @@
 // ---------------------------
 
 
-#slider{
-  height:16000px;
-  margin:0;
-  padding:0;
-  @include transition(top 1s);
-  position:relative;
-  section{
-    min-height:600px;
-    margin-bottom:2000px;
-  }
-}
-
 #style-tile{
   .right-pane{
     .span2 div{
@@ -23,9 +11,6 @@
     }
     .well{
       padding:10px;
-    }
-    #backgrounds .big, #colors .big{
-      margin-bottom:$baseLineHeight;
     }
     #backgrounds{
       .brown{
