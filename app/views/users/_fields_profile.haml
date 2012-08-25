@@ -1,4 +1,8 @@
 .row
+  .span3.offset1
+    %label= t('users.edit.headline_label')
+    = f.select :headline, headline_options
+.row
   .span4
     %h4= t('users.edit.exp_edu')
   .span1
@@ -13,15 +17,15 @@
     %h4= t('card.skills')
     .row
       .span2= f.text_field :skill_1, value: @user.linkedin_attr(:skill_1, @linkedin), placeholder: t('users.edit.skill_1_placeholder')
-      .span1= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {selected: (@user.profile.skill_1_level ||= 'Intermediate'), prompt: t('prompt')}, {class: 'select-level'}
+      .span1= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {selected: (@user.profile.skill_1_level ||= 'Intermediate')}, {class: 'select-level'}
       %br/
       %br/
       .span2= f.text_field :skill_2, value: @user.linkedin_attr(:skill_2, @linkedin), placeholder: t('users.edit.skill_2_placeholder')
-      .span1= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {selected: (@user.profile.skill_2_level ||= 'Intermediate'), prompt: t('prompt')}, {class: 'select-level' }
+      .span1= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {selected: (@user.profile.skill_2_level ||= 'Intermediate')}, {class: 'select-level'}
       %br/
       %br/
       .span2= f.text_field :skill_3, value: @user.linkedin_attr(:skill_3, @linkedin), placeholder: t('users.edit.skill_3_placeholder')
-      .span1= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), {selected: (@user.profile.skill_3_level ||= 'Intermediate'), prompt: t('prompt')}, {class: 'select-level' }
+      .span1= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), {selected: (@user.profile.skill_3_level ||= 'Intermediate')}, {class: 'select-level'}
 .row
   .span4{style:'padding-bottom:6px'}
     %h4= t('card.qualities')

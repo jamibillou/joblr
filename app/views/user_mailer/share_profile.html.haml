@@ -12,7 +12,7 @@
               .span3
                 %h3= @user.fullname
                 %p #{@user.city}#{', ' unless @user.city.blank? || @user.country.blank?}#{@user.country}
-                %p= @user.profile.headline
+                %p= t("profiles.headline.#{@user.profile.headline}")
 
         .row
           .span1.well{style:'padding:14px'}

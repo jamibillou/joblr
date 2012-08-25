@@ -1,0 +1,7 @@
+en:
+  profiles:
+    headline:
+      fulltime: 'Looking for a full-time job!'
+      partime: 'Looking for a part-time job!'
+      internship: 'Looking for an internship!'
+      freelance: 'Looking for freelance projects!'
