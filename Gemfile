@@ -21,6 +21,7 @@ gem 'bootstrap-sass'
 
 group :production do
   gem 'google-analytics-rails' # View helpers for custom events: https://github.com/bgarret/google-analytics-rails/blob/master/lib/google-analytics/rails/view_helpers.rb
+  gem 'analytical'
 end
 
 group :assets do

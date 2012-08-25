@@ -57,4 +57,27 @@ module ApplicationHelper
     end
     "#{t('flash.error.base')} #{@errors.to_sentence}." unless @errors.empty?
   end
+
+  def kiss_init
+    content_tag(:script, :type => 'text/javascript') do
+      "var _kmq = _kmq || [];
+      var _kmk = _kmk || 'e8e98ddeeceb420cd63d5953d02ac7558550011a';
+      function _kms(u){
+        setTimeout(function(){
+          var d = document, f = d.getElementsByTagName('script')[0],
+          s = d.createElement('script');
+          s.type = 'text/javascript'; s.async = true; s.src = u;
+          f.parentNode.insertBefore(s, f);
+        }, 1);
+      }
+      _kms('//i.kissmetrics.com/i.js');
+      _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');"
+    end
+  end
+
+  def kiss_event(type, name, options = {})
+    content_tag(:script, :type => 'text/javascript') do
+      "_kmq.push([#{type}, #{event}, #{options}]);"
+    end
+  end
 end
