@@ -9,11 +9,11 @@
             .icon-map-marker
             &nbsp;
             #{user.city}#{', ' unless user.city.blank? || user.country.blank?}#{user.country}
-        - unless user.role.blank? && user.company.blank?
+        - unless user.profile.headline.blank?
           .headline.danger-text
             .icon-briefcase
             &nbsp;
-            #{user.role}#{', ' unless user.role.blank? || user.company.blank?}#{user.company}
+            = user.profile.headline
   .row
     .span1
       %h4= t('card.experience')

@@ -13,8 +13,11 @@ FactoryGirl.define do
   end
 
   factory :profile do
+    headline 'fulltime'
     education 'Master of Business Administration'
     experience '5 yrs'
+    last_job 'Financial controller at Eneco'
+    past_companies 'Nike, Telfort, KPMG'
     skill_1 'Financial control'
     skill_2 'Business analysis'
     skill_3 'Strategic decision making'

@@ -49,8 +49,6 @@ describe User do
     it { should ensure_length_of(:fullname).is_at_most 100 }
     it { should ensure_length_of(:city).is_at_most 50 }
     it { should ensure_length_of(:country).is_at_most 50 }
-    it { should ensure_length_of(:role).is_at_most 100 }
-    it { should ensure_length_of(:company).is_at_most 50 }
     it { should ensure_length_of(:username).is_at_most 100 }
     it { should validate_uniqueness_of(:username) }
     it { should validate_presence_of(:username) }
@@ -137,7 +135,7 @@ end
 #  id                     :integer         not null, primary key
 #  fullname               :string(255)
 #  email                  :string(255)
-#  encrypted_password     :string(255)     default(""), not null
+#  encrypted_password     :string(255)
 #  reset_password_token   :string(255)
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
@@ -150,8 +148,6 @@ end
 #  updated_at             :datetime        not null
 #  city                   :string(255)
 #  country                :string(255)
-#  role                   :string(255)
-#  company                :string(255)
 #  image                  :string(255)
 #  subdomain              :string(255)
 #  username               :string(255)

@@ -2,7 +2,10 @@ class CreateProfiles < ActiveRecord::Migration
   def change
     create_table :profiles do |t|
       t.integer :user_id
+      t.string :headline
       t.string :experience
+      t.string :last_job
+      t.string :past_companies
       t.string :education
       t.string :skill_1
       t.string :skill_1_level
@@ -13,6 +16,9 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :quality_1
       t.string :quality_2
       t.string :quality_3
+      t.string :file
+      t.string :url
+      t.string :text
 
       t.timestamps
     end

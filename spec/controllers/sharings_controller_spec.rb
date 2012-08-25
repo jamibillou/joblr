@@ -8,18 +8,21 @@ describe SharingsController do
 		@author = FactoryGirl.create :user
 		sign_in @author
 		@recipient = FactoryGirl.create :user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname)
-		@profile_attr = {education: 'Master of Business Administration',
-                     experience: '5 yrs',
-                     skill_1: 'Financial control',
-                     skill_2: 'Business analysis',
-                     skill_3: 'Strategic decision making',
-                     skill_1_level: 'Expert',
-                     skill_2_level: 'Beginner',
-                     skill_3_level: 'Intermediate',
-                     quality_1: 'Drive',
-                     quality_2: 'Work ethics',
-                     quality_3: 'Punctuality',
-                     text: 'Do or do not, there is no try.'}
+		@profile_attr = { headline: 'fulltime',
+                      experience: '5 yrs',
+                      last_job: 'Financial director',
+                      past_companies: 'Cathay Pacific, Bank of China',
+                      education: 'Master of Business Administration',
+                      skill_1: 'Financial control',
+                      skill_2: 'Business analysis',
+                      skill_3: 'Strategic decision making',
+                      skill_1_level: 'Expert',
+                      skill_2_level: 'Beginner',
+                      skill_3_level: 'Intermediate',
+                      quality_1: 'Drive',
+                      quality_2: 'Work ethics',
+                      quality_3: 'Punctuality',
+                      text: 'Do or do not, there is no try.' }
     @sharing_attr = {author_id: @author.id, text: "Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."}
 	end
 

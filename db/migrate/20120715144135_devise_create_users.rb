@@ -36,6 +36,13 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## Token authenticatable
       # t.string :authentication_token
 
+      ## Additional columns for Joblr
+      t.string   :username
+      t.string   :image
+      t.string   :city
+      t.string   :country
+      t.string   :subdomain
+
       t.timestamps
     end
 

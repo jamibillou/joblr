@@ -6,6 +6,9 @@ class CreateAuthentifications < ActiveRecord::Migration
       t.string :uid
       t.string :uname
       t.string :uemail
+      t.string :url
+      t.string :utoken
+      t.string :usecret
 
       t.timestamps
     end

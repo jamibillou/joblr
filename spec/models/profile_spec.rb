@@ -5,8 +5,11 @@ describe Profile do
   before :each do
     @user = FactoryGirl.create :user
     @profile = FactoryGirl.create :profile, user: @user
-    @attr = { education: 'Master of Business Administration',
+    @attr = { headline: 'fulltime',
               experience: '5 yrs',
+              last_job: 'Financial director',
+              past_companies: 'Cathay Pacific, Bank of China',
+              education: 'Master of Business Administration',
               skill_1: 'Financial control',
               skill_2: 'Business analysis',
               skill_3: 'Strategic decision making',
@@ -41,19 +44,54 @@ describe Profile do
   describe 'validations' do
 
     before :all do
+      @headline = { valid: %w(fulltime partime internship freelance), invalid: [ 'Looking for work!', 'Unemployed', 'Broke' ] }
       @level = { valid: %w(Beginner Intermediate Advanced Expert), invalid: %w(crap good okish) }
       @url   = { valid: %w(http://www.engaccino.com https://engaccino.com https://dom.engaccino.com http://franck.engaccino.com http://www.engaccino.co.uk https://dom.engaccino.com.hk http://engaccino.me http://www.engaccino.ly http://fr.engaccino/users/1/edit),
                  invalid: %w(invalid_url engaccino.com pouetpouetpouet http:www.engaccino.com http//engaccino.com http/ccino.co htp://ccino.me http:/www.engaccino.com) }
     end
 
     it { should validate_presence_of :user }
+    it { should validate_presence_of :headline }
+    it { should ensure_length_of(:headline).is_at_most 100 }
+
+    lambda do
+      @headline[:invalid].each do |invalid_headline|
+        it { should validate_format_of(:headline).not_with(invalid_headline).with_message(I18n.t('activerecord.errors.messages.headline_format')) }
+      end
+    end
+
+    lambda do
+      @headline[:valid].each do |valid_headline|
+        it { should validate_format_of(:headline).with valid_headline }
+      end
+    end
+
     it { should ensure_length_of(:experience).is_at_most 100 }
     it { should ensure_length_of(:education).is_at_most 100 }
     it { should validate_presence_of :experience }
     it { should validate_presence_of :education }
+    it { should ensure_length_of(:last_job).is_at_most 100 }
+    it { should ensure_length_of(:past_companies).is_at_most 100 }
     it { should ensure_length_of(:skill_1).is_at_most 50 }
     it { should ensure_length_of(:skill_2).is_at_most 50 }
     it { should ensure_length_of(:skill_3).is_at_most 50 }
+
+    lambda do
+      @level[:invalid].each do |invalid_level|
+        it { should validate_format_of(:skill_1_level).not_with(invalid_level).with_message(I18n.t('activerecord.errors.messages.level_format')) }
+        it { should validate_format_of(:skill_2_level).not_with(invalid_level).with_message(I18n.t('activerecord.errors.messages.level_format')) }
+        it { should validate_format_of(:skill_3_level).not_with(invalid_level).with_message(I18n.t('activerecord.errors.messages.level_format')) }
+      end
+    end
+
+    lambda do
+      @level[:valid].each do |valid_level|
+        it { should validate_format_of(:skill_1_level).with valid_level }
+        it { should validate_format_of(:skill_2_level).with valid_level }
+        it { should validate_format_of(:skill_3_level).with valid_level }
+      end
+    end
+
     it { should validate_format_of(:skill_1_level).not_with(@level[:invalid]).with_message(I18n.t('activerecord.errors.messages.level_format')) }
     it { should validate_format_of(:skill_1_level).with @level[:valid] }
     it { should validate_format_of(:skill_2_level).not_with(@level[:invalid]).with_message(I18n.t('activerecord.errors.messages.level_format')) }
@@ -65,8 +103,18 @@ describe Profile do
     it { should ensure_length_of(:quality_3).is_at_most 50 }
     it { should ensure_length_of(:text).is_at_most 140 }
     it { should validate_presence_of :text }
-    it { should validate_format_of(:url).not_with(@url[:invalid]).with_message(I18n.t('activerecord.errors.messages.url_format')) }
-    it { should validate_format_of(:url).with @url[:valid] }
+
+    lambda do
+      @url[:invalid].each do |invalid_url|
+        it { should validate_format_of(:url).not_with(invalid_url).with_message(I18n.t('activerecord.errors.messages.url_format')) }
+      end
+    end
+
+    lambda do
+      @url[:valid].each do |valid_url|
+        it { should validate_format_of(:url).with valid_url }
+      end
+    end
   end
 
   describe 'file' do
@@ -89,71 +137,26 @@ end
 #
 # Table name: profiles
 #
-#  id            :integer         not null, primary key
-#  user_id       :integer
-#  experience    :string(255)
-#  education     :string(255)
-#  skill_1       :string(255)
-#  skill_1_level :string(255)
-#  skill_2       :string(255)
-#  skill_2_level :string(255)
-#  skill_3       :string(255)
-#  skill_3_level :string(255)
-#  quality_1     :string(255)
-#  quality_2     :string(255)
-#  quality_3     :string(255)
-#  created_at    :datetime        not null
-#  updated_at    :datetime        not null
-#  text          :string(255)
-#  url           :string(255)
-#  file          :string(255)
-#
-
-# == Schema Information
-#
-# Table name: profiles
-#
-#  id            :integer         not null, primary key
-#  user_id       :integer
-#  experience    :string(255)
-#  education     :string(255)
-#  skill_1       :string(255)
-#  skill_1_level :string(255)
-#  skill_2       :string(255)
-#  skill_2_level :string(255)
-#  skill_3       :string(255)
-#  skill_3_level :string(255)
-#  quality_1     :string(255)
-#  quality_2     :string(255)
-#  quality_3     :string(255)
-#  created_at    :datetime        not null
-#  updated_at    :datetime        not null
-#  text          :string(255)
-#  url           :string(255)
-#  file          :string(255)
-#
-
-# == Schema Information
-#
-# Table name: profiles
-#
-#  id            :integer         not null, primary key
-#  user_id       :integer
-#  experience    :string(255)
-#  education     :string(255)
-#  skill_1       :string(255)
-#  skill_1_level :string(255)
-#  skill_2       :string(255)
-#  skill_2_level :string(255)
-#  skill_3       :string(255)
-#  skill_3_level :string(255)
-#  quality_1     :string(255)
-#  quality_2     :string(255)
-#  quality_3     :string(255)
-#  created_at    :datetime        not null
-#  updated_at    :datetime        not null
-#  text          :string(255)
-#  url           :string(255)
-#  file          :string(255)
+#  id             :integer         not null, primary key
+#  user_id        :integer
+#  headline       :string(255)
+#  experience     :string(255)
+#  last_job       :string(255)
+#  past_companies :string(255)
+#  education      :string(255)
+#  skill_1        :string(255)
+#  skill_1_level  :string(255)
+#  skill_2        :string(255)
+#  skill_2_level  :string(255)
+#  skill_3        :string(255)
+#  skill_3_level  :string(255)
+#  quality_1      :string(255)
+#  quality_2      :string(255)
+#  quality_3      :string(255)
+#  file           :string(255)
+#  url            :string(255)
+#  text           :string(255)
+#  created_at     :datetime        not null
+#  updated_at     :datetime        not null
 #
 

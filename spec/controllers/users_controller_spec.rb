@@ -7,10 +7,13 @@ describe UsersController do
   before :each do
     @user = FactoryGirl.create :user
     sign_in @user
-    @attr =         { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China', role: 'Mole', company: 'HK triads',
-                      profiles_attributes: { '0' => { experience: '10', education: 'none', text: 'A good and highly motivated guy.' } } }
-    @profile_attr = { education: 'Master of Business Administration',
+    @attr =         { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China',
+                      profiles_attributes: { '0' => { headline: 'fulltime', experience: '10', education: 'none', text: 'A good and highly motivated guy.' } } }
+    @profile_attr = { headline: 'fulltime',
                       experience: '5 yrs',
+                      last_job: 'Financial director',
+                      past_companies: 'Cathay Pacific, Bank of China',
+                      education: 'Master of Business Administration',
                       skill_1: 'Financial control',
                       skill_2: 'Business analysis',
                       skill_3: 'Strategic decision making',
