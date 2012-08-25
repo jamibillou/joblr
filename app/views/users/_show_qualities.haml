@@ -1,0 +1,14 @@
+- unless user.profile.quality_1.blank? && user.profile.quality_2.blank? && user.profile.quality_3.blank?
+  .row
+    .span4
+      %h4= t('users.show.qualities')
+      .row
+        - unless user.profile.quality_1.blank?
+          .span3
+            .lead #{user.profile.quality_1}
+        - unless user.profile.quality_2.blank?
+          .span3
+            .lead #{user.profile.quality_2}
+        - unless user.profile.quality_3.blank?
+          .span3
+            .lead #{user.profile.quality_3}

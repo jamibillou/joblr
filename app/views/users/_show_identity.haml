@@ -1,0 +1,14 @@
+.row{id:"user-#{user.id}"}
+  .span1= image_tag (user.image.blank? ? 'default_user.jpg' : user.image_url(:thumb).to_s)
+  .span3{style: 'vertical-align:top'}
+    %h2= user.fullname
+    .big
+      - unless user.city.blank? && user.country.blank?
+        .graylight-text
+          .icon-map-marker
+          &nbsp;
+          #{user.city}#{', ' unless user.city.blank? || user.country.blank?}#{user.country}
+      .headline.danger-text
+        .icon-briefcase
+        &nbsp;
+        = t("users.show.headline.#{user.profile.headline}")

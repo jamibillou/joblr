@@ -1,0 +1,25 @@
+- unless user.profile.last_job.blank?
+  .row.experience
+    .span1
+      %h4= t('users.show.experience')
+      .lead= pluralize user.profile.experience, 'yr'
+    .span3
+      %h4= t('users.show.last_job')
+      .lead= user.profile.last_job
+      - unless user.profile.past_companies.blank?
+        %p
+          %small= t('users.show.past_companies')
+          %br/
+          = user.profile.past_companies
+  .row
+    .span4
+      %h4= t('users.show.education')
+      .lead= user.profile.education
+- else
+  .row
+    .span1
+      %h4= t('users.show.experience')
+      .lead= pluralize user.profile.experience, 'yr'
+    .span3
+      %h4= t('users.show.education')
+      .lead= user.profile.education

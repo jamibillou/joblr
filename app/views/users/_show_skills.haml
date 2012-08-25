@@ -1,0 +1,17 @@
+- unless user.profile.skill_1.blank? && user.profile.skill_2.blank? && user.profile.skill_3.blank?
+  .row.skills
+    .span4
+      %h4= t('users.show.skills')
+      .row
+        - unless user.profile.skill_1.blank?
+          .span3
+            .lead #{user.profile.skill_1}
+          .span1= render 'users/level_bar', level: user.profile.skill_1_level
+        - unless user.profile.skill_2.blank?
+          .span3
+            .lead #{user.profile.skill_2}
+          .span1= render 'users/level_bar', level: user.profile.skill_2_level
+        - unless user.profile.skill_3.blank?
+          .span3
+            .lead #{user.profile.skill_3}
+          .span1= render 'users/level_bar', level: user.profile.skill_3_level
