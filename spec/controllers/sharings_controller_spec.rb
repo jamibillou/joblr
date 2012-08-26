@@ -74,32 +74,46 @@ describe SharingsController do
 
     it { response.should be_success }
 
-    context 'user typed an email address' do
+    context 'user typed an email address and a fullname' do
 
 			it 'should create a new sharing object' do
 				lambda do
-					post :create, :sharing => @sharing_attr, :email => "test@test.com"
+					post :create, :sharing => @sharing_attr, email: 'test@test.com', fullname: 'Test Dude'
 				end.should change(Sharing,:count).by 1
 			end
 
 	    it "should redirect to user's profile" do
-	    	post :create, :sharing => @sharing_attr, :email => "test@test.com"
+	    	post :create, :sharing => @sharing_attr, email: 'test@test.com', fullname: 'Test Dude'
 	    	response.should redirect_to @author
 	    end
     end
 
-    context "user didn't type an email address" do
+    context "user didn't fill in any email address" do
 
 			it 'should not create a new sharing object' do
 				lambda do
-					post :create, :sharing => @sharing_attr
+					post :create, :sharing => @sharing_attr, fullname: 'Test Dude'
 				end.should_not change(Sharing,:count).by 1
 			end
 
 	    it "should redirect to user's profile" do
-	    	post :create, :sharing => @sharing_attr
+	    	post :create, :sharing => @sharing_attr, fullname: 'Test Dude'
 	    	response.should redirect_to new_sharing_path(id: @author.id)
 	    end
+    end
+
+    context "user didn't fill in any fullname" do
+
+      it 'should not create a new sharing object' do
+        lambda do
+          post :create, :sharing => @sharing_attr, email: 'test@test.com'
+        end.should_not change(Sharing,:count).by 1
+      end
+
+      it "should redirect to user's profile" do
+        post :create, :sharing => @sharing_attr, email: 'test@test.com'
+        response.should redirect_to new_sharing_path(id: @author.id)
+      end
     end
 	end
 end

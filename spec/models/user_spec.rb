@@ -47,6 +47,7 @@ describe User do
     end
 
     it { should ensure_length_of(:fullname).is_at_most 100 }
+    it { should validate_presence_of(:fullname) }
     it { should ensure_length_of(:city).is_at_most 50 }
     it { should ensure_length_of(:country).is_at_most 50 }
     it { should ensure_length_of(:username).is_at_most 100 }

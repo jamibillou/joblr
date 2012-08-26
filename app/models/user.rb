@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profiles, allow_destroy: true
 
-  validates :fullname, length:     { maximum: 100 }
+  validates :fullname, length:     { maximum: 100 },                presence: true
   validates :city,     length:     { maximum: 50 }
   validates :country,  length:     { maximum: 50 }
   validates :username, length:     { maximum: 100 }
