@@ -24,7 +24,7 @@
             = f.email_field :email
             .buttons
               %a.btn{href: url_for(:back)}= t('cancel')
-              = f.submit t('update'), class: 'btn btn-primary'
+              = f.submit t('devise.registrations.update'), class: 'btn btn-primary'
         .span3.offset1
           %h4= t('devise.omniauth.add_accounts')
           = render partial: 'devise/shared/omniauth_links'
@@ -32,5 +32,5 @@
           %br/
           %br/
           %h4= t('devise.registrations.unhappy')
-          = link_to t('devise.registrations.cancel_account'), registration_path(resource_name), :data => { :confirm => t('sure') }, :method => :delete
+          = link_to t('devise.registrations.cancel_account'), registration_path(resource_name), :data => { :confirm => t('devise.registrations.yes_cancel') }, :method => :delete
     .pull-right.danger-text * required fields

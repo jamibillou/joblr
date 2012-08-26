@@ -6,3 +6,6 @@ en:
     email_text: "e.g. Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."
     social_title: "%{fullname} on joblr"
     social_text: "e.g. Hi everyone, I'm looking for work these days and was wondering if you might know of someone interested? Share my profile if so!"
+    send: 'Send'
+    share: 'Share'
+    share_on: 'Share on %{provider}'

@@ -24,7 +24,7 @@
           = link_to image_tag(auth.image_url, class: 'social pic', id: "auth_#{auth.id}_image"), '#'
           .hidden{id: "auth_#{auth.id}_image_url"}= auth.image_url(:original)
 
-    %h5=t 'upload'
+    %h5=t 'users.edit.upload'
     = f.file_field :image
     = f.hidden_field :remote_image_url, id:'remote_image_url'
 

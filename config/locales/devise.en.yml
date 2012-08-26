@@ -47,6 +47,9 @@ en:
       send_paranoid_instructions: 'If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
       confirmed: 'Your account was successfully confirmed. You are now signed in.'
     registrations:
+      account: 'Account'
+      account_settings: 'Account settings'
+      already_member: 'Already a member?'
       create_joblr_account: 'Create a Joblr account'
       skip_and_signin: 'Or skip this step and sign in a social account'
       fullname: 'Full name'
@@ -66,7 +69,9 @@ en:
       destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
       unhappy: 'Unhappy?'
       cancel_account: 'Cancel your account'
+      yes_cancel: "Are you sure you want to cancel your account?"
       didnt_mean_to: "Didn't mean to signup?"
+      update: 'Update'
     unlocks:
       send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
       unlocked: 'Your account has been unlocked successfully. Please sign in to continue.'

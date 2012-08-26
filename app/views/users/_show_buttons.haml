@@ -3,13 +3,13 @@
     .span2
       - if user_signed_in? && current_user == user && !has_subdomain
         %a.btn.btn-large.btn-primary.btn-top{href: edit_user_path(user)}
-          =t 'edit'
+          =t 'users.show.edit'
       - else
         %a.btn.btn-large.btn-danger.btn-top
-          =t 'contact'
+          =t 'users.show.contact'
       .btn-group
         .btn.btn-large.dropdown-toggle{"data-toggle" => 'dropdown', href:'#', class: "#{(user_signed_in? && current_user == user && !has_subdomain) ? 'btn-danger'  :'btn-inverse'}"}
-          =t 'share'
+          =t 'users.show.share'
           %span.caret
         %ul.dropdown-menu
           %li
