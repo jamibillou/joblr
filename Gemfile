@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
 gem 'rails', '3.2.6'
 gem 'pg'
 gem 'jquery-rails'
@@ -18,6 +19,7 @@ gem 'roadie'
 gem 'heroku'
 gem 'haml'
 gem 'bootstrap-sass'
+gem 'thin' # better web server, more robust on production
 
 group :production do
   gem 'google-analytics-rails' # View helpers for custom events: https://github.com/bgarret/google-analytics-rails/blob/master/lib/google-analytics/rails/view_helpers.rb
