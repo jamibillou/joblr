@@ -66,5 +66,8 @@ module Joblr
     # Postmark emailing configuration
     config.action_mailer.delivery_method   = :postmark
     config.action_mailer.postmark_settings = {api_key: '0d3b84d0-f242-4ab2-b986-13a536d889a2'}
+
+    # Exceptions handling in app routes
+    config.exceptions_app = self.routes
   end
 end

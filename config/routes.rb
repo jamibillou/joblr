@@ -2,6 +2,10 @@ require File.expand_path('../../lib/assets/routes_constraints', __FILE__)
 
 Joblr::Application.routes.draw do
 
+  # Error pages
+  match '/404', to: 'errors#error_404'
+  match '/500', to: 'errors#error_500'
+
   devise_for :users, controllers: { omniauth_callbacks: 'authentifications', registrations: 'registrations' }
 
   resources :authentifications, only: [:index, :destroy]
@@ -21,6 +25,7 @@ Joblr::Application.routes.draw do
   # Subdomain constraints
   match '', to: 'users#show', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' && r.path == '/' }
 
+  # Dynamic root_path
   root to: 'pages#home', constraints: SignedIn.new(false)
   root to: 'users#edit', constraints: SignedIn.new(true) && SignedUp.new(false)
   root to: 'users#show', constraints: SignedIn.new(true) && SignedUp.new(true)
