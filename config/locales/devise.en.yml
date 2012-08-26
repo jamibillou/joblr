@@ -51,7 +51,7 @@ en:
       account_settings: 'Account settings'
       already_member: 'Already a member?'
       create_joblr_account: 'Create a Joblr account'
-      skip_and_signin: 'Or skip this step and sign in a social account'
+      skip_and_signin: 'Or skip this step and sign in with a social account'
       fullname: 'Full name'
       username: 'Username'
       email: 'Email address'

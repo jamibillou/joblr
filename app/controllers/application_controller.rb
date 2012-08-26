@@ -19,6 +19,10 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def reset_devise_session
+      session[:devise_controller] = nil if session[:devise_controller]
+    end
+
     def find_user
       @user = params[:id] ? User.find(params[:id]) : current_user
     end

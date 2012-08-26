@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+  before_filter :reset_devise_session
   before_filter :find_user,             unless: :has_subdomain
   before_filter :find_subdomain_user,   if: :has_subdomain
   before_filter :signed_up,             only: :show

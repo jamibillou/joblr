@@ -18,6 +18,8 @@ en:
       something_wrong:
         base: "Oops, something went wrong."
         auth: "Something went wrong when signin you in with %{provider}."
+      social:
+        user_not_found: "We didn't find any user matching your %{provider} account, try signing in with another social account."
       other_user:
         profile: "You can't edit another user's profile."
         provider: "This %{provider} account is already used by another user."

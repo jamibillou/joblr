@@ -1,27 +1,31 @@
 class AuthentificationsController < ApplicationController
 
   def create
-    user = if auth = Authentification.find_by_provider_and_uid(auth_hash.provider, auth_hash.uid)
-      auth.user
+    if auth = Authentification.find_by_provider_and_uid(auth_hash.provider, auth_hash.uid)
+      user = auth.user
     else
       if user_signed_in?
-      	create_auth(current_user)
+      	user = create_auth(current_user)
       else
-        find_or_create_user_and_auth(make_username(auth_hash.info.nickname, auth_hash.info.name))
+        if session[:devise_controller] == 'registrations'
+          user = find_or_create_user_and_auth(make_username(auth_hash.info.nickname, auth_hash.info.name))
+        elsif session[:devise_controller] == 'sessions'
+          redirect_to new_user_session_path, flash: {error: t('flash.error.social.user_not_found', provider: auth_hash.provider.titleize)}
+        end
       end
     end
-    redirect_authentified_user(user)
+    redirect_authentified_user(user) if user
   end
 
   def failure
-  	redirect_to new_user_session_path, flash: { error: t('flash.error.something_wrong.auth', provider: params[:provider]) }
+  	redirect_to new_user_session_path, flash: {error: t('flash.error.something_wrong.auth', provider: params[:provider])}
   end
 
   def destroy
   	auth = current_user.authentifications.find(params[:id])
     provider = auth.provider.titleize
   	auth.destroy
-  	redirect_to edit_user_path(current_user), flash: { success: t('flash.success.provider.removed', provider: provider) }
+  	redirect_to edit_user_path(current_user), flash: {success: t('flash.success.provider.removed', provider: provider)}
   end
 
 	alias_method :twitter, 			 :create
