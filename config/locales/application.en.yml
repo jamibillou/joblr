@@ -1,22 +1,6 @@
 en:
-  update: 'Update'
-  back: 'Back'
-  sure: 'Are you sure?'
-  account: 'Account'
-  account_settings: 'Account settings'
-  settings: 'Settings'
-  send: 'Send'
-  prompt: 'Select'
-  upload: 'Upload'
-  cancel: 'Cancel'
   ok: 'OK'
-  edit: 'Edit'
-  share: 'Share'
-  share_on: 'Share on %{provider}'
-  already_member: "already a member?"
-  save: 'Save'
-  punctuations:
-    colon: ':'
+  cancel: 'Cancel'
   flash:
     success:
       welcome: 'Welcome to Joblr!'
@@ -51,3 +35,10 @@ en:
       text:
         blank: "Text can't be blank."
         long: "Text is too long (maximum: 140 characters)"
+  errors:
+    error_404:
+      title: "Sorry, we couldn't find the content you were looking for"
+      content_html: "This page doesn't exist or was deleted. Let us know about it and we'll try our best to fix it!<br/>Email us at %{email_link} and we'll get back to you as soon as we have identified the problem."
+    error_500:
+      title: "Sorry, there was an internal error"
+      content_html: "It's most likely a problem on our side. Email us at %{email_link} if it happens again.<br/>We'll get back to you as soon as we have identified the issue."

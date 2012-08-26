@@ -2,6 +2,10 @@ require File.expand_path('../../lib/assets/routes_constraints', __FILE__)
 
 Joblr::Application.routes.draw do
 
+  unless Rails.application.config.consider_all_requests_local
+    match '*not_found', to: 'errors#error_404'
+  end
+
   devise_for :users, controllers: { omniauth_callbacks: 'authentifications', registrations: 'registrations' }
 
   resources :authentifications, only: [:index, :destroy]
