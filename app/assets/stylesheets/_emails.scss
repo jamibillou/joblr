@@ -1,0 +1,14 @@
+// Emails
+// Basic and specific styles for emails sent by joblr
+// --------------------------------------------------
+
+
+body#email{
+  min-height:1100px;
+  padding-top:0px;
+  background-color:#e7e2cf;
+  .well#profile{
+    margin-top:30px;
+    min-height:950px;
+  }
+}
