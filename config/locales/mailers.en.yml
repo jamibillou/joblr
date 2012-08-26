@@ -1,5 +1,15 @@
 en:
   mailers:
+    devise:
+      reset_password_instructions:
+        hello: "Hello there!"
+        someone_requested: "Someone has requested a link to change your password, and you can do this through the link below."
+        go_to_url: "Go to this url to change your pasword:"
+        follow_link: "Follow this link to reset your pasword:"
+        if_not: "If you didn't request this, please ignore this email."
+        wont_change: "Your password won't change until you access the link above and create a new one."
+        cheers: "Cheers,"
+        team: "The joblr team"
     user:
       share_profile:
         subject: "%{fullname} on joblr"

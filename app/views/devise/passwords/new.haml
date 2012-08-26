@@ -8,15 +8,16 @@
       = form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post}) do |f|
         .row
           .span3
-            %h1= t('devise.registrations.forgot_password')
-            = f.label :email, class: 'inline'
-            *
+            %h1=t 'devise.registrations.forgot_password'
+            %small=t 'devise.registrations.email'
+            %span.danger-text *
             %br/
             = f.email_field :email
           .span2
-            %h4= t('devise.passwords.sign_in')
+            %h4=t 'devise.passwords.sign_in'
             = render 'devise/shared/links'
         .row
           .span5
             %a.btn{href: url_for(:back)}= t('cancel')
             = f.submit t('devise.passwords.email_me'), class: 'btn btn-primary'
+    .pull-right.danger-text * required fields

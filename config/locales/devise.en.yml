@@ -32,6 +32,8 @@ en:
       problem: "Sign in problem"
     passwords:
       title: 'Change your password'
+      new_password: 'New password'
+      new_password_confrimation: 'New password confirmation'
       email_me: 'Email me instructions'
       change_password: 'Change my pasword'
       sign_in: 'Is memory kicking in?'
