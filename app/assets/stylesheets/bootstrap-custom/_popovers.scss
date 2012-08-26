@@ -1,0 +1,19 @@
+// POPOVERS
+// --------
+
+.popover {
+  &.top .arrow    { @include popoverArrowTop(10px, $white); }
+  &.right .arrow  { @include popoverArrowRight(10px, $white); }
+  &.bottom .arrow { @include popoverArrowBottom(10px, $white); }
+  &.left .arrow   { @include popoverArrowLeft(10px, $white);  }
+}
+.popover-inner {
+  padding:0;
+  background-color: $grayLighter;
+  @include border-radius(5px);
+  @include box-shadow(0 0 2px 1px #ccc);
+}
+.popover-title {
+  background-color: $white;
+  font-size: 14px;
+}

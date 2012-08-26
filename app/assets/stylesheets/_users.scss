@@ -3,8 +3,9 @@
 // --------------------------
 
 
-// Show and edit
-// -------------
+// Text bubble
+// at the top
+// -----------
 
 #text{
   margin-bottom:50px;
@@ -18,6 +19,9 @@
     line-height:$baseLineHeight * 1.5;
   }
 }
+
+// Profile
+// -------
 
 #profile{
   &.well{
@@ -71,6 +75,10 @@
   }
 }
 
+// Buttons
+// on the right
+// ------------
+
 #buttons{
   margin-top:50px;
   position:fixed;
@@ -94,6 +102,79 @@
     margin-bottom:10px;
   }
 }
+
+// Popovers
+// on the left
+// to help filling in the edit form
+// --------------------------------
+
+#popovers{
+  a{
+    color:$brown;
+    margin-right:-30px;
+    &.text{
+      padding-bottom:185px;
+    }
+    &.fullname{
+      padding-bottom:535px;
+    }
+    &.city{
+      padding-bottom:615px;
+    }
+    &.country{
+      padding-bottom:575px;
+    }
+    &.headline{
+      padding-bottom:645px;
+    }
+    &.experience{
+      padding-bottom:840px;
+    }
+    &.last_job{
+      padding-bottom:800px;
+    }
+    &.past_companies{
+      padding-bottom:985px;
+    }
+    &.education{
+      padding-bottom:1180px;
+    }
+    &.skill_1{
+      padding-bottom:1391px;
+    }
+    &.skill_2{
+      padding-bottom:1430px;
+    }
+    &.skill_3{
+      padding-bottom:1470px;
+    }
+    &.skill_1_level{
+      padding-bottom:1271px;
+    }
+    &.skill_2_level{
+      padding-bottom:1310px;
+    }
+    &.skill_3_level{
+      padding-bottom:1350px;
+    }
+    &.quality_1{
+      padding-bottom:1500px;
+    }
+    &.quality_2{
+      padding-bottom:1538px;
+    }
+    &.quality_3{
+      padding-bottom:1576px;
+    }
+    &.url{
+      padding-bottom:2095px;
+    }
+  }
+}
+
+// Emails
+// FIX ME!
+// -------
 
 .email{
   #text{

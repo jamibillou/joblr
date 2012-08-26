@@ -114,9 +114,9 @@ h4{
   }
 }
 
-// WELLS, HERO-UNIT & MODALs
-//--------------------------
-.well, .hero-unit, .modal{
+// WELLS, HERO-UNIT, MODALS, POPOVERS
+//-----------------------------------
+.well, .hero-unit, .modal, .popover-inner{
   h1, h2, h3, h4, h5, h6, p, .lead, .big{
     color: $grayDark;
     small{

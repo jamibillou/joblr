@@ -1,6 +1,9 @@
 = form_for @user, html: {id:"edit-form"} do |f|
   .row
-    .span5.offset3
+    - unless signed_up?(@user)
+      .span3#popovers
+        = render 'edit_popovers'
+    .span5{class: "#{'offset3' if signed_up?(@user)}"}
       = render 'edit_text', f: f
       .well#profile
         = render 'edit_identity', f: f
