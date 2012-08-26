@@ -92,7 +92,7 @@ a.close{
     margin:5px 7px 20px -2px;
   }
   &.current {
-    margin-bottom:5px
+    margin:5px 0 5px 0;
   }
   &.selected {
     @include box-shadow(0 0 4px 1px #0073CC);

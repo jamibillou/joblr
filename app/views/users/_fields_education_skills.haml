@@ -2,6 +2,7 @@
   .span3
     %h4=t 'users.edit.education'
     = f.text_area :education, value: field_value(:education, @linkedin), placeholder: t('users.edit.education_placeholder'), rows: 3, class: 'big'
+    %span.danger-text= link_to '*', '#required'
 
 .row.skills
   .span4

@@ -14,17 +14,16 @@
         = form_for @sharing do |f|
           .row
             .span3
-              %label
-                = t('sharings.fullname_label')
+              %small= t 'sharings.fullname_label'
+              %span.danger-text= link_to '*', '#required'
               %input{type: 'text', name: 'fullname', class: 'input-medium'}
               %br/
-              %label
-                = t('sharings.email_label')
+              %small= t 'sharings.email_label'
+              %span.danger-text= link_to '*', '#required'
               %input{type: 'text', name: 'email', class: 'input-medium'}
           .row
             .span3
-              %label
-                = t('sharings.text_label')
+              %small= t 'sharings.text_label'
               = f.text_area :text, rows: 3, placeholder: t('sharings.email_text')
               = f.hidden_field :author_id, value: @user.id
               %br/
@@ -35,7 +34,7 @@
         = form_for @sharing, url: { action: params[:provider], controller: 'sharings' } do |f|
           .row
             .span3
-              %label
+              %small
                 = t('sharings.text_label')
               = f.text_area :text, rows: 3, placeholder: t('sharings.social_text')
               = f.hidden_field :user_id, value: @user.id
@@ -43,3 +42,5 @@
               %br/
               %a= link_to t('cancel'), @user, class: 'btn'
               = f.submit t('share_on', provider: 'LinkedIn'), class:'btn btn-primary'
+    - unless params[:provider]
+      .pull-right.danger-text * required fields

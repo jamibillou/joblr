@@ -9,6 +9,7 @@
     .row
       .span1
         %small=t 'users.edit.experience_label'
+        %span.danger-text= link_to '*', '#required'
         = f.text_field :experience, value: field_value(:experience, @linkedin), placeholder: t('users.edit.experience_placeholder'), class: 'input-mini'
       .span3
         %small=t 'users.edit.last_job'

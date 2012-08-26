@@ -4,7 +4,7 @@ require 'rails/all'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
-  Bundler.require(*Rails.groups(:assets => %w(development test)))
+  Bundler.require(*Rails.groups(assets: %w(development test)))
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
 end
@@ -65,6 +65,6 @@ module Joblr
 
     # Postmark emailing configuration
     config.action_mailer.delivery_method   = :postmark
-    config.action_mailer.postmark_settings = { :api_key => "0d3b84d0-f242-4ab2-b986-13a536d889a2" }
+    config.action_mailer.postmark_settings = {api_key: '0d3b84d0-f242-4ab2-b986-13a536d889a2'}
   end
 end

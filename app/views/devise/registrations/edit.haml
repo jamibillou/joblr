@@ -10,14 +10,17 @@
           %h1= t('account_settings')
           = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
             - unless social_user? current_user
-              = f.label :username, class: 'inline'
-              *
+              %small= t('devise.registrations.username')
+              %span.danger-text *
               = f.text_field :username
+              %br/
             - else
               = f.hidden_field :username
-            = f.label :fullname
+            %small= t('devise.registrations.fullname')
+            %span.danger-text *
             = f.text_field :fullname
-            = f.label :email
+            %br/
+            %small= t('devise.registrations.email')
             = f.email_field :email
             .buttons
               %a.btn{href: url_for(:back)}= t('cancel')
@@ -30,3 +33,4 @@
           %br/
           %h4= t('devise.registrations.unhappy')
           = link_to t('devise.registrations.cancel_account'), registration_path(resource_name), :data => { :confirm => t('sure') }, :method => :delete
+    .pull-right.danger-text * required fields

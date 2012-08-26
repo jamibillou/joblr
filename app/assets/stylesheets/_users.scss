@@ -61,8 +61,13 @@
     }
   }
   .delete{
-    font-size:12px;
+    font-size:11px;
+    color: $gray;
     display:inline-block;
+    a{
+      color: $gray;
+      text-decoration:underline;
+    }
   }
 }
 

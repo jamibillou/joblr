@@ -5,19 +5,19 @@
         .span3
           %h1= t('devise.sessions.sign_in')
           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-            = f.label :username, class: 'inline'
-            *
+            %small= t('devise.sessions.username')
+            %span.danger-text *
             = f.text_field :username
-            = f.label :password, class: 'inline'
-            *
+            %small= t('devise.sessions.password')
+            %span.danger-text *
             = f.password_field :password
             - if devise_mapping.rememberable?
-              = f.label :remember_me, class: 'inline'
+              %small.delete= t('devise.sessions.remember_me')
               &nbsp;
               = f.check_box :remember_me, class: 'inline', style: 'margin-top:0'
             .buttons
               %a.btn{href: url_for(:back)}= t('cancel')
-              = f.submit t('devise.registrations.sign_in'), class: 'btn btn-primary'
+              = f.submit t('devise.sessions.sign_in'), class: 'btn btn-primary'
         .span3.offset1
           %h4= t('devise.sessions.social_signin')
           = render partial: 'devise/shared/omniauth_links'
@@ -26,3 +26,4 @@
           %br/
           %h4= t('devise.sessions.problem')
           = render partial: 'devise/shared/links'
+    .pull-right.danger-text * required fields

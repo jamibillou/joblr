@@ -9,14 +9,19 @@
         .span3
           %h1= t('devise.registrations.create_joblr_account')
           = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-            = f.label :username, class: 'inline'
-            *
+            %small= t('devise.registrations.fullname')
+            %span.danger-text *
+            = f.text_field :fullname
+            %small= t('devise.registrations.username')
+            %span.danger-text *
             = f.text_field :username
-            =f.label :password, class: 'inline'
-            *
+            %br/
+            %small= t('devise.registrations.password')
+            %span.danger-text *
             = f.password_field :password
-            = f.label :password_confirmation, class: 'inline'
-            *
+            %br/
+            %small= t('devise.registrations.password_confirmation')
+            %span.danger-text *
             = f.password_field :password_confirmation
             .buttons
               %a.btn{href: url_for(:back)}= t('cancel')
@@ -29,3 +34,4 @@
           %br/
           %h4= t('devise.registrations.didnt_mean_to')
           = render partial: 'devise/shared/links'
+    .pull-right.danger-text * required fields

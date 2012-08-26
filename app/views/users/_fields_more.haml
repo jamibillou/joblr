@@ -6,7 +6,9 @@
   .span4
     %h4=t 'users.edit.upload_cv'
     - unless @user.profile.file.nil? || @user.profile.file.blank?
-      .delete.danger-text #{t('delete')} #{link_to @user.profile.file_identifier, @user.profile.file_url, style:'text-decoration:underline'}
+      .delete.grey-text
+        =t 'delete'
+        = link_to @user.profile.file_identifier, @user.profile.file_url
       &nbsp;
       = f.check_box :remove_file
       %br/
