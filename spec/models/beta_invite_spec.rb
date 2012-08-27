@@ -53,8 +53,9 @@ end
 #  id         :integer         not null, primary key
 #  user_id    :integer
 #  code       :string(255)
+#  email      :string(255)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
-#  email      :string(255)
+#  sent       :boolean         default(FALSE)
 #
 

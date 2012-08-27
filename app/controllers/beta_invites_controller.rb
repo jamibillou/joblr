@@ -1,6 +1,6 @@
 class BetaInvitesController < ApplicationController
 
-  before_filter :not_signed_in, except: :index
+  before_filter :not_signed_in, except: [:send_code, :destroy]
 
   def new
     @beta_invite = BetaInvite.new
@@ -9,11 +9,21 @@ class BetaInvitesController < ApplicationController
   def create
     @beta_invite = BetaInvite.new params[:beta_invite]
     unless @beta_invite.save
-      redirect_to new_beta_invite_path, flash: { error: error_messages(@beta_invite) }
+      redirect_to new_beta_invite_path, flash: {error: error_messages(@beta_invite)}
     else
-      BetaInviteMailer.send_beta_invite(@beta_invite).deliver
-      redirect_to edit_beta_invite_path(@beta_invite), flash: { success: t('flash.success.beta_invite.sent', email: @beta_invite.email) }
+      BetaInviteMailer.notify_team(@beta_invite).deliver
+      redirect_to "/beta_invites/#{@beta_invite.id}/thank_you", flash: {success: t('flash.success.beta_invite.request_sent')}
     end
+  end
+
+  def thank_you
+  end
+
+  def send_code
+    beta_invite = BetaInvite.find params[:beta_invite_id]
+    BetaInviteMailer.send_code(beta_invite).deliver
+    beta_invite.update_attributes sent: true
+    redirect_to admin_path, :flash => {:success => t('flash.success.beta_invite.email_sent')}
   end
 
   def edit
@@ -22,16 +32,19 @@ class BetaInvitesController < ApplicationController
 
   def update
     if @beta_invite = BetaInvite.find_by_id_and_code(params[:id], params[:beta_invite][:code])
-      if @beta_invite.active?
+      if !@beta_invite.used?
         session[:beta_invite] = @beta_invite
         redirect_to new_user_registration_path, flash: {success: t('flash.success.beta_invite.ok')}
       else
-        redirect_to new_beta_invite_path, flash: {error: t('flash.error.beta_invite.inactive')}
+        redirect_to new_beta_invite_path, flash: {error: t('flash.error.beta_invite.used')}
       end
     elsif @beta_invite = BetaInvite.find_by_id(params[:id])
       redirect_to edit_beta_invite_path(@beta_invite), flash: {error: t('flash.error.beta_invite.code_inexistant')}
-    else
-      redirect_to new_beta_invite_path, flash: {error: t('flash.error.something_wrong.base')}
     end
+  end
+
+  def destroy
+   BetaInvite.find(params[:id]).destroy
+   redirect_to admin_path, :flash => {:success => t('flash.success.beta_invite.destroyed')}
   end
 end

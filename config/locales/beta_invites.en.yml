@@ -8,6 +8,11 @@ en:
       asterisk: '*very early version with a lot of bugs and not finalized details all around the place'
       placeholder: 'Email address'
       button: 'Get invited!'
+    thank_you:
+      title: 'Thank you!'
+      subtitle: "We really appreciate your interest. We're only taking a very limited number of users at the moment but be sure we'll send you invitation soon!"
+    send_code:
+      yes_send: 'Are you sure you want to send a beta invite code to %{email}?'
     edit:
       title: 'Be first to try!'
       subtitle_html: "We are currently seeking feedback on our ideas.<br />You need an invitation to join Joblr alpha<span class='danger-text'>*</span>."
@@ -15,3 +20,5 @@ en:
       placeholder: 'Invitation code'
       button: 'Sign up!'
       link: "Haven't got your code yet? Get one!"
+    destroy:
+      yes_delete: 'Are you sure you want to delete this beta invite?'

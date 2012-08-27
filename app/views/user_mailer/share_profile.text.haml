@@ -1,7 +1,13 @@
-= t('mailers.user.text_email.content', fullname: "#{@user.fullname}")
-
-= "http://#{@user.subdomain}.joblr.co"
-
-
+=t 'mailers.user.text_email.title', fullname: @user.fullname
+<br>
+<br>
+<br>
+=t 'mailers.user.text_email.content', fullname: @user.fullname
+<br>
+<br>
+=t 'mailers.user.text_email.go_to_url', url: "http://#{@user.subdomain}.joblr.co"
+<br>
+<br>
+<br>
 = t('mailers.user.text_email.cheers')
 = t('mailers.user.text_email.team')

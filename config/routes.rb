@@ -10,7 +10,10 @@ Joblr::Application.routes.draw do
 
   resources :authentifications, only: [:index, :destroy]
   resources :sharings,          only: [:new, :create]
-  resources :beta_invites
+  resources :beta_invites do
+    get :thank_you
+    get :send_code
+  end
   resources :users do
     resources :profiles
   end
@@ -18,10 +21,10 @@ Joblr::Application.routes.draw do
   get  'users/auth/failure'  => 'authentifications#failure'
   post 'users/share_profile' => 'users#share_profile'
 
-  match 'home',              to: 'pages#home'
-  match 'admin',             to: 'pages#admin'
-  match 'style_tile',        to: 'pages#style_tile'
-  match 'sharings/linkedin', to: 'sharings#linkedin'
+  match 'home',                   to: 'pages#home'
+  match 'admin',                  to: 'pages#admin'
+  match 'style_tile',             to: 'pages#style_tile'
+  match 'sharings/linkedin',      to: 'sharings#linkedin'
 
   # Subdomain constraints
   match '', to: 'users#show', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' && r.path == '/' }

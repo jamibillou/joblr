@@ -28,12 +28,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+   User.find(params[:id]).destroy
+   redirect_to admin_path, :flash => {:success => t('flash.success.user.destroyed')}
+  end
+
   private
 
     def find_subdomain_user
       @user = User.find_by_subdomain! request.subdomain
     rescue ActiveRecord::RecordNotFound
-      redirect_to root_url(subdomain: 'www'), flash: {error: t('flash.error.subdomain.profile')}
+      redirect_to root_url(subdomain: false), flash: {error: t('flash.error.subdomain.profile')}
     end
 
     def correct_user!

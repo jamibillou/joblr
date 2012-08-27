@@ -1,6 +1,6 @@
 class BetaInvite < ActiveRecord::Base
 
-  attr_accessible :email, :code, :user_id
+  attr_accessible :email, :code, :sent, :user_id
 
   belongs_to :user
 
@@ -11,14 +11,18 @@ class BetaInvite < ActiveRecord::Base
 
   before_validation :make_code
 
-  def active?
+  def used?
     !user.nil?
+  end
+
+  def sent?
+    sent == true
   end
 
   private
 
     def make_code
-      self.code = Digest::SHA2.hexdigest(Time.now.utc.to_s)
+      self.code = Digest::SHA2.hexdigest(Time.now.utc.to_s) unless sent_changed?
     end
 end
 
@@ -29,8 +33,9 @@ end
 #  id         :integer         not null, primary key
 #  user_id    :integer
 #  code       :string(255)
+#  email      :string(255)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
-#  email      :string(255)
+#  sent       :boolean         default(FALSE)
 #
 

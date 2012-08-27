@@ -14,13 +14,23 @@ en:
       share_profile:
         subject: "%{fullname} on joblr"
       text_email:
-        content: "%{fullname} would like to talk to you, he is using a joblr so you can go through his profile in a few seconds and tell him wether you are interested or not"
+        title: "%{fullname} on joblr"
+        content: "%{fullname} would like to talk to you, he is using a joblr so you can go through his profile in a few seconds and tell him wether you are interested or not."
+        go_to_url: 'Go to %{url} to take a look!'
         cheers: 'Cheers,'
         team: 'The joblr Team'
     beta_invite:
-      subject: "Invitation to joblr alpha"
-      title: "Congrats, here's your invitation to joblr alpha!"
-      content_html: "Thanks for your interest in joblr, we're glad to have you on board. Paste this invitation code at %{url} and sign up!"
-      code: "Invitation code: %{code}"
-      cheers: "Cheers,"
-      team: "The joblr team"
+      notify_team:
+        subject: "New beta invitation request!"
+        title: "Somebody wants to try joblr!"
+        content: "Some person whose email is %{email} just requested a beta invitation."
+        go_to_url_html: "Go to %{url} to send the invitation email."
+        cheers: "Cheers,"
+        team: "Who ever of us wrote this email"
+      send_code:
+        subject: "Invitation to joblr alpha"
+        title: "Congrats, here's your invitation to joblr alpha!"
+        content_html: "Thanks for your interest in joblr, we're glad to have you on board. Paste this invitation code at %{url} and sign up!"
+        code: "Invitation code: %{code}"
+        cheers: "Cheers,"
+        team: "The joblr team"

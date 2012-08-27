@@ -13,9 +13,9 @@
           %span.caret
         %ul.dropdown-menu
           %li
-            = link_to t('users.show.email'), new_sharing_url(id: user.id, subdomain: 'www')
+            = link_to t('users.show.email'), new_sharing_url(id: user.id, subdomain: false)
           %li
-            = link_to 'LinkedIn', new_sharing_url(id: user.id, provider: 'linkedin', subdomain: 'www')
+            = link_to 'LinkedIn', new_sharing_url(id: user.id, provider: 'linkedin', subdomain: false)
       .explanation
         - if user_signed_in? && current_user == user && !has_subdomain
           %h5=t 'users.show.public_profile'

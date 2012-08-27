@@ -32,7 +32,7 @@
           %td.span1
             %p= time_ago_in_words(user.last_sign_in_at).gsub('about', '')
           %td.span1
-            %p= signed_up?(user)
+            %span{class: "#{signed_up?(user) ? 'success-text' : 'danger-text'}"}= signed_up?(user)
           %td.span1
             %p= user.sharings_recipients.count
           %td.span1
@@ -40,5 +40,4 @@
           %td.span1
             %p= !user.beta_invite.nil?
           %td.span1
-            %a{href: '#'}
-              .icon-trash
+            = link_to "<div class='icon-trash'></div>".html_safe, user, method: :delete, confirm: t('users.destroy.yes_delete'), class: 'danger-text'

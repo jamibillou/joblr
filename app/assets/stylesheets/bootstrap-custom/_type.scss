@@ -43,6 +43,9 @@ p{
   a{
     color:$errorText;
   }
+  a:hover{
+    color:$errorText;
+  }
 }
 .success-text{
   color:$successText;
