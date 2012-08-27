@@ -41,7 +41,7 @@ en:
       country_placeholder: 'Country'
       country_popover: 'Your country, it helps knowing what language you speak, how open you are to relocate, etc.'
       headline: 'Headline'
-      headline_popover: 'This will show very clearly at the top of your profile so potential employers know exactly what you want.'
+      headline_popover: 'This will be displayed in a prominent way so potential employers know exactly what you want.'
       experience: 'Experience'
       experience_label: 'Years'
       experience_placeholder: 'number'

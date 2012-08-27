@@ -39,7 +39,7 @@ module Authentification::Linkedin
   end
 
   def client
-    client = LinkedIn::Client.new('z9dzn1xi6wkb', '6W2HDTovO9TMOp8U')
+    client = LinkedIn::Client.new(ENV["LINKEDIN_CONSUMER_KEY"], ENV["LINKEDIN_CONSUMER_SECRET"])
     client.authorize_from_access(utoken, usecret)
     client
   end
