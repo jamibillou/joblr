@@ -18,8 +18,6 @@ class BetaInvitesController < ApplicationController
 
   def edit
     @beta_invite = BetaInvite.find params[:id]
-  rescue ActiveRecord::RecordNotFound
-    redirect_to new_beta_invite_path, flash: {error: t('flash.error.beta_invite.inexistant')}
   end
 
   def update
