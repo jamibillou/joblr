@@ -8,7 +8,8 @@
           .icon-map-marker
           &nbsp;
           #{user.city}#{', ' unless user.city.blank? || user.country.blank?}#{user.country}
-      .headline.danger-text
-        .icon-briefcase
-        &nbsp;
-        =t "users.show.headline.#{user.profile.headline}"
+      - unless user.admin?
+        .headline.danger-text
+          .icon-briefcase
+          &nbsp;
+          =t "users.show.headline.#{user.profile.headline}"

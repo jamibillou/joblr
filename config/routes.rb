@@ -10,7 +10,7 @@ Joblr::Application.routes.draw do
 
   resources :authentifications, only: [:index, :destroy]
   resources :sharings,          only: [:new, :create]
-  resources :beta_invites,      only: [:new, :create, :edit, :update]
+  resources :beta_invites
   resources :users do
     resources :profiles
   end

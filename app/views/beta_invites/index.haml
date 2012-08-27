@@ -1,0 +1,41 @@
+.well
+  .row
+    .span1
+      %p Date
+    .span2
+      %p Email
+    .span1
+      %p Active
+    .span2
+      %p User full name
+    .span2
+      %p Username
+    .span1
+      %p Signed up
+    .span1{style: 'text-align:center'}
+      %p Delete
+    .span1{style: 'text-align:center'}
+      %p Send email
+  - @beta_invites.each do |beta_invite|
+    .row
+      .span1
+        = beta_invite.created_at.to_s[0..9]
+      .span2
+        = beta_invite.email
+      .span1
+        %span{class: "#{beta_invite.active? ? 'success-text' : 'danger-text'}"}= beta_invite.active?
+      .span2
+        = beta_invite.user.fullname
+      .span2
+        = beta_invite.user.username
+      .span1
+        %span{class: "#{signed_up?(beta_invite.user) ? 'success-text' : 'danger-text'}"}= signed_up?(beta_invite.user)
+      .span1{style: 'text-align:center'}
+        %a{href: '#'}
+          .icon-trash
+      - unless beta_invite.active? || beta_invite.sent?
+        .span1{style: 'text-align:center'}
+          %a{href: '#'}
+            .icon-envelope
+
+

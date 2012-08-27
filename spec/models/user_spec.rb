@@ -145,12 +145,13 @@ end
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
-#  created_at             :datetime        not null
-#  updated_at             :datetime        not null
+#  username               :string(255)
+#  image                  :string(255)
 #  city                   :string(255)
 #  country                :string(255)
-#  image                  :string(255)
 #  subdomain              :string(255)
-#  username               :string(255)
+#  created_at             :datetime        not null
+#  updated_at             :datetime        not null
+#  admin                  :boolean         default(FALSE)
 #
 

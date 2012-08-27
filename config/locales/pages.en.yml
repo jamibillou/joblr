@@ -1,6 +1,7 @@
 en:
   pages:
     overview:
-      title: "Overview"
+      title: 'Overview'
+      title_alt: 'Home'
     style_tile:
-      title: "Style tile"
+      title: 'Style tile'

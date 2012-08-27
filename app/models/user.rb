@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  attr_accessible :fullname, :email, :city, :country, :subdomain, :password, :password_confirmation, :remember_me, :image, :username,
+  attr_accessible :fullname, :email, :city, :country, :subdomain, :password, :password_confirmation, :remember_me, :image, :username, :admin,
                   :commit,   :remove_image, :remote_image_url,    :profiles_attributes
   attr_accessor   :commit
 
@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   validates :email,    uniqueness: { case_sensitive: true },        allow_nil: true, if: :email_changed?
   validates :email,    format:     { with:   Devise.email_regexp }, allow_nil: true, if: :email_changed?
   validates :password, length:     { within: Devise.password_length }, confirmation: true, presence: true, if: ->(u) { u.commit == 'Sign up' }
+  validates :admin,    inclusion:  { :in => [true, false] }
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
 
@@ -74,12 +75,13 @@ end
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
-#  created_at             :datetime        not null
-#  updated_at             :datetime        not null
+#  username               :string(255)
+#  image                  :string(255)
 #  city                   :string(255)
 #  country                :string(255)
-#  image                  :string(255)
 #  subdomain              :string(255)
-#  username               :string(255)
+#  created_at             :datetime        not null
+#  updated_at             :datetime        not null
+#  admin                  :boolean         default(FALSE)
 #
 
