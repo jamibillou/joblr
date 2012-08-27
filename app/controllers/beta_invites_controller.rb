@@ -1,11 +1,6 @@
 class BetaInvitesController < ApplicationController
 
   before_filter :not_signed_in, except: :index
-  before_filter :admin,         only:   :index
-
-  def index
-    @beta_invites = BetaInvite.all
-  end
 
   def new
     @beta_invite = BetaInvite.new

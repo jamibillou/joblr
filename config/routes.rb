@@ -19,6 +19,7 @@ Joblr::Application.routes.draw do
   post 'users/share_profile' => 'users#share_profile'
 
   match 'home',              to: 'pages#home'
+  match 'admin',             to: 'pages#admin'
   match 'style_tile',        to: 'pages#style_tile'
   match 'sharings/linkedin', to: 'sharings#linkedin'
 

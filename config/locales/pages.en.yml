@@ -3,5 +3,8 @@ en:
     overview:
       title: 'Overview'
       title_alt: 'Home'
+    admin:
+      title: 'Admin dashboard'
+      title_alt: 'Admin'
     style_tile:
       title: 'Style tile'

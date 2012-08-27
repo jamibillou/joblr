@@ -24,6 +24,8 @@ en:
       share: 'Share'
       public_profile: 'Public profile'
       explanation_html: "Start sharing %{url} around you now!"
+    index:
+      title: 'Users'
     edit:
       title: 'Edit your profile'
       title_alt: 'Create your profile'

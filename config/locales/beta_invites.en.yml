@@ -1,8 +1,7 @@
 en:
   beta_invites:
     index:
-      title: 'All invites'
-      title_alt: 'Beta'
+      title: 'Beta invites'
     new:
       title: 'Get invited!'
       subtitle_html: "Fill in your email and we'll send you an <u>invitation</u> to join us on Joblr alpha<span class='danger-text'>*</span>."

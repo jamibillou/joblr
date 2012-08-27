@@ -3,6 +3,22 @@
 // ---------------------------
 
 
+// Admin dashboard
+// ---------------
+
+#admin{
+  td{
+    text-align:center;
+    p{
+      margin-bottom:0;
+    }
+  }
+}
+
+
+// Style tile
+// ----------
+
 #style-tile{
   .right-pane{
     .span2 div{
@@ -37,3 +53,4 @@
     }
   }
 }
+

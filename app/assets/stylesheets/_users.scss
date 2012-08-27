@@ -3,8 +3,10 @@
 // --------------------------
 
 
+// SHOW & EDIT
+// -----------
+
 // Text bubble
-// at the top
 // -----------
 
 #text{
@@ -75,8 +77,21 @@
   }
 }
 
+// Emailed profile
+// ---------------
+
+.email{
+  #text{
+    .well{
+      height:300px;
+    }
+  }
+  #profile.well{
+    height:950px;
+  }
+}
+
 // Buttons
-// on the right
 // ------------
 
 #buttons{
@@ -104,9 +119,7 @@
 }
 
 // Popovers
-// on the left
-// to help filling in the edit form
-// --------------------------------
+// --------
 
 #popovers{
   a{
@@ -169,20 +182,5 @@
     &.url{
       padding-bottom:2095px;
     }
-  }
-}
-
-// Emails
-// FIX ME!
-// -------
-
-.email{
-  #text{
-    .well{
-      height:300px;
-    }
-  }
-  #profile.well{
-    height:950px;
   }
 }

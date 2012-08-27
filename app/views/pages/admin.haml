@@ -1,0 +1,14 @@
+.well#admin
+  %h1=t 'pages.admin.title'
+  %br/
+  .tabbable
+    %ul.nav.nav-tabs
+      %li.active
+        %a{href: '#tab1', "data-toggle" => 'tab'}=t 'users.index.title'
+      %li
+        %a{href: '#tab2', "data-toggle" => 'tab'}=t 'beta_invites.index.title'
+  .tab-content
+    .tab-pane#tab1.active
+      = render 'users/index'
+    .tab-pane#tab2
+      = render 'beta_invites/index'

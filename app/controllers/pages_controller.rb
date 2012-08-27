@@ -1,13 +1,16 @@
 class PagesController < ApplicationController
 
   before_filter :reset_devise_session
-  before_filter :admin, only: :style_tile
+  before_filter :admin_user, only: [:admin, :style_tile]
 
   def home
-    @title = t('pages.overview.title')
+  end
+
+  def admin
+    @users        = User.all
+    @beta_invites = BetaInvite.all
   end
 
   def style_tile
-    @title = t('pages.style_tile.title')
   end
 end

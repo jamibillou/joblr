@@ -1,0 +1,41 @@
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %td.span1{style: 'text-align:left'}
+        %h5 Date
+      %td.span2
+        %h5 Email
+      %td.span1
+        %h5 Active
+      %td.span2
+        %h5 Full name
+      %td.span2
+        %h5 Username
+      %td.span1
+        %h5 Sined up
+      %td.span1
+        %h5 Delete
+      %td.span1{style: 'text-align:right'}
+        %h5 Email
+  %tbody
+    - @beta_invites.each do |beta_invite|
+      %tr
+        %td.span1{style: 'text-align:left'}
+          %p= beta_invite.created_at.to_s[0..9]
+        %td.span2
+          %p= beta_invite.email
+        %td.span1
+          %p{class: "#{beta_invite.active? ? 'success-text' : 'danger-text'}"}= beta_invite.active?
+        %td.span2
+          %p= beta_invite.user.fullname if beta_invite.active?
+        %td.span2
+          %p= beta_invite.user.username if beta_invite.active?
+        %td.span1
+          %p{class: "#{signed_up?(beta_invite.user) ? 'success-text' : 'danger-text'}"}= signed_up?(beta_invite.user)
+        %td.span1
+          %a{href: '#'}
+            .icon-trash
+        %td.span1{style: 'text-align:right'}
+          - unless beta_invite.active? || beta_invite.sent?
+            %a{href: '#'}
+              .icon-envelope

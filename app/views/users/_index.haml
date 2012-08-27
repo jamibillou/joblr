@@ -1,0 +1,44 @@
+%p
+  %table.table.table-striped
+    %thead
+      %tr
+        %td.span1{style: 'text-align:left'}
+          %h5 Full name
+        %td.span1{style: 'text-align:right'}
+          %h5 Username
+        %td.span1
+          %h5 Signed in
+        %td.span1
+          %h5 Last signed in
+        %td.span1
+          %h5 Signed up
+        %td.span1
+          %h5 Shared
+        %td.span1
+          %h5 Services
+        %td.span1
+          %h5 From beta
+        %td.span1
+          %h5 Delete
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td.span1{style: 'text-align:left'}
+            %p= user.fullname
+          %td.span1{style: 'text-align:right'}
+            %p= user.username
+          %td.span1
+            %p= user.sign_in_count
+          %td.span1
+            %p= time_ago_in_words(user.last_sign_in_at).gsub('about', '')
+          %td.span1
+            %p= signed_up?(user)
+          %td.span1
+            %p= user.sharings_recipients.count
+          %td.span1
+            %p= user.authentifications.count
+          %td.span1
+            %p= !user.beta_invite.nil?
+          %td.span1
+            %a{href: '#'}
+              .icon-trash
