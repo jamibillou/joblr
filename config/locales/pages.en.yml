@@ -1,5 +1,6 @@
 en:
   pages:
-    titles:
-      overview: "Overview"
-      style_tile: "Style tile"
+    overview:
+      title: "Overview"
+    style_tile:
+      title: "Style tile"

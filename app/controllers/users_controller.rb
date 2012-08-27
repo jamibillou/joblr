@@ -8,10 +8,12 @@ class UsersController < ApplicationController
   before_filter :associate_beta_invite, only: :update
 
   def show
+    @title = @user.fullname
   end
 
   def edit
     unless signed_up?(@user)
+      @title = t('users.edit.title_alt')
       @user.profiles.build
       @linkedin = @user.auth('linkedin').profile if @user.has_auth?('linkedin')
     end

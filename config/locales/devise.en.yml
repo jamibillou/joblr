@@ -20,6 +20,8 @@ en:
       timeout: 'Your session expired, please sign in again to continue.'
       inactive: 'Your account was not activated yet.'
     sessions:
+      new:
+        title: 'Sign in'
       sign_in: 'Sign in'
       joblr_signin: 'Sign in with a Joblr account'
       social_signin: 'Sign in with a social account'
@@ -31,6 +33,10 @@ en:
       logout: 'Logout'
       problem: "Sign in problem"
     passwords:
+      new:
+        title: 'Forgot your password?'
+      edit:
+        title: 'Change your password'
       title: 'Change your password'
       new_password: 'New password'
       new_password_confrimation: 'New password confirmation'
@@ -42,11 +48,11 @@ en:
       updated_not_active: 'Your password was changed successfully.'
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       no_token: "You can't access this page without coming from a password reset email."
-    confirmations:
-      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
-      send_paranoid_instructions: 'If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
-      confirmed: 'Your account was successfully confirmed. You are now signed in.'
     registrations:
+      new:
+        title: 'Sign up!'
+      edit:
+        title: 'Account settings'
       account: 'Account'
       account_settings: 'Account settings'
       already_member: 'Already a member?'
@@ -72,20 +78,9 @@ en:
       yes_cancel: "Are you sure you want to cancel your account?"
       didnt_mean_to: "Didn't mean to signup?"
       update: 'Update'
-    unlocks:
-      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
-      unlocked: 'Your account has been unlocked successfully. Please sign in to continue.'
-      send_paranoid_instructions: 'If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.'
     omniauth_callbacks:
       success: 'Successfully signed in with %{provider}.'
       failure: 'Could not sign you in with %{provider} because "%{reason}".'
-    mailer:
-      confirmation_instructions:
-        subject: 'Confirmation instructions'
-      reset_password_instructions:
-        subject: 'Reset password instructions'
-      unlock_instructions:
-        subject: 'Unlock Instructions'
     omniauth:
       add_accounts: "Link your social profiles to easily login and share"
       add_account: 'Add your %{network} account'

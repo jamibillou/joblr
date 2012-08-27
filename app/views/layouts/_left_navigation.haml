@@ -3,7 +3,7 @@
   - if user_signed_in?
     %li= link_to t('profile'), current_user
   - else
-    %li= link_to t('pages.titles.overview'), "#{root_url(subdomain: 'www')}home"
+    %li= link_to t('pages.overview.title'), "#{root_url(subdomain: 'www')}home"
 
     - if Rails.env.development?
-      %li= link_to t('pages.titles.style_tile'), style_tile_path
+      %li= link_to t('pages.style_tile.title'), style_tile_path

@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+  def title
+    unless title = @title
+      namespace = %w(sessions registrations passwords).include?(controller_name)? "devise.#{controller_name}" : controller_name
+      title = t("#{namespace}.#{action_name}.title")
+    end
+    title.blank? ? 'Joblr' : "Joblr | #{title}"
+  end
+
   def has_subdomain
     request.subdomain.present? && request.subdomain != 'www'
   end

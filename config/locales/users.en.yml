@@ -26,6 +26,7 @@ en:
       explanation_html: "Start sharing %{url} around you now!"
     edit:
       title: 'Edit your profile'
+      title_alt: 'Create your profile'
       text: 'Goals or motto'
       text_placeholder: 'e.g. I build quality code for a living and in my spare time, it is a passion rather than an occupation!'
       text_popover: "Catch the viewer's attention in a simple sentence. Talk about your values, your approach to your job, etc."
