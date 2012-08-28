@@ -42,7 +42,7 @@
 
 // Mini
 .btn-mini {
-  padding: 2px 4px 2px;
+  padding: 2px 6px 2px;
   margin-right:1px;
   font-size: $baseFontSize - 2px;
   @include border-radius(5px);
@@ -55,8 +55,21 @@
 // Set text color
 // -------------------------
 .btn-inverse, .btn-inverse:hover{
-  color: $wellTextColor;
-  text-shadow: none;
+  color:$wellTextColor;
+  text-shadow:none;
+}
+.btn-linkedin, .btn-linkedin:hover,
+.btn-twitter, .btn-twitter:hover,
+.btn-facebook, .btn-facebook:hover,
+.btn-google, .btn-google:hover{
+  color:$white;
+  text-shadow:none;
+}
+.btn-linkedin.active, .btn-linkedin.active:hover,
+.btn-twitter.active, .btn-twitter.active:hover,
+.btn-facebook.active, .btn-facebook.active:hover,
+.btn-google.active, .btn-google.active:hover{
+  color:$grayLighter;
 }
 
 // Set the backgrounds
@@ -82,4 +95,16 @@
 }
 .btn-inverse {
   @include buttonBackground($btnInverseBackground, $btnInverseBackgroundHighlight);
+}
+.btn-linkedin{
+  @include buttonBackground($btnLinkedinBackground, $btnLinkedinBackgroundHighlight);
+}
+.btn-twitter{
+  @include buttonBackground($btnTwitterBackground, $btnTwitterBackgroundHighlight);
+}
+.btn-facebook{
+  @include buttonBackground($btnFacebookBackground, $btnFacebookBackgroundHighlight);
+}
+.btn-google{
+  @include buttonBackground($btnGoogleBackground, $btnGoogleBackgroundHighlight);
 }
