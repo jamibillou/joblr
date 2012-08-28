@@ -5,8 +5,8 @@ class Sharing < ActiveRecord::Base
   belongs_to :author,    class_name: 'User', foreign_key: :author_id
   belongs_to :recipient, class_name: 'User', foreign_key: :recipient_id
 
-  validates :author_id,                      presence: true
-  validates :recipient_id,                   presence: true
+  validates :author,                         presence: true
+  validates :recipient,                      presence: true
   validates :text, length: { maximum: 140 }, presence: true
 end
 

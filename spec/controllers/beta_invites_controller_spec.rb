@@ -7,7 +7,7 @@ describe BetaInvitesController do
   before :each do
     @user        = FactoryGirl.create :user
     @beta_invite = FactoryGirl.create :beta_invite, user: nil
-    @attr   = {email: 'user@example.com'}
+    @attr        = {email: 'user@example.com'}
   end
 
   describe "GET 'new'" do
@@ -30,7 +30,7 @@ describe BetaInvitesController do
 
   describe "POST 'create'" do
 
-    it 'should create a new beta_invite' do
+    it 'should create a new beta_invite given valid attributes' do
       lambda do
         post :create, beta_invite: @attr
       end.should change(BetaInvite, :count).by 1
@@ -42,13 +42,9 @@ describe BetaInvitesController do
       end.should_not change(User, :count).by 1
     end
 
-    # it 'should send an email with the invitation code' do
-    #   post :create, beta_invite: @attr
-    # end
-
-    it "should redirect to 'edit'" do
+    it "should redirect to 'thank_you'" do
       post :create, beta_invite: @attr
-      response.should redirect_to edit_beta_invite_path(BetaInvite.last)
+      response.should redirect_to beta_invite_thank_you_path(BetaInvite.last)
     end
   end
 
@@ -64,13 +60,6 @@ describe BetaInvitesController do
       end
     end
 
-    context 'with incorrect invitation id' do
-      it 'should redirect to root_path' do
-        get :edit, id: 100
-        response.should redirect_to(new_beta_invite_path)
-      end
-    end
-
     it 'should have a code field' do
       get :edit, id: @beta_invite
       response.body.should have_selector 'input#beta_invite_code'
@@ -78,13 +67,6 @@ describe BetaInvitesController do
   end
 
   describe "PUT 'update'" do
-
-    context 'with incorrect invitation id' do
-      it "should redirect to 'new'" do
-        put :update, id: 100, beta_invite: {code: @beta_invite.code}
-        response.should redirect_to(new_beta_invite_path)
-      end
-    end
 
     context 'with empty or incorrect invitation code' do
       it "should redirect to 'edit'" do

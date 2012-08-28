@@ -53,6 +53,8 @@ en:
         title: 'Sign up!'
       edit:
         title: 'Account settings'
+      update:
+        title: 'Account settings'
       account: 'Account'
       already_member: 'Already a member?'
       create_joblr_account: 'Create a Joblr account'

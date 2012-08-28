@@ -7,21 +7,21 @@ class Profile < ActiveRecord::Base
 
   validates :user,                                                            presence: true
   validates :headline,       length: { maximum: 100 }, headline_format: true, presence: true
-  validates :education,      length: { maximum: 100 },                        presence: true
   validates :experience,     length: { maximum: 100 },                        presence: true
+  validates :education,      length: { maximum: 100 },                        presence: true
+  validates :text,           length: { maximum: 140 },                        presence: true
   validates :last_job,       length: { maximum: 100 }
   validates :past_companies, length: { maximum: 100 }
   validates :skill_1,        length: { maximum: 50 }
   validates :skill_2,        length: { maximum: 50 }
   validates :skill_3,        length: { maximum: 50 }
-  validates :skill_1_level,                            level_format: true,    allow_blank: true
-  validates :skill_2_level,                            level_format: true,    allow_blank: true
-  validates :skill_3_level,                            level_format: true,    allow_blank: true
   validates :quality_1,      length: { maximum: 50 }
   validates :quality_2,      length: { maximum: 50 }
   validates :quality_3,      length: { maximum: 50 }
-  validates :text,           length: { maximum: 140 },                        presence: true
-  validates :url,                                      url_format: true,      allow_blank: true
+  validates :skill_1_level,  level_format: true, allow_blank: true
+  validates :skill_2_level,  level_format: true, allow_blank: true
+  validates :skill_3_level,  level_format: true, allow_blank: true
+  validates :url,            url_format:   true, allow_blank: true
 
   mount_uploader :file, ProfileFileUploader
 end

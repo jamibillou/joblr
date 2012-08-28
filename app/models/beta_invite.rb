@@ -4,11 +4,9 @@ class BetaInvite < ActiveRecord::Base
 
   belongs_to :user
 
-  validates :code,  presence: true
-  validates :email, presence: true, allow_blank: false
-  validates :email, uniqueness: { case_sensitive: true }
-  validates :email, format:     { with: Devise.email_regexp }
-
+  validates :email, uniqueness: { case_sensitive: true }, allow_blank: false, presence: true
+  validates :email, format: { with: Devise.email_regexp }
+  validates :sent,  inclusion:  { :in => [true, false] }
   before_validation :make_code
 
   def used?

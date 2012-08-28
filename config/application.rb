@@ -16,7 +16,7 @@ module Joblr
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W(#{config.root}/lib/assets/validators)
+    config.autoload_paths += %W(#{config.root}/lib/validators #{config.root}/lib/initializers)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -69,5 +69,13 @@ module Joblr
 
     # Exceptions handling in app routes
     config.exceptions_app = self.routes
+
+    # Generators
+    config.generators do |g|
+      g.orm                 :active_record
+      g.test_framework      :rspec, fixture: true, views: false, helpers: false
+      g.fixture_replacement :factory_girl, dir: 'spec/factories'
+      g.template_engine :haml
+    end
   end
 end

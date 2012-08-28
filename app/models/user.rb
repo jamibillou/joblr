@@ -14,15 +14,17 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profiles, allow_destroy: true
 
-  validates :fullname, length:     { maximum: 100 },                presence: true
-  validates :city,     length:     { maximum: 50 }
-  validates :country,  length:     { maximum: 50 }
-  validates :username, length:     { maximum: 100 }
-  validates :username, uniqueness: { case_sensitive: true },        presence: true
-  validates :email,    uniqueness: { case_sensitive: true },        allow_nil: true, if: :email_changed?
-  validates :email,    format:     { with:   Devise.email_regexp }, allow_nil: true, if: :email_changed?
-  validates :password, length:     { within: Devise.password_length }, confirmation: true, presence: true, if: ->(u) { u.commit == 'Sign up' }
-  validates :admin,    inclusion:  { :in => [true, false] }
+  validates :fullname,  length:     { maximum: 100 },                   presence: true
+  validates :username,  uniqueness: { case_sensitive: true },           presence: true
+  validates :username,  length:     { maximum: 100 }
+  validates :city,      length:     { maximum: 50 }
+  validates :country,   length:     { maximum: 50 }
+  validates :subdomain, length:     { maximum: 100 }
+  validates :subdomain, uniqueness: { case_sensitive: true }
+  validates :email,     uniqueness: { case_sensitive: true },           allow_nil:    true, if: :email_changed?
+  validates :email,     format:     { with:   Devise.email_regexp },    allow_nil:    true, if: :email_changed?
+  validates :password,  length:     { within: Devise.password_length }, confirmation: true, presence: true, if: ->(u) { u.commit == 'Sign up' }
+  validates :admin,     inclusion:  { :in => [true, false] }
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
 
@@ -33,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def initials
-    fullname.parametize.split('-').map{ |name| name.chars.first }.join
+    fullname.parameterize.split('-').map{|name| name.chars.first}.join
   end
 
   def auth(provider)

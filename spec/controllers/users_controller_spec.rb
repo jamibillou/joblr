@@ -7,8 +7,7 @@ describe UsersController do
   before :each do
     @user = FactoryGirl.create :user
     sign_in @user
-    @attr =         { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China',
-                      profiles_attributes: { '0' => { headline: 'fulltime', experience: '10', education: 'none', text: 'A good and highly motivated guy.' } } }
+    @attr =         { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China', profiles_attributes: { '0' => { headline: 'fulltime', experience: '10', education: 'none', text: 'A good and highly motivated guy.' } } }
     @profile_attr = { headline: 'fulltime',
                       experience: '5 yrs',
                       last_job: 'Financial director',
@@ -29,25 +28,51 @@ describe UsersController do
 
   describe "GET 'show'" do
 
-    context "for users who haven't completed their profile" do
-      it "should redirect to 'edit'" do
-        get :show, id: @user
-        response.should redirect_to edit_user_path(@user)
+    context 'signed in users' do
+
+      context "who haven't completed their profile" do
+        it "should redirect to 'edit'" do
+          get :show, id: @user
+          response.should redirect_to edit_user_path(@user)
+        end
+      end
+
+      context "who have completed their profile" do
+
+        before :each do
+          @user.profiles.create @profile_attr
+          get :show, id: @user
+        end
+
+        it { response.should be_success }
+
+        it 'should have a the right user profile' do
+          response.body.should have_selector 'div', class:'card', id:"show-user-#{@user.id}"
+        end
       end
     end
 
-    context "for users who have completed their profile" do
+    context 'non signed in users' do
 
-      before :each do
-        @user.profiles.create @profile_attr
-        get :show, id: @user
+      before(:each) { sign_out @user ; @user.profiles.create @profile_attr }
+
+      context 'requests without a subdomains' do
+        it 'should have the right user profile' do
+          get :show, id: @user
+          response.body.should have_selector 'div', class:'card', id:"show-user-#{@user.id}"
+        end
       end
 
-      it { response.should be_success }
+      context 'requests with existing subdomains' # do
+        it 'should have the right user profile' do
+        # end
+      end
 
-      it 'should have a user profile' do
-      response.body.should have_selector 'div', class:'card', id:"show-user-#{@user.id}"
-    end
+      context 'requests with non-existing subdomains' do
+
+        it 'should redirect to root path' # do
+        # end
+      end
     end
   end
 

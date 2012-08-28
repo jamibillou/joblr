@@ -3,11 +3,14 @@ require 'spec_helper'
 describe User do
 
   before :each do
-    @user        = FactoryGirl.create :user
-    @auth        = FactoryGirl.create :authentification, user: @user, provider:'twitter'
-    @profile     = FactoryGirl.create :profile, user: @user
-    @beta_invite = FactoryGirl.create :beta_invite, user: @user
-    @providers   = %w(linkedin twitter facebook google)
+    @user             = FactoryGirl.create :user
+    @user2            = FactoryGirl.create :user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: FactoryGirl.generate(:email)
+    @auth             = FactoryGirl.create :authentification, user: @user, provider:'twitter'
+    @profile          = FactoryGirl.create :profile, user: @user
+    @beta_invite      = FactoryGirl.create :beta_invite, user: @user
+    @providers        = %w(linkedin twitter facebook google)
+    @authored_sharing = FactoryGirl.create :sharing, author: @user, recipient: @user2
+    @received_sharing = FactoryGirl.create :sharing, author: @user2, recipient: @user
   end
 
   describe 'authentifications associations' do
@@ -27,6 +30,18 @@ describe User do
     it 'should destroy associated profiles' do
       @user.destroy
       Profile.find_by_id(@profile.id).should be_nil
+    end
+  end
+
+  describe 'sharings associations' do
+
+    it { @user.should respond_to :authored_sharings }
+    it { @user.should respond_to :received_sharings }
+
+    it 'should not destroy associated sharings' do
+      @user.destroy
+      Sharing.find_by_id(@authored_sharing.id).should_not be_nil
+      Sharing.find_by_id(@received_sharing.id).should_not be_nil
     end
   end
 
@@ -53,19 +68,14 @@ describe User do
     it { should ensure_length_of(:username).is_at_most 100 }
     it { should validate_uniqueness_of(:username) }
     it { should validate_presence_of(:username) }
-    it { @user.update_attributes(email: @email[:valid][0]) ; should validate_uniqueness_of(:email) }
+    it { should ensure_length_of(:subdomain).is_at_most 100 }
+    it { should validate_uniqueness_of(:subdomain) }
+    it { should ensure_inclusion_of(:admin).in_array [true, false] }
 
-    lambda do
-      @email[:invalid].each do |invalid_email|
-        it { should validate_format_of(:email).not_with invalid_email }
-      end
-    end
+    lambda { @email[:invalid].each {|invalid_email| it { should validate_format_of(:email).not_with invalid_email }}}
+    lambda { @email[:valid].each   {|valid_email|   it { should validate_format_of(:email).with valid_email }}}
 
-    lambda do
-      @email[:valid].each do |valid_email|
-        it { should validate_format_of(:email).with valid_email }
-      end
-    end
+    it { FactoryGirl.build(:user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: @user2.email).should_not be_valid }
   end
 
   describe 'image' do
@@ -81,6 +91,27 @@ describe User do
 
     it 'should delete the uploaded image when remove_image is checked' # do
     # end
+  end
+
+  describe 'profile method' do
+
+    context 'for users without a profile' do
+      it 'should be nil' do
+        @user2.profile.should be_nil
+      end
+    end
+
+    context 'for users with one ore more profiles' do
+      it 'should be the first profile' do
+        @user.profile.should == @profile
+      end
+    end
+  end
+
+  describe 'initials method' do
+    it "should be the initials of the user's full name" do
+      @user.initials.should == @user.fullname.parameterize.split('-').map{|name| name.chars.first}.join
+    end
   end
 
   describe 'has_auth? method' do
