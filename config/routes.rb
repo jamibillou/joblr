@@ -1,4 +1,4 @@
-require File.expand_path('../../lib/assets/routes_constraints', __FILE__)
+require File.expand_path('../../lib/routes_constraints', __FILE__)
 
 Joblr::Application.routes.draw do
 

@@ -1,7 +1,5 @@
-- unless resource.errors.empty?
-  .alert.alert-error
-    = devise_error_messages!
-    %a.close{href: '#', "data-dismiss" => 'alert'} &nbsp;
+- devise_error_messages! unless resource.errors.empty?
+
 .row.devise
   .span6.offset3
     .well

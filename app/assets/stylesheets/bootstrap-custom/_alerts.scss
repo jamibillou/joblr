@@ -7,15 +7,13 @@
 
 // Base alert styles
 .alert {
-  padding:4px 12px 4px;
   margin: -50px 0 50px 0;
-  font-size:12px;
-  font-weight:400;
-  text-shadow:none;
+  padding-right:12px;
   background-color: $warningBackground;
   border:none;
   border-bottom: 1px solid $warningBorder;
   @include border-radius(0px);
+  font-size:14px;
   color: $warningText;
 }
 
