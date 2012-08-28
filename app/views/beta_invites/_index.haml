@@ -34,9 +34,9 @@
           - if beta_invite.used?
             %span{class: "#{signed_up?(beta_invite.user) ? 'success-text' : 'danger-text'}"}= signed_up?(beta_invite.user)
         %td.span1
-          = link_to "<div class='icon-trash'></div>".html_safe, beta_invite, method: :delete, confirm: t('beta_invites.destroy.yes_delete'), class: 'danger-text'
+          = link_to "<div class='icon-trash danger-text'></div>".html_safe, beta_invite, method: :delete, confirm: t('beta_invites.destroy.yes_delete')
         %td.span1{style: 'text-align:right'}
-          - unless beta_invite.used? || beta_invite.sent?
-            = link_to "<div class='icon-envelope'></div>".html_safe, "/beta_invites/#{beta_invite.id}/send_code", confirm: t('beta_invites.send_code.yes_send', email: beta_invite.email), class: 'danger-text'
+          - unless beta_invite.sent?
+            = link_to "<div class='icon-envelope danger-text'></div>".html_safe, "/beta_invites/#{beta_invite.id}/send_code", confirm: t('beta_invites.send_code.yes_send', email: beta_invite.email)
           - else
-            .success-text sent
+            .icon-envelope.success-text

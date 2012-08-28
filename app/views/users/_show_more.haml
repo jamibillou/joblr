@@ -3,10 +3,14 @@
     .span4
       %h4=t 'users.show.more_about', fullname: "#{user.fullname}"
       - unless user.profile.file.blank?
-        %a.btn.btn-danger{href: user.profile.file_url.to_s}
+        %a.btn.btn-small.btn-danger{href: user.profile.file_url.to_s}
+          .icon-file
+          &nbsp;
           =t 'users.show.download_cv'
       - unless user.profile.url.blank?
-        %a.btn.btn{href: user.profile.url, target:'_blank'}
+        %a.btn.btn-small{href: user.profile.url, target:'_blank'}
+          .icon-globe
+          &nbsp;
           =t 'users.show.site'
       - unless user.authentifications.empty?
         - user.authentifications.each do |authentification|
