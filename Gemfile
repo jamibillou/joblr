@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 gem 'rails', '3.2.6'
+gem 'haml'
 gem 'pg'
 gem 'jquery-rails'
 gem 'rails-i18n'
@@ -23,7 +24,6 @@ group :production do
 end
 
 group :assets do
-  gem 'haml'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'bootstrap-sass'
   gem 'font-awesome-sass-rails'
