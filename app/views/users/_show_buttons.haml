@@ -6,8 +6,6 @@
           =t 'users.show.edit'
       - else
         %a.btn.btn-large.btn-danger.btn-top
-          .icon-comment
-          &nbsp;
           =t 'users.show.contact'
       .btn-group
         .btn.btn-large.dropdown-toggle{"data-toggle" => 'dropdown', href:'#', class: "#{(user_signed_in? && current_user == user && !has_subdomain) ? 'btn-danger'  :'btn-inverse'}"}
