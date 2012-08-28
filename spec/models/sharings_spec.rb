@@ -14,7 +14,7 @@ describe Sharing do
 
 		it 'should have the right associated author' do
 			@sharing.author_id.should == @author.id
-			@sharing.author.should == @author
+			@sharing.author.should    == @author
 		end
 
 		it 'should not destroy the associated author' do
@@ -29,7 +29,7 @@ describe Sharing do
 
 		it 'should have the right associated recipient' do
 			@sharing.recipient_id.should == @recipient.id
-			@sharing.recipient.should == @recipient
+			@sharing.recipient.should    == @recipient
 		end
 
 		it 'should not destroy the associated recipient' do
@@ -39,6 +39,8 @@ describe Sharing do
 	end
 
 	describe 'validations' do
+		it { should validate_presence_of :author }
+		it { should validate_presence_of :recipient }
     it { should ensure_length_of(:text).is_at_most 140 }
     it { should validate_presence_of :text }
 	end

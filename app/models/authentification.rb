@@ -7,7 +7,6 @@ class Authentification < ActiveRecord::Base
   belongs_to :user
 
   validates :user, :provider, :uid,  presence: true
-  validates :url,  url_format: true, allow_blank: true
 
   def image_url(size = :thumb)
     case provider

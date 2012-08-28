@@ -38,7 +38,7 @@ group :development do
   gem 'faker'
 end
 
-group :test do
+group :test, :development do
   gem 'rspec-rails'
   gem 'spork'
   gem 'autotest'

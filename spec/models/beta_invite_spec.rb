@@ -29,20 +29,10 @@ describe BetaInvite do
     end
 
     it { should validate_presence_of(:email) }
-
-    lambda do
-      @email[:invalid].each do |invalid_email|
-        it { should validate_format_of(:email).not_with invalid_email }
-      end
-    end
-
-    lambda do
-      @email[:valid].each do |valid_email|
-        it { should validate_format_of(:email).with valid_email }
-      end
-    end
-
-    it { @beta_invite.update_attributes(email: @email[:valid][0]) ; should validate_uniqueness_of(:email) }
+    it { should validate_uniqueness_of(:email) }
+    lambda { @email[:invalid].each {|invalid_email| it { should validate_format_of(:email).not_with invalid_email }}}
+    lambda { @email[:valid].each {|valid_email| it { should validate_format_of(:email).with valid_email }}}
+    it { should ensure_inclusion_of(:sent).in_array [true, false] }
   end
 end
 
