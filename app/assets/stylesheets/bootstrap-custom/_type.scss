@@ -34,40 +34,37 @@ p{
 }
 .warning-text{
   color:$warningText;
-  a{
+  a, a:hover{
     color:$warningText;
   }
 }
 .danger-text{
   color:$errorText;
-  a{
-    color:$errorText;
-  }
-  a:hover{
+  a, a:hover{
     color:$errorText;
   }
 }
 .success-text{
   color:$successText;
-  a{
+  a, a:hover{
     color:$successText;
   }
 }
 .info-text{
   color:$infoText;
-  a{
+  a, a:hover{
     color:$infoText;
   }
 }
 .gray-text{
   color:$gray;
-  a{
+  a, a:hover{
     color:$grayDark;
   }
 }
 .graylight-text{
   color:$grayLight;
-  a{
+  a, a:hover{
     color:$gray;
   }
 }
