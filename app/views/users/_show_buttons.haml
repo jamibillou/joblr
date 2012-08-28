@@ -9,13 +9,21 @@
           =t 'users.show.contact'
       .btn-group
         .btn.btn-large.dropdown-toggle{"data-toggle" => 'dropdown', href:'#', class: "#{(user_signed_in? && current_user == user && !has_subdomain) ? 'btn-danger'  :'btn-inverse'}"}
+          .icon-share
+          &nbsp;
           =t 'users.show.share'
           %span.caret
         %ul.dropdown-menu
           %li
-            = link_to t('users.show.email'), new_sharing_url(id: user.id, subdomain: false)
+            %a{href: new_sharing_url(id: user.id, subdomain: false)}
+              .icon-envelope
+              &nbsp;
+              = t 'users.show.email'
           %li
-            = link_to 'LinkedIn', new_sharing_url(id: user.id, provider: 'linkedin', subdomain: false)
+            %a{href: new_sharing_url(id: user.id, provider: 'linkedin', subdomain: false)}
+              .icon-linkedin
+              &nbsp;
+              = t 'Linkedin'
       .explanation
         - if user_signed_in? && current_user == user && !has_subdomain
           %h5=t 'users.show.public_profile'

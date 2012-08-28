@@ -3,11 +3,18 @@
     .span4
       %h4=t 'users.show.more_about', fullname: "#{user.fullname}"
       - unless user.profile.file.blank?
-        %a.btn.btn-danger{href: user.profile.file_url.to_s}
+        %a.btn.btn-small.btn-danger{href: user.profile.file_url.to_s}
+          .icon-file
+          &nbsp;
           =t 'users.show.download_cv'
       - unless user.profile.url.blank?
-        %a.btn.btn{href: user.profile.url, target:'_blank'}
+        %a.btn.btn-small{href: user.profile.url, target:'_blank'}
+          .icon-globe
+          &nbsp;
           =t 'users.show.site'
       - unless user.authentifications.empty?
         - user.authentifications.each do |authentification|
-          = link_to image_tag("#{authentification.provider}.png", title:t('users.show.view_social', fullname: "#{user.fullname}", provider: "#{authentification.provider.titleize}")), authentification.url, target:'_new'
+          %a.btn.btn-small{href: authentification.url, title: t('users.show.view_social', fullname: "#{user.fullname}", provider: "#{authentification.provider.to_s.humanize.split[0]}"), target:'_new', class: "btn-#{authentification.provider.to_s.gsub('_oauth2','-plus')}"}
+            %i{class: "icon-#{authentification.provider.to_s.gsub('_oauth2','-plus')}"}
+            &nbsp;
+            = authentification.provider.to_s.humanize.split[0]

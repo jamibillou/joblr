@@ -82,6 +82,6 @@ en:
       failure: 'Could not sign you in with %{provider} because "%{reason}".'
     omniauth:
       add_accounts: "Link your social profiles to easily login and share"
-      add_account: 'Add your %{network} account'
-      remove_account: 'Remove your %{network} account'
-      remove_account_ask: 'Remove your %{network} account?'
+      add_account: 'Add your %{provider} account'
+      remove_account: 'Remove your %{provider} account'
+      remove_account_ask: 'Remove your %{provider} account?'

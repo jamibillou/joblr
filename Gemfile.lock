@@ -98,6 +98,9 @@ GEM
     faraday (0.8.1)
       multipart-post (~> 1.1)
     ffi (1.0.11)
+    font-awesome-sass-rails (2.0.0.0)
+      railties (>= 3.1.1)
+      sass-rails (>= 3.1.1)
     google-analytics-rails (0.0.3)
     haml (3.1.6)
     hashie (1.2.0)
@@ -267,6 +270,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   faker
+  font-awesome-sass-rails
   google-analytics-rails
   haml
   heroku

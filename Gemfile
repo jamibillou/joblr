@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 gem 'rails', '3.2.6'
+gem 'haml'
 gem 'pg'
+gem 'haml'
 gem 'jquery-rails'
 gem 'rails-i18n'
 gem 'devise'
@@ -16,9 +18,6 @@ gem 'omniauth-twitter'
 gem 'linkedin', :git => 'https://github.com/dmatheron/linkedin.git', :branch => '2-0-stable'
 gem 'postmark-rails'
 gem 'roadie'
-gem 'heroku'
-gem 'haml'
-gem 'bootstrap-sass'
 gem 'thin' # better web server, more robust on production
 
 group :production do
@@ -27,12 +26,15 @@ end
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
+  gem 'bootstrap-sass'
+  gem 'font-awesome-sass-rails'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier',     '>= 1.0.3'
   gem 'therubyracer' # Javascript runtime needed for certain features of sass, coffeescript and uglifier to work.
 end
 
 group :development do
+  gem 'heroku'
   gem 'annotate', '2.4.1.beta1'
   gem 'faker'
 end
