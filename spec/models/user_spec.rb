@@ -71,6 +71,7 @@ describe User do
     it { should ensure_length_of(:subdomain).is_at_most 100 }
     it { should validate_uniqueness_of(:subdomain) }
     it { should ensure_inclusion_of(:admin).in_array [true, false] }
+    it { should ensure_inclusion_of(:social).in_array [true, false] }
 
     lambda { @email[:invalid].each {|invalid_email| it { should validate_format_of(:email).not_with invalid_email }}}
     lambda { @email[:valid].each   {|valid_email|   it { should validate_format_of(:email).with valid_email }}}
@@ -184,5 +185,6 @@ end
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
 #  admin                  :boolean         default(FALSE)
+#  social                 :boolean
 #
 
