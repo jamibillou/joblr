@@ -23,7 +23,7 @@
             = f.password_field :password_confirmation
             .buttons
               %a.btn{href: url_for(:back)}= t('cancel')
-              = f.submit t('devise.registrations.sign_up'), class: 'btn btn-primary', name: 'user[commit]'
+              = f.submit t('devise.registrations.sign_up'), class: 'btn btn-primary'
         .span3.offset1
           %h4= t('devise.registrations.skip_and_signin')
           = render partial: 'devise/shared/omniauth_links'

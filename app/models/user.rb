@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
 
   attr_accessible :fullname, :email, :city, :country, :subdomain, :password, :password_confirmation, :remember_me, :image, :username, :admin,
-                  :commit,   :remove_image, :remote_image_url,    :profiles_attributes
-  attr_accessor   :commit
+                  :social, :remove_image, :remote_image_url, :profiles_attributes
 
   has_many :authentifications,   dependent: :destroy
   has_many :profiles,            dependent: :destroy
@@ -23,7 +22,7 @@ class User < ActiveRecord::Base
   validates :subdomain, uniqueness: { case_sensitive: true }
   validates :email,     uniqueness: { case_sensitive: true },           allow_nil:    true, if: :email_changed?
   validates :email,     format:     { with:   Devise.email_regexp },    allow_nil:    true, if: :email_changed?
-  validates :password,  length:     { within: Devise.password_length }, confirmation: true, presence: true, if: ->(u) { u.commit == 'Sign up' }
+  validates :password,  length:     { within: Devise.password_length }, confirmation: true, presence: true, if: :password_required?
   validates :admin,     inclusion:  { :in => [true, false] }
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
@@ -48,6 +47,14 @@ class User < ActiveRecord::Base
     else
       has_auth?('linkedin') && has_auth?('twitter') && has_auth?('facebook') && has_auth?('google')
     end
+  end
+
+  def password_required?
+    if self.persisted?
+      social == false && !password.empty?
+    else
+      social == false
+    end    
   end
 
   private
