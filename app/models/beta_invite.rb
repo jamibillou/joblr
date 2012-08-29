@@ -5,7 +5,7 @@ class BetaInvite < ActiveRecord::Base
   belongs_to :user
 
   validates :email, uniqueness: { case_sensitive: true }, allow_blank: false, presence: true
-  validates :email, format: { with: Devise.email_regexp }
+  validates :email, format:     { with: Devise.email_regexp }
   validates :sent,  inclusion:  { :in => [true, false] }
   before_validation :make_code
 
@@ -20,7 +20,7 @@ class BetaInvite < ActiveRecord::Base
   private
 
     def make_code
-      self.code = Digest::SHA2.hexdigest(Time.now.utc.to_s) unless sent_changed?
+      self.code = Digest::SHA2.hexdigest(Time.now.utc.to_s) unless persisted?
     end
 end
 

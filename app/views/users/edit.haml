@@ -9,5 +9,7 @@
         = render 'edit_identity', f: f
         = f.fields_for(:profiles) {|profile_builder| render 'fields_profile', f: profile_builder}
       .pull-right.danger-text#required * required fields
-    .span2.offset2
-      = render 'edit_buttons', f: f
+    .span3.offset1
+      #right-column
+        = render 'edit_buttons', f: f
+        = render 'edit_onboarding' unless signed_up?(@user)

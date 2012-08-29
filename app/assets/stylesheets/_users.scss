@@ -77,12 +77,18 @@
   }
 }
 
-// Buttons
+// Right column
 // ------------
 
-#buttons{
-  margin-top:50px;
+#right-column{
   position:fixed;
+}
+
+// Buttons
+// -------
+
+#right-column #buttons{
+  margin-top:0px;
   .btn{
     width:70%;
     margin:0;
@@ -104,12 +110,32 @@
   }
 }
 
+// Onboarding steps
+// ----------------
+
+#onboarding{
+  margin-top:90px;
+  .big{
+    opacity:0.2;
+    text-align:right;
+    &.checked{
+      opacity:1;
+      color:$successText;
+    }
+    &.error{
+      opacity:1;
+      color:$errorText;
+    }
+  }
+}
+
 // Popovers
 // --------
 
 #popovers{
+  opacity:0.5;
   a{
-    color:$brown;
+    opacity:0;
     margin-right:-30px;
     &.text{
       padding-bottom:185px;

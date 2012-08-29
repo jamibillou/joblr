@@ -1,6 +1,6 @@
 #buttons
   .row
-    .span2
+    .span2.offset1
       - unless signed_up?(@user) || @linkedin
         %label Import from
         %a.btn.btn-large.btn-top{href: omniauth_authorize_path(:user, 'linkedin')} LinkedIn

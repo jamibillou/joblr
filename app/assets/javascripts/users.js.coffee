@@ -1,33 +1,34 @@
-# USERS
-# -----
-
 $ ->
 
-  # DOCUMENT READY
-  #
   # Placeholders
   # ------------
 
   $('#submit-placeholder').click ->
-
     $('#hidden-text').val($('#text_placeholder').val())
     $('#hidden-submit').click()
 
-  # Field with errors
-  # MUST be BEFORE Popovers
-  # -----------------------
 
-  if $('.field_with_errors #hidden-text').html() isnt null
+  # Field with errors
+  # MUST be BEFORE Popovers & Onboarding
+  # ------------------------------------
+
+  if $('.field_with_errors #hidden-text').html() isnt undefined
     addFieldWithErrors('text-container')
 
-  # Popovers
+
+  # Popovers & Onboarding
   # MUST be AFTER Field with errors
   # -------------------------------
 
+  # FIX ME! clean this mess
   if $('#popovers').html()
-    $('#edit-form input').each    -> initPopover($(this).attr('id')) unless $(this).attr('type').match(/hidden|file|checkbox|submit/) || $(this).attr('id').match(/hidden/)
-    $('#edit-form select').each   -> initPopover($(this).attr('id'))
-    $('#edit-form textarea').each -> initPopover($(this).attr('id'))
+    $('#edit-form input').each ->
+      unless $(this).attr('type').match(/hidden|checkbox|file|submit/) || $(this).attr('id').match(/hidden/)
+        initPopover($(this).attr('id'))
+        initOnboardingStep($(this).attr('id'))
+    $('#edit-form select').each   -> initPopover($(this).attr('id')) and initOnboardingStep($(this).attr('id'))
+    $('#edit-form textarea').each -> initPopover($(this).attr('id')) and initOnboardingStep($(this).attr('id'))
+
 
   # Image picker
   # ------------
@@ -35,23 +36,56 @@ $ ->
   $('#image-modal .social.pic').each ->
     $(this).click -> toggleAuthImage($(this).attr('id'))
 
+
   # Url helper
   # ----------
 
-  $('#url_field input').focus -> $(this).val('http://') unless $(this).val() isnt ''
-  $('#url_field input').blur -> $(this).val('') if $(this).val() is 'http://'
+  $('#edit-form input.url').focus -> $(this).val('http://') unless $(this).val() isnt ''
+  $('#edit-form input.url').blur -> $(this).val('') if $(this).val() is 'http://'
 
 
-# FUNCTIONS
-#
-# Attaches popovers to (hidden) links in 'edit'
-# ---------------------------------------------
+
+# Adds <div class='field_with_errors'> around what's in the given div
+# -------------------------------------------------------------------
+
+@addFieldWithErrors = (id) ->
+  field = $('#'+id).html()
+  $('#'+id).html("<div class='field_with_errors'>#{field}</div>")
+
+
+# Binds popover to given input/textarea
+# -------------------------------------
 
 @initPopover = (id) ->
-  cssClass = id.replace('user_', '').replace('_placeholder', '').replace('profiles_attributes_0_', '')
-  $("a.#{cssClass}").popover('placement': 'left', 'trigger': 'manual')
+  cssClass = stripId(id)
+  $("#popovers a.#{cssClass}").popover('placement': 'left', 'trigger': 'manual')
   $('#'+id).focus -> $("a.#{cssClass}").popover('show')
   $('#'+id).blur -> $("a.#{cssClass}").popover('hide')
+
+
+# Binds onboarding step to given input/textarea
+# ---------------------------------------------
+
+@initOnboardingStep = (id) ->
+  cssClass = stripId(id)
+  # Initializes onboarding step (if something was submitted)
+  toggleOnboardingStep(cssClass) if $('#'+id).val() isnt ''
+  # Binds onboarding step
+  $('#'+id).blur ->
+    toggleOnboardingStep(cssClass) if $(this).val() isnt '' and !$("#onboarding .#{cssClass}").hasClass('checked') or $(this).val() is '' and $("#onboarding .#{cssClass}").hasClass('checked')
+
+@toggleOnboardingStep = (cssClass) ->
+  $("#onboarding .#{cssClass}").toggleClass('checked')
+  $("#onboarding .#{cssClass}").toggleClass('success-text')
+  $("#onboarding .#{cssClass} div").toggleClass('icon-check-empty')
+  $("#onboarding .#{cssClass} div").toggleClass('icon-check')
+
+
+# Strips id off unecessary crap, returns the CSS class we use in _edit_popovers and _edit_onboarding partials
+# -----------------------------------------------------------------------------------------------------------
+
+@stripId = (id) -> id.replace('user_', '').replace('_placeholder', '').replace('profiles_attributes_0_', '')
+
 
 # Selects the clicked pic, unselects others, and fills #remote_image_url appropriately
 # ------------------------------------------------------------------------------------
@@ -62,10 +96,3 @@ $ ->
   $('.social.pic.selected').each -> $(this).toggleClass('selected') if $(this).attr('id') isnt imageId
   $('#'+imageId).toggleClass('selected')
   $('#remote_image_url').val(authImageUrl)
-
-# Adds <div class='field_with_errors'> around what's in the given div
-# -------------------------------------------------------------------
-
-@addFieldWithErrors = (id) ->
-  field = $('#'+id).html()
-  $('#'+id).html("<div class='field_with_errors'>#{field}</div>")
