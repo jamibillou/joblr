@@ -10,20 +10,23 @@ $ ->
   $('#image-modal .social.pic').each ->
     $(this).click -> toggleAuthImage($(this).attr('id'))
 
-  # fake submit button (because #buttons is outside of the form)
+  # placeholders
   $('#submit-placeholder').click ->
-    $('#edit-form').submit()
+    # port value from #text_placeholder to #hidden_text
+    $('#hidden-text').val($('#text_placeholder').val())
+    # submit edit-form
+    $('#hidden-submit').click()
 
-  # fake text field (because #text is outside of fields_for :profiles)
-  $('#text_placeholder').blur ->
-    $('#user_profiles_attributes_0_text').val($(this).val())
+  # port field_with_errors from #hidden_text to #text_placeholder
+  if $('.field_with_errors #hidden-text').html() isnt null
+    addFieldWithErrors('text-container')
 
   # url helper so http:// is inserted automatically
   $('#url_field input').focus -> $(this).val('http://') unless $(this).val() isnt ''
   $('#url_field input').blur -> $(this).val('') if $(this).val() is 'http://'
 
 @initPopover = (id) ->
-  cssClass = id.replace('user_', '').replace('profiles_attributes_0_', '').replace('_placeholder', '')
+  cssClass = id.replace('user_', '').replace('_placeholder', '')
   $("a.#{cssClass}").popover()
   $('#'+id).focus -> $("a.#{cssClass}").popover('show')
   $('#'+id).blur -> $("a.#{cssClass}").popover('hide')
@@ -35,3 +38,8 @@ $ ->
   $('.social.pic.selected').each -> $(this).toggleClass('selected') if $(this).attr('id') isnt imageId
   $('#'+imageId).toggleClass('selected')
   $('#remote_image_url').val(authImageUrl)
+
+# adds <div class='field_with_errors'> around what's in the given div
+@addFieldWithErrors = (id) ->
+  field = $('#'+id).html()
+  $('#'+id).html("<div class='field_with_errors'>#{field}</div>")

@@ -21,7 +21,8 @@ class UsersController < ApplicationController
 
   def update
     unless @user.update_attributes params[:user]
-      redirect_to edit_user_path(@user, user: params[:user]), flash: {error: error_messages(@user)}
+      flash[:error] = error_messages(@user)
+      render :edit, id: @user, user: params[:user]
     else
       remove_files! # FIX ME!
       redirect_to @user, flash: {success: t('flash.success.profile.updated')}

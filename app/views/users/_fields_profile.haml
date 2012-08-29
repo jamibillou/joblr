@@ -4,5 +4,5 @@
 = render 'fields_more',                f: f
 
 .hidden
-  = f.text_field :text, value: field_value(:text, @linkedin)
-  = f.submit t('users.edit.save'), class: 'btn btn-large btn-primary'
+  = f.text_field :text, value: field_value(:text, @linkedin), id: 'hidden-text'
+  = f.submit t('users.edit.save'), id: 'hidden-submit'
