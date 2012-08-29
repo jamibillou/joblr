@@ -9,7 +9,8 @@ class BetaInvitesController < ApplicationController
   def create
     @beta_invite = BetaInvite.new params[:beta_invite]
     unless @beta_invite.save
-      redirect_to new_beta_invite_path, flash: {error: error_messages(@beta_invite)}
+      flash[:error] = error_messages(@beta_invite)
+      render :new
     else
       BetaInviteMailer.notify_team(@beta_invite).deliver
       redirect_to "/beta_invites/#{@beta_invite.id}/thank_you", flash: {success: t('flash.success.beta_invite.request_sent')}

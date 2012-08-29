@@ -35,7 +35,6 @@ class SharingsController < ApplicationController
 	private
 
     def authenticate
-      # FIX ME! needs to handle non signed in users
       session[:user_return_to] = sharings_linkedin_path(sharing: params[:sharing])
       if !user_signed_in?
         redirect_to root_path, flash: {error: t('flash.error.something_wrong.base')}
