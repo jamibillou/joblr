@@ -7,8 +7,8 @@
 
 .navbar{
   .navbar-inner{
-    height:$navbarHeight;
-    background:$navbarBackground none;
+    min-height:$navbarHeight;
+    background:$navbarBackground;
   }
   .brand{
     padding:$navbarHeight/2-$navbarBrandHeight/2;

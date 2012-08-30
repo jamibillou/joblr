@@ -18,8 +18,14 @@
     %header.navbar.navbar-fixed-top
       %nav.navbar-inner
         .container-fluid
-          = render 'layouts/left_navigation'
-          .nav-collapse= render 'layouts/right_navigation'
+          = link_to image_tag('base/logo.png', alt: 'Joblr'), root_path, class: 'brand'
+          .btn.btn-navbar{'data-toggle' => 'collapse', 'data-target' => '.nav-collapse'}
+            .icon-bar
+            .icon-bar
+            .icon-bar
+          .nav-collapse
+            = render 'layouts/left_navigation'
+            = render 'layouts/right_navigation'
 
     = render 'layouts/messages'
 
