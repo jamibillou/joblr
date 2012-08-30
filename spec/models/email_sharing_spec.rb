@@ -1,7 +1,14 @@
 require 'spec_helper'
 
 describe EmailSharing do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+	before :each do
+		@profile   = FactoryGirl.create :profile
+		@author    = FactoryGirl.create :user
+		@sharing_registered   = FactoryGirl.create :sharing, profile: @profile, author: @author
+		@sharing_public				= FactoryGirl.public :sharing, profile: @profile, author: nil
+	end
+
 end
 # == Schema Information
 #
