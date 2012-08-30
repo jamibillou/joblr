@@ -31,6 +31,7 @@ en:
         member: "You have to fill in your profile before accessing this page."
         public: "You cannot access this page, you need to sign out first."
         admin: "You cannot access this page, administrators only."
+        signed_in: "You cannot access this page, you need to be signed in."
       beta_invite:
         inexistant: "This invitation doesn't exist."
         code_inexistant: "This invitation code doesn't exist. Do you mind double ckecking?"

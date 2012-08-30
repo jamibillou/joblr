@@ -1,0 +1,32 @@
+.row
+  .span5.offset2
+    .well#profile
+      = render 'users/show_identity',             user: @user
+      = render 'users/show_experience_education', user: @user
+      = render 'users/show_skills',               user: @user
+      = render 'users/show_qualities',            user: @user
+      = render 'users/show_more',                 user: @user
+
+  .span4.offset1#sharing
+    .arrow-left
+    .well
+      = form_for @email_sharing do |f|
+        .row
+          .span3
+            %small= t 'sharings.fullname_label'
+            %span.danger-text= link_to '*', '#required'
+            %input{type: 'text', name: 'recipient_fullname', class: 'input-medium'}
+            %br/
+            %small= t 'sharings.email_label'
+            %span.danger-text= link_to '*', '#required'
+            %input{type: 'text', name: 'recipient_email', class: 'input-medium'}
+        .row
+          .span3
+            %small= t 'sharings.text'
+            = f.text_area :text, rows: 3, placeholder: t('sharings.email_text')
+            = f.hidden_field :author_id, value: @user.id
+            %br/
+            %br/
+            %a= link_to t('cancel'), @user, class: 'btn'
+            = f.submit t('sharings.send'), class:'btn btn-primary'
+    .pull-right.danger-text * required fields
