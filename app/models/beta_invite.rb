@@ -13,10 +13,6 @@ class BetaInvite < ActiveRecord::Base
     !user.nil?
   end
 
-  def sent?
-    sent == true
-  end
-
   private
 
     def make_code
