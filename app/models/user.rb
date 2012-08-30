@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   validates :subdomain, uniqueness: { case_sensitive: true }
   validates :email,     uniqueness: { case_sensitive: true },           allow_nil:    true, if: :email_changed?
   validates :email,     format:     { with:   Devise.email_regexp },    allow_nil:    true, if: :email_changed?
-  validates :password,  length:     { within: Devise.password_length }, confirmation: true, presence: true, if: :password_required?
+  validates :password,  length:     { within: Devise.password_length }, confirmation: true, presence: true, unless: :password_required?
   validates :admin,     inclusion:  { :in => [true, false] }
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
@@ -51,9 +51,9 @@ class User < ActiveRecord::Base
 
   def password_required?
     if self.persisted?
-      !social? && password.blank?
+      social? || password.blank?
     else
-      !social
+      social
     end
   end
 
