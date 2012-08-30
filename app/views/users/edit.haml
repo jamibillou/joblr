@@ -1,5 +1,5 @@
 = form_for @user, html: {id: 'edit-form'} do |f|
-  .row
+  .row-fluid
     - unless signed_up?(@user)
       .span3#popovers
         = render 'edit_popovers'

@@ -1,4 +1,4 @@
-.row
+.row-fluid
   .span5.offset2
     .well#profile
       = render 'users/show_identity',             user: @user
@@ -12,7 +12,7 @@
     .well
       - unless params[:provider]
         = form_for @sharing do |f|
-          .row
+          .row-fluid
             .span3
               %small= t 'sharings.fullname_label'
               %span.danger-text= link_to '*', '#required'
@@ -21,7 +21,7 @@
               %small= t 'sharings.email_label'
               %span.danger-text= link_to '*', '#required'
               %input{type: 'text', name: 'email', class: 'input-medium'}
-          .row
+          .row-fluid
             .span3
               %small= t 'sharings.text'
               = f.text_area :text, rows: 3, placeholder: t('sharings.email_text')
@@ -32,7 +32,7 @@
               = f.submit t('sharings.send'), class:'btn btn-primary'
       - else
         = form_for @sharing, url: { action: params[:provider], controller: 'sharings' } do |f|
-          .row
+          .row-fluid
             .span3
               %small
                 = t('sharings.text')

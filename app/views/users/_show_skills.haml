@@ -1,17 +1,19 @@
 - unless user.profile.skill_1.blank? && user.profile.skill_2.blank? && user.profile.skill_3.blank?
-  .row.skills
-    .span4
+  .row-fluid.skills
+    .span12
       %h4=t 'users.show.skills'
-      .row
-        - unless user.profile.skill_1.blank?
-          .span3
+      - unless user.profile.skill_1.blank?
+        .row-fluid
+          .span9
             .lead= user.profile.skill_1
-          .span1= render 'users/level_bar', level: user.profile.skill_1_level
-        - unless user.profile.skill_2.blank?
-          .span3
+          .span3= render 'users/level_bar', level: user.profile.skill_1_level
+      - unless user.profile.skill_2.blank?
+        .row-fluid
+          .span9
             .lead= user.profile.skill_2
-          .span1= render 'users/level_bar', level: user.profile.skill_2_level
-        - unless user.profile.skill_3.blank?
-          .span3
+          .span3= render 'users/level_bar', level: user.profile.skill_2_level
+      - unless user.profile.skill_3.blank?
+        .row-fluid
+          .span9
             .lead= user.profile.skill_3
-          .span1= render 'users/level_bar', level: user.profile.skill_3_level
+          .span3= render 'users/level_bar', level: user.profile.skill_3_level

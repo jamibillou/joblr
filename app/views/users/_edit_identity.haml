@@ -1,4 +1,4 @@
-.row
+.row-fluid
   .span1
     %a{href: '#image-modal', 'data-toggle' => 'modal'}
       = image_tag (@user.image.blank? ? 'default_user.jpg' : @user.image_url(:thumb).to_s)

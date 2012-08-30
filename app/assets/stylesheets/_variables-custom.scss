@@ -101,7 +101,6 @@ $dropdownDividerBottom:         $white !default;
 
 // Images
 // -------------------------
-$navbarBrandLogo:               url('base/logo.png') no-repeat top left;
 $navbarBrandHeight:             32px;
 $navbarBrandWidth:              111px;
 
@@ -145,9 +144,9 @@ $errorText:               lighten($red, 10%) !default;
 $errorBackground:         lighten($errorText, 20%) !default;
 $errorBorder:             lighten($errorText, 14%) !default;
 
-// $successText:             lighten($blue, 15%) !default;
-// $successBackground:       lighten($successText, 25%) !default;
-// $successBorder:           lighten($successText, 19%) !default;
+$successText:             lighten($blue, 15%) !default;
+$successBackground:       lighten($successText, 25%) !default;
+$successBorder:           lighten($successText, 19%) !default;
 
 $infoText:                lighten($blue, 15%) !default;
 $infoBackground:          lighten($infoText, 25%) !default;

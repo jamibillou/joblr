@@ -1,7 +1,11 @@
+// IMPORTED STYLE
+// the order of this list is vital, DO NOT MODIFIY!
+// ------------------------------------------------
+
 @import "variables-custom";
 @import "bootstrap";
-@import "bootstrap-responsive";
 @import "bootstrap-custom/bootstrap";
+@import "bootstrap-responsive";
 @import "font-awesome";
 @import "pages";
 @import "devise";
@@ -11,7 +15,7 @@
 
 
 // RAILS DEBUG FOOTER
-// ---------
+// ------------------
 
 footer{
   padding-top:100px;

@@ -1,13 +1,13 @@
-.row
+.row-fluid
   .span3.offset1
     %small=t 'users.edit.headline'
     %span.danger-text= link_to '*', '#required'
     = f.select :headline, headline_options, {selected: (t("users.show.headline.#{field_value(:headline, @linkedin)}") unless field_value(:headline, @linkedin).blank?)}
 
-.row.experience
+.row-fluid.experience
   .span4
     %h4=t 'users.edit.experience'
-    .row
+    .row-fluid
       .span1
         %small=t 'users.edit.experience_label'
         %span.danger-text= link_to '*', '#required'
@@ -15,7 +15,7 @@
       .span3
         %small=t 'users.edit.last_job'
         = f.text_area :last_job, value: field_value(:last_job, @linkedin), placeholder: t('users.edit.last_job_placeholder'), rows: 3, class: 'big'
-    .row
+    .row-fluid
       .span3.offset1
         %p
           %small=t 'users.edit.past_companies'

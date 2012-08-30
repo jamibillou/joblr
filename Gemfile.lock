@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/jnicklas/carrierwave.git
-  revision: ee576bb983186193513bae07c03325651173ef75
+  revision: 06f9f65141256813612b0dafb1fb38416ea5e095
   specs:
     carrierwave (0.6.2)
       activemodel (>= 3.2.0)
@@ -105,7 +105,7 @@ GEM
     google-analytics-rails (0.0.3)
     haml (3.1.7)
     hashie (1.2.0)
-    heroku (2.31.0)
+    heroku (2.31.1)
       heroku-api (~> 0.3.4)
       launchy (>= 0.3.2)
       netrc (~> 0.7.7)
@@ -270,7 +270,7 @@ DEPENDENCIES
   capybara
   capybara-webkit
   carrierwave!
-  coffee-rails (~> 3.2.1)
+  coffee-rails
   devise
   factory_girl_rails
   faker
@@ -292,9 +292,9 @@ DEPENDENCIES
   rmagick
   roadie
   rspec-rails
-  sass-rails (~> 3.2.3)
+  sass-rails
   shoulda-matchers
   spork
   therubyracer
   thin
-  uglifier (>= 1.0.3)
+  uglifier

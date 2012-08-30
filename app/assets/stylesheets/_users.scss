@@ -77,27 +77,16 @@
   }
 }
 
-// Right column
-// ------------
-
-#right-column{
-  position:fixed;
-}
-
 // Buttons
 // -------
 
-#right-column #buttons{
+#buttons{
   margin-top:0px;
   .btn{
     width:70%;
-    margin:0;
   }
   input[type="submit"]{
     width:100%;
-  }
-  .linkedin-import, .btn-top{
-    margin-bottom:10px
   }
   .explanation{
     margin:20px 0 0 15px;
