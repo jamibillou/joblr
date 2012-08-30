@@ -9,18 +9,25 @@ $ ->
 
 
   # Field with errors
-  # MUST be BEFORE Popovers & Onboarding
-  # ------------------------------------
+  # MUST be BEFORE Popovers & Onboarding scripts
+  # --------------------------------------------
 
   if $('.field_with_errors #hidden-text').html() isnt undefined
     addFieldWithErrors('text-container')
 
+  # Url
+  # MUST be BEFORE Popovers & Onboarding scripts
+  # --------------------------------------------
+
+  $('#edit-form input.url').focus -> $(this).val('http://') unless $(this).val() isnt ''
+  $('#edit-form input.url').blur -> $(this).val('') if $(this).val() is 'http://'
 
   # Popovers & Onboarding
-  # MUST be AFTER Field with errors
-  # -------------------------------
+  # MUST be AFTER field with errors and url scripts
+  # -----------------------------------------------
 
-  # FIX ME! clean this mess
+  # FIX ME!
+  # turn this mess into one only loop
   if $('#popovers').html()
     $('#edit-form input').each ->
       unless $(this).attr('type').match(/hidden|checkbox|file|submit/) || $(this).attr('id').match(/hidden/)
@@ -35,13 +42,6 @@ $ ->
 
   $('#image-modal .social.pic').each ->
     $(this).click -> toggleAuthImage($(this).attr('id'))
-
-
-  # Url helper
-  # ----------
-
-  $('#edit-form input.url').focus -> $(this).val('http://') unless $(this).val() isnt ''
-  $('#edit-form input.url').blur -> $(this).val('') if $(this).val() is 'http://'
 
 
 
@@ -68,17 +68,16 @@ $ ->
 
 @initOnboardingStep = (id) ->
   cssClass = stripId(id)
-  # Initializes onboarding step (if something was submitted)
-  toggleOnboardingStep(cssClass) if $('#'+id).val() isnt ''
-  # Binds onboarding step
+  toggleOnboardingStep(id) if $('#'+id).val() isnt ''
   $('#'+id).blur ->
-    toggleOnboardingStep(cssClass) if $(this).val() isnt '' and !$("#onboarding .#{cssClass}").hasClass('checked') or $(this).val() is '' and $("#onboarding .#{cssClass}").hasClass('checked')
+    toggleOnboardingStep(id) if $(this).val() isnt '' and !$("#onboarding .#{cssClass}").hasClass('checked') or $(this).val() is '' and $("#onboarding .#{cssClass}").hasClass('checked')
 
-@toggleOnboardingStep = (cssClass) ->
-  $("#onboarding .#{cssClass}").toggleClass('checked')
-  $("#onboarding .#{cssClass}").toggleClass('success-text')
-  $("#onboarding .#{cssClass} div").toggleClass('icon-check-empty')
-  $("#onboarding .#{cssClass} div").toggleClass('icon-check')
+@toggleOnboardingStep = (id) ->
+  cssClass = stripId(id)
+  unless $('#'+id).parent().hasClass('field_with_errors')
+    $("#onboarding .#{cssClass}").toggleClass('checked')
+    $("#onboarding .#{cssClass} div").toggleClass('icon-check-empty')
+    $("#onboarding .#{cssClass} div").toggleClass('icon-check')
 
 
 # Strips id off unecessary crap, returns the CSS class we use in _edit_popovers and _edit_onboarding partials

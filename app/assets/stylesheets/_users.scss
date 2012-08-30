@@ -110,8 +110,8 @@
   }
 }
 
-// Onboarding steps
-// ----------------
+// Onboarding
+// ----------
 
 #onboarding{
   margin-top:90px;
@@ -121,10 +121,6 @@
     &.checked{
       opacity:1;
       color:$successText;
-    }
-    &.error{
-      opacity:1;
-      color:$errorText;
     }
   }
 }

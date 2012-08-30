@@ -31,11 +31,8 @@ module ApplicationHelper
     username ||= "user-#{User.last.id + 1}"
   end
 
-  def social_user?(user)
-    user.email.nil? && user.encrypted_password.nil?
-  end
-
-  ### errors helpers
+  # Errors
+  # ------
 
   def error_messages(object, options = {})
     errors = unduplicated_errors(object, options).map! do |attribute, message|
@@ -65,6 +62,9 @@ module ApplicationHelper
     end
     "#{t('flash.error.base')} #{@errors.to_sentence}." unless @errors.empty?
   end
+
+  # Analytics
+  # ---------
 
   def kiss_init
     content_tag(:script, :type => 'text/javascript') do
