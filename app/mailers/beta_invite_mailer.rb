@@ -8,6 +8,6 @@ class BetaInviteMailer < ActionMailer::Base
 
   def notify_team(beta_invite)
     @beta_invite = beta_invite
-    mail to: 'd.matheron@gmail.com', subject: t('mailers.beta_invite.notify_team.subject')
+    mail to: 'franck.sabattier@gmail.com', subject: t('mailers.beta_invite.notify_team.subject')
   end
 end

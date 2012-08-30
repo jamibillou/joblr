@@ -1,34 +1,42 @@
 - devise_error_messages! unless resource.errors.empty?
 
 .row.devise
-  .span8.offset2
-    .well
-      .row
-        .span3
-          %h1= t('account_settings')
-          = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-            - unless social_user? current_user
-              %small= t('devise.registrations.username')
-              %span.danger-text *
-              = f.text_field :username
-              %br/
-            - else
-              = f.hidden_field :username
-            %small= t('devise.registrations.fullname')
-            %span.danger-text *
-            = f.text_field :fullname
-            %br/
-            %small= t('devise.registrations.email')
-            = f.email_field :email
-            .buttons
-              %a.btn{href: url_for(:back)}= t('cancel')
-              = f.submit t('devise.registrations.update'), class: 'btn btn-primary'
-        .span3.offset1
-          %h4= t('devise.omniauth.add_accounts')
-          = render partial: 'devise/shared/omniauth_links'
-          %br/
-          %br/
-          %br/
-          %h4= t('devise.registrations.unhappy')
-          = link_to t('devise.registrations.cancel_account'), registration_path(resource_name), :data => { :confirm => t('devise.registrations.yes_cancel') }, :method => :delete
-    .pull-right.danger-text * required fields
+	.span8.offset2
+		.well
+			.row
+				.span3
+					%h1= t('account_settings')
+					= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+						- unless social?
+							%small= t('devise.registrations.username')
+							%span.danger-text *
+							= f.text_field :username
+							%br/
+						- else
+							= f.hidden_field :username
+						%small= t('devise.registrations.fullname')
+						%span.danger-text *
+						= f.text_field :fullname
+						%br/
+						%small= t('devise.registrations.email')
+						= f.email_field :email
+
+						- unless social?
+							%br/
+							%small= t('devise.registrations.new_password')
+							= f.password_field :password, :autocomplete => 'off'
+							%br/
+							%small= t('devise.registrations.new_password_confirm')
+							= f.password_field :password_confirmation
+						.buttons
+							%a.btn{href: url_for(:back)}= t('cancel')
+							= f.submit t('devise.registrations.update'), class: 'btn btn-primary'
+				.span3.offset1
+					%h4= t('devise.omniauth.add_accounts')
+					= render partial: 'devise/shared/omniauth_links'
+					%br/
+					%br/
+					%br/
+					%h4= t('devise.registrations.unhappy')
+					= link_to t('devise.registrations.cancel_account'), registration_path(resource_name), :data => { :confirm => t('devise.registrations.yes_cancel') }, :method => :delete
+		.pull-right.danger-text * required fields

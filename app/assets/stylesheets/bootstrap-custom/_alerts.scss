@@ -28,9 +28,9 @@
 // ----------------
 
 .alert-success {
-  background-color: $successBackground;
-  border-color: $successBorder;
-  color: $successText;
+  background-color: $infoBackground;
+  border-color: $infoBorder;
+  color: $infoText;
 }
 .alert-danger, .alert-error {
   background-color: $errorBackground;

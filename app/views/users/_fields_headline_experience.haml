@@ -1,6 +1,7 @@
 .row
   .span3.offset1
     %small=t 'users.edit.headline'
+    %span.danger-text= link_to '*', '#required'
     = f.select :headline, headline_options, {selected: (t("users.show.headline.#{field_value(:headline, @linkedin)}") unless field_value(:headline, @linkedin).blank?)}
 
 .row.experience

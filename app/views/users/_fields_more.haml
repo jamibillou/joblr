@@ -16,4 +16,4 @@
 .row
   .span4
     %h4=t 'users.edit.url'
-    #url_field= f.text_field :url, value: field_value(:url, @linkedin), placeholder: 'http://'
+    = f.text_field :url, value: field_value(:url, @linkedin), placeholder: 'http://', class: 'url'
