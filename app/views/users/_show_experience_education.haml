@@ -1,9 +1,9 @@
 - unless user.profile.last_job.blank?
-  .row.experience
-    .span1
+  .row-fluid.experience
+    .span3
       %h4=t 'users.show.experience'
       .lead= pluralize user.profile.experience, 'yr'
-    .span3
+    .span9
       %h4=t 'users.show.last_job'
       .lead= user.profile.last_job
       - unless user.profile.past_companies.blank?
@@ -11,15 +11,15 @@
           %small=t 'users.show.past_companies'
           %br/
           = user.profile.past_companies
-  .row
-    .span4
+  .row-fluid
+    .span12
       %h4=t 'users.show.education'
       .lead= user.profile.education
 - else
-  .row
-    .span1
+  .row-fluid
+    .span3
       %h4=t 'users.show.experience'
       .lead= pluralize user.profile.experience, 'yr'
-    .span3
+    .span9
       %h4=t 'users.show.education'
       .lead= user.profile.education

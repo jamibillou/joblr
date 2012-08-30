@@ -1,9 +1,9 @@
 - devise_error_messages! unless resource.errors.empty?
 
-.row.devise
+.row-fluid.devise
   .span8.offset2
     .well
-      .row
+      .row-fluid
         .span3
           %h1= t('devise.sessions.sign_in')
           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|

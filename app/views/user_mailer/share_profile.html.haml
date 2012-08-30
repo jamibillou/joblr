@@ -2,14 +2,10 @@
   %link{rel: 'stylesheet', type: 'text/css', href: '/assets/application.css'}
 
 %body#email
-  #main{role: 'main'}
-    .container
-      .content
-        .row
-          .span5
-            .well#profile
-              = render 'users/show_identity',             user: @user
-              = render 'users/show_experience_education', user: @user
-              = render 'users/show_skills',               user: @user
-              = render 'users/show_qualities',            user: @user
-              = render 'users/show_more',                 user: @user
+  .container
+    .well#profile
+      = render 'users/show_identity',             user: @user
+      = render 'users/show_experience_education', user: @user
+      = render 'users/show_skills',               user: @user
+      = render 'users/show_qualities',            user: @user
+      = render 'users/show_more',                 user: @user

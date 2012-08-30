@@ -17,12 +17,11 @@ en:
       download_cv: 'CV'
       view_social: "View %{fullname}'s %{provider} profile"
       site: 'www'
-      public_profile: 'Public profile'
+      public_profile: 'Public profile:'
       email: 'Email'
       social_networks: 'Social networks'
       edit: 'Edit'
       share: 'Share'
-      public_profile: 'Public profile'
       explanation_html: "Start sharing %{url} around you now!"
     index:
       title: 'Users'

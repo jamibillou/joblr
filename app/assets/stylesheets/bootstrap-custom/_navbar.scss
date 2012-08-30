@@ -11,11 +11,7 @@
     background:$navbarBackground none;
   }
   .brand{
-    width:$navbarBrandWidth;
-    height:$navbarBrandHeight;
-    margin:(($navbarHeight - $navbarBrandHeight) / 2) 0 0 0;
-    background:$navbarBrandLogo;
-    line-height:2;
+    padding:$navbarHeight/2-$navbarBrandHeight/2;
   }
   .nav{
     font-size:$baseFontSize + 1;

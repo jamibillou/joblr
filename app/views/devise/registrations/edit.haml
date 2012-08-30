@@ -1,9 +1,9 @@
 - devise_error_messages! unless resource.errors.empty?
 
-.row.devise
+.row-fluid.devise
 	.span8.offset2
 		.well
-			.row
+			.row-fluid
 				.span3
 					%h1= t('account_settings')
 					= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
