@@ -41,7 +41,7 @@ describe Sharing do
 	describe 'validations' do
 		it { should validate_presence_of :author }
 		it { should validate_presence_of :recipient }
-    it { should ensure_length_of(:text).is_at_most 140 }
-    it { should validate_presence_of :text }
+	    it { should ensure_length_of(:text).is_at_most 140 }
+	    it { should validate_presence_of :text }
 	end
 end
