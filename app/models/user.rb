@@ -51,10 +51,10 @@ class User < ActiveRecord::Base
 
   def password_required?
     if self.persisted?
-      social == false && !password.empty?
+      !social? && password.blank?
     else
-      social == false
-    end    
+      !social
+    end
   end
 
   private

@@ -13,8 +13,4 @@ module UsersHelper
       linkedin_profile[attribute]
     end
   end
-
-  def social?
-    current_user.social == true
-  end
 end
