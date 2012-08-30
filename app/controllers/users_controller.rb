@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @title = t('users.update.title_alt') unless signed_up?(@user)
     unless @user.update_attributes params[:user]
       flash[:error] = error_messages(@user)
       render :edit, id: @user, user: params[:user]

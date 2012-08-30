@@ -79,6 +79,9 @@ en:
       import_info: 'Import your information from'
       import_linkedin: 'Import from Linkedin'
       save: 'Save'
+    update:
+      title: 'Edit your profile'
+      title_alt: 'Create your profile'
     image_modal:
       select_or_upload: 'Select or upload a picture!'
       upload: 'Upload a picture!'
