@@ -26,6 +26,4 @@
       .row-fluid
         = yield
 
-  - if Rails.env.production?
-    = kiss_event('identity', current_user.id) if user_signed_in?
-    = render 'layouts/usabilla'
+  = kiss_event('identity', current_user.id) if user_signed_in?
