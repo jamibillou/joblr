@@ -26,6 +26,7 @@
               %a.btn{href: url_for(:back)}= t('cancel')
               = f.submit t('devise.sessions.sign_in'), class: 'btn btn-primary'
         .span1
+        .span1.visible-tablet
         .span5
           %h4= t('devise.sessions.social_signin')
           = render partial: 'devise/shared/omniauth_links'
