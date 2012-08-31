@@ -5,7 +5,7 @@
   .well
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :put}) do |f|
       .row-fluid
-        .span7
+        .span8
           %h1=t 'devise.passwords.title'
           = f.hidden_field :reset_password_token
           %small=t 'devise.passwords.new_password'
@@ -17,12 +17,17 @@
           %span.danger-text *
           %br/
           = f.password_field :password_confirmation
-        .span1.hidden-phone
-        .span4.span1.hidden-phone
-          %h4=t 'devise.passwords.sign_in'
-          = render 'devise/shared/links'
-      .row-fluid
-        .span10
+          %br/
           %a.btn{href: url_for(:back)}=t 'cancel'
           = f.submit t('devise.passwords.change_password'), class: 'btn btn-primary'
+        .span3.visible-desktop
+          %h4=t 'devise.passwords.sign_in'
+          = render 'devise/shared/links'
+      .row-fluid.hidden-desktop
+        .span11
+          %br/
+          %br/
+          %h4=t 'devise.passwords.sign_in'
+          = render 'devise/shared/links'
+
   .pull-right.danger-text * required fields
