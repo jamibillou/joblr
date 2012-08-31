@@ -1,0 +1,10 @@
+= link_to image_tag('base/logo.png', alt: 'Joblr'), root_path, class: 'brand'
+.btn.btn-navbar{'data-toggle' => 'collapse', 'data-target' => '.nav-collapse'}
+  .icon-bar
+  .icon-bar
+  .icon-bar
+.visible-desktop
+  = render 'layouts/left_navigation'
+  = render 'layouts/right_navigation'
+.nav-collapse.hidden-desktop
+  = render 'layouts/mobile_navigation'
