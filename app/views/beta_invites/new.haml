@@ -4,7 +4,7 @@
     .well#beta-invite
       %h1=t '.title'
       .lead=t '.subtitle_html'
-      .danger-text{style: 'margin-bottom:0'}=t '.asterisk'
+      .danger-text=t '.asterisk'
       = form_for @beta_invite do |f|
         = f.text_field :email, placeholder: t('.placeholder')
         .hidden-desktop
