@@ -73,7 +73,7 @@ en:
       url: 'Website or blog'
       url_popover: "If you have a relevant online presence, don't forget to mention you site or blog here!"
       upload: 'Upload'
-      public_profile: 'Public profile'
+      public_profile: 'Public profile:'
       explanation_html: 'We provide you with a short and tidy url so you can share you profile easily. It looks like this: %{url}. Change it if you want to!'
       import_info: 'Import your information from'
       import_linkedin: 'Import from Linkedin'

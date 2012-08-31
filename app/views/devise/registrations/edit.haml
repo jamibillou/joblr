@@ -1,24 +1,28 @@
 - devise_error_messages! unless resource.errors.empty?
 
 .row-fluid.devise
-	.span8.offset2
+	.span2.hidden-phone
+	.span8
 		.well
 			.row-fluid
-				.span3
+				.span5
 					%h1= t('account_settings')
 					= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
 						- unless current_user.social?
 							%small= t('devise.registrations.username')
 							%span.danger-text *
+							%br/
 							= f.text_field :username
 							%br/
 						- else
 							= f.hidden_field :username
 						%small= t('devise.registrations.fullname')
 						%span.danger-text *
+						%br/
 						= f.text_field :fullname
 						%br/
 						%small= t('devise.registrations.email')
+						%br/
 						= f.email_field :email
 
 						- unless current_user.social?
@@ -31,7 +35,8 @@
 						.buttons
 							%a.btn{href: url_for(:back)}= t('cancel')
 							= f.submit t('devise.registrations.update'), class: 'btn btn-primary'
-				.span3.offset1
+				.span1
+				.span5
 					%h4= t('devise.omniauth.add_accounts')
 					= render partial: 'devise/shared/omniauth_links'
 					%br/

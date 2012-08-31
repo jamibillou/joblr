@@ -1,6 +1,6 @@
 .well#text
   .row-fluid
-    .span4
+    .span11
       %small.required=t 'users.edit.text'
       %span.danger-text= link_to '*', '#required'
       #text-container= text_area :text, :placeholder, value: field_value(:text, @linkedin), placeholder: t('users.edit.text_placeholder'), rows: 3
