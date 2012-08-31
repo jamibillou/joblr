@@ -1,14 +1,37 @@
-.well#admin
-  %h1=t 'pages.admin.title'
+.hero-unit.span2
+  %h1= BetaInvite.count
+  .big invites
   %br/
-  .tabbable
-    %ul.nav.nav-tabs
-      %li.active
-        %a{href: '#tab1', "data-toggle" => 'tab'}=t 'users.index.title'
-      %li
-        %a{href: '#tab2', "data-toggle" => 'tab'}=t 'beta_invites.index.title'
-  .tab-content
-    .tab-pane#tab1.active
-      = render 'users/index'
-    .tab-pane#tab2
-      = render 'beta_invites/index'
+.hero-unit.span2
+  %h1= User.count
+  .big users
+  %br/
+.hero-unit.span2
+  %h1= User.select{|user| user.social?}.count
+  .big social users
+.hero-unit.span2
+  %h1= User.select{|user| signed_up?(user)}.count
+  .big finished profiles
+.hero-unit.span2
+  %h1= Sharing.count
+  .big sharings
+  %br/
+.hero-unit.span2
+  %h1= User.select{|user| user.admin?}.count
+  .big admins
+  %br/
+
+/ .row-fluid
+/   .span12
+/     .well#admin
+/       .tabbable
+/         %ul.nav.nav-tabs
+/           %li.active
+/             %a{href: '#tab1', "data-toggle" => 'tab'}=t 'users.index.title'
+/           %li
+/             %a{href: '#tab2', "data-toggle" => 'tab'}=t 'beta_invites.index.title'
+/       .tab-content
+/         .tab-pane#tab1.active
+/           = render 'users/index'
+/         .tab-pane#tab2
+/           = render 'beta_invites/index'

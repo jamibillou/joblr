@@ -1,43 +1,60 @@
-%p
-  %table.table.table-striped
-    %thead
-      %tr
-        %td.span1{style: 'text-align:left'}
+%table.table.table-striped
+  %thead
+    %tr
+      .span1
+        %td{style: 'text-align:left'}
           %h5 Full name
-        %td.span1{style: 'text-align:right'}
+      .span1
+        %td{style: 'text-align:right'}
           %h5 Username
-        %td.span1
+      .span1
+        %td
           %h5 Signed in
-        %td.span1
+      .span1
+        %td
           %h5 Last signed in
-        %td.span1
+      .span1
+        %td
           %h5 Signed up
-        %td.span1
+      .span1
+        %td
           %h5 Shared
-        %td.span1
+      .span1
+        %td
           %h5 Services
-        %td.span1
+      .span1
+        %td
           %h5 From beta
-        %td.span1
+      .span1
+        %td
           %h5 Delete
-    %tbody
-      - @users.each do |user|
-        %tr
-          %td.span1{style: 'text-align:left'}
+  %tbody
+    - @users.each do |user|
+      %tr
+        .span1
+          %td{style: 'text-align:left'}
             %p= user.fullname
-          %td.span1{style: 'text-align:right'}
+        .span1
+          %td{style: 'text-align:right'}
             %p= user.username
-          %td.span1
+        .span1
+          %td
             %p= user.sign_in_count
-          %td.span1
+        .span1
+          %td
             %p= time_ago_in_words(user.last_sign_in_at).gsub('about', '')
-          %td.span1
+        .span1
+          %td
             %span{class: "#{signed_up?(user) ? 'success-text' : 'danger-text'}"}= signed_up?(user)
-          %td.span1
+        .span1
+          %td
             %p= user.sharings_recipients.count
-          %td.span1
+        .span1
+          %td
             %p= user.authentifications.count
-          %td.span1
+        .span1
+          %td
             %p= !user.beta_invite.nil?
-          %td.span1
+        .span1
+          %td
             = link_to "<div class='icon-trash danger-text'></div>".html_safe, user, method: :delete, confirm: t('users.destroy.yes_delete')
