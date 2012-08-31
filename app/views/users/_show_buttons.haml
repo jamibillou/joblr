@@ -21,6 +21,7 @@
           .icon-linkedin
           &nbsp;
           = t 'Linkedin'
+
   .explanation
     - if user_signed_in? && current_user == user && !has_subdomain
       %h5=t 'users.show.public_profile'

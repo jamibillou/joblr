@@ -1,7 +1,6 @@
 .span12
-
-  .row-fluid.hidden-tablet
-    .span3.visible-desktop
+  .row-fluid
+    .span3.hidden-phone
     .span5
       = render 'show_text', text: @user.profile.text
       .well#profile
@@ -12,15 +11,3 @@
         = render 'show_more',                 user: @user
     .span2
     .span2= render 'show_buttons',            user: @user
-
-  .row-fluid.visible-tablet
-    .span7
-      = render 'show_text', text: @user.profile.text
-      .well#profile
-        = render 'show_identity',             user: @user
-        = render 'show_experience_education', user: @user
-        = render 'show_skills',               user: @user
-        = render 'show_qualities',            user: @user
-        = render 'show_more',                 user: @user
-    .span2
-    .span3= render 'show_buttons',            user: @user
