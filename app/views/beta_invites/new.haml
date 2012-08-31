@@ -1,21 +1,12 @@
 .span3.hidden-phone
 .span6
   .row-fluid
-    .well{style: 'text-align:center'}
+    .well#beta-invite
       %h1=t '.title'
-      %br/
-      %br/
-      %br/
       .lead=t '.subtitle_html'
-      %p
-        .danger-text{style: 'margin-bottom:0'}=t '.asterisk'
-      %br/
-      %br/
-      %br/
+      .danger-text{style: 'margin-bottom:0'}=t '.asterisk'
       = form_for @beta_invite do |f|
-        .input-append.hidden-phone
-          = f.text_field :email, placeholder: t('.placeholder')
-          = f.submit t('.button'), class: 'btn btn-small btn-primary'
-        .visible-phone
-          = f.text_field :email, placeholder: t('.placeholder')
-          = f.submit t('.button'), class: 'btn btn-small btn-primary'
+        = f.text_field :email, placeholder: t('.placeholder')
+        .hidden-desktop
+          %br/
+        = f.submit t('.button'), class: 'btn btn-small btn-primary'
