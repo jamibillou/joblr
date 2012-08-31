@@ -31,6 +31,7 @@
               %a.btn{href: url_for(:back)}= t('cancel')
               = f.submit t('devise.registrations.sign_up'), class: 'btn btn-primary'
         .span1
+        .span1.visible-tablet
         .span5
           %h4= t('devise.registrations.skip_and_signin')
           = render partial: 'devise/shared/omniauth_links'

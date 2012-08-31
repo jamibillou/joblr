@@ -28,7 +28,7 @@ en:
         profile: "You can't edit another user's profile."
         provider: "This %{provider} account is already used by another user."
       only:
-        member: "You have to fill in your profile before accessing this page."
+        member: "Please fill in your profile before accessing this page."
         public: "You cannot access this page, you need to sign out first."
         admin: "You cannot access this page, administrators only."
       beta_invite:

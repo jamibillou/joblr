@@ -28,14 +28,17 @@
 						- unless current_user.social?
 							%br/
 							%small= t('devise.registrations.new_password')
+							%br/
 							= f.password_field :password, :autocomplete => 'off'
 							%br/
 							%small= t('devise.registrations.new_password_confirm')
+							%br/
 							= f.password_field :password_confirmation
 						.buttons
 							%a.btn{href: url_for(:back)}= t('cancel')
 							= f.submit t('devise.registrations.update'), class: 'btn btn-primary'
 				.span1
+				.span1.visible-tablet
 				.span5
 					%h4= t('devise.omniauth.add_accounts')
 					= render partial: 'devise/shared/omniauth_links'
