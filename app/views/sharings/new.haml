@@ -1,58 +1,37 @@
-.span2.visible-desktop
-.span5.hidden-tablet
-  .well#profile
-    = render 'users/show_identity',             user: @user
-    = render 'users/show_experience_education', user: @user
-    = render 'users/show_skills',               user: @user
-    = render 'users/show_qualities',            user: @user
-    = render 'users/show_more',                 user: @user
-.span7.visible-tablet
-  .well#profile
-    = render 'users/show_identity',             user: @user
-    = render 'users/show_experience_education', user: @user
-    = render 'users/show_skills',               user: @user
-    = render 'users/show_qualities',            user: @user
-    = render 'users/show_more',                 user: @user
-
-.span1.hidden-phone
-
-.span4#sharing
-  .arrow-left
-  .well
-    - unless params[:provider]
-      = form_for @sharing do |f|
-        .row-fluid
-          .span11
-            %small= t 'sharings.fullname_label'
-            %span.danger-text= link_to '*', '#required'
-            %br/
-            %input{type: 'text', name: 'fullname', class: 'input-medium'}
-            %br/
-            %small= t 'sharings.email_label'
-            %span.danger-text= link_to '*', '#required'
-            %br/
-            %input{type: 'text', name: 'email', class: 'input-medium'}
-        .row-fluid
-          .span11
-            %small= t 'sharings.text'
-            %br/
-            = f.text_area :text, rows: 3, placeholder: t('sharings.email_text')
-            = f.hidden_field :author_id, value: @user.id
-            %br/
-            %br/
-            %a= link_to t('cancel'), @user, class: 'btn'
-            = f.submit t('sharings.send'), class:'btn btn-primary'
-    - else
-      = form_for @sharing, url: { action: params[:provider], controller: 'sharings' } do |f|
-        .row-fluid
-          .span11
-            %small
-              = t('sharings.text')
-            = f.text_area :text, rows: 3, placeholder: t('sharings.social_text')
-            = f.hidden_field :user_id, value: @user.id
-            %br/
-            %br/
-            %a= link_to t('cancel'), @user, class: 'btn'
-            = f.submit t('sharings.share_on', provider: 'LinkedIn'), class:'btn btn-primary'
-  - unless params[:provider]
-    .pull-right.danger-text * required fields
+.span3.hidden-phone
+.span5
+  .row-fluid
+    .span12
+      .well#sharing
+        = form_for @sharing do |f|
+          .row-fluid
+            .span11
+              %small= t 'sharings.fullname_label'
+              %span.danger-text= link_to '*', '#required'
+              %br/
+              %input{type: 'text', name: 'fullname', class: 'input-medium'}
+              %br/
+              %small= t 'sharings.email_label'
+              %span.danger-text= link_to '*', '#required'
+              %br/
+              %input{type: 'text', name: 'email', class: 'input-medium'}
+          .row-fluid
+            .span11
+              %small= t 'sharings.text'
+              %br/
+              = f.text_area :text, rows: 3, placeholder: t('sharings.email_text')
+              = f.hidden_field :author_id, value: @user.id
+              %br/
+              %br/
+              %a= link_to t('cancel'), @user, class: 'btn'
+              = f.submit t('sharings.send'), class:'btn btn-primary'
+              .pull-right.danger-text * required fields
+        .arrow-bottom
+  .row-fluid
+    .span12
+      .well#profile
+        = render 'users/show_identity',             user: @user
+        = render 'users/show_experience_education', user: @user
+        = render 'users/show_skills',               user: @user
+        = render 'users/show_qualities',            user: @user
+        = render 'users/show_more',                 user: @user
