@@ -8,8 +8,8 @@ class PagesController < ApplicationController
   end
 
   def admin
-    @users        = User.all
-    @beta_invites = BetaInvite.all
+    @users           = User.all
+    @beta_invites    = BetaInvite.all
   end
 
   def style_tile

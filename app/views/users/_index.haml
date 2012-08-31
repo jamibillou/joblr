@@ -5,7 +5,7 @@
         %td{style: 'text-align:left'}
           %h5 Full name
       .span1
-        %td{style: 'text-align:right'}
+        %td{style: 'text-align:left'}
           %h5 Username
       .span1
         %td
@@ -33,28 +33,28 @@
       %tr
         .span1
           %td{style: 'text-align:left'}
-            %p= user.fullname
+            = user.fullname
         .span1
-          %td{style: 'text-align:right'}
-            %p= user.username
-        .span1
-          %td
-            %p= user.sign_in_count
+          %td{style: 'text-align:left'}
+            = user.username
         .span1
           %td
-            %p= time_ago_in_words(user.last_sign_in_at).gsub('about', '')
+            = user.sign_in_count
+        .span1
+          %td
+            = time_ago_in_words(user.last_sign_in_at).gsub('about', '')
         .span1
           %td
             %span{class: "#{signed_up?(user) ? 'success-text' : 'danger-text'}"}= signed_up?(user)
         .span1
           %td
-            %p= user.sharings_recipients.count
+            = user.sharings_recipients.count
         .span1
           %td
-            %p= user.authentifications.count
+            = user.authentifications.count
         .span1
           %td
-            %p= !user.beta_invite.nil?
+            = !user.beta_invite.nil?
         .span1
           %td
             = link_to "<div class='icon-trash danger-text'></div>".html_safe, user, method: :delete, confirm: t('users.destroy.yes_delete')
