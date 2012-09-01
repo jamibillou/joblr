@@ -22,12 +22,13 @@ describe EmailSharingsController do
                       quality_2: 'Work ethics',
                       quality_3: 'Punctuality',
                       text: 'Do or do not, there is no try.' }
-    @sharing_attr = {author_id: @author.id, text: "Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."}
+    @email_sharing_attr = { text: "Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."}
+    @email_sharing_public_attr = { text: "Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."}
 	end
 
 	describe "GET 'new'" do
 
-		context "registered user" do
+		context 'registered user: ' do
 
 			before :each do
 				sign_in @author
@@ -71,7 +72,7 @@ describe EmailSharingsController do
 	    end
 		end
 
-		context 'Unregistered user' do
+		context 'unregistered user: ' do
 
 	    context "selected user hasn't completed his profile" do
 
@@ -108,6 +109,60 @@ describe EmailSharingsController do
 	        get :new, id: @author.id
 		    	response.body.should have_selector 'div', class:'card', id:"show-user-#{@author.id}"
 		    end
+	    end
+		end
+	end
+
+	describe "POST 'create'" do
+
+		context 'registered user: ' do
+			before :each do
+				sign_in @author
+	      @author.profiles.create @profile_attr
+			end
+
+	    it { response.should be_success }
+
+	    context 'user typed an email address and a fullname' do
+
+				it 'should create a new email_sharing object' do
+					lambda do
+						post :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id 
+					end.should change(EmailSharing,:count).by 1
+				end
+
+		    it "should redirect to user's profile" do
+		    	post :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+		    	response.should redirect_to @author
+		    end
+	    end
+
+	    context "user didn't fill in any email address" do
+
+				it 'should not create a new email_sharing object' do
+					lambda do
+						post :create, :email_sharing => @email_sharing_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
+					end.should_not change(EmailSharing,:count).by 1
+				end
+
+		    it "should redirect to user's profile" do
+		    	post :create, :email_sharing => @email_sharing_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
+		    	response.should render_template('new',id: @author.id)
+		    end
+	    end
+
+	    context "user didn't fill in any fullname" do
+
+	      it 'should not create a new email_sharing object' do
+	        lambda do
+	          post :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com'), user_id: @author.id
+	        end.should_not change(EmailSharing,:count).by 1
+	      end
+
+	      it "should redirect to user's profile" do
+	        post :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com'), user_id: @author.id
+	        response.should render_template('new',id: @author.id)
+	      end
 	    end
 		end
 	end

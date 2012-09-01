@@ -2,6 +2,8 @@ en:
   email_sharings:
     new:
       title: 'Share your profile'
+    create:
+      title: 'Share your profile'
     fullname_label: 'Recipient full name'
     email_label: 'Recipient email address'
     text_label: 'Personal message'

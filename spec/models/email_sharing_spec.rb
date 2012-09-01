@@ -5,7 +5,7 @@ describe EmailSharing do
 	before :each do
 		@author    = FactoryGirl.create :user
 		@profile   = FactoryGirl.create :profile, user: @author
-		@email_sharing_registered   = FactoryGirl.create :email_sharing, profile: @profile, author: @author, author_fullname: nil, author_email: nil
+		@email_sharing_registered   = FactoryGirl.create :email_sharing, profile: @profile, author: @author
 		@email_sharing_public				= FactoryGirl.create :email_sharing, profile: @profile, author: nil
 	end
 
