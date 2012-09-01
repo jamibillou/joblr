@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
 
   before_filter :reset_devise_session
-  before_filter :find_user,             unless: :has_subdomain
-  before_filter :find_subdomain_user,   if: :has_subdomain
-  before_filter :signed_up,             only: :show
-  before_filter :correct_user!,         only: [:edit, :update]
-  before_filter :associate_beta_invite, only: :update
+  before_filter :reset_linkedin_session, only: :update
+
+  before_filter :find_user,              unless: :has_subdomain
+  before_filter :find_subdomain_user,    if: :has_subdomain
+  before_filter :signed_up,              only: :show
+  before_filter :correct_user!,          only: [:edit, :update]
+  before_filter :associate_beta_invite,  only: :update
 
   def show
     @title = @user.fullname
@@ -15,7 +17,11 @@ class UsersController < ApplicationController
     unless signed_up?(@user)
       @title = t('users.edit.title_alt')
       @user.profiles.build
-      @linkedin = @user.auth('linkedin').profile if @user.has_auth?('linkedin')
+      unless @user.has_auth?('linkedin')
+        session[:linkedin_import] = true
+      else
+        @linkedin = @user.auth('linkedin').profile
+      end
     end
   end
 
@@ -26,7 +32,7 @@ class UsersController < ApplicationController
       render :edit, id: @user, user: params[:user]
     else
       remove_files! # FIX ME!
-      redirect_to @user, flash: {success: t('flash.success.profile.updated')}
+      redirect_to @user, flash: {success: (never_updated?(@user.profile) ? t('flash.success.profile.created') : t('flash.success.profile.updated'))}
     end
   end
 
@@ -53,6 +59,10 @@ class UsersController < ApplicationController
         @user.email = session[:beta_invite][:email] if @user.email.blank?
         session[:beta_invite] = nil
       end
+    end
+
+    def reset_linkedin_session
+      session[:linkedin_import] = nil if session[:linkedin_import]
     end
 
     # FIX ME!

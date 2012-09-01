@@ -47,5 +47,6 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'capybara-webkit'
+  gem 'selenium-webdriver', '2.24'
   gem 'shoulda-matchers'
 end

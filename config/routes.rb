@@ -8,9 +8,9 @@ Joblr::Application.routes.draw do
 
   devise_for :users, controllers: {omniauth_callbacks: 'authentifications', registrations: 'registrations', sessions: 'sessions'}
 
-  resources :authentifications, only: [:index, :destroy]
+  resources :authentifications, only: [:destroy]
   resources :sharings,          only: [:new, :create]
-  resources :beta_invites do
+  resources :beta_invites, except: :index do
     get :thank_you
     get :send_code
   end

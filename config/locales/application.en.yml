@@ -8,8 +8,10 @@ en:
         destroyed: 'User destroyed successfully.'
       provider:
         added:  "Your %{provider} account was added successfully."
+        imported: "Your information was imported successfully from %{provider}."
         removed: "Your %{provider} account was removed successfully."
       profile:
+        created: 'Profile created successfully.'
         updated: 'Profile updated successfully.'
         shared:  'Profile shared successfully.'
       beta_invite:
@@ -21,7 +23,7 @@ en:
       base: 'Error:'
       something_wrong:
         base: "Oops, something went wrong."
-        auth: "Something went wrong when signin you in with %{provider}."
+        auth: "Something went wrong when trying to add your account."
       social:
         user_not_found: "We didn't find any user matching your %{provider} account, try signing in with another social account."
       other_user:

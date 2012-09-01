@@ -18,7 +18,7 @@ class AuthentificationsController < ApplicationController
   end
 
   def failure
-  	redirect_to new_user_session_path, flash: {error: t('flash.error.something_wrong.auth', provider: params[:provider])}
+  	redirect_to new_user_session_path, flash: {error: t('flash.error.something_wrong.auth')}
   end
 
   def destroy
@@ -48,7 +48,7 @@ class AuthentificationsController < ApplicationController
     def redirect_authentified_user(user)
       if user_signed_in?
         if user == current_user
-          flash[:success] = t('flash.success.provider.added', provider: auth_hash.provider.titleize)
+          flash[:success] = t((linkedin_import? == true ? 'flash.success.provider.imported' : 'flash.success.provider.added'), provider: auth_hash.provider.titleize)
         else
           flash[:error] = t('flash.error.other_user.provider', provider: auth_hash.provider.titleize)
         end
@@ -61,6 +61,10 @@ class AuthentificationsController < ApplicationController
         sign_in user
         redirect_to root_path, flash: {success: t('devise.omniauth_callbacks.success', provider: auth_hash.provider.titleize)}
       end
+    end
+
+    def linkedin_import?
+      session[:linkedin_import] && auth_hash.provider == 'linkedin'
     end
 
     def auth_url

@@ -44,4 +44,8 @@ class ApplicationController < ActionController::Base
     rescue ActionController::RedirectBackError
       redirect_to root_path
     end
+
+    def never_updated?(object)
+      object.created_at == object.updated_at
+    end
 end
