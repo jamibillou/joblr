@@ -1,5 +1,5 @@
 en:
-  sharings:
+  email_sharings:
     new:
       title: 'Share your profile'
     fullname_label: 'Recipient full name'
