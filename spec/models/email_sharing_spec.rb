@@ -5,23 +5,37 @@ describe EmailSharing do
 	before :each do
 		@author    = FactoryGirl.create :user
 		@profile   = FactoryGirl.create :profile, user: @author
-		@sharing_registered   = FactoryGirl.create :email_sharing, profile: @profile, author: @author, author_fullname: nil, author_email: nil
-		@sharing_public				= FactoryGirl.create :email_sharing, profile: @profile, author: nil
+		@email_sharing_registered   = FactoryGirl.create :email_sharing, profile: @profile, author: @author, author_fullname: nil, author_email: nil
+		@email_sharing_public				= FactoryGirl.create :email_sharing, profile: @profile, author: nil
+	end
+
+	describe 'Profile association' do
+		it { @email_sharing_registered.should respond_to :profile }
+
+		it 'should have the right associated profile' do
+			@email_sharing_registered.profile_id.should == @profile.id
+			@email_sharing_registered.profile.should == @profile
+		end
+
+		it 'should not destroy the associated profile' do
+			@email_sharing_registered.destroy
+			Profile.find_by_id(@email_sharing_registered.profile_id).should_not be_nil
+		end
 	end
 
 	describe 'Registered author sharing' do
 
 		describe 'Author association' do
-			it { @sharing_registered.should respond_to :author }
+			it { @email_sharing_registered.should respond_to :author }
 
 			it 'should have the right associated author' do
-				@sharing_registered.author_id.should == @author.id
-				@sharing_registered.author.should    == @author
+				@email_sharing_registered.author_id.should == @author.id
+				@email_sharing_registered.author.should    == @author
 			end
 
 			it 'should not destroy the associated author' do
-				@sharing_registered.destroy
-				User.find_by_id(@sharing_registered.author_id).should_not be_nil
+				@email_sharing_registered.destroy
+				User.find_by_id(@email_sharing_registered.author_id).should_not be_nil
 			end
 		end
 	end
@@ -34,12 +48,12 @@ describe EmailSharing do
 		
 		describe 'Validations' do
     
-		it { @sharing_public.should validate_presence_of :author_fullname }
-		it { @sharing_public.should ensure_length_of(:author_fullname).is_at_most 100 }
-		it { @sharing_public.should validate_presence_of :author_email }
+		it { @email_sharing_public.should validate_presence_of :author_fullname }
+		it { @email_sharing_public.should ensure_length_of(:author_fullname).is_at_most 100 }
+		it { @email_sharing_public.should validate_presence_of :author_email }
 
-    lambda { @email[:invalid].each {|invalid_email| it { @sharing_public.should validate_format_of(:author_email).not_with invalid_email }}}
-    lambda { @email[:valid].each   {|valid_email|   it { @sharing_public.should validate_format_of(:author_email).with valid_email }}}
+    lambda { @email[:invalid].each {|invalid_email| it { @email_sharing_public.should validate_format_of(:author_email).not_with invalid_email }}}
+    lambda { @email[:valid].each   {|valid_email|   it { @email_sharing_public.should validate_format_of(:author_email).with valid_email }}}
 
 		end
 	end
