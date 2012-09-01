@@ -1,6 +1,6 @@
 #image-modal.modal.hide
   .modal-header
-    %a.close.hidden-phone{href: '#', 'data-dismiss' => 'modal'} &nbsp;
+    %a.close.hidden-phone{href: '#', 'data-dismiss' => 'modal'} &times;
     %h3
       - if @user.authentifications.empty?
         =t 'users.image_modal.upload'

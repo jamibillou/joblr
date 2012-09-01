@@ -29,19 +29,6 @@ footer{
   }
 }
 
-// BUTTONS
-// To move in the near future
-
-a.close{
-  height:15px;
-  width:15px;
-  background:url('close.png') no-repeat;
-  display:inline-block;
-  &:hover{
-    background-position:-15px 0
-  }
-}
-
 // ARROWS
 // To turn into a mixin
 // ------
