@@ -1,17 +1,14 @@
-#buttons
-  .row-fluid
-    .span4
-    .span8
-      - unless signed_up?(@user) || @linkedin
-        %label Import from
-        %a.btn.btn-large.btn-top{href: omniauth_authorize_path(:user, 'linkedin')} LinkedIn
+#buttons.pull-right
+  - unless signed_up?(@user) || @linkedin
+    %label Import from
+    %a.btn.btn-large.btn-top{href: omniauth_authorize_path(:user, 'linkedin')} LinkedIn
 
-      %a#submit-placeholder.btn.btn-large.btn-primary.btn-top=t 'users.edit.save'
+  %a#submit-placeholder.btn.btn-large.btn-primary.btn-top=t 'users.edit.save'
 
-      - if signed_up?(@user)
-        %a.btn.btn-large{href: user_path(@user)}
-          = t('cancel')
-        .explanation
-          %h5=t 'users.edit.public_profile'
-          %p=t 'users.edit.explanation_html', url: link_to("http://#{@user.subdomain}.#{request.domain}", "http://#{@user.subdomain}.#{request.domain}")
-          = f.text_field :subdomain, class:'input-medium'
+  - if signed_up?(@user)
+    %a.btn.btn-large{href: user_path(@user)}
+      = t('cancel')
+    .explanation
+      %h5=t 'users.edit.public_profile'
+      %p=t 'users.edit.explanation_html', url: link_to("http://#{@user.subdomain}.#{request.domain}", "http://#{@user.subdomain}.#{request.domain}")
+      = f.text_field :subdomain, class:'input-medium'

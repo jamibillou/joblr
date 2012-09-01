@@ -15,5 +15,11 @@
         .pull-right.danger-text#required * required fields
       .span1
       .span3
-        = render 'edit_buttons', f: f
-        .hidden-phone= render 'edit_onboarding' unless signed_up?(@user)
+        .row-fluid.border
+          .span4
+          .span8.border
+            = render 'edit_buttons',    f: f
+        - unless signed_up?(@user)
+          .row-fluid
+            .span12
+              .visible-desktop= render 'edit_onboarding', f: f

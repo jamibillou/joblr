@@ -1,32 +1,38 @@
 .span3.hidden-phone
-.span5
+.span5.sharing
   .row-fluid
     .span12
-      .well#sharing
-        = form_for @sharing do |f|
+      = form_for @sharing do |f|
+        .row-fluid.hidden
+          .span2
+            %small=t 'sharings.new.from_label'
+            %span.danger-text= link_to '*', '#required'
+          .span5
+            %input.span5{type: 'text', name: 'from_fullname', placeholder: t('sharings.new.from_fullname_placeholder')}
+          .span5
+            %input.span5{type: 'text', name: 'from_email', placeholder: t('sharings.new.from_email_placeholder')}
+        .row-fluid
+          .span2
+            %small=t 'sharings.new.to_label'
+            %span.danger-text= link_to '*', '#required'
+          .span5
+            %input.span5{type: 'text', name: 'to_fullname', placeholder: t('sharings.new.to_fullname_placeholder')}
+          .span5
+            %input.span5{type: 'text', name: 'to_email', placeholder: t('sharings.new.to_email_placeholder')}
+        .well
           .row-fluid
             .span11
-              %small= t 'sharings.fullname_label'
+              %small= t 'sharings.new.text_label'
               %span.danger-text= link_to '*', '#required'
               %br/
-              %input{type: 'text', name: 'fullname', class: 'input-medium'}
-              %br/
-              %small= t 'sharings.email_label'
-              %span.danger-text= link_to '*', '#required'
-              %br/
-              %input{type: 'text', name: 'email', class: 'input-medium'}
-          .row-fluid
-            .span11
-              %small= t 'sharings.text'
-              %br/
-              = f.text_area :text, rows: 3, placeholder: t('sharings.email_text')
+              = f.text_area :text, rows: 3, placeholder: t('sharings.new.email_text'), class: 'lead'
               = f.hidden_field :author_id, value: @user.id
               %br/
               %br/
               %a= link_to t('cancel'), @user, class: 'btn'
-              = f.submit t('sharings.send'), class:'btn btn-primary'
-              .pull-right.danger-text * required fields
-        .arrow-bottom
+              = f.submit t('sharings.new.send'), class:'btn btn-primary'
+          .arrow-bottom
+        .pull-right.danger-text * required fields
   .row-fluid
     .span12
       .well#profile
@@ -35,3 +41,5 @@
         = render 'users/show_skills',               user: @user
         = render 'users/show_qualities',            user: @user
         = render 'users/show_more',                 user: @user
+.span2
+.span2.sharing= render 'new_buttons',               user: @user
