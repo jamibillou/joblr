@@ -6,7 +6,7 @@
 // Admin dashboard
 // ---------------
 
-#admin{
+.admin{
   td{
     text-align:center;
     p{
@@ -20,36 +20,34 @@
 // ----------
 
 #style-tile{
-  .right-pane{
-    .span2 div{
-      width:150px;
-      height:150px;
+  .well{
+    width:150px;
+    height:150px;
+    margin:0 25px 10px 0;
+    padding:10px;
+    display:inline-block;
+    div{
+      width:inherit;
+      height:inherit;
     }
-    .well{
-      padding:10px;
+    .brown{
+      background-color:$brown;
     }
-    #backgrounds{
-      .brown{
-        background-color:$brown;
-      }
-      .browDark{
-        background-color:$brownDark;
-      }
-      .white{
-        background-color:$white;
-      }
-      .grayDark{
-        background-color:$grayDark;
-      }
+    .browDark{
+      background-color:$brownDark;
     }
-    #colors{
-      margin-top:13px;
-      .red{
-        background-color:$red;
-      }
-      .blue{
-        background-color:$blue;
-      }
+    .white{
+      background-color:$white;
+    }
+    .grayDark{
+      background-color:$grayDark;
+    }
+    margin-top:13px;
+    .red{
+      background-color:$red;
+    }
+    .blue{
+      background-color:$blue;
     }
   }
 }

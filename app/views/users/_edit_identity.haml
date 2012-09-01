@@ -1,9 +1,11 @@
-.row
-  .span1
+.row-fluid
+  .span3
     %a{href: '#image-modal', 'data-toggle' => 'modal'}
       = image_tag (@user.image.blank? ? 'default_user.jpg' : @user.image_url(:thumb).to_s)
     = render 'image_modal', f: f
-  .span3
+  .visible-phone
+    %br/
+  .span9
     = f.text_field :fullname, value: field_value(:fullname, @linkedin), placeholder: t('users.edit.fullname_placeholder')
     %span.danger-text= link_to '*', '#required'
     %br/

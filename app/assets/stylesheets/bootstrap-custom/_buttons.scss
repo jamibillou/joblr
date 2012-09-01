@@ -7,9 +7,9 @@
 
 // Core
 .btn {
-  padding: 8px 16px 8px;
+  padding:8px 16px 8px;
   margin-right:7px;
-  font-size: $baseFontSize + 2px;
+  font-size:$baseFontSize + 2px;
   @include border-radius(7px);
   @include buttonBackground($btnBackground, $btnBackgroundHighlight);
 }
@@ -20,13 +20,13 @@
 
 // Large
 .btn-large {
-  padding: 14px 26px 14px;
+  padding:14px 26px 14px;
   margin-right:15px;
-  font-size: 21px;
+  font-size:21px;
   @include border-radius(10px);
 }
 .btn-large [class^="icon-"] {
-  margin-top: 1px;
+  margin-top:1px;
 }
 
 // Small

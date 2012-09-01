@@ -1,15 +1,15 @@
-%ul.nav.pull-right
-  - if user_signed_in?
-    %li.dropdown
-      %a.dropdown-toggle{src: '#', 'data-toggle' => 'dropdown'}
-        = image_tag(current_user.image_url(:thumb), style: 'width:22px; height:22px; margin-right:5px') unless current_user.image.blank?
-        = current_user.fullname
-        %b.caret
-      %ul.dropdown-menu
-        %li= link_to t('devise.registrations.account_settings'), edit_user_registration_path
-        %li= link_to t('devise.sessions.logout'), destroy_user_session_path, method: 'delete'
-
-  - else
-    .navbar-text
-      =t 'devise.registrations.already_member'
-      = link_to t('devise.registrations.sign_in'), new_user_session_url(subdomain: false)
+.pull-right
+  %ul.nav
+    - if user_signed_in?
+      %li.dropdown
+        %a.dropdown-toggle{src: '#', 'data-toggle' => 'dropdown'}
+          = image_tag(current_user.image_url(:thumb), style: 'width:22px; height:22px; margin-right:5px') unless current_user.image.blank?
+          = current_user.fullname
+          %b.caret
+        %ul.dropdown-menu
+          %li= link_to t('devise.registrations.account_settings'), edit_user_registration_path
+          %li= link_to t('devise.sessions.logout'), destroy_user_session_path, method: 'delete'
+    - else
+      .navbar-text
+        =t 'devise.registrations.already_member'
+        = link_to t('devise.registrations.sign_in'), new_user_session_url(subdomain: false)

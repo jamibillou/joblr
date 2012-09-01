@@ -2,6 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   before_filter :check_beta_invite,  only: :new
   before_filter :set_devise_session, only: :new
+  before_filter :signed_up,          only: :edit
   before_filter :ignore_blank_email, only: :update
 
   def edit

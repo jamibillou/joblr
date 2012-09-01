@@ -11,7 +11,7 @@
 
 #text{
   margin-bottom:50px;
-  h1{
+  h1, h2{
     font-weight:200;
   }
   textarea{
@@ -32,6 +32,8 @@
   }
   img{
     @include border-radius(4px);
+    max-width:80px;
+    max-height:80px;
   }
   h2{
     margin-top:-8px;
@@ -66,6 +68,9 @@
       margin-left:50px;
     }
   }
+  .btn-small{
+    margin-bottom:8px;
+  }
   .delete{
     font-size:11px;
     color: $gray;
@@ -77,27 +82,19 @@
   }
 }
 
-// Right column
-// ------------
-
-#right-column{
-  position:fixed;
-}
-
 // Buttons
 // -------
 
-#right-column #buttons{
+#buttons{
   margin-top:0px;
   .btn{
     width:70%;
-    margin:0;
+  }
+  .btn-top{
+    margin-bottom:10px;
   }
   input[type="submit"]{
     width:100%;
-  }
-  .linkedin-import, .btn-top{
-    margin-bottom:10px
   }
   .explanation{
     margin:20px 0 0 15px;

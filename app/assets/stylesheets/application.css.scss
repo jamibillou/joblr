@@ -1,9 +1,14 @@
+// IMPORTED STYLE
+// the order of this list is vital, DO NOT MODIFIY!
+// ------------------------------------------------
+
 @import "variables-custom";
 @import "bootstrap";
-@import "bootstrap-responsive";
 @import "bootstrap-custom/bootstrap";
+@import "bootstrap-responsive";
 @import "font-awesome";
 @import "pages";
+@import "beta-invite";
 @import "devise";
 @import "users";
 @import "sharings";
@@ -11,7 +16,7 @@
 
 
 // RAILS DEBUG FOOTER
-// ---------
+// ------------------
 
 footer{
   padding-top:100px;
@@ -30,7 +35,7 @@ footer{
 a.close{
   height:15px;
   width:15px;
-  background-image:url('close.png');
+  background:url('close.png') no-repeat;
   display:inline-block;
   &:hover{
     background-position:-15px 0

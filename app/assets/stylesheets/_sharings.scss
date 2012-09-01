@@ -7,12 +7,15 @@
 //----
 
 #sharing{
-  margin-top:50px;
+  margin-bottom:50px;
   input{
     margin-bottom:20px;
   }
   textarea{
     width:100%;
+    font-size:20px;
+    font-weight:200;
+    line-height:25px;
   }
   .btn, form{
     margin-bottom:0;

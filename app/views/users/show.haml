@@ -1,12 +1,13 @@
-.row
-  .span5.offset3
-    = render 'show_text', text: @user.profile.text
-    .well#profile
-      = render 'show_identity',             user: @user
-      = render 'show_experience_education', user: @user
-      = render 'show_skills',               user: @user
-      = render 'show_qualities',            user: @user
-      = render 'show_more',                 user: @user
-  .span2.offset2
-    #right-column
-      = render 'show_buttons',                user: @user
+.span12
+  .row-fluid
+    .span3.hidden-phone
+    .span5
+      = render 'show_text', text: @user.profile.text
+      .well#profile
+        = render 'show_identity',             user: @user
+        = render 'show_experience_education', user: @user
+        = render 'show_skills',               user: @user
+        = render 'show_qualities',            user: @user
+        = render 'show_more',                 user: @user
+    .span2
+    .span2= render 'show_buttons',            user: @user

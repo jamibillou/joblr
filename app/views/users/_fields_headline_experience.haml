@@ -1,22 +1,25 @@
-.row
-  .span3.offset1
+.row-fluid
+  .span3.hidden-phone
+  .span9
     %small=t 'users.edit.headline'
     %span.danger-text= link_to '*', '#required'
+    %br/
     = f.select :headline, headline_options, {selected: (t("users.show.headline.#{field_value(:headline, @linkedin)}") unless field_value(:headline, @linkedin).blank?)}
 
-.row.experience
-  .span4
+.row-fluid.experience
+  .span12
     %h4=t 'users.edit.experience'
-    .row
-      .span1
+    .row-fluid
+      .span3
         %small=t 'users.edit.experience_label'
         %span.danger-text= link_to '*', '#required'
+        %br/
         = f.text_field :experience, value: field_value(:experience, @linkedin), placeholder: t('users.edit.experience_placeholder'), class: 'input-mini'
-      .span3
+      .span9
         %small=t 'users.edit.last_job'
+        %br/
         = f.text_area :last_job, value: field_value(:last_job, @linkedin), placeholder: t('users.edit.last_job_placeholder'), rows: 3, class: 'big'
-    .row
-      .span3.offset1
         %p
           %small=t 'users.edit.past_companies'
+          %br/
           = f.text_field :past_companies, value: field_value(:past_companies, @linkedin), placeholder: t('users.edit.past_companies_placeholder'), class: 'input-slim'

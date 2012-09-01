@@ -1,9 +1,10 @@
-.row
-  .span4
+.row-fluid
+  .span12
     %h4=t 'users.edit.social_profiles'
     = render 'shared/omniauth_links', user: @user
-.row
-  .span4
+
+.row-fluid
+  .span12
     %h4=t 'users.edit.upload_cv'
     - unless @user.profile.file.nil? || @user.profile.file.blank?
       .delete.grey-text
@@ -13,7 +14,8 @@
       = f.check_box :remove_file
       %br/
     = f.file_field :file
-.row
-  .span4
+
+.row-fluid
+  .span12
     %h4=t 'users.edit.url'
     = f.text_field :url, value: field_value(:url, @linkedin), placeholder: 'http://', class: 'url'

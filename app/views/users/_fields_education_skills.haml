@@ -1,16 +1,18 @@
-.row
-  .span3
+.row-fluid
+  .span12
     %h4=t 'users.edit.education'
     = f.text_area :education, value: field_value(:education, @linkedin), placeholder: t('users.edit.education_placeholder'), rows: 3, class: 'big'
     %span.danger-text= link_to '*', '#required'
 
-.row.skills
-  .span4
+.row-fluid.skills
+  .span12
     %h4=t 'users.edit.skills'
-    .row
-      .span2= f.text_field :skill_1, value: field_value(:skill_1, @linkedin), placeholder: t('users.edit.skill_1_placeholder')
-      .span1= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {selected: (field_value(:skill_1_level, @linkedin).blank? ? 'Intermediate' : field_value(:skill_1_level, @linkedin))}
-      .span2= f.text_field :skill_2, value: field_value(:skill_2, @linkedin), placeholder: t('users.edit.skill_2_placeholder')
-      .span1= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {selected: (field_value(:skill_2_level, @linkedin).blank? ? 'Intermediate' : field_value(:skill_2_level, @linkedin))}
-      .span2= f.text_field :skill_3, value: field_value(:skill_3, @linkedin), placeholder: t('users.edit.skill_3_placeholder')
-      .span1= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), {selected: (field_value(:skill_3_level, @linkedin).blank? ? 'Intermediate' : field_value(:skill_3_level, @linkedin))}
+    .row-fluid
+      .span7= f.text_field :skill_1, value: field_value(:skill_1, @linkedin), placeholder: t('users.edit.skill_1_placeholder')
+      .span4= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {selected: (field_value(:skill_1_level, @linkedin).blank? ? 'Intermediate' : field_value(:skill_1_level, @linkedin))}
+    .row-fluid
+      .span7= f.text_field :skill_2, value: field_value(:skill_2, @linkedin), placeholder: t('users.edit.skill_2_placeholder')
+      .span4= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {selected: (field_value(:skill_2_level, @linkedin).blank? ? 'Intermediate' : field_value(:skill_2_level, @linkedin))}
+    .row-fluid
+      .span7= f.text_field :skill_3, value: field_value(:skill_3, @linkedin), placeholder: t('users.edit.skill_3_placeholder')
+      .span4= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), {selected: (field_value(:skill_3_level, @linkedin).blank? ? 'Intermediate' : field_value(:skill_3_level, @linkedin))}

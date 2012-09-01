@@ -1,33 +1,31 @@
 #buttons
-  .row
-    .span2
-      - if user_signed_in? && current_user == user && !has_subdomain
-        %a.btn.btn-large.btn-primary.btn-top{href: edit_user_path(user)}
-          =t 'users.show.edit'
-      - else
-        %a.btn.btn-large.btn-danger.btn-top
-          =t 'users.show.contact'
-      .btn-group
-        .btn.btn-large.dropdown-toggle{"data-toggle" => 'dropdown', href:'#', class: "#{(user_signed_in? && current_user == user && !has_subdomain) ? 'btn-danger'  :'btn-inverse'}"}
-          .icon-share
+  - if user_signed_in? && current_user == user && !has_subdomain
+    %a.btn.btn-large.btn-top.btn-primary{href: edit_user_path(user)}
+      =t 'users.show.edit'
+  - else
+    %a.btn.btn-large.btn-top.btn-danger
+      =t 'users.show.contact'
+  .btn-group
+    .btn.btn-large.dropdown-toggle{"data-toggle" => 'dropdown', href:'#', class: "#{(user_signed_in? && current_user == user && !has_subdomain) ? 'btn-danger'  :'btn-inverse'}"}
+      &nbsp;
+      =t 'users.show.share'
+      %span.caret.hidden-tablet
+    %ul.dropdown-menu
+      %li
+        %a{href: new_email_sharing_url(id: user.id, subdomain: false)}
+          .icon-envelope
           &nbsp;
-          =t 'users.show.share'
-          %span.caret
-        %ul.dropdown-menu
-          %li
-            %a{href: new_email_sharing_url(id: user.id, subdomain: false)}
-              .icon-envelope
-              &nbsp;
-              = t 'users.show.email'
-          %li
-            %a{href: new_sharing_url(id: user.id, provider: 'linkedin', subdomain: false)}
-              .icon-linkedin
-              &nbsp;
-              = t 'Linkedin'
-      .explanation
-        - if user_signed_in? && current_user == user && !has_subdomain
-          %h5=t 'users.show.public_profile'
-          %p=t 'users.show.explanation_html', url: link_to("http://#{user.subdomain}.#{request.domain}", "http://#{user.subdomain}.#{request.domain}", target: '_new')
-        - else
-          %h5 What’s this?
-          %p #{user.fullname.split.first} is looking for a job and wants your help. Contact him if you have a job or a tip for him. Otherwise help him out by sharing his profile!
+          = t 'users.show.email'
+      %li
+        %a{href: new_sharing_url(id: user.id, provider: 'linkedin', subdomain: false)}
+          .icon-linkedin
+          &nbsp;
+          = t 'Linkedin'
+
+  .explanation
+    - if user_signed_in? && current_user == user && !has_subdomain
+      %h5=t 'users.show.public_profile'
+      %p=t 'users.show.explanation_html', url: link_to("http://#{user.subdomain}.#{request.domain}", "http://#{user.subdomain}.#{request.domain}", target: '_new')
+    - else
+      %h5 What’s this?
+      %p #{user.fullname.split.first} is looking for a job and wants your help. Contact him if you have a job or a tip for him. Otherwise help him out by sharing his profile!

@@ -1,22 +1,14 @@
-.row
-  .span6.offset3
-    .row
-      .well{style: 'text-align:center'}
-        %h1=t '.title'
-        %br/
-        %br/
-        %br/
-        .lead=t '.subtitle_html'
-        %p
-          .danger-text{style: 'margin-bottom:0'}=t '.asterisk'
-        %br/
-        %br/
-        %br/
-        = form_for @beta_invite do |f|
-          .input-append
-            = f.text_field :code, placeholder: t('.placeholder'), value: ''
-            = f.submit t('.button'), class: 'btn btn-small btn-primary'
-
-        %br/
+.span3.hidden-phone
+.span6
+  .row-fluid
+    .well#beta-invite
+      %h1=t '.title'
+      .lead=t '.subtitle_html'
+      .danger-text=t '.asterisk'
+      = form_for @beta_invite do |f|
+        = f.text_field :code, placeholder: t('.placeholder'), value: ''
+        .hidden-desktop
+          %br/
+        = f.submit t('.button'), class: 'btn btn-small btn-primary'
+      %p
         = link_to t('.link'), new_beta_invite_path
-        %br/

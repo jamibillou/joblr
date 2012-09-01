@@ -1,15 +1,19 @@
-= form_for @user, html: {id: 'edit-form'} do |f|
-  .row
-    - unless signed_up?(@user)
-      .span3#popovers
-        = render 'edit_popovers'
-    .span5{class: "#{'offset3' if signed_up?(@user)}"}
-      = render 'edit_text', f: f
-      .well#profile
-        = render 'edit_identity', f: f
-        = f.fields_for(:profiles) {|profile_builder| render 'fields_profile', f: profile_builder}
-      .pull-right.danger-text#required * required fields
-    .span3.offset1
-      #right-column
+.span12
+  = form_for @user, html: {id: 'edit-form'} do |f|
+    .row-fluid
+      - unless signed_up?(@user)
+        #popovers.span3.visible-desktop
+          = render 'edit_popovers'
+        .span3.visible-tablet
+      - else
+        .span3.hidden-phone
+      .span5
+        = render 'edit_text', f: f
+        .well#profile
+          = render 'edit_identity', f: f
+          = f.fields_for(:profiles) {|profile_builder| render 'fields_profile', f: profile_builder}
+        .pull-right.danger-text#required * required fields
+      .span1
+      .span3
         = render 'edit_buttons', f: f
-        = render 'edit_onboarding' unless signed_up?(@user)
+        .hidden-phone= render 'edit_onboarding' unless signed_up?(@user)
