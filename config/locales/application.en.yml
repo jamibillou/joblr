@@ -43,6 +43,8 @@ en:
       text:
         blank: "Text can't be blank."
         long: "Text is too long (maximum: 140 characters)"
+      unknown:
+        profile: "This page doesn't match to a known profile."
   errors:
     error_404:
       title: "Sorry, we couldn't find the content you were looking for"
