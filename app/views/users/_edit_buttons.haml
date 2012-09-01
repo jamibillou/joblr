@@ -1,4 +1,4 @@
-#buttons.pull-right
+#buttons
   - unless signed_up?(@user) || @linkedin
     %label Import from
     %a.btn.btn-large.btn-top{href: omniauth_authorize_path(:user, 'linkedin')} LinkedIn

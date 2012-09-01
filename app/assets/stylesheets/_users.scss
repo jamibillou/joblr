@@ -113,10 +113,10 @@
 // ----------
 
 #onboarding{
+  width:90%;
   margin-top:90px;
   .big{
     opacity:0.2;
-    text-align:right;
     &.checked{
       opacity:1;
       color:$successText;
