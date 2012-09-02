@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     def associate_beta_invite
       unless session[:beta_invite].nil? || signed_up?(@user)
         @user.beta_invite = BetaInvite.find session[:beta_invite][:id]
-        @user.email = session[:beta_invite][:email] if @user.email.blank?
+        @user.email = session[:beta_invite][:email] if @user.email.blank? && User.find_by_email(session[:beta_invite][:email]).nil?
         session[:beta_invite] = nil
       end
     end
