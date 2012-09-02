@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
 
-  before_filter :reset_devise_session
-  before_filter :find_user,             unless: :has_subdomain
-  before_filter :find_subdomain_user,   if: :has_subdomain
-  before_filter :signed_up,             only: :show
-  before_filter :correct_user!,         only: [:edit, :update]
-  before_filter :associate_beta_invite, only: :update
+  before_filter :find_user,              unless: :has_subdomain
+  before_filter :find_subdomain_user,    if: :has_subdomain
+  before_filter :signed_up,              only: :show
+  before_filter :correct_user!,          only: [:edit, :update]
+  before_filter :associate_beta_invite,  only: :update
 
   def show
     @title = @user.fullname
@@ -26,7 +25,7 @@ class UsersController < ApplicationController
       render :edit, id: @user, user: params[:user]
     else
       remove_files! # FIX ME!
-      redirect_to @user, flash: {success: t('flash.success.profile.updated')}
+      redirect_to @user, flash: {success: (never_updated?(@user.profile) ? t('flash.success.profile.created') : t('flash.success.profile.updated'))}
     end
   end
 
@@ -50,7 +49,7 @@ class UsersController < ApplicationController
     def associate_beta_invite
       unless session[:beta_invite].nil? || signed_up?(@user)
         @user.beta_invite = BetaInvite.find session[:beta_invite][:id]
-        @user.email = session[:beta_invite][:email] if @user.email.blank?
+        @user.email = session[:beta_invite][:email] if @user.email.blank? && User.find_by_email(session[:beta_invite][:email]).nil?
         session[:beta_invite] = nil
       end
     end

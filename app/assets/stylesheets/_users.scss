@@ -11,14 +11,14 @@
 
 #text{
   margin-bottom:50px;
-  h1, h2{
+  h1{
     font-weight:200;
+  }
+  .lead{
+    margin-bottom:0;
   }
   textarea{
     width:100%;
-    font-size:20px;
-    font-weight:200;
-    line-height:$baseLineHeight * 1.5;
   }
 }
 
@@ -97,7 +97,9 @@
     width:100%;
   }
   .explanation{
-    margin:20px 0 0 15px;
+    width:75%;
+    margin-top:20px;
+    padding-left:20px;
     p{
       margin-bottom:7px;
     }
@@ -111,10 +113,10 @@
 // ----------
 
 #onboarding{
+  width:90%;
   margin-top:90px;
   .big{
     opacity:0.2;
-    text-align:right;
     &.checked{
       opacity:1;
       color:$successText;

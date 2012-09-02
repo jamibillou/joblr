@@ -13,7 +13,8 @@
           = render 'edit_identity', f: f
           = f.fields_for(:profiles) {|profile_builder| render 'fields_profile', f: profile_builder}
         .pull-right.danger-text#required * required fields
-      .span1
-      .span3
-        = render 'edit_buttons', f: f
-        .hidden-phone= render 'edit_onboarding' unless signed_up?(@user)
+      .span2
+      .span2
+        = render 'edit_buttons',    f: f
+        - unless signed_up?(@user)
+          .visible-desktop= render 'edit_onboarding', f: f

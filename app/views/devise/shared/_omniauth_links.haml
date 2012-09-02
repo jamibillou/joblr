@@ -1,6 +1,0 @@
-- if devise_mapping.omniauthable?
-  - resource_class.omniauth_providers.each do |provider|
-    %a.btn{href: omniauth_authorize_path(resource_name, provider), class: "btn-#{provider.to_s.gsub('_oauth2','')}"}
-      %i{class: "icon-#{provider.to_s.gsub('_oauth2','-plus')}"}
-      &nbsp;
-      = provider.to_s.humanize.split[0]

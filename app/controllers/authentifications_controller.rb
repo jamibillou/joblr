@@ -1,31 +1,30 @@
 class AuthentificationsController < ApplicationController
 
   def create
-    if auth = Authentification.find_by_provider_and_uid(auth_hash.provider, auth_hash.uid)
-      user = auth.user
-    else
-      if user_signed_in?
-      	user = create_auth(current_user)
+    if user_signed_in?
+      if auth = Authentification.find_by_provider_and_uid(auth_hash.provider, auth_hash.uid)
+        already_linked(auth.user)
       else
-        if session[:devise_controller] == 'registrations'
-          user = find_or_create_user_and_auth(make_username(auth_hash.info.nickname, auth_hash.info.name))
-        elsif session[:devise_controller] == 'sessions'
-          redirect_to new_user_session_path, flash: {error: t('flash.error.social.user_not_found', provider: auth_hash.provider.titleize)}
-        end
+        add_auth
+      end
+    else
+      if auth = Authentification.find_by_provider_and_uid(auth_hash.provider, auth_hash.uid)
+        social_sign_in(auth)
+      else
+        social_sign_up
       end
     end
-    redirect_authentified_user(user) if user
   end
 
   def failure
-  	redirect_to new_user_session_path, flash: {error: t('flash.error.something_wrong.auth', provider: params[:provider])}
+  	redirect_to env['omniauth.origin'], flash: {error: t('flash.error.something_wrong.auth')}
   end
 
   def destroy
   	auth = current_user.authentifications.find(params[:id])
-    provider = auth.provider.titleize
-  	auth.destroy
-  	redirect_to edit_user_path(current_user), flash: {success: t('flash.success.provider.removed', provider: provider)}
+    provider = auth.provider
+    auth.destroy
+  	redirect_back flash: {success: t('flash.success.provider.removed', provider: provider)}
   end
 
 	alias_method :twitter, 			 :create
@@ -35,32 +34,55 @@ class AuthentificationsController < ApplicationController
 
   private
 
+    def already_linked(user)
+      if user == current_user
+        error = 'flash.error.provider.already_linked'
+      else
+        error = 'flash.error.provider.other_user'
+      end
+      redirect_to env['omniauth.origin'], flash: {error: t(error, provider: auth_hash.provider.titleize)}
+    end
+
+    def add_auth
+      create_auth(current_user)
+      redirect_to env['omniauth.origin'], flash: {success: t("flash.success.provider.#{add_auth_message(current_user)}", provider: auth_hash.provider.titleize)}
+    end
+
+    def add_auth_message(user)
+      if env['omniauth.origin'].include?(edit_user_path(user)) && auth_hash.provider == 'linkedin' && !signed_up?(user) then 'imported' else 'added' end
+    end
+
+    def social_sign_in(auth)
+      if env['omniauth.origin'].include? new_user_session_path
+        sign_in auth.user
+        redirect_path   = root_path
+        flash[:success] = t('flash.success.provider.signed_in', provider: auth_hash.provider.titleize)
+      else
+        redirect_path = env['omniauth.origin']
+        flash[:error] = t('flash.error.provider.other_user_signed_up', provider: auth_hash.provider.titleize)
+      end
+      redirect_to redirect_path
+    end
+
+    def social_sign_up
+      if env['omniauth.origin'].include? new_user_registration_path
+        sign_in create_user_auth(make_username(auth_hash.info.nickname, auth_hash.info.name))
+        redirect_path   = root_path
+        flash[:success] = t('flash.success.provider.signed_in', provider: auth_hash.provider.titleize)
+      else
+        redirect_path = env['omniauth.origin']
+        flash[:error] = t('flash.error.provider.no_user', provider: auth_hash.provider.titleize)
+      end
+      redirect_to redirect_path
+    end
+
+    def create_user_auth(username)
+      create_auth User.create(username: username, fullname: auth_hash.info.name, remote_image_url: auth_hash.info.image, social: true)
+    end
+
     def create_auth(user)
       user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, utoken: auth_hash.credentials.token, usecret: auth_secret)
       user
-    end
-
-    def find_or_create_user_and_auth(username)
-      user = User.find_or_create_by_username(username, username: username, fullname: auth_hash.info.name, remote_image_url: auth_hash.info.image, social: true)
-      create_auth(user)
-    end
-
-    def redirect_authentified_user(user)
-      if user_signed_in?
-        if user == current_user
-          flash[:success] = t('flash.success.provider.added', provider: auth_hash.provider.titleize)
-        else
-          flash[:error] = t('flash.error.other_user.provider', provider: auth_hash.provider.titleize)
-        end
-        if session[:user_return_to]
-          redirect_to(session[:user_return_to]) ; session[:user_return_to] = nil
-        else
-          redirect_to_back
-        end
-      else
-        sign_in user
-        redirect_to root_path, flash: {success: t('devise.omniauth_callbacks.success', provider: auth_hash.provider.titleize)}
-      end
     end
 
     def auth_url

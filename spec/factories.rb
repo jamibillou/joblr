@@ -3,7 +3,7 @@ FactoryGirl.define do
   factory :user do
     fullname 'John Doe'
     username 'j_doe'
-    password 'example'
+    password 'pouetpouet38'
   end
 
   factory :authentification do

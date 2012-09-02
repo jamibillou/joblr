@@ -6,12 +6,12 @@ Joblr::Application.routes.draw do
   match '/404', to: 'errors#error_404'
   match '/500', to: 'errors#error_500'
 
-  devise_for :users, controllers: {omniauth_callbacks: 'authentifications', registrations: 'registrations', sessions: 'sessions'}
+  devise_for :users, controllers: {omniauth_callbacks: 'authentifications', registrations: 'registrations'}
 
-  resources :authentifications, only: [:index, :destroy]
+  resources :authentifications, only: [:destroy]
   resources :sharings,          only: [:new, :create]
   resources :email_sharings,    only: [:new, :create]
-  resources :beta_invites do
+  resources :beta_invites, except: :index do
     get :thank_you
     get :send_code
   end

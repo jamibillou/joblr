@@ -3,5 +3,5 @@
     .span11
       %small.required=t 'users.edit.text'
       %span.danger-text= link_to '*', '#required'
-      #text-container= text_area :text, :placeholder, value: field_value(:text, @linkedin), placeholder: t('users.edit.text_placeholder'), rows: 3
+      #text-container= text_area :text, :placeholder, value: field_value(:text, @linkedin), placeholder: t('users.edit.text_placeholder'), rows: 3, class: 'lead'
   .arrow-bottom

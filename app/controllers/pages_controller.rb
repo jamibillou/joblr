@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
 
-  before_filter :reset_devise_session
   before_filter :admin_user, only: [:admin, :style_tile]
 
   def home

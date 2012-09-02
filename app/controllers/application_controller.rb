@@ -19,10 +19,6 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def reset_devise_session
-      session[:devise_controller] = nil if session[:devise_controller]
-    end
-
     def find_user
       @user = params[:id] ? User.find(params[:id]) : current_user
     end
@@ -47,9 +43,13 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, flash: {error: t('flash.error.only.admin')} unless user_signed_in? && current_user.admin
     end
 
-    def redirect_to_back
-      redirect_to :back
+    def redirect_back(flash = {})
+      redirect_to :back, flash
     rescue ActionController::RedirectBackError
       redirect_to root_path
+    end
+
+    def never_updated?(object)
+      object.created_at == object.updated_at
     end
 end

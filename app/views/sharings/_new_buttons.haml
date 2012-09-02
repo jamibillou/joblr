@@ -1,0 +1,8 @@
+#buttons.border
+  %a.btn.btn-large.btn-top.btn-danger.disabled
+    =t 'sharings.new.sure'
+  %a.btn.btn-large.btn-top.btn-inverse.disabled
+    =t 'sharings.new.no_thanks'
+  .explanation
+    %h5=t 'sharings.new.whats_this'
+    %p=t 'sharings.new.explanation', fullname: user.fullname.split.first
