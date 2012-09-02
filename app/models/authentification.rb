@@ -16,7 +16,7 @@ class Authentification < ActiveRecord::Base
         profile[:image]
       when 'facebook'
         "http://graph.facebook.com/#{uid}/picture?type=#{size == :thumb ? 'square' : 'large'}"
-      when 'google_oauth2'
+      when 'google'
         "https://profiles.google.com/s2/photos/profile/#{uid}"
     end
   end

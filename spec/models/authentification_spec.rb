@@ -7,7 +7,7 @@ describe Authentification do
     @twitter_auth  = FactoryGirl.create :authentification, user: @user
     @linkedin_auth = FactoryGirl.create :authentification, user: @user, provider: 'linkedin'
     @facebook_auth = FactoryGirl.create :authentification, user: @user, provider: 'facebook'
-    @google_auth   = FactoryGirl.create :authentification, user: @user, provider: 'google_oauth2'
+    @google_auth   = FactoryGirl.create :authentification, user: @user, provider: 'google'
     @attr          = { provider: 'twitter', uid: 'john_d', uname: 'John Doe' }
   end
 
@@ -67,7 +67,7 @@ describe Authentification do
       end
     end
 
-    context 'for google_oauth2 authentifications' do
+    context 'for google authentifications' do
       it 'should have the right format' do
         @google_auth.image_url.should =~ /^https:\/\/profiles.google.com\/s2\/photos\/profile\/\w+$/
       end

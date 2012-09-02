@@ -24,7 +24,7 @@ class AuthentificationsController < ApplicationController
   	auth = current_user.authentifications.find(params[:id])
     provider = auth.provider
     auth.destroy
-  	redirect_back flash: {success: t('flash.success.provider.removed', provider: provider)}
+  	redirect_back flash: {success: t('flash.success.provider.removed', provider: provider.titleize)}
   end
 
 	alias_method :twitter, 			 :create
@@ -81,7 +81,7 @@ class AuthentificationsController < ApplicationController
     end
 
     def create_auth(user)
-      user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, utoken: auth_hash.credentials.token, usecret: auth_secret)
+      user.authentifications.create(provider: auth_hash.provider.to_s.gsub('google_oauth2', 'google'), uid: auth_hash.uid, url: auth_url, utoken: auth_hash.credentials.token, usecret: auth_secret)
       user
     end
 
@@ -93,7 +93,7 @@ class AuthentificationsController < ApplicationController
           auth_hash.info.urls.public_profile
         when 'facebook'
           auth_hash.info.urls.Facebook
-        when 'google_oauth2'
+        when 'google'
           auth_hash.extra.raw_info.link
       end
     end
@@ -102,12 +102,14 @@ class AuthentificationsController < ApplicationController
       case auth_hash.provider
         when 'linkedin', 'twitter'
           auth_hash.credentials.secret
-        when 'facebook', 'google_oauth2'
+        when 'facebook', 'google'
           ''
       end
     end
 
     def auth_hash
-      request.env['omniauth.auth']
+      auth_hash = request.env['omniauth.auth']
+      auth_hash.provider.gsub!('google_oauth2', 'google')
+      auth_hash
     end
 end

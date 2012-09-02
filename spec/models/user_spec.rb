@@ -154,9 +154,9 @@ describe User do
       @user.auth('twitter').id.should == @auth.id
     end
 
-    it 'google_oauth2' do
-      auth = FactoryGirl.create :authentification, user: @user, provider:'google_oauth2'
-      @user.auth('google_oauth2').id.should == auth.id
+    it 'google' do
+      auth = FactoryGirl.create :authentification, user: @user, provider:'google'
+      @user.auth('google').id.should == auth.id
     end
   end
 end
