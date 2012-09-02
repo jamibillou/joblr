@@ -22,7 +22,7 @@ class AuthentificationsController < ApplicationController
 
   def destroy
   	current_user.authentifications.find(params[:id]).destroy
-  	redirect_to edit_user_path(current_user), flash: {success: t('flash.success.provider.removed')}
+  	redirect_back flash: {success: t('flash.success.provider.removed')}
   end
 
 	alias_method :twitter, 			 :create

@@ -35,8 +35,8 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, flash: {error: t('flash.error.only.admin')} unless user_signed_in? && current_user.admin
     end
 
-    def redirect_back
-      redirect_to :back
+    def redirect_back(flash = {})
+      redirect_to :back, flash
     rescue ActionController::RedirectBackError
       redirect_to root_path
     end
