@@ -4,8 +4,10 @@ en:
       title: 'Share your profile'
     create:
       title: 'Share your profile'
-    fullname_label: 'Recipient full name'
-    email_label: 'Recipient email address'
+    author_fullname_label: 'Your full name'
+    author_email_label: 'Your email address'
+    recipient_fullname_label: 'Recipient full name'
+    recipient_email_label: 'Recipient email address'
     text_label: 'Personal message'
     email_text: "e.g. Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."
     social_title: "%{fullname} on joblr"

@@ -5,13 +5,24 @@
       .well#sharing
         = form_for @email_sharing do |f|
           .row-fluid
-            .span11
-              %small= t 'email_sharings.fullname_label'
+            - unless user_signed_in?            
+              .span6
+                %small= t 'email_sharings.author_fullname_label'
+                %span.danger-text= link_to '*', '#required'
+                %br/
+                = f.text_field :author_fullname, class: 'input-medium'
+                %br/
+                %small= t 'email_sharings.author_email_label'
+                %span.danger-text= link_to '*', '#required'
+                %br/
+                = f.email_field :author_email, class: 'input-medium'       
+            .span5
+              %small= t 'email_sharings.recipient_fullname_label'
               %span.danger-text= link_to '*', '#required'
               %br/
               = f.text_field :recipient_fullname, class: 'input-medium'
               %br/
-              %small= t 'email_sharings.email_label'
+              %small= t 'email_sharings.recipient_email_label'
               %span.danger-text= link_to '*', '#required'
               %br/
               = f.email_field :recipient_email, class: 'input-medium'
