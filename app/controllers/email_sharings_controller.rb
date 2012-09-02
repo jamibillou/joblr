@@ -13,7 +13,7 @@ class EmailSharingsController < ApplicationController
       flash[:error] = error_messages(@email_sharing)
       render :new, id: @user.id
 		else
-			UserMailer.share_profile(@email_sharing).deliver
+			UserMailer.share_profile(@email_sharing,@user).deliver
 	  	redirect_to @user, flash: {success: t('flash.success.profile.shared')}
 		end
 	end
