@@ -31,6 +31,14 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, flash: {error: t('flash.error.only.public')} if user_signed_in?
     end
 
+    def access_to_profile
+      if @user.nil?
+        redirect_to root_path, flash: {error: t('flash.error.unknown.profile')}
+      elsif !user_signed_in? && @user.profile.nil?
+        redirect_to root_path, flash: {error: t('flash.error.only.signed_in')}
+      end
+    end
+
     def admin_user
       redirect_to root_path, flash: {error: t('flash.error.only.admin')} unless user_signed_in? && current_user.admin
     end

@@ -1,0 +1,48 @@
+.span3.hidden-phone
+.span5
+  .row-fluid
+    .span12
+      .well#sharing
+        = form_for @email_sharing do |f|
+          .row-fluid
+            - unless user_signed_in?            
+              .span6
+                %small= t 'email_sharings.author_fullname_label'
+                %span.danger-text= link_to '*', '#required'
+                %br/
+                = f.text_field :author_fullname, class: 'input-medium'
+                %br/
+                %small= t 'email_sharings.author_email_label'
+                %span.danger-text= link_to '*', '#required'
+                %br/
+                = f.email_field :author_email, class: 'input-medium'       
+            .span5
+              %small= t 'email_sharings.recipient_fullname_label'
+              %span.danger-text= link_to '*', '#required'
+              %br/
+              = f.text_field :recipient_fullname, class: 'input-medium'
+              %br/
+              %small= t 'email_sharings.recipient_email_label'
+              %span.danger-text= link_to '*', '#required'
+              %br/
+              = f.email_field :recipient_email, class: 'input-medium'
+          .row-fluid
+            .span11
+              %small= t 'email_sharings.text'
+              %br/
+              = f.text_area :text, rows: 3, placeholder: t('email_sharings.email_text')
+              %input{type: 'hidden', name: 'user_id', value: @user.id}
+              %br/
+              %br/
+              %a= link_to t('cancel'), @user, class: 'btn'
+              = f.submit t('email_sharings.send'), class:'btn btn-primary'
+              .pull-right.danger-text * required fields
+        .arrow-bottom
+  .row-fluid
+    .span12
+      .well#profile
+        = render 'users/show_identity',             user: @user
+        = render 'users/show_experience_education', user: @user
+        = render 'users/show_skills',               user: @user
+        = render 'users/show_qualities',            user: @user
+        = render 'users/show_more',                 user: @user

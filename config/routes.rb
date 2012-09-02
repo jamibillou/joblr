@@ -10,6 +10,7 @@ Joblr::Application.routes.draw do
 
   resources :authentifications, only: [:destroy]
   resources :sharings,          only: [:new, :create]
+  resources :email_sharings,    only: [:new, :create]
   resources :beta_invites, except: :index do
     get :thank_you
     get :send_code

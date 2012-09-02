@@ -38,6 +38,16 @@ FactoryGirl.define do
     association :recipient
   end
 
+  factory :email_sharing do
+    text 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores'
+    association :author
+    association :profile
+    author_fullname 'Barack Obama'
+    author_email 'b.obama@gov.us'
+    recipient_fullname 'Jane Doe'
+    recipient_email 'jane.doe@example.com'
+  end
+
   factory :beta_invite do
     email 'jdoe@example.com'
     association :user

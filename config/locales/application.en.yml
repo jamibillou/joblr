@@ -36,6 +36,7 @@ en:
         member: "Please fill in your profile before accessing this page."
         public: "You cannot access this page, you need to sign out first."
         admin: "You cannot access this page, administrators only."
+        signed_in: "You cannot access this page, you need to be signed in."
       beta_invite:
         inexistant: "This invitation doesn't exist."
         code_inexistant: "This invitation code doesn't exist. Do you mind double ckecking?"
@@ -47,6 +48,8 @@ en:
       text:
         blank: "Text can't be blank."
         long: "Text is too long (maximum: 140 characters)"
+      unknown:
+        profile: "This page doesn't match to a known profile."
   errors:
     error_404:
       title: "Sorry, we couldn't find the content you were looking for"
