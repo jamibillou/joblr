@@ -7,9 +7,10 @@ en:
       user:
         destroyed: 'User destroyed successfully.'
       provider:
+        signed_in: "Successfully signed in with %{provider}."
         added:  "Your %{provider} account was added successfully."
         imported: "Your information was imported successfully from %{provider}."
-        removed: "Your %{provider} account was removed successfully."
+        removed: "Your social account was removed successfully."
       profile:
         created: 'Profile created successfully.'
         updated: 'Profile updated successfully.'
@@ -24,11 +25,13 @@ en:
       something_wrong:
         base: "Oops, something went wrong."
         auth: "Something went wrong when trying to add your account."
-      social:
-        user_not_found: "We didn't find any user matching your %{provider} account, try signing in with another social account."
+      provider:
+        already_linked: "This %{provider} account is already linked to your profile."
+        other_user: "This %{provider} account is already linked to another user's profile."
+        other_user_signed_up: "There already is a user matching your %{provider} account, did you mean to sign in?"
+        no_user: "We couldn't find any user matching your %{provider} account. Did you sign up with another service?"
       other_user:
         profile: "You can't edit another user's profile."
-        provider: "This %{provider} account is already used by another user."
       only:
         member: "Please fill in your profile before accessing this page."
         public: "You cannot access this page, you need to sign out first."

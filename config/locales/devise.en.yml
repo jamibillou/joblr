@@ -79,9 +79,6 @@ en:
       yes_cancel: "Are you sure you want to cancel your account?"
       didnt_mean_to: "Didn't mean to signup?"
       update: 'Update'
-    omniauth_callbacks:
-      success: 'Successfully signed in with %{provider}.'
-      failure: 'Could not sign you in with %{provider} because "%{reason}".'
     omniauth:
       add_accounts: "Link your social profiles to easily login and share"
       add_account: 'Add your %{provider} account'

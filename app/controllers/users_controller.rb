@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  before_filter :reset_linkedin_session, only: :update
-
   before_filter :find_user,              unless: :has_subdomain
   before_filter :find_subdomain_user,    if: :has_subdomain
   before_filter :signed_up,              only: :show
@@ -16,11 +14,7 @@ class UsersController < ApplicationController
     unless signed_up?(@user)
       @title = t('users.edit.title_alt')
       @user.profiles.build
-      unless @user.has_auth?('linkedin')
-        session[:linkedin_import] = true
-      else
-        @linkedin = @user.auth('linkedin').profile
-      end
+      @linkedin = @user.auth('linkedin').profile if @user.has_auth?('linkedin')
     end
   end
 
@@ -58,10 +52,6 @@ class UsersController < ApplicationController
         @user.email = session[:beta_invite][:email] if @user.email.blank?
         session[:beta_invite] = nil
       end
-    end
-
-    def reset_linkedin_session
-      session[:linkedin_import] = nil if session[:linkedin_import]
     end
 
     # FIX ME!
