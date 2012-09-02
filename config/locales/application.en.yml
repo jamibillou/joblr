@@ -10,7 +10,7 @@ en:
         signed_in: "Successfully signed in with %{provider}."
         added:  "Your %{provider} account was added successfully."
         imported: "Your information was imported successfully from %{provider}."
-        removed: "Your social account was removed successfully."
+        removed: "Your %{provider} account was removed successfully."
       profile:
         created: 'Profile created successfully.'
         updated: 'Profile updated successfully.'
