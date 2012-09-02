@@ -1,4 +1,4 @@
 - unless user.authentifications.empty?
   - user.authentifications.each do |auth|
-    - button = "<i class='icon-#{auth.provider.to_s}#{'-plus' if auth.provider.to_s == 'google'}'></i>&nbsp;&nbsp;#{auth.provider.to_s}"
-    = link_to button.html_safe, auth.url, title: t('users.show.view_social', fullname: "#{user.fullname}", provider: auth.provider.to_s.titleize), target:'_new', class: "btn #{size} btn-#{auth.provider.to_s}"
+    - button = "<i class='icon-#{auth.provider.to_s.gsub('_oauth2','-plus')}'></i>&nbsp;&nbsp;#{auth.provider.to_s.split('_')[0].titleize}"
+    = link_to button.html_safe, auth.url, title: t('users.show.view_social', fullname: "#{user.fullname}", provider: "#{auth.provider.to_s.split('_')[0].titleize}"), target:'_new', class: "btn #{size} btn-#{auth.provider.to_s.split('_')[0]}"

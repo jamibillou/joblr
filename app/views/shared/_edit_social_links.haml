@@ -1,10 +1,10 @@
 - unless !user_signed_in? || user.authentifications.empty?
   - user.authentifications.each do |auth|
-    - button = "<i class='icon-#{auth.provider.to_s}#{'-plus' if auth.provider.to_s == 'google'}'></i>&nbsp;&nbsp;#{auth.provider.to_s}"
-    = link_to button.html_safe, authentification_path(auth), method: :delete, title: t('devise.omniauth.remove_account', provider: auth.provider.to_s.titleize), class: "btn #{size} btn-#{auth.provider.to_s} active"
+    - button = "<i class='icon-#{auth.provider.to_s.gsub('_oauth2','-plus')}'></i>&nbsp;&nbsp;#{auth.provider.to_s.split('_')[0].titleize}"
+    = link_to button.html_safe, authentification_path(auth), method: :delete, title: t('devise.omniauth.remove_account', provider: "#{auth.provider.to_s.split('_')[0].titleize}"), class: "btn #{size} btn-#{auth.provider.to_s.split('_')[0]} active"
 
 - unless user.has_auth? :all
   - %w(twitter linkedin facebook google).each do |provider|
     - unless user.has_auth? provider
-      - button = "<i class='icon-#{provider}#{'-plus' if provider == 'google'}'></i>&nbsp;&nbsp;#{provider}"
-      = link_to button.html_safe, omniauth_authorize_path(user, provider.gsub('google','google_oauth2')), title: t('devise.omniauth.add_account', provider: provider.titleize), class: "btn #{size} btn-#{provider}"
+      - button = "<i class='icon-#{provider.gsub('_oauth2','-plus')}'></i>&nbsp;&nbsp;#{provider.split('_')[0].titleize}"
+      = link_to button.html_safe, omniauth_authorize_path(user, provider), title: t('devise.omniauth.add_account', provider: "#{provider.split('_')[0].titleize}"), class: "btn #{size} btn-#{provider.split('_')[0]}"
