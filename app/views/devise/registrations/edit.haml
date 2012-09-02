@@ -41,7 +41,7 @@
 				.span1.visible-tablet
 				.span5
 					%h4= t('devise.omniauth.add_accounts')
-					= render partial: 'devise/shared/omniauth_links'
+					= render 'shared/edit_social_links', user: resource, size: ''
 					%br/
 					%br/
 					%br/

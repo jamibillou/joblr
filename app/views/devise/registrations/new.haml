@@ -34,7 +34,7 @@
         .span1.visible-tablet
         .span5
           %h4= t('devise.registrations.skip_and_signin')
-          = render partial: 'devise/shared/omniauth_links'
+          = render 'shared/edit_social_links', user: resource, size: ''
           %br/
           %br/
           %br/
