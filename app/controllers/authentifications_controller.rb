@@ -24,11 +24,7 @@ class AuthentificationsController < ApplicationController
   	auth = current_user.authentifications.find(params[:id])
     provider = auth.provider
     auth.destroy
-<<<<<<< HEAD
-  	redirect_back flash: {success: t('flash.success.provider.removed', provider: provider.titleize)}
-=======
   	redirect_back flash: {success: t('flash.success.provider.removed', provider: humanize(provider))}
->>>>>>> 801c9dd8e041e11774fb131220745db2eea21928
   end
 
 	alias_method :twitter, 			 :create
