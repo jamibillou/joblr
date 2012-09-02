@@ -7,9 +7,9 @@ class AuthentificationsController < ApplicationController
       if user_signed_in?
       	user = create_auth(current_user)
       else
-        if session[:devise_controller] == 'registrations'
+        if env['omniauth.origin'].include? 'sign_up'
           user = find_or_create_user_and_auth(make_username(auth_hash.info.nickname, auth_hash.info.name))
-        elsif session[:devise_controller] == 'sessions'
+        elsif env['omniauth.origin'].include? 'sign_in'
           redirect_to new_user_session_path, flash: {error: t('flash.error.social.user_not_found', provider: auth_hash.provider.titleize)}
         end
       end
@@ -52,11 +52,7 @@ class AuthentificationsController < ApplicationController
         else
           flash[:error] = t('flash.error.other_user.provider', provider: auth_hash.provider.titleize)
         end
-        if session[:user_return_to]
-          redirect_to(session[:user_return_to]) ; session[:user_return_to] = nil
-        else
-          redirect_to_back
-        end
+        redirect_to env['omniauth.origin']
       else
         sign_in user
         redirect_to root_path, flash: {success: t('devise.omniauth_callbacks.success', provider: auth_hash.provider.titleize)}

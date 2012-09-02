@@ -1,7 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
 
   before_filter :check_beta_invite,  only: :new
-  before_filter :set_devise_session, only: :new
   before_filter :signed_up,          only: :edit
   before_filter :ignore_blank_email, only: :update
 
@@ -23,10 +22,6 @@ class RegistrationsController < Devise::RegistrationsController
 
     def check_beta_invite
       redirect_to new_beta_invite_path, flash: {error: t('flash.error.beta_invite.required')} unless session[:beta_invite]
-    end
-
-    def set_devise_session
-      session[:devise_controller] = 'registrations'
     end
 
     def ignore_blank_email

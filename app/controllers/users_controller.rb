@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-  before_filter :reset_devise_session
   before_filter :reset_linkedin_session, only: :update
 
   before_filter :find_user,              unless: :has_subdomain

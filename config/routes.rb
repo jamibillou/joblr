@@ -6,7 +6,7 @@ Joblr::Application.routes.draw do
   match '/404', to: 'errors#error_404'
   match '/500', to: 'errors#error_500'
 
-  devise_for :users, controllers: {omniauth_callbacks: 'authentifications', registrations: 'registrations', sessions: 'sessions'}
+  devise_for :users, controllers: {omniauth_callbacks: 'authentifications', registrations: 'registrations'}
 
   resources :authentifications, only: [:destroy]
   resources :sharings,          only: [:new, :create]
