@@ -1,6 +1,6 @@
 class EmailSharingsController < ApplicationController
 
-	before_filter :find_user, :completed_profile, :signed_up, only: :new
+	before_filter :find_user, :public_access, :user_access, only: :new
 
   def new
 		@email_sharing = EmailSharing.new

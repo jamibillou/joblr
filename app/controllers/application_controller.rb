@@ -27,11 +27,11 @@ class ApplicationController < ActionController::Base
       redirect_back flash: {error: t('flash.error.only.public')} if user_signed_in?
     end
 
-    def signed_up
+    def user_access
       redirect_to(edit_user_path(@user), flash: {error: t('flash.error.only.signed_up')}) unless signed_up?(@user) || !user_signed_in?
     end
 
-    def completed_profile
+    def public_access
       redirect_back flash: {error: t('flash.error.profile.not_complete')} unless signed_up?(@user) || user_signed_in?
     end
 
