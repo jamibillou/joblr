@@ -28,20 +28,18 @@ describe EmailSharingsController do
 
 	describe "GET 'new'" do
 
-		context 'registered user: ' do
+		context 'signed in users' do
 
 			before :each do
 				sign_in @author
 			end
 
-	    context "user hasn't completed his profile" do
+	    context "who haven't completed their profile" do
 
-	      context "no user id is provided" do
-	        it "should redirect to 'edit'" do
-	          get :new
-	          response.should redirect_to edit_user_path(@author)
-	        end
-	      end
+        it "should redirect to 'edit'" do
+          get :new
+          response.should redirect_to edit_user_path(@author)
+        end
 
 	      it "should redirect to 'edit'" do
 	        get :new, id: @author.id
@@ -49,7 +47,7 @@ describe EmailSharingsController do
 	      end
 	    end
 
-	    context 'user has completed his profile' do
+	    context 'who have completed their profile' do
 
 	      before(:each) { @author.profiles.create @profile_attr }
 
@@ -65,16 +63,16 @@ describe EmailSharingsController do
 	        response.should be_success
 	      end
 
-		    it 'should have a card with the author profile' do
+		    it "should have the author's profile" do
 	        get :new, id: @author.id
-		    	response.body.should have_selector 'div', class:'card', id:"show-user-#{@author.id}"
+		    	response.body.should have_selector "div#user-#{@author.id}"
 		    end
 	    end
 		end
 
-		context 'unregistered user: ' do
+		context 'public users' do
 
-	    context "selected user hasn't completed his profile" do
+	    context "who visit a profile that wasn't completed" do
 
 	      context "no user id is provided" do
 	        it "should redirect to the root path" do
@@ -89,7 +87,7 @@ describe EmailSharingsController do
 	      end
 	    end
 
-	    context 'selected user has completed his profile' do
+	    context "who visit a profile that was completed" do
 
 	      before(:each) { @author.profiles.create @profile_attr }
 
@@ -105,9 +103,9 @@ describe EmailSharingsController do
 	        response.should be_success
 	      end
 
-		    it 'should have a card with the selected user profile' do
+		    it 'should have the visited profile' do
 	        get :new, id: @author.id
-		    	response.body.should have_selector 'div', class:'card', id:"show-user-#{@author.id}"
+		    	response.body.should have_selector "div#user-#{@author.id}"
 		    end
 	    end
 		end
@@ -115,7 +113,7 @@ describe EmailSharingsController do
 
 	describe "POST 'create'" do
 
-		context 'registered user: ' do
+		context 'signed in users' do
 			before :each do
 				sign_in @author
 	      @author.profiles.create @profile_attr
@@ -123,7 +121,7 @@ describe EmailSharingsController do
 
 	    it { response.should be_success }
 
-	    context 'user typed an email address and a fullname' do
+	    context 'who provided an email address and full name' do
 
 				it 'should create a new email_sharing object' do
 					lambda do
@@ -137,7 +135,7 @@ describe EmailSharingsController do
 		    end
 	    end
 
-	    context "user didn't fill in any email address" do
+	    context "who didn't provide email address" do
 
 				it 'should not create a new email_sharing object' do
 					lambda do
@@ -151,7 +149,7 @@ describe EmailSharingsController do
 		    end
 	    end
 
-	    context "user didn't fill in any fullname" do
+	    context "who didn't provide any full name" do
 
 	      it 'should not create a new email_sharing object' do
 	        lambda do
@@ -166,14 +164,14 @@ describe EmailSharingsController do
 	    end
 		end
 
-		context 'unregistered user: ' do
+		context 'public users' do
 			before :each do
 	      @author.profiles.create @profile_attr
 			end
 
 	    it { response.should be_success }
 
-	    context 'user filled every fields' do
+	    context 'who provided all info' do
 
 				it 'should create a new email_sharing object' do
 					lambda do
@@ -187,7 +185,7 @@ describe EmailSharingsController do
 		    end
 	    end
 
-	    context "user didn't fill in the author email address" do
+	    context "who didn't provide an author email address" do
 
 				it 'should not create a new email_sharing object' do
 					lambda do
@@ -201,7 +199,7 @@ describe EmailSharingsController do
 		    end
 	    end
 
-	    context "user didn't fill in the author fullname" do
+	    context "who didn't provide an author full name" do
 
 	      it 'should not create a new email_sharing object' do
 	        lambda do
@@ -215,7 +213,7 @@ describe EmailSharingsController do
 	      end
 	    end
 
-	    context "user didn't fill in the recipient email" do
+	    context "who didn't provide a recipient email" do
 
 	      it 'should not create a new email_sharing object' do
 	        lambda do
@@ -229,7 +227,7 @@ describe EmailSharingsController do
 	      end
 	    end
 
-	    context "user didn't fill in the recipient fullname" do
+	    context "who didn't provide a recipient full name" do
 
 	      it 'should not create a new email_sharing object' do
 	        lambda do

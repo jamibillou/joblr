@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def signed_up?(user)
-    !user.profiles.empty? && user.profile.persisted?
+    user && !user.profiles.empty? && user.profile.persisted?
   end
 
   def username_available?(username)
