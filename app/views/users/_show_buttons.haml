@@ -26,6 +26,16 @@
           .icon-facebook
           &nbsp;
           Facebook
+      %li
+        %a{href: "http://www.twitter.com/share?url=#{public_url(user)}&text=#{t('users.show.sharings.title', fullname: user.fullname).gsub(' ','+')}", target: '_blank', title: t('users.show.buttons.share_twitter')}
+          .icon-twitter
+          &nbsp;
+          Twitter
+      %li
+        %a{href: "https://plus.google.com/share?url=#{public_url(user)}", target: '_blank', title: t('users.show.buttons.share_google')}
+          .icon-google-plus
+          &nbsp;
+          Google
 
   .explanation
     - if user_signed_in? && current_user == user && !has_subdomain
