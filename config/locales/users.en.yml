@@ -25,9 +25,10 @@ en:
       explanation_html: "Start sharing %{url} around you now!"
       buttons:
         share_linkedin: "Share on Linkedin"
+        share_facebook: "Share on Facebook"
       sharings:
         motto: 'The online profile that obsoletes the resume & cover letter'
-        linkedin_title: "%{fullname} on Joblr!"
+        title: "%{fullname} on Joblr!"
     index:
       title: 'Users'
     edit:

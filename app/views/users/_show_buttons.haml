@@ -17,10 +17,15 @@
           &nbsp;
           = t 'users.show.email'
       %li
-        %a{href: "http://www.linkedin.com/shareArticle?mini=true&url=#{public_url(user)}&title=#{t('users.show.sharings.linkedin_title', fullname: user.fullname)}&summary=#{t('users.show.sharings.motto')}&source=Joblr", target: '_blank', title: t('users.show.buttons.share_linkedin')}
+        %a{href: "http://www.linkedin.com/shareArticle?mini=true&url=#{public_url(user)}&title=#{t('users.show.sharings.title', fullname: user.fullname)}&summary=#{t('users.show.sharings.motto')}&source=Joblr", target: '_blank', title: t('users.show.buttons.share_linkedin')}
           .icon-linkedin
           &nbsp;
           Linkedin
+      %li
+        %a{href: "http://www.facebook.com/sharer.php?s=100&p[url]=#{public_url(user)}&p[title]=#{t('users.show.sharings.title', fullname: user.fullname)}&p[summary]=#{t('users.show.sharings.motto')}", target: '_blank', title: t('users.show.buttons.share_facebook')}
+          .icon-facebook
+          &nbsp;
+          Facebook
 
   .explanation
     - if user_signed_in? && current_user == user && !has_subdomain
