@@ -14,7 +14,7 @@ describe BetaInvitesController do
 
     it { get :new ; be_success }
 
-    context 'for signed_in users' do
+    context 'for signed in users' do
       it 'should redirect to root_path' do
         sign_in @user
         get :new
@@ -69,6 +69,7 @@ describe BetaInvitesController do
   describe "PUT 'update'" do
 
     context 'with empty or incorrect invitation code' do
+
       it "should redirect to 'edit'" do
         put :update, id: @beta_invite, beta_invite: {code: ''}
         response.should redirect_to edit_beta_invite_path(@beta_invite)
