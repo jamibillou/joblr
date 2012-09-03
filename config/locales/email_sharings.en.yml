@@ -16,6 +16,6 @@ en:
       sure: "Sure!"
       no_thanks: "No thanks"
       whats_this: "What’s this?"
-      explanation: "%{fullname} is looking for a job and wants to talk to you. This profile helps you screen and reply quickly."
+      explanation: "Those two big buttons will be placed in the email we're sending, together with your profile and personal message as you see them here."
     create:
       title: 'Share your profile'
