@@ -22,7 +22,7 @@
           &nbsp;
           Linkedin
       %li
-        %a{href: "http://www.facebook.com/sharer.php?s=100&p[url]=#{public_url(user)}&p[title]=#{t('users.show.sharings.title', fullname: user.fullname)}&p[summary]=#{t('users.show.sharings.motto')}", target: '_blank', title: t('users.show.buttons.share_facebook')}
+        %a{href: "http://www.facebook.com/sharer.php?u=#{public_url(user)}", target: '_blank', title: t('users.show.buttons.share_facebook')}
           .icon-facebook
           &nbsp;
           Facebook
