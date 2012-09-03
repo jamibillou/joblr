@@ -17,7 +17,7 @@
           &nbsp;
           = t 'users.show.email'
       %li
-        %a{href: "http://www.linkedin.com/shareArticle?mini=true&url=http://#{user.subdomain}.#{request.domain}&title=#{t('users.show.sharings.linkedin_title', fullname: user.fullname)}&summary=#{t('users.show.sharings.motto')}&source=Joblr", target: '_blank', title: t('users.show.buttons.share_linkedin')}
+        %a{href: "http://www.linkedin.com/shareArticle?mini=true&url=#{public_url(user)}&title=#{t('users.show.sharings.linkedin_title', fullname: user.fullname)}&summary=#{t('users.show.sharings.motto')}&source=Joblr", target: '_blank', title: t('users.show.buttons.share_linkedin')}
           .icon-linkedin
           &nbsp;
           Linkedin
@@ -25,7 +25,7 @@
   .explanation
     - if user_signed_in? && current_user == user && !has_subdomain
       %h5=t 'users.show.public_profile'
-      %p=t 'users.show.explanation_html', url: link_to("http://#{user.subdomain}.#{request.domain}", "http://#{user.subdomain}.#{request.domain}", target: '_new')
+      %p=t 'users.show.explanation_html', url: link_to(public_url(user), public_url(user), target: '_new')
 
     - else
       %h5 What’s this?
