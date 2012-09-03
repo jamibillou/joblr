@@ -17,7 +17,7 @@
           &nbsp;
           = t 'users.show.email'
       %li
-        %a{href: "http://www.linkedin.com/shareArticle?mini=true&url=#{request.fullpath}&title=#{t('users.show.sharings.linkedin_title', fullname: user.fullname)}&summary=#{t('users.show.sharings.motto')}&source=Joblr", target: '_blank', title: t('users.show.buttons.share_linkedin')}
+        %a{href: "http://www.linkedin.com/shareArticle?mini=true&url=http://#{user.subdomain}.#{request.domain}&title=#{t('users.show.sharings.linkedin_title', fullname: user.fullname)}&summary=#{t('users.show.sharings.motto')}&source=Joblr", target: '_blank', title: t('users.show.buttons.share_linkedin')}
           .icon-linkedin
           &nbsp;
           = t 'Linkedin'
