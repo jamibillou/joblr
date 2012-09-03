@@ -1,7 +1,7 @@
 class EmailSharing < ActiveRecord::Base
   attr_accessible :author_email, :author_fullname, :author_id, :author, :profile_id, :recipient_email, :recipient_fullname, :text
 
-  belongs_to :author,    class_name: 'User', foreign_key: :author_id
+  belongs_to :author, class_name: 'User', foreign_key: :author_id
   belongs_to :profile
 
   validates :author_fullname,    length: { maximum: 100 }, 				      if: :author_required?, presence: true

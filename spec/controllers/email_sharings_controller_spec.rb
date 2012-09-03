@@ -5,8 +5,8 @@ describe EmailSharingsController do
 	render_views
 
 	before :each do
-		@author = FactoryGirl.create :user
-		@recipient = FactoryGirl.create :user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname)
+		@author    = FactoryGirl.create :user
+		@recipient = FactoryGirl.create :user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: FactoryGirl.generate(:email)
 		@profile_attr = { headline: 'fulltime',
                       experience: '5 yrs',
                       last_job: 'Financial director',
@@ -127,7 +127,7 @@ describe EmailSharingsController do
 
 				it 'should create a new email_sharing object' do
 					lambda do
-						post :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id 
+						post :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
 					end.should change(EmailSharing,:count).by 1
 				end
 
@@ -177,7 +177,7 @@ describe EmailSharingsController do
 
 				it 'should create a new email_sharing object' do
 					lambda do
-						post :create, :email_sharing => @email_sharing_attr.merge(author_email: 'author@example.com', author_fullname: 'The Author', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id 
+						post :create, :email_sharing => @email_sharing_attr.merge(author_email: 'author@example.com', author_fullname: 'The Author', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
 					end.should change(EmailSharing,:count).by 1
 				end
 

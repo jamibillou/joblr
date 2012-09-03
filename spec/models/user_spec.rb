@@ -3,14 +3,12 @@ require 'spec_helper'
 describe User do
 
   before :each do
-    @user             = FactoryGirl.create :user
-    @user2            = FactoryGirl.create :user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: FactoryGirl.generate(:email)
-    @auth             = FactoryGirl.create :authentification, user: @user, provider:'twitter'
-    @profile          = FactoryGirl.create :profile, user: @user
-    @beta_invite      = FactoryGirl.create :beta_invite, user: @user
-    @providers        = %w(linkedin twitter facebook google)
-    @authored_sharing = FactoryGirl.create :sharing, author: @user, recipient: @user2
-    @received_sharing = FactoryGirl.create :sharing, author: @user2, recipient: @user
+    @user          = FactoryGirl.create :user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: FactoryGirl.generate(:email)
+    @auth          = FactoryGirl.create :authentification, user: @user, provider:'twitter'
+    @profile       = FactoryGirl.create :profile, user: @user
+    @beta_invite   = FactoryGirl.create :beta_invite, user: @user
+    @providers     = %w(linkedin twitter facebook google)
+    @email_sharing = FactoryGirl.create :email_sharing, author: @user
   end
 
   describe 'authentifications associations' do
@@ -33,15 +31,13 @@ describe User do
     end
   end
 
-  describe 'sharings associations' do
+  describe 'email sharings associations' do
 
-    it { @user.should respond_to :authored_sharings }
-    it { @user.should respond_to :received_sharings }
+    it { @user.should respond_to :authored_email_sharings }
 
     it 'should not destroy associated sharings' do
       @user.destroy
-      Sharing.find_by_id(@authored_sharing.id).should_not be_nil
-      Sharing.find_by_id(@received_sharing.id).should_not be_nil
+      EmailSharing.find_by_id(@email_sharing.id).should_not be_nil
     end
   end
 
@@ -76,7 +72,7 @@ describe User do
     lambda { @email[:invalid].each {|invalid_email| it { should validate_format_of(:email).not_with invalid_email }}}
     lambda { @email[:valid].each   {|valid_email|   it { should validate_format_of(:email).with valid_email }}}
 
-    it { FactoryGirl.build(:user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: @user2.email).should_not be_valid }
+    it { FactoryGirl.build(:user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: @user.email).should_not be_valid }
   end
 
   describe 'image' do
@@ -98,7 +94,8 @@ describe User do
 
     context 'for users without a profile' do
       it 'should be nil' do
-        @user2.profile.should be_nil
+        @profile.destroy
+        @user.profile.should be_nil
       end
     end
 

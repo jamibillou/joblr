@@ -4,6 +4,7 @@ class Profile < ActiveRecord::Base
                   :quality_1, :quality_2, :quality_3, :file, :url, :text, :user_id, :remove_file
 
   belongs_to :user
+  has_many   :email_sharings, dependent: :destroy
 
   validates :user,                                                            presence: true
   validates :headline,       length: { maximum: 100 }, headline_format: true, presence: true

@@ -3,15 +3,10 @@ class User < ActiveRecord::Base
   attr_accessible :fullname, :email, :city, :country, :subdomain, :password, :password_confirmation, :remember_me, :image, :username, :admin,
                   :social, :remove_image, :remote_image_url, :profiles_attributes
 
-  has_many :authentifications,   dependent: :destroy
-  has_many :profiles,            dependent: :destroy
-  
-  has_many :authored_email_sharings,                            class_name: 'EmailSharing', foreign_key: 'author_id'
-  has_many :authored_sharings,                                  class_name: 'Sharing', foreign_key: 'author_id'
-  has_many :received_sharings,                                  class_name: 'Sharing', foreign_key: 'recipient_id'
-  has_many :sharings_authors,    through:   :received_sharings, class_name: 'User',    source:      'author'
-  has_many :sharings_recipients, through:   :authored_sharings, class_name: 'User',    source:      'recipient'
-  has_one  :beta_invite,         dependent: :destroy
+  has_many :authentifications,       dependent:  :destroy
+  has_many :profiles,                dependent:  :destroy
+  has_many :authored_email_sharings, class_name: 'EmailSharing', foreign_key: 'author_id'
+  has_one  :beta_invite,             dependent:  :destroy
 
   accepts_nested_attributes_for :profiles, allow_destroy: true
 

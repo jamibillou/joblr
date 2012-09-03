@@ -3,8 +3,9 @@ require 'spec_helper'
 describe Profile do
 
   before :each do
-    @user = FactoryGirl.create :user
-    @profile = FactoryGirl.create :profile, user: @user
+    @user          = FactoryGirl.create :user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: FactoryGirl.generate(:email)
+    @profile       = FactoryGirl.create :profile, user: @user
+    @email_sharing = FactoryGirl.create :email_sharing, author: @user, profile: @profile
     @attr = { headline: 'fulltime',
               experience: '5 yrs',
               last_job: 'Financial director',
@@ -38,6 +39,16 @@ describe Profile do
     it 'should not destroy associated user' do
       @profile.destroy
       User.find_by_id(@user.id).should_not be_nil
+    end
+  end
+
+  describe 'email sharings associations' do
+
+    it { @profile.should respond_to :email_sharings }
+
+    it 'should destroy associated sharings' do
+      @profile.destroy
+      EmailSharing.find_by_id(@email_sharing.id).should be_nil
     end
   end
 
