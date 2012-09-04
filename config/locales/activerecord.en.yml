@@ -11,12 +11,13 @@ en:
         fullname: "Full name"
         email: "Email address"
         username: "Username"
-        image: Profile picture"
+        image: "Profile picture"
         city: "City"
         country: "Country"
         subdomain: "Subdomain"
-        profiles:
-          
+      user/profiles:
+        text: "Goals or motto"
+        url: "Website or blog"
       profile:
         id: "Identifier"
         user_id: "User's identifier"
@@ -50,6 +51,10 @@ en:
         user_id: "User's identifier"
         code: "Code"
         email: "Email address"
+      email_sharing:
+        text: "Personal message"
+        author_email: "Your email"
+        author_fullname: "Your fullname"
     errors:
       messages:
         level_format: 'is not formatted properly (Beginner, Intermediate, Advanced or Expert)'
