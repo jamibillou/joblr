@@ -10,5 +10,5 @@
       = t('cancel')
     .explanation
       %h5=t 'users.edit.public_profile'
-      %p=t 'users.edit.explanation_html', url: link_to("http://#{@user.subdomain}.#{request.domain}", "http://#{@user.subdomain}.#{request.domain}")
+      %p=t 'users.edit.explanation_html', url: link_to(@user.public_url, @user.public_url)
       = f.text_field :subdomain, class:'input-medium'

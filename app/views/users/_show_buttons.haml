@@ -17,22 +17,22 @@
           &nbsp;
           = t 'users.show.email'
       %li
-        %a{href: "http://www.linkedin.com/shareArticle?mini=true&url=#{public_url(user)}&title=#{t('users.show.sharings.title', fullname: user.fullname)}&summary=#{t('users.show.sharings.motto')}&source=Joblr", target: '_blank', title: t('users.show.buttons.share_linkedin')}
+        %a{href: "http://www.linkedin.com/shareArticle?mini=true&url=#{user.public_url}&title=#{t('users.show.sharings.title', fullname: user.fullname)}&summary=#{t('users.show.sharings.motto')}&source=Joblr", target: '_blank', title: t('users.show.buttons.share_linkedin')}
           .icon-linkedin
           &nbsp;
           Linkedin
       %li
-        %a{href: "http://www.facebook.com/sharer.php?u=#{public_url(user)}", target: '_blank', title: t('users.show.buttons.share_facebook')}
+        %a{href: "http://www.facebook.com/sharer.php?u=#{user.public_url}", target: '_blank', title: t('users.show.buttons.share_facebook')}
           .icon-facebook
           &nbsp;
           Facebook
       %li
-        %a{href: "http://www.twitter.com/share?url=#{public_url(user)}&text=#{t('users.show.sharings.title', fullname: user.fullname).gsub(' ','+')}", target: '_blank', title: t('users.show.buttons.share_twitter')}
+        %a{href: "http://www.twitter.com/share?url=#{user.public_url}&text=#{t('users.show.sharings.title', fullname: user.fullname).gsub(' ','+')}", target: '_blank', title: t('users.show.buttons.share_twitter')}
           .icon-twitter
           &nbsp;
           Twitter
       %li
-        %a{href: "https://plus.google.com/share?url=#{public_url(user)}", target: '_blank', title: t('users.show.buttons.share_google')}
+        %a{href: "https://plus.google.com/share?url=#{user.public_url}", target: '_blank', title: t('users.show.buttons.share_google')}
           .icon-google-plus
           &nbsp;
           Google
@@ -40,7 +40,7 @@
   .explanation
     - if user_signed_in? && current_user == user && !has_subdomain
       %h5=t 'users.show.public_profile'
-      %p=t 'users.show.explanation_html', url: link_to(public_url(user), public_url(user), target: '_new')
+      %p=t 'users.show.explanation_html', url: link_to(user.public_url, user.public_url, target: '_new')
 
     - else
       %h5 What’s this?

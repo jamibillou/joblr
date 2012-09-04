@@ -59,6 +59,10 @@ class User < ActiveRecord::Base
     profile.nil? ? [] : profile.email_sharings
   end
 
+  def public_url
+    "http://#{subdomain}.joblr.co"
+  end
+
   private
 
     def update_with_password(params, *options)

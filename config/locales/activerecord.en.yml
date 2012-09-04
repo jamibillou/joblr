@@ -15,6 +15,8 @@ en:
         city: "City"
         country: "Country"
         subdomain: "Subdomain"
+        profiles:
+          
       profile:
         id: "Identifier"
         user_id: "User's identifier"

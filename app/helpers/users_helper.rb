@@ -13,8 +13,4 @@ module UsersHelper
       linkedin_profile[attribute]
     end
   end
-
-  def public_url(user)
-    "http://#{user.subdomain}.#{request.domain}"
-  end
 end
