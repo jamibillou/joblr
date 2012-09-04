@@ -45,8 +45,4 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, flash
     ensure
     end
-
-    def never_updated?(object)
-      object.created_at == object.updated_at
-    end
 end

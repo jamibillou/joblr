@@ -38,11 +38,13 @@ describe EmailSharingsController do
         it "should redirect to 'edit'" do
           get :new
           response.should redirect_to edit_user_path(@author)
+          flash[:error].should == I18n.t('flash.error.only.signed_up')
         end
 
 	      it "should redirect to 'edit'" do
 	        get :new, id: @author.id
 	        response.should redirect_to edit_user_path(@author)
+	        flash[:error].should == I18n.t('flash.error.only.signed_up')
 	      end
 	    end
 
@@ -77,12 +79,14 @@ describe EmailSharingsController do
 	        it "should redirect to the root path" do
 	          get :new
 	          response.should redirect_to root_path
+	          flash[:error].should == I18n.t('flash.error.profile.not_complete')
 	        end
 	      end
 
 	      it "should redirect to the root path" do
 	        get :new, id: @author.id
 	        response.should redirect_to root_path
+	        flash[:error].should == I18n.t('flash.error.profile.not_complete')
 	      end
 	    end
 
@@ -94,6 +98,7 @@ describe EmailSharingsController do
 	        it "should redirect to the root path" do
 	          get :new
 	          response.should redirect_to root_path
+	          flash[:error].should == I18n.t('flash.error.profile.not_complete')
 	        end
 	      end
 
@@ -131,6 +136,7 @@ describe EmailSharingsController do
 		    it "should redirect to user's profile" do
 		    	post :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
 		    	response.should redirect_to @author
+		    	flash[:success].should == I18n.t('flash.success.profile.shared')
 		    end
 	    end
 
@@ -181,6 +187,7 @@ describe EmailSharingsController do
 		    it "should redirect to user's profile" do
 		    	post :create, :email_sharing => @email_sharing_attr.merge(author_email: 'author@example.com', author_fullname: 'The Author', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
 		    	response.should redirect_to @author
+		    	flash[:success].should == I18n.t('flash.success.profile.shared')
 		    end
 	    end
 

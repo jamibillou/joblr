@@ -19,6 +19,7 @@ describe BetaInvitesController do
         sign_in @user
         get :new
         response.should redirect_to(root_path)
+        flash[:error].should == I18n.t('flash.error.only.public')
       end
     end
 
@@ -57,6 +58,7 @@ describe BetaInvitesController do
         sign_in @user
         get :edit, id: @beta_invite
         response.should redirect_to(root_path)
+        flash[:error].should == I18n.t('flash.error.only.public')
       end
     end
 
@@ -73,11 +75,13 @@ describe BetaInvitesController do
       it "should redirect to 'edit'" do
         put :update, id: @beta_invite, beta_invite: {code: ''}
         response.should redirect_to edit_beta_invite_path(@beta_invite)
+        flash[:error].should == I18n.t('flash.error.beta_invite.code_inexistant')
       end
 
       it "should redirect to 'edit'" do
         put :update, id: @beta_invite, beta_invite: {code: 'pouet'}
         response.should redirect_to edit_beta_invite_path(@beta_invite)
+        flash[:error].should == I18n.t('flash.error.beta_invite.code_inexistant')
       end
     end
 
@@ -86,6 +90,7 @@ describe BetaInvitesController do
         @beta_invite.user = @user ; @beta_invite.save!
         put :update, id: @beta_invite, beta_invite: {code: @beta_invite.code}
         response.should redirect_to(new_beta_invite_path)
+        flash[:error].should == I18n.t('flash.error.beta_invite.used')
       end
     end
 
@@ -97,6 +102,7 @@ describe BetaInvitesController do
     it 'should redirect to sign_up' do
       put :update, id: @beta_invite, beta_invite: {code: @beta_invite.code}
       response.should redirect_to(new_user_registration_path)
+      flash[:success].should == I18n.t('flash.success.beta_invite.ok')
     end
   end
 end

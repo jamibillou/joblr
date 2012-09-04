@@ -13,4 +13,17 @@ module UsersHelper
       linkedin_profile[attribute]
     end
   end
+
+  def social_sharing_url(user,network)
+    case network
+      when 'linkedin'
+        "http://www.linkedin.com/shareArticle?mini=true&url=#{user.public_url}&title=#{t('users.show.sharings.title', fullname: user.fullname)}&summary=#{t('users.show.sharings.motto')}&source=Joblr"
+      when 'facebook'
+        "http://www.facebook.com/sharer.php?u=#{user.public_url}"
+      when 'twitter'
+        "http://www.twitter.com/share?url=#{user.public_url}&text=#{t('users.show.sharings.title', fullname: user.fullname).gsub(' ','+')}"
+      when 'google'
+        "https://plus.google.com/share?url=#{user.public_url}"
+    end
+  end
 end

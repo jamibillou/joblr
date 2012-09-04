@@ -43,7 +43,8 @@ $ ->
   $('#image-modal .social.pic').each ->
     $(this).click -> toggleAuthImage($(this).attr('id'))
 
-
+  $('.modal-footer a.btn-primary').each ->
+    $(this).click -> closeImageModal()
 
 # Adds <div class='field_with_errors'> around what's in the given div
 # -------------------------------------------------------------------
@@ -95,3 +96,14 @@ $ ->
   $('.social.pic.selected').each -> $(this).toggleClass('selected') if $(this).attr('id') isnt imageId
   $('#'+imageId).toggleClass('selected')
   $('#remote_image_url').val(authImageUrl)
+
+
+# Display the selected picture (or default picture when unselect or delete) in the profile and close the modal
+# ------------------------------------------------------------------------------------------------------------
+
+@closeImageModal = ->
+  $('#image-modal').modal('hide')
+  if $('#remote_image_url').val() is '' and $('#profile-picture').attr('src').indexOf("default") >= 0 or $('input:checked').length is 1
+    $('#profile-picture').attr('src','../../assets/default_user.jpg')
+  else
+    $('#profile-picture').attr('src',$('#remote_image_url').val())
