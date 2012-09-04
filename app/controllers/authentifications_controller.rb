@@ -17,14 +17,14 @@ class AuthentificationsController < ApplicationController
   end
 
   def failure
-  	redirect_to root_path, flash: {error: t('flash.error.something_wrong.auth')}
+  	redirect_to auth_origin, flash: {error: t('flash.error.something_wrong.auth')}
   end
 
   def destroy
   	auth = Authentification.find(params[:id])
     provider = auth.provider
     auth.destroy
-  	redirect_back flash: {success: t('flash.success.provider.removed', provider: humanize(provider))}
+  	redirect_to_back flash: {success: t('flash.success.provider.removed', provider: humanize(provider))}
   end
 
 	alias_method :twitter, 			 :create
@@ -36,41 +36,41 @@ class AuthentificationsController < ApplicationController
 
     def already_linked(user)
       if user == current_user
-        error = 'flash.error.provider.already_linked'
+        flash[:error] = t('flash.error.provider.already_linked', provider: humanize(auth_hash.provider))
       else
-        error = 'flash.error.provider.other_user'
+        flash[:error] = t('flash.error.provider.other_user', provider: humanize(auth_hash.provider))
       end
-      redirect_to env['omniauth.origin'], flash: {error: t(error, provider: humanize(auth_hash.provider))}
+      redirect_to auth_origin
     end
 
     def add_auth
       create_auth(current_user)
-      redirect_to env['omniauth.origin'], flash: {success: t("flash.success.provider.#{add_auth_message(current_user)}", provider: humanize(auth_hash.provider))}
+      redirect_to auth_origin, flash: {success: t("flash.success.provider.#{add_auth_message(current_user)}", provider: humanize(auth_hash.provider))}
     end
 
     def add_auth_message(user)
-      if env['omniauth.origin'].include?(edit_user_path(user)) && auth_hash.provider == 'linkedin' && !signed_up?(user) then 'imported' else 'added' end
+      if auth_origin.include?(edit_user_path(user)) && auth_hash.provider == 'linkedin' && !signed_up?(user) then 'imported' else 'added' end
     end
 
     def social_sign_in(auth)
-      if env['omniauth.origin'].include? new_user_session_path
+      if auth_origin.include? new_user_session_path
         sign_in auth.user
         redirect_path   = root_path
         flash[:success] = t('flash.success.provider.signed_in', provider: humanize(auth_hash.provider))
       else
-        redirect_path = env['omniauth.origin']
+        redirect_path = auth_origin
         flash[:error] = t('flash.error.provider.other_user_signed_up', provider: humanize(auth_hash.provider))
       end
       redirect_to redirect_path
     end
 
     def social_sign_up
-      if env['omniauth.origin'].include? new_user_registration_path
+      if auth_origin.include? new_user_registration_path
         sign_in create_user_auth(make_username(auth_hash.info.nickname, auth_hash.info.name))
         redirect_path   = root_path
         flash[:success] = t('flash.success.provider.signed_in', provider: humanize(auth_hash.provider))
       else
-        redirect_path = env['omniauth.origin']
+        redirect_path = auth_origin
         flash[:error] = t('flash.error.provider.no_user', provider: humanize(auth_hash.provider))
       end
       redirect_to redirect_path
@@ -111,13 +111,21 @@ class AuthentificationsController < ApplicationController
       end
     end
 
-    def humanize(provider)
-      provider.gsub('google_oauth2', 'google').titleize
-    end
-
     def auth_hash
       auth_hash = request.env['omniauth.auth']
       auth_hash.provider.gsub!('google_oauth2', 'google')
       auth_hash
+    end
+
+    def auth_origin
+      unless request.env['omniauth.origin'].nil?
+        request.env['omniauth.origin']
+      else
+        root_path
+      end
+    end
+
+    def humanize(provider)
+      provider.gsub('google_oauth2', 'google').titleize
     end
 end

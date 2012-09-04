@@ -38,6 +38,8 @@ describe AuthentificationsController do
           end
 
           it 'have an error alert message' do
+            # Capybara bug, this should actually work
+            #
             # find('div.alert.alert-error span').should have_content I18n.t('flash.error.provider.already_linked', provider: 'twitter')
             find('div.alert.alert-error span').should have_content "This Twitter account is already linked to your profile."
           end
@@ -56,6 +58,8 @@ describe AuthentificationsController do
           end
 
           it 'have an error alert message' do
+            # Capybara bug, this should actually work
+            #
             # find('div.alert.alert-error span').should have_content I18n.t('flash.error.provider.other_user', provider: 'twitter')
             find('div.alert.alert-error span').should have_content "This Twitter account is already linked to another user's profile."
           end
@@ -83,6 +87,8 @@ describe AuthentificationsController do
           request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '123456'})
           visit edit_user_path(@user)
           visit user_omniauth_authorize_path('twitter')
+          # Capybara bug, this should actually work
+          #
           # find('div.alert.alert-success span').should have_content I18n.t('flash.success.provider.added', provider: 'twitter')
           find('div.alert.alert-success span').should have_content "Your Twitter account was added successfully."
         end
@@ -111,6 +117,8 @@ describe AuthentificationsController do
           end
 
           it 'have a success alert message' do
+            # Capybara bug, this should actually work
+            #
             # find('div.alert.alert-success span').should have_content I18n.t('flash.success.provider.signed_in', provider: 'twitter')
             find('div.alert.alert-success span').should have_content "Successfully signed in with Twitter."
           end
@@ -132,6 +140,8 @@ describe AuthentificationsController do
           end
 
           it 'have an error alert message' do
+            # Capybara bug, this should actually work
+            #
             # find('div.alert.alert-error span').should have_content I18n.t('flash.error.provider.other_user_signed_up', provider: 'twitter')
             find('div.alert.alert-error span').should have_content "There already is a user matching your Twitter account, did you mean to sign in?"
           end
@@ -153,6 +163,8 @@ describe AuthentificationsController do
           end
 
           it 'have an error alert message' do
+            # Capybara bug, this should actually work
+            #
             # find('div.alert.alert-error span').should have_content I18n.t('flash.error.provider.no_user', provider: 'twitter')
             find('div.alert.alert-error span').should have_content "We couldn't find any user matching your Twitter account. Did you sign up with another service?"
           end
@@ -197,6 +209,8 @@ describe AuthentificationsController do
           it 'have a success alert message' do
             request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
             visit user_omniauth_authorize_path('twitter')
+            # Capybara bug, this should actually work
+            #
             # find('div.alert.alert-success span').should have_content I18n.t('flash.success.provider.signed_in', provider: 'twitter')
             find('div.alert.alert-success span').should have_content "Successfully signed in with Twitter."
           end
@@ -214,7 +228,9 @@ describe AuthentificationsController do
       visit user_omniauth_authorize_path('facebook')
     end
 
-    it 'should redirect to root path' do
+    it 'should redirect to previous location' do
+      # Omniauth bug, request.env['omniauth.origin'] is not set by mock_call!
+      #
       current_path.should == root_path
     end
 
@@ -227,11 +243,13 @@ describe AuthentificationsController do
 
     before :each do
       login_as(@user, scope: :user)
+      visit edit_user_path(@user)
+      request.env['HTTP_REFERER'] = edit_user_path(@user)
       delete :destroy, id: @auth
     end
 
     it 'should redirect to previous location' do
-      response.should be_redirect
+      response.should redirect_to edit_user_path(@user)
     end
 
     it 'have a success alert message' do

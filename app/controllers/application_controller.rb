@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     end
 
     def not_signed_in
-      redirect_back flash: {error: t('flash.error.only.public')} if user_signed_in?
+      redirect_to_back flash: {error: t('flash.error.only.public')} if user_signed_in?
     end
 
     def user_access
@@ -32,14 +32,14 @@ class ApplicationController < ActionController::Base
     end
 
     def public_access
-      redirect_back flash: {error: t('flash.error.profile.not_complete')} unless signed_up?(@user) || user_signed_in?
+      redirect_to_back flash: {error: t('flash.error.profile.not_complete')} unless signed_up?(@user) || user_signed_in?
     end
 
     def admin_user
-      redirect_back flash: {error: t('flash.error.only.admin')} unless user_signed_in? && current_user.admin
+      redirect_to_back flash: {error: t('flash.error.only.admin')} unless user_signed_in? && current_user.admin
     end
 
-    def redirect_back(flash = {})
+    def redirect_to_back(flash = {})
       redirect_to :back, flash
     rescue ActionController::RedirectBackError
       redirect_to root_path, flash
