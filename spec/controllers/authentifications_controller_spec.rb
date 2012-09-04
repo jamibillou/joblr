@@ -33,12 +33,13 @@ describe AuthentificationsController do
             visit user_omniauth_authorize_path('twitter')
           end
 
-          it "should redirect to previous location" do
+          it 'should redirect to previous location' do
             current_path.should == edit_user_path(@user)
           end
 
-          it "should set the flash" do
-            page.should have_selector 'div.alert.alert-error', content: I18n.t('flash.error.provider.already_linked', provider: 'twitter')
+          it 'have an error alert message' do
+            # find('div.alert.alert-error span').should have_content I18n.t('flash.error.provider.already_linked', provider: 'twitter')
+            find('div.alert.alert-error span').should have_content "This Twitter account is already linked to your profile."
           end
         end
 
@@ -50,12 +51,13 @@ describe AuthentificationsController do
             visit user_omniauth_authorize_path('twitter')
           end
 
-          it "should redirect to previous location" do
+          it 'should redirect to previous location' do
             current_path.should == edit_user_path(@user)
           end
 
-          it "should set the flash" do
-            page.should have_selector 'div.alert.alert-error', content: I18n.t('flash.error.provider.other_user', provider: 'twitter')
+          it 'have an error alert message' do
+            # find('div.alert.alert-error span').should have_content I18n.t('flash.error.provider.other_user', provider: 'twitter')
+            find('div.alert.alert-error span').should have_content "This Twitter account is already linked to another user's profile."
           end
         end
       end
@@ -77,11 +79,12 @@ describe AuthentificationsController do
           current_path.should == edit_user_path(@user)
         end
 
-        it 'should set the flash' do
+        it 'have a success alert message' do
           request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '123456'})
           visit edit_user_path(@user)
           visit user_omniauth_authorize_path('twitter')
-          page.should have_selector 'div.alert.alert-success', content: I18n.t('flash.success.provider.added', provider: 'twitter')
+          # find('div.alert.alert-success span').should have_content I18n.t('flash.success.provider.added', provider: 'twitter')
+          find('div.alert.alert-success span').should have_content "Your Twitter account was added successfully."
         end
       end
     end
@@ -98,15 +101,18 @@ describe AuthentificationsController do
             visit user_omniauth_authorize_path('twitter')
           end
 
-          it 'should sign user in' # do
-          # end
+          it 'should sign the user in' do
+            find('ul.nav li.dropdown ul.dropdown-menu li:first-child').should have_content I18n.t('devise.registrations.account_settings')
+            find('ul.nav li.dropdown ul.dropdown-menu li:last-child').should have_content I18n.t('devise.sessions.logout')
+          end
 
-          it 'should redirect to root_path' do
+          it 'should redirect to root path' do
             current_path.should == root_path
           end
 
-          it "should set the flash" do
-            page.should have_selector 'div.alert.alert-success', content: I18n.t('flash.success.provider.signed_in', provider: 'twitter')
+          it 'have a success alert message' do
+            # find('div.alert.alert-success span').should have_content I18n.t('flash.success.provider.signed_in', provider: 'twitter')
+            find('div.alert.alert-success span').should have_content "Successfully signed in with Twitter."
           end
         end
 
@@ -125,8 +131,9 @@ describe AuthentificationsController do
             current_path.should == new_user_registration_path
           end
 
-          it "should set the flash" do
-            page.should have_selector 'div.alert.alert-error', content: I18n.t('flash.error.provider.other_user_signed_up', provider: 'twitter')
+          it 'have an error alert message' do
+            # find('div.alert.alert-error span').should have_content I18n.t('flash.error.provider.other_user_signed_up', provider: 'twitter')
+            find('div.alert.alert-error span').should have_content "There already is a user matching your Twitter account, did you mean to sign in?"
           end
         end
       end
@@ -145,8 +152,9 @@ describe AuthentificationsController do
             current_path.should == new_user_session_path
           end
 
-          it "should set the flash" do
-            page.should have_selector 'div.alert.alert-error', content: I18n.t('flash.error.provider.no_user', provider: 'twitter')
+          it 'have an error alert message' do
+            # find('div.alert.alert-error span').should have_content I18n.t('flash.error.provider.no_user', provider: 'twitter')
+            find('div.alert.alert-error span').should have_content "We couldn't find any user matching your Twitter account. Did you sign up with another service?"
           end
         end
 
@@ -173,22 +181,61 @@ describe AuthentificationsController do
             end.should change(Authentification, :count).by(1)
           end
 
-          it 'should sign the user in' # do
-          # end
+          it 'should sign the user in' do
+            request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
+            visit user_omniauth_authorize_path('twitter')
+            find('ul.nav li.dropdown ul.dropdown-menu li:first-child').should have_content I18n.t('devise.registrations.account_settings')
+            find('ul.nav li.dropdown ul.dropdown-menu li:last-child').should have_content I18n.t('devise.sessions.logout')
+          end
 
-          it 'should redirect to root_path' do
+          it 'should redirect to previous location' do
             request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
             visit user_omniauth_authorize_path('twitter')
             current_path.should == root_path
           end
 
-          it 'should set the flash' do
+          it 'have a success alert message' do
             request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
             visit user_omniauth_authorize_path('twitter')
-            page.should have_selector 'div.alert.alert-success', content: I18n.t('flash.success.provider.signed_in', provider: 'twitter')
+            # find('div.alert.alert-success span').should have_content I18n.t('flash.success.provider.signed_in', provider: 'twitter')
+            find('div.alert.alert-success span').should have_content "Successfully signed in with Twitter."
           end
         end
       end
+    end
+  end
+
+  describe 'failure' do
+
+    before :each do
+      login_as(@user, scope: :user)
+      request.env['omniauth.auth'] = (OmniAuth.config.mock_auth[:facebook] = :invalid_credentials)
+      visit edit_user_path(@user)
+      visit user_omniauth_authorize_path('facebook')
+    end
+
+    it 'should redirect to root path' do
+      current_path.should == root_path
+    end
+
+    it 'have an error alert message' do
+      find('div.alert.alert-error span').should have_content I18n.t('flash.error.something_wrong.auth')
+    end
+  end
+
+  describe "DELETE 'destroy" do
+
+    before :each do
+      login_as(@user, scope: :user)
+      delete :destroy, id: @auth
+    end
+
+    it 'should redirect to previous location' do
+      response.should be_redirect
+    end
+
+    it 'have a success alert message' do
+      flash[:success].should == I18n.t('flash.success.provider.removed', provider: 'Twitter')
     end
   end
 end

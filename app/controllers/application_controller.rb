@@ -43,6 +43,7 @@ class ApplicationController < ActionController::Base
       redirect_to :back, flash
     rescue ActionController::RedirectBackError
       redirect_to root_path, flash
+    ensure
     end
 
     def never_updated?(object)

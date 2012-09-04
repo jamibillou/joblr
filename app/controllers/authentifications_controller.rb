@@ -17,11 +17,11 @@ class AuthentificationsController < ApplicationController
   end
 
   def failure
-  	redirect_to env['omniauth.origin'], flash: {error: t('flash.error.something_wrong.auth')}
+  	redirect_to root_path, flash: {error: t('flash.error.something_wrong.auth')}
   end
 
   def destroy
-  	auth = current_user.authentifications.find(params[:id])
+  	auth = Authentification.find(params[:id])
     provider = auth.provider
     auth.destroy
   	redirect_back flash: {success: t('flash.success.provider.removed', provider: humanize(provider))}
