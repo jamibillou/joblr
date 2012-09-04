@@ -25,6 +25,10 @@ class Profile < ActiveRecord::Base
   validates :url,            url_format:   true, allow_blank: true
 
   mount_uploader :file, ProfileFileUploader
+
+  def public_emails_sharings
+    email_sharings.where(author_id: nil)
+  end
 end
 
 # == Schema Information

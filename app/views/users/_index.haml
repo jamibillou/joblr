@@ -18,13 +18,13 @@
           %h5 Signed up
       .span1
         %td
-          %h5 Shared
+          %h5 Shared by himself
+      .span1
+        %td
+          %h5 Shared by others
       .span1
         %td
           %h5 Services
-      .span1
-        %td
-          %h5 From beta
       .span1
         %td
           %h5 Delete
@@ -48,13 +48,13 @@
             %span{class: "#{signed_up?(user) ? 'success-text' : 'danger-text'}"}= signed_up?(user)
         .span1
           %td
-            = user.sharings_recipients.count
+            = user.authored_email_sharings.count
+        .span1
+          %td
+            = user.profile.public_emails_sharings.count
         .span1
           %td
             = user.authentifications.count
-        .span1
-          %td
-            = !user.beta_invite.nil?
         .span1
           %td
             = link_to "<div class='icon-trash danger-text'></div>".html_safe, user, method: :delete, confirm: t('users.destroy.yes_delete')

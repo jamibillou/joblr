@@ -55,10 +55,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def sharings_recipients
-    profile.nil? ? [] : profile.email_sharings
-  end
-
   def public_url
     "http://#{subdomain}.joblr.co"
   end
