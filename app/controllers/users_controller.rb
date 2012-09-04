@@ -20,12 +20,13 @@ class UsersController < ApplicationController
 
   def update
     @title = t('users.update.title_alt') unless signed_up?(@user)
+    signed_up = !signed_up?(@user)
     unless @user.update_attributes params[:user]
       flash[:error] = error_messages(@user)
       render :edit, id: @user, user: params[:user]
     else
       remove_files! # FIX ME!
-      redirect_to @user, flash: {success: (never_updated?(@user.profile) ? t('flash.success.profile.created') : t('flash.success.profile.updated'))}
+      redirect_to @user, flash: {success: (signed_up ? t('flash.success.profile.created') : t('flash.success.profile.updated'))}
     end
   end
 
