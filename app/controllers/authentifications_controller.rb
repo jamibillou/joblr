@@ -17,11 +17,11 @@ class AuthentificationsController < ApplicationController
   end
 
   def failure
-  	redirect_to env['omniauth.origin'], flash: {error: t('flash.error.something_wrong.auth')}
+  	redirect_to root_path, flash: {error: t('flash.error.something_wrong.auth')}
   end
 
   def destroy
-  	auth = current_user.authentifications.find(params[:id])
+  	auth = Authentification.find(params[:id])
     provider = auth.provider
     auth.destroy
   	redirect_back flash: {success: t('flash.success.provider.removed', provider: humanize(provider))}
@@ -81,27 +81,31 @@ class AuthentificationsController < ApplicationController
     end
 
     def create_auth(user)
-      user.authentifications.create(provider: auth_hash.provider.to_s.gsub('google_oauth2', 'google'), uid: auth_hash.uid, url: auth_url, utoken: auth_hash.credentials.token, usecret: auth_secret)
+      user.authentifications.create(provider: auth_hash.provider.to_s.gsub('google_oauth2', 'google'), uid: auth_hash.uid, url: auth_url, utoken: auth_token, usecret: auth_secret)
       user
     end
 
     def auth_url
       case auth_hash.provider
         when 'twitter'
-          auth_hash.info.urls.Twitter
+          auth_hash.info.urls.Twitter        unless auth_hash.info.urls.nil?
         when 'linkedin'
-          auth_hash.info.urls.public_profile
+          auth_hash.info.urls.public_profile unless auth_hash.info.urls.nil?
         when 'facebook'
-          auth_hash.info.urls.Facebook
+          auth_hash.info.urls.Facebook       unless auth_hash.info.urls.nil?
         when 'google'
-          auth_hash.extra.raw_info.link
+          auth_hash.extra.raw_info.link      unless auth_hash.extra.raw_info.nil?
       end
+    end
+
+    def auth_token
+      auth_hash.credentials.token unless auth_hash.credentials.nil?
     end
 
     def auth_secret
       case auth_hash.provider
         when 'linkedin', 'twitter'
-          auth_hash.credentials.secret
+          auth_hash.credentials.secret unless auth_hash.credentials.nil?
         when 'facebook', 'google'
           ''
       end

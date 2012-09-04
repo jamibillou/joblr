@@ -19,8 +19,8 @@ $ ->
   # MUST be BEFORE Popovers & Onboarding scripts
   # --------------------------------------------
 
-  $('#edit-form input.url').focus -> $(this).val('http://') unless $(this).val() isnt ''
-  $('#edit-form input.url').blur -> $(this).val('') if $(this).val() is 'http://'
+  $('.edit_user input.url').focus -> $(this).val('http://') unless $(this).val() isnt ''
+  $('.edit_user input.url').blur -> $(this).val('') if $(this).val() is 'http://'
 
   # Popovers & Onboarding
   # MUST be AFTER field with errors and url scripts
@@ -29,12 +29,12 @@ $ ->
   # FIX ME!
   # turn this mess into one only loop
   if $('#popovers').html()
-    $('#edit-form input').each ->
+    $('.edit_user input').each ->
       unless $(this).attr('type').match(/hidden|checkbox|file|submit/) || $(this).attr('id').match(/hidden/)
         initPopover($(this).attr('id'))
         initOnboardingStep($(this).attr('id'))
-    $('#edit-form select').each   -> initPopover($(this).attr('id')) and initOnboardingStep($(this).attr('id'))
-    $('#edit-form textarea').each -> initPopover($(this).attr('id')) and initOnboardingStep($(this).attr('id'))
+    $('.edit_user select').each   -> initPopover($(this).attr('id')) and initOnboardingStep($(this).attr('id'))
+    $('.edit_user textarea').each -> initPopover($(this).attr('id')) and initOnboardingStep($(this).attr('id'))
 
 
   # Image picker

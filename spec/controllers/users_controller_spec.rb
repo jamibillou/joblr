@@ -28,7 +28,7 @@ describe UsersController do
 
   describe "GET 'show'" do
 
-    context 'signed in users' do
+    context 'for signed in users' do
 
       context "who haven't completed their profile" do
         it "should redirect to 'edit'" do
@@ -52,7 +52,7 @@ describe UsersController do
       end
     end
 
-    context 'non signed in users' do
+    context 'for public visitors' do
 
       before(:each) { sign_out @user ; @user.profiles.create @profile_attr }
 

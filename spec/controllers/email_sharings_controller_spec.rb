@@ -6,7 +6,6 @@ describe EmailSharingsController do
 
 	before :each do
 		@author    = FactoryGirl.create :user
-		@recipient = FactoryGirl.create :user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: FactoryGirl.generate(:email)
 		@profile_attr = { headline: 'fulltime',
                       experience: '5 yrs',
                       last_job: 'Financial director',
@@ -28,7 +27,7 @@ describe EmailSharingsController do
 
 	describe "GET 'new'" do
 
-		context 'signed in users' do
+		context 'for signed in users' do
 
 			before :each do
 				sign_in @author
@@ -70,7 +69,7 @@ describe EmailSharingsController do
 	    end
 		end
 
-		context 'public users' do
+		context 'for public visitors' do
 
 	    context "who visit a profile that wasn't completed" do
 
@@ -113,7 +112,7 @@ describe EmailSharingsController do
 
 	describe "POST 'create'" do
 
-		context 'signed in users' do
+		context 'for signed in users' do
 			before :each do
 				sign_in @author
 	      @author.profiles.create @profile_attr
@@ -164,7 +163,7 @@ describe EmailSharingsController do
 	    end
 		end
 
-		context 'public users' do
+		context 'for public visitors' do
 			before :each do
 	      @author.profiles.create @profile_attr
 			end
