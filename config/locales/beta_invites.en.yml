@@ -3,22 +3,21 @@ en:
     index:
       title: 'Beta invites'
     new:
-      title: 'Get invited!'
-      subtitle_html: "Fill in your email and we'll send you an <u>invitation</u> to join us on Joblr alpha<span class='danger-text'>*</span>."
-      asterisk: '*very early version with a lot of bugs and not finalized details all around the place'
+      title: "Get your Joblr invite!"
+      subtitle_html: "We're still in private beta. However, we're adding new users regularly. Fill in your email address and we'll invite you as soon as possible"
       placeholder: 'Email address'
       button: 'Get invited!'
     thank_you:
       title: 'Thank you!'
-      subtitle: "We really appreciate your interest. We're only taking a very limited number of users at the moment but be sure we'll send you invitation soon!"
+      subtitle_html: "We really appreciate your interest in Joblr.<br />We're adding new users regularly, so keep an eye on your inbox!"
     send_code:
       yes_send: 'Are you sure you want to send a beta invite code to %{email}?'
     edit:
-      title: 'Be first to try!'
-      subtitle_html: "We are currently seeking feedback on our ideas.<br />You need an invitation to join Joblr alpha<span class='danger-text'>*</span>."
-      asterisk: '*very early version with a lot of bugs and not finalized details all around the place'
+      title_html: "Welcome to the Joblr beta<span class='danger-text'>*</span>!"
+      subtitle: "Use your invitation code to get access."
+      asterisk: "* We're working hard on fixing minor bugs you might find here and there"
       placeholder: 'Invitation code'
-      button: 'Sign up!'
+      button: 'Get started!'
       link: "Haven't got your code yet? Get one!"
     destroy:
       yes_delete: 'Are you sure you want to delete this beta invite?'
