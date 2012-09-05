@@ -81,3 +81,4 @@ en:
         headline_format: "is not formated properly (fulltime, partime, internship, freelance)"
         blank: "can't be blank"
         invalid: "is invalid"
+        taken: "has already been taken"
