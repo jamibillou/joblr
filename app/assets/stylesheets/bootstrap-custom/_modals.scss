@@ -4,7 +4,7 @@
 
 // Base modal
 .modal {
-  border:10px solid $brownDark;
+  border:10px solid $backgroundDark;
   @include border-radius(5px);
   @include box-shadow(none);
   @include background-clip(padding-box);

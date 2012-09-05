@@ -10,7 +10,7 @@ p{
   font-weight:300;
   small{
     font-size:$baseFontSize - 2;
-    color:$brownDark;
+    color:$grayLighter;
   }
 }
 .lead{
@@ -19,7 +19,7 @@ p{
   line-height:$baseLineHeight * 1.5;
   small{
     font-size:16px;
-    color:$brownDark;
+    color:$grayLighter;
   }
 }
 .big{
@@ -29,7 +29,7 @@ p{
   line-height:$baseLineHeight * 1.2;
   small{
     font-size:13px;
-    color:$brownDark;
+    color:$grayLighter;
   }
 }
 .warning-text{
@@ -78,7 +78,7 @@ h1, h2, h3, h4, h5, h6{
   font-weight:$headingsFontWeight;
   small{
     font-weight:normal;
-    color:$brownDark;
+    color:$grayLighter;
   }
 }
 h1{

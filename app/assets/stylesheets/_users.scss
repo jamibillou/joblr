@@ -27,7 +27,7 @@
 
 #profile{
   &.well{
-    border:10px solid $brownDark;
+    border:10px solid $backgroundDark;
     @include box-shadow(none);
   }
   img{
