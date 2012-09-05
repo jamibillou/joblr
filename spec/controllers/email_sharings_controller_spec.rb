@@ -151,6 +151,7 @@ describe EmailSharingsController do
 		    it "should redirect to user's profile" do
 		    	post :create, :email_sharing => @email_sharing_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
 		    	response.should render_template('new',id: @author.id)
+		    	flash[:error].should == "#{I18n.t('flash.error.base')} #{I18n.t('activerecord.attributes.email_sharing.recipient_email').downcase} #{I18n.t('activerecord.errors.messages.invalid')}."
 		    end
 	    end
 
@@ -165,6 +166,7 @@ describe EmailSharingsController do
 	      it "should redirect to user's profile" do
 	        post :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com'), user_id: @author.id
 	        response.should render_template('new',id: @author.id)
+	        flash[:error].should == "#{I18n.t('flash.error.base')} #{I18n.t('activerecord.attributes.email_sharing.recipient_fullname').downcase} #{I18n.t('activerecord.errors.messages.blank')}."
 	      end
 	    end
 		end
@@ -202,6 +204,7 @@ describe EmailSharingsController do
 		    it "should redirect to user's profile" do
 		    	post :create, :email_sharing => @email_sharing_attr.merge(author_fullname: 'The Author', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
 		    	response.should render_template('new',id: @author.id)
+		    	flash[:error].should == "#{I18n.t('flash.error.base')} #{I18n.t('activerecord.attributes.email_sharing.author_email').downcase} #{I18n.t('activerecord.errors.messages.invalid')}."
 		    end
 	    end
 
@@ -216,6 +219,7 @@ describe EmailSharingsController do
 	      it "should redirect to user's profile" do
 	        post :create, :email_sharing => @email_sharing_attr.merge(author_email: 'author@example.com', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
 	        response.should render_template('new',id: @author.id)
+	        flash[:error].should == "#{I18n.t('flash.error.base')} #{I18n.t('activerecord.attributes.email_sharing.author_fullname').downcase} #{I18n.t('activerecord.errors.messages.blank')}."
 	      end
 	    end
 
@@ -230,6 +234,7 @@ describe EmailSharingsController do
 	      it "should redirect to user's profile" do
 	        post :create, :email_sharing => @email_sharing_attr.merge(author_fullname: 'The Author', author_email: 'author@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
 	        response.should render_template('new',id: @author.id)
+	        flash[:error].should == "#{I18n.t('flash.error.base')} #{I18n.t('activerecord.attributes.email_sharing.recipient_email').downcase} #{I18n.t('activerecord.errors.messages.invalid')}."
 	      end
 	    end
 
@@ -237,13 +242,14 @@ describe EmailSharingsController do
 
 	      it 'should not create a new email_sharing object' do
 	        lambda do
-	          post :create, :email_sharing => @email_sharing_attr.merge(author_fullname: 'The Author', author_email: 'author@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+	          post :create, :email_sharing => @email_sharing_attr.merge(author_fullname: 'The Author', author_email: 'author@example.com', recipient_email: 'test@test.com'), user_id: @author.id
 	        end.should_not change(EmailSharing,:count).by 1
 	      end
 
 	      it "should redirect to user's profile" do
-	        post :create, :email_sharing => @email_sharing_attr.merge(author_fullname: 'The Author', author_email: 'author@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+	        post :create, :email_sharing => @email_sharing_attr.merge(author_fullname: 'The Author', author_email: 'author@example.com', recipient_email: 'test@test.com'), user_id: @author.id
 	        response.should render_template('new',id: @author.id)
+	        flash[:error].should == "#{I18n.t('flash.error.base')} #{I18n.t('activerecord.attributes.email_sharing.recipient_fullname').downcase} #{I18n.t('activerecord.errors.messages.blank')}."
 	      end
 	    end
 		end

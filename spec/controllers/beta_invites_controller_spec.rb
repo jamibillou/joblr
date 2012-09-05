@@ -31,22 +31,69 @@ describe BetaInvitesController do
 
   describe "POST 'create'" do
 
-    it 'should create a new beta_invite given valid attributes' do
-      lambda do
+    context 'the user provided a valid email address' do
+      it 'should create a new beta_invite' do
+        lambda do
+          post :create, beta_invite: @attr
+        end.should change(BetaInvite, :count).by 1
+      end
+
+      it 'should not create a new user' do
+        lambda do
+          post :create, beta_invite: @attr
+        end.should_not change(User, :count).by 1
+      end
+
+      it "should redirect to 'thank_you'" do
         post :create, beta_invite: @attr
-      end.should change(BetaInvite, :count).by 1
+        response.should redirect_to beta_invite_thank_you_path(BetaInvite.last)
+        flash[:success].should == I18n.t('flash.success.beta_invite.request_sent')
+      end
     end
 
-    it 'should not create a new user' do
-      lambda do
-        post :create, beta_invite: @attr
-      end.should_not change(User, :count).by 1
+    context "the user didn't provide an email address" do
+      it 'should not create a new beta_invite' do
+        lambda do
+          post :create, beta_invite: {email: ''}
+        end.should_not change(BetaInvite, :count).by 1
+      end
+
+      it 'should not create a new user' do
+        lambda do
+          post :create, beta_invite: {email: ''}
+        end.should_not change(User, :count).by 1
+      end
+
+      it "should render 'new'" do
+        post :create, beta_invite: {email: ''}
+        response.should render_template 'new'
+        flash[:error].should == "#{I18n.t('flash.error.base')} #{I18n.t('activerecord.attributes.beta_invite.email').downcase} #{I18n.t('activerecord.errors.messages.blank')}."
+      end
     end
 
-    it "should redirect to 'thank_you'" do
-      post :create, beta_invite: @attr
-      response.should redirect_to beta_invite_thank_you_path(BetaInvite.last)
-    end
+    context "the user provided a registered email address" do
+      before :each do
+        beta_invite = BetaInvite.create @attr
+      end
+
+      it 'should not create a new beta_invite' do
+        lambda do
+          post :create, beta_invite: {email: 'user@example.com'}
+        end.should_not change(BetaInvite, :count).by 1
+      end
+
+      it 'should not create a new user' do
+        lambda do
+          post :create, beta_invite: {email: 'user@example.com'}
+        end.should_not change(User, :count).by 1
+      end
+
+      it "should render 'new'" do
+        post :create, beta_invite: {email: 'user@example.com'}
+        response.should render_template 'new'
+        flash[:error].should == "#{I18n.t('flash.error.base')} #{I18n.t('activerecord.attributes.beta_invite.email').downcase} #{I18n.t('activerecord.errors.messages.taken')}."
+      end
+    end   
   end
 
   describe "GET 'edit'" do
