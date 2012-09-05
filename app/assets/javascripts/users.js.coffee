@@ -40,11 +40,8 @@ $ ->
   # Image picker
   # ------------
 
-  $('#image-modal .social.pic').each ->
-    $(this).click -> toggleAuthImage($(this).attr('id'))
-
-  $('.modal-footer a.btn-primary').each ->
-    $(this).click -> closeImageModal()
+  $('#image-modal .social.pic').each -> $(this).click -> toggleAuthImage($(this).attr('id'))
+  $('#image-modal .modal-footer a.btn-primary').click -> closeImageModal()
 
 # Adds <div class='field_with_errors'> around what's in the given div
 # -------------------------------------------------------------------
@@ -87,8 +84,8 @@ $ ->
 @stripId = (id) -> id.replace('user_', '').replace('_placeholder', '').replace('profiles_attributes_0_', '')
 
 
-# Selects the clicked pic, unselects others, and fills #remote_image_url appropriately
-# ------------------------------------------------------------------------------------
+# Selects the clicked pic, unselects others, fills #remote_image_url appropriately and replaces profile pic
+# ---------------------------------------------------------------------------------------------------------
 
 @toggleAuthImage = (imageId) ->
   authId = imageId.match(/\d+/)[0]
@@ -96,14 +93,13 @@ $ ->
   $('.social.pic.selected').each -> $(this).toggleClass('selected') if $(this).attr('id') isnt imageId
   $('#'+imageId).toggleClass('selected')
   $('#remote_image_url').val(authImageUrl)
+  $('#profile-picture').attr('src', $('#'+imageId).attr('src'))
+  $('#user_remove_image').attr('checked', false) if $('#user_remove_image').is(':checked')
 
 
-# Display the selected picture (or default picture when unselect or delete) in the profile and close the modal
-# ------------------------------------------------------------------------------------------------------------
+# Replaces the profile pic (back to default) if "delete" was checked and closes the modal
+# ---------------------------------------------------------------------------------------
 
 @closeImageModal = ->
+  $('#profile-picture').attr('src', '../../assets/default_user.jpg') if $('#user_remove_image').is(':checked')
   $('#image-modal').modal('hide')
-  if $('#remote_image_url').val() is '' and $('#profile-picture').attr('src').indexOf("default") >= 0 or $('input:checked').length is 1
-    $('#profile-picture').attr('src','../../assets/default_user.jpg')
-  else
-    $('#profile-picture').attr('src',$('#remote_image_url').val())
