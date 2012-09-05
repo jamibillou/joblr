@@ -79,3 +79,5 @@ en:
         level_format: 'is not formatted properly (Beginner, Intermediate, Advanced or Expert)'
         url_format: "is not formatted properly"
         headline_format: "is not formated properly (fulltime, partime, internship, freelance)"
+        blank: "can't be blank"
+        invalid: "is invalid"
