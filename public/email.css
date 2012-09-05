@@ -143,6 +143,7 @@ h4 small{
   margin-bottom:10px;
 }
 #profile-table h4{
+  margin-top:20px;
 }
 #profile-table .headline{
   margin-top:-5px;
@@ -164,4 +165,9 @@ h4 small{
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+}
+
+/* Experience */
+#experience-table p{
+  margin-bottom:0;
 }
