@@ -16,6 +16,23 @@ en:
         country: "Country"
         subdomain: "Subdomain"
       user/profiles:
+        id: "Identifier"
+        user_id: "User's identifier"
+        headline: "Headline"
+        experience: "Experience"
+        last_job: "Last or current job"
+        past_companies: "Also worked for"
+        education: "Education"
+        skill_1: "1st skill"
+        skill_1_level: "Level"
+        skill_2: "2nd skill"
+        skill_2_level: "Level"
+        skill_3: "3rd skill"
+        skill_3_level: "Level"
+        quality_1: "1st quality"
+        quality_2: "2nd quality"
+        quality_3: "3rd quality"
+        file: "CV"
         text: "Goals or motto"
         url: "Website or blog"
       profile:
@@ -55,6 +72,8 @@ en:
         text: "Personal message"
         author_email: "Your email"
         author_fullname: "Your fullname"
+        recipient_email: "Recipient email"
+        recipient_fullname:  "Recipient fullname"
     errors:
       messages:
         level_format: 'is not formatted properly (Beginner, Intermediate, Advanced or Expert)'
