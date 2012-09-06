@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates :username,  length:     { maximum: 100 }
   validates :city,      length:     { maximum: 50 }
   validates :country,   length:     { maximum: 50 }
-  validates :subdomain, length:     { maximum: 100 }                 
+  validates :subdomain, length:     { maximum: 100 }
   validates :subdomain, uniqueness: { case_sensitive: true }
   validates :subdomain, presence: true,                                 on: :update
   validates :email,     uniqueness: { case_sensitive: true },           allow_nil:    true, if: :email_changed?

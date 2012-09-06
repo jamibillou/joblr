@@ -30,8 +30,8 @@ describe BetaInvite do
 
     it { should validate_presence_of(:email) }
     it { should validate_uniqueness_of(:email) }
-    lambda { @email[:invalid].each {|invalid_email| it { should validate_format_of(:email).not_with invalid_email }}}
-    lambda { @email[:valid].each {|valid_email| it { should validate_format_of(:email).with valid_email }}}
+    it { should validate_format_of(:email).not_with(@email[:invalid][rand(@email[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.invalid')) }
+    it { should validate_format_of(:email).with @email[:valid][rand(@email[:valid].size)] }
     it { should ensure_inclusion_of(:sent).in_array [true, false] }
   end
 end

@@ -78,25 +78,18 @@ describe Profile do
     it { should ensure_length_of(:quality_1).is_at_most 50 }
     it { should ensure_length_of(:quality_2).is_at_most 50 }
     it { should ensure_length_of(:quality_3).is_at_most 50 }
-
     it { should validate_format_of(:headline).not_with(@headline[:invalid][rand(@headline[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.headline_format')) }
     it { should validate_format_of(:headline).with @headline[:valid][rand(@headline[:valid].size)] }
-
     %w(skill_1_level skill_2_level skill_3_level).each {|skill_level| it { should validate_format_of(skill_level.to_sym).not_with(@level[:invalid][rand(@level[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.level_format')) }}
     %w(skill_1_level skill_2_level skill_3_level).each {|skill_level| it { should validate_format_of(skill_level.to_sym).with @level[:valid][rand(@level[:valid].size)] }}
-
     it { should validate_format_of(:url).not_with(@url[:invalid][rand(@url[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.url_format')) }
     it { should validate_format_of(:url).with @url[:valid][rand(@url[:valid].size)] }
-
     it { should validate_format_of(:linkedin_url).not_with(@url[:invalid][rand(@url[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.url_format')) }
     it { should validate_format_of(:linkedin_url).with @url[:valid][rand(@url[:valid].size)] }
-
     it { should validate_format_of(:twitter_url).not_with(@url[:invalid][rand(@url[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.url_format')) }
     it { should validate_format_of(:twitter_url).with @url[:valid][rand(@url[:valid].size)] }
-
     it { should validate_format_of(:facebook_url).not_with(@url[:invalid][rand(@url[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.url_format')) }
     it { should validate_format_of(:facebook_url).with @url[:valid][rand(@url[:valid].size)] }
-
     it { should validate_format_of(:google_url).not_with(@url[:invalid][rand(@url[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.url_format')) }
     it { should validate_format_of(:google_url).with @url[:valid][rand(@url[:valid].size)] }
   end
