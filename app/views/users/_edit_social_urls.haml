@@ -1,0 +1,9 @@
+#social-url-triggers
+  - %w(twitter linkedin facebook google).each do |provider|
+    .btn.btn-small{class: "btn-#{provider}", title: t('users.edit.add_social_url', provider: provider.titleize), id: "#{provider}-url-trigger"}
+      %i{class: "icon-#{provider}#{'-plus' if provider == 'google'}"}
+      &nbsp;
+      = provider.titleize
+#social-url-fields
+  - %w(twitter linkedin facebook google).each do |provider|
+    = f.text_field "#{provider}_url", placeholder: social_url_placeholder(provider), id: "#{provider}-url-field"

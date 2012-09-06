@@ -41,7 +41,7 @@
         .span1.visible-tablet
         .span5
           %h4= t('devise.omniauth.add_accounts')
-          = render 'shared/edit_social_links', user: resource, size: ''
+          = render 'devise/shared/omniauth_links', user: resource, size: ''
           .problem
             %h4= t('devise.registrations.unhappy')
             = link_to t('devise.registrations.cancel_account'), registration_path(resource_name), :data => { :confirm => t('devise.registrations.yes_cancel') }, :method => :delete

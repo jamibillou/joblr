@@ -1,7 +1,7 @@
 class Profile < ActiveRecord::Base
 
-  attr_accessible :headline, :experience, :last_job, :past_companies, :education, :skill_1, :skill_1_level, :skill_2, :skill_2_level, :skill_3, :skill_3_level,
-                  :quality_1, :quality_2, :quality_3, :file, :url, :text, :user_id, :remove_file
+  attr_accessible :text, :headline, :experience, :last_job, :past_companies, :education, :skill_1, :skill_1_level, :skill_2, :skill_2_level, :skill_3, :skill_3_level,
+                  :quality_1, :quality_2, :quality_3, :twitter_url, :linkedin_url, :facebook_url, :google_url, :url, :file, :user_id, :remove_file
 
   belongs_to :user
   has_many   :email_sharings, dependent: :destroy

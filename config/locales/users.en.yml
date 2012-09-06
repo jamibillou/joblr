@@ -19,7 +19,6 @@ en:
       site: 'www'
       public_profile: 'Public profile'
       email: 'Email'
-      social_networks: 'Social networks'
       edit: 'Edit'
       share: 'Share'
       explanation_html: "Start sharing %{url} around you now!"
@@ -76,8 +75,9 @@ en:
       quality_1_placeholder: 'e.g. Drive'
       quality_2_placeholder: 'e.g. Good communication'
       quality_3_placeholder: 'e.g. Honesty'
-      social_profiles: 'Social profiles'
+      online_presence: 'Online presence'
       upload_cv: 'Attach your CV'
+      add_social_url: 'Add your %{provider} profile'
       url: 'Website or blog'
       url_popover: "If you have a relevant online presence, don't forget to mention you site or blog here!"
       upload: 'Upload'

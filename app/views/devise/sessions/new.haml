@@ -7,7 +7,7 @@
       .row-fluid
         .span6
           %h1= t('devise.sessions.social_signin')
-          = render 'shared/edit_social_links', user: resource, size: ''
+          = render 'devise/shared/omniauth_links', user: resource, size: ''
         .span1
         .span1.visible-phone
         .span4
@@ -29,5 +29,5 @@
             = f.submit t('devise.sessions.sign_in'), class: 'btn btn-primary'
             .problem
               %h4=t 'devise.sessions.problem'
-              = render partial: 'devise/shared/links'
+              = render 'devise/shared/links'
     .pull-right.danger-text * required fields
