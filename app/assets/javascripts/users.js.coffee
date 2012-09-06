@@ -35,12 +35,24 @@ $ ->
   $('#google-url-field').blur -> $(this).val('') if $(this).val() is 'http://profiles.google.com/'
 
 
+  # Character counter
+  # -----------------
+  #
+  # TO DO
+  # make this reusable everywhere (1 single function that calls those 2 lines
+  # and also adds the character counter in the html (after <small> or <label>)
+  #
+  updateCharCounter('text_placeholder', 140)
+  $('#text_placeholder').keyup -> updateCharCounter($(this).attr('id'), 140)
+
+
   # Popovers & Onboarding
   # MUST be AFTER field with errors and url scripts
   # -----------------------------------------------
-
+  #
   # FIX ME!
-  # turn this mess into one only loop
+  # turn this into 1 single each loop
+  #
   if $('#popovers').html()
     $('.edit_user input').each ->
       unless $(this).attr('type').match(/hidden|checkbox|file|submit/) || $(this).attr('id').match(/hidden/)
@@ -126,6 +138,17 @@ $ ->
       if $(this).is(':visible') then $(this).hide() else $(this).show()
     else
       $(this).hide() if $(this).is(':visible')
+
+
+# Checks what's in the given textarea and updates the corresponding character counter
+# ----------------------------------------------------------------------------------
+
+@updateCharCounter = (id, max) ->
+  counterId = '#'+stripId(id)+'-char-counter'
+  count = $('#'+id).val().length
+  $(counterId).text(count+'/'+max)
+  $(counterId).addClass('danger-text') if count > max
+  $(counterId).removeClass('danger-text') if count < max
 
 
 # Strips id off unecessary crap, returns the CSS class we use in _edit_popovers and _edit_onboarding partials
