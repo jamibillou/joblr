@@ -9,13 +9,13 @@ test:
 deploy:
   heroku:
     staging:
-      name: staging-joblr
+      name: joblr-staging
       branch: staging
       backup: false
       force: true
       migrate: true
       restore_production: false
-      url: http://staging-joblr.heroku.com
+      url: http://joblr-staging.heroku.com
     production:
       name: joblr
       branch: staging
