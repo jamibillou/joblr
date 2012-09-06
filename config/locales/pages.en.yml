@@ -1,11 +1,9 @@
 en:
   pages:
-    overview:
-      title: 'Overview'
-      title_alt: 'Home'
+    landing:
+      title: 'The online profile that saves your job hunting minutes'
     admin:
       title: 'Admin dashboard'
       title_alt: 'Admin'
     style_tile:
       title: 'Style tile'
-      

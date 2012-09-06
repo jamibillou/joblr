@@ -1,10 +1,16 @@
+- if user_signed_in?
+  .btn.btn-navbar{'data-toggle' => 'collapse', 'data-target' => '.nav-collapse'}
+    .icon-bar
+    .icon-bar
+    .icon-bar
+
 = link_to image_tag('base/logo.png', alt: 'Joblr'), root_path, class: 'brand'
-.btn.btn-navbar{'data-toggle' => 'collapse', 'data-target' => '.nav-collapse'}
-  .icon-bar
-  .icon-bar
-  .icon-bar
-.visible-desktop
-  = render 'layouts/left_navigation'
-  = render 'layouts/right_navigation'
-.nav-collapse.hidden-desktop
-  = render 'layouts/mobile_navigation'
+
+- if user_signed_in?
+  .visible-desktop.nav-collapse= render 'layouts/left_navigation' if current_user.admin?
+  .nav-collapse.hidden-desktop= render 'layouts/mobile_navigation'
+  .visible-desktop= render 'layouts/right_navigation'
+- else
+  .navbar-text.pull-right
+    =t 'devise.registrations.already_member'
+    = link_to t('devise.registrations.sign_in'), new_user_session_url(subdomain: false)
