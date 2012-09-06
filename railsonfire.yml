@@ -10,8 +10,18 @@ deploy:
   heroku:
     staging:
       name: staging-joblr
+      branch: staging
+      backup: false
+      force: true
+      migrate: true
+      restore_production: false
+      url: http://staging-joblr.heroku.com
     production:
       name: joblr
-      backup: false
+      branch: staging
+      backup: true
+      force: false
+      migrate: true
+      url: http://joblr.heroku.com
 ruby_versions:
 - 1.9.3
