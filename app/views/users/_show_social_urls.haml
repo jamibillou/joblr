@@ -1,0 +1,6 @@
+- %w(twitter linkedin facebook google).each do |provider|
+  - unless user.profile.read_attribute("#{provider}_url").blank?
+    %a{href: user.profile.read_attribute("#{provider}_url"), title: t('users.show.view_social', fullname: user.fullname, provider: provider.titleize), target: '_blank', class: "btn btn-small btn-#{provider}"}
+      %i{class: "icon-#{provider}#{'-plus' if provider == 'google'}"}
+      &nbsp;
+      = provider.titleize

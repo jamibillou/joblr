@@ -71,6 +71,11 @@
   .btn-small{
     margin-bottom:8px;
   }
+  #social-url-fields{
+    input{
+      display:none;
+    }
+  }
   .delete{
     font-size:11px;
     color: $gray;
