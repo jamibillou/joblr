@@ -55,7 +55,7 @@ describe Profile do
   describe 'validations' do
 
     before :all do
-      @headline = { valid: %w(fulltime partime internship freelance), invalid: [ 'Looking for work!', 'Unemployed', 'Broke' ] }
+      @headline = { valid: %w(fulltime partime internship freelance), invalid: %(Looking Unemployed Broke) }
       @level    = { valid: %w(Beginner Intermediate Advanced Expert), invalid: %w(crap good okish) }
       @url      = { valid: %w(http://www.engaccino.com https://engaccino.com https://dom.engaccino.com http://franck.engaccino.com http://www.engaccino.co.uk https://dom.engaccino.com.hk http://engaccino.me http://www.engaccino.ly http://fr.engaccino/users/1/edit),
                     invalid: %w(invalid_url engaccino.com pouetpouetpouet http:www.engaccino.com http//engaccino.com http/ccino.co htp://ccino.me http:/www.engaccino.com) }
@@ -78,15 +78,20 @@ describe Profile do
     it { should ensure_length_of(:quality_1).is_at_most 50 }
     it { should ensure_length_of(:quality_2).is_at_most 50 }
     it { should ensure_length_of(:quality_3).is_at_most 50 }
-
-    lambda { @headline[:invalid].each {|invalid_headline| it { should validate_format_of(:headline).not_with(invalid_headline).with_message(I18n.t('activerecord.errors.messages.headline_format')) }}}
-    lambda { @headline[:valid].each   {|valid_headline|   it { should validate_format_of(:headline).with valid_headline }}}
-
-    lambda { @url[:invalid].each {|invalid_url| it { should validate_format_of(:url).not_with(invalid_url).with_message(I18n.t('activerecord.errors.messages.url_format')) }}}
-    lambda { @url[:valid].each   {|valid_url|   it { should validate_format_of(:url).with valid_url }}}
-
-    lambda { @level[:valid].each {|invalid_level| %w(skill_1_level skill_2_level skill_3_level).each {|skill_level| it { should validate_format_of(skill_level).not_with(invalid_level).with_message(I18n.t('activerecord.errors.messages.level_format')) }}}}
-    lambda { @level[:valid].each {|valid_level|   %w(skill_1_level skill_2_level skill_3_level).each {|skill_level| it { should validate_format_of(skill_level).with valid_level }}}}
+    it { should validate_format_of(:headline).not_with(@headline[:invalid][rand(@headline[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.headline_format')) }
+    it { should validate_format_of(:headline).with @headline[:valid][rand(@headline[:valid].size)] }
+    %w(skill_1_level skill_2_level skill_3_level).each {|skill_level| it { should validate_format_of(skill_level.to_sym).not_with(@level[:invalid][rand(@level[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.level_format')) }}
+    %w(skill_1_level skill_2_level skill_3_level).each {|skill_level| it { should validate_format_of(skill_level.to_sym).with @level[:valid][rand(@level[:valid].size)] }}
+    it { should validate_format_of(:url).not_with(@url[:invalid][rand(@url[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.url_format')) }
+    it { should validate_format_of(:url).with @url[:valid][rand(@url[:valid].size)] }
+    it { should validate_format_of(:linkedin_url).not_with(@url[:invalid][rand(@url[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.url_format')) }
+    it { should validate_format_of(:linkedin_url).with @url[:valid][rand(@url[:valid].size)] }
+    it { should validate_format_of(:twitter_url).not_with(@url[:invalid][rand(@url[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.url_format')) }
+    it { should validate_format_of(:twitter_url).with @url[:valid][rand(@url[:valid].size)] }
+    it { should validate_format_of(:facebook_url).not_with(@url[:invalid][rand(@url[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.url_format')) }
+    it { should validate_format_of(:facebook_url).with @url[:valid][rand(@url[:valid].size)] }
+    it { should validate_format_of(:google_url).not_with(@url[:invalid][rand(@url[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.url_format')) }
+    it { should validate_format_of(:google_url).with @url[:valid][rand(@url[:valid].size)] }
   end
 
   describe 'file' do
@@ -130,5 +135,9 @@ end
 #  text           :string(255)
 #  created_at     :datetime        not null
 #  updated_at     :datetime        not null
+#  linkedin_url   :string(255)
+#  twitter_url    :string(255)
+#  facebook_url   :string(255)
+#  google_url     :string(255)
 #
 

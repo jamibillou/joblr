@@ -23,6 +23,10 @@ class Profile < ActiveRecord::Base
   validates :skill_2_level,  level_format: true, allow_blank: true
   validates :skill_3_level,  level_format: true, allow_blank: true
   validates :url,            url_format:   true, allow_blank: true
+  validates :linkedin_url,   url_format:   true, allow_blank: true
+  validates :twitter_url,    url_format:   true, allow_blank: true
+  validates :facebook_url,   url_format:   true, allow_blank: true
+  validates :google_url,     url_format:   true, allow_blank: true
 
   mount_uploader :file, ProfileFileUploader
 
@@ -56,5 +60,9 @@ end
 #  text           :string(255)
 #  created_at     :datetime        not null
 #  updated_at     :datetime        not null
+#  linkedin_url   :string(255)
+#  twitter_url    :string(255)
+#  facebook_url   :string(255)
+#  google_url     :string(255)
 #
 

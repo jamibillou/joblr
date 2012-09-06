@@ -40,42 +40,30 @@ describe EmailSharing do
 		end
 	end
 
-	describe 'Public author sharing' do
-    
+  describe 'Validations' do
+
     before :all do
       @email = { :invalid => %w(invalid_email invalid@example invalid@user@example.com inv,alide@), :valid => %w(valid_email@example.com valid@example.co.kr vu@example.us) }
     end
-		
-		describe 'Validations' do
-    
-		it { @email_sharing_public.should validate_presence_of :author_fullname }
-		it { @email_sharing_public.should ensure_length_of(:author_fullname).is_at_most 100 }
-		it { @email_sharing_public.should validate_presence_of :author_email }
 
-    lambda { @email[:invalid].each {|invalid_email| it { @email_sharing_public.should validate_format_of(:author_email).not_with invalid_email }}}
-    lambda { @email[:valid].each   {|valid_email|   it { @email_sharing_public.should validate_format_of(:author_email).with valid_email }}}
-
+		context 'public email sharing' do
+  		it { @email_sharing_public.should validate_presence_of :author_fullname }
+  		it { @email_sharing_public.should ensure_length_of(:author_fullname).is_at_most 100 }
+  		it { @email_sharing_public.should validate_presence_of :author_email }
+      it { should validate_format_of(:author_email).not_with(@email[:invalid][rand(@email[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.invalid')) }
+      it { should validate_format_of(:author_email).with @email[:valid][rand(@email[:valid].size)] }
 		end
-	end
-
-	describe 'Validations for every type of sharing' do
-
-    before :all do
-      @email = { :invalid => %w(invalid_email invalid@example invalid@user@example.com inv,alide@), :valid => %w(valid_email@example.com valid@example.co.kr vu@example.us) }
-    end
 
 		it { should validate_presence_of :recipient_fullname }
 		it { should ensure_length_of(:recipient_fullname).is_at_most 100 }
 		it { should validate_presence_of :recipient_email }
     it { should ensure_length_of(:text).is_at_most 140 }
     it { should validate_presence_of :text }
-
-    lambda { @email[:invalid].each {|invalid_email| it { should validate_format_of(:recipient_email).not_with invalid_email }}}
-    lambda { @email[:valid].each   {|valid_email|   it { should validate_format_of(:recipient_email).with valid_email }}}
-
+    it { should validate_format_of(:recipient_email).not_with(@email[:invalid][rand(@email[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.invalid')) }
+    it { should validate_format_of(:recipient_email).with @email[:valid][rand(@email[:valid].size)] }
 	end
-
 end
+
 # == Schema Information
 #
 # Table name: email_sharings
