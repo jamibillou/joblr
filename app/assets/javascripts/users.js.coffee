@@ -15,12 +15,25 @@ $ ->
   if $('.field_with_errors #hidden-text').html() isnt undefined
     addFieldWithErrors('text-container')
 
-  # Url
+  # URLs
   # MUST be BEFORE Popovers & Onboarding scripts
   # --------------------------------------------
 
   $('.edit_user input.url').focus -> $(this).val('http://') unless $(this).val() isnt ''
   $('.edit_user input.url').blur -> $(this).val('') if $(this).val() is 'http://'
+
+  $('#twitter-url-field').focus -> $(this).val('http://twitter.com/') unless $(this).val() isnt ''
+  $('#twitter-url-field').blur -> $(this).val('') if $(this).val() is 'http://twitter.com/'
+
+  $('#linkedin-url-field').focus -> $(this).val('http://linkedin.com/') unless $(this).val() isnt ''
+  $('#linkedin-url-field').blur -> $(this).val('') if $(this).val() is 'http://linkedin.com/'
+
+  $('#facebook-url-field').focus -> $(this).val('http://facebook.com/') unless $(this).val() isnt ''
+  $('#facebook-url-field').blur -> $(this).val('') if $(this).val() is 'http://facebook.com/'
+
+  $('#google-url-field').focus -> $(this).val('http://profiles.google.com/') unless $(this).val() isnt ''
+  $('#google-url-field').blur -> $(this).val('') if $(this).val() is 'http://profiles.google.com/'
+
 
   # Popovers & Onboarding
   # MUST be AFTER field with errors and url scripts

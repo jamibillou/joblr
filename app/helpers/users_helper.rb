@@ -14,8 +14,8 @@ module UsersHelper
     end
   end
 
-  def social_sharing_url(user,network)
-    case network
+  def social_sharing_url(user, provider)
+    case provider
       when 'linkedin'
         "http://www.linkedin.com/shareArticle?mini=true&url=#{user.public_url}&title=#{t('users.show.sharings.title', fullname: user.fullname)}&summary=#{t('users.show.sharings.motto')}&source=Joblr"
       when 'facebook'
@@ -24,6 +24,19 @@ module UsersHelper
         "http://www.twitter.com/share?url=#{user.public_url}&text=#{t('users.show.sharings.title', fullname: user.fullname).gsub(' ','+')}"
       when 'google'
         "https://plus.google.com/share?url=#{user.public_url}"
+    end
+  end
+
+  def social_url_placeholder(provider)
+    case provider
+      when 'twitter'
+        "http://twitter.com/username"
+      when 'linkedin'
+        "http://linkedin.com/username"
+      when 'facebook'
+        "http://facebook.com/username"
+      when 'google'
+        "http://profiles.google.com/username"
     end
   end
 end
