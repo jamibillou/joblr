@@ -19,7 +19,7 @@ deploy:
     production:
       name: joblr
       branch: staging
-      backup: true
+      backup: false
       force: false
       migrate: true
       url: http://joblr.heroku.com
