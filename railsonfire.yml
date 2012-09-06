@@ -22,6 +22,6 @@ deploy:
       backup: false
       force: false
       migrate: true
-      url: http://joblr.heroku.com
+      url: http://joblr.co
 ruby_versions:
 - 1.9.3

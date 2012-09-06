@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   private
 
     def find_subdomain_user
-      @user = User.find_by_subdomain! request.subdomain
+      @user = User.find_by_subdomain! request.subdomain unless request.domain == 'herokuapp'
     rescue ActiveRecord::RecordNotFound
       redirect_to root_url(subdomain: false), flash: {error: t('flash.error.subdomain.profile')}
     end
