@@ -2,6 +2,7 @@ en:
   pages:
     landing:
       title: 'The online profile that saves your job hunting minutes'
+      title_alt: 'Landing'
     admin:
       title: 'Admin dashboard'
       title_alt: 'Admin'
