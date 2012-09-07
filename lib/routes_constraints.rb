@@ -1,6 +1,6 @@
 class Subdomain < Struct.new(:value)
   def matches?(request)
-    request.subdomain.present? && !%w(www staging joblr joblr-staging).include?(request.subdomain) != 'www' && request.path == '/'
+    request.subdomain.present? && !%w(www staging joblr joblr-staging).include?(request.subdomain) && request.path == '/'
   end
 end
 
