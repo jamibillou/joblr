@@ -6,14 +6,22 @@
 // New
 //----
 
-.sharing{
-  textarea{
-    width:100%;
+form#new_email_sharing{
+  margin-bottom:0;
+  #email-sharing-error{
+    color: $errorText;
+    margin-bottom:30px;
+    display:none;
   }
-  .well{
-    margin:20px 0 20px 0;
+  .span10{
+    margin-top:10px;
   }
-  .lead, form{
-    margin-bottom:0;
+  .modal-footer{
+    #loader{
+      display:none;
+      img{
+        margin:-2px 2px 0 5px;
+      }
+    }
   }
 }

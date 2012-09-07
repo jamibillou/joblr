@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @title = @user.fullname
+    @email_sharing = EmailSharing.new
   end
 
   def edit

@@ -71,9 +71,9 @@ en:
       email_sharing:
         text: "Personal message"
         author_email: "Your email"
-        author_fullname: "Your fullname"
+        author_fullname: "Your full name"
         recipient_email: "Recipient email"
-        recipient_fullname:  "Recipient fullname"
+        recipient_fullname:  "Recipient full name"
     errors:
       messages:
         level_format: 'is not formatted properly (Beginner, Intermediate, Advanced or Expert)'

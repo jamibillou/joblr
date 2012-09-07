@@ -7,12 +7,11 @@
       =t 'users.show.contact'
   .btn-group
     .btn.btn-large.dropdown-toggle{"data-toggle" => 'dropdown', href:'#', class: "#{(user_signed_in? && current_user == user && !has_subdomain) ? 'btn-danger'  :'btn-inverse'}"}
-      &nbsp;
       =t 'users.show.share'
       %span.caret.hidden-tablet
     %ul.dropdown-menu
       %li
-        %a{href: new_email_sharing_url(id: user.id, subdomain: false)}
+        %a{'data-target' => '#email-sharing-modal', 'data-toggle' => 'modal'}
           .icon-envelope
           &nbsp;
           = t 'users.show.email'

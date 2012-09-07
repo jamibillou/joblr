@@ -1,21 +1,18 @@
 en:
   email_sharings:
     new:
-      title: 'Share your profile'
+      title: 'Send profile by email'
       from_label: 'From'
       from_fullname_placeholder: 'Your full name'
       from_email_placeholder: 'Your email address'
       to_label: 'To'
       to_fullname_placeholder: 'Recipient full name'
       to_email_placeholder: 'Recipient email address'
-      send: 'Send'
       text_label: 'Personal message'
       email_text: "e.g. Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."
       social_title: "%{fullname} on joblr"
       social_text: "e.g. Hi everyone, I'm looking for work these days and was wondering if you might know of someone interested? Share my profile if so!"
-      sure: "Sure!"
-      no_thanks: "No thanks"
-      whats_this: "What’s this?"
-      explanation: "Those two big buttons will be placed in the email we're sending, together with your profile and personal message as you see them here."
+      send: 'Send'
+      sending: 'sending...'
     create:
-      title: 'Share your profile'
+      title: 'Send profile by email'
