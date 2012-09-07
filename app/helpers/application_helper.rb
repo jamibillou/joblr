@@ -8,7 +8,7 @@ module ApplicationHelper
     "Joblr.co | #{title}"
   end
 
-  def has_subdomain
+  def subdomain?
     request.subdomain.present? && !%w(www staging joblr joblr-staging).include?(request.subdomain) != 'www'
   end
 

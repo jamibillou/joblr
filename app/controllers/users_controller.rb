@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_filter :find_user,                   unless: :has_subdomain
-  before_filter :find_subdomain_user,         if: :has_subdomain
+  before_filter :find_user,                   unless: :subdomain?
+  before_filter :find_subdomain_user,         if: :subdomain?
   before_filter :user_access, :public_access, only: :show
   before_filter :correct_user!,               only: [:edit, :update]
   before_filter :associate_beta_invite,       only: :update

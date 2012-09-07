@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_locale
-  before_filter :redirect_to_domain, if: :has_subdomain
+  before_filter :redirect_to_domain, if: :subdomain?
 
   private
 
