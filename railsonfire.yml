@@ -1,0 +1,27 @@
+id: 4cfdeda0-da89-012f-cace-123138156b83
+setup:
+  commands:
+  - bundle install --without production
+  - bundle exec rake db:migrate --trace
+test:
+  commands:
+  - bundle exec rake
+deploy:
+  heroku:
+    staging:
+      name: joblr-staging
+      branch: staging
+      backup: false
+      force: true
+      migrate: true
+      restore_production: false
+      url: http://joblr-staging.heroku.com
+    production:
+      name: joblr
+      branch: staging
+      backup: false
+      force: false
+      migrate: true
+      url: http://joblr.co
+ruby_versions:
+- 1.9.3
