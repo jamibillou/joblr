@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
     end
 
     def public_access
-      redirect_to_back flash: {error: t('flash.error.profile.not_complete')} unless signed_up?(@user) || user_signed_in?
+      redirect_to root_path, flash: {error: t('flash.error.profile.not_complete')} unless signed_up?(@user) || user_signed_in?
     end
 
     def admin_user
