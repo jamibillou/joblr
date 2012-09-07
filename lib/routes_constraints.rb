@@ -1,3 +1,9 @@
+class Subdomain < Struct.new(:value)
+  def matches?(request)
+    request.subdomain.present? && !%w(www staging joblr joblr-staging).include?(request.subdomain) != 'www' && request.path == '/'
+  end
+end
+
 class SignedIn < Struct.new(:value)
   def matches?(request)
     !request.session['warden.user.user.key'].nil? == value
