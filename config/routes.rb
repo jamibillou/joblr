@@ -28,7 +28,7 @@ Joblr::Application.routes.draw do
   match 'sharings/linkedin',      to: 'sharings#linkedin'
 
   # Subdomain constraints
-  match '', to: 'users#show', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' && r.path == '/' }
+  match '', to: 'users#show', constraints: Subdomain.new(true)
 
   # Dynamic root_path
   root to: 'pages#landing', constraints: SignedIn.new(false)

@@ -1,0 +1,36 @@
+= form_for @email_sharing, remote: true do |f|
+  .modal-body
+    #email-sharing-error
+    - unless user_signed_in?
+      .row-fluid
+        .span1
+          %small= t 'email_sharings.new.from_label'
+          %span.danger-text= link_to '*', '#required'
+        .span5
+          = f.text_field :author_fullname, placeholder: t('email_sharings.new.from_fullname_placeholder'), class: 'span5'
+        .span5
+          = f.email_field :author_email, placeholder: t('email_sharings.new.from_email_placeholder'), class: 'span5'
+    .row-fluid
+      .span1
+        %small= t 'email_sharings.new.to_label'
+        %span.danger-text= link_to '*', '#required'
+      .span5
+        = f.text_field :recipient_fullname, placeholder: t('email_sharings.new.to_fullname_placeholder'), class: 'span5'
+      .span5
+        = f.email_field :recipient_email, placeholder: t('email_sharings.new.to_email_placeholder'), class: 'span5'
+    .row-fluid
+      .span1
+      .span10
+        %small= t 'email_sharings.new.text_label'
+        %span.danger-text= link_to '*', '#required'
+        %br/
+        = f.text_area :text, rows: 3, placeholder: t('email_sharings.new.email_text'), class: 'span12'
+        %input{type: 'hidden', name: 'user_id', value: @user.id}
+        .pull-right.danger-text * required fields
+
+  .modal-footer
+    #loader.pull-left
+      = image_tag 'base/loader.gif'
+      = t('email_sharings.new.sending')
+    %a.btn.btn-small{href:'#', 'data-dismiss' => 'modal'}= t('cancel')
+    = f.submit t('email_sharings.new.send'), class: 'btn btn-small btn-primary'

@@ -10,4 +10,6 @@
         = render 'show_qualities',            user: @user
         = render 'show_more',                 user: @user
     .span2
-    .span2= render 'show_buttons',            user: @user
+    .span2
+      = render 'show_buttons',                user: @user
+      = render 'email_sharing_modal'
