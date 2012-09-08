@@ -37,12 +37,6 @@ class UsersController < ApplicationController
 
   private
 
-    def find_subdomain_user
-      @user = User.find_by_subdomain! request.subdomain
-    rescue ActiveRecord::RecordNotFound
-      redirect_to root_url(subdomain: false), flash: {error: t('flash.error.subdomain.profile')}
-    end
-
     def correct_user!
       redirect_to root_path, flash: {error: t('flash.error.other_user.profile')} unless user_signed_in? && current_user == @user
     end

@@ -1,3 +1,9 @@
+class Subdomain < Struct.new(:value)
+  def matches?(request)
+    request.subdomain.present? && request.subdomain != 'www' && !%w(staging.joblr.co joblr.herokuapp.com joblr-staging.herokuapp.com).include?(request.host)
+  end
+end
+
 class SignedIn < Struct.new(:value)
   def matches?(request)
     !request.session['warden.user.user.key'].nil? == value

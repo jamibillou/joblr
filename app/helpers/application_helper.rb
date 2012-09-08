@@ -8,8 +8,8 @@ module ApplicationHelper
     "Joblr.co | #{title}"
   end
 
-  def has_subdomain
-    request.subdomain.present? && request.subdomain != 'www'
+  def subdomain?
+    request.subdomain.present? && request.subdomain != 'www' && !%w(staging.joblr.co joblr.herokuapp.com joblr-staging.herokuapp.com).include?(request.host)
   end
 
   def signed_up?(user)
