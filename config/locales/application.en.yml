@@ -41,11 +41,6 @@ en:
         code_inexistant: "This invitation code doesn't exist. Do you mind double ckecking?"
         used: "This invitation code has already been used. Ask another one!"
         required: "You need an invitation to sign up, you can ask for one here."
-      subdomain:
-        page: "The page you are trying to access doesn't exist."
-        profile: "The profile you are trying to access doesn't exist."
-      profile:
-        not_complete: "This profile hasn't been completed yet, please come back later!"
       required:
         all: "Error: all fields are required."
   errors:

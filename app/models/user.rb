@@ -27,6 +27,26 @@ class User < ActiveRecord::Base
 
   mount_uploader :image, UserImageUploader
 
+  class << self
+
+    # TEST ME!
+    #
+    def make_username(desired_username, fullname)
+      unless username = username_available?(desired_username)
+        unless fullname.blank?
+          unless username = username_available?(fullname.parameterize)
+            username = username_available?(fullname.parameterize.split('-').map{ |name| name.chars.first }.join)
+          end
+        end
+      end
+      username ||= "user-#{User.last.id + 1}"
+    end
+    #
+    def username_available?(username)
+      username if find_by_username(username).nil?
+    end
+  end
+
   def profile
     profiles.first
   end

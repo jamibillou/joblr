@@ -16,21 +16,6 @@ module ApplicationHelper
     user && !user.profiles.empty? && user.profile.persisted?
   end
 
-  def username_available?(username)
-    username if User.find_by_username(username).nil?
-  end
-
-  def make_username(desired_username, fullname = nil)
-    unless username = username_available?(desired_username)
-      if fullname
-        unless username = username_available?(fullname.parameterize)
-          username = username_available?(fullname.parameterize.split('-').map{ |name| name.chars.first }.join)
-        end
-      end
-    end
-    username ||= "user-#{User.last.id + 1}"
-  end
-
   # Errors
   # ------
 

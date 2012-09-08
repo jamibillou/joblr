@@ -24,19 +24,21 @@ class ApplicationController < ActionController::Base
     end
 
     def not_signed_in
-      redirect_to_back flash: {error: t('flash.error.only.public')} if user_signed_in?
+      redirect_to root_path, flash: {error: t('flash.error.only.public')} if user_signed_in?
     end
 
-    def user_access
-      redirect_to(edit_user_path(@user), flash: {error: t('flash.error.only.signed_up')}) unless signed_up?(@user) || !user_signed_in?
-    end
-
-    def public_access
-      redirect_to_back flash: {error: t('flash.error.profile.not_complete')} unless signed_up?(@user) || user_signed_in?
+    def profile_completed
+      unless signed_up?(@user)
+        if user_signed_in?
+          redirect_to edit_user_path(@user), flash: {error: t('flash.error.only.signed_up')}
+        else
+          raise ActionController::RoutingError.new(t('errors.routing', path: request.path))
+        end
+      end
     end
 
     def admin_user
-      redirect_to_back flash: {error: t('flash.error.only.admin')} unless user_signed_in? && current_user.admin
+      redirect_to root_path, flash: {error: t('flash.error.only.admin')} unless user_signed_in? && current_user.admin
     end
 
     def redirect_to_back(flash = {})
