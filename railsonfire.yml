@@ -15,7 +15,7 @@ deploy:
       force: true
       migrate: true
       restore_production: false
-      url: http://joblr-staging.heroku.com
+      url: http://staging.joblr.co
     production:
       name: joblr
       branch: staging
