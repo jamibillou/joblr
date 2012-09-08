@@ -47,19 +47,30 @@ describe UsersController do
         it { response.should be_success }
 
         it 'should have a the right user profile' do
-          response.body.should have_selector 'div', class:'card', id:"show-user-#{@user.id}"
+          response.body.should have_selector "div#user-#{@user.id}"
+        end
+
+        it 'should have a div with the email-sharing modal' do
+          response.body.should have_selector 'div#email-sharing-form'
         end
       end
     end
 
     context 'for public visitors' do
 
-      before(:each) { sign_out @user ; @user.profiles.create @profile_attr }
+      before(:each) do 
+        sign_out @user
+        @user.profiles.create @profile_attr
+        get :show, id: @user
+      end  
 
       context 'requests without a subdomains' do
         it 'should have the right user profile' do
-          get :show, id: @user
-          response.body.should have_selector 'div', class:'card', id:"show-user-#{@user.id}"
+          response.body.should have_selector "div#user-#{@user.id}"
+        end
+
+        it 'should have a div with the email-sharing modal' do          
+          response.body.should have_selector 'div#email-sharing-form'
         end
       end
 
@@ -85,7 +96,7 @@ describe UsersController do
     it { response.should be_success }
 
     it 'should have an edit form' do
-      response.body.should have_selector 'form', class:'edit_user', id:"edit-user-#{@user.id}"
+      response.body.should have_selector "form.edit_user#edit_user_#{@user.id}"
     end
   end
 
