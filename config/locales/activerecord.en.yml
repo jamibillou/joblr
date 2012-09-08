@@ -79,6 +79,7 @@ en:
         level_format: 'is not formatted properly (Beginner, Intermediate, Advanced or Expert)'
         url_format: "is not formatted properly"
         headline_format: "is not formated properly (fulltime, partime, internship, freelance)"
+        subdomain_format: "is not formated properly (between 2 and 63 letters or numbers, and special characters - and _ can't be first or last)"
         blank: "can't be blank"
         invalid: "is invalid"
         taken: "has already been taken"

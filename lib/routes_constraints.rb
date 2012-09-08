@@ -1,12 +1,12 @@
 class Subdomain < Struct.new(:value)
   def matches?(request)
-    request.subdomain.present? && request.subdomain != 'www' && !request.host.match(/\Astaging.joblr.co|joblr.herokuapp.com|joblr-staging.herokuapp.com\z/)
+    request.subdomain.present? && request.subdomain != 'www' && !request.host.match(/^staging.joblr.co|joblr.herokuapp.com|joblr-staging.herokuapp.com$/)
   end
 end
 
 class MultiLevelSubdomain < Struct.new(:value)
   def matches?(request)
-    request.subdomain.present? && request.subdomains.size == 2 && request.host.match(/\A[^\.]+\.(staging.joblr.co|joblr.herokuapp.com|joblr-staging.herokuapp.com)\z/)
+    request.subdomain.present? && request.subdomains.size == 2 && request.host.match(/^[^\.]+\.(staging.joblr.co|joblr.herokuapp.com|joblr-staging.herokuapp.com)$/)
   end
 end
 
