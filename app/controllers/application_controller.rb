@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_locale
-  before_filter :filter_subdomain_path, if: :subdomain?
+  before_filter :constrain_subdomain_path, if: :subdomain?
 
   private
 
@@ -13,14 +13,16 @@ class ApplicationController < ActionController::Base
       I18n.locale = I18n.default_locale
     end
 
-    def filter_subdomain_path
-      if request.path != '/'
-        redirect_to root_url(subdomain: request.subdomain), flash: { error: t('flash.error.subdomain.page') }
-      end
+    def constrain_subdomain_path
+      raise ActionController::RoutingError.new(t('errors.routing', path: request.path)) if request.path != '/'
     end
 
-    def find_user
-      @user = params[:id] ? User.find(params[:id]) : current_user
+    def load_user
+      unless subdomain?
+        @user = params[:id] ? User.find(params[:id]) : current_user
+      else
+        @user = User.find_by_subdomain! request.subdomain
+      end
     end
 
     def not_signed_in
@@ -43,6 +45,5 @@ class ApplicationController < ActionController::Base
       redirect_to :back, flash
     rescue ActionController::RedirectBackError
       redirect_to root_path, flash
-    ensure
     end
 end

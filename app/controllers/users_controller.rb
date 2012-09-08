@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :find_user,                   unless: :subdomain?
-  before_filter :find_subdomain_user,         if: :subdomain?
+  before_filter :load_user
   before_filter :user_access, :public_access, only: :show
   before_filter :correct_user!,               only: [:edit, :update]
   before_filter :associate_beta_invite,       only: :update
@@ -37,10 +36,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-    def find_subdomain_user
-      @user = User.find_by_subdomain! request.subdomain
-    end
 
     def correct_user!
       redirect_to root_path, flash: {error: t('flash.error.other_user.profile')} unless user_signed_in? && current_user == @user
