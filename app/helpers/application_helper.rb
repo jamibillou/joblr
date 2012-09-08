@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def subdomain?
-    request.subdomain.present? && !%w(www staging joblr joblr-staging).include?(request.subdomain)
+    request.subdomain.present? && request.subdomain != 'www' && !%w(staging.joblr.co joblr.herokuapp.com joblr-staging.herokuapp.com).include?("#{request.subdomain}.#{request.host}")
   end
 
   def signed_up?(user)

@@ -1,8 +1,11 @@
 .span8
   .hero-unit
-    %h1 Welcome to Joblr
+    %h1 Welcome
     %br/
     .lead
       Tired of wasting your time writing cover letters and resumes?
       %br/
-      Click #{link_to 'here', new_beta_invite_path} to join our beta!
+      Joblr is #{link_to 'here', new_beta_invite_path}!
+      %br/
+      %br/
+      = "#{request.host}"

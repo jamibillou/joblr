@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_locale
-  before_filter :redirect_to_domain, if: :subdomain?
+  before_filter :filter_subdomain_path, if: :subdomain?
 
   private
 
@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
       I18n.locale = I18n.default_locale
     end
 
-    def redirect_to_domain
+    def filter_subdomain_path
       if request.path != '/'
         redirect_to root_url(subdomain: request.subdomain), flash: { error: t('flash.error.subdomain.page') }
       end
