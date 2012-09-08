@@ -21,7 +21,11 @@ class ApplicationController < ActionController::Base
       unless subdomain?
         @user = params[:id] ? User.find(params[:id]) : current_user
       else
-        @user = User.find_by_subdomain! request.subdomain
+        unless multi_level_subdomain?
+          @user = User.find_by_subdomain! request.subdomain
+        else
+          @user = User.find_by_subdomain! request.subdomains[0]
+        end
       end
     end
 
