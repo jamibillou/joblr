@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 
   before_filter :check_beta_invite,  only: :new
-  before_filter :user_access,        only: :edit
+  before_filter :profile_completed,  only: :edit
   before_filter :ignore_blank_email, only: :update
 
   def edit

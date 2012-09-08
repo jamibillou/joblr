@@ -38,19 +38,27 @@
   h4{
     margin-top:20px;
   }
+  #image-modal{
+    .pic {
+      width:50px;
+      height:50px;
+      &.social {
+        margin:5px 7px 20px -2px;
+      }
+      &.current {
+        margin:5px 0 5px 0;
+      }
+      &.selected {
+        @include box-shadow(0 0 4px 1px #0073CC);
+      }
+    }
+  }
   .headline{
     margin-top:-5px;
     font-weight:500;
   }
   .lead{
     margin-bottom:10px;
-  }
-  .input-small{
-    margin-right:15px;
-  }
-  .input-slim{
-    height:10px;
-    font-size:11px;
   }
   .experience p{
     margin-bottom:0;
@@ -68,13 +76,13 @@
   #social-urls .btn-small{
     margin-bottom:8px;
   }
-  input.url{
-    margin-bottom:15px;
-  }
   #social-url-fields{
     input{
       display:none;
     }
+  }
+  input.url{
+    margin-bottom:15px;
   }
   .delete{
     font-size:11px;
@@ -84,6 +92,13 @@
       color: $gray;
       text-decoration:underline;
     }
+  }
+  .input-small{
+    margin-right:15px;
+  }
+  .input-slim{
+    height:10px;
+    font-size:11px;
   }
 }
 

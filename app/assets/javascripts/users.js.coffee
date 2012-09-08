@@ -50,8 +50,8 @@ $ ->
   # MUST be AFTER field with errors and url scripts
   # -----------------------------------------------
   #
-  # FIX ME!
-  # turn this into 1 single each loop
+  # REFACTOR ME!
+  # Turn this into 1 single each loop
   #
   if $('#popovers').html()
     $('.edit_user input').each ->
