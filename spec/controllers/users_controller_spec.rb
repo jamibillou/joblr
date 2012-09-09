@@ -5,7 +5,8 @@ describe UsersController do
   render_views
 
   before :each do
-    @user = FactoryGirl.create :user
+    @user  = FactoryGirl.create :user, subdomain: 'jdoe', email: nil
+    @user2 = FactoryGirl.create :user, fullname: FactoryGirl.generate(:fullname), username: FactoryGirl.generate(:username), email: FactoryGirl.generate(:email)
     sign_in @user
     @attr =         { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China', profiles_attributes: { '0' => { headline: 'fulltime', experience: '10', education: 'none', text: 'A good and highly motivated guy.' } } }
     @profile_attr = { headline: 'fulltime',
@@ -34,6 +35,7 @@ describe UsersController do
         it "should redirect to 'edit'" do
           get :show, id: @user
           response.should redirect_to edit_user_path(@user)
+          flash[:error].should == I18n.t('flash.error.only.signed_up')
         end
       end
 
@@ -61,10 +63,13 @@ describe UsersController do
       before(:each) do 
         sign_out @user
         @user.profiles.create @profile_attr
-        get :show, id: @user
       end  
 
       context 'requests without a subdomains' do
+        before :each do
+          get :show, id: @user
+        end 
+
         it 'should have the right user profile' do
           response.body.should have_selector "div#user-#{@user.id}"
         end
@@ -74,30 +79,62 @@ describe UsersController do
         end
       end
 
-      context 'requests with existing subdomains' # do
-        it 'should have the right user profile' do
-        # end
+      context 'requests with existing subdomains' do
+        #it 'should have the right user profile' do
+          ### To be completed
+          #response.body.should have_selector "div#user-#{@user.id}"
+        #end
       end
 
       context 'requests with non-existing subdomains' do
-
-        it 'should redirect to root path' # do
-        # end
+        #it 'should redirect to 404 page'  do
+          ### Te be completed
+          #response.should render_template '/404'
+        #end
       end
     end
   end
 
   describe "GET 'edit'" do
 
-    before :each do
-      get :edit, id: @user
+    context 'from the correct user' do
+      before :each do
+        get :edit, id: @user
+      end
+
+      it { response.should be_success }
+
+      it 'should have an edit form' do
+        response.body.should have_selector "form.edit_user#edit_user_#{@user.id}"
+      end
     end
 
-    it { response.should be_success }
+    context 'from another user' do
 
-    it 'should have an edit form' do
-      response.body.should have_selector "form.edit_user#edit_user_#{@user.id}"
+      before :each do
+        sign_out @user
+        sign_in @user2
+        get :edit, id: @user
+      end
+
+      it 'should redirect to the connected user profile' do
+        response.body.should redirect_to root_path
+        flash[:error].should == I18n.t('flash.error.other_user.profile')
+      end 
     end
+
+    context 'from a public visitor' do
+
+      before :each do
+        sign_out @user
+        get :edit, id: @user
+      end
+
+      it 'should redirect to the root path' do
+        response.body.should redirect_to root_path
+        flash[:error].should == I18n.t('flash.error.other_user.profile')
+      end 
+    end     
   end
 
   describe "PUT 'update'" do
@@ -124,6 +161,7 @@ describe UsersController do
     it "should redirect to the 'show' page" do
       put :update, user: @attr, id: @user
       response.should redirect_to @user
+      flash[:success].should == I18n.t('flash.success.profile.created')
     end
 
     context 'for users who signed up with a beta_invite' do
