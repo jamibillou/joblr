@@ -1,8 +1,8 @@
 .span8
   .hero-unit
-    %h1 Welcome
+    %h1= t('pages.landing.welcome') 
     %br/
     .lead
-      Tired of wasting your time writing cover letters and resumes?
+      = t('pages.landing.motto')
       %br/
-      Joblr is #{link_to 'here', new_beta_invite_path}!
+      #{t('pages.landing.joblr_is')} #{link_to t('pages.landing.here'), new_beta_invite_path}!
