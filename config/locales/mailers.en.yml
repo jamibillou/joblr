@@ -14,6 +14,7 @@ en:
       share_profile:
         subject: "%{fullname} on Joblr"
         html:
+          summary: "%{fullname} is looking for work and wants to talk to you."
           title: "%{fullname} on Joblr"
           header: 'Having trouble reading this email? View it on'
           headline:
@@ -50,8 +51,11 @@ en:
         team: "Who ever of us wrote this email"
       send_code:
         subject: "Invitation to Joblr alpha"
+        header: 'This is an automated notification, please do not reply.'
         title: "Congrats, here's your invitation to Joblr alpha!"
-        content_html: "Thanks for your interest in Joblr, we're glad to have you on board. Paste this invitation code at %{url} and sign up!"
-        code: "Invitation code: %{code}"
+        content_html: "Thanks for your interest in Joblr. Paste this invitation code at %{url} and sign up!"
+        code: "Code:"
         cheers: "Cheers,"
         team: "The Joblr team"
+        ok_sign_up: 'Ok, sign up!'
+        no_later: "No, I'll do it later"

@@ -28,56 +28,26 @@ p{
   font-size:16px;
   font-weight:300;
 }
-.lead{
-  color:#444;
-  font-size:20px;
-  font-weight:200;
-  line-height:30px;
+p small{
+  font-size:13px;
+  color:#a1a1a1;
 }
 .graylight-text{
   color:#a1a1a1;
-}
-.info-text{
-  color:#0076ca;
 }
 
 
 /* HEADINGS
    -------- */
 
-h1, h2, h4{
+h2{
   color:#444;
   font-family:Helvetica, Arial, sans-serif;
-}
-h1{
-  font-size:34px;
-  font-weight:200;
-  line-height:40px;
-  margin:0;
-  padding-top:5px;
-  padding-bottom:10px;
-}
-h1 span{
-  color:#444;
-}
-h2{
   font-size:26px;
   line-height:30px;
+  margin:0;
 }
 h2 span{
-  color:#444;
-}
-h4{
-  width:100%;
-  padding-bottom:4px;
-  margin-top:0px;
-  margin-bottom:13px;
-  border-bottom:1px solid #ccc;
-  font-size:14px;
-  font-weight:100;
-  color:#ccc;
-}
-h4 span{
   color:#444;
 }
 
@@ -104,20 +74,6 @@ h4 span{
   background-color:white;
 }
 
-/* Identity */
-
-#identity-table img{
-  margin-top:5px;
-}
-#identity-table h2{
-  margin-top:0;
-  margin-bottom:10px;
-}
-#identity-table p.graylight-text{
-  font-weight:300;
-  line-height:13px;
-  margin-bottom:5px;
-}
 
 /* Fine line */
 
@@ -142,31 +98,4 @@ h4 span{
 }
 #button-left-table a span{
   color:white;
-}
-
-
-/* PROFILE
-   ------- */
-
-#profile-table{
-  border:10px solid #e1e2e5;
-  background-color:white;
-}
-#profile-table h2{
-  margin-top:5px;
-  margin-bottom:20px;
-}
-#profile-table p{
-  margin-bottom:10px;
-}
-
-/* Experience */
-
-#experience-table p.past-companies{
- font-size:13px;
-}
-#experience-table p small{
-  font-size:11px;
-  color:#999;
-  line-height:20px;
 }

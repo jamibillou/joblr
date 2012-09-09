@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Dominic Matheron on Joblr</title>
+    <link href="mailers/email.css" rel="stylesheet" media="all" type="text/css" />
+  </head>
+
+  <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
+    <center>
+
+      <!-- Background table -->
+      <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="background-table">
+        <tr>
+          <td align="center" valign="top">
+
+            <!-- Container table -->
+            <table border="0" cellpadding="0" cellspacing="0" id="container-table">
+              <tr>
+                <td align="center" valign="top" width="560">
+
+                  <!-- Header table -->
+                  <table border="0" cellpadding="0" cellspacing="0" id="header-table">
+                    <tr>
+                      <td align="center" valign="bottom" height="54" width="540">
+                        <p class="graylight-text"><%=t 'mailers.beta_invite.send_code.header' %></p>
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- End of header table -->
+
+                </td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">
+
+                  <!-- Body table -->
+                  <table border="0" cellpadding="20" cellspacing="0" id="body-table">
+                    <tr>
+                      <td align="center" valign="top" width="560">
+
+                        <!-- Message table -->
+                        <table border="0" cellpadding="20" cellspacing="0" id="message-table">
+                          <tr>
+                            <td align="center" valign="top" width="500">
+
+                              <!-- Message container -->
+                              <table border="0" cellpadding="10" cellspacing="0" id="message-container">
+                                <tr>
+                                  <td align="center" valign="top" width="480">
+
+                                    <!-- Text table -->
+                                    <table border="0" cellpadding="0" cellspacing="0" id="text-table">
+                                      <tr>
+                                        <td align="left" valign="top" width="480">
+                                          <h2><span><%=t 'mailers.beta_invite.send_code.title' %></span></h2>
+                                          <p>
+                                            <br />
+                                            <br />
+                                            <br />
+                                            <%=t 'mailers.beta_invite.send_code.content_html', url: link_to("http://joblr.co/beta_invites/#{@beta_invite.id}/edit", "http://joblr.co/beta_invites/#{@beta_invite.id}/edit") %>
+                                            <br />
+                                            <br />
+                                            <%=t 'mailers.beta_invite.send_code.code' %> <span class="graylight-text"><%= @beta_invite.code %></span>
+                                            <br />
+                                            <br />
+                                            <br />
+                                            <br />
+                                            <%=t 'mailers.beta_invite.send_code.cheers' %>
+                                            <br />
+                                            <%=t 'mailers.beta_invite.send_code.team' %>
+                                          </p>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                    <!-- Enf of text table -->
+
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td align="center" valign="middle" height="20" width="480">
+
+                                    <!-- Fine line table -->
+                                    <table border="0" cellpadding="0" cellspacing="0" id="fine-line-table">
+                                      <tr>
+                                        <td align="left" valign="top" height="0" width="480"></td>
+                                      </tr>
+                                    </table>
+                                    <!-- End of fine line table -->
+
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td align="center" valign="top" width="480">
+
+                                    <!-- Buttons table -->
+                                    <table border="0" cellpadding="0" cellspacing="0" id="buttons-table">
+                                      <tr>
+                                        <td align="left" valign="top" height="60" width="170">
+
+                                          <!-- Button left table -->
+                                          <table border="0" cellpadding="0" cellspacing="0" id="button-left-table">
+                                            <tr>
+                                              <td align="center" valign="middle" height="50" width="170">
+                                                <a href="<%= "http://joblr.co/beta_invites/#{@beta_invite.id}/edit" %>"><span><%=t 'mailers.beta_invite.send_code.ok_sign_up' %></span></a>
+                                              </td>
+                                            </tr>
+                                          </table>
+                                          <!-- End of button left table -->
+
+                                        </td>
+                                        <td align="left"  valign="top" width="30"></td>
+                                        <td align="right" valign="top" height="60" width="280">
+
+                                          <!-- Button right table -->
+                                          <table border="0" cellpadding="0" cellspacing="0" id="button-right-table">
+                                            <tr>
+                                              <td align="left" valign="middle" height="50" width="280">
+                                                <a href="#"><span><%=t 'mailers.beta_invite.send_code.no_later' %></span></a>
+                                              </td>
+                                            </tr>
+                                          </table>
+                                          <!-- End of right left table -->
+
+                                        </td>
+                                      </tr>
+                                    </table>
+                                    <!-- End of buttons table -->
+
+                                  </td>
+                                </tr>
+                              </table>
+                              <!-- End of message container -->
+
+                            </td>
+                          </tr>
+                        </table>
+                        <!-- End of message table -->
+
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- End of body table -->
+
+                </td>
+              </tr>
+              <tr>
+                <td align="center" valign="top" width="560">
+
+                  <!-- Footer table -->
+                  <table border="0" cellpadding="0" cellspacing="0" id="footer-table">
+                    <tr>
+                      <td align="center" valign="top" height="87" width="560">
+                        <img src="logo.gif" alt="Joblr.co" height="37" width="124" />
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- End of footer table -->
+
+                </td>
+              </tr>
+            </table>
+            <!-- End of container table -->
+
+          </td>
+        </tr>
+      </table>
+      <!-- End of background table -->
+
+    </center>
+  </body>
+</html>

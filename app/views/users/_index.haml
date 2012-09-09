@@ -42,7 +42,7 @@
             = user.sign_in_count
         .span1
           %td
-            = time_ago_in_words(user.last_sign_in_at).gsub('about', '')
+            = time_ago_in_words(user.last_sign_in_at).gsub('about', '') unless user.last_sign_in_at.nil?
         .span1
           %td
             %span{class: "#{signed_up?(user) ? 'success-text' : 'danger-text'}"}= signed_up?(user)

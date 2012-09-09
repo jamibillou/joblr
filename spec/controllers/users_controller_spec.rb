@@ -58,30 +58,31 @@ describe UsersController do
 
     context 'for public visitors' do
 
-      before(:each) do 
+      before(:each) do
         sign_out @user
         @user.profiles.create @profile_attr
         get :show, id: @user
-      end  
+      end
 
-      context 'requests without a subdomains' do
+      context 'requests without a subdomain' do
+
         it 'should have the right user profile' do
           response.body.should have_selector "div#user-#{@user.id}"
         end
 
-        it 'should have a div with the email-sharing modal' do          
+        it 'should have a div with the email-sharing modal' do
           response.body.should have_selector 'div#email-sharing-form'
         end
       end
 
-      context 'requests with existing subdomains' # do
+      context 'requests with an existing subdomain' # do
         it 'should have the right user profile' do
         # end
       end
 
       context 'requests with non-existing subdomains' do
 
-        it 'should redirect to root path' # do
+        it 'should have an error 500' # do
         # end
       end
     end
