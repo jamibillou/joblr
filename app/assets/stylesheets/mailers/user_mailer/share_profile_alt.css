@@ -1,0 +1,142 @@
+/* SCAFFOLDING
+   ----------- */
+
+body{
+  font-family:Helvetica, Arial, sans-serif;
+  font-size:16px;
+  color:#444;
+}
+a{
+  color:#0076ca;
+  font-weight:300;
+}
+
+
+/* BODY TEXT
+   --------- */
+
+p{
+  margin:0;
+  font-weight:300;
+}
+p small{
+  font-size:11px;
+  color:#999;
+}
+.lead{
+  font-size:20px;
+  font-weight:200;
+  line-height:30px;
+}
+.graylight-text{
+  color:#a1a1a1;
+}
+.info-text{
+  color:#0076ca;
+}
+
+
+/* HEADINGS
+   -------- */
+
+h1, h2, h4{
+  font-family:Helvetica, Arial, sans-serif;
+}
+h1{
+  font-size:34px;
+  font-weight:200;
+  line-height:40px;
+  margin-top:35px;
+  margin-bottom:0;
+}
+h2{
+  font-size:26px;
+  line-height:30px;
+}
+h4{
+  width:100%;
+  padding-bottom:4px;
+  margin-top:0px;
+  margin-bottom:13px;
+  border-bottom:1px solid #ccc;
+  font-size:14px;
+  font-weight:100;
+  color:#ccc;
+}
+
+
+/* BACKGROUND */
+
+#background-table{
+  background-color:#f1f3f4;
+}
+
+
+/* HEADER */
+
+#header-table p{
+  margin-bottom:0;
+}
+
+
+/* MESSAGE
+   ------- */
+
+#message-table{
+  border:10px solid #e1e2e5;
+  background-color:white;
+}
+
+/* Buttons */
+
+#buttons-table{
+  border-top:1px solid #ccc;
+}
+#button-left-table{
+  background-color:#0076ca;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+#button-left-table a{
+  font-size:20px;
+  font-weight:500;
+  color:white;
+  text-decoration:none;
+}
+
+
+/* PROFILE
+   ------- */
+
+#profile-table{
+  border:10px solid #e1e2e5;
+  background-color:white;
+}
+#profile-table, p{
+  margin-bottom:10px;
+}
+
+/* Identity */
+
+#identity-table img{
+  margin-top:5px;
+}
+#identity-table h2{
+  margin-top:0px;
+  margin-bottom:10px;
+}
+#identity-table p{
+  font-weight:300;
+  line-height:13px;
+}
+
+/* Experience */
+
+#experience-table p.past-companies{
+ font-size:13px;
+}
+#experience-table p small{
+  line-height:20px;
+}
