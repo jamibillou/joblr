@@ -191,4 +191,61 @@ describe UsersController do
       end
     end
   end
+
+  describe "DESTROY 'delete'" do
+
+    context 'for public users' do
+      before :each do
+        sign_out @user
+      end
+
+      it 'should redirect to root path' do
+        delete :destroy, id: @user
+        response.should redirect_to root_path
+        flash[:error].should == I18n.t('flash.error.only.admin')
+      end
+
+      it 'should not delete the user' do
+        lambda do
+          delete :destroy, id: @user
+        end.should_not change(User, :count).by 1
+      end
+    end
+
+    context 'for public users' do
+      before :each do
+        sign_out @user
+      end
+
+      it 'should redirect to root path' do
+        delete :destroy, id: @user
+        response.should redirect_to root_path
+        flash[:error].should == I18n.t('flash.error.only.admin')
+      end
+
+      it 'should not destroy the user' do
+        lambda do
+          delete :destroy, id: @user
+        end.should_not change(User, :count).by 1
+      end
+    end
+
+    context 'for admins' do
+      before :each do
+        @user.toggle! :admin
+      end
+
+      it 'should not destroy the user' do
+        lambda do
+          delete :destroy, id: @user
+        end.should change(User, :count).by -1
+      end
+
+      it 'should redirect_to admin path' do
+        delete :destroy, id: @user
+        response.should redirect_to admin_path
+        flash[:success].should == I18n.t('flash.success.user.destroyed')
+      end 
+    end    
+  end
 end
