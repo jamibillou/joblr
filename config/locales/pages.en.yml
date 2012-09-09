@@ -3,6 +3,10 @@ en:
     landing:
       title: 'Save your job hunting minutes and start the conversation'
       title_alt: 'Landing'
+      welcome: 'Welcome'
+      motto: 'Tired of wasting your time writing cover letters and resumes?'
+      joblr_is: 'Joblr is'
+      here: 'here'
     admin:
       title: 'Admin dashboard'
       title_alt: 'Admin'

@@ -51,7 +51,7 @@
             = user.authored_email_sharings.count
         .span1
           %td
-            = user.profile.public_emails_sharings.count
+            = user.profile.public_emails_sharings.count unless user.profile.nil?
         .span1
           %td
             = user.authentifications.count
