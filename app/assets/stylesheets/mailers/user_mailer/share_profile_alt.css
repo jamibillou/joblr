@@ -10,6 +10,9 @@ a{
   color:#0076ca;
   font-weight:300;
 }
+a span{
+  color:#0076ca;
+}
 img{
   display:block
 }
@@ -108,7 +111,9 @@ h4{
   color:white;
   text-decoration:none;
 }
-
+#button-left-table a span{
+  color:white;
+}
 
 /* PROFILE
    ------- */
