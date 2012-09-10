@@ -1,0 +1,9 @@
+<%=t 'mailers.beta_invite.notify_team.title' %>
+<% t('mailers.beta_invite.notify_team.title').length.times do %>=<% end %>
+<br />
+<%=t 'mailers.beta_invite.notify_team.content_text', email: @beta_invite.email %>
+
+<%=t 'mailers.beta_invite.notify_team.go_to_url_html', url: 'http://joblr.co/admin' %>
+<br />
+<% t('mailers.team').length.times do %>=<% end %>
+<%=t 'mailers.team' %>

@@ -34,4 +34,10 @@ Joblr::Application.routes.draw do
   root to: 'pages#landing', constraints: SignedIn.new(false)
   root to: 'users#edit',    constraints: SignedIn.new(true) && SignedUp.new(false)
   root to: 'users#show',    constraints: SignedIn.new(true) && SignedUp.new(true)
+
+  # Mail_view gem
+  if Rails.env.development?
+    mount UserMailer::Preview       => 'user_mailer'
+    mount BetaInviteMailer::Preview => 'beta_invite_mailer'
+  end
 end

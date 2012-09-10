@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_filter :profile_completed,     only: :show
   before_filter :correct_user!,         only: [:edit, :update]
   before_filter :associate_beta_invite, only: :update # REFACTOR ME!
+  before_filter :admin_user,            only: :destroy
 
   def show
     @title = @user.fullname
