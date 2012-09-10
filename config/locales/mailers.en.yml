@@ -46,10 +46,10 @@ en:
         content_html: "Some person whose email is %{email} just requested a beta invite."
         content_text: "Some person whose email is %{email} just requested a beta invite."
         go_to_url_html: "Go to %{url} to send the invitation email."
-        button: 'Send now!'
+        button: 'Go there now!'
       send_code:
         subject: "Invitation to Joblr beta"
         title: "Congrats, here's your invitation to Joblr beta!"
         content_html: "Thanks for your interest in Joblr. Paste this invitation code at %{url} and sign up!"
         code: "Code:"
-        button: 'Ok, sign up!'
+        button: 'Ok, take me there!'
