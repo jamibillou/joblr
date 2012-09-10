@@ -1,7 +1,7 @@
 class BetaInviteMailer < ActionMailer::Base
 
   default from: "postman@joblr.co"
-  layout 'email'
+  layout 'mailers'
 
   def send_code(beta_invite)
     @beta_invite = beta_invite

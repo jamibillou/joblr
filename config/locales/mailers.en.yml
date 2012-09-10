@@ -43,8 +43,8 @@ en:
       notify_team:
         subject: "New beta invitation request!"
         title: "Somebody wants to try Joblr!"
-        content_html: "Some person whose email is %{email} just requested a beta invitation."
-        content_text: "Some person whose email is %{email} just requested a beta invitation."
+        content_html: "Some person whose email is %{email} just requested a beta invite."
+        content_text: "Some person whose email is %{email} just requested a beta invite."
         go_to_url_html: "Go to %{url} to send the invitation email."
         button: 'Send now!'
       send_code:
