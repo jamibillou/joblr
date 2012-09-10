@@ -18,6 +18,7 @@ gem 'linkedin', :git => 'https://github.com/dmatheron/linkedin.git', :branch => 
 gem 'postmark-rails'
 gem 'roadie'
 gem 'thin' # better web server, more robust on production
+gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
 
 group :production, :staging do
   gem 'google-analytics-rails' # View helpers for custom events: https://github.com/bgarret/google-analytics-rails/blob/master/lib/google-analytics/rails/view_helpers.rb
@@ -36,7 +37,6 @@ group :development do
   gem 'heroku'
   gem 'annotate', '2.4.1.beta1'
   gem 'faker'
-  gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
 end
 
 group :test, :development do
