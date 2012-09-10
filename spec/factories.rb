@@ -39,6 +39,8 @@ FactoryGirl.define do
     author_email 'b.obama@gov.us'
     recipient_fullname 'Jane Doe'
     recipient_email 'jane.doe@example.com'
+    status 'declined'
+    reason 'Your profile does not match enough to our job'
     association :author
     association :profile
   end
