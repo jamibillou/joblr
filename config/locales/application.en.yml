@@ -41,6 +41,8 @@ en:
         code_inexistant: "This invitation code doesn't exist. Do you mind double ckecking?"
         used: "This invitation code has already been used. Ask another one!"
         required: "You need an invitation to sign up, you can ask for one here."
+      email_sharing:
+        already_answered: "This sharing has already got an answer."
       required:
         all: "Error: all fields are required."
   errors:

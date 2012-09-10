@@ -1,0 +1,11 @@
+.row-fluid
+	.span7
+		.well
+			%h3 Thank you for answering!
+			Your feedback will help #{@email_sharing.fullname} in his/her job hunting!
+			%br/
+			%br/
+			You can also add a small text explaining why you declined his/her application.
+			= form_for @email_sharing do |f|
+				= f.text_area :reason, placeholder: t('email_sharings.decline.reason_placeholder'), rows:3, class: 'span1'
+				= f.submit t('email_sharings.new.send'), class: 'btn btn-primary'

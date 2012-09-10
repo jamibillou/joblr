@@ -1,6 +1,7 @@
 class EmailSharingsController < ApplicationController
 
 	before_filter :load_user, :profile_completed, only: :new
+  before_filter :already_answered,              only: :decline
 
 	def create
 		@user = User.find params[:user_id]
@@ -17,4 +18,18 @@ class EmailSharingsController < ApplicationController
       end
     end
 	end
+
+  def decline
+    @email_sharing = EmailSharing.find params[:id]
+  end
+  
+  def update
+
+  end
+
+  private
+
+    def already_answered
+      redirect_to root_path, flash: {error: t('flash.error.email_sharing.already_answered')} unless EmailSharing.find(params[:id]).no_answer?
+    end 
 end

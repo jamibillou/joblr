@@ -1,6 +1,6 @@
 class EmailSharing < ActiveRecord::Base
   attr_accessible :author_email, :author_fullname, :author_id, :author, :profile_id, :recipient_email, :recipient_fullname, 
-                  :text
+                  :text, :status, :reason
 
   belongs_to :author, class_name: 'User', foreign_key: :author_id
   belongs_to :profile
@@ -16,6 +16,14 @@ class EmailSharing < ActiveRecord::Base
   def author_required?
   	author.nil?
   end
+
+  def no_answer?
+    reason.nil? && status.nil?
+  end
+
+  def fullname
+    author_required? ? author_fullname : author.fullname
+  end 
 end
 
 # == Schema Information

@@ -5,7 +5,6 @@ describe EmailSharingsController do
 	render_views
 
 	before :each do
-
 		@author    = FactoryGirl.create :user
 		@profile_attr = { headline: 'fulltime',
                       experience: '5 yrs',
@@ -23,7 +22,6 @@ describe EmailSharingsController do
                       quality_3: 'Punctuality',
                       text: 'Do or do not, there is no try.' }
     @email_sharing_attr = { text: "Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."}
-    @email_sharing_public_attr = { text: "Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."}
 	end
 
 	describe "POST 'create'" do
@@ -157,4 +155,31 @@ describe EmailSharingsController do
 	    end
 		end
 	end
+
+	describe "GET 'decline'" do
+
+		context 'from a sharing which have already a status' do
+
+			it 'should redirect to root path' do
+				@email_sharing 	= EmailSharing.create!(@email_sharing_attr.merge(author: nil, author_email: 'author@example.com', author_fullname: 'The author', recipient_email: 'recipient@example.com', recipient_fullname: 'The recipient', status:'declined'))
+				get :decline, id: @email_sharing
+				response.should redirect_to root_path
+				flash[:error].should == I18n.t('flash.error.email_sharing.already_answered')
+			end
+		end
+
+		context "from a sharing which hasn't been answered yet" do
+
+			before :each do
+				@email_sharing 	= EmailSharing.create!(@email_sharing_attr.merge(author: nil, author_email: 'author@example.com', author_fullname: 'The author', recipient_email: 'recipient@example.com', recipient_fullname: 'The recipient'))
+				get :decline, id: @email_sharing
+			end
+
+			it { response.should be_success }
+
+			it 'should display the form' do
+				response.body.should have_selector "form#edit_email_sharing_#{@email_sharing.id}"
+			end	
+		end
+	end	
 end

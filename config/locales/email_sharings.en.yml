@@ -16,3 +16,6 @@ en:
       sending: 'sending...'
     create:
       title: 'Send profile by email'
+    decline:
+      title: 'Decline the application'
+      reason_placeholder: 'e.g Your profile does not match to any of our job.'

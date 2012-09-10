@@ -10,7 +10,7 @@ Joblr::Application.routes.draw do
 
   resources :authentifications, only: [:destroy]
   resources :sharings,          only: [:new, :create]
-  resources :email_sharings,    only: [:new, :create]
+  resources :email_sharings,    only: [:create, :update]
   resources :beta_invites, except: :index do
     get :thank_you
     get :send_code
@@ -21,6 +21,7 @@ Joblr::Application.routes.draw do
 
   get  'users/auth/failure'  => 'authentifications#failure'
   post 'users/share_profile' => 'users#share_profile'
+  get  'decline/:id'         => 'email_sharings#decline'
 
   match 'landing',                to: 'pages#landing'
   match 'admin',                  to: 'pages#admin'
