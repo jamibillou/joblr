@@ -17,11 +17,6 @@ en:
           summary: "%{fullname} is looking for work and wants to talk to you."
           title: "%{fullname} on Joblr"
           header: 'Having trouble reading this email? View it on'
-          headline:
-            fulltime: 'Looking for a full-time job!'
-            partime: 'Looking for a part-time job!'
-            internship: 'Looking for an internship!'
-            freelance: 'Looking for freelance projects!'
           lets_talk: "Let's talk!"
           no_thanks: 'No, thanks'
           more_about: 'More about %{fullname}'
