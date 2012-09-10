@@ -11,7 +11,7 @@ class EmailSharingsController < ApplicationController
     else
       respond_to do |format|
       	format.html do
-      		UserMailer.share_profile(@email_sharing, @user).deliver
+      		EmailSharingMailer.share_profile(@email_sharing, @user).deliver
       		flash[:success] = t('flash.success.profile.shared')
       	  render :json => 'create!' if request.xhr?
       	end
