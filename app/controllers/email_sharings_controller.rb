@@ -2,10 +2,6 @@ class EmailSharingsController < ApplicationController
 
 	before_filter :load_user, :profile_completed, only: :new
 
-  def new
-		@email_sharing = EmailSharing.new
-	end
-
 	def create
 		@user = User.find params[:user_id]
 		@email_sharing = EmailSharing.new params[:email_sharing].merge(profile_id: @user.profile, author: current_user)

@@ -9,28 +9,53 @@ en:
         if_not: "If you didn't request this, please ignore this email."
         wont_change: "Your password won't change until you access the link above and create a new one."
         cheers: "Cheers,"
-        team: "The joblr team"
+        team: "The Joblr team"
     user:
       share_profile:
-        subject: "%{fullname} on joblr"
-      text_email:
-        title: "%{fullname} on joblr"
-        content: "%{fullname} would like to talk to you, he is using a joblr so you can go through his profile in a few seconds and tell him wether you are interested or not."
-        go_to_url: 'Go to %{url} to take a look!'
-        cheers: 'Cheers,'
-        team: 'The joblr Team'
+        subject: "%{fullname} on Joblr"
+        html:
+          summary: "%{fullname} is looking for work and wants to talk to you."
+          title: "%{fullname} on Joblr"
+          header: 'Having trouble reading this email? View it on'
+          headline:
+            fulltime: 'Looking for a full-time job!'
+            partime: 'Looking for a part-time job!'
+            internship: 'Looking for an internship!'
+            freelance: 'Looking for freelance projects!'
+          lets_talk: "Let's talk!"
+          no_thanks: 'No, thanks'
+          more_about: 'More about %{fullname}'
+          experience: 'Experience'
+          yrs:
+            one: '%{count} yr'
+            other: '%{count} yrs'
+          last_job: 'Last or current job'
+          also_worked_for_html: "<small>Also worked for</small><br />%{past_companies}"
+          education: 'Highest education'
+          skills: 'Professional skills'
+          qualities: 'Personal qualities'
+          view_complete_profile: "View %{fullname}'s complete profile on Joblr.co"
+        text:
+          title: "%{fullname} on Joblr"
+          content: "%{fullname} would like to talk to you, he is using a Joblr so you can go through his profile in a few seconds and tell him wether you are interested or not."
+          go_to_url: 'Go to %{url} to take a look!'
+          cheers: 'Cheers,'
+          team: 'The Joblr Team'
     beta_invite:
       notify_team:
         subject: "New beta invitation request!"
-        title: "Somebody wants to try joblr!"
+        title: "Somebody wants to try Joblr!"
         content: "Some person whose email is %{email} just requested a beta invitation."
         go_to_url_html: "Go to %{url} to send the invitation email."
         cheers: "Cheers,"
         team: "Who ever of us wrote this email"
       send_code:
-        subject: "Invitation to joblr alpha"
-        title: "Congrats, here's your invitation to joblr alpha!"
-        content_html: "Thanks for your interest in joblr, we're glad to have you on board. Paste this invitation code at %{url} and sign up!"
-        code: "Invitation code: %{code}"
+        subject: "Invitation to Joblr alpha"
+        header: 'This is an automated notification, please do not reply.'
+        title: "Congrats, here's your invitation to Joblr alpha!"
+        content_html: "Thanks for your interest in Joblr. Paste this invitation code at %{url} and sign up!"
+        code: "Code:"
         cheers: "Cheers,"
-        team: "The joblr team"
+        team: "The Joblr team"
+        ok_sign_up: 'Ok, sign up!'
+        no_later: "No, I'll do it later"
