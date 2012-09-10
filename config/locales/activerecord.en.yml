@@ -33,7 +33,7 @@ en:
         quality_2: "2nd quality"
         quality_3: "3rd quality"
         file: "CV"
-        text: "Goals or motto"
+        text: "What your are looking for"
         url: "Website or blog"
       profile:
         id: "Identifier"
@@ -71,11 +71,14 @@ en:
       email_sharing:
         text: "Personal message"
         author_email: "Your email"
-        author_fullname: "Your fullname"
+        author_fullname: "Your full name"
         recipient_email: "Recipient email"
-        recipient_fullname:  "Recipient fullname"
+        recipient_fullname:  "Recipient full name"
     errors:
       messages:
         level_format: 'is not formatted properly (Beginner, Intermediate, Advanced or Expert)'
         url_format: "is not formatted properly"
         headline_format: "is not formated properly (fulltime, partime, internship, freelance)"
+        blank: "can't be blank"
+        invalid: "is invalid"
+        taken: "has already been taken"

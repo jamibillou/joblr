@@ -68,10 +68,8 @@ describe User do
     it { should validate_uniqueness_of(:subdomain) }
     it { should ensure_inclusion_of(:admin).in_array [true, false] }
     it { should ensure_inclusion_of(:social).in_array [true, false] }
-
-    lambda { @email[:invalid].each {|invalid_email| it { should validate_format_of(:email).not_with invalid_email }}}
-    lambda { @email[:valid].each   {|valid_email|   it { should validate_format_of(:email).with valid_email }}}
-
+    it { should validate_format_of(:email).not_with(@email[:invalid][rand(@email[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.invalid')) }
+    it { should validate_format_of(:email).with @email[:valid][rand(@email[:valid].size)] }
     it { FactoryGirl.build(:user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: @user.email).should_not be_valid }
   end
 

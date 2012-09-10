@@ -2,8 +2,8 @@ class PagesController < ApplicationController
 
   before_filter :admin_user, only: [:admin, :style_tile]
 
-  def home
-    @title = user_signed_in? ? t('pages.overview.title_alt') : t('pages.overview.title')
+  def landing
+    @title = t('pages.landing.title')
   end
 
   def admin

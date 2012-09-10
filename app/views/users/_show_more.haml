@@ -1,4 +1,4 @@
-- unless user.profile.file.blank? && user.authentifications.empty? && user.profile.url.blank?
+- unless user.profile.file.blank? && user.profile.url.blank? && user.profile.twitter_url.blank? && user.profile.linkedin_url.blank? && user.profile.facebook_url.blank? && user.profile.google_url.blank?
   .row-fluid
     .span12
       %h4=t 'users.show.more_about', fullname: "#{user.fullname}"
@@ -12,4 +12,4 @@
           .icon-globe
           &nbsp;
           =t 'users.show.site'
-      = render 'shared/show_social_links', user: user, size: 'btn-small'
+      #social-urls= render 'users/show_social_urls', user: user, size: 'btn-small'

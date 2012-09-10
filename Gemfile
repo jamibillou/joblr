@@ -4,7 +4,6 @@ ruby '1.9.3'
 gem 'rails', '3.2.6'
 gem 'haml'
 gem 'pg'
-gem 'haml'
 gem 'jquery-rails'
 gem 'rails-i18n'
 gem 'devise'
@@ -20,7 +19,7 @@ gem 'postmark-rails'
 gem 'roadie'
 gem 'thin' # better web server, more robust on production
 
-group :production do
+group :production, :staging do
   gem 'google-analytics-rails' # View helpers for custom events: https://github.com/bgarret/google-analytics-rails/blob/master/lib/google-analytics/rails/view_helpers.rb
 end
 

@@ -17,11 +17,11 @@
   %body
     %header.navbar.navbar-fixed-top
       %nav.navbar-inner
-        .container-fluid
+        .container
           = render 'layouts/navigation'
 
-    .container-fluid
-      = render 'layouts/messages'
+    .container
+      #flash= render 'layouts/messages'
       .row-fluid
         = yield
 

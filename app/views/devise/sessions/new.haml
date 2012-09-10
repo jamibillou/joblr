@@ -5,34 +5,29 @@
   .span8
     .well
       .row-fluid
-        .span5
-          %h1= t('devise.sessions.sign_in')
+        .span6
+          %h1= t('devise.sessions.social_signin')
+          = render 'devise/shared/omniauth_links', user: resource, size: ''
+        .span1
+        .span1.visible-phone
+        .span4
+          %h4= t('devise.sessions.joblr_signin')
           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
             %small= t('devise.sessions.username')
             %span.danger-text *
             %br/
-            = f.text_field :username
-            %br/
+            = f.text_field :username, class: 'span4'
             %small= t('devise.sessions.password')
             %span.danger-text *
             %br/
-            = f.password_field :password
-            %br/
+            = f.password_field :password, class: 'span4'
             - if devise_mapping.rememberable?
-              %small.delete= t('devise.sessions.remember_me')
+              %small.delete=t 'devise.sessions.remember_me'
               &nbsp;
               = f.check_box :remember_me, class: 'inline', style: 'margin-top:0'
-            .buttons
-              %a.btn{href: url_for(:back)}= t('cancel')
-              = f.submit t('devise.sessions.sign_in'), class: 'btn btn-primary'
-        .span1
-        .span1.visible-tablet
-        .span5
-          %h4= t('devise.sessions.social_signin')
-          = render 'shared/edit_social_links', user: resource, size: ''
-          %br/
-          %br/
-          %br/
-          %h4= t('devise.sessions.problem')
-          = render partial: 'devise/shared/links'
+              %br/
+            = f.submit t('devise.sessions.sign_in'), class: 'btn btn-primary'
+            .problem
+              %h4=t 'devise.sessions.problem'
+              = render 'devise/shared/links'
     .pull-right.danger-text * required fields

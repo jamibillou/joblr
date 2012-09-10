@@ -9,18 +9,39 @@
   .navbar-inner{
     min-height:$navbarHeight;
     background:$navbarBackground;
-  }
-  .brand{
-    padding:$navbarHeight/2-$navbarBrandHeight/2;
-  }
-  .nav{
-    font-size:$baseFontSize + 1;
-  }
-  .navbar-text a{
-    margin-right:13px;
-    color:$navbarTextLinkColor;
-    &:hover {
-      color:$navbarTextLinkColorHover;
+    .brand{
+      padding-top:$navbarHeight/2-$navbarBrandHeight/2;
+      padding-bottom:$navbarHeight/2-$navbarBrandHeight/2;
+    }
+    .nav{
+      font-size:$baseFontSize + 1;
+    }
+    .pull-right{
+      .nav{
+        margin-right:0;
+        .dropdown-toggle{
+          padding-right:0;
+        }
+      }
+    }
+    .navbar-text{
+      padding-right:15px;
+      a{
+        color:$navbarTextLinkColor;
+        &:hover {
+          color:$navbarTextLinkColorHover;
+        }
+      }
     }
   }
+}
+
+// Navbar button for responsive layouts
+// ------------------------------------
+
+.navbar .btn-navbar {
+  float: left;
+  padding: 7px 10px;
+  margin-left: 15px;
+  margin-right: 7px;
 }

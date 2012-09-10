@@ -1,7 +1,11 @@
 .row-fluid
   .span12
-    %h4=t 'users.edit.social_profiles'
-    = render 'shared/edit_social_links', user: @user, size: 'btn-small'
+    %h4=t 'users.edit.online_presence'
+    %small=t 'users.edit.url'
+    %br/
+    = f.text_field :url, value: field_value(:url, @linkedin), placeholder: 'http://', class: 'url'
+    %br/
+    #social-urls= render 'edit_social_urls', f: f
 
 .row-fluid
   .span12
@@ -14,8 +18,3 @@
       = f.check_box :remove_file
       %br/
     = f.file_field :file
-
-.row-fluid
-  .span12
-    %h4=t 'users.edit.url'
-    = f.text_field :url, value: field_value(:url, @linkedin), placeholder: 'http://', class: 'url'

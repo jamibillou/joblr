@@ -1,4 +1,4 @@
-id: db258100-dbcc-012f-200a-12313d3200d0
+id: 4cfdeda0-da89-012f-cace-123138156b83
 setup:
   commands:
   - bundle install --without production
@@ -15,7 +15,7 @@ deploy:
       force: true
       migrate: true
       restore_production: false
-      url: http://joblr-staging.heroku.com
+      url: http://staging.joblr.co
     production:
       name: joblr
       branch: staging

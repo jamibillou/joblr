@@ -41,14 +41,8 @@ en:
         code_inexistant: "This invitation code doesn't exist. Do you mind double ckecking?"
         used: "This invitation code has already been used. Ask another one!"
         required: "You need an invitation to sign up, you can ask for one here."
-      subdomain:
-        page: "The page you are trying to access doesn't exist."
-        profile: "The profile you are trying to access doesn't exist."
-      text:
-        blank: "Text can't be blank."
-        long: "Text is too long (maximum: 140 characters)"
-      profile:
-        not_complete: "This profile hasn't been completed yet, please come back later!"
+      required:
+        all: "Error: all fields are required."
   errors:
     error_404:
       title: "Sorry, we couldn't find the content you were looking for"
@@ -56,3 +50,4 @@ en:
     error_500:
       title: "Sorry, there was an internal error"
       content_html: "It's most likely a problem on our side. Email us at %{email_link} if it happens again.<br/>We'll get back to you as soon as we have identified the issue."
+    routing: 'No route matches [GET] "%{path}"'

@@ -1,60 +1,30 @@
-//
-// Bootstrap v2.0.3
-//
-// Copyright 2012 Twitter, Inc
-// Licensed under the Apache License v2.0
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Designed and built with all the love in the world @twitter by @mdo and @fat.
-// Converted to Sass by @thomasmcdonald_, and distributed as bootstrap-sass
-//
+// Bootstrap v2.0.4
 // Customized for Joblr.co by @piksel and @dominic_m
 
 
-// CSS Reset
-// @import "bootstrap-custom/reset";
-
 // Grid system and page structure
 @import "bootstrap-custom/scaffolding";
-// @import "bootstrap-custom/grid";
-// @import "bootstrap-custom/layouts";
 
 // Base CSS
 @import "bootstrap-custom/type";
-// @import "bootstrap-custom/code";
 @import "bootstrap-custom/forms";
-// @import "bootstrap-custom/tables";
 
 // Components: common
-// @import "bootstrap-custom/sprites";
-// @import "bootstrap-custom/dropdowns";
 @import "bootstrap-custom/wells";
-// @import "bootstrap-custom/component-animations";
-// @import "bootstrap-custom/close";
 
 // Components: Buttons & Alerts
 @import "bootstrap-custom/buttons";
 @import "bootstrap-custom/button-groups";
-// @import "bootstrap-custom/alerts"; // Note: alerts share common CSS with buttons and thus have styles in buttons.css.scss
 
 // Components: Nav
-// @import "bootstrap-custom/navs";
 @import "bootstrap-custom/navbar";
-// @import "bootstrap-custom/breadcrumbs";
-// @import "bootstrap-custom/pagination";
-// @import "bootstrap-custom/pager";
 
 // Components: Popovers
 @import "bootstrap-custom/modals";
-// @import "bootstrap-custom/tooltip";
 @import "bootstrap-custom/popovers";
 
 // Components: Misc
-// @import "bootstrap-custom/thumbnails";
-// @import "bootstrap-custom/labels-badges";
 @import "bootstrap-custom/progress-bars";
-// @import "bootstrap-custom/accordion";
-// @import "bootstrap-custom/carousel";
 @import "bootstrap-custom/hero-unit";
 
 // Utility classes

@@ -1,0 +1,8 @@
+.span8
+  .hero-unit
+    %h1= t('pages.landing.welcome') 
+    %br/
+    .lead
+      = t('pages.landing.motto')
+      %br/
+      #{t('pages.landing.joblr_is')} #{link_to t('pages.landing.here'), new_beta_invite_path}!

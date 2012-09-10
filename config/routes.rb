@@ -22,16 +22,16 @@ Joblr::Application.routes.draw do
   get  'users/auth/failure'  => 'authentifications#failure'
   post 'users/share_profile' => 'users#share_profile'
 
-  match 'home',                   to: 'pages#home'
+  match 'landing',                to: 'pages#landing'
   match 'admin',                  to: 'pages#admin'
   match 'style_tile',             to: 'pages#style_tile'
   match 'sharings/linkedin',      to: 'sharings#linkedin'
 
   # Subdomain constraints
-  match '', to: 'users#show', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' && r.path == '/' }
+  match '', to: 'users#show', constraints: Subdomain.new(true)
 
   # Dynamic root_path
-  root to: 'pages#home', constraints: SignedIn.new(false)
-  root to: 'users#edit', constraints: SignedIn.new(true) && SignedUp.new(false)
-  root to: 'users#show', constraints: SignedIn.new(true) && SignedUp.new(true)
+  root to: 'pages#landing', constraints: SignedIn.new(false)
+  root to: 'users#edit',    constraints: SignedIn.new(true) && SignedUp.new(false)
+  root to: 'users#show',    constraints: SignedIn.new(true) && SignedUp.new(true)
 end

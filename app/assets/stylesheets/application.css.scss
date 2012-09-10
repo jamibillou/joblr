@@ -12,7 +12,6 @@
 @import "devise";
 @import "users";
 @import "sharings";
-@import "emails";
 
 
 // RAILS DEBUG FOOTER
@@ -30,8 +29,11 @@ footer{
 }
 
 // ARROWS
-// To turn into a mixin
-// ------
+//
+// REFACTOR ME!
+// Turn those into a mixin
+//
+// -----------------------
 
 .arrow-bottom {
   position:relative;
@@ -66,29 +68,10 @@ footer{
   }
 }
 
-// OLD CRAP TO BE DELETED
-// FIXE ME!
-// ---------
-
 // Forms
-// -------------
+// -----
+
 .field_with_errors{
   display:inline-block;
   @extend .control-group.error
-}
-
-// Modals
-// -------------
-.pic {
-  width:50px;
-  height:50px;
-  &.social {
-    margin:5px 7px 20px -2px;
-  }
-  &.current {
-    margin:5px 0 5px 0;
-  }
-  &.selected {
-    @include box-shadow(0 0 4px 1px #0073CC);
-  }
 }

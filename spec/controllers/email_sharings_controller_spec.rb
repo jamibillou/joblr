@@ -5,6 +5,7 @@ describe EmailSharingsController do
 	render_views
 
 	before :each do
+
 		@author    = FactoryGirl.create :user
 		@profile_attr = { headline: 'fulltime',
                       experience: '5 yrs',
@@ -25,117 +26,26 @@ describe EmailSharingsController do
     @email_sharing_public_attr = { text: "Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."}
 	end
 
-	describe "GET 'new'" do
-
-		context 'for signed in users' do
-
-			before :each do
-				sign_in @author
-			end
-
-	    context "who haven't completed their profile" do
-
-        it "should redirect to 'edit'" do
-          get :new
-          response.should redirect_to edit_user_path(@author)
-          flash[:error].should == I18n.t('flash.error.only.signed_up')
-        end
-
-	      it "should redirect to 'edit'" do
-	        get :new, id: @author.id
-	        response.should redirect_to edit_user_path(@author)
-	        flash[:error].should == I18n.t('flash.error.only.signed_up')
-	      end
-	    end
-
-	    context 'who have completed their profile' do
-
-	      before(:each) { @author.profiles.create @profile_attr }
-
-	      context "no user id is provided" do
-	        it "should be http success" do
-	          get :new
-	          response.should be_success
-	        end
-	      end
-
-		    it "should be http success" do
-	        get :new, id: @author.id
-	        response.should be_success
-	      end
-
-		    it "should have the author's profile" do
-	        get :new, id: @author.id
-		    	response.body.should have_selector "div#user-#{@author.id}"
-		    end
-	    end
-		end
-
-		context 'for public visitors' do
-
-	    context "who visit a profile that wasn't completed" do
-
-	      context "no user id is provided" do
-	        it "should redirect to the root path" do
-	          get :new
-	          response.should redirect_to root_path
-	          flash[:error].should == I18n.t('flash.error.profile.not_complete')
-	        end
-	      end
-
-	      it "should redirect to the root path" do
-	        get :new, id: @author.id
-	        response.should redirect_to root_path
-	        flash[:error].should == I18n.t('flash.error.profile.not_complete')
-	      end
-	    end
-
-	    context "who visit a profile that was completed" do
-
-	      before(:each) { @author.profiles.create @profile_attr }
-
-	      context "no user id is provided" do
-	        it "should redirect to the root path" do
-	          get :new
-	          response.should redirect_to root_path
-	          flash[:error].should == I18n.t('flash.error.profile.not_complete')
-	        end
-	      end
-
-		    it "should be http success" do
-	        get :new, id: @author.id
-	        response.should be_success
-	      end
-
-		    it 'should have the visited profile' do
-	        get :new, id: @author.id
-		    	response.body.should have_selector "div#user-#{@author.id}"
-		    end
-	    end
-		end
-	end
-
 	describe "POST 'create'" do
 
 		context 'for signed in users' do
+
 			before :each do
 				sign_in @author
 	      @author.profiles.create @profile_attr
 			end
 
-	    it { response.should be_success }
-
 	    context 'who provided an email address and full name' do
 
 				it 'should create a new email_sharing object' do
 					lambda do
-						post :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-					end.should change(EmailSharing,:count).by 1
+						xhr :post, :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+					end.should change(EmailSharing, :count).by 1
 				end
 
 		    it "should redirect to user's profile" do
-		    	post :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-		    	response.should redirect_to @author
+		    	xhr :post, :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+		    	#response.should redirect_to @author
 		    	flash[:success].should == I18n.t('flash.success.profile.shared')
 		    end
 	    end
@@ -144,13 +54,13 @@ describe EmailSharingsController do
 
 				it 'should not create a new email_sharing object' do
 					lambda do
-						post :create, :email_sharing => @email_sharing_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
-					end.should_not change(EmailSharing,:count).by 1
+						xhr :post, :create, :email_sharing => @email_sharing_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
+					end.should_not change(EmailSharing, :count).by 1
 				end
 
-		    it "should redirect to user's profile" do
-		    	post :create, :email_sharing => @email_sharing_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
-		    	response.should render_template('new',id: @author.id)
+		    it 'should have an error messsage' do
+		    	xhr :post, :create, :email_sharing => @email_sharing_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
+		    	response.body.should == I18n.t('flash.error.required.all')
 		    end
 	    end
 
@@ -158,35 +68,34 @@ describe EmailSharingsController do
 
 	      it 'should not create a new email_sharing object' do
 	        lambda do
-	          post :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com'), user_id: @author.id
-	        end.should_not change(EmailSharing,:count).by 1
+	          xhr :post, :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com'), user_id: @author.id
+	        end.should_not change(EmailSharing, :count).by 1
 	      end
 
-	      it "should redirect to user's profile" do
-	        post :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com'), user_id: @author.id
-	        response.should render_template('new',id: @author.id)
+	      it 'should have an error messsage' do
+	        xhr :post, :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com'), user_id: @author.id
+	        response.body.should == I18n.t('flash.error.required.all')
 	      end
 	    end
 		end
 
 		context 'for public visitors' do
+
 			before :each do
 	      @author.profiles.create @profile_attr
 			end
-
-	    it { response.should be_success }
 
 	    context 'who provided all info' do
 
 				it 'should create a new email_sharing object' do
 					lambda do
-						post :create, :email_sharing => @email_sharing_attr.merge(author_email: 'author@example.com', author_fullname: 'The Author', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-					end.should change(EmailSharing,:count).by 1
+						xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_email: 'author@example.com', author_fullname: 'The Author', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+					end.should change(EmailSharing, :count).by 1
 				end
 
-		    it "should redirect to user's profile" do
-		    	post :create, :email_sharing => @email_sharing_attr.merge(author_email: 'author@example.com', author_fullname: 'The Author', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-		    	response.should redirect_to @author
+		    it "should render user's profile" do
+		    	xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_email: 'author@example.com', author_fullname: 'The Author', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+		    	#response.should redirect_to @author
 		    	flash[:success].should == I18n.t('flash.success.profile.shared')
 		    end
 	    end
@@ -195,13 +104,13 @@ describe EmailSharingsController do
 
 				it 'should not create a new email_sharing object' do
 					lambda do
-						post :create, :email_sharing => @email_sharing_attr.merge(author_fullname: 'The Author', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-					end.should_not change(EmailSharing,:count).by 1
+						xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_fullname: 'The Author', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+					end.should_not change(EmailSharing, :count).by 1
 				end
 
-		    it "should redirect to user's profile" do
-		    	post :create, :email_sharing => @email_sharing_attr.merge(author_fullname: 'The Author', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-		    	response.should render_template('new',id: @author.id)
+		    it 'should have an error messsage' do
+		    	xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_fullname: 'The Author', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+		    	response.body.should == I18n.t('flash.error.required.all')
 		    end
 	    end
 
@@ -209,13 +118,13 @@ describe EmailSharingsController do
 
 	      it 'should not create a new email_sharing object' do
 	        lambda do
-	          post :create, :email_sharing => @email_sharing_attr.merge(author_email: 'author@example.com', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-	        end.should_not change(EmailSharing,:count).by 1
+	          xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_email: 'author@example.com', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+	        end.should_not change(EmailSharing, :count).by 1
 	      end
 
-	      it "should redirect to user's profile" do
-	        post :create, :email_sharing => @email_sharing_attr.merge(author_email: 'author@example.com', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-	        response.should render_template('new',id: @author.id)
+	      it 'should have an error messsage' do
+	        xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_email: 'author@example.com', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+		    	response.body.should == I18n.t('flash.error.required.all')
 	      end
 	    end
 
@@ -223,13 +132,13 @@ describe EmailSharingsController do
 
 	      it 'should not create a new email_sharing object' do
 	        lambda do
-	          post :create, :email_sharing => @email_sharing_attr.merge(author_fullname: 'The Author', author_email: 'author@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-	        end.should_not change(EmailSharing,:count).by 1
+	          xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_fullname: 'The Author', author_email: 'author@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+	        end.should_not change(EmailSharing, :count).by 1
 	      end
 
-	      it "should redirect to user's profile" do
-	        post :create, :email_sharing => @email_sharing_attr.merge(author_fullname: 'The Author', author_email: 'author@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-	        response.should render_template('new',id: @author.id)
+	      it 'should have an error messsage' do
+	        xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_fullname: 'The Author', author_email: 'author@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+		    	response.body.should == I18n.t('flash.error.required.all')
 	      end
 	    end
 
@@ -237,13 +146,13 @@ describe EmailSharingsController do
 
 	      it 'should not create a new email_sharing object' do
 	        lambda do
-	          post :create, :email_sharing => @email_sharing_attr.merge(author_fullname: 'The Author', author_email: 'author@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-	        end.should_not change(EmailSharing,:count).by 1
+	          xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_fullname: 'The Author', author_email: 'author@example.com', recipient_email: 'test@test.com'), user_id: @author.id
+	        end.should_not change(EmailSharing, :count).by 1
 	      end
 
-	      it "should redirect to user's profile" do
-	        post :create, :email_sharing => @email_sharing_attr.merge(author_fullname: 'The Author', author_email: 'author@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-	        response.should render_template('new',id: @author.id)
+	      it 'should have an error messsage' do
+	        xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_fullname: 'The Author', author_email: 'author@example.com', recipient_email: 'test@test.com'), user_id: @author.id
+		    	response.body.should == I18n.t('flash.error.required.all')
 	      end
 	    end
 		end

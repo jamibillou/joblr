@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120830190135) do
+ActiveRecord::Schema.define(:version => 20120906071947) do
 
   create_table "authentifications", :force => true do |t|
     t.integer  "user_id"
@@ -68,6 +68,10 @@ ActiveRecord::Schema.define(:version => 20120830190135) do
     t.string   "text"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "linkedin_url"
+    t.string   "twitter_url"
+    t.string   "facebook_url"
+    t.string   "google_url"
   end
 
   create_table "sharings", :force => true do |t|

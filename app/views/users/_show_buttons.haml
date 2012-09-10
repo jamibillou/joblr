@@ -1,18 +1,17 @@
 #buttons
-  - if user_signed_in? && current_user == user && !has_subdomain
+  - if user_signed_in? && current_user == user && !subdomain?
     %a.btn.btn-large.btn-top.btn-primary{href: edit_user_path(user)}
       =t 'users.show.edit'
   - else
     %a.btn.btn-large.btn-top.btn-danger
       =t 'users.show.contact'
   .btn-group
-    .btn.btn-large.dropdown-toggle{"data-toggle" => 'dropdown', href:'#', class: "#{(user_signed_in? && current_user == user && !has_subdomain) ? 'btn-danger'  :'btn-inverse'}"}
-      &nbsp;
+    .btn.btn-large.dropdown-toggle{"data-toggle" => 'dropdown', href:'#', class: "#{(user_signed_in? && current_user == user && !subdomain?) ? 'btn-danger'  :'btn-inverse'}"}
       =t 'users.show.share'
       %span.caret.hidden-tablet
     %ul.dropdown-menu
       %li
-        %a{href: new_email_sharing_url(id: user.id, subdomain: false)}
+        %a{'data-target' => '#email-sharing-modal', 'data-toggle' => 'modal'}
           .icon-envelope
           &nbsp;
           = t 'users.show.email'
@@ -38,7 +37,7 @@
           Google
 
   .explanation
-    - if user_signed_in? && current_user == user && !has_subdomain
+    - if user_signed_in? && current_user == user && !subdomain?
       %h5=t 'users.show.public_profile'
       %p=t 'users.show.explanation_html', url: link_to(user.public_url, user.public_url, target: '_new')
 
