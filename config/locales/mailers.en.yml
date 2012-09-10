@@ -10,8 +10,8 @@ en:
         follow_link: "Follow this link to reset your pasword:"
         if_not: "If you didn't request this, please ignore this email."
         wont_change: "Your password won't change until you access the link above and create a new one."
-    user:
-      share_profile:
+    email_sharing:
+      user:
         subject: "%{fullname} on Joblr"
         html:
           summary: "%{fullname} is looking for work and wants to talk to you."

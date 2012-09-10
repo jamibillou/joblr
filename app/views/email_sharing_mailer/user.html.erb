@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title><%=t 'mailers.user.share_profile.html.title', fullname: @user.fullname %></title>
-    <link href="mailers/user_mailer/share_profile.css" rel="stylesheet" media="all" type="text/css" />
+    <title><%=t 'mailers.email_sharing.user.html.title', fullname: @user.fullname %></title>
+    <link href="mailers/email_sharing/user.css" rel="stylesheet" media="all" type="text/css" />
   </head>
 
   <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
@@ -23,7 +23,7 @@
                   <table border="0" cellpadding="0" cellspacing="0" id="header-table">
                     <tr>
                       <td align="center" valign="bottom" height="54" width="560">
-                        <p class="graylight-text"><%=t 'mailers.user.share_profile.html.summary', fullname: @user.fullname %></p>
+                        <p class="graylight-text"><%=t 'mailers.email_sharing.user.html.summary', fullname: @user.fullname %></p>
                       </td>
                     </tr>
                   </table>
@@ -119,7 +119,7 @@
                                           <table border="0" cellpadding="14" cellspacing="0" id="button-left-table">
                                             <tr>
                                               <td align="center" valign="middle" height="51">
-                                                <a href="mailto:<%= @user.email %>"><span><%=t 'mailers.user.share_profile.html.lets_talk' %></span></a>
+                                                <a href="mailto:<%= @user.email %>"><span><%=t 'mailers.email_sharing.user.html.lets_talk' %></span></a>
                                               </td>
                                             </tr>
                                           </table>
@@ -133,7 +133,7 @@
                                           <table border="0" cellpadding="0" cellspacing="0" id="button-right-table">
                                             <tr>
                                               <td align="left" valign="middle" height="50">
-                                                <a href="#"><span><%=t 'mailers.user.share_profile.html.no_thanks' %></span></a>
+                                                <a href="#"><span><%=t 'mailers.email_sharing.user.html.no_thanks' %></span></a>
                                               </td>
                                             </tr>
                                           </table>
@@ -173,7 +173,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0" id="more-about-table">
                                       <tr>
                                         <td align="left" valign="top" width="480">
-                                          <h2><span><%=t 'mailers.user.share_profile.html.more_about', fullname: @user.fullname %></span></h2>
+                                          <h2><span><%=t 'mailers.email_sharing.user.html.more_about', fullname: @user.fullname %></span></h2>
                                         </td>
                                       </tr>
                                     </table>
@@ -198,8 +198,8 @@
                                                 <table border="0" cellpadding="0" cellspacing="0">
                                                   <tr>
                                                     <td align="left" valign="top" width="90">
-                                                      <h4><span><%=t 'mailers.user.share_profile.html.experience' %></span></h4>
-                                                      <p class="lead"><%=t 'mailers.user.share_profile.html.yrs', count: @user.profile.experience %></p>
+                                                      <h4><span><%=t 'mailers.email_sharing.user.html.experience' %></span></h4>
+                                                      <p class="lead"><%=t 'mailers.email_sharing.user.html.yrs', count: @user.profile.experience %></p>
                                                     </td>
                                                   </tr>
                                                 </table>
@@ -207,15 +207,15 @@
                                               <td align="left"  valign="top" width="30"></td>
                                               <td align="left" valign="top" width="360">
                                                 <% unless @user.profile.last_job.blank? %>
-                                                  <h4><span><%=t 'mailers.user.share_profile.html.last_job' %></span></h4>
+                                                  <h4><span><%=t 'mailers.email_sharing.user.html.last_job' %></span></h4>
                                                   <p class="lead"><%= @user.profile.last_job %></p>
                                                   <% unless @user.profile.past_companies.blank? %>
                                                     <p class="past-companies">
-                                                      <%=t 'mailers.user.share_profile.html.also_worked_for_html', past_companies: @user.profile.past_companies %>
+                                                      <%=t 'mailers.email_sharing.user.html.also_worked_for_html', past_companies: @user.profile.past_companies %>
                                                     </p>
                                                   <% end %>
                                                 <% else %>
-                                                  <h4><span><%=t 'mailers.user.share_profile.html.education' %></span></h4>
+                                                  <h4><span><%=t 'mailers.email_sharing.user.html.education' %></span></h4>
                                                   <p class="lead"><%= @user.profile.education %></p>
                                                 <% end %>
                                               </td>
@@ -243,7 +243,7 @@
                                             <table border="0" cellpadding="0" cellspacing="0" class="education-content">
                                               <tr>
                                                 <td align="left" valign="top" width="480">
-                                                  <h4><span><%=t 'mailers.user.share_profile.html.education' %></span></h4>
+                                                  <h4><span><%=t 'mailers.email_sharing.user.html.education' %></span></h4>
                                                   <p class="lead"><%= @user.profile.education %></p>
                                                 </td>
                                               </tr>
@@ -271,7 +271,7 @@
                                             <table border="0" cellpadding="0" cellspacing="0" class="skills-content">
                                               <tr>
                                                 <td align="left" valign="top" width="480">
-                                                  <h4><span><%=t 'mailers.user.share_profile.html.skills' %></span></h4>
+                                                  <h4><span><%=t 'mailers.email_sharing.user.html.skills' %></span></h4>
                                                   <% unless @user.profile.skill_1.blank? %>
                                                     <p class="lead"><%= @user.profile.skill_1 %></p>
                                                   <% end %>
@@ -307,7 +307,7 @@
                                             <table border="0" cellpadding="0" cellspacing="0" class="qualities-content">
                                               <tr>
                                                 <td align="left" valign="top" width="480">
-                                                  <h4><span><%=t 'mailers.user.share_profile.html.qualities' %></span></h4>
+                                                  <h4><span><%=t 'mailers.email_sharing.user.html.qualities' %></span></h4>
                                                   <% unless @user.profile.quality_1.blank? %>
                                                     <p class="lead"><%= @user.profile.quality_1 %></p>
                                                   <% end %>
@@ -337,7 +337,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0" id="more-table">
                                       <tr>
                                         <td align="left" valign="middle" height="38" width="480">
-                                          <a href="http://<%= @user.subdomain %>.joblr.co"><span><%=t 'mailers.user.share_profile.html.view_complete_profile', fullname: @user.fullname %></span></a>
+                                          <a href="http://<%= @user.subdomain %>.joblr.co"><span><%=t 'mailers.email_sharing.user.html.view_complete_profile', fullname: @user.fullname %></span></a>
                                         </td>
                                       </tr>
                                     </table>

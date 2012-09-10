@@ -1,9 +1,0 @@
-<%=t 'mailers.user.share_profile.text.title', fullname: @user.fullname %>
-<% t('mailers.user.share_profile.text.title', fullname: @user.fullname).length.times do %>=<% end %>
-<br />
-<%=t 'mailers.user.share_profile.text.content', fullname: @user.fullname %>
-
-<%=t 'mailers.user.share_profile.text.go_to_url', url: @user.public_url %>
-<br />
-<% t('mailers.user.share_profile.text.team').length.times do %>-<% end %>
-<%=t 'mailers.user.share_profile.text.team' %>
