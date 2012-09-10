@@ -18,4 +18,11 @@ en:
       title: 'Send profile by email'
     decline:
       title: 'Decline the application'
+      thank_you: 'Thank you for answering!'
+      add_text: 'You can also add a small text explaining why you declined his/her application.'
+      help_user: 'Your feedback will help %{fullname} in his/her job hunting!'
       reason_placeholder: 'e.g Your profile does not match to any of our job.'
+    update:
+      title: 'Decline the application'
+      thank_you: 'Thank you for answering!'
+      email_sent: 'Your message has been sent to %{fullname}.  You can now close this page!'

@@ -24,12 +24,22 @@ class EmailSharingsController < ApplicationController
   end
   
   def update
-
+    @email_sharing = EmailSharing.find params[:id]
+    unless @email_sharing.update_attributes params[:email_sharing]
+      redirect_to root_path, flash: {error: t('flash.errors.something_wrong.base')}
+    else
+      render 'decline_ok'
+    end  
   end
 
   private
 
     def already_answered
-      redirect_to root_path, flash: {error: t('flash.error.email_sharing.already_answered')} unless EmailSharing.find(params[:id]).no_answer?
+      email_sharing = EmailSharing.find(params[:id])
+      unless email_sharing.no_answer?
+        redirect_to root_path, flash: {error: t('flash.error.email_sharing.already_answered')} 
+      else
+        email_sharing.update_attribute(:status,'declined')
+      end
     end 
 end
