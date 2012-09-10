@@ -36,5 +36,6 @@ Joblr::Application.routes.draw do
   root to: 'users#show',    constraints: SignedIn.new(true) && SignedUp.new(true)
 
   # Preview of emails
-  mount MailerPreview => 'mailer_previews' if Rails.env.development?
+  mount EmailSharingMailer::Preview => 'email_sharing_mailer_preview' if Rails.env.development?
+  mount BetaInviteMailer::Preview   => 'beta_invite_mailer_preview' if Rails.env.development?
 end

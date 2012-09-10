@@ -18,4 +18,19 @@ class BetaInviteMailer < ActionMailer::Base
     @button      = { text: t('mailers.beta_invite.notify_team.button'), url: "http://joblr.co/admin" }
     mail to: 'team@joblr.co', subject: @subject
   end
+
+  class Preview < MailView
+
+    def send_code
+      beta_invite = FactoryGirl.create :beta_invite, email: Faker::Internet.email, user: nil
+      email = BetaInviteMailer.send_code beta_invite
+      email
+    end
+
+    def notify_team
+      beta_invite = FactoryGirl.create :beta_invite, email: Faker::Internet.email, user: nil
+      email = BetaInviteMailer.notify_team beta_invite
+      email
+    end
+  end
 end
