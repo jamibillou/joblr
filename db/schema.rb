@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120906071947) do
+ActiveRecord::Schema.define(:version => 20120910174805) do
 
   create_table "authentifications", :force => true do |t|
     t.integer  "user_id"
@@ -43,6 +43,19 @@ ActiveRecord::Schema.define(:version => 20120906071947) do
     t.string   "recipient_fullname"
     t.string   "recipient_email"
     t.string   "text"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "status"
+    t.string   "reason"
+  end
+
+  create_table "emailsharings", :force => true do |t|
+    t.integer  "profile_id"
+    t.integer  "author_id"
+    t.string   "author_fullname"
+    t.string   "author_email"
+    t.string   "recipient_fullname"
+    t.string   "recipient_email"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
