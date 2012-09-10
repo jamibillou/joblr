@@ -34,6 +34,20 @@ en:
           title: "%{fullname} on Joblr"
           content: "%{fullname} sent you a Joblr profile to start the conversation. They are short and easy to read so you don't waste your time."
           go_to_url: 'Go to %{url} to check it out!'
+      other_user:
+        subject: "%{fullname} through Joblr"
+        text:
+          title: "%{fullname} through Joblr"
+          profile: "%{author_fullname} sent you the Joblr profile of %{user_fullname} thinking you might be interested."
+          short_n_easy: "Those profiles are short and easy to read so you don't waste your time."
+          go_to_url: 'Go to %{url} to check it out!'
+      public_user:
+        subject: "%{fullname} through Joblr"
+        text:
+          title: "%{fullname} through Joblr"
+          profile: "%{author_fullname} sent you the Joblr profile of %{user_fullname} thinking you might be interested."
+          short_n_easy: "Those profiles are short and easy to read so you don't waste your time."
+          go_to_url: 'Go to %{url} to check it out!'
     beta_invite:
       notify_team:
         subject: "New beta invitation request!"

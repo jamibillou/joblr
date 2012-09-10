@@ -1,0 +1,388 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title><%=t 'mailers.email_sharing.user.html.title', fullname: @user.fullname %></title>
+    <link href="mailers/email_sharing/user.css" rel="stylesheet" media="all" type="text/css" />
+  </head>
+
+  <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
+    <center>
+
+      <!-- Background table -->
+      <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="background-table">
+        <tr>
+          <td align="center" valign="top">
+
+            <!-- Container table -->
+            <table border="0" cellpadding="0" cellspacing="0" id="container-table">
+              <tr>
+                <td align="center" valign="top" width="560">
+
+                  <!-- Header table -->
+                  <table border="0" cellpadding="0" cellspacing="0" id="header-table">
+                    <tr>
+                      <td align="center" valign="bottom" height="54" width="560">
+                        <p class="graylight-text"><%=t 'mailers.email_sharing.user.html.summary', fullname: @user.fullname %></p>
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- End of header table -->
+
+                </td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">
+
+                  <!-- Body table -->
+                  <table border="0" cellpadding="20" cellspacing="0" id="body-table">
+                    <tr>
+                      <td align="center" valign="top" width="560">
+
+                        <!-- Message table -->
+                        <table border="0" cellpadding="20" cellspacing="0" id="message-table">
+                          <tr>
+                            <td align="center" valign="top" width="500">
+
+                              <!-- Message container -->
+                              <table border="0" cellpadding="10" cellspacing="0" id="message-container">
+                                <tr>
+                                  <td align="center" valign="top" width="480">
+
+                                    <!-- Text table -->
+                                    <table border="0" cellpadding="0" cellspacing="0" id="text-table">
+                                      <tr>
+                                        <td align="left" valign="top" width="480">
+                                          <h1><span><%= @email_sharing.text %></span></h1>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                    <!-- Enf of text table -->
+
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td align="center" valign="top" width="480">
+
+                                    <!-- Identity table -->
+                                    <table border="0" cellpadding="0" cellspacing="0" id="identity-table">
+                                      <tr>
+                                        <td align="center" valign="top" width="480">
+
+                                          <!-- Identity content -->
+                                          <table border="0" cellpadding="0" cellspacing="0" class="identity-content">
+                                            <tr>
+                                              <td align="left"  valign="top" width="70">
+                                                <img src=<%= "http://joblr.co/#{@user.image.blank? ? 'default_user.jpg' : @user.image_url(:thumb).to_s}" %> alt="image picture" height="70" width="70" />
+                                              </td>
+                                              <td align="left"  valign="top" width="20"></td>
+                                              <td align="left" valign="top" width="390">
+                                                <h2><span><%= @user.fullname %></span></h2>
+                                                <% unless @user.city.blank? && @user.country.blank? %>
+                                                  <p class="graylight-text"><%= "#{@user.city}#{', ' unless @user.city.blank? || @user.country.blank?}#{@user.country}" %></p>
+                                                <% end %>
+                                                <p class="info-text"><%=t "users.show.headline.#{@user.profile.headline}" %></p>
+                                              </td>
+                                            </tr>
+                                          </table>
+                                          <!-- End of identity content -->
+
+                                        </td>
+                                      </tr>
+                                    </table>
+                                    <!-- End of identity table -->
+
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td align="center" valign="middle" height="40" width="480">
+
+                                    <!-- Fine line table -->
+                                    <table border="0" cellpadding="0" cellspacing="0" id="fine-line-table">
+                                      <tr>
+                                        <td align="left" valign="top" height="0" width="480"></td>
+                                      </tr>
+                                    </table>
+                                    <!-- End of fine line table -->
+
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td align="left" valign="top" width="480">
+
+                                    <!-- Buttons table -->
+                                    <table border="0" cellpadding="0" cellspacing="0" id="buttons-table">
+                                      <tr>
+                                        <td align="left" valign="top" height="61">
+
+                                          <!-- Button left table -->
+                                          <table border="0" cellpadding="14" cellspacing="0" id="button-left-table">
+                                            <tr>
+                                              <td align="center" valign="middle" height="51">
+                                                <a href="mailto:<%= @user.email %>"><span><%=t 'mailers.email_sharing.user.html.lets_talk' %></span></a>
+                                              </td>
+                                            </tr>
+                                          </table>
+                                          <!-- End of button left table -->
+
+                                        </td>
+                                        <td align="left"  valign="top" width="30"></td>
+                                        <td align="left" valign="top" height="61">
+
+                                          <!-- Button right table -->
+                                          <table border="0" cellpadding="0" cellspacing="0" id="button-right-table">
+                                            <tr>
+                                              <td align="left" valign="middle" height="50">
+                                                <a href="#"><span><%=t 'mailers.email_sharing.user.html.no_thanks' %></span></a>
+                                              </td>
+                                            </tr>
+                                          </table>
+                                          <!-- End of right left table -->
+
+                                        </td>
+                                      </tr>
+                                    </table>
+                                    <!-- End of buttons table -->
+
+                                  </td>
+                                </tr>
+                              </table>
+                              <!-- End of message container -->
+
+                            </td>
+                          </tr>
+                        </table>
+                        <!-- End of message table -->
+
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="top" width="560">
+
+                        <!-- Profile table -->
+                        <table border="0" cellpadding="20" cellspacing="0" id="profile-table">
+                          <tr>
+                            <td align="center" valign="top" width="500">
+
+                              <!-- Profile container -->
+                              <table border="0" cellpadding="10" cellspacing="0" id="profile-container">
+                                <tr>
+                                  <td align="center" valign="top" width="480">
+
+                                    <!-- More about table -->
+                                    <table border="0" cellpadding="0" cellspacing="0" id="more-about-table">
+                                      <tr>
+                                        <td align="left" valign="top" width="480">
+                                          <h2><span><%=t 'mailers.email_sharing.user.html.more_about', fullname: @user.fullname %></span></h2>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                    <!-- End of more about table -->
+
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td align="center" valign="top" width="480">
+
+                                    <!-- Experience table -->
+                                    <table border="0" cellpadding="0" cellspacing="0" id="experience-table">
+                                      <tr>
+                                        <td align="center" valign="top" width="480">
+
+                                          <!-- Experience content -->
+                                          <table border="0" cellpadding="0" cellspacing="0" class="experience-content">
+                                            <tr>
+                                              <td align="left" valign="top">
+
+                                                <!-- Experience in years -->
+                                                <table border="0" cellpadding="0" cellspacing="0">
+                                                  <tr>
+                                                    <td align="left" valign="top" width="90">
+                                                      <h4><span><%=t 'mailers.email_sharing.user.html.experience' %></span></h4>
+                                                      <p class="lead"><%=t 'mailers.email_sharing.user.html.yrs', count: @user.profile.experience %></p>
+                                                    </td>
+                                                  </tr>
+                                                </table>
+                                              </td>
+                                              <td align="left"  valign="top" width="30"></td>
+                                              <td align="left" valign="top" width="360">
+                                                <% unless @user.profile.last_job.blank? %>
+                                                  <h4><span><%=t 'mailers.email_sharing.user.html.last_job' %></span></h4>
+                                                  <p class="lead"><%= @user.profile.last_job %></p>
+                                                  <% unless @user.profile.past_companies.blank? %>
+                                                    <p class="past-companies">
+                                                      <%=t 'mailers.email_sharing.user.html.also_worked_for_html', past_companies: @user.profile.past_companies %>
+                                                    </p>
+                                                  <% end %>
+                                                <% else %>
+                                                  <h4><span><%=t 'mailers.email_sharing.user.html.education' %></span></h4>
+                                                  <p class="lead"><%= @user.profile.education %></p>
+                                                <% end %>
+                                              </td>
+                                            </tr>
+                                          </table>
+                                          <!-- End of experience content -->
+
+                                        </td>
+                                      </tr>
+                                    </table>
+                                    <!-- End of experience table -->
+
+                                  </td>
+                                </tr>
+                                <% unless @user.profile.last_job.blank? %>
+                                  <tr>
+                                    <td align="center" valign="top" width="480">
+
+                                      <!-- Education table -->
+                                      <table border="0" cellpadding="0" cellspacing="0" id="education-table">
+                                        <tr>
+                                          <td align="center" valign="top" width="480">
+
+                                            <!-- Education content -->
+                                            <table border="0" cellpadding="0" cellspacing="0" class="education-content">
+                                              <tr>
+                                                <td align="left" valign="top" width="480">
+                                                  <h4><span><%=t 'mailers.email_sharing.user.html.education' %></span></h4>
+                                                  <p class="lead"><%= @user.profile.education %></p>
+                                                </td>
+                                              </tr>
+                                            </table>
+                                            <!-- End of education content -->
+
+                                          </td>
+                                        </tr>
+                                      </table>
+                                      <!-- End of education table -->
+
+                                    </td>
+                                  </tr>
+                                <% end %>
+                                <% unless @user.profile.skill_1.blank? && @user.profile.skill_2.blank? && @user.profile.skill_3.blank? %>
+                                  <tr>
+                                    <td align="center" valign="top" width="480">
+
+                                      <!-- Skills table -->
+                                      <table border="0" cellpadding="0" cellspacing="0" id="skills-table">
+                                        <tr>
+                                          <td align="center" valign="top" width="480">
+
+                                            <!-- Skills content -->
+                                            <table border="0" cellpadding="0" cellspacing="0" class="skills-content">
+                                              <tr>
+                                                <td align="left" valign="top" width="480">
+                                                  <h4><span><%=t 'mailers.email_sharing.user.html.skills' %></span></h4>
+                                                  <% unless @user.profile.skill_1.blank? %>
+                                                    <p class="lead"><%= @user.profile.skill_1 %></p>
+                                                  <% end %>
+                                                  <% unless @user.profile.skill_2.blank? %>
+                                                    <p class="lead"><%= @user.profile.skill_2 %></p>
+                                                  <% end %>
+                                                  <% unless @user.profile.skill_3.blank? %>
+                                                    <p class="lead"><%= @user.profile.skill_3 %></p>
+                                                  <% end %>
+                                                </td>
+                                              </tr>
+                                            </table>
+                                            <!-- End of skills content -->
+
+                                          </td>
+                                        </tr>
+                                      </table>
+                                      <!-- End of skills table -->
+
+                                    </td>
+                                  </tr>
+                                <% end %>
+                                <% unless @user.profile.quality_1.blank? && @user.profile.quality_2.blank? && @user.profile.quality_3.blank? %>
+                                  <tr>
+                                    <td align="center" valign="top" width="480">
+
+                                      <!-- Qualities table -->
+                                      <table border="0" cellpadding="0" cellspacing="0" id="qualities-table">
+                                        <tr>
+                                          <td align="center" valign="top" width="480">
+
+                                            <!-- Qualities content -->
+                                            <table border="0" cellpadding="0" cellspacing="0" class="qualities-content">
+                                              <tr>
+                                                <td align="left" valign="top" width="480">
+                                                  <h4><span><%=t 'mailers.email_sharing.user.html.qualities' %></span></h4>
+                                                  <% unless @user.profile.quality_1.blank? %>
+                                                    <p class="lead"><%= @user.profile.quality_1 %></p>
+                                                  <% end %>
+                                                  <% unless @user.profile.quality_2.blank? %>
+                                                    <p class="lead"><%= @user.profile.quality_2 %></p>
+                                                  <% end %>
+                                                  <% unless @user.profile.quality_3.blank? %>
+                                                    <p class="lead"><%= @user.profile.quality_3 %></p>
+                                                  <% end %>
+                                                </td>
+                                              </tr>
+                                            </table>
+                                            <!-- End of qualities content -->
+
+                                          </td>
+                                        </tr>
+                                      </table>
+                                      <!-- End of qualities table -->
+
+                                    </td>
+                                  </tr>
+                                <% end %>
+                                <tr>
+                                  <td align="center" valign="top" width="480">
+
+                                    <!-- More table -->
+                                    <table border="0" cellpadding="0" cellspacing="0" id="more-table">
+                                      <tr>
+                                        <td align="left" valign="middle" height="38" width="480">
+                                          <a href="http://<%= @user.subdomain %>.joblr.co"><span><%=t 'mailers.email_sharing.user.html.view_complete_profile', fullname: @user.fullname %></span></a>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                    <!-- End of more table -->
+
+                                  </td>
+                                </tr>
+                              </table>
+                              <!-- End of profile container -->
+
+                            </td>
+                          </tr>
+                        </table>
+                        <!-- End of profile table -->
+
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- End of body table -->
+
+                </td>
+              </tr>
+              <tr>
+                <td align="center" valign="top" width="560">
+
+                  <!-- Footer table -->
+                  <table border="0" cellpadding="0" cellspacing="0" id="footer-table">
+                    <tr>
+                      <td align="center" valign="top" height="87" width="560">
+                        <img src="http://joblr.co/logo.gif" alt="Joblr.co" height="37" width="124" />
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- End of footer table -->
+
+                </td>
+              </tr>
+            </table>
+            <!-- End of container table -->
+
+          </td>
+        </tr>
+      </table>
+      <!-- End of background table -->
+
+    </center>
+  </body>
+</html>

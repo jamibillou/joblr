@@ -9,6 +9,7 @@ class EmailSharingMailer < ActionMailer::Base
 
   def other_user(email_sharing, user, current_user)
     @user = user
+    @current_user = current_user
     @email_sharing = email_sharing
     mail to: email_sharing.recipient_email, subject: t('mailers.email_sharing.other_user.subject', fullname: current_user.fullname)
   end
