@@ -1,5 +1,7 @@
 en:
   mailers:
+    header: 'This is an automated notification, please do not reply.'
+    team: 'The Joblr team'
     devise:
       reset_password_instructions:
         hello: "Hello there!"
@@ -8,8 +10,6 @@ en:
         follow_link: "Follow this link to reset your pasword:"
         if_not: "If you didn't request this, please ignore this email."
         wont_change: "Your password won't change until you access the link above and create a new one."
-        cheers: "Cheers,"
-        team: "The Joblr team"
     user:
       share_profile:
         subject: "%{fullname} on Joblr"
@@ -37,25 +37,19 @@ en:
           view_complete_profile: "View %{fullname}'s complete profile on Joblr.co"
         text:
           title: "%{fullname} on Joblr"
-          content: "%{fullname} would like to talk to you, he is using a Joblr so you can go through his profile in a few seconds and tell him wether you are interested or not."
-          go_to_url: 'Go to %{url} to take a look!'
-          cheers: 'Cheers,'
-          team: 'The Joblr Team'
+          content: "%{fullname} sent you a Joblr profile to start the conversation. They are short and easy to read so you don't waste your time."
+          go_to_url: 'Go to %{url} to check it out!'
     beta_invite:
       notify_team:
         subject: "New beta invitation request!"
         title: "Somebody wants to try Joblr!"
-        content: "Some person whose email is %{email} just requested a beta invitation."
+        content_html: "Some person whose email is %{email} just requested a beta invitation."
+        content_text: "Some person whose email is %{email} just requested a beta invitation."
         go_to_url_html: "Go to %{url} to send the invitation email."
-        cheers: "Cheers,"
-        team: "Who ever of us wrote this email"
+        button: 'Send now!'
       send_code:
-        subject: "Invitation to Joblr alpha"
-        header: 'This is an automated notification, please do not reply.'
-        title: "Congrats, here's your invitation to Joblr alpha!"
+        subject: "Invitation to Joblr beta"
+        title: "Congrats, here's your invitation to Joblr beta!"
         content_html: "Thanks for your interest in Joblr. Paste this invitation code at %{url} and sign up!"
         code: "Code:"
-        cheers: "Cheers,"
-        team: "The Joblr team"
-        ok_sign_up: 'Ok, sign up!'
-        no_later: "No, I'll do it later"
+        button: 'Ok, sign up!'

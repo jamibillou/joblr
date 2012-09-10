@@ -37,7 +37,7 @@ Joblr::Application.routes.draw do
 
   # Mail_view gem
   if Rails.env.development?
-    mount UserMailer::Preview => 'user_mailer'
+    mount UserMailer::Preview       => 'user_mailer'
     mount BetaInviteMailer::Preview => 'beta_invite_mailer'
   end
 end

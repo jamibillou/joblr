@@ -10,10 +10,11 @@ class UserMailer < ActionMailer::Base
   class Preview < MailView
 
     def share_profile
-      user          = FactoryGirl.create :user, fullname: FactoryGirl.generate(:fullname), username: FactoryGirl.generate(:username), email: FactoryGirl.generate(:email)
+      name          = Faker::Name.name
+      user          = FactoryGirl.create :user, fullname: name, username: name.parameterize, email: "#{name.parameterize}@example.com"
       profile       = FactoryGirl.create :profile, user: user
       email_sharing = FactoryGirl.create :email_sharing, author: user, profile: profile
-      email = UserMailer.share_profile email_sharing, user
+      email         = UserMailer.share_profile email_sharing, user
       email
     end
   end
