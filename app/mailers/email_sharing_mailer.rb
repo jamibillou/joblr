@@ -1,7 +1,7 @@
 class EmailSharingMailer < ActionMailer::Base
 
   default from: "postman@joblr.co"
-  layout 'mailers'
+  layout 'mailers', only: :decline
 
   def share_profile(email_sharing, user)
   	@user = user
