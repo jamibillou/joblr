@@ -146,10 +146,11 @@ $ ->
 
 @updateCharCounter = (id, max) ->
   counterId = '#'+stripId(id)+'-char-counter'
-  count = $('#'+id).val().length
-  $(counterId).text(count+'/'+max)
-  $(counterId).addClass('danger-text') if count > max
-  $(counterId).removeClass('danger-text') if count < max
+  if $('#'+id).val()?
+    count = $('#'+id).val().length
+    $(counterId).text(count+'/'+max)
+    $(counterId).addClass('danger-text') if count > max
+    $(counterId).removeClass('danger-text') if count < max
 
 
 # Strips id off unecessary crap, returns the CSS class we use in _edit_popovers and _edit_onboarding partials

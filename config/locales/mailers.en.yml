@@ -10,7 +10,7 @@ en:
         follow_link: "Follow this link to reset your pasword:"
         if_not: "If you didn't request this, please ignore this email."
         wont_change: "Your password won't change until you access the link above and create a new one."
-    user:
+    email_sharing:
       share_profile:
         subject: "%{fullname} on Joblr"
         html:
@@ -39,6 +39,12 @@ en:
           title: "%{fullname} on Joblr"
           content: "%{fullname} sent you a Joblr profile to start the conversation. They are short and easy to read so you don't waste your time."
           go_to_url: 'Go to %{url} to check it out!'
+      decline:
+        subject: "%{fullname} declined your Joblr application"
+        title: "Application declined"
+        content_html: "Unfortunately, %{fullname} has declined your application you sent him with Joblr."
+        content_text: "Unfortunately, %{fullname} has declined your application you sent him with Joblr."
+        help: "Don't give up, we're here to help you!"
     beta_invite:
       notify_team:
         subject: "New beta invitation request!"

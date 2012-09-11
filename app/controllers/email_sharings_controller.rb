@@ -21,6 +21,7 @@ class EmailSharingsController < ApplicationController
 
   def decline
     @email_sharing = EmailSharing.find params[:id]
+    EmailSharingMailer.decline(@email_sharing).deliver
   end
 
   private

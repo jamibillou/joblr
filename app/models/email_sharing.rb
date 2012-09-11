@@ -18,7 +18,17 @@ class EmailSharing < ActiveRecord::Base
 
   def fullname
     author_required? ? author_fullname : author.fullname
-  end 
+  end
+
+  def email
+    if author_required?
+      author_email
+    elsif author.email.nil?
+      "team@joblr.co"
+    else
+      author.email
+    end
+  end
 end
 
 # == Schema Information

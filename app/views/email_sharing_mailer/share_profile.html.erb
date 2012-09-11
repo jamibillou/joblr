@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title><%=t 'mailers.user.share_profile.html.title', fullname: @user.fullname %></title>
+    <title><%=t 'mailers.email_sharing.share_profile.html.title', fullname: @user.fullname %></title>
     <link href="mailers/email_sharing_mailer/share_profile.css" rel="stylesheet" media="all" type="text/css" />
   </head>
 
@@ -23,7 +23,7 @@
                   <table border="0" cellpadding="0" cellspacing="0" id="header-table">
                     <tr>
                       <td align="center" valign="bottom" height="54" width="560">
-                        <p class="graylight-text"><%=t 'mailers.user.share_profile.html.summary', fullname: @user.fullname %></p>
+                        <p class="graylight-text"><%=t 'mailers.user.email_sharing.html.summary', fullname: @user.fullname %></p>
                       </td>
                     </tr>
                   </table>
@@ -133,7 +133,7 @@
                                           <table border="0" cellpadding="0" cellspacing="0" id="button-right-table">
                                             <tr>
                                               <td align="left" valign="middle" height="50" width="280">
-                                                <a href="#"><span><%=t 'mailers.user.share_profile.html.no_thanks' %></span></a>
+                                                <a href=<%= "http://joblr.co/decline/#{@email_sharing.id}" %> ><span><%=t 'mailers.email_sharing.share_profile.html.no_thanks' %></span></a>
                                               </td>
                                             </tr>
                                           </table>
@@ -337,7 +337,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0" id="more-table">
                                       <tr>
                                         <td align="left" valign="middle" height="38" width="480">
-                                          <a href="http://<%= @user.subdomain %>.joblr.co"><span><%=t 'mailers.user.share_profile.html.view_complete_profile', fullname: @user.fullname %></span></a>
+                                          <a href="http://<%= @user.subdomain %>.joblr.co"><span><%=t 'mailers.email_sharing.share_profile.html.view_complete_profile', fullname: @user.fullname %></span></a>
                                         </td>
                                       </tr>
                                     </table>
