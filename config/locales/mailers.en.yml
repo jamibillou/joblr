@@ -16,7 +16,6 @@ en:
         html:
           summary: "%{fullname} is looking for work and wants to talk to you."
           title: "%{fullname} on Joblr"
-          header: 'Having trouble reading this email? View it on'
           lets_talk: "Let's talk!"
           no_thanks: 'No, thanks'
           more_about: 'More about %{fullname}'
@@ -36,6 +35,12 @@ en:
           go_to_url: 'Go to %{url} to check it out!'
       other_user:
         subject: "%{fullname} through Joblr"
+        html:
+          summary: "%{author_fullname} sent you %{user_fullname}'s profile thinking you might be interested."
+          title: "%{fullname} through Joblr"
+          contact: "Contact %{user_fullname}"
+          lets_talk: "Let's talk!"
+          no_thanks: 'No, thanks'
         text:
           title: "%{fullname} through Joblr"
           profile: "%{author_fullname} sent you the Joblr profile of %{user_fullname} thinking you might be interested."
@@ -43,6 +48,12 @@ en:
           go_to_url: 'Go to %{url} to check it out!'
       public_user:
         subject: "%{fullname} through Joblr"
+        html:
+          summary: "%{author_fullname} sent you %{user_fullname}'s profile thinking you might be interested."
+          title: "%{fullname} through Joblr"
+          contact: "Contact %{user_fullname}"
+          lets_talk: "Let's talk!"
+          no_thanks: 'No, thanks'
         text:
           title: "%{fullname} through Joblr"
           profile: "%{author_fullname} sent you the Joblr profile of %{user_fullname} thinking you might be interested."
@@ -55,10 +66,10 @@ en:
         content_html: "Some person whose email is %{email} just requested a beta invite."
         content_text: "Some person whose email is %{email} just requested a beta invite."
         go_to_url_html: "Go to %{url} to send the invitation email."
-        button: 'Go there now!'
+        button: 'Ok, go now!'
       send_code:
         subject: "Invitation to Joblr beta"
         title: "Congrats, here's your invitation to Joblr beta!"
         content_html: "Thanks for your interest in Joblr. Paste this invitation code at %{url} and sign up!"
         code: "Code:"
-        button: 'Ok, take me there!'
+        button: 'Ok, sign up!'

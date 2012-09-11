@@ -46,7 +46,7 @@ describe EmailSharingsController do
 		    it "should redirect to user's profile" do
 		    	xhr :post, :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
 		    	#response.should redirect_to @author
-		    	flash[:success].should == I18n.t('flash.success.profile.shared')
+		    	flash[:success].should == I18n.t('flash.success.profile.shared', recipient_email: 'test@test.com')
 		    end
 	    end
 
@@ -96,7 +96,7 @@ describe EmailSharingsController do
 		    it "should render user's profile" do
 		    	xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_email: 'author@example.com', author_fullname: 'The Author', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
 		    	#response.should redirect_to @author
-		    	flash[:success].should == I18n.t('flash.success.profile.shared')
+		    	flash[:success].should == I18n.t('flash.success.profile.shared', recipient_email: 'test@test.com')
 		    end
 	    end
 

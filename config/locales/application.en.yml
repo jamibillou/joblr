@@ -14,7 +14,7 @@ en:
       profile:
         created: 'Profile created successfully.'
         updated: 'Profile updated successfully.'
-        shared:  "%{fullname}'s profile was sent successfully to %{recipient_email}."
+        shared:  "Profile sent successfully to %{recipient_email}."
       beta_invite:
         request_sent: 'Request sent successfully.'
         email_sent: 'Beta invite email sent successfully'
