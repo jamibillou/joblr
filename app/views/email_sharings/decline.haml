@@ -2,10 +2,4 @@
 	.span7
 		.well
 			%h3= t('email_sharings.decline.thank_you') 
-			= t('email_sharing.decline.help_user', fullname: @email_sharing.fullname)
-			%br/
-			%br/
-			= t('email_sharings.decline.add_text')
-			= form_for @email_sharing do |f|
-				= f.text_area :reason, placeholder: t('email_sharings.decline.reason_placeholder'), rows:3, class: 'span1'
-				= f.submit t('email_sharings.new.send'), class: 'btn btn-primary'
+			= t('email_sharings.decline.email_sent', fullname: @email_sharing.fullname)

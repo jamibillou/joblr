@@ -58,7 +58,6 @@ describe EmailSharing do
 		it { should ensure_length_of(:recipient_fullname).is_at_most 100 }
 		it { should validate_presence_of :recipient_email }
     it { should ensure_length_of(:text).is_at_most 140 }
-    it { should ensure_length_of(:reason).is_at_most 140 }
     it { should ensure_inclusion_of(:status).in_array ['accepted', 'declined'] }
     it { should validate_presence_of :text }
     it { should validate_format_of(:recipient_email).not_with(@email[:invalid][rand(@email[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.invalid')) }
@@ -81,6 +80,5 @@ end
 #  created_at         :datetime        not null
 #  updated_at         :datetime        not null
 #  status             :string(255)
-#  reason             :string(255)
 #
 

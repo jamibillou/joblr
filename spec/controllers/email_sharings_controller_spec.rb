@@ -182,26 +182,9 @@ describe EmailSharingsController do
 				#@email_sharing.status.should == 'declined'
 			#end
 
-			it 'should display the form' do
-				response.body.should have_selector "form#edit_email_sharing_#{@email_sharing.id}"
+			it 'should have thanks message' do
+				response.body.should include I18n.t('email_sharings.decline.email_sent', fullname: @email_sharing.fullname)
 			end	
-		end
-	end
-
-	describe "PUT 'update'" do
-
-		before :each do
-			@email_sharing = EmailSharing.create!(@email_sharing_attr.merge(author: nil, author_email: 'author@example.com', author_fullname: 'The author', recipient_email: 'recipient@example.com', recipient_fullname: 'The recipient', status: nil))
-			put :update, id: @email_sharing, email_sharing: { reason: 'That is why we are going to interview you.'}
-		end
-
-		it 'should have updated the reason' #do
-			#FIX ME!!
-			#@email_sharing.reason.should == 'That is why we are going to interview you.'			
-		#end
-
-		it 'should display thanks' do
-			response.body.should include I18n.t('email_sharings.update.email_sent', fullname: @email_sharing.fullname)
 		end
 	end
 end

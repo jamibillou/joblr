@@ -46,18 +46,6 @@ ActiveRecord::Schema.define(:version => 20120910174805) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "status"
-    t.string   "reason"
-  end
-
-  create_table "emailsharings", :force => true do |t|
-    t.integer  "profile_id"
-    t.integer  "author_id"
-    t.string   "author_fullname"
-    t.string   "author_email"
-    t.string   "recipient_fullname"
-    t.string   "recipient_email"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
   end
 
   create_table "profiles", :force => true do |t|
@@ -85,14 +73,6 @@ ActiveRecord::Schema.define(:version => 20120910174805) do
     t.string   "twitter_url"
     t.string   "facebook_url"
     t.string   "google_url"
-  end
-
-  create_table "sharings", :force => true do |t|
-    t.integer  "author_id"
-    t.integer  "recipient_id"
-    t.string   "text"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
   end
 
   create_table "users", :force => true do |t|

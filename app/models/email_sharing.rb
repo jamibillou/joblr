@@ -1,6 +1,6 @@
 class EmailSharing < ActiveRecord::Base
   attr_accessible :author_email, :author_fullname, :author_id, :author, :profile_id, :recipient_email, :recipient_fullname, 
-                  :text, :status, :reason
+                  :text, :status
 
   belongs_to :author, class_name: 'User', foreign_key: :author_id
   belongs_to :profile
@@ -10,15 +10,10 @@ class EmailSharing < ActiveRecord::Base
   validates :recipient_fullname, length: { maximum: 100 }, 								 	                   presence: true
   validates :recipient_email,    format: { with: Devise.email_regexp }, 				               presence: true
   validates :text, 				       length: { maximum: 140 }, 								                     presence: true
-  validates :reason,             length: { maximum: 140 },                                     allow_blank: true
   validates :status,             inclusion: { :in => ['accepted', 'declined'] },               allow_nil: true
 
   def author_required?
   	author.nil?
-  end
-
-  def no_answer?
-    reason.nil? && status.nil?
   end
 
   def fullname
@@ -41,6 +36,5 @@ end
 #  created_at         :datetime        not null
 #  updated_at         :datetime        not null
 #  status             :string(255)
-#  reason             :string(255)
 #
 
