@@ -45,9 +45,13 @@ en:
         all: "Error: all fields are required."
   errors:
     error_404:
-      title: "Sorry, we couldn't find the content you were looking for"
-      content_html: "This page doesn't exist or was deleted. Let us know about it and we'll try our best to fix it!<br/>Email us at %{email_link} and we'll get back to you as soon as we have identified the problem."
+      title: "The page you were looking for doesn't exist (404)"
+      content: "You may have mistyped the address or the page may have moved."
+    error_422:
+      title: "The change you wanted was rejected (422)"
+      content: "Maybe you tried to change something you didn't have access to."
     error_500:
-      title: "Sorry, there was an internal error"
-      content_html: "It's most likely a problem on our side. Email us at %{email_link} if it happens again.<br/>We'll get back to you as soon as we have identified the issue."
+      title: "We're sorry, but something went wrong (500)"
+      content: "We've been notified about this issue and we'll take a look at it shortly."
+    email_us_html: "Email us at %{email_link} if this happens again."
     routing: 'No route matches [GET] "%{path}"'

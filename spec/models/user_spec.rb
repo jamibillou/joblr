@@ -54,23 +54,28 @@ describe User do
   describe 'validations' do
 
     before :all do
-      @email = { :invalid => %w(invalid_email invalid@example invalid@user@example.com inv,alide@), :valid => %w(valid_email@example.com valid@example.co.kr vu@example.us) }
+      @email =     { invalid: %w(invalid_email invalid@example invalid@user@example.com inv,alide@), valid: %w(valid_email@example.com valid@example.co.kr vu@example.us) }
+      @subdomain = { invalid: ['dom choa', 'dom__choa', 'dom.choa', 'dom--choa', 'dom@choa', 'dom%choa', 'dom_', '_choa', 'dom-', '-choa'], valid: %(dominic_m dominic-m dominicm dominic12345 12345dominicm) }
     end
 
     it { should ensure_length_of(:fullname).is_at_most 100 }
     it { should validate_presence_of(:fullname) }
     it { should ensure_length_of(:city).is_at_most 50 }
     it { should ensure_length_of(:country).is_at_most 50 }
-    it { should ensure_length_of(:username).is_at_most 100 }
+    it { should ensure_length_of(:username).is_at_most 63 }
     it { should validate_uniqueness_of(:username) }
     it { should validate_presence_of(:username) }
-    it { should ensure_length_of(:subdomain).is_at_most 100 }
+    it { should validate_format_of(:username).not_with(@subdomain[:invalid][rand(@subdomain[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.subdomain_format')) }
+    it { should validate_format_of(:username).with @subdomain[:valid][rand(@subdomain[:valid].size)] }
+    it { FactoryGirl.build(:user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: @user.email).should_not be_valid }
+    it { should ensure_length_of(:subdomain).is_at_most 63 }
     it { should validate_uniqueness_of(:subdomain) }
+    it { should validate_format_of(:subdomain).not_with(@subdomain[:invalid][rand(@subdomain[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.subdomain_format')) }
+    it { should validate_format_of(:subdomain).with @subdomain[:valid][rand(@subdomain[:valid].size)] }
     it { should ensure_inclusion_of(:admin).in_array [true, false] }
     it { should ensure_inclusion_of(:social).in_array [true, false] }
     it { should validate_format_of(:email).not_with(@email[:invalid][rand(@email[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.invalid')) }
     it { should validate_format_of(:email).with @email[:valid][rand(@email[:valid].size)] }
-    it { FactoryGirl.build(:user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: @user.email).should_not be_valid }
   end
 
   describe 'image' do

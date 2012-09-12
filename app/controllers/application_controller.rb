@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_locale
-  before_filter :constrain_subdomain_path, if: :subdomain?
+  before_filter :constrain_subdomain_path, if: :subdomain? || :multi_level_subdomain?
 
   private
 
@@ -14,14 +14,18 @@ class ApplicationController < ActionController::Base
     end
 
     def constrain_subdomain_path
-      raise ActionController::RoutingError.new(t('errors.routing', path: request.path)) unless request.path == '/' || request.xhr?
+      raise ActionController::RoutingError.new(t('errors.routing', path: request.path)) unless request.path.match(/\/|404|500/) || request.xhr?
     end
 
     def load_user
       unless subdomain?
         @user = params[:id] ? User.find(params[:id]) : current_user
       else
-        @user = User.find_by_subdomain! request.subdomain
+        unless multi_level_subdomain?
+          @user = User.find_by_subdomain! request.subdomain
+        else
+          @user = User.find_by_subdomain! request.subdomains[0]
+        end
       end
     end
 

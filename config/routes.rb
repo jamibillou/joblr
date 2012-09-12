@@ -4,6 +4,7 @@ Joblr::Application.routes.draw do
 
   # Error pages
   match '/404', to: 'errors#error_404'
+  match '/422', to: 'errors#error_422'
   match '/500', to: 'errors#error_500'
 
   devise_for :users, controllers: {omniauth_callbacks: 'authentifications', registrations: 'registrations'}
@@ -29,7 +30,7 @@ Joblr::Application.routes.draw do
   match 'style_tile',             to: 'pages#style_tile'
 
   # Subdomain constraints
-  match '', to: 'users#show', constraints: Subdomain.new(true)
+  match '', to: 'users#show', constraints: Subdomain.new(true) || MultiLevelSubdomain.new(true)
 
   # Dynamic root_path
   root to: 'pages#landing', constraints: SignedIn.new(false)
