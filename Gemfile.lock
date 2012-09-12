@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/37signals/mail_view.git
+  revision: 86a56c55143b3688add21ac95946c008df32c491
+  specs:
+    mail_view (1.0.1)
+      tilt
+
+GIT
   remote: https://github.com/dmatheron/linkedin.git
   revision: 8232ff754d1853ad7ad6583d3cf78175793a6c7b
   branch: 2-0-stable
@@ -280,6 +287,7 @@ DEPENDENCIES
   heroku
   jquery-rails
   linkedin!
+  mail_view!
   omniauth
   omniauth-facebook
   omniauth-google-oauth2

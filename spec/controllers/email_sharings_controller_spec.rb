@@ -5,7 +5,6 @@ describe EmailSharingsController do
 	render_views
 
 	before :each do
-
 		@author    = FactoryGirl.create :user
 		@profile_attr = { headline: 'fulltime',
                       experience: '5 yrs',
@@ -23,7 +22,6 @@ describe EmailSharingsController do
                       quality_3: 'Punctuality',
                       text: 'Do or do not, there is no try.' }
     @email_sharing_attr = { text: "Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."}
-    @email_sharing_public_attr = { text: "Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."}
 	end
 
 	describe "POST 'create'" do
@@ -46,7 +44,7 @@ describe EmailSharingsController do
 		    it "should redirect to user's profile" do
 		    	xhr :post, :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
 		    	#response.should redirect_to @author
-		    	flash[:success].should == I18n.t('flash.success.profile.shared')
+		    	flash[:success].should == I18n.t('flash.success.profile.shared', recipient_email: 'test@test.com')
 		    end
 	    end
 
@@ -95,8 +93,7 @@ describe EmailSharingsController do
 
 		    it "should render user's profile" do
 		    	xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_email: 'author@example.com', author_fullname: 'The Author', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-		    	#response.should redirect_to @author
-		    	flash[:success].should == I18n.t('flash.success.profile.shared')
+		    	flash[:success].should == I18n.t('flash.success.profile.shared', recipient_email: 'test@test.com')
 		    end
 	    end
 
@@ -155,6 +152,51 @@ describe EmailSharingsController do
 		    	response.body.should == I18n.t('flash.error.required.all')
 	      end
 	    end
+		end
+	end
+
+	describe "GET 'decline'" do
+
+		context 'from an email_sharing that had already been answered' do
+
+			it 'should redirect to already_answered_path' do
+				@email_sharing = EmailSharing.create!(@email_sharing_attr.merge(author: nil, author_email: 'author@example.com', author_fullname: 'The author', recipient_email: 'recipient@example.com', recipient_fullname: 'The recipient', status:'declined'))
+				get :decline, email_sharing_id: @email_sharing
+				response.should redirect_to email_sharing_already_answered_path
+			end
+		end
+
+		context "from an email_sharing that had not been answered yet" do
+
+			before :each do
+				@email_sharing = EmailSharing.create!(@email_sharing_attr.merge(author: nil, author_email: 'author@example.com', author_fullname: 'The author', recipient_email: 'recipient@example.com', recipient_fullname: 'The recipient', status: nil))
+				get :decline, email_sharing_id: @email_sharing
+			end
+
+			it { response.should be_success }
+
+			it 'should update the status' # do
+			# FIX ME!
+			# 	@email_sharing.status.should == 'declined'
+			# end
+
+			it 'should have thank you message' do
+				response.body.should include I18n.t('email_sharings.decline.thank_you')
+			end
+		end
+
+		describe "GET 'already_answered'" do
+
+			before :each do
+        @email_sharing = EmailSharing.create!(@email_sharing_attr.merge(author: nil, author_email: 'author@example.com', author_fullname: 'The author', recipient_email: 'recipient@example.com', recipient_fullname: 'The recipient', status:'declined'))
+				get :already_answered, email_sharing_id: @email_sharing
+			end
+
+			it { response.should be_success }
+
+			it 'should have thank you message' do
+				response.body.should include I18n.t('email_sharings.already_answered.thank_you', fullname: @email_sharing.fullname)
+			end
 		end
 	end
 end

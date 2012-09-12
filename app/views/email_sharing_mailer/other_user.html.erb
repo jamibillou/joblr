@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title><%=t 'mailers.user.share_profile.html.title', fullname: @user.fullname %></title>
-    <link href="mailers/user_mailer/share_profile.css" rel="stylesheet" media="all" type="text/css" />
+    <title><%=t 'mailers.email_sharing.other_user.html.title', fullname: @user.fullname %></title>
+    <link href="mailers/email_sharing_mailer.css" rel="stylesheet" media="all" type="text/css" />
   </head>
 
   <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
@@ -23,7 +23,7 @@
                   <table border="0" cellpadding="0" cellspacing="0" id="header-table">
                     <tr>
                       <td align="center" valign="bottom" height="54" width="560">
-                        <p class="graylight-text"><%=t 'mailers.user.share_profile.html.summary', fullname: @user.fullname %></p>
+                        <p class="graylight-text"><%=t 'mailers.email_sharing.other_user.html.summary', author_fullname: @current_user.fullname, user_fullname: @user.fullname %></p>
                       </td>
                     </tr>
                   </table>
@@ -64,85 +64,26 @@
                                 <tr>
                                   <td align="center" valign="top" width="480">
 
-                                    <!-- Identity table -->
-                                    <table border="0" cellpadding="0" cellspacing="0" id="identity-table">
+                                    <!-- Author table -->
+                                    <table border="0" cellpadding="0" cellspacing="0" id="author-table">
                                       <tr>
                                         <td align="center" valign="top" width="480">
 
-                                          <!-- Identity content -->
-                                          <table border="0" cellpadding="0" cellspacing="0" class="identity-content">
+                                          <!-- Author content -->
+                                          <table border="0" cellpadding="0" cellspacing="0" class="author-content">
                                             <tr>
-                                              <td align="left"  valign="top" width="70">
-                                                <img src="https://si0.twimg.com/profile_images/2030553072/twitter_reasonably_small.jpg" alt="image picture" height="70" width="70" />
-                                              </td>
-                                              <td align="left"  valign="top" width="20"></td>
-                                              <td align="left" valign="top" width="390">
-                                                <h2><span><%= @user.fullname %></span></h2>
-                                                <% unless @user.city.blank? && @user.country.blank? %>
-                                                  <p class="graylight-text"><%= "#{@user.city}#{', ' unless @user.city.blank? || @user.country.blank?}#{@user.country}" %></p>
-                                                <% end %>
-                                                <p class="info-text"><%=t "users.show.headline.#{@user.profile.headline}" %></p>
+                                              <td align="left" valign="top" height="68" width="480">
+                                                <h2><span><%= @current_user.fullname %></span></h2>
+                                                <p class="graylight-text"><%= @current_user.email %></p>
                                               </td>
                                             </tr>
                                           </table>
-                                          <!-- End of identity content -->
+                                          <!-- End of author content -->
 
                                         </td>
                                       </tr>
                                     </table>
-                                    <!-- End of identity table -->
-
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td align="center" valign="middle" height="20" width="480">
-
-                                    <!-- Fine line table -->
-                                    <table border="0" cellpadding="0" cellspacing="0" id="fine-line-table">
-                                      <tr>
-                                        <td align="left" valign="top" height="0" width="480"></td>
-                                      </tr>
-                                    </table>
-                                    <!-- End of fine line table -->
-
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td align="center" valign="top" width="480">
-
-                                    <!-- Buttons table -->
-                                    <table border="0" cellpadding="0" cellspacing="0" id="buttons-table">
-                                      <tr>
-                                        <td align="left" valign="top" height="60" width="170">
-
-                                          <!-- Button left table -->
-                                          <table border="0" cellpadding="0" cellspacing="0" id="button-left-table">
-                                            <tr>
-                                              <td align="center" valign="middle" height="50" width="170">
-                                                <a href="mailto:<%= @user.email %>"><span><%=t 'mailers.user.share_profile.html.lets_talk' %></span></a>
-                                              </td>
-                                            </tr>
-                                          </table>
-                                          <!-- End of button left table -->
-
-                                        </td>
-                                        <td align="left"  valign="top" width="30"></td>
-                                        <td align="right" valign="top" height="60" width="280">
-
-                                          <!-- Button right table -->
-                                          <table border="0" cellpadding="0" cellspacing="0" id="button-right-table">
-                                            <tr>
-                                              <td align="left" valign="middle" height="50" width="280">
-                                                <a href="#"><span><%=t 'mailers.user.share_profile.html.no_thanks' %></span></a>
-                                              </td>
-                                            </tr>
-                                          </table>
-                                          <!-- End of right left table -->
-
-                                        </td>
-                                      </tr>
-                                    </table>
-                                    <!-- End of buttons table -->
+                                    <!-- End of author table -->
 
                                   </td>
                                 </tr>
@@ -169,15 +110,33 @@
                                 <tr>
                                   <td align="center" valign="top" width="480">
 
-                                    <!-- More about table -->
-                                    <table border="0" cellpadding="0" cellspacing="0" id="more-about-table">
+                                    <!-- Identity table -->
+                                    <table border="0" cellpadding="0" cellspacing="0" id="identity-table">
                                       <tr>
-                                        <td align="left" valign="top" width="480">
-                                          <h2><span><%=t 'mailers.user.share_profile.html.more_about', fullname: @user.fullname %></span></h2>
+                                        <td align="center" valign="middle" height="110" width="480">
+
+                                          <!-- Identity content -->
+                                          <table border="0" cellpadding="0" cellspacing="0" class="identity-content">
+                                            <tr>
+                                              <td align="left"  valign="top" width="90">
+                                                <img src=<%= "http://joblr.co/#{@user.image.blank? ? 'default_user.jpg' : @user.image_url(:thumb).to_s}" %> alt="image picture" height="90" width="90" />
+                                              </td>
+                                              <td align="left"  valign="top" width="30"></td>
+                                              <td align="left" valign="top" width="360">
+                                                <h2><span><%= @user.fullname %></span></h2>
+                                                <% unless @user.city.blank? && @user.country.blank? %>
+                                                  <p class="graylight-text"><%= "#{@user.city}#{', ' unless @user.city.blank? || @user.country.blank?}#{@user.country}" %></p>
+                                                <% end %>
+                                                <p class="info-text"><%=t "users.show.headline.#{@user.profile.headline}" %></p>
+                                              </td>
+                                            </tr>
+                                          </table>
+                                          <!-- End of identity content -->
+
                                         </td>
                                       </tr>
                                     </table>
-                                    <!-- End of more about table -->
+                                    <!-- End of identity table -->
 
                                   </td>
                                 </tr>
@@ -198,8 +157,8 @@
                                                 <table border="0" cellpadding="0" cellspacing="0">
                                                   <tr>
                                                     <td align="left" valign="top" width="90">
-                                                      <h4><span><%=t 'mailers.user.share_profile.html.experience' %></span></h4>
-                                                      <p class="lead"><%=t 'mailers.user.share_profile.html.yrs', count: @user.profile.experience %></p>
+                                                      <h4><span><%=t 'mailers.email_sharing.user.html.experience' %></span></h4>
+                                                      <p class="lead"><%=t 'mailers.email_sharing.user.html.yrs', count: @user.profile.experience %></p>
                                                     </td>
                                                   </tr>
                                                 </table>
@@ -207,15 +166,15 @@
                                               <td align="left"  valign="top" width="30"></td>
                                               <td align="left" valign="top" width="360">
                                                 <% unless @user.profile.last_job.blank? %>
-                                                  <h4><span><%=t 'mailers.user.share_profile.html.last_job' %></span></h4>
+                                                  <h4><span><%=t 'mailers.email_sharing.user.html.last_job' %></span></h4>
                                                   <p class="lead"><%= @user.profile.last_job %></p>
                                                   <% unless @user.profile.past_companies.blank? %>
                                                     <p class="past-companies">
-                                                      <%=t 'mailers.user.share_profile.html.also_worked_for_html', past_companies: @user.profile.past_companies %>
+                                                      <%=t 'mailers.email_sharing.user.html.also_worked_for_html', past_companies: @user.profile.past_companies %>
                                                     </p>
                                                   <% end %>
                                                 <% else %>
-                                                  <h4><span><%=t 'mailers.user.share_profile.html.education' %></span></h4>
+                                                  <h4><span><%=t 'mailers.email_sharing.user.html.education' %></span></h4>
                                                   <p class="lead"><%= @user.profile.education %></p>
                                                 <% end %>
                                               </td>
@@ -243,7 +202,7 @@
                                             <table border="0" cellpadding="0" cellspacing="0" class="education-content">
                                               <tr>
                                                 <td align="left" valign="top" width="480">
-                                                  <h4><span><%=t 'mailers.user.share_profile.html.education' %></span></h4>
+                                                  <h4><span><%=t 'mailers.email_sharing.user.html.education' %></span></h4>
                                                   <p class="lead"><%= @user.profile.education %></p>
                                                 </td>
                                               </tr>
@@ -271,7 +230,7 @@
                                             <table border="0" cellpadding="0" cellspacing="0" class="skills-content">
                                               <tr>
                                                 <td align="left" valign="top" width="480">
-                                                  <h4><span><%=t 'mailers.user.share_profile.html.skills' %></span></h4>
+                                                  <h4><span><%=t 'mailers.email_sharing.user.html.skills' %></span></h4>
                                                   <% unless @user.profile.skill_1.blank? %>
                                                     <p class="lead"><%= @user.profile.skill_1 %></p>
                                                   <% end %>
@@ -307,7 +266,7 @@
                                             <table border="0" cellpadding="0" cellspacing="0" class="qualities-content">
                                               <tr>
                                                 <td align="left" valign="top" width="480">
-                                                  <h4><span><%=t 'mailers.user.share_profile.html.qualities' %></span></h4>
+                                                  <h4><span><%=t 'mailers.email_sharing.user.html.qualities' %></span></h4>
                                                   <% unless @user.profile.quality_1.blank? %>
                                                     <p class="lead"><%= @user.profile.quality_1 %></p>
                                                   <% end %>
@@ -331,17 +290,43 @@
                                   </tr>
                                 <% end %>
                                 <tr>
-                                  <td align="center" valign="top" width="480">
+                                  <td align="left" valign="top" width="480">
 
-                                    <!-- More table -->
-                                    <table border="0" cellpadding="0" cellspacing="0" id="more-table">
+                                    <h4><span><%=t 'mailers.email_sharing.other_user.html.contact', user_fullname: @user.fullname %></span></h4>
+
+                                    <!-- Buttons table -->
+                                    <table border="0" cellpadding="0" cellspacing="0" id="buttons-table">
                                       <tr>
-                                        <td align="left" valign="middle" height="38" width="480">
-                                          <a href="http://<%= @user.subdomain %>.joblr.co"><span><%=t 'mailers.user.share_profile.html.view_complete_profile', fullname: @user.fullname %></span></a>
+                                        <td align="left" valign="middle" height="68">
+
+                                          <!-- Button left table -->
+                                          <table border="0" cellpadding="0" cellspacing="0" id="button-left-table">
+                                            <tr>
+                                              <td align="center" valign="middle" height="51" width="170">
+                                                <a href="mailto:<%= @user.email %>"><span><%=t 'mailers.email_sharing.other_user.html.lets_talk' %></span></a>
+                                              </td>
+                                            </tr>
+                                          </table>
+                                          <!-- End of button left table -->
+
+                                        </td>
+                                        <td align="left"  valign="top" width="30"></td>
+                                        <td align="left" valign="middle" height="68" width="280">
+
+                                          <!-- Button right table -->
+                                          <table border="0" cellpadding="0" cellspacing="0" id="button-right-table">
+                                            <tr>
+                                              <td align="left" valign="middle" height="51">
+                                                <a href="<%= "http://joblr.co/email_sharings/#{@email_sharing.id}/decline" %>"><span><%=t 'mailers.email_sharing.other_user.html.no_thanks' %></span></a>
+                                              </td>
+                                            </tr>
+                                          </table>
+                                          <!-- End of right left table -->
+
                                         </td>
                                       </tr>
                                     </table>
-                                    <!-- End of more table -->
+                                    <!-- End of buttons table -->
 
                                   </td>
                                 </tr>

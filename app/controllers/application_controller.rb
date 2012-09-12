@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     end
 
     def constrain_subdomain_path
-      raise ActionController::RoutingError.new(t('errors.routing', path: request.path)) if request.path != '/'
+      raise ActionController::RoutingError.new(t('errors.routing', path: request.path)) unless request.path == '/' || request.xhr?
     end
 
     def load_user
