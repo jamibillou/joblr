@@ -5,8 +5,8 @@
 .well{
   padding:30px;
   background-color:$white;
-  @include border-radius(5px);
-  @include box-shadow(0 0 2px 1px #ccc);
+  @include border-radius(0);
+  @include box-shadow(0 1px 1px 0px #ddd);
   label{
     color: $wellTextColor;
   }

@@ -9,12 +9,19 @@
   .navbar-inner{
     min-height:$navbarHeight;
     background:$navbarBackground;
+    @include box-shadow(none);
     .brand{
       padding-top:$navbarHeight/2-$navbarBrandHeight/2;
       padding-bottom:$navbarHeight/2-$navbarBrandHeight/2;
+      margin-right:30px;
     }
     .nav{
       font-size:$baseFontSize + 1;
+      li{
+        a{
+          text-shadow:none;
+        }
+      }
     }
     .pull-right{
       .nav{

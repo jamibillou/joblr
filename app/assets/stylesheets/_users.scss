@@ -10,7 +10,9 @@
 // -----------
 
 #text{
-  margin-bottom:50px;
+  margin-bottom:40px;
+  border:10px solid $grayLighter;
+  @include box-shadow(none);
   h1{
     font-weight:200;
   }
@@ -24,19 +26,21 @@
 
 #profile{
   &.well{
-    border:10px solid $backgroundDark;
+    border:10px solid $grayLighter;
     @include box-shadow(none);
+    padding-top:40px;
   }
   img{
-    @include border-radius(4px);
+    @include border-radius(0);
     max-width:80px;
     max-height:80px;
+    margin-bottom:10px;
   }
   h2{
     margin-top:-8px;
   }
   h4{
-    margin-top:20px;
+    margin-top:15px;
   }
   #image-modal{
     .pic {
@@ -61,7 +65,7 @@
     margin-bottom:10px;
   }
   .experience p{
-    margin-bottom:0;
+    margin-bottom:15px;
   }
   .skills{
     .progress{
@@ -108,7 +112,7 @@
 #buttons{
   margin-top:0px;
   .btn{
-    width:70%;
+    width:53%;
   }
   .btn-top{
     margin-bottom:10px;

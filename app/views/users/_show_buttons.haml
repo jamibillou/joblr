@@ -3,12 +3,13 @@
     %a.btn.btn-large.btn-top.btn-primary{href: edit_user_path(user)}
       =t 'users.show.edit'
   - else
-    %a.btn.btn-large.btn-top.btn-danger
+    %a.btn.btn-large.btn-primary.btn-top
       =t 'users.show.contact'
   .btn-group
-    .btn.btn-large.dropdown-toggle{"data-toggle" => 'dropdown', href:'#', class: "#{(user_signed_in? && current_user == user && !subdomain?) ? 'btn-danger'  :'btn-inverse'}"}
+    .btn.btn-large.dropdown-toggle{"data-toggle" => 'dropdown', href:'#'}
       =t 'users.show.share'
       %span.caret.hidden-tablet
+
     %ul.dropdown-menu
       %li
         %a{'data-target' => '#email-sharing-modal', 'data-toggle' => 'modal'}

@@ -13,7 +13,7 @@ $grayDarker:            #222 !default;
 $grayDark:              #444 !default;
 $gray:                  #666 !default;
 $grayLight:             #999 !default;
-$grayLighter:           #ddd !default;
+$grayLighter:           #e2e2e2 !default;
 $white:                 #fff !default;
 
 // Accent colors
@@ -21,16 +21,10 @@ $white:                 #fff !default;
 $blue:                  #0083e0 !default;
 $red:                   #dd3b2e !default;
 
-// Background colors
-// ----------------------------
-$backgroundLight:       #f1f3f4 !default;
-$backgroundDark:        #e1e2e5 !default;
-$backgroundText:        #444    !default;
-
 
 // Scaffolding
 // -------------------------
-$bodyBackground:        $backgroundLight !default;
+$bodyBackground:        #f1f3f4 !default;
 $textColor:             $grayDark !default;
 $wellTextColor:         $grayDark;
 
@@ -57,17 +51,17 @@ $headingsColor:         $textColor !default; // empty to use BS default, @textCo
 // Buttons
 // -------------------------
 $btnBackground:                     $white !default;
-$btnBackgroundHighlight:            #dfdfe2 !default;
-$btnBorder:                         #ccc !default;
+$btnBackgroundHighlight:            $grayLighter !default;
+$btnBorder:                         $black !default;
 
-$btnPrimaryBackground:              $linkColor !default;
+$btnPrimaryBackground:              $blue !default;
 $btnPrimaryBackgroundHighlight:     #006dba !default;
 
 $btnDangerBackground:               $red !default;
-$btnDangerBackgroundHighlight:      #b23a31 !default;
+$btnDangerBackgroundHighlight:      #b33a31 !default;
 
-$btnInverseBackground:              $backgroundDark !default;
-$btnInverseBackgroundHighlight:     $backgroundDark !default;
+$btnInverseBackground:              #fefefe !default;
+$btnInverseBackgroundHighlight:     #dedfe1 !default;
 
 $btnLinkedinBackground:             #0599cd !default;
 $btnLinkedinBackgroundHighlight:    #0364ae !default;
@@ -102,8 +96,8 @@ $dropdownDividerBottom:         $white !default;
 
 // Images
 // -------------------------
-$navbarBrandHeight:             32px;
-$navbarBrandWidth:              111px;
+$navbarBrandHeight:             35px;
+$navbarBrandWidth:              123px;
 
 
 // COMPONENT VARIABLES
@@ -111,15 +105,15 @@ $navbarBrandWidth:              111px;
 
 // Navbar
 // -------------------------
-$navbarHeight:                    60px !default;
-$navbarBackground:                $grayDark !default;
-$navbarBackgroundHighlight:       $gray !default;
-$navbarText:                      $grayLighter !default;
+$navbarHeight:                    90px !default;
+$navbarBackground:                $white !default;
+$navbarBackgroundHighlight:       $white !default;
+$navbarText:                      $gray !default;
 $navbarTextLinkColor:             $blue !default;
 $navbarTextLinkColorHover:        darken($navbarTextLinkColor, 10%) !default;
 $navbarTextLinkColorActive:       $navbarTextLinkColorHover !default;
-$navbarLinkColor:                 $grayLight !default;
-$navbarLinkColorHover:            $white !default;
+$navbarLinkColor:                 $gray !default;
+$navbarLinkColorHover:            $black !default;
 $navbarLinkColorActive:           $navbarLinkColorHover !default;
 $navbarLinkBackgroundHover:       transparent !default;
 $navbarLinkBackgroundActive:      $navbarBackground !default;

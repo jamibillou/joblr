@@ -1,0 +1,10 @@
+// DROPDOWN MENUS
+// --------------
+
+
+// The dropdown menu (ul)
+// ----------------------
+.dropdown-menu {
+  border:0;
+  @include box-shadow(0 0 2px 1px #ccc);
+}
