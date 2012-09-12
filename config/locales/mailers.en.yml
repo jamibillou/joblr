@@ -43,8 +43,8 @@ en:
           no_thanks: 'No, thanks'
         text:
           title: "%{fullname} through Joblr"
-          profile: "%{author_fullname} sent you the Joblr profile of %{user_fullname} thinking you might be interested."
-          short_n_easy: "Those profiles are short and easy to read so you don't waste your time."
+          profile: "%{author_fullname} sent you %{user_fullname}'s profile thinking you might be interested."
+          short_n_easy: "Joblr profiles are short and easy to read so you don't waste your time."
           go_to_url: 'Go to %{url} to check it out!'
       public_user:
         subject: "%{fullname} through Joblr"
@@ -56,8 +56,8 @@ en:
           no_thanks: 'No, thanks'
         text:
           title: "%{fullname} through Joblr"
-          profile: "%{author_fullname} sent you the Joblr profile of %{user_fullname} thinking you might be interested."
-          short_n_easy: "Those profiles are short and easy to read so you don't waste your time."
+          profile: "%{author_fullname} sent you %{user_fullname}'s profile thinking you might be interested."
+          short_n_easy: "Joblr profiles are short and easy to read so you don't waste your time."
           go_to_url: 'Go to %{url} to check it out!'
     beta_invite:
       notify_team:
