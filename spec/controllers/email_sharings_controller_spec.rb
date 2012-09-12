@@ -93,7 +93,6 @@ describe EmailSharingsController do
 
 		    it "should render user's profile" do
 		    	xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_email: 'author@example.com', author_fullname: 'The Author', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-		    	#response.should redirect_to @author
 		    	flash[:success].should == I18n.t('flash.success.profile.shared', recipient_email: 'test@test.com')
 		    end
 	    end
@@ -158,33 +157,46 @@ describe EmailSharingsController do
 
 	describe "GET 'decline'" do
 
-		context 'from a sharing which have already a status' do
+		context 'from an email_sharing that had already been answered' do
 
-			it 'should redirect to root path' do
+			it 'should redirect to already_answered_path' do
 				@email_sharing = EmailSharing.create!(@email_sharing_attr.merge(author: nil, author_email: 'author@example.com', author_fullname: 'The author', recipient_email: 'recipient@example.com', recipient_fullname: 'The recipient', status:'declined'))
-				get :decline, id: @email_sharing
-				response.should redirect_to root_path
-				flash[:error].should == I18n.t('flash.error.email_sharing.already_answered')
+				get :decline, email_sharing_id: @email_sharing
+				response.should redirect_to email_sharing_already_answered_path
 			end
 		end
 
-		context "from a sharing which hasn't been answered yet" do
+		context "from an email_sharing that had not been answered yet" do
 
 			before :each do
 				@email_sharing = EmailSharing.create!(@email_sharing_attr.merge(author: nil, author_email: 'author@example.com', author_fullname: 'The author', recipient_email: 'recipient@example.com', recipient_fullname: 'The recipient', status: nil))
-				get :decline, id: @email_sharing
+				get :decline, email_sharing_id: @email_sharing
 			end
 
 			it { response.should be_success }
 
-			it 'should update the status' #do
-				#FIX ME!!
-				#@email_sharing.status.should == 'declined'
-			#end
+			it 'should update the status' # do
+			# FIX ME!
+			# 	@email_sharing.status.should == 'declined'
+			# end
 
-			it 'should have thanks message' do
-				response.body.should include I18n.t('email_sharings.decline.email_sent', fullname: @email_sharing.fullname)
-			end	
+			it 'should have thank you message' do
+				response.body.should include I18n.t('email_sharings.decline.thank_you')
+			end
+		end
+
+		describe "GET 'already_answered'" do
+
+			before :each do
+        @email_sharing = EmailSharing.create!(@email_sharing_attr.merge(author: nil, author_email: 'author@example.com', author_fullname: 'The author', recipient_email: 'recipient@example.com', recipient_fullname: 'The recipient', status:'declined'))
+				get :already_answered, email_sharing_id: @email_sharing
+			end
+
+			it { response.should be_success }
+
+			it 'should have thank you message' do
+				response.body.should include I18n.t('email_sharings.already_answered.thank_you', fullname: @email_sharing.fullname)
+			end
 		end
 	end
 end
