@@ -1,5 +1,5 @@
 class EmailSharing < ActiveRecord::Base
-  attr_accessible :author_email, :author_fullname, :author_id, :author, :profile_id, :recipient_email, :recipient_fullname, 
+  attr_accessible :author_email, :author_fullname, :author_id, :author, :profile_id, :profile, :recipient_email, :recipient_fullname, 
                   :text, :status
 
   belongs_to :author, class_name: 'User', foreign_key: :author_id
@@ -31,7 +31,7 @@ class EmailSharing < ActiveRecord::Base
   end
 
   def user
-    profile.user
+    self.profile.user
   end 
 
   def user_email

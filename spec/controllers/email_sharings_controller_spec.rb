@@ -46,6 +46,11 @@ describe EmailSharingsController do
 		    	#response.should redirect_to @author
 		    	flash[:success].should == I18n.t('flash.success.profile.shared', recipient_email: 'test@test.com')
 		    end
+
+		    it 'should send an email' do
+					xhr :post, :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+		    	ActionMailer::Base.deliveries.last.to.should == ['test@test.com']
+		    end
 	    end
 
 	    context "who didn't provide email address" do
@@ -95,6 +100,11 @@ describe EmailSharingsController do
 		    	xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_email: 'author@example.com', author_fullname: 'The Author', recipient_email: 'test@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
 		    	flash[:success].should == I18n.t('flash.success.profile.shared', recipient_email: 'test@test.com')
 		    end
+
+		    it 'should send an email' do
+					xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_email: 'author@example.com', author_fullname: 'The Author', recipient_email: 'test_public@test.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+		    	ActionMailer::Base.deliveries.last.to.should == ['test_public@test.com']
+		    end		    
 	    end
 
 	    context "who didn't provide an author email address" do
@@ -157,10 +167,14 @@ describe EmailSharingsController do
 
 	describe "GET 'decline'" do
 
+		before :each do
+			@author.profiles.create @profile_attr
+		end
+
 		context 'from an email_sharing that had already been answered' do
 
 			it 'should redirect to already_answered_path' do
-				@email_sharing = EmailSharing.create!(@email_sharing_attr.merge(author: nil, author_email: 'author@example.com', author_fullname: 'The author', recipient_email: 'recipient@example.com', recipient_fullname: 'The recipient', status:'declined'))
+				@email_sharing = EmailSharing.create!(@email_sharing_attr.merge(profile: @author.profile, author: nil, author_email: 'author@example.com', author_fullname: 'The author', recipient_email: 'recipient@example.com', recipient_fullname: 'The recipient', status:'declined'))
 				get :decline, email_sharing_id: @email_sharing
 				response.should redirect_to email_sharing_already_answered_path
 			end
@@ -169,7 +183,7 @@ describe EmailSharingsController do
 		context "from an email_sharing that had not been answered yet" do
 
 			before :each do
-				@email_sharing = EmailSharing.create!(@email_sharing_attr.merge(author: nil, author_email: 'author@example.com', author_fullname: 'The author', recipient_email: 'recipient@example.com', recipient_fullname: 'The recipient', status: nil))
+				@email_sharing = EmailSharing.create!(@email_sharing_attr.merge(profile: @author.profile, author: nil, author_email: 'author@example.com', author_fullname: 'The author', recipient_email: 'recipient@example.com', recipient_fullname: 'The recipient', status: nil))
 				get :decline, email_sharing_id: @email_sharing
 			end
 
@@ -188,7 +202,7 @@ describe EmailSharingsController do
 		describe "GET 'already_answered'" do
 
 			before :each do
-        @email_sharing = EmailSharing.create!(@email_sharing_attr.merge(author: nil, author_email: 'author@example.com', author_fullname: 'The author', recipient_email: 'recipient@example.com', recipient_fullname: 'The recipient', status:'declined'))
+        @email_sharing = EmailSharing.create!(@email_sharing_attr.merge(profile: @author.profile, author: nil, author_email: 'author@example.com', author_fullname: 'The author', recipient_email: 'recipient@example.com', recipient_fullname: 'The recipient', status:'declined'))
 				get :already_answered, email_sharing_id: @email_sharing
 			end
 
