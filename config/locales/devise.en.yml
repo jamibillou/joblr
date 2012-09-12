@@ -22,6 +22,8 @@ en:
     sessions:
       new:
         title: 'Sign in'
+      create:
+        title: 'Sign in'
       sign_in: 'Sign in'
       social_signin: 'Sign in with a social account'
       joblr_signin: 'Or sign in with your Joblr account'
@@ -35,7 +37,11 @@ en:
     passwords:
       new:
         title: 'Forgot your password?'
+      create:
+        title: 'Forgot your password?'
       edit:
+        title: 'Change your password'
+      update:
         title: 'Change your password'
       title: 'Change your password'
       new_password: 'New password'
@@ -50,6 +56,8 @@ en:
       no_token: "You can't access this page without coming from a password reset email."
     registrations:
       new:
+        title: 'Sign up!'
+      create:
         title: 'Sign up!'
       edit:
         title: 'Account settings'
