@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     end
 
     def constrain_subdomain_path
-      raise ActionController::RoutingError.new('Not Found') unless request.path == '/' || request.xhr?
+      raise ActionController::RoutingError.new(t('errors.routing', path: request.path)) unless request.path.match(/\/|404|500/) || request.xhr?
     end
 
     def load_user
@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
         if user_signed_in?
           redirect_to edit_user_path(@user), flash: {error: t('flash.error.only.signed_up')}
         else
-          raise ActionController::RoutingError.new('Not Found')
+          raise ActionController::RoutingError.new(t('errors.routing', path: request.path))
         end
       end
     end

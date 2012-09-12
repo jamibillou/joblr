@@ -1,5 +1,12 @@
-.span12
-  .hero-unit
+.span3.hidden-phone
+.span6
+  .well
     %h1=t 'errors.error_404.title'
     %br/
-    .lead=t 'errors.error_404.content_html', email_link: link_to('support@joblr.co', 'mailto:support@joblr.co')
+    %br/
+    %br/
+    .lead
+      =t 'errors.error_404.content'
+      %br/
+      %br/
+      =t 'errors.email_us_html', email_link: link_to('support@joblr.co', 'mailto:support@joblr.co')
