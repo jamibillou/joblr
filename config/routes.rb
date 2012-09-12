@@ -9,7 +9,7 @@ Joblr::Application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: 'authentifications', registrations: 'registrations'}
 
   resources :authentifications, only: [:destroy]
-  resources :email_sharings,    only: [:create, :update] do
+  resources :email_sharings,    only: [:create] do
     get :already_answered
     get :decline
   end

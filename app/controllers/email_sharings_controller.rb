@@ -17,7 +17,11 @@ class EmailSharingsController < ApplicationController
       redirect_to email_sharing_already_answered_path
     else
       @email_sharing.update_attributes status: 'declined'
-      EmailSharingMailer.decline(@email_sharing).deliver
+      if @email_sharing.own_sharing?
+        EmailSharingMailer.decline(@email_sharing).deliver
+      else
+        EmailSharingMailer.other_decline(@email_sharing).deliver
+      end
     end
   end
 

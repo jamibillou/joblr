@@ -64,6 +64,11 @@ en:
         title: "%{fullname} is not interested"
         content: "%{fullname} is not interested in your profile, better luck next time!"
         persevere: "Keep trying, it will pay off eventually."
+      other_decline:
+        subject: "%{fullname} through Joblr"
+        title: "%{fullname} is not interested"
+        content: "%{fullname} is not interested in your profile (shared by %{author_fullname}), better luck next time!"
+        persevere: "Keep trying, it will pay off eventually."        
     beta_invite:
       notify_team:
         subject: "New beta invitation request!"

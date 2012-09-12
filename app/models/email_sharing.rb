@@ -29,6 +29,18 @@ class EmailSharing < ActiveRecord::Base
       author.email
     end
   end
+
+  def user
+    profile.user
+  end 
+
+  def user_email
+    user.email.blank? ? "team@joblr.co" : profile.user.email
+  end
+
+  def own_sharing?
+    author == user
+  end
 end
 
 # == Schema Information
