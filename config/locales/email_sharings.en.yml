@@ -16,3 +16,11 @@ en:
       sending: 'sending...'
     create:
       title: 'Send profile by email'
+    decline:
+      title: 'Thanks for your answer'
+      thank_you: 'Thanks for letting us know'
+      close_page: '%{fullname} was notified about your answer, you can now close this page.'
+    already_answered:
+      title: 'Already answered'
+      thank_you: "Your had already told us you are not interested in %{fullname}'s profile, but thanks anyway!"
+      close_page: 'You can close this page.'

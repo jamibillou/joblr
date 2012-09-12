@@ -39,6 +39,7 @@ FactoryGirl.define do
     author_email 'b.obama@gov.us'
     recipient_fullname 'Jane Doe'
     recipient_email 'jane.doe@example.com'
+    status 'declined'
     association :author
     association :profile
   end

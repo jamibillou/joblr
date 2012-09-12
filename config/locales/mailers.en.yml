@@ -59,12 +59,16 @@ en:
           profile: "%{author_fullname} sent you %{user_fullname}'s profile thinking you might be interested."
           short_n_easy: "Joblr profiles are short and easy to read so you don't waste your time."
           go_to_url: 'Go to %{url} to check it out!'
+      decline:
+        subject: "%{fullname} through Joblr"
+        title: "%{fullname} is not interested"
+        content: "%{fullname} is not interested in your profile, better luck next time!"
+        persevere: "Keep trying, it will pay off eventually."
     beta_invite:
       notify_team:
         subject: "New beta invitation request!"
         title: "Somebody wants to try Joblr!"
         content_html: "Some person whose email is %{email} just requested a beta invite."
-        content_text: "Some person whose email is %{email} just requested a beta invite."
         go_to_url_html: "Go to %{url} to send the invitation email."
         button: 'Ok, go now!'
       send_code:

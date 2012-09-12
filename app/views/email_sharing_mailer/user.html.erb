@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title><%=t 'mailers.email_sharing.user.html.title', fullname: @user.fullname %></title>
-    <link href="mailers/email_sharing/user.css" rel="stylesheet" media="all" type="text/css" />
+    <link href="mailers/email_sharing_mailer.css" rel="stylesheet" media="all" type="text/css" />
   </head>
 
   <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
@@ -133,7 +133,7 @@
                                           <table border="0" cellpadding="0" cellspacing="0" id="button-right-table">
                                             <tr>
                                               <td align="left" valign="middle" height="51">
-                                                <a href="#"><span><%=t 'mailers.email_sharing.user.html.no_thanks' %></span></a>
+                                                <a href="<%= "http://joblr.co/email_sharings/#{@email_sharing.id}/decline" %>"><span><%=t 'mailers.email_sharing.user.html.no_thanks' %></span></a>
                                               </td>
                                             </tr>
                                           </table>

@@ -2,7 +2,7 @@
 <% t('mailers.beta_invite.notify_team.title').length.times do %>=<% end %>
 
 
-<%=t 'mailers.beta_invite.notify_team.content_text', email: @beta_invite.email %>
+<%=t 'mailers.beta_invite.notify_team.content_html', email: @beta_invite.email %>
 
 <%=t 'mailers.beta_invite.notify_team.go_to_url_html', url: 'http://joblr.co/admin' %>
 
