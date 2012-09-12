@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   validates :country,   length:     { maximum: 50 }
   validates :username,  length:     { maximum: 63 }, subdomain_format: true
   validates :subdomain, length:     { maximum: 63 }, subdomain_format: true, allow_nil: true
+  validates :subdomain, uniqueness: { case_sensitive: true }
   validates :admin,     inclusion:  { :in => [true, false] }
   validates :email,     uniqueness: { case_sensitive: true },      allow_nil: true, if: :email_changed?
   validates :email,     format:     { with: Devise.email_regexp }, allow_nil: true, if: :email_changed?
