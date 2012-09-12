@@ -1,0 +1,10 @@
+.span3.hidden-phone
+.span6
+  .row-fluid
+    .well#email_sharing
+      %h1=t 'email_sharings.already_answered.title', fullname: @email_sharing.fullname
+      .lead
+        =t 'email_sharings.already_answered.thank_you', fullname: @email_sharing.fullname
+        %br/
+        %br/
+        =t 'email_sharings.already_answered.close_page'

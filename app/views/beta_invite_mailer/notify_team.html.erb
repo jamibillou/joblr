@@ -1,0 +1,4 @@
+<%=t 'mailers.beta_invite.notify_team.content_html', email: link_to("<span>#{@beta_invite.email}</span>".html_safe, "mailto:#{@beta_invite.email}") %>
+<br />
+<br />
+<%=t 'mailers.beta_invite.notify_team.go_to_url_html', url: link_to('<span>http://joblr.co/admin</span>'.html_safe, 'http://joblr.co/admin', target: '_blank') %>

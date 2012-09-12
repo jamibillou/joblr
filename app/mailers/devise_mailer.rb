@@ -1,4 +1,5 @@
 class DeviseMailer < ActionMailer::Base
+
   include Devise::Mailers::Helpers
   default from: "postman@joblr.co"
 

@@ -73,7 +73,9 @@ h2 span{
   border:10px solid #e1e2e5;
   background-color:white;
 }
-
+#message-table .code{
+  font-size:13px;
+}
 
 /* Fine line */
 
@@ -83,19 +85,19 @@ h2 span{
 
 /* Buttons */
 
-#button-left-table{
+#button-table{
   background-color:#0076ca;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -o-border-radius: 10px;
   border-radius: 10px;
 }
-#button-left-table a{
+#button-table a{
   font-size:20px;
   font-weight:500;
   color:white;
   text-decoration:none;
 }
-#button-left-table a span{
+#button-table a span{
   color:white;
 }

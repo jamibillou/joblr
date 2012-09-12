@@ -78,7 +78,7 @@ h4{
   color:#ccc;
 }
 h4 span{
-  color:#444;
+  color:#ccc;
 }
 
 
@@ -102,21 +102,6 @@ h4 span{
 #message-table{
   border:10px solid #e1e2e5;
   background-color:white;
-}
-
-/* Identity */
-
-#identity-table img{
-  margin-top:5px;
-}
-#identity-table h2{
-  margin-top:0;
-  margin-bottom:10px;
-}
-#identity-table p.graylight-text{
-  font-weight:300;
-  line-height:13px;
-  margin-bottom:5px;
 }
 
 /* Fine line */
@@ -158,6 +143,21 @@ h4 span{
 }
 #profile-table p{
   margin-bottom:10px;
+}
+
+/* Identity & Author */
+
+#identity-table img{
+  margin-top:5px;
+}
+#identity-table h2, #author-table h2{
+  margin-top:0;
+  margin-bottom:10px;
+}
+#identity-table p.graylight-text{
+  font-weight:300;
+  line-height:13px;
+  margin-bottom:5px;
 }
 
 /* Experience */

@@ -13,7 +13,7 @@ en:
     send_code:
       yes_send: 'Are you sure you want to send a beta invite code to %{email}?'
     edit:
-      title_html: "Welcome to the Joblr beta<span class='danger-text'>*</span>!"
+      title: "Welcome to the Joblr beta*"
       subtitle: "Use your invitation code to get access."
       asterisk: "* We're working hard on fixing minor bugs you might find here and there"
       placeholder: 'Invitation code'
