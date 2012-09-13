@@ -21,8 +21,8 @@
           = render 'layouts/navigation'
 
     .container
-      #flash= render 'layouts/messages'
-      .row-fluid
+      = render 'layouts/messages'
+      #content.row-fluid
         = yield
 
     %footer

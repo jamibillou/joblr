@@ -8,5 +8,8 @@
 
 body{
   background:$bodyBackground;
-  padding-top:160px;
+  padding-top:120px;
+  #content{
+    padding-top:40px;
+  }
 }
