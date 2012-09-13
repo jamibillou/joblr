@@ -13,12 +13,23 @@ describe PagesController do
 
 		before :each do
 			get :landing
-		end	
+		end
 
 		it { response.should be_success }
 
-		it 'should contain a motto' do
-			response.body.should include I18n.t('pages.landing.motto')
+		it 'should have the right content' do
+			response.body.should include I18n.t('pages.landing.catchphrase')
+			response.body.should include I18n.t('pages.landing.saves')
+			response.body.should include I18n.t('pages.landing.join')
+			response.body.should include I18n.t('pages.landing.benefit1_title')
+			response.body.should include I18n.t('pages.landing.benefit1_text')
+			response.body.should include I18n.t('pages.landing.benefit2_title')
+			response.body.should include I18n.t('pages.landing.benefit2_text')
+			response.body.should include I18n.t('pages.landing.benefit3_title')
+			response.body.should include I18n.t('pages.landing.benefit3_text_html')
+			response.body.should include I18n.t('pages.landing.benefit4_title')
+			response.body.should include I18n.t('pages.landing.benefit4_text')
+			response.body.should include I18n.t('pages.landing.disclaimer_html')
 		end
 	end
 
@@ -34,9 +45,9 @@ describe PagesController do
 				response.should redirect_to(root_path)
 				flash[:error].should == I18n.t('flash.error.only.admin')
 			end
-		end	
+		end
 
-		context 'for standard users' do
+		context 'for signed in users' do
 			before :each do
 				sign_in @user
 				get :admin
@@ -48,7 +59,7 @@ describe PagesController do
 			end
 		end
 
-		context 'for admins' do
+		context 'for signed in admin users' do
 			before :each do
 				sign_in @admin
 				get :admin
@@ -56,7 +67,7 @@ describe PagesController do
 
 			it { response.should be_success }
 
-			it 'should have a div with the class admin' do
+			it 'should have an admin block' do
 				response.body.should have_selector 'div.admin'
 			end
 		end
@@ -74,9 +85,9 @@ describe PagesController do
 				response.should redirect_to(root_path)
 				flash[:error].should == I18n.t('flash.error.only.admin')
 			end
-		end	
+		end
 
-		context 'for standard users' do
+		context 'for signed in users' do
 			before :each do
 				sign_in @user
 				get :style_tile
@@ -88,7 +99,7 @@ describe PagesController do
 			end
 		end
 
-		context 'for admins' do
+		context 'for signed admin users' do
 			before :each do
 				sign_in @admin
 				get :style_tile
@@ -96,8 +107,8 @@ describe PagesController do
 
 			it { response.should be_success }
 
-			it 'should have a div with the class admin' do
-				response.body.should include 'Main typography'
+			it 'should have a style_tile block' do
+				response.body.should have_selector 'div#style-tile'
 			end
 		end
 	end
