@@ -11,45 +11,57 @@
     background:$navbarBackground;
     @include box-shadow(none);
     font-weight:bold;
-    .brand{
-      padding-top:$navbarHeight/2-$navbarBrandHeight/2;
-      padding-bottom:$navbarHeight/2-$navbarBrandHeight/2;
-      margin-right:30px;
-    }
-    .nav{
-      font-size:$baseFontSize + 1;
-      li{
-        a{
-          text-shadow:none;
-        }
+    .container{
+      padding-right:5px;
+      .brand{
+        padding-top:$navbarHeight/2-$navbarBrandHeight/2;
+        padding-bottom:$navbarHeight/2-$navbarBrandHeight/2;
+        margin-right:30px;
       }
-    }
-    .pull-right{
       .nav{
-        margin-right:0;
-        .dropdown-toggle{
-          padding-right:0;
+        font-size:$baseFontSize + 1;
+        li{
+          a{
+            text-shadow:none;
+          }
         }
       }
-    }
-    .navbar-text{
-      padding-right:15px;
-      a{
-        color:$navbarTextLinkColor;
-        &:hover {
-          color:$navbarTextLinkColorHover;
+      .pull-right{
+        .nav{
+          margin-right:0;
+          .dropdown-toggle{
+            padding-right:0;
+          }
+        }
+      }
+      .navbar-text{
+        a{
+          color:$navbarTextLinkColor;
+          &:hover {
+            color:$navbarTextLinkColorHover;
+          }
         }
       }
     }
   }
 }
 
+.navbar .nav li.dropdown .dropdown-toggle .caret, .navbar .nav li.dropdown.open .dropdown-toggle .caret {
+  margin-top:11px;
+  border-top-color:$grayDark;
+  border-bottom-color:$grayDark;
+}
+
 // Navbar button for responsive layouts
 // ------------------------------------
 
 .navbar .btn-navbar {
-  float: left;
-  padding: 7px 10px;
-  margin-left: 15px;
-  margin-right: 7px;
+  float:left;
+  margin-left:15px;
+  margin-right:12px;
+  @include buttonBackground($grayLighter, $grayLighter);
+}
+.navbar .btn-navbar .icon-bar {
+  background-color:$white;
+  @include box-shadow(none);
 }

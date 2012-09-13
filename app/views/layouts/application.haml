@@ -27,14 +27,12 @@
 
     %footer
       .container
-        .span12
-          .row-fluid
-            .span6
-              .pull-left
-                &copy; Joblr 2012
-            .span6
-              .pull-right
-                =t 'footer.questions'
-                = link_to t('footer.contact_us'), 'mailto:team@joblr.co'
+        .row-fluid
+          .span12
+            .pull-left
+              &copy; Joblr 2012
+            .pull-right
+              =t 'footer.questions'
+              = link_to t('footer.contact_us'), 'mailto:team@joblr.co'
 
   = kiss_event('identity', current_user.id) if user_signed_in?
