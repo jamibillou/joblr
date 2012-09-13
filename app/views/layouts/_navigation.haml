@@ -13,4 +13,7 @@
 - else
   .navbar-text.pull-right
     =t 'devise.registrations.already_member'
-    = link_to t('devise.registrations.sign_in'), new_user_session_url(subdomain: false)
+    - unless request.subdomain == 'staging'
+      = link_to t('devise.registrations.sign_in'), new_user_session_url(subdomain: false)
+    - else
+      = link_to t('devise.registrations.sign_in'), new_user_session_url(subdomain: request.subdomains[1])
