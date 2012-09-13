@@ -1,8 +1,34 @@
-.span8
-  .hero-unit
-    %h1= t('pages.landing.welcome') 
-    %br/
-    .lead
-      = t('pages.landing.motto')
-      %br/
-      #{t('pages.landing.joblr_is')} #{link_to t('pages.landing.here'), new_beta_invite_path}!
+.span12#landing
+  .row-fluid
+    .span12
+      .hero-unit
+        .row-fluid
+          .span6
+            %h1=t 'pages.landing.catchphrase'
+            %h3=t 'pages.landing.try'
+            %a.btn.btn-large.btn-primary{href: new_beta_invite_path}=t 'pages.landing.join'
+          .span6#profiles
+  .row-fluid#benefits
+    .span3
+      .icon
+        .icon-file
+      %h3=t 'pages.landing.benefit1_title'
+      %p=t 'pages.landing.benefit1_text'
+    .span3
+      .icon
+        .icon-comments
+      %h3=t 'pages.landing.benefit2_title'
+      %p=t 'pages.landing.benefit2_text'
+    .span3
+      .icon
+        .icon-magic
+      %h3=t 'pages.landing.benefit3_title'
+      %p=t 'pages.landing.benefit3_text_html'
+    .span3
+      .icon
+        .icon-bullhorn
+      %h3=t 'pages.landing.benefit4_title'
+      %p=t 'pages.landing.benefit4_text'
+  .row-fluid
+    .span12
+      .alert.alert-info=t 'pages.landing.disclaimer_html'

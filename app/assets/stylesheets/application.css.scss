@@ -14,18 +14,16 @@
 @import "email_sharings";
 
 
-// RAILS DEBUG FOOTER
+// FOOTER
 // ------------------
 
 footer{
-  padding-top:100px;
-  .debug_dump{
-    border:0;
-    background: $white;
-    color:$textColor;
-    @include border-radius(5px);
-    @include box-shadow(0 0 2px 1px #ccc);
-  }
+  height:90px;
+  margin-top:65px;
+  background-color:$grayLighter;
+  font-size:14px;
+  font-weight:bold;
+  line-height:90px;
 }
 
 // ARROWS

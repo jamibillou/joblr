@@ -5,7 +5,7 @@ module ApplicationHelper
       namespace = %w(sessions registrations passwords).include?(controller_name) ? "devise.#{controller_name}" : controller_name
       title = t("#{namespace}.#{action_name}.title")
     end
-    "Joblr.co | #{title}"
+    "Joblr | #{title}"
   end
 
   def subdomain?

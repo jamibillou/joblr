@@ -43,6 +43,9 @@ en:
         required: "You need an invitation to sign up, you can ask for one here."
       required:
         all: "Error: all fields are required."
+  footer:
+    questions: "Questions or comments?"
+    contact_us: "Contact us"
   errors:
     error_404:
       title: "The page you were looking for doesn't exist (404)"

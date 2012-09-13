@@ -5,8 +5,9 @@
 .hero-unit{
   border:0;
   background-color:$heroUnitBackground;
+  border:10px solid $grayLighter;
   @include border-radius(0);
-  @include box-shadow(0 1px 1px 0px #ddd);
+  @include box-shadow(none);
   label{
     color: $wellTextColor;
   }
