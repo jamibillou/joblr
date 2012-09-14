@@ -1,5 +1,5 @@
 class EmailSharing < ActiveRecord::Base
-  attr_accessible :author_email, :author_fullname, :author_id, :author, :profile_id, :recipient_email, :recipient_fullname, 
+  attr_accessible :author_email, :author_fullname, :author_id, :author, :profile_id, :profile, :recipient_email, :recipient_fullname, 
                   :text, :status
 
   belongs_to :author, class_name: 'User', foreign_key: :author_id
@@ -28,6 +28,18 @@ class EmailSharing < ActiveRecord::Base
     else
       author.email
     end
+  end
+
+  def user
+    self.profile.user
+  end 
+
+  def user_email
+    user.email.blank? ? "team@joblr.co" : profile.user.email
+  end
+
+  def own_sharing?
+    author == user
   end
 end
 

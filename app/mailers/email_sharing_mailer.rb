@@ -1,7 +1,7 @@
 class EmailSharingMailer < ActionMailer::Base
 
-  default from: 'postman@joblr.co'
-  layout 'mailers', only: :decline
+  default from: "postman@joblr.co"
+  layout 'mailers', only: [:decline, :other_decline]
 
   def user(email_sharing, user)
   	@user = user
@@ -25,8 +25,15 @@ class EmailSharingMailer < ActionMailer::Base
   def decline(email_sharing)
     @email_sharing = email_sharing
     @subject = t('mailers.email_sharing.decline.subject', fullname: email_sharing.recipient_fullname)
-    @title   = t('mailers.email_sharing.decline.title', fullname: email_sharing.recipient_fullname)
+    @title   = t('mailers.email_sharing.decline.title',   fullname: email_sharing.recipient_fullname)
   	mail to: email_sharing.email, subject: @subject
+  end
+
+  def other_decline(email_sharing)
+    @email_sharing = email_sharing
+    @subject = t('mailers.email_sharing.other_decline.subject', fullname: email_sharing.recipient_fullname)
+    @title   = t('mailers.email_sharing.other_decline.title',   fullname: email_sharing.recipient_fullname)
+    mail to: email_sharing.user_email, subject: @subject
   end
 
   class Preview < MailView
@@ -68,6 +75,17 @@ class EmailSharingMailer < ActionMailer::Base
       profile       = FactoryGirl.create :profile, user: user
       email_sharing = FactoryGirl.create :email_sharing, author: user, profile: profile
       email         = EmailSharingMailer.decline email_sharing
+      email
+    end
+
+    def other_decline
+      name          = Faker::Name.name
+      user          = FactoryGirl.create :user, fullname: name, username: name.parameterize, email: "#{name.parameterize}@example.com"
+      name2         = Faker::Name.name
+      user2         = FactoryGirl.create :user, fullname: name2, username: name2.parameterize, email: "#{name2.parameterize}@example.com"
+      profile       = FactoryGirl.create :profile, user: user
+      email_sharing = FactoryGirl.create :email_sharing, author: user2, profile: profile
+      email         = EmailSharingMailer.other_decline email_sharing
       email
     end
   end
