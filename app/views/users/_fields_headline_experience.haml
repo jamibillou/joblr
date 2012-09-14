@@ -1,5 +1,5 @@
-.row-fluid
-  .span3.hidden-phone
+.row-fluid.identity
+  .span3.visible-desktop
   .span9
     %small=t 'users.edit.headline'
     %span.danger-text= link_to '*', '#required'
@@ -16,6 +16,8 @@
         %br/
         = f.text_field :experience, value: field_value(:experience, @linkedin), placeholder: t('users.edit.experience_placeholder'), class: 'input-mini'
       .span9
+        .hidden-desktop
+          %br/
         %small=t 'users.edit.last_job'
         %br/
         = f.text_area :last_job, value: field_value(:last_job, @linkedin), placeholder: t('users.edit.last_job_placeholder'), rows: 3, class: 'big'

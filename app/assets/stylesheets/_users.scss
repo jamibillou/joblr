@@ -20,6 +20,9 @@
   .lead{
     margin-bottom:0;
   }
+  textarea{
+    width:98%;
+  }
 }
 
 // Profile
@@ -31,17 +34,24 @@
     @include box-shadow(none);
     padding-bottom:30px;
   }
-  img{
-    @include border-radius(0);
-    max-width:80px;
-    max-height:80px;
-    margin-bottom:10px;
-  }
-  h2{
-    margin-top:-3px;
-  }
   h4{
     margin-top:15px;
+  }
+  .identity{
+    .span3{
+      min-width:95px;
+      img{
+        max-width:80px;
+        max-height:80px;
+        margin-bottom:10px;
+      }
+    }
+    .span9{
+      margin-left:0;
+      h2{
+        margin:-3px 0 10px 0;
+      }
+    }
   }
   #image-modal{
     .pic {
@@ -65,8 +75,17 @@
   .lead{
     margin-bottom:10px;
   }
-  .experience p{
-    margin-bottom:15px;
+  .experience{
+    .span3{
+      min-width:95px;
+      padding-right:15px;
+    }
+    .span9{
+      margin-left:0;
+    }
+    p{
+      margin-bottom:15px;
+    }
   }
   .skills{
     .progress{
@@ -75,11 +94,13 @@
     select {
       width:110px;
       margin-bottom:11px;
-      margin-left:50px;
     }
   }
-  #social-urls .btn-small{
-    margin-bottom:8px;
+  #social-urls{
+    margin-top:15px;
+    .btn-small{
+      margin-bottom:8px;
+    }
   }
   #social-url-fields{
     input{

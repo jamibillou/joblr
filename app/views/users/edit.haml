@@ -1,13 +1,8 @@
 .span12
   = form_for @user do |f|
     .row-fluid
-      - unless signed_up?(@user)
-        #popovers.span3.visible-desktop
-          = render 'edit_popovers'
-        .span3.visible-tablet
-      - else
-        .span3.hidden-phone
-      .span5
+      .span2.hidden-phone
+      .span6
         = render 'edit_text', f: f
         .well#profile
           = render 'edit_identity', f: f

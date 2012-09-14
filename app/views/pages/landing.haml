@@ -3,11 +3,12 @@
     .span12
       .hero-unit
         .row-fluid
-          .span6
+          .span6#catchphrase
             %h1=t 'pages.landing.catchphrase'
             %h3=t 'pages.landing.saves'
             %a.btn.btn-large.btn-primary{href: new_beta_invite_path}=t 'pages.landing.join'
-          .span6#profiles
+          .span6#screenshot.hidden-phone
+          .span6#screenshot-phone.visible-phone
   .row-fluid#benefits
     .span3
       .icon
