@@ -1,8 +1,8 @@
-.row-fluid{id:"user-#{user.id}"}
+.row-fluid.identity{id:"user-#{user.id}"}
   .span3= image_tag (user.image.blank? ? 'default_user.jpg' : user.image_url(:thumb).to_s)
-  .visible-phone
-    %br/
   .span9
+    .hidden-desktop
+      %br/
     %h2= user.fullname
     .big
       - unless user.city.blank? && user.country.blank?

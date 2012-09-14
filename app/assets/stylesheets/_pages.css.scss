@@ -17,19 +17,28 @@
     @include box-shadow(none);
     border:0;
     border-bottom:5px solid $grayLighter;
-    h1{
-      margin:20px 0 30px 0;
-      font-size:55px;
-      line-height:55px;
+    #catchphrase{
+      padding-bottom:50px;
+      h1{
+        margin:20px 0 30px 0;
+        font-size:55px;
+        line-height:55px;
+      }
     }
-    #profiles{
+    #screenshot{
       min-height:407px;
       min-width:459px;
       background: url('screenshots/landing.png') no-repeat bottom right;
       display:block;
     }
+    #screenshot-phone{
+      height:310px;
+      background: url('screenshots/landing.png') no-repeat bottom center;
+      background-size:contain;
+      display:block;
+    }
     .btn-primary{
-      margin:40px 0 50px 0;
+      margin-top:40px;
     }
   }
   #benefits{

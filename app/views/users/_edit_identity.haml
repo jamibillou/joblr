@@ -1,15 +1,17 @@
-.row-fluid
+.row-fluid.identity
   .span3
     %a{href: '#image-modal', 'data-toggle' => 'modal'}
       = image_tag (@user.image.blank? ? 'default_user.jpg' : @user.image_url(:thumb).to_s), id: 'profile-picture'
     = render 'image_modal', f: f
-  .visible-phone
-    %br/
   .span9
-    = f.text_field :fullname, value: field_value(:fullname, @linkedin), placeholder: t('users.edit.fullname_placeholder')
+    .hidden-desktop
+      %br/
+    %small=t 'users.edit.fullname'
     %span.danger-text= link_to '*', '#required'
     %a.help{href:'#', rel:'popover', 'data-content' => t('users.edit.fullname_popover'), 'data-original-title' => t('users.edit.fullname')}
       %i.icon-question-sign
+    %br/
+    = f.text_field :fullname, value: field_value(:fullname, @linkedin), placeholder: t('users.edit.fullname_placeholder')
     %br/
     %small=t 'users.edit.location'
     %a.help{href:'#', rel:'popover', 'data-content' => t('users.edit.city_popover'), 'data-original-title' => t('users.edit.city')}

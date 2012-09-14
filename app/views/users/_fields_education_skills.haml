@@ -13,11 +13,11 @@
       %a.help{href:'#', rel:'popover', 'data-content' => t('users.edit.skills_popover'), 'data-original-title' => t('users.edit.skills')}
         %i.icon-question-sign
     .row-fluid
-      .span7= f.text_field :skill_1, value: field_value(:skill_1, @linkedin), placeholder: t('users.edit.skill_1_placeholder')
+      .span7= f.text_field :skill_1, value: field_value(:skill_1, @linkedin), placeholder: t('users.edit.skill_1_placeholder'), class: 'span12'
       .span4= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {selected: (field_value(:skill_1_level, @linkedin).blank? ? 'Intermediate' : field_value(:skill_1_level, @linkedin))}
     .row-fluid
-      .span7= f.text_field :skill_2, value: field_value(:skill_2, @linkedin), placeholder: t('users.edit.skill_2_placeholder')
+      .span7= f.text_field :skill_2, value: field_value(:skill_2, @linkedin), placeholder: t('users.edit.skill_2_placeholder'), class: 'span12'
       .span4= f.select :skill_2_level, %w(Beginner Intermediate Advanced Expert), {selected: (field_value(:skill_2_level, @linkedin).blank? ? 'Intermediate' : field_value(:skill_2_level, @linkedin))}
     .row-fluid
-      .span7= f.text_field :skill_3, value: field_value(:skill_3, @linkedin), placeholder: t('users.edit.skill_3_placeholder')
+      .span7= f.text_field :skill_3, value: field_value(:skill_3, @linkedin), placeholder: t('users.edit.skill_3_placeholder'), class: 'span12'
       .span4= f.select :skill_3_level, %w(Beginner Intermediate Advanced Expert), {selected: (field_value(:skill_3_level, @linkedin).blank? ? 'Intermediate' : field_value(:skill_3_level, @linkedin))}

@@ -1,13 +1,12 @@
 .row-fluid
-  .span12
+  .span7
     %h4=t 'users.edit.online_presence'
     %small=t 'users.edit.url'
     %a.help{href:'#', rel:'popover', 'data-content' => t('users.edit.url_popover'), 'data-original-title' => t('users.edit.url')}
       %i.icon-question-sign
     %br/
-    = f.text_field :url, value: field_value(:url, @linkedin), placeholder: 'http://', class: 'url'
-    %br/
-    #social-urls= render 'edit_social_urls', f: f
+    = f.text_field :url, value: field_value(:url, @linkedin), placeholder: 'http://', class: 'url', class: 'span12'
+#social-urls= render 'edit_social_urls', f: f
 
 .row-fluid
   .span12
