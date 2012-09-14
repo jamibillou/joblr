@@ -2,6 +2,8 @@
   .span12
     %h4=t 'users.edit.online_presence'
     %small=t 'users.edit.url'
+    %a.help{href:'#', rel:'popover', 'data-content' => t('users.edit.url_popover'), 'data-original-title' => t('users.edit.url')}
+      %i.icon-question-sign
     %br/
     = f.text_field :url, value: field_value(:url, @linkedin), placeholder: 'http://', class: 'url'
     %br/

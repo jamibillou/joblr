@@ -1,9 +1,12 @@
 .row-fluid
-  .span12
-    %h4=t 'users.edit.qualities'
-    .row-fluid
-      .span9= f.text_field :quality_1, value: field_value(:quality_1, @linkedin), placeholder: t('users.edit.quality_1_placeholder')
-    .row-fluid
-      .span9= f.text_field :quality_2, value: field_value(:quality_2, @linkedin), placeholder: t('users.edit.quality_2_placeholder')
-    .row-fluid
-      .span9= f.text_field :quality_3, value: field_value(:quality_3, @linkedin), placeholder: t('users.edit.quality_3_placeholder')
+	.span12
+		%h4
+			=t 'users.edit.qualities'
+			%a.help{href:'#', rel:'popover', 'data-content' => t('users.edit.qualities_popover'), 'data-original-title' => t('users.edit.qualities')}
+				%i.icon-question-sign
+		.row-fluid
+			.span9= f.text_field :quality_1, value: field_value(:quality_1, @linkedin), placeholder: t('users.edit.quality_1_placeholder')
+		.row-fluid
+			.span9= f.text_field :quality_2, value: field_value(:quality_2, @linkedin), placeholder: t('users.edit.quality_2_placeholder')
+		.row-fluid
+			.span9= f.text_field :quality_3, value: field_value(:quality_3, @linkedin), placeholder: t('users.edit.quality_3_placeholder')

@@ -1,12 +1,17 @@
 .row-fluid
   .span12
-    %h4=t 'users.edit.education'
+    %h4
+      =t 'users.edit.education'
+      %a.help{href:'#', rel:'popover', 'data-content' => t('users.edit.education_popover'), 'data-original-title' => t('users.edit.education')}
+        %i.icon-question-sign
     = f.text_area :education, value: field_value(:education, @linkedin), placeholder: t('users.edit.education_placeholder'), rows: 3, class: 'big'
     %span.danger-text= link_to '*', '#required'
-
 .row-fluid.skills
   .span12
-    %h4=t 'users.edit.skills'
+    %h4
+      =t 'users.edit.skills'
+      %a.help{href:'#', rel:'popover', 'data-content' => t('users.edit.skills_popover'), 'data-original-title' => t('users.edit.skills')}
+        %i.icon-question-sign
     .row-fluid
       .span7= f.text_field :skill_1, value: field_value(:skill_1, @linkedin), placeholder: t('users.edit.skill_1_placeholder')
       .span4= f.select :skill_1_level, %w(Beginner Intermediate Advanced Expert), {selected: (field_value(:skill_1_level, @linkedin).blank? ? 'Intermediate' : field_value(:skill_1_level, @linkedin))}

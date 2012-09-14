@@ -2,8 +2,7 @@
   = form_for @user do |f|
     .row-fluid
       - unless signed_up?(@user)
-        #popovers.span3.visible-desktop
-          = render 'edit_popovers'
+        .span3.visible-desktop
         .span3.visible-tablet
       - else
         .span3.hidden-phone

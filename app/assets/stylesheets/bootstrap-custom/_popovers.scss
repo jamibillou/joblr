@@ -2,10 +2,10 @@
 // --------
 
 .popover {
-  &.top .arrow    { @include popoverArrowTop(10px, $white); }
-  &.right .arrow  { @include popoverArrowRight(10px, $white); }
-  &.bottom .arrow { @include popoverArrowBottom(10px, $white); }
-  &.left .arrow   { @include popoverArrowLeft(10px, $white);  }
+  &.top .arrow    { @include popoverArrowTop(5px, $white); }
+  &.right .arrow  { @include popoverArrowRight(5px, $white); }
+  &.bottom .arrow { @include popoverArrowBottom(5px, $white); }
+  &.left .arrow   { @include popoverArrowLeft(5px, $white); }
 }
 .popover-inner {
   padding:0;

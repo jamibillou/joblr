@@ -53,14 +53,12 @@ $ ->
   # REFACTOR ME!
   # Turn this into 1 single each loop
   #
-  if $('#popovers').html()
-    $('.edit_user input').each ->
-      unless $(this).attr('type').match(/hidden|checkbox|file|submit/) || $(this).attr('id').match(/hidden/)
-        initPopover($(this).attr('id'))
-        initOnboardingStep($(this).attr('id'))
-    $('.edit_user select').each   -> initPopover($(this).attr('id')) and initOnboardingStep($(this).attr('id'))
-    $('.edit_user textarea').each -> initPopover($(this).attr('id')) and initOnboardingStep($(this).attr('id'))
-
+  $('.edit_user input').each ->
+    unless $(this).attr('type').match(/hidden|checkbox|file|submit/) || $(this).attr('id').match(/hidden/)
+      initOnboardingStep($(this).attr('id'))
+  $('.edit_user select').each   -> initOnboardingStep($(this).attr('id'))
+  $('.edit_user textarea').each -> initOnboardingStep($(this).attr('id'))
+  $('.help').each               -> $(this).popover('placement': 'left')
 
   # Image picker
   # ------------
@@ -83,17 +81,6 @@ $ ->
 @addFieldWithErrors = (id) ->
   field = $('#'+id).html()
   $('#'+id).html("<div class='field_with_errors'>#{field}</div>")
-
-
-# Binds popover to given input/textarea
-# -------------------------------------
-
-@initPopover = (id) ->
-  cssClass = stripId(id)
-  $("#popovers a.#{cssClass}").popover('placement': 'left', 'trigger': 'manual')
-  $('#'+id).focus -> $("a.#{cssClass}").popover('show')
-  $('#'+id).blur -> $("a.#{cssClass}").popover('hide')
-
 
 # Binds onboarding step to given input/textarea
 # ---------------------------------------------

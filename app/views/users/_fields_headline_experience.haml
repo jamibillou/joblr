@@ -3,6 +3,8 @@
   .span9
     %small=t 'users.edit.headline'
     %span.danger-text= link_to '*', '#required'
+    %a.help{href:'#', rel:'popover', 'data-content' => t('users.edit.headline_popover'), 'data-original-title' => t('users.edit.headline')}
+      %i.icon-question-sign
     %br/
     = f.select :headline, headline_options, {selected: (t("users.show.headline.#{field_value(:headline, @linkedin)}") unless field_value(:headline, @linkedin).blank?)}
 
@@ -13,13 +15,19 @@
       .span3
         %small=t 'users.edit.experience_label'
         %span.danger-text= link_to '*', '#required'
+        %a.help{href:'#', rel:'popover', 'data-content' => t('users.edit.experience_popover'), 'data-original-title' => t('users.edit.experience')}
+          %i.icon-question-sign
         %br/
         = f.text_field :experience, value: field_value(:experience, @linkedin), placeholder: t('users.edit.experience_placeholder'), class: 'input-mini'
       .span9
         %small=t 'users.edit.last_job'
+        %a.help{href:'#',       rel:'popover', 'data-content' => t('users.edit.last_job_popover'), 'data-original-title' => t('users.edit.last_job')}
+          %i.icon-question-sign
         %br/
         = f.text_area :last_job, value: field_value(:last_job, @linkedin), placeholder: t('users.edit.last_job_placeholder'), rows: 3, class: 'big'
         %p
           %small=t 'users.edit.past_companies'
+          %a.help{href:'#', rel:'popover', 'data-content' => t('users.edit.past_companies_popover'), 'data-original-title' => t('users.edit.past_companies')}
+            %i.icon-question-sign
           %br/
           = f.text_field :past_companies, value: field_value(:past_companies, @linkedin), placeholder: t('users.edit.past_companies_placeholder'), class: 'input-slim'
