@@ -28,13 +28,11 @@
 // Popover link
 // ------------
 .help{
-  color: black;
-  float: right;
-  font-size: 14pt;
-  padding-left: 3px;
+  color: inherit;
+  font-size: 11pt;
 }
 a.help:hover{
-  color: black;
+  color: inherit;
   text-decoration: none;
 }
 

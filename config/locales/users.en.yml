@@ -76,10 +76,10 @@ en:
       quality_2_placeholder: 'e.g. Good communication'
       quality_3_placeholder: 'e.g. Honesty'
       online_presence: 'Online presence'
+      online_popover: "If you have a relevant online presence, don't forget to mention you site, blog and/or social networks links here!"
       upload_cv: 'Attach your CV'
       add_social_url: 'Add your %{provider} profile'
       url: 'Website or blog'
-      url_popover: "If you have a relevant online presence, don't forget to mention you site or blog here!"
       upload: 'Upload'
       public_profile: 'Public profile'
       explanation_html: 'You profile is available at %{url}! Change it if you want to.'

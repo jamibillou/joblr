@@ -59,7 +59,7 @@ $ ->
       initOnboardingStep($(this).attr('id'))
   $('.edit_user select').each   -> initOnboardingStep($(this).attr('id'))
   $('.edit_user textarea').each -> initOnboardingStep($(this).attr('id'))
-  $('.help').each               -> initPopover($(this))
+  $('.help').each               -> $(this).popover('placement': 'left')
 
   # Image picker
   # ------------
@@ -73,11 +73,6 @@ $ ->
 
   $('#social-url-triggers .btn').each -> $(this).click -> toggleSocialUrl($(this).attr('id').replace('trigger', 'field'))
   $('#social-url-fields div').each -> $(this).children().first().show() if $(this).hasClass('field_with_errors')
-
-
-@initPopover = (element) ->
-  $(element).popover('placement': 'left', 'trigger': 'manual')
-  $(element).click -> $(element).popover('toggle')
 
 # Adds <div class='field_with_errors'> around what's in the given div
 # -------------------------------------------------------------------
