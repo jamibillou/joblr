@@ -64,16 +64,16 @@ $btnInverseBackground:              #fefefe !default;
 $btnInverseBackgroundHighlight:     #dedfe1 !default;
 
 $btnLinkedinBackground:             #0599cd !default;
-$btnLinkedinBackgroundHighlight:    #0364ae !default;
+$btnLinkedinBackgroundHighlight:    darken(#0599cd, 7%) !default;
 
-$btnTwitterBackground:              #02c3f1 !default;
-$btnTwitterBackgroundHighlight:     #02a0e2 !default;
+$btnTwitterBackground:              darken(#02c3f1, 2%) !default;
+$btnTwitterBackgroundHighlight:     darken(#02c3f1, 9%) !default;
 
 $btnFacebookBackground:             #5978af !default;
-$btnFacebookBackgroundHighlight:    #445c95 !default;
+$btnFacebookBackgroundHighlight:    darken(#5978af, 7%) !default;
 
 $btnGoogleBackground:               #3c3a3b !default;
-$btnGoogleBackgroundHighlight:      #292828 !default;
+$btnGoogleBackgroundHighlight:      darken(#3c3a3b, 7%) !default;
 
 // Forms
 // -------------------------

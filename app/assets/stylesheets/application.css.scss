@@ -22,7 +22,7 @@ footer{
   height:90px;
   width:100%;
   left:0;
-  margin-top:65px;
+  margin-top:85px;
   background-color:$grayLighter;
   font-size:14px;
   font-weight:bold;
@@ -32,50 +32,12 @@ footer{
   }
 }
 
-// ARROWS
-//
-// REFACTOR ME!
-// Turn those into a mixin
-//
-// -----------------------
 
-.arrow-bottom {
-  position:relative;
-  background:#fff;
-  &:after {
-    top:30px;
-    border:solid transparent;
-    content:" ";
-    position:absolute;
-  }
-  &:after {
-    left:65px;
-    border-top-color:#fff;
-    border-width:25px;
-    margin-left:-25px;
-  }
-}
-.arrow-left {
-  position: relative;
-  background: #fff;
-  &:after {
-    right:99%;
-    border:solid transparent;
-    content:" ";
-    position:absolute;
-  }
-  &:after {
-    border-right-color:#fff;
-    border-width:25px;
-    top:65px;
-    margin-top:-25px;
-  }
-}
+// ERROR PAGE
+// ----------
 
-// Forms
-// -----
-
-.field_with_errors{
-  display:inline-block;
-  @extend .control-group.error
+#error-page{
+  .lead{
+    margin-bottom:0;
+  }
 }

@@ -3,10 +3,27 @@
 // -------------------------------------------------------------
 
 
+// GENERAL STYLES
+// --------------
+
+form {
+  margin:0;
+}
+
+
 // INPUT SIZES
 // -----------
 
 // Ensure input-prepend/append never wraps
 .input-append input[type="submit"]{
   margin-left:-5px;
+}
+
+
+// FORM FIELD FEEDBACK STATES
+// --------------------------
+
+.field_with_errors{
+  display:inline-block;
+  @extend .control-group.error
 }

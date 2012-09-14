@@ -11,15 +11,16 @@
     color:$black;
   }
   .hero-unit{
+    margin:15px 0 30px 0;
     padding:0;
     background-color:$bodyBackground;
     @include box-shadow(none);
     border:0;
     border-bottom:5px solid $grayLighter;
     h1{
-      margin-top:25px;
-      margin-bottom:30px;
+      margin:20px 0 30px 0;
       font-size:55px;
+      line-height:55px;
     }
     #profiles{
       min-height:407px;
@@ -28,13 +29,11 @@
       display:block;
     }
     .btn-primary{
-      margin-top:40px;
-      margin-bottom:50px;
+      margin:40px 0 50px 0;
     }
   }
   #benefits{
-    padding-top:40px;
-    padding-bottom:40px;
+    padding:40px 0 40px 0;
     text-align:center;
     h3{
       font-size:18px;
@@ -52,6 +51,9 @@
 // ---------------
 
 .admin{
+  .hero-unit{
+    margin-bottom:25px;
+  }
   td{
     text-align:center;
     p{

@@ -6,7 +6,7 @@
     .well
       .row-fluid
         .span5
-          %h1= t('account_settings')
+          %h1= t('devise.registrations.account_settings')
           = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f|
             - unless current_user.social?
               %small= t('devise.registrations.username')
