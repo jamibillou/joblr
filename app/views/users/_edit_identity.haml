@@ -8,13 +8,13 @@
       %br/
     %small=t 'users.edit.fullname'
     %span.danger-text= link_to '*', '#required'
-    %a.help{href:'#', rel:'popover', 'data-content' => t('users.edit.fullname_popover'), 'data-original-title' => t('users.edit.fullname')}
+    %a.help{rel:'popover', 'data-content' => t('users.edit.fullname_popover'), 'data-original-title' => t('users.edit.fullname')}
       %i.icon-question-sign
     %br/
     = f.text_field :fullname, value: field_value(:fullname, @linkedin), placeholder: t('users.edit.fullname_placeholder')
     %br/
     %small=t 'users.edit.location'
-    %a.help{href:'#', rel:'popover', 'data-content' => t('users.edit.city_popover'), 'data-original-title' => t('users.edit.city')}
+    %a.help{rel:'popover', 'data-content' => t('users.edit.city_popover'), 'data-original-title' => t('users.edit.city')}
       %i.icon-question-sign 
     %br/
     = f.text_field :city,    value: field_value(:city,    @linkedin), placeholder: t('users.edit.city_placeholder'),    class: 'input-small'

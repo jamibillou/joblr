@@ -55,7 +55,7 @@ en:
       experience_placeholder: 'number'
       experience_popover: 'Companies need to know how much experience you have, it helps them understand where you are in your career.'
       education: 'Highest education'
-      education_popover: 'Speficy your highest degree or the most relevant one for the position your are looking for.'
+      education_popover: 'Specify your highest degree or the most relevant one for the position your are looking for.'
       last_job: 'Last or current job'
       last_job_placeholder: 'e.g. Sales at Bank of Scotland'
       last_job_popover: 'Tell potential employers where your currently work or what was your last position, they care about this.'

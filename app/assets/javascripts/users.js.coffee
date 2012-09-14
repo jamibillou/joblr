@@ -53,12 +53,13 @@ $ ->
   # REFACTOR ME!
   # Turn this into 1 single each loop
   #
+
   $('.edit_user input').each ->
     unless $(this).attr('type').match(/hidden|checkbox|file|submit/) || $(this).attr('id').match(/hidden/)
       initOnboardingStep($(this).attr('id'))
   $('.edit_user select').each   -> initOnboardingStep($(this).attr('id'))
   $('.edit_user textarea').each -> initOnboardingStep($(this).attr('id'))
-  $('.help').each               -> $(this).popover('placement': 'left')
+  $('.help').each               -> initPopover($(this))
 
   # Image picker
   # ------------
@@ -74,6 +75,9 @@ $ ->
   $('#social-url-fields div').each -> $(this).children().first().show() if $(this).hasClass('field_with_errors')
 
 
+@initPopover = (element) ->
+  $(element).popover('placement': 'left', 'trigger': 'manual')
+  $(element).click -> $(element).popover('toggle')
 
 # Adds <div class='field_with_errors'> around what's in the given div
 # -------------------------------------------------------------------
