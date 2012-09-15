@@ -15,6 +15,9 @@ form#new_email_sharing{
   }
   .span10{
     margin-top:10px;
+    textarea{
+      width:97%;
+    }
   }
   .modal-footer{
     #loader{

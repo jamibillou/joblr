@@ -1,7 +1,6 @@
 .span12
   .row-fluid
-    .span2
-      .visible-phone= render 'show_buttons',  user: @user
+    .span2.hidden-phone
     .span6
       = render 'show_text', text: @user.profile.text
       .well#profile
@@ -12,5 +11,5 @@
         = render 'show_more',                 user: @user
     .span2
     .span2
-      .hidden-phone= render 'show_buttons',   user: @user
+      = render 'show_buttons',   user: @user
       = render 'email_sharing_modal'
