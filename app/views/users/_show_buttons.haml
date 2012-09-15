@@ -3,7 +3,7 @@
     %a.btn.btn-large.btn-top.btn-primary{href: edit_user_path(user)}
       =t 'users.show.edit'
   - else
-    %a.btn.btn-large.btn-primary.btn-top
+    %a.btn.btn-large.btn-primary.btn-top{href: "mailto:#{user.email}"}
       =t 'users.show.contact'
   .btn-group
     .btn.btn-large.dropdown-toggle{"data-toggle" => 'dropdown', href:'#'}
