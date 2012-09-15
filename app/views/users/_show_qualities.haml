@@ -1,16 +1,16 @@
-- unless user.profile.quality_1.blank? && user.profile.quality_2.blank? && user.profile.quality_3.blank?
+- unless profile.quality_1.blank? && profile.quality_2.blank? && profile.quality_3.blank?
   .row-fluid
     .span12
       %h4=t 'users.show.qualities'
-      - unless user.profile.quality_1.blank?
+      - unless profile.quality_1.blank?
         .row-fluid
           .span9
-            .lead #{user.profile.quality_1}
-      - unless user.profile.quality_2.blank?
+            .lead #{profile.quality_1}
+      - unless profile.quality_2.blank?
         .row-fluid
           .span9
-            .lead #{user.profile.quality_2}
-      - unless user.profile.quality_3.blank?
+            .lead #{profile.quality_2}
+      - unless profile.quality_3.blank?
         .row-fluid
           .span9
-            .lead #{user.profile.quality_3}
+            .lead #{profile.quality_3}

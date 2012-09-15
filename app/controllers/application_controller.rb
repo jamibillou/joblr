@@ -27,6 +27,7 @@ class ApplicationController < ActionController::Base
           @user = User.find_by_subdomain! request.subdomains[0]
         end
       end
+      @profile = @user.profile
     end
 
     def not_signed_in

@@ -2,14 +2,14 @@
   .row-fluid
     .span2.hidden-phone
     .span6
-      = render 'show_text', text: @user.profile.text
+      = render 'show_text', text: @profile.text
       .well#profile
         = render 'show_identity',             user: @user
-        = render 'show_experience_education', user: @user
-        = render 'show_skills',               user: @user
-        = render 'show_qualities',            user: @user
-        = render 'show_more',                 user: @user
+        = render 'show_experience_education', profile: @profile
+        = render 'show_skills',               profile: @profile
+        = render 'show_qualities',            profile: @profile
+        = render 'show_more',                 user: @user, profile: @profile
     .span2
     .span2
-      = render 'show_buttons',   user: @user
+      = render 'show_buttons', user: @user
       = render 'email_sharing_modal'

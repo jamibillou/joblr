@@ -1,5 +1,8 @@
 module UsersHelper
 
+  # FIX ME!
+  # too many database accesses here, profile and user should be given as arguments
+  #
   def field_value(attribute, linkedin_profile)
     if params[:user] && !params[:user][attribute].blank?
       params[:user][attribute]
