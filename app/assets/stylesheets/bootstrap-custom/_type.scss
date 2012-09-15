@@ -32,27 +32,27 @@ p{
   }
 }
 .warning-text{
-  color:$warningText;
+  color:$warningBorder;
   a, a:hover{
-    color:$warningText;
+    color:$warningBorder;
   }
 }
 .danger-text{
-  color:$errorText;
+  color:$errorBorder;
   a, a:hover{
-    color:$errorText;
+    color:$errorBorder;
   }
 }
 .success-text{
-  color:$successText;
+  color:$successBorder;
   a, a:hover{
-    color:$successText;
+    color:$successBorder;
   }
 }
 .info-text{
-  color:$infoText;
+  color:$infoBorder;
   a, a:hover{
-    color:$infoText;
+    color:$infoBorder;
   }
 }
 .gray-text{
