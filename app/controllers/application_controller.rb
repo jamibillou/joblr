@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
     end
 
     def constrain_subdomain_path
+      # logger.debug "#{request.path.match(/\/|404|500/)}"
+      # logger.debug "#{request.xhr?}"
       raise ActionController::RoutingError.new(t('errors.routing', path: request.path)) unless request.path.match(/\/|404|500/) || request.xhr?
     end
 

@@ -12,7 +12,7 @@
   .visible-desktop= render 'layouts/right_navigation'
 - else
   .navbar-text.pull-right
-    .hidden-phone=t 'devise.registrations.already_member'
+    %span.hidden-phone=t 'devise.registrations.already_member'
     - unless request.subdomain == 'staging'
       = link_to t('devise.registrations.sign_in'), new_user_session_url(subdomain: false)
     - else
