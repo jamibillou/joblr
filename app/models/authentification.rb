@@ -11,7 +11,7 @@ class Authentification < ActiveRecord::Base
   def image_url(size = :thumb)
     case provider
       when 'twitter'
-        get_redirected_url "http://api.twitter.com/1/users/profile_image/#{uid}?size=#{size == :thumb ? 'bigger' : 'original'}"
+        get_redirected_url("http://api.twitter.com/1/users/profile_image/#{uid}").gsub(/_normal/,(size == :thumb ? '_bigger' : ''))  
       when 'linkedin'
         profile[:image]
       when 'facebook'
