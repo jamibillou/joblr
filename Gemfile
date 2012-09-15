@@ -19,6 +19,7 @@ gem 'postmark-rails'
 gem 'roadie'
 gem 'thin' # better web server, more robust on production
 gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
+gem 'curb'
 
 group :production, :staging do
   gem 'google-analytics-rails' # View helpers for custom events: https://github.com/bgarret/google-analytics-rails/blob/master/lib/google-analytics/rails/view_helpers.rb
