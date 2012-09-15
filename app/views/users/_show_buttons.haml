@@ -12,10 +12,10 @@
 
     %ul.dropdown-menu
       %li
-        %a{'data-target' => '#email-sharing-modal', 'data-toggle' => 'modal'}
+        %a{href: '#email-sharing-modal', 'data-toggle' => 'modal'}
           .icon-envelope
           &nbsp;
-          = t 'users.show.email'
+          =t 'users.show.email'
       %li
         %a{href: social_sharing_url(user,'linkedin'), target: '_blank', title: t('users.show.buttons.share_linkedin')}
           .icon-linkedin
