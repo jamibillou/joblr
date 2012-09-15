@@ -7,7 +7,7 @@ class BetaInviteMailer < ActionMailer::Base
     @beta_invite = beta_invite
     @subject     = t('mailers.beta_invite.send_code.subject')
     @title       = t('mailers.beta_invite.send_code.title')
-    @button      = { text: t('mailers.beta_invite.send_code.button'), url: "http://joblr.co/beta_invites/#{beta_invite.id}/edit" }
+    @button      = { text: t('mailers.beta_invite.send_code.button'), url: "http://joblr.co/beta_invites/#{beta_invite.id}/edit?code=#{@beta_invite.code}" }
     mail to: beta_invite.email, subject: @subject
   end
 
