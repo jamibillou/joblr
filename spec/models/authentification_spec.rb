@@ -37,7 +37,7 @@ describe Authentification do
     context 'for twitter authentifications' do
 
       it 'should have the right format' do
-        @twitter_auth.image_url.should =~ /^http:\/\/api.twitter.com\/1\/users\/profile_image\/\w+/
+        @twitter_auth.image_url.should =~ /^https:\/\/si0.twimg.com\/\w+/
       end
 
       it 'should serve a thumb image by default' do
@@ -45,7 +45,7 @@ describe Authentification do
       end
 
       it 'should serve an original image when asked to' do
-        @twitter_auth.image_url(:original).should =~ /original/
+        @twitter_auth.image_url(:original).should_not =~ /bigger/
       end
     end
 
