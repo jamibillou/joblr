@@ -7,14 +7,14 @@ en:
       saves: 'Joblr saves your job hunting minutes.'
       join: 'Join the beta'
       benefit1_title: "Only what matters"
-      benefit1_text: "Resumes tend to be too long. All they need to know takes 5 seconds to read, Joblr profiles focus on just that."
-      benefit2_title: "Send it, get talking"
-      benefit2_text: "Time is precious. Joblr goes straight to the point so you start the discussion and get feedback in no time."
+      benefit1_text: "Resumes are long to read. Companies should know all that matters in less that 5 seconds, Joblr profiles focus on just that."
+      benefit2_title: "Send it, get feedback"
+      benefit2_text: "Time is precious. Joblr helps you start the discussion and get feedback in no time."
       benefit3_title: "Effortless setup"
-      benefit3_text_html: "Import your info from LinkedIn and you're done! Not a member there? 5 minutes is all you need to get started on Joblr."
+      benefit3_text_html: "Import your info from LinkedIn and you're done! Otherwise 5 minutes is all you need to get started on Joblr."
       benefit4_title: "Ask around"
       benefit4_text: "Your network has huge potential. Share your Joblr profile to get contacts and tips!"
-      disclaimer_html: "<b>Why pay?</b> Joblr is entirely designed around helping you look for work. If it does deliver on saving your time and facilitating feedback, then it's only fair to pay for it."
+      disclaimer_html: "<b>Why pay?</b> Joblr is entirely built around helping you look for work. If it does deliver on saving your time and facilitating feedback, then we think it's only fair to pay for it."
     admin:
       title: 'Admin dashboard'
       title_alt: 'Admin'

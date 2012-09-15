@@ -9,15 +9,14 @@ $ ->
 
 
   # Field with errors
-  # MUST be BEFORE Popovers & Onboarding scripts
-  # --------------------------------------------
+  # -----------------
 
   if $('.field_with_errors #hidden-text').html() isnt undefined
     addFieldWithErrors('text-container')
 
+
   # URLs
-  # MUST be BEFORE Popovers & Onboarding scripts
-  # --------------------------------------------
+  # ----
 
   $('.edit_user input.url').focus -> $(this).val('http://') unless $(this).val() isnt ''
   $('.edit_user input.url').blur -> $(this).val('') if $(this).val() is 'http://'
@@ -46,20 +45,11 @@ $ ->
   $('#text_placeholder').keyup -> updateCharCounter($(this).attr('id'), 140)
 
 
-  # Popovers & Onboarding
-  # MUST be AFTER field with errors and url scripts
-  # -----------------------------------------------
-  #
-  # REFACTOR ME!
-  # Turn this into 1 single each loop
-  #
+  # Popovers
+  # --------
 
-  $('.edit_user input').each ->
-    unless $(this).attr('type').match(/hidden|checkbox|file|submit/) || $(this).attr('id').match(/hidden/)
-      initOnboardingStep($(this).attr('id'))
-  $('.edit_user select').each   -> initOnboardingStep($(this).attr('id'))
-  $('.edit_user textarea').each -> initOnboardingStep($(this).attr('id'))
-  $('.help').each               -> $(this).popover('placement': 'left')
+  $('.edit_user a.help').each -> $(this).popover('placement': 'right')
+
 
   # Image picker
   # ------------
@@ -74,28 +64,14 @@ $ ->
   $('#social-url-triggers .btn').each -> $(this).click -> toggleSocialUrl($(this).attr('id').replace('trigger', 'field'))
   $('#social-url-fields div').each -> $(this).children().first().show() if $(this).hasClass('field_with_errors')
 
+
+
 # Adds <div class='field_with_errors'> around what's in the given div
 # -------------------------------------------------------------------
 
 @addFieldWithErrors = (id) ->
   field = $('#'+id).html()
   $('#'+id).html("<div class='field_with_errors'>#{field}</div>")
-
-# Binds onboarding step to given input/textarea
-# ---------------------------------------------
-
-@initOnboardingStep = (id) ->
-  cssClass = stripId(id)
-  toggleOnboardingStep(id) if $('#'+id).val() isnt ''
-  $('#'+id).blur ->
-    toggleOnboardingStep(id) if $(this).val() isnt '' and !$("#onboarding .#{cssClass}").hasClass('checked') or $(this).val() is '' and $("#onboarding .#{cssClass}").hasClass('checked')
-
-@toggleOnboardingStep = (id) ->
-  cssClass = stripId(id)
-  unless $('#'+id).parent().hasClass('field_with_errors')
-    $("#onboarding .#{cssClass}").toggleClass('checked')
-    $("#onboarding .#{cssClass} div").toggleClass('icon-check-empty')
-    $("#onboarding .#{cssClass} div").toggleClass('icon-check')
 
 
 # Selects the clicked pic, unselects others, fills #remote_image_url appropriately and replaces profile pic
@@ -139,7 +115,7 @@ $ ->
     $(counterId).removeClass('danger-text') if count < max
 
 
-# Strips id off unecessary crap, returns the CSS class we use in _edit_popovers and _edit_onboarding partials
-# -----------------------------------------------------------------------------------------------------------
+# Strips id off unecessary crap, returns the CSS class
+# ----------------------------------------------------
 
 @stripId = (id) -> id.replace('user_', '').replace('_placeholder', '').replace('profiles_attributes_0_', '')

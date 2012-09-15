@@ -4,6 +4,6 @@
 			%small=t 'users.edit.text'
 			%span.danger-text= link_to '*', '#required'
 			%a.help{rel:'popover', 'data-content' => t('users.edit.text_popover'), 'data-original-title' => t('users.edit.text')}
-				%i.icon-question-sign
+				.icon-question-sign
 			%small#text-char-counter.pull-right 0/140
 			#text-container= text_area :text, :placeholder, value: field_value(:text, @linkedin), placeholder: t('users.edit.text_placeholder'), rows: 3, class: 'lead'

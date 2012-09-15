@@ -3,7 +3,7 @@
 		%h4
 			=t 'users.edit.qualities'
 			%a.help{rel:'popover', 'data-content' => t('users.edit.qualities_popover'), 'data-original-title' => t('users.edit.qualities')}
-				%i.icon-question-sign
+				.icon-question-sign
 		.row-fluid
 			.span7= f.text_field :quality_1, value: field_value(:quality_1, @linkedin), placeholder: t('users.edit.quality_1_placeholder'), class: 'span12'
 		.row-fluid

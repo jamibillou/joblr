@@ -35,48 +35,41 @@ en:
     edit:
       title: 'Edit your profile'
       title_alt: 'Create your profile'
-      text: "Tell the world what job you're looking for"
-      text_placeholder: 'e.g. I build quality code for a living and in my spare time, it is a passion rather than an occupation!'
-      text_popover: "Catch the viewer's attention in a simple sentence. Talk about your values, your approach to your job, etc."
+      text: "Who you are"
+      text_placeholder: "e.g. User experience designer. Ready to help you create something people will love."
+      text_popover: "Keep it simple and catchy. Talk about your values, your approach to your job, what you're looking for, etc."
       fullname: 'Full name'
       fullname_placeholder: 'Full name'
-      fullname_popover: "Use you real name here, you don't want people to think you are hiding something."
       location_label: 'Location'
       city: 'City'
       city_placeholder: 'City'
-      city_popover: 'Put the name of your city here, companies of the area will take it in consideration.'
       country: 'Country'
       country_placeholder: 'Country'
-      country_popover: 'Your country, it helps knowing what language you speak, how open you are to relocate, etc.'
       headline: 'Headline'
-      headline_popover: 'This will be displayed in a prominent way so potential employers know exactly what you want.'
+      headline_popover: 'So potential employers know exactly what you want.'
       experience: 'Experience'
       experience_label: 'Years'
       experience_placeholder: 'number'
-      experience_popover: 'Companies need to know how much experience you have, it helps them understand where you are in your career.'
-      education: 'Highest education'
-      education_popover: 'Specify your highest degree or the most relevant one for the position your are looking for.'
+      experience_popover: "Focus on the essentials, how many years of experience you have, your current or last job, and companies you've worked for before."
       last_job: 'Last or current job'
-      last_job_placeholder: 'e.g. Sales at Bank of Scotland'
-      last_job_popover: 'Tell potential employers where your currently work or what was your last position, they care about this.'
+      last_job_placeholder: 'e.g. Financial controller at KPMG'
       past_companies: 'Other past employers'
-      past_companies_placeholder: 'e.g. KPMG, Nike, Uniliver'
-      past_companies_popover: "Don't go into details, just mention the name of most import companies you worked for."
+      past_companies_placeholder: 'e.g. Nike, Uniliver, Apple'
+      education: 'Highest education'
+      education_popover: 'Your highest or most relevant education, degree, diploma or certificate.'
       education_placeholder: "e.g. Master's of Business Administration"
       skills: 'Professional skills'
-      skills_popover: 'Professional skills provide precious information to companies: what exactly can you do at work?'
+      skills_popover: 'What exactly are you the best at?'
       skill_1_placeholder: 'e.g. Book keeping'
       skill_2_placeholder: 'e.g. Heart surgery'
-      skill_3_placeholder: 'e.g. General administration'
-      skill_level: 'Skill level'
-      skill_level_popover: 'How good is your command of this skill?'
+      skill_3_placeholder: 'e.g. Internal communication'
       qualities: 'Personal qualities'
-      qualities_popover: 'Personality often plays a role in a hire, people need to know that you fill fit the comapny, the team and the role.'
-      quality_1_placeholder: 'e.g. Drive'
-      quality_2_placeholder: 'e.g. Good communication'
+      qualities_popover: "What makes you good at the job, personality-wise?"
+      quality_1_placeholder: 'e.g. Passion'
+      quality_2_placeholder: 'e.g. Autonomy'
       quality_3_placeholder: 'e.g. Honesty'
       online_presence: 'Online presence'
-      online_popover: "If you have a relevant online presence, don't forget to mention you site, blog and/or social networks links here!"
+      online_popover: "Companies can then dig further if they want to. Don't put anything if it's not relevant to the job though."
       upload_cv: 'Attach your CV'
       add_social_url: 'Add your %{provider} profile'
       url: 'Website or blog'
