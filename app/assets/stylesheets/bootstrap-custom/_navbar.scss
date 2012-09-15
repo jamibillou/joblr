@@ -12,7 +12,6 @@
     @include box-shadow(none);
     font-weight:bold;
     .container{
-      padding-right:5px;
       .brand{
         padding-top:$navbarHeight/2-$navbarBrandHeight/2;
         padding-bottom:$navbarHeight/2-$navbarBrandHeight/2;
@@ -35,6 +34,7 @@
         }
       }
       .navbar-text{
+        padding-right:5px;
         a{
           color:$navbarTextLinkColor;
           &:hover {

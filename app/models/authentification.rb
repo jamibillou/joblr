@@ -11,7 +11,7 @@ class Authentification < ActiveRecord::Base
   def image_url(size = :thumb)
     case provider
       when 'twitter'
-        get_redirected_url("http://api.twitter.com/1/users/profile_image/#{uid}").gsub(/_normal/,(size == :thumb ? '_bigger' : ''))  
+        get_redirected_url("http://api.twitter.com/1/users/profile_image/#{uid}").gsub(/_normal/, (size == :thumb ? '_bigger' : ''))
       when 'linkedin'
         profile[:image]
       when 'facebook'
@@ -26,7 +26,7 @@ class Authentification < ActiveRecord::Base
       curl.follow_location = true
     end
     result.last_effective_url
-  end  
+  end
 end
 
 # == Schema Information

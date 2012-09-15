@@ -1,15 +1,15 @@
-- unless user.profile.file.blank? && user.profile.url.blank? && user.profile.twitter_url.blank? && user.profile.linkedin_url.blank? && user.profile.facebook_url.blank? && user.profile.google_url.blank?
+- unless profile.file.blank? && profile.url.blank? && profile.twitter_url.blank? && profile.linkedin_url.blank? && profile.facebook_url.blank? && profile.google_url.blank?
   .row-fluid
     .span12
       %h4=t 'users.show.more_about', fullname: "#{user.fullname}"
-      - unless user.profile.file.blank?
-        %a.btn.btn-small.btn-danger{href: user.profile.file_url.to_s}
+      - unless profile.file.blank?
+        %a.btn.btn-small.btn-danger{href: profile.file_url.to_s}
           .icon-file
           &nbsp;
           =t 'users.show.download_cv'
-      - unless user.profile.url.blank?
-        %a.btn.btn-small{href: user.profile.url, target:'_blank'}
+      - unless profile.url.blank?
+        %a.btn.btn-small{href: profile.url, target:'_blank'}
           .icon-globe
           &nbsp;
           =t 'users.show.site'
-      #social-urls= render 'users/show_social_urls', user: user, size: 'btn-small'
+      #social-urls= render 'users/show_social_urls', user: user, profile: profile, size: 'btn-small'
