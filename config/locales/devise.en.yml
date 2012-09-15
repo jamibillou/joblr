@@ -71,8 +71,9 @@ en:
         title: 'Sign up!'
       edit:
         title: 'Account settings'
+        subtitle: 'Change your details and social accounts'
         details: 'Personal details'
-        add_accounts: "Link your existing accounts"
+        add_accounts: "Link your social accounts"
         easy_signin: "(to easily sign in)"
       update:
         title: 'Account settings'
