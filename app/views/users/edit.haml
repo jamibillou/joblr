@@ -11,5 +11,3 @@
       .span2
       .span2
         = render 'edit_buttons',    f: f
-        - unless signed_up?(@user)
-          .visible-desktop= render 'edit_onboarding', f: f

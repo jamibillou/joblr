@@ -165,18 +165,3 @@ a.help:hover{
     margin-bottom:10px;
   }
 }
-
-// Onboarding
-// ----------
-
-#onboarding{
-  width:90%;
-  margin-top:90px;
-  .big{
-    opacity:0.2;
-    &.checked{
-      opacity:1;
-      color:$successText;
-    }
-  }
-}
