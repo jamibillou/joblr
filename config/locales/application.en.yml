@@ -12,37 +12,34 @@ en:
         imported: "Your information was imported successfully from %{provider}."
         removed: "Your %{provider} account was removed successfully."
       profile:
-        created: 'Profile created successfully.'
-        updated: 'Profile updated successfully.'
-        shared:  "Profile sent successfully to %{recipient_email}."
+        created: 'Your profile was created successfully.'
+        updated: 'Your profile was updated successfully.'
+        shared:  "Your profile was successfully sent to %{recipient_email}."
       beta_invite:
-        request_sent: 'Request sent successfully.'
-        email_sent: 'Beta invite email sent successfully'
-        ok: "Great, you can now sign up to Joblr alpha!"
-        destroyed: 'Beta invite destroyed successfully.'
+        email_sent: 'The invitation email was sent successfully'
+        ok: "Great, you can now sign up to Joblr!"
+        destroyed: 'The invitation was destroyed successfully.'
     error:
-      base: 'Error:'
       something_wrong:
         base: "Oops, something went wrong."
         auth: "Something went wrong when trying to add your account."
       provider:
-        already_linked: "This %{provider} account is already linked to your profile."
-        other_user: "This %{provider} account is already linked to another user's profile."
-        other_user_signed_up: "There already is a user matching your %{provider} account, did you mean to sign in?"
-        no_user: "We couldn't find any user matching your %{provider} account. Did you sign up with another service?"
+        already_linked: "We could not add your %{provider} account because it's already linked to your profile."
+        other_user: "We could not add your %{provider} account because it's already linked to another user's profile."
+        other_user_signed_up: "There already is a user matching your %{provider} account, did you rather mean to sign in?"
+        no_user: "We couldn't find any user matching your %{provider} account. Did you sign up with another service maybe?"
       other_user:
-        profile: "You can't edit another user's profile."
+        profile: "You cannot edit another user's profile."
       only:
-        signed_up: "Please fill in your profile before accessing this page."
-        public: "You cannot access this page, you need to sign out first."
-        admin: "You cannot access this page, administrators only."
+        signed_up: "Please finish filling in your profile before accessing this page."
+        public: "You cannot access this page."
+        admin: "You cannot access this page."
       beta_invite:
-        inexistant: "This invitation doesn't exist."
-        code_inexistant: "This invitation code doesn't exist. Do you mind double ckecking?"
-        used: "This invitation code has already been used. Ask another one!"
+        code_inexistant: "This invitation code doesn't seem to exist. Do you mind double ckecking?"
+        used: "This invitation has already been used. You can still as another one though."
         required: "You need an invitation to sign up, you can ask for one here."
       required:
-        all: "Error: all fields are required."
+        all: "All fields are required."
   footer:
     questions: "Questions or comments?"
     contact_us: "Contact us"

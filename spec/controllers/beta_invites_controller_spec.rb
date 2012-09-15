@@ -47,7 +47,6 @@ describe BetaInvitesController do
       it "should redirect to 'thank_you'" do
         post :create, beta_invite: @attr
         response.should redirect_to beta_invite_thank_you_path(BetaInvite.last)
-        flash[:success].should == I18n.t('flash.success.beta_invite.request_sent')
       end
     end
 
@@ -67,7 +66,7 @@ describe BetaInvitesController do
       it "should render 'new'" do
         post :create, beta_invite: {email: ''}
         response.should render_template 'new'
-        flash[:error].should == "#{I18n.t('flash.error.base')} #{I18n.t('activerecord.attributes.beta_invite.email').downcase} #{I18n.t('activerecord.errors.messages.blank')}."
+        flash[:error].should == "#{I18n.t('activerecord.attributes.beta_invite.email')} #{I18n.t('activerecord.errors.messages.blank')}."
       end
     end
 
@@ -91,9 +90,9 @@ describe BetaInvitesController do
       it "should render 'new'" do
         post :create, beta_invite: {email: 'user@example.com'}
         response.should render_template 'new'
-        flash[:error].should == "#{I18n.t('flash.error.base')} #{I18n.t('activerecord.attributes.beta_invite.email').downcase} #{I18n.t('activerecord.errors.messages.taken')}."
+        flash[:error].should == "#{I18n.t('activerecord.attributes.beta_invite.email')} #{I18n.t('activerecord.errors.messages.taken')}."
       end
-    end   
+    end
   end
 
   describe "GET 'edit'" do

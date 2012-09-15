@@ -23,6 +23,19 @@ form {
 // FORM FIELD FEEDBACK STATES
 // --------------------------
 
+// Warning
+.control-group.warning {
+  @include formFieldState($warningBorder, $warningBorder, $warningBackground);
+}
+// Error
+.control-group.error {
+  @include formFieldState($errorBorder, $errorBorder, $errorBackground);
+}
+// Success
+.control-group.success {
+  @include formFieldState($successBorder, $successBorder, $successBackground);
+}
+
 .field_with_errors{
   display:inline-block;
   @extend .control-group.error

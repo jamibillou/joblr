@@ -13,7 +13,7 @@ class BetaInvitesController < ApplicationController
       render :new
     else
       BetaInviteMailer.notify_team(@beta_invite).deliver
-      redirect_to "/beta_invites/#{@beta_invite.id}/thank_you", flash: {success: t('flash.success.beta_invite.request_sent')}
+      redirect_to "/beta_invites/#{@beta_invite.id}/thank_you"
     end
   end
 

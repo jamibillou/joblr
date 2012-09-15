@@ -26,8 +26,7 @@ module ApplicationHelper
   def error_messages(object, options = {})
     errors = unduplicated_errors(object, options).map! do |attribute, message|
       "#{object.class.human_attribute_name(attribute).downcase} #{message}"
-    end.to_sentence
-    "#{t('flash.error.base')} #{errors}."
+    end.to_sentence.humanize+'.'
   end
 
   def unduplicated_errors(object, options = {})
