@@ -9,7 +9,7 @@
 form#new_email_sharing{
   margin-bottom:0;
   #email-sharing-error{
-    color: $errorText;
+    color: $errorBorder;
     margin-bottom:30px;
     display:none;
   }

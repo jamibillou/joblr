@@ -15,6 +15,7 @@
 // Components: Buttons & Alerts
 @import "bootstrap-custom/buttons";
 @import "bootstrap-custom/button-groups";
+@import "bootstrap-custom/alerts"; // Note: alerts share common CSS with buttons and thus have styles in _buttons.scss
 
 // Components: Nav
 @import "bootstrap-custom/navbar";
