@@ -48,7 +48,7 @@ $ ->
   # Popovers
   # --------
 
-  $('.help').each -> $(this).popover('placement': 'right')
+  $('.edit_user a.help').each -> $(this).popover('placement': 'right')
 
 
   # Image picker

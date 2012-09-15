@@ -4,7 +4,7 @@
     %small=t 'users.edit.headline'
     %span.danger-text= link_to '*', '#required'
     %a.help{rel:'popover', 'data-content' => t('users.edit.headline_popover'), 'data-original-title' => t('users.edit.headline')}
-      %i.icon-question-sign
+      .icon-question-sign
     %br/
     = f.select :headline, headline_options, {selected: (t("users.show.headline.#{field_value(:headline, @linkedin)}") unless field_value(:headline, @linkedin).blank?)}
 
@@ -13,7 +13,7 @@
     %h4
       =t 'users.edit.experience'
       %a.help{rel:'popover', 'data-content' => t('users.edit.experience_popover'), 'data-original-title' => t('users.edit.  experience')}
-        %i.icon-question-sign
+        .icon-question-sign
     .row-fluid
       .span3
         %small=t 'users.edit.experience_label'

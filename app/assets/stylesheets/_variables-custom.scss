@@ -94,6 +94,10 @@ $dropdownLinkBackgroundHover:   $linkColor !default;
 $dropdownDividerTop:            #e5e5e5 !default;
 $dropdownDividerBottom:         $white !default;
 
+// Input placeholder text color
+// -------------------------
+$placeholderText:               lighten($grayLight, 10%) !default;
+
 // Images
 // -------------------------
 $navbarBrandHeight:             35px;
@@ -118,10 +122,6 @@ $navbarLinkColorActive:           $navbarLinkColorHover !default;
 $navbarLinkBackgroundHover:       transparent !default;
 $navbarLinkBackgroundActive:      $navbarBackground !default;
 $navbarSearchBackground:          lighten($navbarBackground, 25%) !default;
-$navbarSearchBackgroundFocus:     $white;
-$navbarSearchBorder:              darken($navbarSearchBackground, 30%) !default;
-$navbarSearchPlaceholderColor:    #ccc !default;
-$navbarBrandColor:                $navbarLinkColor !default;
 
 // Hero unit
 // -------------------------
@@ -146,3 +146,19 @@ $successBorder:           darken(adjust-hue($successBackground, -10), 5%) !defau
 $infoText:                #3a87ad !default;
 $infoBackground:          #d9edf7 !default;
 $infoBorder:              darken(adjust-hue($infoBackground, -10), 7%) !default;
+
+// Tooltips and popovers
+// -------------------------
+$tooltipColor:            #fff !default;
+$tooltipBackground:       #000 !default;
+$tooltipArrowWidth:       5px !default;
+$tooltipArrowColor:       $tooltipBackground !default;
+
+$popoverBackground:       #fff !default;
+$popoverArrowWidth:       5px !default;
+$popoverArrowColor:       $white !default;
+$popoverTitleBackground:  darken($popoverBackground, 5%) !default;
+
+// Special enhancement for popovers
+$popoverArrowOuterWidth:  $popoverArrowWidth + 1 !default;
+$popoverArrowOuterColor:  rgba(0,0,0,.25) !default;
