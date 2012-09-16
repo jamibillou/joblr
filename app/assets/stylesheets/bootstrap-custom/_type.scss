@@ -5,6 +5,7 @@
 
 // BODY TEXT
 // ---------
+
 p{
   margin-bottom: $baseLineHeight;
   small{
@@ -54,6 +55,9 @@ p{
   a, a:hover{
     color:$infoBorder;
   }
+}
+.blue-text{
+  color:$blue;
 }
 .gray-text{
   color:$gray;
