@@ -4,7 +4,7 @@ class EmailSharingsController < ApplicationController
 
 	def create
 		@user = User.find params[:user_id]
-		@email_sharing = EmailSharing.new params[:email_sharing].merge(profile_id: @user.profile, author: current_user)
+		@email_sharing = EmailSharing.new params[:email_sharing].merge(profile: @user.profile, author: current_user)
     unless @email_sharing.save
       respond_to {|format| format.html { render :json => t('flash.error.required.all'), :status => :unprocessable_entity if request.xhr? }}
     else
@@ -17,7 +17,7 @@ class EmailSharingsController < ApplicationController
       redirect_to email_sharing_already_answered_path
     else
       @email_sharing.update_attributes status: 'declined'
-      if @email_sharing.own_sharing?
+      if @email_sharing.author == @email_sharing.profile.user
         EmailSharingMailer.decline(@email_sharing).deliver
       else
         EmailSharingMailer.other_decline(@email_sharing).deliver

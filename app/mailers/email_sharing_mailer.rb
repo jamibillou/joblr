@@ -26,14 +26,15 @@ class EmailSharingMailer < ActionMailer::Base
     @email_sharing = email_sharing
     @subject = t('mailers.email_sharing.decline.subject', fullname: email_sharing.recipient_fullname)
     @title   = t('mailers.email_sharing.decline.title',   fullname: email_sharing.recipient_fullname)
-  	mail to: email_sharing.email, subject: @subject
+    mail to: email_sharing.profile.user.email, subject: @subject
   end
 
   def other_decline(email_sharing)
     @email_sharing = email_sharing
+    @author_fullname = email_sharing.author.nil? ? email_sharing.author_fullname : email_sharing.author.fullname
     @subject = t('mailers.email_sharing.other_decline.subject', fullname: email_sharing.recipient_fullname)
     @title   = t('mailers.email_sharing.other_decline.title',   fullname: email_sharing.recipient_fullname)
-    mail to: email_sharing.user_email, subject: @subject
+    mail to: email_sharing.profile.user.email, subject: @subject
   end
 
   class Preview < MailView

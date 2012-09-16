@@ -2,7 +2,7 @@
 <% t('mailers.email_sharing.other_decline.title', fullname: @email_sharing.recipient_fullname).length.times do %>=<% end %>
 
 
-<%=t 'mailers.email_sharing.other_decline.content', fullname: @email_sharing.recipient_fullname, author_fullname: @email_sharing.fullname %>
+<%=t 'mailers.email_sharing.other_decline.content', fullname: @email_sharing.recipient_fullname, author_fullname: @author_fullname %>
 
 <%=t 'mailers.email_sharing.other_decline.persevere' %>
 
