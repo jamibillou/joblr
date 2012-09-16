@@ -25,7 +25,7 @@ describe UsersController do
 
         context 'for non-completed profiles' do
 
-          it 'should be a 404 error' do
+          it 'should render the 404 error page' do
             @user.profile.destroy
             expect { get :show, id: @user }.to raise_error(ActionController::RoutingError)
             response.should render_template(controller: 'errors', action: 'error_404')
@@ -59,18 +59,96 @@ describe UsersController do
       end
 
       context 'requests with non-existing subdomains' do
-        it 'should redirect to 404 page' # do
+
+        it 'should render the 404 error page' # do
           # TO DO!
-          # expect { blah }.to raise_error(ActionController::RoutingError)
+          # expect { visit bla }.to raise_error(ActionController::RoutingError)
           # response.should render_template(controller: 'errors', action: 'error_404')
         # end
       end
 
-      context 'requests with an existing subdomain' do
-        it 'should have the right user profile' # do
-          # TO DO!
-          # find("div#user-#{@user.id}").should have_content @user.fullname
-        # end
+      context 'requests with an existing user subdomain' do
+
+        context "and a path other than '/'" do
+
+          it 'should render the 404 error page' # do
+            # TO DO!
+            # expect { visit bla }.to raise_error(ActionController::RoutingError)
+            # response.should render_template(controller: 'errors', action: 'error_404')
+          # end
+        end
+
+        context "and '/' as path" do
+
+          it 'should have the right user profile' # do
+            # TO DO!
+            # visit bla
+            # find("div#user-#{@user.id}").should have_content @user.fullname
+          # end
+        end
+      end
+
+      context 'requests with staging.joblr.co as a host' do
+
+        context "and a path other than '/'" do
+
+          it 'should have the right content' # do
+            # TO DO!
+            # visit bla
+            # response.should render_template(controller: 'whatever', action: 'whatever')
+          # end
+        end
+
+        context "and '/' as path" do
+
+          it 'should have the right content' # do
+            # TO DO!
+            # visit bla
+            # response.should render_template(controller: 'whatever', action: 'whatever')
+          # end
+        end
+      end
+
+      context 'requests with joblr-staging.herokuapp.com as host' do
+
+        context "and a path other than '/'" do
+
+          it 'should have the right content' # do
+            # TO DO!
+            # visit bla
+            # response.should render_template(controller: 'whatever', action: 'whatever')
+          # end
+        end
+
+        context "and '/' as path" do
+
+          it 'should have the right content' # do
+            # TO DO!
+            # visit bla
+            # response.should render_template(controller: 'whatever', action: 'whatever')
+          # end
+        end
+      end
+
+      context 'requests with joblr.herokuapp.com as host' do
+
+        context "and a path other than '/'" do
+
+          it 'should have the right content' # do
+            # TO DO!
+            # visit bla
+            # response.should render_template(controller: 'whatever', action: 'whatever')
+          # end
+        end
+
+        context "and '/' as path" do
+
+          it 'should have the right content' # do
+            # TO DO!
+            # visit bla
+            # response.should render_template(controller: 'whatever', action: 'whatever')
+          # end
+        end
       end
     end
 
