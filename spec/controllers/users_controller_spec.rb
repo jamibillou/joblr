@@ -375,7 +375,7 @@ describe UsersController do
         end.should change(User, :count).by -1
       end
 
-      it 'should redirect to admin path' do
+      it 'should redirect to the admin page' do
         delete :destroy, id: @user
         response.should redirect_to admin_path
         flash[:success].should == I18n.t('flash.success.user.destroyed')
