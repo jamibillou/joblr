@@ -1,6 +1,7 @@
 class BetaInvitesController < ApplicationController
 
-  before_filter :not_signed_in, except: [:send_code, :destroy]
+  before_filter :not_signed_in,      except: [:send_code, :destroy]
+  before_filter :admin_user,         only:   [:send_code, :destroy]
 
   def new
     @beta_invite = BetaInvite.new

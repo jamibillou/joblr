@@ -48,27 +48,32 @@ describe PagesController do
 		end
 
 		context 'for signed in users' do
-			before :each do
-				sign_in @user
-				get :admin
+
+			context 'who are not admin' do
+
+				before :each do
+					sign_in @user
+					get :admin
+				end
+
+				it 'should redirect to root path' do
+					response.should redirect_to(root_path)
+					flash[:error].should == I18n.t('flash.error.only.admin')
+				end
 			end
 
-			it 'should redirect to root path' do
-				response.should redirect_to(root_path)
-				flash[:error].should == I18n.t('flash.error.only.admin')
-			end
-		end
+			context 'who are admin' do
 
-		context 'for signed in admin users' do
-			before :each do
-				sign_in @admin
-				get :admin
-			end
+				before :each do
+					sign_in @admin
+					get :admin
+				end
 
-			it { response.should be_success }
+				it { response.should be_success }
 
-			it 'should have an admin block' do
-				response.body.should have_selector 'div.admin'
+				it 'should have an admin block' do
+					response.body.should have_selector 'div.admin'
+				end
 			end
 		end
 	end
@@ -88,27 +93,32 @@ describe PagesController do
 		end
 
 		context 'for signed in users' do
-			before :each do
-				sign_in @user
-				get :style_tile
-			end
 
-			it 'should redirect to root path' do
-				response.should redirect_to(root_path)
-				flash[:error].should == I18n.t('flash.error.only.admin')
-			end
-		end
+			context 'who are not admin' do
 
-		context 'for signed admin users' do
-			before :each do
-				sign_in @admin
-				get :style_tile
-			end
+				before :each do
+					sign_in @user
+					get :style_tile
+				end
 
-			it { response.should be_success }
+				it 'should redirect to root path' do
+					response.should redirect_to(root_path)
+					flash[:error].should == I18n.t('flash.error.only.admin')
+				end
+		  end
 
-			it 'should have a style_tile block' do
-				response.body.should have_selector 'div#style-tile'
+			context 'who are admin' do
+
+				before :each do
+					sign_in @admin
+					get :style_tile
+				end
+
+				it { response.should be_success }
+
+				it 'should have a style_tile block' do
+					response.body.should have_selector 'div#style-tile'
+				end
 			end
 		end
 	end
