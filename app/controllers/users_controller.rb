@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       flash[:error] = error_messages(@user)
       render :edit, id: @user, user: params[:user]
     else
-      remove_files! # FIX ME!
+      remove_files! unless Rails.env.test? # FIX ME!
       redirect_to @user, flash: {success: (signed_up ? t('flash.success.profile.created') : t('flash.success.profile.updated'))}
     end
   end
@@ -39,7 +39,10 @@ class UsersController < ApplicationController
   private
 
     def correct_user!
-      redirect_to root_path, flash: {error: t('flash.error.other_user.profile')} unless user_signed_in? && current_user == @user
+      unless current_user == @user
+        error = user_signed_in? ? t('flash.error.other_user.profile') : t('flash.error.only.signed_in')
+        redirect_to root_path, flash: {error: error}
+      end
     end
 
     # REFACTOR ME!

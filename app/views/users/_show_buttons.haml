@@ -12,27 +12,27 @@
 
     %ul.dropdown-menu
       %li
-        %a{href: '#email-sharing-modal', 'data-toggle' => 'modal'}
+        %a{href: '#email-sharing-modal', 'data-toggle' => 'modal', title: t('users.show.send_email')}
           .icon-envelope
           &nbsp;
           =t 'users.show.email'
       %li
-        %a{href: social_sharing_url(user, 'linkedin'), target: '_blank', title: t('users.show.buttons.share_linkedin')}
+        %a{href: social_sharing_url(user, 'linkedin'), target: '_blank', title: t('users.show.share_on', provider: 'Linkedin')}
           .icon-linkedin
           &nbsp;
           Linkedin
       %li
-        %a{href: social_sharing_url(user, 'facebook'), target: '_blank', title: t('users.show.buttons.share_facebook')}
+        %a{href: social_sharing_url(user, 'facebook'), target: '_blank', title: t('users.show.share_on', provider: 'Facebook')}
           .icon-facebook
           &nbsp;
           Facebook
       %li
-        %a{href: social_sharing_url(user, 'twitter'), target: '_blank', title: t('users.show.buttons.share_twitter')}
+        %a{href: social_sharing_url(user, 'twitter'), target: '_blank', title: t('users.show.share_on', provider: 'Twitter')}
           .icon-twitter
           &nbsp;
           Twitter
       %li
-        %a{href: social_sharing_url(user, 'google'), target: '_blank', title: t('users.show.buttons.share_google')}
+        %a{href: social_sharing_url(user, 'google'), target: '_blank', title: t('users.show.share_on', provider: 'Google')}
           .icon-google-plus
           &nbsp;
           Google

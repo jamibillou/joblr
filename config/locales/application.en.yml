@@ -32,6 +32,7 @@ en:
         profile: "You cannot edit another user's profile."
       only:
         signed_up: "Please finish filling in your profile before accessing this page."
+        signed_in: "You cannot access this page."
         public: "You cannot access this page."
         admin: "You cannot access this page."
       beta_invite:

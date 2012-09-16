@@ -20,16 +20,14 @@ en:
       public_profile: 'Public profile'
       email: 'Email'
       edit: 'Edit'
+      contact: 'Contact'
       share: 'Share'
       explanation_html: "Start sharing %{url} around you now!"
-      buttons:
-        share_linkedin: "Share on Linkedin"
-        share_facebook: "Share on Facebook"
-        share_twitter: "Share on Twitter"
-        share_google: "Share on Google"
+      send_email: 'Send by email'
+      share_on: "Share on %{provider}"
       sharings:
-        motto: 'The online profile that obsoletes the resume & cover letter'
-        title: "%{fullname} on Joblr!"
+        catchphrase: 'Save your job hunting minutes'
+        title: "%{fullname} on Joblr"
     index:
       title: 'Users'
     edit:
@@ -77,7 +75,8 @@ en:
       public_profile: 'Public profile'
       explanation_html: 'You profile is available at %{url}! Change it if you want to.'
       import_info: 'Import your information from'
-      import_linkedin: 'Import from Linkedin'
+      import_from: 'Import from'
+      linkedin: 'LinkedIn'
       save: 'Save'
     update:
       title: 'Edit your profile'

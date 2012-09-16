@@ -1,7 +1,7 @@
 #buttons
   - unless signed_up?(@user) || @linkedin
-    %label Import from
-    %a.btn.btn-large.btn-top{href: omniauth_authorize_path(:user, 'linkedin')} LinkedIn
+    %label=t 'users.edit.import_from'
+    %a.btn.btn-large.btn-top{href: omniauth_authorize_path(:user, 'linkedin')}=t 'users.edit.linkedin'
 
   %a#submit-placeholder.btn.btn-large.btn-primary.btn-top=t 'users.edit.save'
 

@@ -20,7 +20,7 @@ module UsersHelper
   def social_sharing_url(user, provider)
     case provider
       when 'linkedin'
-        "http://www.linkedin.com/shareArticle?mini=true&url=#{user.public_url}&title=#{t('users.show.sharings.title', fullname: user.fullname)}&summary=#{t('users.show.sharings.motto')}&source=Joblr"
+        "http://www.linkedin.com/shareArticle?mini=true&url=#{user.public_url}&title=#{t('users.show.sharings.title', fullname: user.fullname)}&summary=#{t('users.show.sharings.catchphrase')}&source=Joblr"
       when 'facebook'
         "http://www.facebook.com/sharer.php?u=#{user.public_url}"
       when 'twitter'
