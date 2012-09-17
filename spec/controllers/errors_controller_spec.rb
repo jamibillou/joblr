@@ -25,7 +25,7 @@ describe ErrorsController do
     end
 
     it 'should be rendered for unkown actions' do
-	    expect { raise ActionController::UnknownAction }.to raise_error(ActionController::UnknownAction)
+	    expect { raise AbstractController::ActionNotFound }.to raise_error(AbstractController::ActionNotFound)
       response.should render_template(controller: 'errors', action: 'error_404')
     end
 

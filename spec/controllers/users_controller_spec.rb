@@ -15,7 +15,7 @@ describe UsersController do
 
   describe "GET 'show'" do
 
-    context 'for public visitors' do
+    context 'for public users' do
 
       before :each do
         sign_out @user
@@ -194,7 +194,7 @@ describe UsersController do
 
   describe "GET 'edit'" do
 
-    context 'for public visitors' do
+    context 'for public users' do
 
       it 'should redirect to the root path' do
         sign_out @user

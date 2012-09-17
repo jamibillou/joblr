@@ -192,7 +192,7 @@ describe EmailSharingsController do
       end
     end
 
-    context 'for public visitors' do
+    context 'for public users' do
 
       context "who didn't provide any author email address" do
 

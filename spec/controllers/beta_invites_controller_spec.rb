@@ -22,7 +22,7 @@ describe BetaInvitesController do
       end
     end
 
-    context 'for public visitors' do
+    context 'for public users' do
 
       it { get :new ; be_success }
 
@@ -45,7 +45,7 @@ describe BetaInvitesController do
       end
     end
 
-    context 'for public visitors' do
+    context 'for public users' do
 
       context 'who provided a valid email address' do
 
@@ -142,7 +142,7 @@ describe BetaInvitesController do
 
   describe "GET 'send_code'" do
 
-    context 'for public visitors' do
+    context 'for public users' do
 
       it 'should not send the invitation code' do
         email = mock Mail::Message
@@ -234,7 +234,7 @@ describe BetaInvitesController do
       end
     end
 
-    context 'for public visitors' do
+    context 'for public users' do
 
       it 'should have a code text field' do
         get :edit, id: @beta_invite
@@ -306,7 +306,7 @@ describe BetaInvitesController do
 
   describe "delete 'DESTROY'" do
 
-    context 'for public visitors' do
+    context 'for public users' do
 
       it 'should not destroy the beta_invite' do
         lambda do
