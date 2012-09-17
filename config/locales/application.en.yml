@@ -15,6 +15,9 @@ en:
         created: 'Your profile was created successfully.'
         updated: 'Your profile was updated successfully.'
         shared:  "Your profile was successfully sent to %{recipient_email}."
+        other_shared: "%{fullname}'s profile was successfully sent to %{recipient_email}."
+        public_shared: "%{fullname}'s profile was successfully sent to %{recipient_email}."
+      public_profile:        
       beta_invite:
         email_sent: 'The invitation email was sent successfully'
         ok: "Great, you can now sign up to Joblr!"
