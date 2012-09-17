@@ -1,4 +1,4 @@
 <%=t 'mailers.beta_invite.send_code.content_html', url: link_to("<span>http://joblr.co/beta_invites/#{@beta_invite.id}/edit</span>".html_safe, "http://joblr.co/beta_invites/#{@beta_invite.id}/edit?code=#{@beta_invite.code}", target: '_blank') %>
 <br />
 <br />
-<%=t 'mailers.beta_invite.send_code.code' %> <span class="code graylight-text"><%= @beta_invite.code %></span>
+<span class="code graylight-text"><%= @beta_invite.code %></span>
