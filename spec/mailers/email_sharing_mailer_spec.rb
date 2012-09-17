@@ -27,6 +27,10 @@ describe EmailSharingMailer do
       mail.body.encoded.should match(email_sharing.text)
     end
 
+    it "should have the user's picture" do
+      mail.body.encoded.should match('default_user.jpg')
+    end
+
     it "should have the user's profile information" do
       mail.body.encoded.should match(user.fullname)
       mail.body.encoded.should match(profile.experience)
@@ -81,6 +85,10 @@ describe EmailSharingMailer do
       mail.body.encoded.should match(current_user.email)
     end
 
+    it "should have the user's picture" do
+      mail.body.encoded.should match('default_user.jpg')
+    end
+
     it "should have the user's profile information" do
       mail.body.encoded.should match(user.fullname)
       mail.body.encoded.should match(profile.experience)
@@ -132,6 +140,10 @@ describe EmailSharingMailer do
     it "should have the author's information" do
       mail.body.encoded.should match(email_sharing.author_fullname)
       mail.body.encoded.should match(email_sharing.author_email)
+    end
+
+    it "should have the user's picture" do
+      mail.body.encoded.should match('default_user.jpg')
     end
 
     it "should have the user's profile information" do

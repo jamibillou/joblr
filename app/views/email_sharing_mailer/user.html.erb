@@ -73,7 +73,7 @@
                                           <table border="0" cellpadding="0" cellspacing="0" class="identity-content">
                                             <tr>
                                               <td align="left"  valign="top" width="70">
-                                                <img src=<%= "http://joblr.co/#{@user.image.blank? ? 'default_user.jpg' : @user.image_url(:thumb).to_s}" %> alt="profile picture" height="70" width="70" />
+                                                <img src="<%= @user.image.blank? ? 'default_user.jpg' : @user.image_url(:thumb).to_s %>" alt="profile picture" height="70" width="70" />
                                               </td>
                                               <td align="left"  valign="top" width="20"></td>
                                               <td align="left" valign="top" width="390">
