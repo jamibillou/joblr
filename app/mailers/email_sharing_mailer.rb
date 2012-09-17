@@ -1,7 +1,7 @@
 class EmailSharingMailer < ActionMailer::Base
 
   default from: "postman@joblr.co"
-  layout 'mailers', only: [:decline, :other_decline]
+  layout 'mailers', only: [:decline, :decline_through_other]
 
   def user(email_sharing, user)
   	@user = user
@@ -29,11 +29,11 @@ class EmailSharingMailer < ActionMailer::Base
     mail to: email_sharing.profile.user.email, subject: @subject
   end
 
-  def other_decline(email_sharing)
+  def decline_through_other(email_sharing)
     @email_sharing = email_sharing
     @author_fullname = email_sharing.author.nil? ? email_sharing.author_fullname : email_sharing.author.fullname
-    @subject = t('mailers.email_sharing.other_decline.subject', fullname: email_sharing.recipient_fullname)
-    @title   = t('mailers.email_sharing.other_decline.title',   fullname: email_sharing.recipient_fullname)
+    @subject = t('mailers.email_sharing.decline_through_other.subject', fullname: email_sharing.recipient_fullname)
+    @title   = t('mailers.email_sharing.decline_through_other.title',   fullname: email_sharing.recipient_fullname)
     mail to: email_sharing.profile.user.email, subject: @subject
   end
 
@@ -75,18 +75,18 @@ class EmailSharingMailer < ActionMailer::Base
       user          = FactoryGirl.create :user, fullname: name, username: name.parameterize, email: "#{name.parameterize}@example.com"
       profile       = FactoryGirl.create :profile, user: user
       email_sharing = FactoryGirl.create :email_sharing, author: user, profile: profile
-      email         = EmailSharingMailer.decline email_sharing
+      email         = EmailSharingMailer.decline(email_sharing)
       email
     end
 
-    def other_decline
+    def decline_through_other
       name          = Faker::Name.name
       user          = FactoryGirl.create :user, fullname: name, username: name.parameterize, email: "#{name.parameterize}@example.com"
       name2         = Faker::Name.name
       user2         = FactoryGirl.create :user, fullname: name2, username: name2.parameterize, email: "#{name2.parameterize}@example.com"
       profile       = FactoryGirl.create :profile, user: user
       email_sharing = FactoryGirl.create :email_sharing, author: user2, profile: profile
-      email         = EmailSharingMailer.other_decline email_sharing
+      email         = EmailSharingMailer.decline_through_other(email_sharing)
       email
     end
   end

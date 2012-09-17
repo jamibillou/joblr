@@ -340,7 +340,7 @@ describe EmailSharingsController do
       it 'should not send any email' do
         email = mock Mail::Message
         EmailSharingMailer.should_not_receive(:decline).with(kind_of(EmailSharing)).and_return(email)
-        EmailSharingMailer.should_not_receive(:other_decline).with(kind_of(EmailSharing)).and_return(email)
+        EmailSharingMailer.should_not_receive(:decline_through_other).with(kind_of(EmailSharing)).and_return(email)
         email.should_not_receive(:deliver)
         get :decline, email_sharing_id: @user_email_sharing
         get :decline, email_sharing_id: @other_email_sharing
@@ -399,7 +399,7 @@ describe EmailSharingsController do
 
         it 'should send an other decline notification email' do
           email = mock Mail::Message
-          EmailSharingMailer.should_receive(:other_decline).with(kind_of(EmailSharing)).and_return(email)
+          EmailSharingMailer.should_receive(:decline_through_other).with(kind_of(EmailSharing)).and_return(email)
           email.should_receive(:deliver)
           get :decline, email_sharing_id: @other_email_sharing
         end
@@ -432,7 +432,7 @@ describe EmailSharingsController do
 
         it 'should send a decline notification email' do
           email = mock Mail::Message
-          EmailSharingMailer.should_receive(:other_decline).with(kind_of(EmailSharing)).and_return(email)
+          EmailSharingMailer.should_receive(:decline_through_other).with(kind_of(EmailSharing)).and_return(email)
           email.should_receive(:deliver)
           get :decline, email_sharing_id: @public_email_sharing
         end

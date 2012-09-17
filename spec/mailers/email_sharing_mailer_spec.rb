@@ -183,30 +183,30 @@ describe EmailSharingMailer do
     end
   end
 
-  describe "'other_decline' method" do
+  describe "'decline_through_other' method" do
 
     let (:user)          { FactoryGirl.create :user }
     let (:profile)       { FactoryGirl.create :profile, user: user }
     let (:author)        { FactoryGirl.create :user, fullname: FactoryGirl.generate(:fullname), username: FactoryGirl.generate(:username), email: FactoryGirl.generate(:email) }
     let (:email_sharing) { FactoryGirl.create :email_sharing, profile: profile, author: author }
-    let (:mail)          { EmailSharingMailer.other_decline(email_sharing) }
+    let (:mail)          { EmailSharingMailer.decline_through_other(email_sharing) }
 
     it 'should send the email with correct subject, author and recipient' do
-      mail.subject.should == I18n.t('mailers.email_sharing.other_decline.subject', fullname: email_sharing.recipient_fullname)
+      mail.subject.should == I18n.t('mailers.email_sharing.decline_through_other.subject', fullname: email_sharing.recipient_fullname)
       mail.to.should      == [user.email]
       mail.from.should    == ['postman@joblr.co']
     end
 
     it 'should have a title' do
-      mail.body.encoded.should match(I18n.t('mailers.email_sharing.other_decline.title', fullname: email_sharing.recipient_fullname))
+      mail.body.encoded.should match(I18n.t('mailers.email_sharing.decline_through_other.title', fullname: email_sharing.recipient_fullname))
     end
 
     it 'should have a content' do
-      mail.body.encoded.should include I18n.t('mailers.email_sharing.other_decline.content', fullname: email_sharing.recipient_fullname, author_fullname: author.fullname)
+      mail.body.encoded.should include I18n.t('mailers.email_sharing.decline_through_other.content', fullname: email_sharing.recipient_fullname, author_fullname: author.fullname)
     end
 
     it 'should have a persevere message' do
-      mail.body.encoded.should match(I18n.t('mailers.email_sharing.other_decline.persevere'))
+      mail.body.encoded.should match(I18n.t('mailers.email_sharing.decline_through_other.persevere'))
     end
   end
 end
