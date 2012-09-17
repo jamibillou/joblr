@@ -81,7 +81,7 @@ class AuthentificationsController < ApplicationController
     end
 
     def create_auth(user)
-      user.authentifications.create(provider: auth_hash.provider.to_s.gsub('google_oauth2', 'google'), uid: auth_hash.uid, url: auth_url, utoken: auth_token, usecret: auth_secret)
+      user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, utoken: auth_token, usecret: auth_secret)
       user
     end
 
@@ -93,7 +93,7 @@ class AuthentificationsController < ApplicationController
           auth_hash.info.urls.public_profile unless auth_hash.info.urls.nil?
         when 'facebook'
           auth_hash.info.urls.Facebook       unless auth_hash.info.urls.nil?
-        when 'google'
+        when 'google_oauth2'
           auth_hash.extra.raw_info.link      unless auth_hash.extra.raw_info.nil?
       end
     end
@@ -106,14 +106,14 @@ class AuthentificationsController < ApplicationController
       case auth_hash.provider
         when 'linkedin', 'twitter'
           auth_hash.credentials.secret unless auth_hash.credentials.nil?
-        when 'facebook', 'google'
+        when 'facebook', 'google_oauth2'
           ''
       end
     end
 
     def auth_hash
       auth_hash = request.env['omniauth.auth']
-      auth_hash.provider.gsub!('google_oauth2', 'google')
+      #auth_hash.provider.gsub!('google_oauth2', 'google')
       auth_hash
     end
 
