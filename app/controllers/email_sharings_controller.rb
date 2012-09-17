@@ -27,13 +27,15 @@ class EmailSharingsController < ApplicationController
       if user_signed_in?
         if current_user == @user
           EmailSharingMailer.user(@email_sharing, @user).deliver
+          flash[:success] = t('flash.success.profile.shared', recipient_email: @email_sharing.recipient_email)
         else
           EmailSharingMailer.other_user(@email_sharing, @user, current_user).deliver
+          flash[:success] = t('flash.success.profile.other_shared', recipient_email: @email_sharing.recipient_email, fullname: @user.fullname)
         end
       else
         EmailSharingMailer.public_user(@email_sharing, @user).deliver
+        flash[:success] = t('flash.success.profile.public_shared', recipient_email: @email_sharing.recipient_email, fullname: @user.fullname)
       end
-      flash[:success] = t('flash.success.profile.shared', recipient_email: @email_sharing.recipient_email)
       render :json => 'create!' if request.xhr?
     end
 
