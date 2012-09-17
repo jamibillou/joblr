@@ -11,8 +11,8 @@ describe EmailSharingMailer do
 
     it 'should send the email with correct subject, author and recipient' do
       mail.subject.should == I18n.t('mailers.email_sharing.user.subject', fullname: user.fullname)
-      mail.to.should == [email_sharing.recipient_email]
-      mail.from.should == ['postman@joblr.co']
+      mail.to.should      == [email_sharing.recipient_email]
+      mail.from.should    == ['postman@joblr.co']
     end
 
     it 'should have a title' do
@@ -50,7 +50,7 @@ describe EmailSharingMailer do
     end
   end
 
-  describe "'other user' method" do
+  describe "'other_user' method" do
 
     let (:user)          { FactoryGirl.create :user }
     let (:profile)       { FactoryGirl.create :profile, user: user }
@@ -60,8 +60,8 @@ describe EmailSharingMailer do
 
     it 'should send the email with correct subject, author and recipient' do
       mail.subject.should == I18n.t('mailers.email_sharing.other_user.subject', fullname: current_user.fullname)
-      mail.to.should == [email_sharing.recipient_email]
-      mail.from.should == ['postman@joblr.co']
+      mail.to.should      == [email_sharing.recipient_email]
+      mail.from.should    == ['postman@joblr.co']
     end
 
     it 'should have a title' do
@@ -104,7 +104,7 @@ describe EmailSharingMailer do
     end
   end
 
-  describe "'public user' method" do
+  describe "'public_user' method" do
     let (:user)          { FactoryGirl.create :user}
     let (:profile)       { FactoryGirl.create :profile, user: user }
     let (:public_user)   { FactoryGirl.create :user, fullname: FactoryGirl.generate(:fullname), username: FactoryGirl.generate(:username), email: FactoryGirl.generate(:email) }
@@ -113,8 +113,8 @@ describe EmailSharingMailer do
 
     it 'should send the email with correct subject, author and recipient' do
       mail.subject.should == I18n.t('mailers.email_sharing.public_user.subject', fullname: email_sharing.author_fullname)
-      mail.to.should == [email_sharing.recipient_email]
-      mail.from.should == ['postman@joblr.co']
+      mail.to.should      == [email_sharing.recipient_email]
+      mail.from.should    == ['postman@joblr.co']
     end
 
     it 'should have a title' do
@@ -166,8 +166,8 @@ describe EmailSharingMailer do
 
     it 'should send the email with correct subject, author and recipient' do
       mail.subject.should == I18n.t('mailers.email_sharing.decline.subject', fullname: email_sharing.recipient_fullname)
-      mail.to.should == [user.email]
-      mail.from.should == ['postman@joblr.co']
+      mail.to.should      == [user.email]
+      mail.from.should    == ['postman@joblr.co']
     end
 
     it 'should have a title' do
@@ -183,7 +183,7 @@ describe EmailSharingMailer do
     end
   end
 
-  describe "'other decline' method" do
+  describe "'other_decline' method" do
 
     let (:user)          { FactoryGirl.create :user }
     let (:profile)       { FactoryGirl.create :profile, user: user }
@@ -193,8 +193,8 @@ describe EmailSharingMailer do
 
     it 'should send the email with correct subject, author and recipient' do
       mail.subject.should == I18n.t('mailers.email_sharing.other_decline.subject', fullname: email_sharing.recipient_fullname)
-      mail.to.should == [user.email]
-      mail.from.should == ['postman@joblr.co']
+      mail.to.should      == [user.email]
+      mail.from.should    == ['postman@joblr.co']
     end
 
     it 'should have a title' do
