@@ -352,27 +352,24 @@ describe EmailSharingsController do
 
       context "and were sent by the user himself" do
 
-        before :each do
-          get :decline, email_sharing_id: @user_email_sharing
-        end
-
         after :each do
           EmailSharingMailer.deliveries.clear
         end
 
-        it { response.should be_success }
+        it { get :decline, email_sharing_id: @user_email_sharing ; response.should be_success }
 
         it 'should update the status' do
+          get :decline, email_sharing_id: @user_email_sharing
           @user_email_sharing.reload
           @user_email_sharing.status.should == 'declined'
         end
 
-        # it 'should send a declined notification email' do
-        #   email = mock Mail::Message
-        #   EmailSharingMailer.should_receive(:decline).with(kind_of(EmailSharing)).and_return(email)
-        #   email.should_receive(:deliver)
-        #   get :decline, email_sharing_id: @user_email_sharing
-        # end
+        it 'should send a decline notification email' do
+          email = mock Mail::Message
+          EmailSharingMailer.should_receive(:decline).with(kind_of(EmailSharing)).and_return(email)
+          email.should_receive(:deliver)
+          get :decline, email_sharing_id: @user_email_sharing
+        end
 
         it "should send the email to the right user with the right subject" do
           get :decline, email_sharing_id: @user_email_sharing
@@ -381,33 +378,31 @@ describe EmailSharingsController do
         end
 
         it 'should have a thank you message' do
+          get :decline, email_sharing_id: @user_email_sharing
           response.body.should have_content I18n.t('email_sharings.decline.thank_you')
         end
       end
 
       context "and were sent by another user" do
 
-        before :each do
-          get :decline, email_sharing_id: @other_email_sharing
-        end
-
         after :each do
           EmailSharingMailer.deliveries.clear
         end
 
-        it { response.should be_success }
+        it { get :decline, email_sharing_id: @other_email_sharing ; response.should be_success }
 
         it 'should update the status' do
+          get :decline, email_sharing_id: @other_email_sharing
           @other_email_sharing.reload
           @other_email_sharing.status.should == 'declined'
         end
 
-        # it 'should send a declined notification email' do
-        #   email = mock Mail::Message
-        #   EmailSharingMailer.should_receive(:other_decline).with(kind_of(EmailSharing)).and_return(email)
-        #   email.should_receive(:deliver)
-        #   get :decline, email_sharing_id: @other_email_sharing
-        # end
+        it 'should send an other decline notification email' do
+          email = mock Mail::Message
+          EmailSharingMailer.should_receive(:other_decline).with(kind_of(EmailSharing)).and_return(email)
+          email.should_receive(:deliver)
+          get :decline, email_sharing_id: @other_email_sharing
+        end
 
         it "should send the email to the right user with the right subject" do
           get :decline, email_sharing_id: @other_email_sharing
@@ -416,33 +411,31 @@ describe EmailSharingsController do
         end
 
         it 'should a have thank you message' do
+          get :decline, email_sharing_id: @other_email_sharing
           response.body.should have_content I18n.t('email_sharings.decline.thank_you')
         end
       end
 
       context "and were sent by a public user"  do
 
-        before :each do
-          get :decline, email_sharing_id: @public_email_sharing
-        end
-
         after :each do
           EmailSharingMailer.deliveries.clear
         end
 
-        it { response.should be_success }
+        it { get :decline, email_sharing_id: @public_email_sharing ; response.should be_success }
 
         it 'should update the status' do
+          get :decline, email_sharing_id: @public_email_sharing
           @public_email_sharing.reload
           @public_email_sharing.status.should == 'declined'
         end
 
-        # it 'should send a declined notification email' do
-        #   email = mock Mail::Message
-        #   EmailSharingMailer.should_receive(:other_decline).with(kind_of(EmailSharing)).and_return(email)
-        #   email.should_receive(:deliver)
-        #   get :decline, email_sharing_id: @public_email_sharing
-        # end
+        it 'should send a decline notification email' do
+          email = mock Mail::Message
+          EmailSharingMailer.should_receive(:other_decline).with(kind_of(EmailSharing)).and_return(email)
+          email.should_receive(:deliver)
+          get :decline, email_sharing_id: @public_email_sharing
+        end
 
         it "should send the email to the right user with the right subject" do
           get :decline, email_sharing_id: @public_email_sharing
@@ -451,6 +444,7 @@ describe EmailSharingsController do
         end
 
         it 'should a have thank you message' do
+          get :decline, email_sharing_id: @public_email_sharing
           response.body.should have_content I18n.t('email_sharings.decline.thank_you')
         end
       end
@@ -458,18 +452,41 @@ describe EmailSharingsController do
 
     describe "GET 'already_answered'" do
 
-      # TO DO!
-      # enrich this test
-      #
       before :each do
-        @email_sharing = EmailSharing.create!(@email_sharing_attr.merge(profile: @author.profile, author: nil, author_email: @public_user[:email], author_fullname: @public_user[:fullname], recipient_email: 'recipient@example.com', recipient_fullname: 'The recipient', status:'declined'))
-        get :already_answered, email_sharing_id: @email_sharing
+        @author.profiles.create @profile_attr
+        @user_email_sharing   = EmailSharing.create!(@email_sharing_attr.merge(profile: @author.profile, author: @author,     recipient_email: 'user@example.com', recipient_fullname: 'User Recipient', status: nil))
+        @other_email_sharing  = EmailSharing.create!(@email_sharing_attr.merge(profile: @author.profile, author: @other_user, recipient_email: 'other_user@example.com', recipient_fullname: 'Other User Recipient', status: nil))
+        @public_email_sharing = EmailSharing.create!(@email_sharing_attr.merge(profile: @author.profile, author: nil, author_email: @public_user[:email], author_fullname: @public_user[:fullname], recipient_email: 'recipient@example.com', recipient_fullname: 'Public User Recipient', status: nil))
       end
 
-      it { response.should be_success }
+      context 'for email sharings that were sent by the user himself' do
 
-      it 'should a have thank you message' do
-        response.body.should include I18n.t('email_sharings.already_answered.thank_you', fullname: @email_sharing.profile.user.fullname)
+        it { get :already_answered, email_sharing_id: @user_email_sharing   ; response.should be_success }
+
+        it 'should a have thank you message' do
+          get :already_answered, email_sharing_id: @user_email_sharing
+          response.body.should include I18n.t('email_sharings.already_answered.thank_you', fullname: @user_email_sharing.profile.user.fullname)
+        end
+      end
+
+      context 'for email sharings that were sent by another user' do
+
+        it { get :already_answered, email_sharing_id: @other_email_sharing  ; response.should be_success }
+
+        it 'should a have thank you message' do
+          get :already_answered, email_sharing_id: @other_email_sharing
+          response.body.should include I18n.t('email_sharings.already_answered.thank_you', fullname: @other_email_sharing.profile.user.fullname)
+        end
+      end
+
+      context 'for email sharings that were sent by a public user' do
+
+        it { get :already_answered, email_sharing_id: @public_email_sharing ; response.should be_success }
+
+        it 'should a have thank you message' do
+          get :already_answered, email_sharing_id: @public_email_sharing
+          response.body.should include I18n.t('email_sharings.already_answered.thank_you', fullname: @public_email_sharing.profile.user.fullname)
+        end
       end
     end
   end
