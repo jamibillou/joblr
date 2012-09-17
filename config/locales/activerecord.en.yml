@@ -33,7 +33,7 @@ en:
         quality_2: "2nd quality"
         quality_3: "3rd quality"
         file: "CV"
-        text: "Who you are"
+        text: "Summary"
         url: "Website or blog"
       profile:
         id: "Identifier"
@@ -54,7 +54,7 @@ en:
         quality_3: "3rd quality"
         file: "CV"
         url: "Website or blog"
-        text: "Who you are"
+        text: "Summary"
       authentification:
         id: "Identifier"
         user_id: "User's identifier"

@@ -1,5 +1,5 @@
 - unless profile.file.blank? && profile.url.blank? && profile.twitter_url.blank? && profile.linkedin_url.blank? && profile.facebook_url.blank? && profile.google_url.blank?
-  .row-fluid
+  .row-fluid#more-about
     .span12
       %h4=t 'users.show.more_about', fullname: "#{user.fullname}"
       - unless profile.file.blank?
@@ -12,4 +12,4 @@
           .icon-globe
           &nbsp;
           =t 'users.show.site'
-      #social-urls= render 'users/show_social_urls', user: user, profile: profile, size: 'btn-small'
+      = render 'users/show_social_urls', user: user, profile: profile, size: 'btn-small'

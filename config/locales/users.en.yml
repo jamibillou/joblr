@@ -35,7 +35,7 @@ en:
     edit:
       title: 'Edit your profile'
       title_alt: 'Create your profile'
-      text: "Who you are"
+      text: "Summary"
       text_placeholder: "e.g. User experience designer. Ready to help you create something people will love."
       text_popover: "Keep it simple and catchy. Talk about your values, your approach to your job, what you're looking for, etc."
       fullname: 'Full name'
@@ -68,14 +68,14 @@ en:
       quality_1_placeholder: 'e.g. Passion'
       quality_2_placeholder: 'e.g. Autonomy'
       quality_3_placeholder: 'e.g. Honesty'
-      online_presence: 'Online presence'
-      online_popover: "Companies should be able to dig further if they want to. Don't include whatever is not relevant to the job though."
       upload_cv: 'Attach your CV'
-      add_social_url: 'Add your %{provider} profile'
       url: 'Website or blog'
+      social_urls: 'Social profiles'
+      social_urls_popover: "Click the icons and fill in your public url, it's saved automatically. Don't remember it? Go to your profiles on those networks."
+      add_social_url: 'Add your %{provider} profile'
       upload: 'Upload'
       public_profile: 'Public profile'
-      explanation_html: 'You public profile looks like this: %{url}. You can change your subdomain anytime from here.'
+      explanation_html: 'You public profile looks like this %{url}. You can change your subdomain anytime from here:'
       import_info: 'Import your information from'
       import_from: 'Import from'
       linkedin: 'LinkedIn'
