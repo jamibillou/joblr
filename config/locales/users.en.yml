@@ -17,12 +17,14 @@ en:
       download_cv: 'CV'
       view_social: "View %{fullname}'s %{provider} profile"
       site: 'www'
-      public_profile: 'Public profile'
       email: 'Email'
       edit: 'Edit'
       contact: 'Contact'
       share: 'Share'
-      explanation_html: "Start sharing %{url} around you now!"
+      public_profile: 'Public profile'
+      public_profile_explanation_html: "Your profile is available at %{url}, start sharing it around you now!"
+      whats_this: "What's this?"
+      whats_this_explanation_html: "%{fullname} is looking for work and needs your help. Get in contact if you have a job or a tip.<br />Otherwise, share this profile around!"
       send_email: 'Send by email'
       share_on: "Share on %{provider}"
       sharings:
@@ -57,23 +59,23 @@ en:
       education_popover: 'Your highest or most relevant education, degree, diploma or certificate.'
       education_placeholder: "e.g. Master's of Business Administration"
       skills: 'Professional skills'
-      skills_popover: 'What exactly are you the best at?'
+      skills_popover: 'Specific professional know-how. Do not mention personality here, those are qualities.'
       skill_1_placeholder: 'e.g. Book keeping'
       skill_2_placeholder: 'e.g. Heart surgery'
       skill_3_placeholder: 'e.g. Internal communication'
       qualities: 'Personal qualities'
-      qualities_popover: "What makes you good at the job, personality-wise?"
+      qualities_popover: "What in your personality helps you in the work place?"
       quality_1_placeholder: 'e.g. Passion'
       quality_2_placeholder: 'e.g. Autonomy'
       quality_3_placeholder: 'e.g. Honesty'
       online_presence: 'Online presence'
-      online_popover: "Companies can then dig further if they want to. Don't put anything if it's not relevant to the job though."
+      online_popover: "Companies should be able to dig further if they want to. Don't include whatever is not relevant to the job though."
       upload_cv: 'Attach your CV'
       add_social_url: 'Add your %{provider} profile'
       url: 'Website or blog'
       upload: 'Upload'
       public_profile: 'Public profile'
-      explanation_html: 'You profile is available at %{url}! Change it if you want to.'
+      explanation_html: 'You public profile looks like this: %{url}. You can change your subdomain anytime from here.'
       import_info: 'Import your information from'
       import_from: 'Import from'
       linkedin: 'LinkedIn'

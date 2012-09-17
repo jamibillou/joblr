@@ -17,7 +17,7 @@ module Authentification::Linkedin
       country:        profile.location.name.split(',').last,
       experience:     experience(profile.positions),
       last_job:       "#{profile.positions.select(&:is_current).first.title}, #{profile.positions.select(&:is_current).first.company.name}",
-      past_companies: profile.positions.map{|p| p.company.name}[1..3].to_sentence(last_word_connector: ','),
+      past_companies: profile.positions.map{|p| p.company.name}[1..3].to_sentence(last_word_connector: ', '),
       education:      ("#{profile.educations.first.degree}, #{profile.educations.first.field_of_study}" unless profile.educations.blank?),
       skill_1:        (profile.skills[0].name unless profile.skills.blank?),
       skill_2:        (profile.skills[1].name unless profile.skills.blank? || profile.skills.size < 2),

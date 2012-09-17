@@ -112,7 +112,7 @@ describe AuthentificationsController do
 
           it 'have a success alert message' do
             # find('div.alert.alert-success span').should have_content I18n.t('flash.success.provider.signed_in', provider: 'twitter')
-            find('div.alert.alert-success span').should have_content "You are now signed in with your Twitter account."
+            find('div.alert.alert-success span').should have_content "Signed in successfully through Twitter."
           end
         end
 

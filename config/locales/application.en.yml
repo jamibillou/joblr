@@ -7,11 +7,11 @@ en:
       user:
         destroyed: 'The user destroyed successfully.'
       provider:
-        signed_in: "You are now signed in with your %{provider} account."
+        signed_in: "Signed in successfully through %{provider}."
         signed_up: "You have successfully signed up with %{provider}, you can now fill in your profile."
         added:  "Your %{provider} account is now linked, you can sign in with it next time."
         imported: "Your information was imported from %{provider}, don't forget to check it and fill the blanks though."
-        removed: "Your %{provider} account was removed successfully."
+        removed: "Your %{provider} account is now unlinked."
       profile:
         created: 'You just created your profile, send it by email or share it on your networks now!'
         updated: 'Your changes were saved.'

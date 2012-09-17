@@ -12,8 +12,12 @@
 
 // Header (for the title)
 .modal-header {
-  padding: 8px 15px 6px 14px;
+  padding: 8px 15px 10px 14px;
   border-bottom: 1px solid #eee;
+  .close{
+    margin-top:0;
+    line-height:1;
+  }
 }
 
 // Footer (for actions)

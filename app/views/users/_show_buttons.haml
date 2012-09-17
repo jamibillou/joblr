@@ -40,8 +40,8 @@
   .explanation
     - if user_signed_in? && current_user == user && !subdomain?
       %h5=t 'users.show.public_profile'
-      %p=t 'users.show.explanation_html', url: link_to(user.public_url, user.public_url, target: '_new')
+      %p=t 'users.show.public_profile_explanation_html', url: link_to(user.public_url, user.public_url, target: '_new')
 
     - else
-      %h5 What’s this?
-      %p #{user.fullname.split.first} is looking for a job and wants your help. Contact him if you have a job or a tip for him. Otherwise help him out by sharing his profile!
+      %h5=t 'users.show.whats_this'
+      %p=t 'users.show.whats_this_explanation_html', fullname: user.fullname

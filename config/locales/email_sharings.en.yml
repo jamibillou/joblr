@@ -9,9 +9,8 @@ en:
       to_fullname_placeholder: 'Recipient full name'
       to_email_placeholder: 'Recipient email address'
       text_label: 'Personal message'
-      email_text: "e.g. Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."
-      social_title: "%{fullname} on joblr"
-      social_text: "e.g. Hi everyone, I'm looking for work these days and was wondering if you might know of someone interested? Share my profile if so!"
+      text_user: "e.g. Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."
+      text_other_user: "e.g. Hi, I found this profile and thought you might be interested. You should definitely get in touch if that's the case."
       send: 'Send'
       sending: 'sending...'
     create:
@@ -22,5 +21,5 @@ en:
       close_page: '%{fullname} was notified about your answer, you can now close this page.'
     already_answered:
       title: 'Already answered'
-      thank_you: "Your had already told us you are not interested in %{fullname}'s profile, but thanks anyway!"
+      thank_you: "Your had already told us that you are not interested in %{fullname}'s profile, but thanks anyway!"
       close_page: 'You can close this page.'

@@ -47,9 +47,8 @@ en:
         title: 'Change your password'
       update:
         title: 'Change your password'
-      title: 'Change your password'
       new_password: 'New password'
-      new_password_confrimation: 'New password confirmation'
+      new_password_confirmation: 'New password confirmation'
       email_me: 'Email me instructions'
       change_password: 'Change my pasword'
       sign_in: 'Is memory kicking in?'

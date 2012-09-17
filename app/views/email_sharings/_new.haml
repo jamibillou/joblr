@@ -24,7 +24,7 @@
         %small= t 'email_sharings.new.text_label'
         %span.danger-text= link_to '*', '#required'
         %br/
-        = f.text_area :text, rows: 3, placeholder: t('email_sharings.new.email_text')
+        = f.text_area :text, rows: 3, placeholder: @email_sharing_text
         %input{type: 'hidden', name: 'user_id', value: @user.id}
         .pull-right.danger-text * required fields
 
