@@ -18,15 +18,10 @@ describe BetaInviteMailer do
     end
 
     it 'should have a content' do
-      mail.body.encoded.should match(I18n.t('mailers.beta_invite.notify_team.content_html', email: beta_invite.email))
+      mail.body.encoded.should match(Regexp.new(I18n.t('mailers.beta_invite.notify_team.content_html', email: '.+')))
     end
 
-    it 'should have link to the admin page' do
-      mail.body.encoded.should match(Regexp.new(I18n.t('mailers.beta_invite.notify_team.go_to_url_html', url: '.+')))
-      mail.body.encoded.should match('http://joblr.co/admin')
-    end
-
-    it 'should have a Go now! button' do
+    it 'should have a Send invite! button' do
       mail.body.encoded.should match(I18n.t('mailers.beta_invite.notify_team.button'))
     end
   end

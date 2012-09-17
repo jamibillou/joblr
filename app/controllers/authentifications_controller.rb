@@ -68,7 +68,7 @@ class AuthentificationsController < ApplicationController
       if auth_origin.include? new_user_registration_path
         sign_in create_user_auth(User.make_username(auth_hash.info.nickname, auth_hash.info.name))
         redirect_path   = root_path
-        flash[:success] = t('flash.success.provider.signed_in', provider: humanize(auth_hash.provider))
+        flash[:success] = t('flash.success.provider.signed_up', provider: humanize(auth_hash.provider))
       else
         redirect_path = auth_origin
         flash[:error] = t('flash.error.provider.no_user', provider: humanize(auth_hash.provider))

@@ -5,34 +5,35 @@ en:
     success:
       welcome: 'Welcome to Joblr!'
       user:
-        destroyed: 'User destroyed successfully.'
+        destroyed: 'The user destroyed successfully.'
       provider:
-        signed_in: "Successfully signed in with %{provider}."
-        added:  "Your %{provider} account was added successfully."
-        imported: "Your information was imported successfully from %{provider}."
+        signed_in: "You are now signed in with your %{provider} account."
+        signed_up: "You have successfully signed up with %{provider}, you can now fill in your profile."
+        added:  "Your %{provider} account is now linked, you can sign in with it next time."
+        imported: "Your information was imported from %{provider}, don't forget to check it and fill the blanks though."
         removed: "Your %{provider} account was removed successfully."
       profile:
-        created: 'Your profile was created successfully.'
-        updated: 'Your profile was updated successfully.'
-        shared:  "Your profile was successfully sent to %{recipient_email}."
-        other_shared: "%{fullname}'s profile was successfully sent to %{recipient_email}."
-        public_shared: "%{fullname}'s profile was successfully sent to %{recipient_email}."
-      public_profile:        
+        created: 'You just created your profile, send it by email or share it on your networks now!'
+        updated: 'Your changes were saved.'
+        shared:  "Your profile was successfully sent to %{recipient_email}"
+        other_shared: "%{fullname}'s profile was successfully sent to %{recipient_email}"
+        public_shared: "%{fullname}'s profile was successfully sent to %{recipient_email}"
+      public_profile:
       beta_invite:
-        email_sent: 'The invitation email was sent successfully'
-        ok: "Great, you can now sign up to Joblr!"
+        email_sent: 'The invitation email was sent successfully.'
+        ok: "Great, you can now sign up!"
         destroyed: 'The invitation was destroyed successfully.'
     error:
       something_wrong:
         base: "Oops, something went wrong."
-        auth: "Something went wrong when trying to add your account."
+        auth: "Something went wrong when trying to link your account."
       provider:
         already_linked: "We could not add your %{provider} account because it's already linked to your profile."
         other_user: "We could not add your %{provider} account because it's already linked to another user's profile."
-        other_user_signed_up: "There already is a user matching your %{provider} account, did you rather mean to sign in?"
-        no_user: "We couldn't find any user matching your %{provider} account. Did you sign up with another service maybe?"
+        other_user_signed_up: "There already is a user matching this %{provider} account, did you mean to sign in?"
+        no_user: "There is no user matching this %{provider} profile. Make sure you are using your own account or that you did not sign up with another service."
       other_user:
-        profile: "You cannot edit another user's profile."
+        profile: "You cannot access this page."
       only:
         signed_up: "Please finish filling in your profile before accessing this page."
         signed_in: "You cannot access this page."
@@ -40,10 +41,8 @@ en:
         admin: "You cannot access this page."
       beta_invite:
         code_inexistant: "This invitation code doesn't seem to exist. Do you mind double ckecking?"
-        used: "This invitation has already been used. You can still as another one though."
+        used: "This invitation code has already been used, you can ask another one though."
         required: "You need an invitation to sign up, you can ask for one here."
-      required:
-        all: "All fields are required."
   footer:
     questions: "Questions or comments?"
     contact_us: "Contact us"

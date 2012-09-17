@@ -58,7 +58,7 @@ describe EmailSharingsController do
 
           it 'should have an error messsage' do
             xhr :post, :create, :email_sharing => @email_sharing_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
-            response.body.should == I18n.t('flash.error.required.all')
+            response.body.should == "#{I18n.t('activerecord.attributes.email_sharing.recipient_email')} #{I18n.t('activerecord.errors.messages.invalid')}."
           end
         end
 
@@ -79,7 +79,7 @@ describe EmailSharingsController do
 
           it 'should have an error messsage' do
             xhr :post, :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'user@example.com'), user_id: @author.id
-            response.body.should == I18n.t('flash.error.required.all')
+            response.body.should == "#{I18n.t('activerecord.attributes.email_sharing.recipient_fullname')} #{I18n.t('activerecord.errors.messages.blank')}."
           end
         end
 
@@ -134,7 +134,7 @@ describe EmailSharingsController do
 
           it 'should have an error messsage' do
             xhr :post, :create, :email_sharing => @email_sharing_attr.merge(recipient_fullname: 'Test Dude'), user_id: @other_user.id
-            response.body.should == I18n.t('flash.error.required.all')
+            response.body.should == "#{I18n.t('activerecord.attributes.email_sharing.recipient_email')} #{I18n.t('activerecord.errors.messages.invalid')}."
           end
         end
 
@@ -155,7 +155,7 @@ describe EmailSharingsController do
 
           it 'should have an error messsage' do
             xhr :post, :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'other_user@example.com'), user_id: @other_user.id
-            response.body.should == I18n.t('flash.error.required.all')
+            response.body.should == "#{I18n.t('activerecord.attributes.email_sharing.recipient_fullname')} #{I18n.t('activerecord.errors.messages.blank')}."
           end
         end
 
@@ -211,7 +211,7 @@ describe EmailSharingsController do
 
         it 'should have an error messsage' do
           xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_fullname: @public_user[:fullname], recipient_email: 'recipient@example.com', recipient_fullname: 'Test Dude'), user_id: @other_user.id
-          response.body.should == I18n.t('flash.error.required.all')
+          response.body.should == "#{I18n.t('activerecord.attributes.email_sharing.author_email')} #{I18n.t('activerecord.errors.messages.invalid')}."
         end
       end
 
@@ -232,7 +232,7 @@ describe EmailSharingsController do
 
         it 'should have an error messsage' do
           xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_email: @public_user[:email], recipient_email: 'recipient@example.com', recipient_fullname: 'Test Dude'), user_id: @other_user.id
-          response.body.should == I18n.t('flash.error.required.all')
+          response.body.should == "#{I18n.t('activerecord.attributes.email_sharing.author_fullname')} #{I18n.t('activerecord.errors.messages.blank')}."
         end
       end
 
@@ -253,7 +253,7 @@ describe EmailSharingsController do
 
         it 'should have an error messsage' do
           xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_fullname: @public_user[:fullname], author_email: @public_user[:email], recipient_fullname: 'Test Dude'), user_id: @other_user.id
-          response.body.should == I18n.t('flash.error.required.all')
+          response.body.should == "#{I18n.t('activerecord.attributes.email_sharing.recipient_email')} #{I18n.t('activerecord.errors.messages.invalid')}."
         end
       end
 
@@ -274,7 +274,7 @@ describe EmailSharingsController do
 
         it 'should have an error messsage' do
           xhr :post, :create, :email_sharing => @email_sharing_attr.merge(author_fullname: @public_user[:fullname], author_email: @public_user[:email], recipient_email: 'recipient@example.com'), user_id: @other_user.id
-          response.body.should == I18n.t('flash.error.required.all')
+          response.body.should == "#{I18n.t('activerecord.attributes.email_sharing.recipient_fullname')} #{I18n.t('activerecord.errors.messages.blank')}."
         end
       end
 

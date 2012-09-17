@@ -6,7 +6,7 @@ class EmailSharingsController < ApplicationController
 		@user = User.find params[:user_id]
 		@email_sharing = EmailSharing.new params[:email_sharing].merge(profile: @user.profile, author: current_user)
     unless @email_sharing.save
-      respond_to {|format| format.html { render :json => t('flash.error.required.all'), :status => :unprocessable_entity if request.xhr? }}
+      respond_to {|format| format.html { render :json => error_messages(@email_sharing), :status => :unprocessable_entity if request.xhr? }}
     else
       respond_to {|format| format.html { deliver_email_sharing } }
     end

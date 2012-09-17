@@ -84,7 +84,7 @@ describe AuthentificationsController do
           visit edit_user_path(@user)
           visit user_omniauth_authorize_path('twitter')
           # find('div.alert.alert-success span').should have_content I18n.t('flash.success.provider.added', provider: 'twitter')
-          find('div.alert.alert-success span').should have_content "Your Twitter account was added successfully."
+          find('div.alert.alert-success span').should have_content "Your Twitter account is now linked, you can sign in with it next time."
         end
       end
     end
@@ -112,7 +112,7 @@ describe AuthentificationsController do
 
           it 'have a success alert message' do
             # find('div.alert.alert-success span').should have_content I18n.t('flash.success.provider.signed_in', provider: 'twitter')
-            find('div.alert.alert-success span').should have_content "Successfully signed in with Twitter."
+            find('div.alert.alert-success span').should have_content "You are now signed in with your Twitter account."
           end
         end
 
@@ -133,7 +133,7 @@ describe AuthentificationsController do
 
           it 'have an error alert message' do
             # find('div.alert.alert-error span').should have_content I18n.t('flash.error.provider.other_user_signed_up', provider: 'twitter')
-            find('div.alert.alert-error span').should have_content "There already is a user matching your Twitter account, did you rather mean to sign in?"
+            find('div.alert.alert-error span').should have_content "There already is a user matching this Twitter account, did you mean to sign in?"
           end
         end
       end
@@ -154,7 +154,7 @@ describe AuthentificationsController do
 
           it 'have an error alert message' do
             # find('div.alert.alert-error span').should have_content I18n.t('flash.error.provider.no_user', provider: 'twitter')
-            find('div.alert.alert-error span').should have_content "We couldn't find any user matching your Twitter account. Did you sign up with another service maybe?"
+            find('div.alert.alert-error span').should have_content "There is no user matching this Twitter profile. Make sure you are using your own account or that you did not sign up with another service."
           end
         end
 
@@ -198,7 +198,7 @@ describe AuthentificationsController do
             request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
             visit user_omniauth_authorize_path('twitter')
             # find('div.alert.alert-success span').should have_content I18n.t('flash.success.provider.signed_in', provider: 'twitter')
-            find('div.alert.alert-success span').should have_content "Successfully signed in with Twitter."
+            find('div.alert.alert-success span').should have_content "You have successfully signed up with Twitter, you can now fill in your profile."
           end
         end
       end

@@ -72,7 +72,7 @@ en:
       notify_team:
         subject: "New beta invitation request!"
         title: "Somebody wants to try Joblr!"
-        content_html: "Click the big button to send an invitation code to: %{email}"
+        content_html: "Click the button below to send an invitation code to %{email}."
         content_text: "Go to %{url} to send an invitation code to %{email}."
         button: 'Send invite!'
       send_code:

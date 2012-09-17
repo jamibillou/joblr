@@ -28,11 +28,11 @@
 // ? link
 // ------
 
-.help{
+a.help{
   padding:2px 0 0 5px;
   color:inherit;
-  font-size:13px;
-  a:hover{
+  font-size:14px;
+  &:hover{
     color:inherit;
     text-decoration:none;
   }

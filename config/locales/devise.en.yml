@@ -25,7 +25,7 @@ en:
         welcome_back: 'Welcome back to Joblr'
         choose: 'How you would like to sign in?'
         social: 'Sign in with one of your existing accounts'
-        joblr: 'Or manually'
+        joblr: 'Or sign in manually'
       create:
         title: 'Sign in'
       sign_in: 'Sign in'
@@ -64,7 +64,7 @@ en:
         welcome: 'Welcome to joblr!'
         choose: 'Choose how you would like to sign up'
         social: 'Use one of your existing accounts'
-        no_worries: "Don't worry we don't post anything on your networks without your permission!"
+        no_worries: "Don't worry we won't post anything on your networks without your permission!"
         convenient: '(more convenient)'
         joblr: 'Or sign up manually'
       create:
