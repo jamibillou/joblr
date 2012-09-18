@@ -13,9 +13,9 @@ en:
     send_code:
       yes_send: 'Are you sure you want to send a beta invite code to %{email}?'
     edit:
-      title: "Welcome to the Joblr beta*"
+      title: "Welcome to the Joblr beta"
       subtitle: "Use your invitation code to get access."
-      asterisk: "* We're working hard on fixing minor bugs you might find here and there"
+      asterisk: "We're working hard on fixing minor bugs but you might still find some here and there."
       placeholder: 'Invitation code'
       button: 'Get started!'
       link: "Don't have a code yet? Get invited!"
