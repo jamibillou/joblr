@@ -3,15 +3,17 @@
 
 body{
   font-family:Helvetica, Arial, sans-serif;
-  color:#444;
   font-size:16px;
+  color:#444;
 }
 a{
-  color:#0076ca;
+  font-family:Helvetica, Arial, sans-serif;
   font-size:16px;
   font-weight:300;
+  color:#0076ca;
 }
 a span{
+  font-family:Helvetica, Arial, sans-serif;
   color:#0076ca;
 }
 img{
@@ -24,20 +26,24 @@ img{
 
 p{
   margin:0;
-  color:#444;
+  font-family:Helvetica, Arial, sans-serif;
   font-size:16px;
   font-weight:300;
+  color:#444;
 }
 .lead{
-  color:#444;
+  font-family:Helvetica, Arial, sans-serif;
   font-size:20px;
   font-weight:200;
   line-height:30px;
+  color:#444;
 }
 .graylight-text{
+  font-family:Helvetica, Arial, sans-serif;
   color:#a1a1a1;
 }
 .info-text{
+  font-family:Helvetica, Arial, sans-serif;
   color:#0076ca;
 }
 
@@ -45,39 +51,39 @@ p{
 /* HEADINGS
    -------- */
 
-h1, h2, h4{
+h1, h2{
+  color:#444;
+  font-family:Helvetica, Arial, sans-serif;
+}
+h1 span, h2 span{
   color:#444;
   font-family:Helvetica, Arial, sans-serif;
 }
 h1{
-  font-size:34px;
-  font-weight:200;
-  line-height:40px;
   margin:0;
   padding-top:5px;
   padding-bottom:10px;
-}
-h1 span{
-  color:#444;
+  font-size:34px;
+  font-weight:200;
+  line-height:40px;
 }
 h2{
   font-size:26px;
   line-height:30px;
 }
-h2 span{
-  color:#444;
-}
 h4{
   width:100%;
-  padding-bottom:4px;
+  border-bottom:1px solid #ccc;
   margin-top:0px;
   margin-bottom:13px;
-  border-bottom:1px solid #ccc;
+  padding-bottom:4px;
+  font-family:Helvetica, Arial, sans-serif;
   font-size:14px;
   font-weight:100;
   color:#ccc;
 }
 h4 span{
+  font-family:Helvetica, Arial, sans-serif;
   color:#ccc;
 }
 
@@ -100,8 +106,8 @@ h4 span{
    ------- */
 
 #message-table{
-  border:10px solid #e1e2e5;
   background-color:white;
+  border:10px solid #e1e2e5;
 }
 
 /* Fine line */
@@ -134,8 +140,8 @@ h4 span{
    ------- */
 
 #profile-table{
-  border:10px solid #e1e2e5;
   background-color:white;
+  border:10px solid #e1e2e5;
 }
 #profile-table h2{
   margin-top:5px;
@@ -155,18 +161,18 @@ h4 span{
   margin-bottom:10px;
 }
 #identity-table p.graylight-text{
+  margin-bottom:4px;
   font-weight:300;
   line-height:15px;
-  margin-bottom:4px;
 }
 
 /* Experience */
 
 #experience-table p.past-companies{
- font-size:13px;
+  font-size:13px;
 }
 #experience-table p small{
   font-size:11px;
-  color:#999;
   line-height:20px;
+  color:#999;
 }

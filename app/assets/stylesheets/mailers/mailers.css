@@ -3,15 +3,17 @@
 
 body{
   font-family:Helvetica, Arial, sans-serif;
-  color:#444;
   font-size:16px;
+  color:#444;
 }
 a{
-  color:#0076ca;
+  font-family:Helvetica, Arial, sans-serif;
   font-size:16px;
   font-weight:300;
+  color:#0076ca;
 }
 a span{
+  font-family:Helvetica, Arial, sans-serif;
   color:#0076ca;
 }
 img{
@@ -24,15 +26,18 @@ img{
 
 p{
   margin:0;
-  color:#444;
+  font-family:Helvetica, Arial, sans-serif;
   font-size:16px;
   font-weight:300;
+  color:#444;
 }
 p small{
+  font-family:Helvetica, Arial, sans-serif;
   font-size:13px;
   color:#a1a1a1;
 }
 .graylight-text{
+  font-family:Helvetica, Arial, sans-serif;
   color:#a1a1a1;
 }
 
@@ -41,13 +46,14 @@ p small{
    -------- */
 
 h2{
-  color:#444;
+  margin:0;
   font-family:Helvetica, Arial, sans-serif;
   font-size:26px;
   line-height:30px;
-  margin:0;
+  color:#444;
 }
 h2 span{
+  font-family:Helvetica, Arial, sans-serif;
   color:#444;
 }
 
@@ -70,12 +76,11 @@ h2 span{
    ------- */
 
 #message-table{
-  border:10px solid #e1e2e5;
   background-color:white;
+  border:10px solid #e1e2e5;
 }
 #message-table .code{
   font-size:13px;
-  word-wrap:break-word;
 }
 
 /* Fine line */
