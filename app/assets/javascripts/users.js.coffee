@@ -57,6 +57,9 @@ $ ->
   $('#image-modal .social.pic').each -> $(this).click -> toggleAuthImage($(this).attr('id'))
   $('#image-modal .modal-footer a.btn-primary').click -> closeImageModal()
 
+  # Social sharing links
+  # --------------------
+  $('.social-sharing-link').each -> $(this).click -> openPopup(this.href)
 
   # Social urls
   # -----------
@@ -121,3 +124,10 @@ $ ->
 # ----------------------------------------------------
 
 @stripId = (id) -> id.replace('user_', '').replace('_placeholder', '').replace('profiles_attributes_0_', '')
+
+# Open a popup containing the social sharing
+# ------------------------------------------
+
+@openPopup = (href) ->
+  window.open(href, 'mywin', 'left=200,top=200,width=680,height=360,toolbar=0,resizable=0') 
+  return false
