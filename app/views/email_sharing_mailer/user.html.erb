@@ -72,11 +72,11 @@
                                           <!-- Identity content -->
                                           <table border="0" cellpadding="0" cellspacing="0" class="identity-content">
                                             <tr>
-                                              <td align="left"  valign="top" width="70">
-                                                <img src="<%= @user.image.blank? ? 'default_user.jpg' : @user.image_url(:thumb).to_s %>" alt="profile picture" height="70" width="70" />
+                                              <td align="left"  valign="top" width="90">
+                                                <img src="<%= @user.image.blank? ? 'default_user.jpg' : @user.image_url(:thumb).to_s %>" alt="profile picture" height="90" width="90" />
                                               </td>
                                               <td align="left"  valign="top" width="20"></td>
-                                              <td align="left" valign="top" width="390">
+                                              <td align="left" valign="top" width="370">
                                                 <h2><span><%= @user.fullname %></span></h2>
                                                 <% unless @user.city.blank? && @user.country.blank? %>
                                                   <p class="graylight-text"><%= "#{@user.city}#{', ' unless @user.city.blank? || @user.country.blank?}#{@user.country}" %></p>
