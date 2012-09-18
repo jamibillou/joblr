@@ -98,7 +98,9 @@ $ ->
 @toggleSocialUrl = (id) ->
   $('#social-url-fields input').each ->
     if $(this).attr('id') is id
-      if $(this).is(':visible') then $(this).hide() else $(this).show()
+      unless $(this).is(':visible')
+        $(this).show()
+        $(this).parent().parent().show() unless $(this).parent().parent().is(':visible')
     else
       $(this).hide() if $(this).is(':visible')
 
