@@ -4,16 +4,14 @@
     - unless user_signed_in?
       .row-fluid
         .span1
-          %small= t 'email_sharings.new.from_label'
-          %span.danger-text= link_to '*', '#required'
+          %small= "#{t('email_sharings.new.from_label')}<span class='danger-text'>#{link_to '*', '#required'}</span>".html_safe
         .span5
           = f.text_field :author_fullname, placeholder: t('email_sharings.new.from_fullname_placeholder'), class: 'span5'
         .span5
           = f.email_field :author_email, placeholder: t('email_sharings.new.from_email_placeholder'), class: 'span5'
     .row-fluid
       .span1
-        %small= t 'email_sharings.new.to_label'
-        %span.danger-text= link_to '*', '#required'
+        %small= "#{t('email_sharings.new.to_label')}<span class='danger-text'>#{link_to '*', '#required'}</span>".html_safe
       .span5
         = f.text_field :recipient_fullname, placeholder: t('email_sharings.new.to_fullname_placeholder'), class: 'span5'
       .span5
@@ -21,12 +19,11 @@
     .row-fluid
       .span1
       .span10
-        %small= t 'email_sharings.new.text_label'
-        %span.danger-text= link_to '*', '#required'
+        %small= "#{t('email_sharings.new.text_label')}<span class='danger-text'>#{link_to '*', '#required'}</span>".html_safe
         %br/
         = f.text_area :text, rows: 3, placeholder: @email_sharing_text
         %input{type: 'hidden', name: 'user_id', value: @user.id}
-        .pull-right.danger-text * required fields
+        .pull-right.danger-text *required fields
 
   .modal-footer
     #loader.pull-left

@@ -123,7 +123,7 @@ h4 span{
   font-size:20px;
   font-weight:500;
   color:white;
-  text-decoration:none;
+  text-decoration:underline;
 }
 #button-left-table a span{
   color:white;

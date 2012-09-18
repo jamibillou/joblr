@@ -96,7 +96,7 @@ h2 span{
   font-size:20px;
   font-weight:500;
   color:white;
-  text-decoration:none;
+  text-decoration:underline;
 }
 #button-table a span{
   color:white;
