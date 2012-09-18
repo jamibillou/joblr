@@ -8,7 +8,7 @@ en:
         freelance: 'Looking for freelance projects!'
       experience: 'Experience'
       yrs: 'yrs'
-      last_job: 'Last or current job'
+      last_job: "Most recent or relevant job"
       past_companies: 'Also worked for:'
       education: 'Highest education'
       skills: 'Professional skills'
@@ -49,31 +49,32 @@ en:
       headline_popover: 'So potential employers know exactly what you want.'
       experience: 'Experience'
       experience_label: 'Years'
-      experience_placeholder: 'number'
+      experience_placeholder: 'number of'
       experience_popover: "Focus on the essentials, how many years of experience you have, your current or last job, and companies you've worked for before."
-      last_job: 'Last or current job'
+      last_job: "Most recent or relevant job"
       last_job_placeholder: 'e.g. Financial controller at KPMG'
       past_companies: 'Other past employers'
       past_companies_placeholder: 'e.g. Nike, Uniliver, Apple'
       education: 'Highest education'
-      education_popover: 'Your highest or most relevant education, degree, diploma or certificate.'
+      education_popover: 'Your highest or most relevant degree, diploma or certificate.'
       education_placeholder: "e.g. Master's of Business Administration"
       skills: 'Professional skills'
       skills_popover: 'Specific professional know-how. Do not mention personality here, those are qualities.'
       skill_1_placeholder: 'e.g. Book keeping'
-      skill_2_placeholder: 'e.g. Heart surgery'
+      skill_2_placeholder: 'e.g. Computer programming'
       skill_3_placeholder: 'e.g. Internal communication'
       qualities: 'Personal qualities'
       qualities_popover: "What in your personality helps you in the work place?"
       quality_1_placeholder: 'e.g. Passion'
       quality_2_placeholder: 'e.g. Autonomy'
       quality_3_placeholder: 'e.g. Honesty'
-      upload_cv: 'Attach your CV'
       url: 'Website or blog'
       social_urls: 'Social profiles'
-      social_urls_popover: "Click the icons and fill in your public url, it's saved automatically. Don't remember it? Go to your profiles on those networks."
+      social_urls_popover: "Click the icons and fill in your public url, it's saved automatically. Don't remember it? Go to your profiles on those networks first."
       add_social_url: 'Add your %{provider} profile'
+      upload_cv: 'Attach your CV'
       upload: 'Upload'
+      delete: 'Delete current CV'
       public_profile: 'Public profile'
       explanation_html: 'You public profile looks like this %{url}. You can change your subdomain anytime from here:'
       import_info: 'Import your information from'

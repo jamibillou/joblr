@@ -3,7 +3,7 @@
     .span12
       %h4=t 'users.show.more_about', fullname: "#{user.fullname}"
       - unless profile.file.blank?
-        %a.btn.btn-small.btn-danger{href: profile.file_url.to_s}
+        %a.btn.btn-small.btn-danger{href: profile.file_url.to_s, target: '_blank'}
           .icon-file
           &nbsp;
           =t 'users.show.download_cv'

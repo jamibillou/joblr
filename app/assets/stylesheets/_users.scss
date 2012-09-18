@@ -128,11 +128,13 @@ a.help{
   }
   .delete{
     font-size:11px;
-    color: $gray;
+    color: $errorBorder;
     display:inline-block;
     a{
-      color: $gray;
-      text-decoration:underline;
+      color: $errorBorder;
+      &:hover{
+        color: $errorBorder;
+      }
     }
   }
   .input-small{
