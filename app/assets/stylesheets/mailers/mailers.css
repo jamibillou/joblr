@@ -75,6 +75,7 @@ h2 span{
 }
 #message-table .code{
   font-size:13px;
+  word-wrap:break-word;
 }
 
 /* Fine line */

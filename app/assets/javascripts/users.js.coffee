@@ -120,14 +120,15 @@ $ ->
     $(counterId).removeClass('danger-text') if count < max
 
 
+# Opens a popup window
+# --------------------
+
+@openPopup = (href) ->
+  popup = window.open(href, 'popup', 'left=200, top=200, width=680, height=360, toolbar=0, resizable=0')
+  return false
+
+
 # Strips id off unecessary crap, returns the CSS class
 # ----------------------------------------------------
 
 @stripId = (id) -> id.replace('user_', '').replace('_placeholder', '').replace('profiles_attributes_0_', '')
-
-# Open a popup containing the social sharing
-# ------------------------------------------
-
-@openPopup = (href) ->
-  window.open(href, 'mywin', 'left=200,top=200,width=680,height=360,toolbar=0,resizable=0') 
-  return false
