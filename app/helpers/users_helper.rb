@@ -22,7 +22,7 @@ module UsersHelper
       when 'linkedin'
         "http://www.linkedin.com/shareArticle?mini=true&url=#{user.public_url}&title=#{t('users.show.sharings.title', fullname: user.fullname)}&summary=#{t('users.show.sharings.catchphrase')}&source=Joblr"
       when 'facebook'
-        "http://www.facebook.com/sharer.php?u=#{user.public_url}"
+        "https://www.facebook.com/dialog/feed?app_id=419105881446208&link=#{user.public_url}&redirect_uri=#{user.public_url}"
       when 'twitter'
         "http://www.twitter.com/share?url=#{user.public_url}&text=#{t('users.show.sharings.title', fullname: user.fullname).gsub(' ','+')}"
       when 'google'
