@@ -28,6 +28,7 @@ Joblr::Application.routes.draw do
   match 'landing',                to: 'pages#landing'
   match 'admin',                  to: 'pages#admin'
   match 'style_tile',             to: 'pages#style_tile'
+  match 'close',                  to: 'pages#close'
 
   # Subdomain constraints
   match '', to: 'users#show', constraints: Subdomain.new(true) || MultiLevelSubdomain.new(true)

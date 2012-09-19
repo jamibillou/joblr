@@ -13,4 +13,7 @@ class PagesController < ApplicationController
 
   def style_tile
   end
+
+  def close
+  end
 end
