@@ -22,15 +22,15 @@
           &nbsp;
           Linkedin
       %li
-        %a.social-sharing-link{href: social_sharing_url(user, 'facebook'), title: t('users.show.share_on', provider: 'Facebook') }
-          .icon-facebook
-          &nbsp;
-          Facebook
-      %li
         %a.social-sharing-link{href: social_sharing_url(user, 'twitter'), title: t('users.show.share_on', provider: 'Twitter')}
           .icon-twitter
           &nbsp;
           Twitter
+      %li
+        %a.social-sharing-link{href: social_sharing_url(user, 'facebook'), title: t('users.show.share_on', provider: 'Facebook') }
+          .icon-facebook
+          &nbsp;
+          Facebook
       %li
         %a.social-sharing-link{href: social_sharing_url(user, 'google'), title: t('users.show.share_on', provider: 'Google')}
           .icon-google-plus
@@ -38,10 +38,11 @@
           Google
 
   .explanation
-    - if user_signed_in? && current_user == user && !subdomain?
-      %h5=t 'users.show.public_profile'
-      %p=t 'users.show.public_profile_explanation_html', url: link_to(user.public_url, user.public_url, target: '_new')
-
-    - else
+    - if user_signed_in? && current_user == user && current_user.profile.email_sharings.empty?
       %h5=t 'users.show.whats_this'
-      %p=t 'users.show.whats_this_explanation_html', fullname: user.fullname
+      %p=t 'users.show.user_explanation'
+    - elsif !user_signed_in? || current_user != user
+      %h5=t 'users.show.whats_this'
+      %p=t 'users.show.public_explanation_html', fullname: user.fullname
+    %h5=t 'users.show.public_profile'
+    %p= link_to(user.public_url, user.public_url, target: '_new')
