@@ -60,11 +60,7 @@ class User < ActiveRecord::Base
   end
 
   def has_auth?(provider)
-    unless provider == :all
-      !auth(provider).nil?
-    else
-      has_auth?('linkedin') && has_auth?('twitter') && has_auth?('facebook') && has_auth?('google')
-    end
+    !auth(provider).nil?
   end
 
   def password_required?
