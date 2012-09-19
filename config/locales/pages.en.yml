@@ -14,7 +14,7 @@ en:
       benefit3_text_html: "Import your info from LinkedIn and you're done! Our signup form is very short so you can keep on looking for work."
       benefit4_title: "Ask around"
       benefit4_text: "Your network has huge potential. Share your Joblr profile to get contacts and tips!"
-      disclaimer_html: "<b>Why is it not free?</b> Joblr is entirely built around helping you save time and get feedback. It's our job to do this well and we think it's only fair to get paid for it if we do."
+      disclaimer_html: "<b>Note:</b> We are currently working on our pricing model. For the time being all beta members can enjoy Joblr for free."
     admin:
       title: 'Admin dashboard'
       title_alt: 'Admin'
