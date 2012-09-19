@@ -16,6 +16,7 @@ en:
           summary: "%{fullname} is looking for work and wants to talk to you."
           title: "%{fullname} on Joblr"
           lets_talk: "Let's talk!"
+          lets_talk_subject: "%{recipient_fullname} through Joblr"
           no_thanks: 'No, thanks'
           more_about: 'More about %{fullname}'
           experience: 'Experience'
@@ -39,6 +40,7 @@ en:
           title: "%{fullname} through Joblr"
           contact: "Contact %{user_fullname}"
           lets_talk: "Let's talk!"
+          lets_talk_subject: "%{recipient_fullname} through Joblr"
           no_thanks: 'No, thanks'
         text:
           title: "%{fullname} through Joblr"
@@ -52,6 +54,7 @@ en:
           title: "%{fullname} through Joblr"
           contact: "Contact %{user_fullname}"
           lets_talk: "Let's talk!"
+          lets_talk_subject: "%{recipient_fullname} through Joblr"
           no_thanks: 'No, thanks'
         text:
           title: "%{fullname} through Joblr"
