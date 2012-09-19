@@ -126,16 +126,9 @@ a.help{
   input.url{
     margin-bottom:15px;
   }
-  .delete{
+  .danger-text{
     font-size:11px;
-    color: $errorBorder;
     display:inline-block;
-    a{
-      color: $errorBorder;
-      &:hover{
-        color: $errorBorder;
-      }
-    }
   }
   .input-small{
     margin-right:15px;
