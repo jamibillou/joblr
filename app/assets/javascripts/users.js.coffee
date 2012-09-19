@@ -125,7 +125,7 @@ $ ->
 
 @openPopup = (href,content) ->
   if content.match(/linkedin/)
-    window.open(href, 'popup', 'left=200, top=200, width=550, height=340, toolbar=0, resizable=0, scrollbars=1')
+    window.open(href, 'popup', 'left=200, top=200, width=550, height=360, toolbar=0, resizable=0, scrollbars=1')
   else if content.match(/facebook/)
     window.open(href, 'popup', 'left=200, top=200, width=500, height=330, toolbar=0, resizable=0')
   else if content.match(/twitter/)
