@@ -16,7 +16,7 @@
         .span1.visible-phone
         .span4#joblr
           %h3= t('devise.sessions.new.joblr')
-          %br/
+          .big= t 'devise.sessions.new.if_joblr'
           .hidden-phone
             %br/
           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
