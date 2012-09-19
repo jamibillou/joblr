@@ -131,19 +131,19 @@ $heroUnitLeadColor:               $wellTextColor !default;
 
 // Form states and alerts
 // -------------------------
-$warningText:             #444 !default;
-$warningBackground:       #fdeac3 !default;
-$warningBorder:           #e4ce96 !default;
+$warningText:             $grayDark !default;
+$warningBackground:       #fff6ce !default;
+$warningBorder:           #e8d49f !default;
 
-$errorText:               $white !default;
-$errorBackground:         #f86562 !default;
-$errorBorder:             #c03d39 !default;
+$errorText:               $grayDark !default;
+$errorBackground:         #ebc0c0 !default;
+$errorBorder:             #e18c8c !default;
 
-$successText:             #008a00 !default;
+$successText:             $grayDark !default;
 $successBackground:       #caecbf !default;
 $successBorder:           #a3ce94 !default;
 
-$infoText:                #444 !default;
+$infoText:                $grayDark !default;
 $infoBackground:          #bedcff !default;
 $infoBorder:              #9dc0ea !default;
 
