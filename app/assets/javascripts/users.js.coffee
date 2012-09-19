@@ -59,7 +59,7 @@ $ ->
 
   # Social sharing links
   # --------------------
-  $('.social-sharing-link').each -> $(this).click -> openPopup(this.href)
+  $('.social-sharing-link').each -> $(this).click -> openPopup(this.href,this.innerHTML)
 
   # Social urls
   # -----------
@@ -123,8 +123,15 @@ $ ->
 # Opens a popup window
 # --------------------
 
-@openPopup = (href) ->
-  popup = window.open(href, 'popup', 'left=200, top=200, width=680, height=360, toolbar=0, resizable=0, scrollbars=1')
+@openPopup = (href,content) ->
+  if content.match(/linkedin/)
+    window.open(href, 'popup', 'left=200, top=200, width=550, height=340, toolbar=0, resizable=0, scrollbars=1')
+  else if content.match(/facebook/)
+    window.open(href, 'popup', 'left=200, top=200, width=500, height=330, toolbar=0, resizable=0')
+  else if content.match(/twitter/)
+    window.open(href, 'popup', 'left=200, top=200, width=500, height=260, toolbar=0, resizable=0, scrollbars=1')
+  else if content.match(/google/)
+    window.open(href, 'popup', 'left=200, top=200, width=850, height=500, toolbar=0, resizable=0')
   return false
 
 
