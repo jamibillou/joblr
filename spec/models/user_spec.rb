@@ -116,26 +116,8 @@ describe User do
   end
 
   describe 'has_auth? method' do
-
     it { @user.has_auth?('twitter').should be_true }
     it { @user.has_auth?('facebook').should be_false }
-
-    context ':all given as an argument' do
-
-      it 'should not be true for users having an account from each provider' do
-        @providers.each { |p| FactoryGirl.create :authentification, user: @user, provider: p }
-        @user.has_auth?(:all).should be_true
-      end
-
-      it 'should be false for users not having an account from each provider' do
-        @user.has_auth?(:all).should be_false
-      end
-
-      it 'should be false for users not having any account' do
-        @auth.destroy
-        @user.has_auth?(:all).should be_false
-      end
-    end
   end
 
   describe 'auth method' do
