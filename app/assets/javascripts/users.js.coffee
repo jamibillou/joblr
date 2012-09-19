@@ -124,7 +124,7 @@ $ ->
 # --------------------
 
 @openPopup = (href) ->
-  popup = window.open(href, 'popup', 'left=200, top=200, width=680, height=360, toolbar=0, resizable=0')
+  popup = window.open(href, 'popup', 'left=200, top=200, width=680, height=360, toolbar=0, resizable=0, scrollbars=1')
   return false
 
 

@@ -24,7 +24,7 @@ en:
       whats_this: "What's this?"
       public_whats_this: "What's this?"
       user_explanation: "Send your Joblr profile by email and share it on your networks to reach companies and spread the word!"
-      public_explanation_html: "%{fullname} is looking for work and needs your help. Get in contact if you have a job or a tip.<br />Otherwise, share this profile around!"
+      public_explanation_html: "%{fullname} is looking for work and needs your help. Get in contact if you have a job or a tip.<br /> Otherwise, share this profile around!"
       public_profile: 'Public profile:'
       send_email: 'Send by email'
       share_on: "Share on %{provider}"
