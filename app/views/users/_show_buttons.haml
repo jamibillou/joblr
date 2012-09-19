@@ -10,29 +10,29 @@
       =t 'users.show.share'
       .caret.hidden-tablet
 
-    %ul.dropdown-menu
+    %ul.dropdown-menu#share
       %li
         %a{href: '#email-sharing-modal', 'data-toggle' => 'modal', title: t('users.show.send_email')}
           .icon-envelope
           &nbsp;
           =t 'users.show.email'
       %li
-        %a.social-sharing-link{href: social_sharing_url(user, 'linkedin'), title: t('users.show.share_on', provider: 'Linkedin')}
+        %a.social{href: social_sharing_url(user, 'linkedin'), title: t('users.show.share_on', provider: 'Linkedin')}
           .icon-linkedin
           &nbsp;
           Linkedin
       %li
-        %a.social-sharing-link{href: social_sharing_url(user, 'twitter'), title: t('users.show.share_on', provider: 'Twitter')}
+        %a.social{href: social_sharing_url(user, 'twitter'), title: t('users.show.share_on', provider: 'Twitter')}
           .icon-twitter
           &nbsp;
           Twitter
       %li
-        %a.social-sharing-link{href: social_sharing_url(user, 'facebook'), title: t('users.show.share_on', provider: 'Facebook') }
+        %a.social{href: social_sharing_url(user, 'facebook'), title: t('users.show.share_on', provider: 'Facebook') }
           .icon-facebook
           &nbsp;
           Facebook
       %li
-        %a.social-sharing-link{href: social_sharing_url(user, 'google'), title: t('users.show.share_on', provider: 'Google')}
+        %a.social{href: social_sharing_url(user, 'google'), title: t('users.show.share_on', provider: 'Google')}
           .icon-google-plus
           &nbsp;
           Google
