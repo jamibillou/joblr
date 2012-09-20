@@ -14,4 +14,4 @@
       = render 'show_buttons', user: @user
       = render 'email_sharing_modal'
 
-- analytical.event('Completed their profile') if user_signed_in? && flash[:success] == t('flash.success.profile.created') && !Rails.env.test?
+= kiss_event('record', 'Completed their profile') if user_signed_in? && flash[:success] == t('flash.success.profile.created')
