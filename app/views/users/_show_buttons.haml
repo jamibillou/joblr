@@ -3,7 +3,7 @@
     %a.btn.btn-large.btn-top.btn-primary{href: edit_user_path(user)}
       =t 'users.show.edit'
   - else
-    %a.btn.btn-large.btn-primary.btn-top{href: "mailto:#{user.email}"}
+    %a.btn.btn-large.btn-primary.btn-top#contact-button{href: "mailto:#{user.email}"}
       =t 'users.show.contact'
   .btn-group
     .btn.btn-large.dropdown-toggle{"data-toggle" => 'dropdown', href:'#'}
@@ -17,22 +17,22 @@
           &nbsp;
           =t 'users.show.email'
       %li
-        %a.social{href: social_sharing_url(user, 'linkedin'), title: t('users.show.share_on', provider: 'Linkedin')}
+        %a.social#linkedin-sharing{href: social_sharing_url(user, 'linkedin'), title: t('users.show.share_on', provider: 'Linkedin')}
           .icon-linkedin
           &nbsp;
           Linkedin
       %li
-        %a.social{href: social_sharing_url(user, 'twitter'), title: t('users.show.share_on', provider: 'Twitter')}
+        %a.social#twitter-sharing{href: social_sharing_url(user, 'twitter'), title: t('users.show.share_on', provider: 'Twitter')}
           .icon-twitter
           &nbsp;
           Twitter
       %li
-        %a.social{href: social_sharing_url(user, 'facebook'), title: t('users.show.share_on', provider: 'Facebook') }
+        %a.social#facebook-sharing{href: social_sharing_url(user, 'facebook'), title: t('users.show.share_on', provider: 'Facebook') }
           .icon-facebook
           &nbsp;
           Facebook
       %li
-        %a.social{href: social_sharing_url(user, 'google'), title: t('users.show.share_on', provider: 'Google')}
+        %a.social#google-sharing{href: social_sharing_url(user, 'google'), title: t('users.show.share_on', provider: 'Google')}
           .icon-google-plus
           &nbsp;
           Google
@@ -46,3 +46,5 @@
       %p=t 'users.show.public_explanation_html', fullname: user.fullname
     %h5=t 'users.show.public_profile'
     %p= link_to(user.public_url, user.public_url, target: '_new')
+
+= kiss_event('record', 'Public user viewed profile') unless user_signed_in?

@@ -13,3 +13,5 @@
     .span2
       = render 'show_buttons', user: @user
       = render 'email_sharing_modal'
+
+= kiss_event('record', 'Completed their profile') if user_signed_in? && flash[:success] == t('flash.success.profile.created')

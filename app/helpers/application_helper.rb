@@ -56,8 +56,6 @@ module ApplicationHelper
   end
 
   def kiss_event(type, value, options = {})
-    content_tag(:script, :type => 'text/javascript') do
-      "_kmq.push([#{type}, #{value}, #{options}]);"
-    end
+    content_tag(:script, :type => 'text/javascript') { "_kmq.push([#{type}, #{value}, #{options}]);" } if Rails.env.production?
   end
 end

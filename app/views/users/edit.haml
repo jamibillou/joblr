@@ -11,3 +11,7 @@
       .span2
       .span2
         = render 'edit_buttons',    f: f
+
+- unless signed_up?(@user)
+  = kiss_event('record', 'Signed up manually')            if flash[:success] == t('devise.registrations.signed_up')
+  = kiss_event('record', 'Signed up with social account') if @user.social? && flash[:success] == t('flash.success.provider.signed_up', provider: @user.authentifications.first.provider.humanize)

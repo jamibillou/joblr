@@ -39,3 +39,5 @@
             = f.password_field :password_confirmation, class: 'span4'
             = f.submit t('devise.registrations.sign_up'), class: 'btn btn-primary'
     .pull-right.danger-text * required fields
+
+= kiss_event('record', 'Viewed sign up')
