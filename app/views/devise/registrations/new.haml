@@ -40,4 +40,4 @@
             = f.submit t('devise.registrations.sign_up'), class: 'btn btn-primary'
     .pull-right.danger-text * required fields
 
-= kiss_event('record', 'Viewed sign up')
+- analytical.event('Viewed sign up') unless Rails.env.test?

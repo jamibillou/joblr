@@ -1,0 +1,15 @@
+development:
+  google:
+    key: UA-34334309-2
+  kissmetrics:
+    key: aa890b999214fd62b54007ea0526734f8090197a
+staging:
+  google:
+    key: UA-34334309-3
+  kissmetrics:
+    key: 7fdca6cd030fad2a7f4731b9adcc338e5963e6d4
+production:
+  google:
+    key: UA-34334309-1
+  kissmetrics:
+    key: e8e98ddeeceb420cd63d5953d02ac7558550011a

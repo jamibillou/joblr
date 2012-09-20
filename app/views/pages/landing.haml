@@ -46,4 +46,4 @@
     .span12
       .alert.alert-info=t 'pages.landing.disclaimer_html'
 
-= kiss_event('record', 'Viewed landing page')
+- analytical.event('Viewed landing page') unless Rails.env.test?

@@ -15,4 +15,4 @@
       %br/
       .danger-text=t '.asterisk'
 
-= kiss_event('record', 'Viewed use your beta invite')
+- analytical.event('Viewed use your beta invite') unless Rails.env.test?

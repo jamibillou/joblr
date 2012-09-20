@@ -10,4 +10,4 @@
           %br/
         = f.submit t('.button'), class: 'btn btn-small btn-primary'
 
-= kiss_event('record', 'Viewed get a beta invite')
+- analytical.event('Viewed get a beta invite') unless Rails.env.test?

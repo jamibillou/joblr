@@ -67,7 +67,4 @@ Joblr::Application.configure do
 
   # In production, :host should be set to the actual host of your application.
   config.action_mailer.default_url_options = { :host => "www.joblr.co" }
-
-  # Google analytics gem tracker
-  GA.tracker = "UA-34334309-1"
 end

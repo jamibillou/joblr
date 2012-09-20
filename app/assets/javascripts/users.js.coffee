@@ -126,10 +126,18 @@ updateCharCounter = (id, max) ->
 # --------------------
 
 openPopup = (href, content) ->
-  if content.match(/linkedin/) then window.open(href, 'popup', 'left=200, top=200, width=550, height=360, toolbar=0, resizable=0, scrollbars=1')
-  if content.match(/facebook/) then window.open(href, 'popup', 'left=200, top=200, width=500, height=330, toolbar=0, resizable=0')
-  if content.match(/twitter/) then window.open(href, 'popup', 'left=200, top=200, width=500, height=260, toolbar=0, resizable=0, scrollbars=1')
-  if content.match(/google/) then window.open(href, 'popup', 'left=200, top=200, width=850, height=500, toolbar=0, resizable=0')
+  if content.match(/linkedin/)
+    window.open(href, 'popup', 'left=200, top=200, width=550, height=360, toolbar=0, resizable=0, scrollbars=1')
+    Analytical.event('Shared profile on LinkedIn')
+  else if content.match(/facebook/)
+    window.open(href, 'popup', 'left=200, top=200, width=500, height=330, toolbar=0, resizable=0')
+    Analytical.event('Shared profile on Facebook')
+  else if content.match(/twitter/)
+    window.open(href, 'popup', 'left=200, top=200, width=500, height=260, toolbar=0, resizable=0, scrollbars=1')
+    Analytical.event('Shared profile on Twitter')
+  else if content.match(/google/)
+    window.open(href, 'popup', 'left=200, top=200, width=850, height=500, toolbar=0, resizable=0')
+    Analytical.event('Shared profile on Google+')
   return false
 
 
