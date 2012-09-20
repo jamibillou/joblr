@@ -33,7 +33,8 @@ describe EmailSharingMailer do
 
     it "should have the user's profile information" do
       mail.body.encoded.should match(user.fullname)
-      mail.body.encoded.should match(profile.experience)
+
+      mail.body.encoded.should match("#{profile.experience} yrs")
       mail.body.encoded.should match(profile.last_job)
       mail.body.encoded.should match(profile.past_companies)
       mail.body.encoded.should match(profile.education)
@@ -91,7 +92,7 @@ describe EmailSharingMailer do
 
     it "should have the user's profile information" do
       mail.body.encoded.should match(user.fullname)
-      mail.body.encoded.should match(profile.experience)
+      mail.body.encoded.should match("#{profile.experience} yrs")
       mail.body.encoded.should match(profile.last_job)
       mail.body.encoded.should match(profile.past_companies)
       mail.body.encoded.should match(profile.education)
@@ -148,7 +149,7 @@ describe EmailSharingMailer do
 
     it "should have the user's profile information" do
       mail.body.encoded.should match(user.fullname)
-      mail.body.encoded.should match(profile.experience)
+      mail.body.encoded.should match("#{profile.experience} yrs")
       mail.body.encoded.should match(profile.last_job)
       mail.body.encoded.should match(profile.past_companies)
       mail.body.encoded.should match(profile.education)

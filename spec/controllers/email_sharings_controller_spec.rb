@@ -10,7 +10,7 @@ describe EmailSharingsController do
     @other_profile = FactoryGirl.create :profile, user: @other_user
     @public_user   = { fullname: 'Public User', email: 'public_user@example.com' }
     @profile_attr  = { headline: 'fulltime',
-                      experience: '5 yrs',
+                      experience: 5,
                       last_job: 'Financial director',
                       past_companies: 'Cathay Pacific, Bank of China',
                       education: 'Master of Business Administration',

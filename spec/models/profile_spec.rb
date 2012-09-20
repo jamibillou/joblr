@@ -7,7 +7,7 @@ describe Profile do
     @profile       = FactoryGirl.create :profile, user: @user
     @email_sharing = FactoryGirl.create :email_sharing, author: @user, profile: @profile
     @attr = { headline: 'fulltime',
-              experience: '5 yrs',
+              experience: 5,
               last_job: 'Financial director',
               past_companies: 'Cathay Pacific, Bank of China',
               education: 'Master of Business Administration',
@@ -67,7 +67,6 @@ describe Profile do
     it { should validate_presence_of :education }
     it { should validate_presence_of :text }
     it { should ensure_length_of(:headline).is_at_most 100 }
-    it { should ensure_length_of(:experience).is_at_most 100 }
     it { should ensure_length_of(:education).is_at_most 100 }
     it { should ensure_length_of(:text).is_at_most 140 }
     it { should ensure_length_of(:last_job).is_at_most 100 }
@@ -78,6 +77,7 @@ describe Profile do
     it { should ensure_length_of(:quality_1).is_at_most 50 }
     it { should ensure_length_of(:quality_2).is_at_most 50 }
     it { should ensure_length_of(:quality_3).is_at_most 50 }
+    it { should validate_numericality_of(:experience).only_integer }
     it { should validate_format_of(:headline).not_with(@headline[:invalid][rand(@headline[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.headline_format')) }
     it { should validate_format_of(:headline).with @headline[:valid][rand(@headline[:valid].size)] }
     %w(skill_1_level skill_2_level skill_3_level).each {|skill_level| it { should validate_format_of(skill_level.to_sym).not_with(@level[:invalid][rand(@level[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.level_format')) }}
