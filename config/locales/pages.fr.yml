@@ -1,0 +1,22 @@
+fr:
+  pages:
+    landing:
+      title: "Rendez votre recherche d'emploi efficace"
+      title_alt: 'Accueil'
+      catchphrase: "Les lettres de motivation et les cv vous épuisent ?"
+      saves: "Joblr rend votre recherche d'emploi efficace."
+      join: 'Souscrire à la beta !'
+      benefit1_title: "Aller à l'essentiel"
+      benefit1_text: "Les recruteurs consacrent peu de temps à votre cv, et doivent accéder à l'information en moins de 5 secondes. Joblr se concentre sur ce point."
+      benefit2_title: "Envoyez, et recevez"
+      benefit2_text: "Chaque minute compte. Joblr vous aide à entrer en contact et avoir des retours rapidement."
+      benefit3_title: "Inscription sans effort"
+      benefit3_text_html: "Importez vos données de Linkedin et c'est parti ! L'inscription est courte et vous accédez à votre profil en un clin d'oeil."
+      benefit4_title: "Faites parler de vous"
+      benefit4_text: "Votre réseau a un pouvoir sous-estimé. Partagez votre profil Joblr avec votre entourage et récupérez contacts et conseils !"
+      disclaimer_html: "<b>Note : </b> nous travaillons actuellement sur notre plan de paiement. Durant cette période, la version beta de Joblr est entièrement gratuite."
+    admin:
+      title: 'Tableau de bord admin'
+      title_alt: 'Admin'
+    style_tile:
+      title: 'Style tile'

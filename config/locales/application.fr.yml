@@ -1,0 +1,60 @@
+fr:
+  ok: 'OK'
+  cancel: 'Annuler'
+  flash:
+    success:
+      welcome: 'Bienvenue sur Joblr !'
+      user:
+        destroyed: "L'utilisateur a été correctement supprimé."
+      provider:
+        signed_in: "Authentifié avec %{provider} !"
+        signed_up: "Vous vous êtes inscrit avec votre compte %{provider}, vous pouvez désormais remplir votre profil."
+        added:  "Votre compte %{provider} est désormais lié, vous pouvez l'utiliser pour vous connecter."
+        imported: "Vos informations ont été importées depuis %{provider}, pensez-bien à tout vérifier et remplir les champs vides."
+        removed: "Le lien avec votre compte %{provider} a bien été supprimé."
+      profile:
+        created: 'Votre profil est crée, envoyez-le par email et partagez-le sur vos réseaux dès maintenant !'
+        updated: 'Changements sauvegardés.'
+        shared:  "Votre profil a bien été envoyé à %{recipient_email}"
+        other_shared: "Le profil de %{fullname} a bien été envoyé à %{recipient_email}"
+        public_shared: "Le profil de %{fullname} a bien été envoyé à %{recipient_email}"
+      public_profile:
+      beta_invite:
+        email_sent: "L'invitation a bien été envoyée."
+        ok: "Super, vous pouvez à présent vous inscrire !"
+        destroyed: "L'invitation a bien été supprimée."
+    error:
+      something_wrong:
+        base: "Oups, quelque chose ne s'est pas passé comme prévu."
+        auth: "Un problème est apparu lors du lien avec votre compte."
+      provider:
+        already_linked: "Impossible de lier votre compte %{provider} car il est déjà lié à votre profil."
+        other_user: "Impossible de lier votre compte %{provider} car il est déjà lié au profil d'un autre utilisateur."
+        other_user_signed_up: "Un utilisateur est déjà connecté avec ce compte %{provider}, vouliez-vous vous connecter ?"
+        no_user: "There is no user matching this %{provider} profile. Make sure you are using your own account or that you did not sign up with another service."
+      other_user:
+        profile: "Accès interdit."
+      only:
+        signed_up: "Merci de compléter votre profil avant d'accéder à cette page."
+        signed_in: "Accès interdit."
+        public: "Accès interdit."
+        admin: "Accès interdit."
+      beta_invite:
+        code_inexistant: "Ce code d'invitation n'existe pas. N'êtes-vous pas déjà inscrit ?"
+        used: "Ce code d'invitation a déjà été utilisé, vous pouvez en redemander un."
+        required: "Il vous faut une invitation pour vous inscrire, vous pouvez en demander une ici."
+  footer:
+    questions: "Questions ou commentaires ?"
+    contact_us: "Contactez-nous"
+  errors:
+    error_404:
+      title: "Le page demandée n'existe pas (404)"
+      content: "Il est possible que la page ait changé de location ou que vous ayez saisi une mauvais adresse."
+    error_422:
+      title: "La page demandée a été rejetée (422)"
+      content: "Il est possible que vous ayez tenté de modifier quelque chose dont vous n'avez pas accès."
+    error_500:
+      title: "Désolé, une erreur est survenue (500)"
+      content: "Nous avons été informé et allons résoudre ce problème au plus vite."
+    email_us_html: "Contactez-nous sur %{email_link} si cela arrive de nouveau."
+    routing: 'Pas de route correspondant à [GET] "%{path}"'

@@ -1,0 +1,94 @@
+fr:
+  users:
+    show:
+      headline:
+        fulltime: "A la recherche d'un emploi à temps plein !"
+        partime: "A la recherche d'un emploi à temps partiel !"
+        internship: "A la recherche d'un stage !"
+        freelance: "A la recherche de projets freelance !"
+      experience: 'Expérience'
+      yrs: 'ans'
+      last_job: "Poste actuel ou le plus récent"
+      past_companies: 'A également travaillé pour :'
+      education: 'Diplôme majeur'
+      skills: 'Compétences professionnelles'
+      qualities: 'Qualités personnelles'
+      more_about: 'Plus sur %{fullname}'
+      download_cv: 'CV'
+      view_social: "Consulter la page %{provider} de %{fullname}"
+      site: 'www'
+      email: 'Email'
+      edit: 'Editer'
+      contact: 'Contacter'
+      share: 'Partager'
+      whats_this: "En quoi cela consiste ?"
+      public_whats_this: "En quoi cela consiste ?"
+      user_explanation: "Envoyez votre profil Joblr par email et diffusez-le sur vos réseaux afin d'attirer l'attention des entreprises !"
+      public_explanation_html: "%{fullname} est à la recherche d'un emploi et a besoin d'un coup de pouce. Contactez-le si vous avez un poste pour lui ou un contact.<br />Sinon, diffusez son profil !"
+      public_profile: 'Profil public :'
+      send_email: 'Envoyer par email'
+      share_on: "Partager sur %{provider}"
+      sharings:
+        catchphrase: "Rendez votre recherche d'emploi efficace"
+        title: "%{fullname} sur Joblr"
+    index:
+      title: 'Utilisateurs'
+    edit:
+      title: 'Editer votre profil'
+      title_alt: 'Créer votre profil'
+      text: "Description personnelle"
+      text_placeholder: "ex : designer internet. Prêt à vous faire rêver."
+      text_popover: "Soyez simple et accrocheur. Parlez de vos qualités, de votre rapport au travail, ce que vous recherchez, etc."
+      fullname: "Nom complet"
+      fullname_placeholder: 'Nom complet'
+      location_label: 'Situation géographique'
+      city: 'Ville'
+      city_placeholder: 'Ville'
+      country: 'Pays'
+      country_placeholder: 'Pays'
+      headline: 'Statut'
+      headline_popover: 'Afin que les recruteurs sachent ce que vous recherchez.'
+      experience: 'Expérience'
+      experience_label: 'Années'
+      experience_placeholder: "nombre d'"
+      experience_popover: "Focus on the essentials, how many years of experience you have, your current or last job, and companies you've worked for before."
+      last_job: "Poste actuel ou le plus récent"
+      last_job_placeholder: 'ex : comptable à Renault'
+      past_companies: "Anciens employeurs"
+      past_companies_placeholder: 'ex : Nike, Unilever, Apple'
+      education: "Diplôme majeur"
+      education_popover: 'Votre diplôme ou certificat le plus important.'
+      education_placeholder: "ex : BTS en Réseaux et Télécommunications."
+      skills: 'Compétences professionnelles'
+      skills_popover: 'Savoir-faire professionnel. Ne mentionnez pas votre personnalité, elles sont décrites un peu plus bas.'
+      skill_1_placeholder: 'ex : dactylographie'
+      skill_2_placeholder: 'ex : ressources humaines'
+      skill_3_placeholder: 'ex : physique quantique'
+      qualities: 'Qualités personnelles'
+      qualities_popover: "Les traits de votre personnalité qui vous aide dans votre vie professionnelle."
+      quality_1_placeholder: 'ex : Passionné'
+      quality_2_placeholder: 'ex : Autonomie'
+      quality_3_placeholder: 'ex : Honnêteté'
+      url: "Site internet ou blog"
+      social_urls: 'Profils sociaux'
+      social_urls_popover: "Cliquez sur les icônes et saisissez votre url publique. Si vous ne la connaissez pas, faites un tour sur votre page auparavant."
+      add_social_url: 'Ajouter votre profil %{provider}'
+      upload_cv: 'Attacher votre CV'
+      upload: 'Uploader'
+      delete: 'Supprimer le CV actuel'
+      public_profile: 'Profil public'
+      explanation_html: 'Votre profil public ressemble à : %{url}. Vous pouvez changer votre sous-domaine ici:'
+      import_info: 'Importer vos infos de'
+      import_from: 'Importer de'
+      linkedin: 'LinkedIn'
+      save: 'Enregistrer'
+    update:
+      title: 'Editer votre profil'
+      title_alt: 'Créer votre profil'
+    image_modal:
+      select_or_upload: 'Choisissez ou uploadez une image !'
+      upload: 'Uploader une image !'
+      delete: 'supprimer'
+      current_pic: 'Image actuelle'
+    destroy:
+      yes_delete: 'Supprimer cet utilisateur ?'

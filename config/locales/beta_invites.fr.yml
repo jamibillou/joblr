@@ -1,0 +1,23 @@
+fr:
+  beta_invites:
+    index:
+      title: 'Invitations à la beta'
+    new:
+      title: "Optenez votre invitation Joblr !"
+      subtitle_html: "Nous sommes toujours en beta privée. Saisissez votre adresse email and nous vous inviterons dès que possible."
+      placeholder: 'Adresse email'
+      button: 'Rejoignez-nous !'
+    thank_you:
+      title: 'Merci !'
+      subtitle_html: "Merci de votre intérêt pour Joblr.<br />Nous invitons régulièrement de nouveaux utilisateurs, surveillez donc votre boîte mail !"
+    send_code:
+      yes_send: 'Envoyer un code à %{email}?'
+    edit:
+      title: "Bienvenue à la beta Joblr"
+      subtitle: "Utilisez votre code d'invitation pour accéder à l'application."
+      asterisk: "Nous faisons notre possible pour réduire au maximum les petites anomalies, mais il est possible que vous en constatiez quelques unes."
+      placeholder: "Code d'invitation"
+      button: "C'est parti !"
+      link: "Vous n'avez pas encore de code ? Demandez-en un !"
+    destroy:
+      yes_delete: 'Supprimer cette invitation ?'
