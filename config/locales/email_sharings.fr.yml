@@ -1,0 +1,25 @@
+fr:
+  email_sharings:
+    new:
+      title: 'Envoyer ce profil par email'
+      from_label: 'De'
+      from_fullname_placeholder: 'Votre nom complet'
+      from_email_placeholder: 'Votre adresse email'
+      to_label: 'A'
+      to_fullname_placeholder: 'Nom complet du destinataire'
+      to_email_placeholder: 'Adresse email du destinataire'
+      text_label: 'Message personnel'
+      text_user: "ex : Bonjour, j'adorerais travailler pour votre entreprise et aimerais partager mon enthousiasme lors d'un entretien."
+      text_other_user: "ex : Salut, j'ai trouvé ce profil et je pense qu'il pourrait t'intéresser. Essaie de contacter cette personne si j'ai vu juste."
+      send: 'Envoyer'
+      sending: 'envoi en cours...'
+    create:
+      title: 'Envoi de profil par email'
+    decline:
+      title: 'Merci pour votre réponse'
+      thank_you: 'Merci pour votre réponse'
+      close_page: '%{fullname} a été informé de votre réponse, vous pouvez désormais fermer cette page.'
+    already_answered:
+      title: 'Réponse déjà envoyée'
+      thank_you: "Vous avez déjà décliné le profil de %{fullname}, mais merci encore !"
+      close_page: 'Vous pouvez fermer cette page.'
