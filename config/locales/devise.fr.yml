@@ -1,0 +1,93 @@
+fr:
+  errors:
+    messages:
+      expired: "a expiré, merci de vous reconnecter"
+      not_found: "introuvable"
+  devise:
+    failure:
+      already_authenticated: 'Vous êtes déjà connecté.'
+      unauthenticated: 'Merci de vous inscrire ou connecter avant de poursuivre.'
+      invalid: "Not d'utilisateur ou mot de passe invalide."
+      invalid_token: "Clé d'authentification invalide."
+      timeout: 'Votre session a expiré, merci de vous reconnecter.'
+    sessions:
+      new:
+        title: "Connexion"
+        welcome_back: 'De retour sur Joblr'
+        choose: "Quel type de connexion ?"
+        social: "Connectez-vous à l'aide d'un de vos réseaux sociaux"
+        joblr: "Ou connectez-vous manuellement"
+        if_joblr: '(si vous possédez un compte Joblr)'
+      create:
+        title: "Connexion"
+      sign_in: "Connexion"
+      social_signin: "Se connecter à l'aide d'un réseau social"
+      joblr_signin: 'Ou se connecter avec mes identifiants Joblr'
+      username: "Nom d'utilisateur"
+      password: "Mot de passe"
+      remember_me: 'Se souvenir de moi'
+      signed_in: 'Connecté avec succès.'
+      signed_out: 'Vous avez bien été déconnecté.'
+      logout: 'Se déconnecter'
+      problem: "Problème lors de la connexion"
+    passwords:
+      new:
+        title: 'Mot de passé oublié ?'
+      create:
+        title: 'Mot de passé oublié ?'
+      edit:
+        title: 'Changer votre mot de passe'
+      update:
+        title: 'Changer votre mot de passe'
+      new_password: 'Nouveau mot de passe'
+      new_password_confirmation: 'Confirmation du mot de passe'
+      email_me: "M'envoyer les instructions par email"
+      change_password: 'Changer mon mot de passse'
+      sign_in: 'Un trou de mémoire ?'
+      send_instructions: "Vous allez recevoir d'ici quelques minutes un email avec les instructions pour réinitialiser votre mot de passe."
+      updated: 'Votre mot de passe a bien été modifié. Vous êtes désormais connecté.'
+      updated_not_active: 'Votre mot de passe a bien été modifié.'
+      send_paranoid_instructions: "Si votre adresse email existe dans notre base de données, vous allez recevrez un email avec un lien permettant de récupérer votre mot de passe."
+      no_token: "Cette page n'est accessible qu'à partir d'un email permettant la réinitialisation de mot de passe."
+    registrations:
+      new:
+        title: "S'inscrire !"
+        welcome: 'Bienvenue sur Joblr !'
+        choose: "Choisissez votre méthode d'inscription"
+        social: "Utilisez un de vos comptes existants"
+        no_worries: "Pas d'inquiétude, nous ne publierons rien sur vos comptes sans votre autorisation !"
+        convenient: '(plus facile)'
+        joblr: 'Ou connectez-vous manuellement'
+      create:
+        title: "S'inscrire !"
+      edit:
+        title: 'Paramètres'
+        subtitle: 'Changez vos informations et liez vos comptes sociaux'
+        details: 'Informations personnelles'
+        add_accounts: "Lier vos comptes sociaux"
+        easy_signin: "(pour une connexion plus facile)"
+      update:
+        title: 'Paramètres'
+      account: 'Comptes'
+      account_settings: 'Paramètres'
+      already_member: 'Déjà membre ?'
+      fullname: 'Nom complet'
+      username: "Nom d'utilisateur"
+      email: 'Adresse email'
+      password: 'Mot de passe'
+      password_confirmation: 'Confirmer votre mot de passe'
+      sign_in: "S'identifier"
+      sign_up: "S'inscrire"
+      forgot_password: 'Mot de passe oublié ?'
+      signed_up: 'Bienvenue sur Joblr !'
+      updated: 'Votre compte a bien été mis à jour.'
+      destroyed: 'Votre compte a bien été supprimé. Nous espérons vous revoir très vite !'
+      unhappy: 'Mécontent ?'
+      cancel_account: 'Supprimer votre compte'
+      yes_cancel: "Etes-vous sûr de vouloir supprimer votre compte ?"
+      didnt_mean_to: "Ne vouliez-vous pas vous inscrire plutôt ?"
+      update: 'Modifier'
+    omniauth:
+      add_account: 'Lié votre compte %{provider}'
+      remove_account: 'Supprimer le lien avec votre compte %{provider}'
+      remove_account_ask: 'Supprimer le lien avec votre compte %{provider} ?'
