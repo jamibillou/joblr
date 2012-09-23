@@ -110,7 +110,7 @@ describe EmailSharingsController do
 
           it "should have a flash message" do
             xhr :post, :create, :email_sharing => @email_sharing_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-            flash[:success].should == I18n.t('flash.success.profile.shared', recipient_email: 'user@example.com')
+            flash[:success].should == I18n.t('flash.success.profile.shared.user', recipient_email: 'user@example.com')
           end
         end
       end
@@ -186,7 +186,7 @@ describe EmailSharingsController do
 
           it "should have a flash message" do
             xhr :post, :create, :email_sharing => @email_sharing_attr.merge(profile: @other_profile, recipient_email: 'other_user@example.com', recipient_fullname: 'Test Dude'), user_id: @other_user.id
-            flash[:success].should == I18n.t('flash.success.profile.other_shared', recipient_email: 'other_user@example.com', fullname: @other_user.fullname)
+            flash[:success].should == I18n.t('flash.success.profile.shared.other_user', recipient_email: 'other_user@example.com', fullname: @other_user.fullname)
           end
         end
       end
@@ -305,7 +305,7 @@ describe EmailSharingsController do
 
         it "should have a flash message" do
           xhr :post, :create, :email_sharing => @email_sharing_attr.merge(profile: @other_profile, author_email: @public_user[:email], author_fullname: @public_user[:fullname], recipient_email: 'recipient@example.com', recipient_fullname: 'Test Dude'), user_id: @other_user.id
-          flash[:success].should == I18n.t('flash.success.profile.public_shared', recipient_email: 'recipient@example.com', fullname: @other_user.fullname)
+          flash[:success].should == I18n.t('flash.success.profile.shared.public_user', recipient_email: 'recipient@example.com', fullname: @other_user.fullname)
         end
       end
     end

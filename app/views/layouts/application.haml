@@ -12,7 +12,10 @@
     = csrf_meta_tags
     - if Rails.env.production?
       = analytics_init
-      = kiss_init
+      - if request.subdomain.include? 'staging'
+        = kiss_init :staging
+      - else
+        = kiss_init :production
 
   %body
     %header.navbar.navbar-fixed-top

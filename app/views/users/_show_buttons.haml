@@ -46,5 +46,3 @@
       %p=t 'users.show.public_explanation_html', fullname: user.fullname
     %h5=t 'users.show.public_profile'
     %p= link_to(user.public_url, user.public_url, target: '_new')
-
-= kiss_event('record', 'Public user viewed profile') unless user_signed_in?

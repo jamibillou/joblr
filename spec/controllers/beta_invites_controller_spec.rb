@@ -299,7 +299,7 @@ describe BetaInvitesController do
       it 'should redirect to sign_up' do
         put :update, id: @beta_invite, beta_invite: {code: @beta_invite.code}
         response.should redirect_to(new_user_registration_path)
-        flash[:success].should == I18n.t('flash.success.beta_invite.ok')
+        flash[:success].should == I18n.t('flash.success.beta_invite.used')
       end
     end
   end

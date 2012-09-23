@@ -7,7 +7,7 @@ en:
       user:
         destroyed: 'The user destroyed successfully.'
       provider:
-        signed_in: "Signed in successfully through %{provider}."
+        signed_in: "Signed in successfully with %{provider}."
         signed_up: "You have successfully signed up with %{provider}, you can now fill in your profile."
         added:  "Your %{provider} account is now linked, you can sign in with it next time."
         imported: "Your information was imported from %{provider}, don't forget to check it and fill the blanks though."
@@ -15,13 +15,14 @@ en:
       profile:
         created: 'You just created your profile, send it by email or share it on your networks now!'
         updated: 'Your changes were saved.'
-        shared:  "Your profile was successfully sent to %{recipient_email}"
-        other_shared: "%{fullname}'s profile was successfully sent to %{recipient_email}"
-        public_shared: "%{fullname}'s profile was successfully sent to %{recipient_email}"
+        shared:
+          user: "Your profile was successfully sent to %{recipient_email}"
+          other_user: "%{fullname}'s profile was successfully sent to %{recipient_email}"
+          public_user: "%{fullname}'s profile was successfully sent to %{recipient_email}"
       public_profile:
       beta_invite:
         email_sent: 'The invitation email was sent successfully.'
-        ok: "Great, you can now sign up!"
+        used: "Great, you can now sign up!"
         destroyed: 'The invitation was destroyed successfully.'
     error:
       something_wrong:

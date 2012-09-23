@@ -36,7 +36,7 @@ class BetaInvitesController < ApplicationController
     if @beta_invite = BetaInvite.find_by_id_and_code(params[:id], params[:beta_invite][:code])
       if !@beta_invite.used?
         session[:beta_invite] = @beta_invite
-        redirect_to new_user_registration_path, flash: {success: t('flash.success.beta_invite.ok')}
+        redirect_to new_user_registration_path, flash: {success: t('flash.success.beta_invite.used')}
       else
         redirect_to new_beta_invite_path, flash: {error: t('flash.error.beta_invite.used')}
       end
