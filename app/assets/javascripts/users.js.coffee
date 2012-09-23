@@ -36,14 +36,8 @@ $ ->
 
   # Character counter
   # -----------------
-  #
-  # TO DO
-  # make @ reusable everywhere (1 single function that calls those 2 lines
-  # and also adds the character counter in the html (after <small> or <label>)
-  #
-  $('#text_placeholder').ready -> updateCharCounter('text_placeholder', 140)
-  $('#text_placeholder').keyup -> updateCharCounter($(@).attr('id'), 140)
 
+  $('#text_placeholder').each -> prepareCharCounter(@)
 
   # Popovers
   # --------
@@ -109,6 +103,12 @@ toggleSocialUrl = (id) ->
     else
       $(@).hide() if $(@).is(':visible')
 
+# Call the char counter update function for textarea events
+# ---------------------------------------------------------
+
+prepareCharCounter = (textarea) ->
+  $('#text_placeholder').ready -> updateCharCounter('text_placeholder', $('#text-char-counter').html().split('/')[1])
+  $('#text_placeholder').keyup -> updateCharCounter($(textarea).attr('id'), $('#text-char-counter').html().split('/')[1])
 
 # Checks what's in the given textarea and updates the corresponding character counter
 # ----------------------------------------------------------------------------------
