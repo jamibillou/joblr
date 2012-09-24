@@ -3,6 +3,13 @@
     .icon-bar
     .icon-bar
     .icon-bar
+%ul.nav    
+  %li.dropdown
+    %a.dropdown-toggle{src: '#', 'data-toggle' => 'dropdown'}
+      = I18n.locale
+      .caret
+    %ul.dropdown-menu
+      = render 'layouts/languages'
 
 = link_to image_tag('base/logo.png', alt: 'Joblr'), root_path, class: 'brand'
 
