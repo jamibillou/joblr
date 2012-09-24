@@ -28,7 +28,7 @@ end
 
 group :assets do
   gem 'sass-rails'
-  gem 'bootstrap-sass'
+  gem 'bootstrap-sass', '2.0.4.1'
   gem 'font-awesome-sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'

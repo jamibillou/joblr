@@ -289,7 +289,7 @@ DEPENDENCIES
   annotate (= 2.4.1.beta1)
   autotest
   autotest-growl
-  bootstrap-sass
+  bootstrap-sass (= 2.0.4.1)
   capybara
   capybara-webkit
   carrierwave!
