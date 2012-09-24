@@ -11,8 +11,8 @@ $ ->
   # Field with errors
   # -----------------
 
-  if $('.field_with_errors #hidden-text').html() isnt undefined
-    addFieldWithErrors('text-container')
+  addFieldWithErrors('#text-container') if $('.field_with_errors #hidden-text').html() isnt undefined
+
 
   # URLs
   # ----
@@ -32,6 +32,7 @@ $ ->
   $('#google-url-field').focus -> $(@).val('http://profiles.google.com/') unless $(@).val() isnt ''
   $('#google-url-field').blur -> $(@).val('') if $(@).val() is 'http://profiles.google.com/'
 
+
   # Popovers
   # --------
 
@@ -45,9 +46,9 @@ $ ->
   $('#image-modal .modal-footer a.btn-primary').click -> closeImageModal()
 
 
-  # Social sharing popup
-  # --------------------
-  $('ul.dropdown-menu#share .social').each -> $(@).click -> openPopup(@href, @innerHTML)
+  # Social sharing popups
+  # ---------------------
+  $('ul.dropdown-menu#share .social').each -> $(@).click -> openSocialSharingPopup(@href, @innerHTML)
 
 
   # Social urls
@@ -61,9 +62,7 @@ $ ->
 # Adds <div class='field_with_errors'> around what's in the given div
 # -------------------------------------------------------------------
 
-addFieldWithErrors = (id) ->
-  field = $('#'+id).html()
-  $('#'+id).html("<div class='field_with_errors'>#{field}</div>")
+addFieldWithErrors = (id) -> $(id).html("<div class='field_with_errors'>#{$(id).html()}</div>")
 
 
 # Selects the clicked pic, unselects others, fills #remote_image_url appropriately and replaces profile pic
@@ -79,13 +78,16 @@ toggleAuthImage = (id) ->
   $('#user_remove_image').attr('checked', false) if $('#user_remove_image').is(':checked')
 
 
-# Replaces the profile pic (back to default) if "delete" was checked and closes the modal
-# ---------------------------------------------------------------------------------------
+# Replaces the profile pic with default_user.jpg if "delete" was checked, closes the modal then
+# ---------------------------------------------------------------------------------------------
 
 closeImageModal = ->
   $('#profile-picture').attr('src', '../../assets/default_user.jpg') if $('#user_remove_image').is(':checked')
   $('#image-modal').modal('hide')
 
+
+# Reveals the given social-url field and hides the others
+# -------------------------------------------------------
 
 toggleSocialUrl = (id) ->
   $('#social-url-fields input').each ->
@@ -97,10 +99,10 @@ toggleSocialUrl = (id) ->
       $(@).hide() if $(@).is(':visible')
 
 
-# Opens a popup window
-# --------------------
+# Opens a social sharing popup window
+# -----------------------------------
 
-openPopup = (href, content) ->
+openSocialSharingPopup = (href, content) ->
   if content.match(/linkedin/) then window.open(href, 'popup', 'left=200, top=200, width=550, height=360, toolbar=0, resizable=0, scrollbars=1')
   if content.match(/facebook/) then window.open(href, 'popup', 'left=200, top=200, width=500, height=330, toolbar=0, resizable=0')
   if content.match(/twitter/) then window.open(href, 'popup', 'left=200, top=200, width=500, height=260, toolbar=0, resizable=0, scrollbars=1')
