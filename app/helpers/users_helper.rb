@@ -42,8 +42,4 @@ module UsersHelper
         "http://profiles.google.com/username"
     end
   end
-
-  def char_counter_for(object,attribute)
-    "<small class='text-char-counter pull-right'>0/#{object.class.validators_on(attribute)[0].options[:maximum]}</small>".html_safe
-  end
 end

@@ -20,7 +20,7 @@
       .span1
       .span10
         %small= "#{t('email_sharings.new.text_label')}<span class='danger-text'>#{link_to '*', '#required'}</span>".html_safe
-        = char_counter_for(@email_sharing,:text)
+        = char_counter_for @email_sharing, :text, class: 'pull-right'
         = f.text_area :text, rows: 3, placeholder: @email_sharing_text
         %input{type: 'hidden', name: 'user_id', value: @user.id}
         .pull-right.danger-text *required fields
