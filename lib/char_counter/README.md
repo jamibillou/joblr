@@ -12,7 +12,7 @@ gem 'char_counter', :git => 'https://github.com/dmatheron/char_counter.git'
 
 ## What it does and doesn't
 
-It can only be used by passing a ruby class and attribute as arguments, the maximum is based on the attribute's length validation.
+It can only be used by passing an object and an attribute as arguments, the maximum is based on the attribute's length validation in the model.
 
 * It doesn't take minimum length into consideration.
 * It cannot be used without an object and attribute.
@@ -40,13 +40,13 @@ In your application's javascripts, at the bottom of application.js, add:
 In your views, add a counter by calling the char_counter_for helper next to your textareas:
 
 ```erb
-<%= char_counter_for(Class, attribute) %>
+<%= char_counter_for(object, attribute) %>
 ```
 
 Your can style your counter by passing a CSS class in the options hash:
 
 ```erb
-<%= char_counter_for(Class, attribute, :class => 'your_css_class') %>
+<%= char_counter_for(object, attribute, :class => 'your_css_class') %>
 ```
 
 Make sure that your textarea and counter are in the same parent HTML tag and that they are no wrapped into any toher tag such as span, p, div, etc. **It will not work if you ignore this.**
