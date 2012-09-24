@@ -4,7 +4,7 @@ $ ->
   # ----------------------------------------------------------------
 
   $('.char-counter').each ->
-    textarea = $(@).next('textarea')
+    textarea = $(@).parent().find('textarea')
     counter = @
     textarea.ready -> updateCount(textarea, counter)
     textarea.keyup -> updateCount(textarea, counter)
