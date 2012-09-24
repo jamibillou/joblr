@@ -1,9 +1,9 @@
 .well#text
 	.row-fluid
-		.span11
+		.span11#text-container
 			%small=t 'users.edit.text'
 			%span.danger-text= link_to '*', '#required'
 			%a.help{rel:'popover', 'data-content' => t('users.edit.text_popover'), 'data-original-title' => t('users.edit.text')}
 				.icon-question-sign
-			= char_counter_for(Profile,:text)
-			#text-container= text_area :text, :placeholder, value: field_value(:text, @linkedin), placeholder: t('users.edit.text_placeholder'), rows: 3, class: 'lead'
+			= char_counter_for(@user.profile,:text)			
+			= text_area :text, :placeholder, value: field_value(:text, @linkedin), placeholder: t('users.edit.text_placeholder'), rows: 3, class: 'lead'
