@@ -43,7 +43,7 @@ module UsersHelper
     end
   end
 
-  def char_counter_for(model,attribute)
-    "<small id='text-char-counter' class='pull-right'>0/#{model.validators_on(attribute)[0].options[:maximum]}</small>".html_safe
+  def char_counter_for(object,attribute)
+    "<small class='text-char-counter pull-right'>0/#{object.class.validators_on(attribute)[0].options[:maximum]}</small>".html_safe
   end
 end

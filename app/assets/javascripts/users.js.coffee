@@ -14,7 +14,6 @@ $ ->
   if $('.field_with_errors #hidden-text').html() isnt undefined
     addFieldWithErrors('text-container')
 
-
   # URLs
   # ----
 
@@ -32,12 +31,6 @@ $ ->
 
   $('#google-url-field').focus -> $(@).val('http://profiles.google.com/') unless $(@).val() isnt ''
   $('#google-url-field').blur -> $(@).val('') if $(@).val() is 'http://profiles.google.com/'
-
-
-  # Character counter
-  # -----------------
-
-  $('#text_placeholder').each -> prepareCharCounter(@)
 
   # Popovers
   # --------
@@ -103,24 +96,6 @@ toggleSocialUrl = (id) ->
     else
       $(@).hide() if $(@).is(':visible')
 
-# Call the char counter update function for textarea events
-# ---------------------------------------------------------
-
-prepareCharCounter = (textarea) ->
-  $('#text_placeholder').ready -> updateCharCounter('text_placeholder', $('#text-char-counter').html().split('/')[1])
-  $('#text_placeholder').keyup -> updateCharCounter($(textarea).attr('id'), $('#text-char-counter').html().split('/')[1])
-
-# Checks what's in the given textarea and updates the corresponding character counter
-# ----------------------------------------------------------------------------------
-
-updateCharCounter = (id, max) ->
-  counterId = '#'+stripId(id)+'-char-counter'
-  if $('#'+id).val()?
-    count = $('#'+id).val().length
-    $(counterId).text(count+'/'+max)
-    $(counterId).addClass('danger-text') if count > max
-    $(counterId).removeClass('danger-text') if count < max
-
 
 # Opens a popup window
 # --------------------
@@ -131,9 +106,3 @@ openPopup = (href, content) ->
   if content.match(/twitter/) then window.open(href, 'popup', 'left=200, top=200, width=500, height=260, toolbar=0, resizable=0, scrollbars=1')
   if content.match(/google/) then window.open(href, 'popup', 'left=200, top=200, width=850, height=500, toolbar=0, resizable=0')
   return false
-
-
-# Strips id off unecessary crap, returns the CSS class
-# ----------------------------------------------------
-
-stripId = (id) -> id.replace('user_', '').replace('_placeholder', '').replace('profiles_attributes_0_', '')
