@@ -7,8 +7,8 @@ en:
         internship: 'Looking for an internship!'
         freelance: 'Looking for freelance projects!'
       experience: 'Experience'
-      yrs: 'yrs'
-      last_job: "Most recent or relevant job"
+      yr: 'yr'
+      last_job: "Current or most relevant job"
       past_companies: 'Also worked for:'
       education: 'Highest education'
       skills: 'Professional skills'
@@ -24,7 +24,7 @@ en:
       whats_this: "What's this?"
       public_whats_this: "What's this?"
       user_explanation: "Send your Joblr profile by email and share it on your networks to reach companies and spread the word!"
-      public_explanation_html: "%{fullname} is looking for work and needs your help. Get in contact if you have a job or a tip.<br /> Otherwise, share this profile around!"
+      public_explanation_html: "%{fullname} is looking for work and needs your help. Get in contact if you have a job or a tip. <br />Otherwise, share this profile around!"
       public_profile: 'Public profile:'
       send_email: 'Send by email'
       share_on: "Share on %{provider}"
@@ -49,10 +49,10 @@ en:
       headline: 'Headline'
       headline_popover: 'So potential employers know exactly what you want.'
       experience: 'Experience'
-      experience_label: 'Years'
-      experience_placeholder: 'number of'
-      experience_popover: "Focus on the essentials, how many years of experience you have, your current or last job, and companies you've worked for before."
-      last_job: "Most recent or relevant job"
+      experience_label: 'Total'
+      experience_placeholder: 'in years'
+      experience_popover: "Focus on the essentials, your total experience in years, your current or most relevant job, and companies you've worked for in the past."
+      last_job: "Current or most relevant job"
       last_job_placeholder: 'e.g. Financial controller at KPMG'
       past_companies: 'Other past employers'
       past_companies_placeholder: 'e.g. Nike, Uniliver, Apple'
@@ -69,6 +69,7 @@ en:
       quality_1_placeholder: 'e.g. Passion'
       quality_2_placeholder: 'e.g. Autonomy'
       quality_3_placeholder: 'e.g. Honesty'
+      online_presence_label: 'Online presence'
       url: 'Website or blog'
       social_urls: 'Social profiles'
       social_urls_popover: "Click the icons and fill in your public url, it's saved automatically. Don't remember it? Go to your profiles on those networks first."
@@ -77,8 +78,7 @@ en:
       upload: 'Upload'
       delete: 'Delete current CV'
       public_profile: 'Public profile'
-      explanation_html: 'You public profile looks like this %{url}. You can change your subdomain anytime from here:'
-      import_info: 'Import your information from'
+      explanation: 'You can change your subdomain anytime from here:'
       import_from: 'Import from'
       linkedin: 'LinkedIn'
       save: 'Save'
@@ -86,9 +86,10 @@ en:
       title: 'Edit your profile'
       title_alt: 'Create your profile'
     image_modal:
-      select_or_upload: 'Select or upload a picture!'
-      upload: 'Upload a picture!'
+      select_or_upload: 'Select or upload a picture'
+      social_accounts: 'From your social accounts'
+      upload: 'Upload'
       delete: 'delete'
       current_pic: 'Current picture'
     destroy:
-      yes_delete: 'Are you sure you want to delete this user?'
+      yes_delete: 'Do you really want to delete this user?'
