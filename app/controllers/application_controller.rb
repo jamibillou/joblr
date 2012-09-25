@@ -9,8 +9,17 @@ class ApplicationController < ActionController::Base
   private
 
     def set_locale
-      I18n.default_locale = params[:locale] if !params[:locale].nil?
-      I18n.locale = I18n.default_locale
+      if cookies[:default_locale].nil?
+        cookies[:default_locale] = {value: (params[:locale].nil? ? get_locale_from_browser : params[:locale]),
+                                    expires: 15.days.from_now.utc}
+      else
+        cookies[:default_locale] = params[:locale] unless params[:locale].nil?
+      end
+      I18n.locale = cookies[:default_locale]
+    end
+
+    def get_locale_from_browser
+      request.env['HTTP_ACCEPT_LANGUAGE'].blank? ? 'en' : request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
     end
 
     def constrain_subdomain_path
