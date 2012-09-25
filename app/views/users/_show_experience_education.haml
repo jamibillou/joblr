@@ -2,7 +2,7 @@
   .row-fluid.experience
     .span3
       %h4=t 'users.show.experience'
-      .lead= pluralize profile.experience, 'yr'
+      .lead= pluralize profile.experience, t('users.show.yr')
     .span9
       %h4=t 'users.show.last_job'
       .lead= profile.last_job
@@ -19,7 +19,7 @@
   .row-fluid
     .span3
       %h4=t 'users.show.experience'
-      .lead= pluralize profile.experience, 'yr'
+      .lead= pluralize profile.experience, t('users.show.yr')
     .span9
       %h4=t 'users.show.education'
       .lead= profile.education

@@ -64,6 +64,10 @@ a.help{
       h2{
         margin:-3px 0 10px 0;
       }
+      .headline{
+        line-height:1;
+        font-weight:500;
+      }
     }
   }
   #image-modal{
@@ -77,13 +81,9 @@ a.help{
         margin:5px 0 5px 0;
       }
       &.selected {
-        @include box-shadow(0 0 4px 1px #0073CC);
+        @include box-shadow(0 0 4px 1px #0073cc);
       }
     }
-  }
-  .headline{
-    margin-top:-5px;
-    font-weight:500;
   }
   .lead{
     margin-bottom:10px;
@@ -154,9 +154,9 @@ a.help{
     width:100%;
   }
   .explanation{
-    width:75%;
+    width:84%;
     margin-top:25px;
-    padding-left:20px;
+    padding:0 10px;
     p{
       margin-bottom:7px;
     }

@@ -2,93 +2,94 @@ fr:
   users:
     show:
       headline:
-        fulltime: "A la recherche d'un emploi à temps plein !"
-        partime: "A la recherche d'un emploi à temps partiel !"
-        internship: "A la recherche d'un stage !"
-        freelance: "A la recherche de projets freelance !"
+        fulltime: "Recherche un emploi à temps plein"
+        partime: "Recherche un emploi à temps partiel"
+        internship: "Recherche un stage"
+        freelance: "Recherche des projets en freelance"
       experience: 'Expérience'
-      yrs: 'ans'
-      last_job: "Poste actuel ou le plus récent"
+      yr: 'an'
+      last_job: "Poste actuel ou le plus important"
       past_companies: 'A également travaillé pour :'
-      education: 'Diplôme majeur'
+      education: 'Diplôme principal'
       skills: 'Compétences professionnelles'
       qualities: 'Qualités personnelles'
-      more_about: "Plus d'infos sur %{fullname}"
+      more_about: "Plus à propos de %{fullname}"
       download_cv: 'CV'
       view_social: "Consulter la page %{provider} de %{fullname}"
       site: 'www'
       email: 'Email'
-      edit: 'Editer'
+      edit: 'Modifier'
       contact: 'Contacter'
       share: 'Partager'
-      whats_this: "En quoi cela consiste ?"
-      public_whats_this: "En quoi cela consiste ?"
-      user_explanation: "Envoyez votre profil Joblr par email et diffusez-le sur vos réseaux afin d'attirer l'attention des entreprises !"
-      public_explanation_html: "%{fullname} est à la recherche d'un emploi et a besoin d'un coup de pouce. Contactez-le si vous avez un poste pour lui ou un contact.<br />Sinon, diffusez son profil !"
+      whats_this: "Qu'est-ce que c'est ?"
+      public_whats_this: "Qu'est-ce que c'est ?"
+      user_explanation: "Contactez les entreprises par email en utilisant votre profil, partagez le sur vos réseaux sociaux pour profiter du bouche à oreille."
+      public_explanation_html: "%{fullname} est à la recherche d'un emploi et a besoin d'opportunités et conseils. <br />Rentrez en contact ou faites passer le mot !"
       public_profile: 'Profil public :'
       send_email: 'Envoyer par email'
       share_on: "Partager sur %{provider}"
       sharings:
-        catchphrase: "Rendez votre recherche d'emploi efficace"
+        catchphrase: "Accélérez votre recherche d'emploi"
         title: "%{fullname} sur Joblr"
     index:
       title: 'Utilisateurs'
     edit:
-      title: 'Editer votre profil'
-      title_alt: 'Créer votre profil'
-      text: "Description personnelle"
-      text_placeholder: "ex : designer internet. Prêt à vous faire rêver."
-      text_popover: "Soyez simple et accrocheur. Parlez de vos qualités, de votre rapport au travail, ce que vous recherchez, etc."
-      fullname: "Nom complet"
-      fullname_placeholder: 'Nom complet'
-      location_label: 'Situation géographique'
+      title: 'Modifiez votre profil'
+      title_alt: 'Créez votre profil'
+      text: "Accroche"
+      text_placeholder: "ex : Passioné de design depuis toujours, je cherche actuellement un poste en région parisienne."
+      text_popover: "Valorisez vous de manière simple. Parlez de vos qualités, de votre rapport au travail, ce que vous recherchez, etc."
+      fullname: "Nom et prénom"
+      fullname_placeholder: "Nom et prénom"
+      location_label: 'Domicile ou mobilité'
       city: 'Ville'
       city_placeholder: 'Ville'
       country: 'Pays'
       country_placeholder: 'Pays'
       headline: 'Statut'
-      headline_popover: 'Afin que les recruteurs sachent ce que vous recherchez.'
+      headline_popover: 'Afin que les recruteurs sachent exactement ce que vous cherchez.'
       experience: 'Expérience'
-      experience_label: 'Années'
-      experience_placeholder: "nombre d'"
-      experience_popover: "Focus on the essentials, how many years of experience you have, your current or last job, and companies you've worked for before."
+      experience_label: 'Total'
+      experience_placeholder: "en années"
+      experience_popover: "Allez à l'essentiel : expérience totale en années, poste actuel ou le plus important, et anciens employeurs."
       last_job: "Poste actuel ou le plus récent"
-      last_job_placeholder: 'ex : comptable à Renault'
+      last_job_placeholder: 'ex : Secrétaire de direction à Renault'
       past_companies: "Anciens employeurs"
-      past_companies_placeholder: 'ex : Nike, Unilever, Apple'
-      education: "Diplôme majeur"
-      education_popover: 'Votre diplôme ou certificat le plus important.'
-      education_placeholder: "ex : BTS en Réseaux et Télécommunications."
+      past_companies_placeholder: 'ex : Carrefour, Peugeot, Total'
+      education: "Diplôme principal"
+      education_popover: "Votre diplôme ou certificat le plus significatif pour votre recherche d'emploi acutelle."
+      education_placeholder: "ex : Licence en Réseaux et Télécommunications"
       skills: 'Compétences professionnelles'
-      skills_popover: 'Savoir-faire professionnel. Ne mentionnez pas votre personnalité, elles sont décrites un peu plus bas.'
-      skill_1_placeholder: 'ex : dactylographie'
-      skill_2_placeholder: 'ex : ressources humaines'
-      skill_3_placeholder: 'ex : physique quantique'
+      skills_popover: 'On parle ici de savoir-faire professionnel et non de personnalité.'
+      skill_1_placeholder: 'ex : Dactylographie'
+      skill_2_placeholder: 'ex : Gestion des ressources humaines'
+      skill_3_placeholder: 'ex : Physique quantique'
       qualities: 'Qualités personnelles'
-      qualities_popover: "Les traits de votre personnalité qui vous aide dans votre vie professionnelle."
+      qualities_popover: "Les traits de votre personnalité qui vous aident dans votre vie professionnelle."
       quality_1_placeholder: 'ex : Passionné'
-      quality_2_placeholder: 'ex : Autonomie'
-      quality_3_placeholder: 'ex : Honnêteté'
+      quality_2_placeholder: 'ex : Autonôme'
+      quality_3_placeholder: 'ex : Intègre'
+      online_presence_label: 'Où vous trouver sur Internet'
       url: "Site internet ou blog"
-      social_urls: 'Profils sociaux'
-      social_urls_popover: "Cliquez sur les icônes et saisissez votre url publique. Si vous ne la connaissez pas, faites un tour sur votre page auparavant."
-      add_social_url: 'Ajouter votre profil %{provider}'
-      upload_cv: 'Attacher votre CV'
+      social_urls: 'Réseaux sociaux'
+      social_urls_popover: "Cliquez sur les icônes et saisissez votre lien public. Si vous ne le connaissez pas, faites un tour sur votre page auparavant."
+      add_social_url: 'Votre lien public sur %{provider}'
+      upload_cv: 'Ajoutez votre CV'
       upload: 'Uploader'
       delete: 'Supprimer le CV actuel'
       public_profile: 'Profil public'
-      explanation_html: 'Votre profil public ressemble à : %{url}. Vous pouvez changer votre sous-domaine ici:'
-      import_info: 'Importer vos infos de'
+      explanation: 'Vous pouvez modifier votre sous-domaine ici à tout moment:'
       import_from: 'Importer de'
       linkedin: 'LinkedIn'
       save: 'Enregistrer'
     update:
-      title: 'Editer votre profil'
-      title_alt: 'Créer votre profil'
+      title: 'Modifiez votre profil'
+      title_alt: 'Créez votre profil'
     image_modal:
-      select_or_upload: 'Choisissez ou uploadez une image !'
-      upload: 'Uploader une image !'
+      select_or_upload: 'Choisissez ou uploadez une image'
+      social_accounts: 'Sur vos réseaux sociaux'
+      upload: 'Uploader'
       delete: 'supprimer'
       current_pic: 'Image actuelle'
     destroy:
-      yes_delete: 'Supprimer cet utilisateur ?'
+      yes_delete: 'Voulez-vous vraiment supprimer cet utilisateur ?'

@@ -1,7 +1,7 @@
 #more-about
   .row-fluid
     .span7
-      %h4=t 'users.edit.online_presence'
+      %h4=t 'users.edit.online_presence_label'
       %small=t 'users.edit.url'
       %br/
       = f.text_field :url, value: field_value(:url, @linkedin), placeholder: 'http://', class: 'url span12'

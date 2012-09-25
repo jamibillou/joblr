@@ -18,13 +18,13 @@
           = f.check_box :remove_image
 
     - unless @user.authentifications.empty?
-      %h5=t 'users.edit.social_profiles'
+      %h5=t 'users.image_modal.social_accounts'
       - @user.authentifications.each do |auth|
         - unless auth.image_url.blank?
           = link_to image_tag(auth.image_url, class: 'social pic', id: "auth_#{auth.id}_image"), '#'
           .hidden{id: "auth_#{auth.id}_image_url"}= auth.image_url(:original)
 
-    %h5=t 'users.edit.upload'
+    %h5=t 'users.image_modal.upload'
     = f.file_field :image
     = f.hidden_field :remote_image_url, id:'remote_image_url'
 
