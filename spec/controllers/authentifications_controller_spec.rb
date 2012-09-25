@@ -102,8 +102,8 @@ describe AuthentificationsController do
           end
 
           it 'should sign the user in' do
-            find('ul.nav li.dropdown ul.dropdown-menu li:first-child').should have_content I18n.t('devise.registrations.account_settings')
-            find('ul.nav li.dropdown ul.dropdown-menu li:last-child').should have_content I18n.t('devise.sessions.logout')
+            find('.navbar li.dropdown ul.dropdown-menu li:first-child').should have_content I18n.t('devise.registrations.account_settings')
+            find('.navbar li.dropdown ul.dropdown-menu li:last-child').should have_content I18n.t('devise.sessions.logout')
           end
 
           it 'should redirect to root path' do
@@ -184,8 +184,8 @@ describe AuthentificationsController do
           it 'should sign the user in' do
             request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
             visit user_omniauth_authorize_path('twitter')
-            find('ul.nav li.dropdown ul.dropdown-menu li:first-child').should have_content I18n.t('devise.registrations.account_settings')
-            find('ul.nav li.dropdown ul.dropdown-menu li:last-child').should have_content I18n.t('devise.sessions.logout')
+            find('.navbar li.dropdown ul.dropdown-menu li:first-child').should have_content I18n.t('devise.registrations.account_settings')
+            find('.navbar li.dropdown ul.dropdown-menu li:last-child').should have_content I18n.t('devise.sessions.logout')
           end
 
           it 'should redirect to previous location' do

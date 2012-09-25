@@ -21,10 +21,11 @@
     %header.navbar.navbar-fixed-top
       %nav.navbar-inner
         .container
-          = render 'layouts/navigation'
+          = render 'layouts/navigation/navigation'
 
     .container
-      = render 'layouts/messages'
+      = render 'layouts/alerts'
+
       #content.row-fluid
         = yield
 
@@ -33,9 +34,10 @@
         .row-fluid
           .span12
             .pull-left
-              &copy; Joblr 2012
+              =t 'footer.joblr_in'
+            .pull-left= render 'layouts/navigation/languages_navigation'
             .pull-right
-              =t 'footer.questions'
+              %span.hidden-phone=t 'footer.questions'
               = link_to t('footer.contact_us'), 'mailto:team@joblr.co'
 
   = kiss_event('identity', current_user.username) if user_signed_in?

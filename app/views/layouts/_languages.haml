@@ -1,3 +1,0 @@
-- ['en','fr'].each do |language|	
-	- unless language == I18n.locale.to_s
-		%li= link_to language, url_for(locale: language)

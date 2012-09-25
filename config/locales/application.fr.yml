@@ -44,6 +44,10 @@ fr:
         used: "Ce code d'invitation a déjà été utilisé, vous pouvez en redemander un."
         required: "Il vous faut une invitation pour vous inscrire, vous pouvez en demander une ici."
   footer:
+    joblr_in: "Joblr en"
+    locales:
+      en: "anglais"
+      fr: "français"
     questions: "Questions ou commentaires ?"
     contact_us: "Contactez-nous"
   errors:

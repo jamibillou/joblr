@@ -26,9 +26,14 @@ footer{
   background-color:$grayLighter;
   font-size:14px;
   font-weight:bold;
-  line-height:90px;
   .container{
-    padding: 0 10px 0 10px;
+    padding:35px 10px 0 10px;
+    li.dropup{
+      padding-left:5px;
+      .caret{
+        vertical-align:middle;
+      }
+    }
   }
 }
 

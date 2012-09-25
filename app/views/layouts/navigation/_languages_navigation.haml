@@ -1,0 +1,9 @@
+%ul.nav
+  %li.dropup
+    %a.dropdown-toggle{src: '#', 'data-toggle' => 'dropdown'}
+      =t "footer.locales.#{I18n.locale.to_s}"
+      .caret
+    %ul.dropdown-menu
+      - ['en', 'fr'].each do |locale|
+        - unless locale == I18n.locale.to_s
+          %li= link_to t("footer.locales.#{locale}"), url_for(locale: locale)

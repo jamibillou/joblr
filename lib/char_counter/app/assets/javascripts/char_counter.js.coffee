@@ -1,7 +1,7 @@
 $ ->
 
-  # Binds updateCount to every .char-counter found in the page
-  # ----------------------------------------------------------------
+  # Binds updateCount to every .char-counter found
+  # ----------------------------------------------
 
   $('.char-counter').each ->
     textarea = $(@).parent().find('textarea')
@@ -9,8 +9,8 @@ $ ->
     textarea.ready -> updateCount(textarea, counter)
     textarea.keyup -> updateCount(textarea, counter)
 
-  # Updates character count and adds .danger-text if  over max allowed
-  # ------------------------------------------------------------------
+  # Updates character count and adds .danger-text if over max allowed
+  # -----------------------------------------------------------------
 
   updateCount = (textarea, counter) ->
     if $(textarea).val()?
