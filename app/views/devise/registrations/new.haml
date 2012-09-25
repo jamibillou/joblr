@@ -38,7 +38,7 @@
             %br/
             = f.password_field :password_confirmation, class: 'span4'
             = f.submit t('devise.registrations.sign_up'), class: 'btn btn-primary'
-    .pull-right.danger-text * required fields
+    .pull-right.danger-text * #{t('required_fields')}
 
 = kiss_event('record', 'Submitted correct beta invite code') if flash[:success] == t('flash.success.beta_invite.used')
 = kiss_event('record', 'Viewed sign up page') unless flash[:error]

@@ -46,4 +46,4 @@
           .problem
             %h4= t('devise.registrations.unhappy')
             = link_to t('devise.registrations.cancel_account'), registration_path(resource_name), :data => { :confirm => t('devise.registrations.yes_cancel') }, :method => :delete
-    .pull-right.danger-text * required fields
+    .pull-right.danger-text * #{t('required_fields')}

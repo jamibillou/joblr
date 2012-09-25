@@ -1,6 +1,7 @@
 fr:
   ok: 'OK'
   cancel: 'Annuler'
+  required_fields: 'champs obligatoires'
   flash:
     success:
       welcome: 'Bienvenue sur Joblr !'
