@@ -1,22 +1,22 @@
 fr:
   pages:
     landing:
-      title: "Rendez votre recherche d'emploi efficace"
+      title: "Accèlerez votre recherche d'emploi"
       title_alt: 'Accueil'
-      catchphrase: "Les lettres de motivation et les cv vous épuisent ?"
-      saves: "Joblr rend votre recherche d'emploi efficace."
-      join: 'Souscrire à la beta !'
-      benefit1_title: "Aller à l'essentiel"
-      benefit1_text: "Les recruteurs consacrent peu de temps à votre cv, et doivent accéder à l'information en moins de 5 secondes. Joblr se concentre sur ce point."
-      benefit2_title: "Envoyez, et recevez"
-      benefit2_text: "Chaque minute compte. Joblr vous aide à entrer en contact et avoir des retours rapidement."
-      benefit3_title: "Inscription sans effort"
-      benefit3_text_html: "Importez vos données de Linkedin et c'est parti ! L'inscription est courte et vous accédez à votre profil en un clin d'oeil."
-      benefit4_title: "Faites parler de vous"
-      benefit4_text: "Votre réseau a un pouvoir sous-estimé. Partagez votre profil Joblr avec votre entourage et récupérez contacts et conseils !"
-      disclaimer_html: "<b>Note : </b> nous travaillons actuellement sur notre plan de paiement. Durant cette période, la version beta de Joblr est entièrement gratuite."
+      catchphrase: "Les lettres de motivation et CV vous épuisent ?"
+      saves: "Joblr accélère votre recherche d'emploi."
+      join: 'Essayez la beta !'
+      benefit1_title: "Allez à l'essentiel"
+      benefit1_text: "Les recruteurs ont peu de temps, votre profil Joblr vous met en valeur et prend 5 secondes à lire !"
+      benefit2_title: "Rentrez en contact"
+      benefit2_text: "Chaque minute compte. Envoyez votre profil et récoltez les retours, un clic suffit de chaque côté."
+      benefit3_title: "Inscription simplissime"
+      benefit3_text_html: "Créer votre profil n'empiette pas sur vos recherches. Importez votre parcours depuis LinkedIn c'est parti !"
+      benefit4_title: "Un job autour de vous"
+      benefit4_text: "Partagez votre profil Joblr et profitez du bouche à oreille. Votre entourage a surement des contacts et conseils."
+      disclaimer_html: "<b>Remarque : </b> Nous sommes encore en pleine réflexion concernant nos tarifs. La version beta de Joblr est par conséquent gratuite pour le moment."
     admin:
       title: 'Tableau de bord admin'
       title_alt: 'Admin'
     style_tile:
-      title: 'Feuille de style'
+      title: 'Styles'
