@@ -12,5 +12,9 @@
       .span2
         = render 'edit_buttons',    f: f
 
-= kiss_event('record', 'Signed up manually')            if flash[:success] == t('devise.registrations.signed_up')
-= kiss_event('record', 'Signed up with social account') if flash[:success] && flash[:success].match(Regexp.new(t('flash.success.provider.signed_up', provider: '.+')))
+- if flash[:notice] == t('devise.registrations.signed_up')
+  = kiss_event('record', 'Signed up')
+  = kiss_event('record', 'Signed up manually')
+- elsif flash[:success] && flash[:success].match(Regexp.new(t('flash.success.provider.signed_up', provider: '.+')))
+  = kiss_event('record', 'Signed up')
+  = kiss_event('record', 'Signed up with social account')

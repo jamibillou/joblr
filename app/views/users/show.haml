@@ -22,9 +22,9 @@
     - if flash[:success] && flash[:success].match(Regexp.new(t('flash.success.profile.shared.other_user', fullname: @user.fullname, recipient_email: '.+')))
       = kiss_event('record', 'Sent profile by email (other user)')
     - else
-      = kiss_event('record', 'Other user viewed profile')
+      = kiss_event('record', 'Viewed profile (other user)')
 - else
   - if flash[:success] && flash[:success].match(Regexp.new(t('flash.success.profile.shared.public_user', fullname: @user.fullname, recipient_email: '.+')))
     = kiss_event('record', 'Sent profile by email (public user)')
   - else
-    = kiss_event('record', 'Public user viewed profile')
+    = kiss_event('record', 'Viewed profile (public user)')
