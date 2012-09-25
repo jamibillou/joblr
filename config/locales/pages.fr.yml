@@ -1,7 +1,7 @@
 fr:
   pages:
     landing:
-      title: "Accèlerez votre recherche d'emploi"
+      title: "Accélérez votre recherche d'emploi"
       title_alt: 'Accueil'
       catchphrase: "Les lettres de motivation et CV vous épuisent ?"
       saves: "Joblr accélère votre recherche d'emploi."
@@ -11,7 +11,7 @@ fr:
       benefit2_title: "Rentrez en contact"
       benefit2_text: "Chaque minute compte. Envoyez votre profil et récoltez les retours, un clic suffit de chaque côté."
       benefit3_title: "Inscription simplissime"
-      benefit3_text_html: "Créer votre profil n'empiette pas sur vos recherches. Importez votre parcours depuis LinkedIn c'est parti !"
+      benefit3_text_html: "Créer votre profil n'empiette pas sur vos recherches. Importez votre parcours depuis LinkedIn et c'est parti !"
       benefit4_title: "Un job autour de vous"
       benefit4_text: "Partagez votre profil Joblr et profitez du bouche à oreille. Votre entourage a surement des contacts et conseils."
       disclaimer_html: "<b>Remarque : </b> Nous sommes encore en pleine réflexion concernant nos tarifs. La version beta de Joblr est par conséquent gratuite pour le moment."
