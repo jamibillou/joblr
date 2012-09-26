@@ -80,7 +80,7 @@ fr:
       sign_up: "S'inscrire"
       forgot_password: 'Mot de passe oublié ?'
       signed_up: 'Bienvenue sur Joblr !'
-      updated: 'Modifications bien enregistrées.'
+      updated: 'Modifications enregistrées.'
       destroyed: 'Votre compte a bien été supprimé. Nous espérons vous revoir très vite !'
       unhappy: 'Mécontent ?'
       cancel_account: 'Supprimez votre compte'

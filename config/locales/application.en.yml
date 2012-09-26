@@ -8,13 +8,13 @@ en:
       user:
         destroyed: 'The user destroyed successfully.'
       provider:
-        signed_in: "Signed in successfully with %{provider}."
-        signed_up: "You have successfully signed up with %{provider}, you can now fill in your profile."
+        signed_in: "You are now signed in."
+        signed_up: "You have successfully signed up with your %{provider} account, fill in your profile now."
         added:  "Your %{provider} account is now linked, you can sign in with it next time."
-        imported: "Your information was imported from %{provider}, don't forget to check it and fill the blanks though."
+        imported: "Your information was imported from %{provider}, don't forget to check it and fill the blanks."
         removed: "Your %{provider} account is now unlinked."
       profile:
-        created: 'You just created your profile, send it by email or share it on your networks now!'
+        created: "Perfect, send your profile by email or share it on your networks now that it's done."
         updated: 'Your changes were saved.'
         shared:
           user: "Your profile was successfully sent to %{recipient_email}"
@@ -31,7 +31,7 @@ en:
       provider:
         already_linked: "We could not add your %{provider} account because it's already linked to your profile."
         other_user: "We could not add your %{provider} account because it's already linked to another user's profile."
-        other_user_signed_up: "There already is a user matching this %{provider} account, did you mean to sign in?"
+        other_user_signed_up: "There already is somebody using this %{provider} account on Joblr. Did you already sign up with it?"
         no_user: "There is no user matching this %{provider} profile. Make sure you are using your own account or that you did not sign up with another service."
       other_user:
         profile: "You cannot access this page."
@@ -41,8 +41,8 @@ en:
         public: "You cannot access this page."
         admin: "You cannot access this page."
       beta_invite:
-        code_inexistant: "This invitation code doesn't seem to exist. Did you already sign up maybe?"
-        used: "This invitation code has already been used."
+        code_inexistant: "This invitation code doesn't seem to exist."
+        used: "This invitation code has already been used. Did you already sign up?"
         required: "You need an invitation to sign up, you can ask for one here."
   footer:
     joblr_in: "Joblr in"
