@@ -22,7 +22,7 @@ fr:
       public_profile:
       beta_invite:
         email_sent: "L'invitation a bien été envoyée."
-        ok: "Super, vous pouvez à présent vous inscrire !"
+        used: "Super, vous pouvez maintenant vous inscrire !"
         destroyed: "L'invitation a bien été supprimée."
     error:
       something_wrong:
@@ -41,8 +41,8 @@ fr:
         public: "Accès interdit."
         admin: "Accès interdit."
       beta_invite:
-        code_inexistant: "Ce code d'invitation n'existe pas. N'êtes-vous pas déjà inscrit ?"
-        used: "Ce code d'invitation a déjà été utilisé, vous pouvez en redemander un."
+        code_inexistant: "Ce code d'invitation n'existe pas. Vous-êtes vous déjà inscrit peut-être ?"
+        used: "Ce code d'invitation a déjà été utilisé."
         required: "Il vous faut une invitation pour vous inscrire, vous pouvez en demander une ici."
   footer:
     joblr_in: "Joblr en"

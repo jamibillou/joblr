@@ -15,7 +15,7 @@ fr:
         title: "Connectez-vous"
         welcome_back: 'Bienvenue sur Joblr !'
         choose: "Comment vous connectez-vous ?"
-        social: "Connectez-vous via un de vos réseaux sociaux"
+        social: "Connectez-vous avec un de vos réseaux sociaux"
         joblr: "Ou manuellement"
         if_joblr: '(si vous avez déjà un compte Joblr)'
       create:

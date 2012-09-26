@@ -42,8 +42,8 @@ en:
         public: "You cannot access this page."
         admin: "You cannot access this page."
       beta_invite:
-        code_inexistant: "This invitation code doesn't seem to exist. Do you mind double ckecking?"
-        used: "This invitation code has already been used, you can ask another one though."
+        code_inexistant: "This invitation code doesn't seem to exist. Did you already sign up maybe?"
+        used: "This invitation code has already been used."
         required: "You need an invitation to sign up, you can ask for one here."
   footer:
     joblr_in: "Joblr in"
