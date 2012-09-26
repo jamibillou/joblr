@@ -9,12 +9,8 @@ class ApplicationController < ActionController::Base
   private
 
     def set_locale
-      if cookies[:default_locale].nil?
-        cookies[:default_locale] = {value: (params[:locale].nil? ? get_locale_from_browser : params[:locale]),
-                                    expires: 15.days.from_now.utc}
-      else
-        cookies[:default_locale] = params[:locale] unless params[:locale].nil?
-      end
+      locale = cookies[:default_locale].nil? && params[:locale].nil? ? get_locale_from_browser : params[:locale]
+      cookies[:default_locale] = {value: locale, expires: 15.days.from_now.utc} unless locale.nil?
       I18n.locale = cookies[:default_locale]
     end
 
