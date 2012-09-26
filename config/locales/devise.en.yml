@@ -21,14 +21,12 @@ en:
       create:
         title: 'Sign in'
       sign_in: 'Sign in'
-      social_signin: 'Sign in with a social account'
-      joblr_signin: 'Or sign in with your Joblr account'
       username: 'Username'
       password: 'Password'
       remember_me: 'Remember me'
-      signed_in: 'Signed in successfully.'
-      signed_out: 'Signed out successfully.'
-      logout: 'Logout'
+      signed_in: 'You are now signed in.'
+      signed_out: 'You just signed out.'
+      logout: 'Sign out'
       problem: "Sign in problem"
     passwords:
       new:

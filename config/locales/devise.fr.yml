@@ -1,54 +1,52 @@
 fr:
   errors:
     messages:
-      expired: "a expiré, merci de vous reconnecter"
+      expired: "a expiré, merci de refaire une demande"
       not_found: "introuvable"
   devise:
     failure:
       already_authenticated: 'Vous êtes déjà connecté.'
-      unauthenticated: 'Merci de vous inscrire ou connecter avant de poursuivre.'
-      invalid: "Not d'utilisateur ou mot de passe invalide."
+      unauthenticated: 'Vous devez vous inscrire ou vous connecter avant de continuer.'
+      invalid: "Nom d'utilisateur ou mot de passe incorrect."
       invalid_token: "Clé d'authentification invalide."
       timeout: 'Votre session a expiré, merci de vous reconnecter.'
     sessions:
       new:
-        title: "Connexion"
-        welcome_back: 'De retour sur Joblr'
-        choose: "Quel type de connexion ?"
-        social: "Connectez-vous à l'aide d'un de vos réseaux sociaux"
-        joblr: "Ou connectez-vous manuellement"
-        if_joblr: '(si vous possédez un compte Joblr)'
+        title: "Connectez-vous"
+        welcome_back: 'Bienvenue sur Joblr !'
+        choose: "Comment vous connectez-vous ?"
+        social: "Connectez-vous via un de vos réseaux sociaux"
+        joblr: "Ou manuellement"
+        if_joblr: '(si vous avez déjà un compte Joblr)'
       create:
-        title: "Connexion"
-      sign_in: "Connexion"
-      social_signin: "Se connecter à l'aide d'un réseau social"
-      joblr_signin: 'Ou se connecter avec mes identifiants Joblr'
+        title: "Connectez-vous"
+      sign_in: "Connectez-vous"
       username: "Nom d'utilisateur"
       password: "Mot de passe"
       remember_me: 'Se souvenir de moi'
-      signed_in: 'Connecté avec succès.'
-      signed_out: 'Vous avez bien été déconnecté.'
+      signed_in: 'Vous êtes maintenant connecté.'
+      signed_out: 'Vous êtes bien déconnecté.'
       logout: 'Se déconnecter'
-      problem: "Problème lors de la connexion"
+      problem: "Problème de connexion"
     passwords:
       new:
         title: 'Mot de passé oublié ?'
       create:
         title: 'Mot de passé oublié ?'
       edit:
-        title: 'Changer votre mot de passe'
+        title: 'Changez votre mot de passe'
       update:
-        title: 'Changer votre mot de passe'
+        title: 'Changez votre mot de passe'
       new_password: 'Nouveau mot de passe'
-      new_password_confirmation: 'Confirmation du mot de passe'
-      email_me: "M'envoyer les instructions par email"
-      change_password: 'Changer mon mot de passse'
-      sign_in: 'Un trou de mémoire ?'
+      new_password_confirmation: 'Confirmez ce mot de passe'
+      email_me: "M'envoyer les instructions"
+      sign_in: 'La mémoire vous revient ?'
+      change_password: 'Changer mon mot de passe'
       send_instructions: "Vous allez recevoir d'ici quelques minutes un email avec les instructions pour réinitialiser votre mot de passe."
       updated: 'Votre mot de passe a bien été modifié. Vous êtes désormais connecté.'
       updated_not_active: 'Votre mot de passe a bien été modifié.'
-      send_paranoid_instructions: "Si votre adresse email existe dans notre base de données, vous allez recevrez un email avec un lien permettant de récupérer votre mot de passe."
-      no_token: "Cette page n'est accessible qu'à partir d'un email permettant la réinitialisation de mot de passe."
+      send_paranoid_instructions: "Si votre adresse email existe dans notre base de données, vous allez recevoir un email avec les instructions pour récupérer votre mot de passe."
+      no_token: "Vous ne pouvez pas accéder à cette page sans passer par un email de réinitialisation de mot de passe."
     registrations:
       new:
         title: "S'inscrire !"
@@ -76,7 +74,7 @@ fr:
       email: 'Adresse email'
       password: 'Mot de passe'
       password_confirmation: 'Confirmer votre mot de passe'
-      sign_in: "S'identifier"
+      sign_in: "Connectez-vous"
       sign_up: "S'inscrire"
       forgot_password: 'Mot de passe oublié ?'
       signed_up: 'Bienvenue sur Joblr !'

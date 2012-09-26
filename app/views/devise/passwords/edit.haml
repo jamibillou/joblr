@@ -20,6 +20,7 @@
           %br/
           %a.btn{href: url_for(:back)}=t 'cancel'
           = f.submit t('devise.passwords.change_password'), class: 'btn btn-primary'
+        .span1.visible-desktop
         .span3.visible-desktop
           %h4=t 'devise.passwords.sign_in'
           = render 'devise/shared/links'
