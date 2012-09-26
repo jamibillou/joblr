@@ -3,21 +3,21 @@ fr:
     index:
       title: 'Invitations à la beta'
     new:
-      title: "Optenez votre invitation Joblr !"
-      subtitle_html: "Nous sommes toujours en beta privée. Saisissez votre adresse email and nous vous inviterons dès que possible."
+      title: "Demandez votre invitation !"
+      subtitle_html: "Nous sommes actuellement en beta privée. Tappez votre adresse email et nous vous inviterons dés que possible."
       placeholder: 'Adresse email'
-      button: 'Rejoignez-nous !'
+      button: 'Invitez moi !'
     thank_you:
       title: 'Merci !'
-      subtitle_html: "Merci de votre intérêt pour Joblr.<br />Nous invitons régulièrement de nouveaux utilisateurs, surveillez donc votre boîte mail !"
+      subtitle_html: "Merci de votre demande.<br />Nous invitons régulièrement de nouveaux utilisateurs, surveillez votre boîte de réception !"
     send_code:
-      yes_send: 'Envoyer un code à %{email}?'
+      yes_send: 'Envoyer un code à %{email} ?'
     edit:
-      title: "Bienvenue à la beta Joblr"
-      subtitle: "Utilisez votre code d'invitation pour accéder à l'application."
-      asterisk: "Nous faisons notre possible pour réduire au maximum les petites anomalies, mais il est possible que vous en constatiez quelques unes."
+      title: "Bienvenue sur Joblr beta"
+      subtitle: "Utilisez votre code d'invitation pour accéder au site."
+      asterisk: "Nous faisons le maximum pour corriger les derniers petits problèmes, mais il se peut que vous en rencontriez."
       placeholder: "Code d'invitation"
-      button: "C'est parti !"
-      link: "Vous n'avez pas encore de code ? Demandez-en un !"
+      button: "Accéder au site !"
+      link: "Vous n'avez pas encore d'invitation ? Demandez-en une !"
     destroy:
       yes_delete: 'Supprimer cette invitation ?'
