@@ -21,7 +21,7 @@ fr:
         public_shared: "Le profil de %{fullname} a bien été envoyé à %{recipient_email}"
       beta_invite:
         email_sent: "L'invitation a bien été envoyée."
-        used: "Super, vous pouvez maintenant vous inscrire !"
+        used: "Ok, vous pouvez maintenant vous inscrire !"
         destroyed: "L'invitation a bien été supprimée."
     error:
       something_wrong:
