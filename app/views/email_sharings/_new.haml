@@ -23,7 +23,7 @@
         = char_counter_for @email_sharing, :text, class: 'pull-right'
         = f.text_area :text, rows: 3, placeholder: @email_sharing_text
         %input{type: 'hidden', name: 'user_id', value: @user.id}
-        .pull-right.danger-text *required fields
+        .pull-right.danger-text *#{t('required_fields')}
 
   .modal-footer
     #loader.pull-left
