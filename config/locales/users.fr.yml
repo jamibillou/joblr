@@ -41,7 +41,7 @@ fr:
       text_popover: "Valorisez vous de manière simple. Parlez de vos qualités, de votre rapport au travail, ce que vous recherchez, etc."
       fullname: "Nom et prénom"
       fullname_placeholder: "Nom et prénom"
-      location_label: 'Domicile ou mobilité'
+      location_label: 'Adresse'
       city: 'Ville'
       city_placeholder: 'Ville'
       country: 'Pays'
@@ -52,7 +52,7 @@ fr:
       experience_label: 'Total'
       experience_placeholder: "en années"
       experience_popover: "Allez à l'essentiel : expérience totale en années, poste actuel ou le plus important, et anciens employeurs."
-      last_job: "Poste actuel ou le plus récent"
+      last_job: "Poste actuel ou le plus important"
       last_job_placeholder: 'ex : Secrétaire de direction à Renault'
       past_companies: "Anciens employeurs"
       past_companies_placeholder: 'ex : Carrefour, Peugeot, Total'

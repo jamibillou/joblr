@@ -112,7 +112,7 @@ describe AuthentificationsController do
 
           it 'have a success alert message' do
             # find('div.alert.alert-success span').should have_content I18n.t('flash.success.provider.signed_in', provider: 'twitter')
-            find('div.alert.alert-success span').should have_content "Signed in successfully with Twitter."
+            find('div.alert.alert-success span').should have_content "You are now signed in."
           end
         end
 
@@ -133,7 +133,7 @@ describe AuthentificationsController do
 
           it 'have an error alert message' do
             # find('div.alert.alert-error span').should have_content I18n.t('flash.error.provider.other_user_signed_up', provider: 'twitter')
-            find('div.alert.alert-error span').should have_content "There already is a user matching this Twitter account, did you mean to sign in?"
+            find('div.alert.alert-error span').should have_content "There already is somebody using this Twitter account on Joblr. Did you already sign up with it?"
           end
         end
       end
@@ -198,7 +198,7 @@ describe AuthentificationsController do
             request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
             visit user_omniauth_authorize_path('twitter')
             # find('div.alert.alert-success span').should have_content I18n.t('flash.success.provider.signed_in', provider: 'twitter')
-            find('div.alert.alert-success span').should have_content "You have successfully signed up with Twitter, you can now fill in your profile."
+            find('div.alert.alert-success span').should have_content "You have successfully signed up with your Twitter account, fill in your profile now."
           end
         end
       end

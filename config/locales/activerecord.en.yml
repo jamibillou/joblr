@@ -3,7 +3,7 @@ en:
     models:
       user: "User"
       profile: "Profile"
-      authentification: "Service"
+      authentification: "Linked social account"
       beta_invite: "Invitation"
     attributes:
       user:
@@ -62,7 +62,7 @@ en:
         uid: "Identifier"
         uname: "Name"
         uemail: "Email address"
-        url: "Profile"
+        url: "Public URL"
       beta_invite:
         id: "Identifier"
         user_id: "User's identifier"
