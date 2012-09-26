@@ -6,7 +6,7 @@ fr:
       title: "Demandez votre invitation !"
       subtitle_html: "Nous sommes actuellement en beta privée. Tappez votre adresse email et nous vous inviterons dés que possible."
       placeholder: 'Adresse email'
-      button: 'Invitez moi !'
+      button: 'Invitez-moi !'
     thank_you:
       title: 'Merci !'
       subtitle_html: "Merci de votre demande.<br />Nous invitons régulièrement de nouveaux utilisateurs, surveillez votre boîte de réception !"

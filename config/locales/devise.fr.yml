@@ -14,13 +14,13 @@ fr:
       new:
         title: "Connectez-vous"
         welcome_back: 'Bienvenue sur Joblr !'
-        choose: "Comment vous connectez-vous ?"
+        choose: "Comment préférez-vous vous connecter ?"
         social: "Connectez-vous avec un de vos réseaux sociaux"
         joblr: "Ou manuellement"
         if_joblr: '(si vous avez déjà un compte Joblr)'
       create:
         title: "Connectez-vous"
-      sign_in: "Connectez-vous"
+      sign_in: "Se connecter"
       username: "Nom d'utilisateur"
       password: "Mot de passe"
       remember_me: 'Se souvenir de moi'
@@ -49,43 +49,43 @@ fr:
       no_token: "Vous ne pouvez pas accéder à cette page sans passer par un email de réinitialisation de mot de passe."
     registrations:
       new:
-        title: "S'inscrire !"
+        title: "Inscrivez-vous !"
         welcome: 'Bienvenue sur Joblr !'
-        choose: "Choisissez votre méthode d'inscription"
-        social: "Utilisez un de vos comptes existants"
-        no_worries: "Pas d'inquiétude, nous ne publierons rien sur vos comptes sans votre autorisation !"
-        convenient: '(plus facile)'
-        joblr: 'Ou connectez-vous manuellement'
+        choose: "Choisissez comment vous préférez vous inscrire"
+        social: "Utilisez un de vos réseaux sociaux"
+        no_worries: "Nous ne publions rien sur vos profils sans votre autorisation, pas de soucis à se faire."
+        convenient: '(plus pratique)'
+        joblr: 'Ou inscrivez-vous manuellement'
       create:
-        title: "S'inscrire !"
+        title: "Inscrivez-vous !"
       edit:
         title: 'Paramètres'
-        subtitle: 'Changez vos informations et liez vos comptes sociaux'
-        details: 'Informations personnelles'
-        add_accounts: "Lier vos comptes sociaux"
-        easy_signin: "(pour une connexion plus facile)"
+        subtitle: 'Modifiez votre compte et vos réseaux sociaux'
+        details: 'Détails de votre compte'
+        add_accounts: "Liez vos réseaux sociaux"
+        easy_signin: "(pour vous connecter plus facilement sur Joblr)"
       update:
         title: 'Paramètres'
       account: 'Comptes'
       account_settings: 'Paramètres'
       already_member: 'Déjà membre ?'
-      fullname: 'Nom complet'
+      fullname: 'Nom et prénom'
       username: "Nom d'utilisateur"
       email: 'Adresse email'
       password: 'Mot de passe'
-      password_confirmation: 'Confirmer votre mot de passe'
-      sign_in: "Connectez-vous"
+      password_confirmation: 'Confirmez ce mot de passe'
+      new_password: 'Nouveau mot de passe'
+      new_password_confirm: 'Confirmez ce mot de passe'
+      sign_in: "Se connecter"
       sign_up: "S'inscrire"
       forgot_password: 'Mot de passe oublié ?'
       signed_up: 'Bienvenue sur Joblr !'
-      updated: 'Votre compte a bien été mis à jour.'
+      updated: 'Modifications bien enregistrées.'
       destroyed: 'Votre compte a bien été supprimé. Nous espérons vous revoir très vite !'
       unhappy: 'Mécontent ?'
-      cancel_account: 'Supprimer votre compte'
+      cancel_account: 'Supprimez votre compte'
       yes_cancel: "Etes-vous sûr de vouloir supprimer votre compte ?"
-      didnt_mean_to: "Ne vouliez-vous pas vous inscrire plutôt ?"
       update: 'Modifier'
     omniauth:
-      add_account: 'Lié votre compte %{provider}'
-      remove_account: 'Supprimer le lien avec votre compte %{provider}'
-      remove_account_ask: 'Supprimer le lien avec votre compte %{provider} ?'
+      add_account: 'Liez votre compte %{provider}'
+      remove_account: 'Supprimez le lien avec votre compte %{provider}'

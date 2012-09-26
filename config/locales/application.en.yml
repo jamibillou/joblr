@@ -20,7 +20,6 @@ en:
           user: "Your profile was successfully sent to %{recipient_email}"
           other_user: "%{fullname}'s profile was successfully sent to %{recipient_email}"
           public_user: "%{fullname}'s profile was successfully sent to %{recipient_email}"
-      public_profile:
       beta_invite:
         email_sent: 'The invitation email was sent successfully.'
         used: "Great, you can now sign up!"

@@ -15,11 +15,10 @@ fr:
         removed: "Le lien avec votre compte %{provider} a bien été supprimé."
       profile:
         created: 'Votre profil est crée, envoyez-le par email et partagez-le sur vos réseaux dès maintenant !'
-        updated: 'Changements sauvegardés.'
+        updated: 'Modifications bien enregistrées.'
         shared:  "Votre profil a bien été envoyé à %{recipient_email}"
         other_shared: "Le profil de %{fullname} a bien été envoyé à %{recipient_email}"
         public_shared: "Le profil de %{fullname} a bien été envoyé à %{recipient_email}"
-      public_profile:
       beta_invite:
         email_sent: "L'invitation a bien été envoyée."
         used: "Super, vous pouvez maintenant vous inscrire !"

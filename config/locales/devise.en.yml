@@ -74,18 +74,18 @@ en:
       email: 'Email address'
       password: 'Password'
       password_confirmation: 'Confirm your password'
+      new_password: 'New password'
+      new_password_confirm: 'Confirm your new password'
       sign_in: 'Sign in'
       sign_up: 'Sign up!'
       forgot_password: 'Forgot your password?'
       signed_up: 'Welcome to joblr!'
-      updated: 'You updated your account successfully.'
-      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+      updated: 'Your changes were saved.'
+      destroyed: 'Your account was successfully cancelled. We hope to see you again soon!'
       unhappy: 'Unhappy?'
       cancel_account: 'Cancel your account'
       yes_cancel: "Are you sure you want to cancel your account?"
-      didnt_mean_to: "Didn't mean to signup?"
       update: 'Update'
     omniauth:
       add_account: 'Add your %{provider} account'
       remove_account: 'Remove your %{provider} account'
-      remove_account_ask: 'Remove your %{provider} account?'
