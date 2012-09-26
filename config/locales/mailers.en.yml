@@ -29,8 +29,8 @@ en:
           view_complete_profile: "View %{fullname}'s complete profile on Joblr.co"
         text:
           title: "%{fullname} on Joblr"
-          content: "%{fullname} sent you a Joblr profile to start the conversation. They are short and easy to read so you don't waste your time."
-          go_to_url: 'Go to %{url} to check it out!'
+          content: "%{fullname} sent you a Joblr profile to start the conversation. Those profiles are short and easy to read so you don't waste your time."
+          go_to_url: "Go to %{url} to view %{fullname}'s profile!"
       other_user:
         subject: "%{fullname} through Joblr"
         html:
@@ -44,7 +44,7 @@ en:
           title: "%{fullname} through Joblr"
           profile: "%{author_fullname} sent you %{user_fullname}'s profile thinking you might be interested."
           short_n_easy: "Joblr profiles are short and easy to read so you don't waste your time."
-          go_to_url: 'Go to %{url} to check it out!'
+          go_to_url: "Go to %{url} to view %{fullname}'s profile!"
       public_user:
         subject: "%{fullname} through Joblr"
         html:
@@ -58,7 +58,7 @@ en:
           title: "%{fullname} through Joblr"
           profile: "%{author_fullname} sent you %{user_fullname}'s profile thinking you might be interested."
           short_n_easy: "Joblr profiles are short and easy to read so you don't waste your time."
-          go_to_url: 'Go to %{url} to check it out!'
+          go_to_url: "Go to %{url} to view %{fullname}'s profile!"
       decline:
         subject: "%{fullname} through Joblr"
         title: "%{fullname} is not interested"

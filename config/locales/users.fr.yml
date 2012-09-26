@@ -13,7 +13,7 @@ fr:
       education: 'Diplôme principal'
       skills: 'Compétences professionnelles'
       qualities: 'Qualités personnelles'
-      more_about: "Plus à propos de %{fullname}"
+      more_about: "Plus d'infos sur %{fullname}"
       download_cv: 'CV'
       view_social: "Consulter la page %{provider} de %{fullname}"
       site: 'www'

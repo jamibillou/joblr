@@ -13,62 +13,62 @@ fr:
       user:
         subject: "%{fullname} sur Joblr"
         html:
-          summary: "%{fullname} est à la recherche d'un emploi et aimerait vous contacter."
+          summary: "%{fullname} est à la recherche d'un emploi et aimerait vous rentrer en contact avec vous."
           title: "%{fullname} sur Joblr"
-          lets_talk: "Discutons !"
+          lets_talk: "Parlons-en !"
           lets_talk_subject: "%{recipient_fullname} via Joblr"
           no_thanks: 'Non merci'
           more_about: "Plus d'infos sur %{fullname}"
           experience: 'Expérience'
           yr: 'an'
-          last_job: 'Poste actuel ou le plus récent'
+          last_job: 'Poste actuel ou le plus important'
           also_worked_for_html: "<small>A également travaillé pour</small><br />%{past_companies}"
-          education: 'Diplôme majeur'
+          education: 'Diplôme principal'
           skills: 'Compétences professionnelles'
           qualities: 'Qualités personnelles'
-          view_complete_profile: "Consulter le profil complet de %{fullname}sur Joblr.co"
+          view_complete_profile: "Profil complet de %{fullname} sur Joblr.co"
         text:
           title: "%{fullname} sur Joblr"
-          content: "%{fullname} vous a envoyé un profil Joblr pour entamer une conversation. Ceux-ci sont courts et faciles à lire afin que vous perdiez pas de temps."
-          go_to_url: 'Allez sur %{url} pour en savoir plus !'
+          content: "%{fullname} vous a envoyé un profil Joblr pour lancer la discussion. Ces profils sont courts et faciles à lire pour que vous ne perdiez pas de temps."
+          go_to_url: "Allez à l'adresse %{url} pour voir le profil de %{fullname} !"
       other_user:
         subject: "%{fullname} via Joblr"
         html:
-          summary: "%{author_fullname} vous a envoyé le profil de %{user_fullname} car il estime que vous pourrîez être intéressé."
+          summary: "%{author_fullname} vous a envoyé le profil de %{user_fullname} en pensant que vous seriez intéressé(e)."
           title: "%{fullname} via Joblr"
           contact: "Contacter %{user_fullname}"
-          lets_talk: "Discutons !"
+          lets_talk: "Parlons-en !"
           lets_talk_subject: "%{recipient_fullname} via Joblr"
           no_thanks: 'Non merci'
         text:
           title: "%{fullname} via Joblr"
-          profile: "%{author_fullname} vous a envoyé le profil de %{user_fullname} car il estime que vous pourrîez être intéressé."
-          short_n_easy: "Les profiles Joblr sont courts et faciles à lire afin que vous perdiez pas de temps."
-          go_to_url: 'Allez sur %{url} pour en savoir plus !'
+          profile: "%{author_fullname} vous a envoyé le profil de %{user_fullname} en pensant que vous seriez intéressé(e)."
+          short_n_easy: "Les profils Joblr sont courts et faciles à lire pour que vous perdiez pas de temps."
+          go_to_url: "Allez à l'adresse %{url} pour voir le profil de %{fullname} !"
       public_user:
         subject: "%{fullname} via Joblr"
         html:
-          summary: "%{author_fullname} vous a envoyé le profil de %{user_fullname} car il estime que vous pourrîez être intéressé."
+          summary: "%{author_fullname} vous a envoyé le profil de %{user_fullname} en pensant que vous seriez intéressé(e)."
           title: "%{fullname} via Joblr"
           contact: "Contacter %{user_fullname}"
-          lets_talk: "Discutons !"
+          lets_talk: "Parlons-en !"
           lets_talk_subject: "%{recipient_fullname} via Joblr"
           no_thanks: 'Non merci'
         text:
           title: "%{fullname} via Joblr"
-          profile: "%{author_fullname} vous a envoyé le profil de %{user_fullname} car il estime que vous pourrîez être intéressé."
-          short_n_easy: "Les profiles Joblr sont courts et faciles à lire afin que vous perdiez pas de temps."
-          go_to_url: 'Allez sur %{url} pour en savoir plus !'
+          profile: "%{author_fullname} vous a envoyé le profil de %{user_fullname} en pensant que vous seriez intéressé(e)."
+          short_n_easy: "Les profiles Joblr sont courts et faciles à lire pour que vous perdiez pas de temps."
+          go_to_url: "Allez à l'adresse %{url} pour voir le profil de %{fullname} !"
       decline:
         subject: "%{fullname} via Joblr"
-        title: "%{fullname} n'est pas intéressé"
-        content: "%{fullname} n'est pas intéressé par votre profil, mais ce n'est que partie remise !"
-        persevere: "Perséverez, cela finira par payer."
-      decline_via_other:
+        title: "%{fullname} n'est pas intéressé(e)"
+        content: "%{fullname} n'est pas intéressé(e) par votre profil, mais ce n'est que partie remise !"
+        persevere: "Persévérez, ça finira par payer."
+      decline_through_other:
         subject: "%{fullname} via Joblr"
-        title: "%{fullname} n'est pas intéressé"
-        content: "%{fullname} n'est pas intéressé par votre profil (il lui a été envoyé par %{author_fullname}), mais ce n'est que partie remise !"
-        persevere: "Perséverez, cela finira par payer."
+        title: "%{fullname} n'est pas intéressé(e)"
+        content: "%{fullname} n'est pas intéressé(e) par votre profil (il lui a été envoyé par %{author_fullname}), mais ce n'est que partie remise !"
+        persevere: "Persévérez, ça finira par payer."
     beta_invite:
       notify_team:
         subject: "Nouvelle demande d'invitation à Joblr beta !"

@@ -4,7 +4,7 @@ fr:
       title: 'Invitations à la beta'
     new:
       title: "Demandez votre invitation !"
-      subtitle_html: "Nous sommes actuellement en beta privée. Tappez votre adresse email et nous vous inviterons dés que possible."
+      subtitle_html: "Nous sommes actuellement en beta privée. Saisissez votre adresse email et nous vous inviterons dés que possible."
       placeholder: 'Adresse email'
       button: 'Invitez-moi !'
     thank_you:
@@ -15,7 +15,7 @@ fr:
     edit:
       title: "Bienvenue sur Joblr beta"
       subtitle: "Utilisez votre code d'invitation pour accéder au site."
-      asterisk: "Nous faisons le maximum pour corriger les derniers petits problèmes, mais il se peut que vous en rencontriez."
+      asterisk: "Nous faisons le maximum pour corriger les derniers petits problèmes mais il se peut que vous en trouviez encore."
       placeholder: "Code d'invitation"
       button: "Accéder au site !"
       link: "Vous n'avez pas encore d'invitation ? Demandez-en une !"
