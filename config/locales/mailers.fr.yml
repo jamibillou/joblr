@@ -79,7 +79,7 @@ fr:
       send_code:
         subject: "Invitation à Joblr beta"
         title: "Félicitations, voici votre invitation à Joblr beta !"
-        content_html: "Cliquez sur le bouton ci-dessous pour vous inscrire, le code d'invitation sera copié/collé automatiquement.<br /><br />Vous pouvez aussi le faire vous même à l'adresse %{url}."
+        content_html: "Cliquez sur le bouton ci-dessous pour vous inscrire, le code d'invitation sera copié/collé automatiquement.<br><br>Vous pouvez aussi le faire vous même à l'adresse %{url}."
         content_text: "Copiez/collez le code d'invitation ci-dessous à l'adresse %{url} pour vous inscrire."
         code: "Code :"
         button: "S'inscrire !"
