@@ -4,11 +4,11 @@ fr:
     team: "L'équipe Joblr"
     devise:
       reset_password_instructions:
-        subject: 'Réinitialiser votre mot de passe'
-        title: 'Réinitialiser votre mot de passe'
+        subject: 'Réinitialisez votre mot de passe'
+        title: 'Réinitialisez votre mot de passe'
         content_html: "Allez à l'adresse %{url} pour réinitialiser votre mot de passe."
-        wont_change: "Votre mot de passe ne sera pas changé tant que vous n'aurez pas cliqué sur le lien et crée un nouveau."
-        if_not: "Merci de ne pas tenir compte de cet email si vous n'avez effectué aucune requête."
+        wont_change: "Votre mot de passe ne sera pas modifié tant que vous n'aurez pas cliqué sur le lien et créé un nouveau mot de passe."
+        if_not: "Ne tenez pas compte de cet email si vous l'avez pas demandé."
     email_sharing:
       user:
         subject: "%{fullname} sur Joblr"
@@ -20,9 +20,7 @@ fr:
           no_thanks: 'Non merci'
           more_about: "Plus d'infos sur %{fullname}"
           experience: 'Expérience'
-          yrs:
-            one: '%{count} an'
-            other: '%{count} ans'
+          yr: 'an'
           last_job: 'Poste actuel ou le plus récent'
           also_worked_for_html: "<small>A également travaillé pour</small><br />%{past_companies}"
           education: 'Diplôme majeur'

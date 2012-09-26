@@ -8,7 +8,7 @@ en:
         title: 'Reset your password'
         content_html: "Go to %{url} to reset your password."
         wont_change: "It won't change until you follow that link and create a new password."
-        if_not: "Please ignore this email if you didn't request it."
+        if_not: "Ignore this email if you didn't request it."
     email_sharing:
       user:
         subject: "%{fullname} on Joblr"
@@ -20,9 +20,7 @@ en:
           no_thanks: 'No, thanks'
           more_about: 'More about %{fullname}'
           experience: 'Experience'
-          yrs:
-            one: '%{count} yr'
-            other: '%{count} yrs'
+          yr: 'yr'
           last_job: 'Last or current job'
           also_worked_for_html: "<small>Also worked for</small><br />%{past_companies}"
           education: 'Highest education'

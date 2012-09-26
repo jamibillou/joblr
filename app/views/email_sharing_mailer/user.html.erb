@@ -199,7 +199,7 @@
                                                   <tr>
                                                     <td align="left" valign="top" width="90">
                                                       <h4><span><%=t 'mailers.email_sharing.user.html.experience' %></span></h4>
-                                                      <p class="lead"><%=t 'mailers.email_sharing.user.html.yrs', count: @user.profile.experience %></p>
+                                                      <p class="lead"><%= pluralize(@user.profile.experience, t('mailers.email_sharing.user.html.yr')) %></p>
                                                     </td>
                                                   </tr>
                                                 </table>
