@@ -23,7 +23,7 @@ fr:
       share: 'Partager'
       whats_this: "Qu'est-ce que c'est ?"
       public_whats_this: "Qu'est-ce que c'est ?"
-      user_explanation: "Contactez les entreprises par email en utilisant votre profil, partagez le sur vos réseaux sociaux pour profiter du bouche à oreille."
+      user_explanation: "Contactez les entreprises par email en utilisant votre profil et partagez le sur vos réseaux sociaux pour profiter du bouche à oreille."
       public_explanation_html: "%{fullname} est à la recherche d'un emploi et a besoin d'opportunités et conseils. <br />Rentrez en contact ou faites passer le mot !"
       public_profile: 'Profil public :'
       send_email: 'Envoyer par email'
