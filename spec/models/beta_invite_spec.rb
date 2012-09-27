@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: beta_invites
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  code       :string(255)
+#  email      :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  sent       :boolean          default(FALSE)
+#
+
 require 'spec_helper'
 
 describe BetaInvite do
@@ -35,17 +48,3 @@ describe BetaInvite do
     it { should ensure_inclusion_of(:sent).in_array [true, false] }
   end
 end
-
-# == Schema Information
-#
-# Table name: beta_invites
-#
-#  id         :integer         not null, primary key
-#  user_id    :integer
-#  code       :string(255)
-#  email      :string(255)
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
-#  sent       :boolean         default(FALSE)
-#
-
