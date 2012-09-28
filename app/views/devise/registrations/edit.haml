@@ -16,24 +16,29 @@
               %small= t('devise.registrations.username')
               %span.danger-text *
               %br/
-              = f.text_field :username, class: 'span4'
+              = f.text_field :username, class: 'span11'
+              %br/
             - else
               = f.hidden_field :username
             %small= t('devise.registrations.fullname')
             %span.danger-text *
             %br/
-            = f.text_field :fullname, class: 'span4'
+            = f.text_field :fullname, class: 'span11'
+            %br/
             %small= t('devise.registrations.email')
             %br/
-            = f.email_field :email, class: 'span4'
+            = f.email_field :email, class: 'span11'
+            %br/
 
             - unless current_user.social?
               %small= t('devise.registrations.new_password')
               %br/
-              = f.password_field :password, :autocomplete => 'off', class: 'span4'
+              = f.password_field :password, :autocomplete => 'off', class: 'span11'
+              %br/
               %small= t('devise.registrations.new_password_confirm')
               %br/
-              = f.password_field :password_confirmation, class: 'span4'
+              = f.password_field :password_confirmation, class: 'span11'
+              %br/
             .buttons
               %a.btn{href: url_for(:back)}= t('cancel')
               = f.submit t('devise.registrations.update'), class: 'btn btn-primary'

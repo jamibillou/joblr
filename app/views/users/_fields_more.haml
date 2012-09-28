@@ -4,7 +4,8 @@
       %h4=t 'users.edit.online_presence_label'
       %small=t 'users.edit.url'
       %br/
-      = f.text_field :url, value: field_value(:url, @linkedin), placeholder: 'http://', class: 'url span12'
+      = f.text_field :url, value: field_value(:url, @linkedin), placeholder: 'http://', class: 'url span11'
+      %br/
   = render 'edit_social_urls', f: f
 
   .row-fluid

@@ -23,11 +23,13 @@
             %small= t('devise.sessions.username')
             %span.danger-text *
             %br/
-            = f.text_field :username, class: 'span4'
+            = f.text_field :username, class: 'span11'
+            %br/
             %small= t('devise.sessions.password')
             %span.danger-text *
             %br/
-            = f.password_field :password, class: 'span4'
+            = f.password_field :password, class: 'span11'
+            %br/
             - if devise_mapping.rememberable?
               %small.delete=t 'devise.sessions.remember_me'
               &nbsp;
