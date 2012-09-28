@@ -25,7 +25,6 @@ $red:                   #dd3b2e !default;
 // -------------------------
 $bodyBackground:        #f1f3f4 !default;
 $textColor:             $grayDark !default;
-$wellTextColor:         $grayDark;
 
 // Links
 // -------------------------
@@ -106,6 +105,10 @@ $navbarBrandWidth:              123px;
 // COMPONENT VARIABLES
 // --------------------------------------------------
 
+// Wells
+// -------------------------
+$wellBackground:                  $white !default;
+
 // Navbar
 // -------------------------
 $navbarHeight:                    90px !default;
@@ -124,9 +127,9 @@ $navbarSearchBackground:          lighten($navbarBackground, 25%) !default;
 
 // Hero unit
 // -------------------------
-$heroUnitBackground:              $white !default;
-$heroUnitHeadingColor:            $wellTextColor !default;
-$heroUnitLeadColor:               $wellTextColor !default;
+$heroUnitBackground:              $wellBackground !default;
+$heroUnitHeadingColor:            inherit !default;
+$heroUnitLeadColor:               inherit !default;
 
 // Form states and alerts
 // -------------------------
