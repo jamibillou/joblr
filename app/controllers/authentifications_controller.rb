@@ -21,9 +21,9 @@ class AuthentificationsController < ApplicationController
   end
 
   def destroy
-  	auth = Authentification.find(params[:id])
-    provider = auth.provider
+  	auth = Authentification.find(params[:id]) ; user = auth.user ; provider = auth.provider
     auth.destroy
+    user.update_attributes social: false if user.authentifications.empty?
   	redirect_to_back flash: {success: t('flash.success.provider.removed', provider: humanize(provider))}
   end
 
@@ -77,10 +77,11 @@ class AuthentificationsController < ApplicationController
     end
 
     def create_user_auth(username)
-      create_auth User.create(username: username, fullname: auth_hash.info.name, remote_image_url: auth_hash.info.image, social: true)
+      create_auth User.create(username: username, fullname: auth_hash.info.name, remote_image_url: auth_hash.info.image)
     end
 
     def create_auth(user)
+      user.update_attributes social: true unless user.social?
       user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, utoken: auth_token, usecret: auth_secret)
       user
     end
