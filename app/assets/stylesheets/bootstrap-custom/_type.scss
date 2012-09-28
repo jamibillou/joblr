@@ -32,22 +32,10 @@ p{
     color:darken($grayLighter,15%);
   }
 }
-.red-text{
-  color:$red;
-  a, a:hover{
-    color:$red;
-  }
-}
 .blue-text{
   color:$blue;
   a, a:hover{
     color:$blue;
-  }
-}
-.gray-text{
-  color:$gray;
-  a, a:hover{
-    color:$grayDark;
   }
 }
 .graylight-text{
@@ -57,27 +45,27 @@ p{
   }
 }
 .warning-text{
-  color:darken($warningBorder,15%);
+  color:$warningText;
   a, a:hover{
-    color:darken($warningBorder,15%);
+    color:$warningText;
   }
 }
 .danger-text{
-  color:darken($errorBorder,15%);
+  color:$errorText;
   a, a:hover{
-    color:darken($errorBorder,15%);
+    color:$errorText;
   }
 }
 .success-text{
-  color:darken($successBorder,15%);
+  color:$successText;
   a, a:hover{
-    color:darken($successBorder,15%);
+    color:$successText;
   }
 }
 .info-text{
-  color:darken($infoBorder,15%);
+  color:$infoText;
   a, a:hover{
-    color:darken($infoBorder,15%);
+    color:$infoText;
   }
 }
 
