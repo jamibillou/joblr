@@ -6,16 +6,16 @@
         .span1
           %small= "#{t('email_sharings.new.from_label')}<span class='danger-text'>#{link_to '*', '#required'}</span>".html_safe
         .span5
-          = f.text_field :author_fullname, placeholder: t('email_sharings.new.from_fullname_placeholder'), class: 'span5'
+          = f.text_field :author_fullname, placeholder: t('email_sharings.new.from_fullname_placeholder'), class: 'span12'
         .span5
-          = f.email_field :author_email, placeholder: t('email_sharings.new.from_email_placeholder'), class: 'span5'
+          = f.email_field :author_email, placeholder: t('email_sharings.new.from_email_placeholder'), class: 'span12'
     .row-fluid
       .span1
         %small= "#{t('email_sharings.new.to_label')}<span class='danger-text'>#{link_to '*', '#required'}</span>".html_safe
       .span5
-        = f.text_field :recipient_fullname, placeholder: t('email_sharings.new.to_fullname_placeholder'), class: 'span5'
+        = f.text_field :recipient_fullname, placeholder: t('email_sharings.new.to_fullname_placeholder'), class: 'span12'
       .span5
-        = f.email_field :recipient_email, placeholder: t('email_sharings.new.to_email_placeholder'), class: 'span5'
+        = f.email_field :recipient_email, placeholder: t('email_sharings.new.to_email_placeholder'), class: 'span12'
     .row-fluid
       .span1
       .span10

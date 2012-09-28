@@ -24,19 +24,23 @@
             %small=t 'devise.registrations.fullname'
             %span.danger-text *
             %br/
-            = f.text_field :fullname, class: 'span4'
+            = f.text_field :fullname, class: 'span11'
+            %br/
             %small=t 'devise.registrations.username'
             %span.danger-text *
             %br/
-            = f.text_field :username, class: 'span4'
+            = f.text_field :username, class: 'span11'
+            %br/
             %small=t 'devise.registrations.password'
             %span.danger-text *
             %br/
-            = f.password_field :password, class: 'span4'
+            = f.password_field :password, class: 'span11'
+            %br/
             %small=t 'devise.registrations.password_confirmation'
             %span.danger-text *
             %br/
-            = f.password_field :password_confirmation, class: 'span4'
+            = f.password_field :password_confirmation, class: 'span11'
+            %br/
             = f.submit t('devise.registrations.sign_up'), class: 'btn btn-primary'
     .pull-right.danger-text * #{t('required_fields')}
 
