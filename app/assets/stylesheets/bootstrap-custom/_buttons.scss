@@ -12,7 +12,7 @@
   font-size:$baseFontSize + 2px;
   @include box-shadow(none);
   @include border-radius(8px);
-  @include buttonBackground($btnBackground, $btnBackgroundHighlight);
+  @include buttonBackground($btnBackground, $btnBackgroundHighlight, $grayDark, 0);
 }
 
 
@@ -53,25 +53,6 @@
 // Alternate buttons
 // --------------------------------------------------
 
-// Set text color
-// -------------------------
-.btn-inverse, .btn-inverse:hover{
-  color:$wellTextColor;
-  text-shadow:none;
-}
-.btn-linkedin, .btn-linkedin:hover,
-.btn-twitter, .btn-twitter:hover,
-.btn-facebook, .btn-facebook:hover,
-.btn-google, .btn-google:hover{
-  color:$white;
-  text-shadow:none;
-}
-.btn-linkedin.active, .btn-linkedin.active:hover,
-.btn-twitter.active, .btn-twitter.active:hover,
-.btn-facebook.active, .btn-facebook.active:hover,
-.btn-google.active, .btn-google.active:hover{
-  color:$grayLighter;
-}
 
 // Set the backgrounds
 // -------------------------

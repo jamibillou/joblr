@@ -21,7 +21,6 @@ $white:                 #fff !default;
 $blue:                  #0083e0 !default;
 $red:                   #dd3b2e !default;
 
-
 // Scaffolding
 // -------------------------
 $bodyBackground:        #f1f3f4 !default;
@@ -60,8 +59,8 @@ $btnPrimaryBackgroundHighlight:     #006dba !default;
 $btnDangerBackground:               $red !default;
 $btnDangerBackgroundHighlight:      #b33a31 !default;
 
-$btnInverseBackground:              #fefefe !default;
-$btnInverseBackgroundHighlight:     #dedfe1 !default;
+$btnInverseBackground:              darken($grayLighter, 2%) !default;
+$btnInverseBackgroundHighlight:     darken($grayLighter, 9%) !default;
 
 $btnLinkedinBackground:             #0599cd !default;
 $btnLinkedinBackgroundHighlight:    darken(#0599cd, 7%) !default;
