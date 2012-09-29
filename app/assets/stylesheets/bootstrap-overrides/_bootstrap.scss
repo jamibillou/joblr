@@ -1,0 +1,31 @@
+// Bootstrap v2.1.0.0
+// Over-rides for Joblr.co by @piksel and @dominic_m
+
+
+// Grid system and page structure
+@import "bootstrap-overrides/scaffolding";
+
+// Base CSS
+@import "bootstrap-overrides/type";
+@import "bootstrap-overrides/forms";
+
+// Components: common
+@import "bootstrap-overrides/wells";
+
+// Components: Buttons & Alerts
+@import "bootstrap-overrides/buttons";
+@import "bootstrap-overrides/button-groups";
+@import "bootstrap-overrides/alerts"; // Note: alerts share common CSS with buttons and thus have styles in _buttons.scss
+
+// Components: Nav
+@import "bootstrap-overrides/navbar";
+
+// Components: Popovers
+@import "bootstrap-overrides/modals";
+
+// Components: Misc
+@import "bootstrap-overrides/progress-bars";
+@import "bootstrap-overrides/hero-unit";
+
+// Utility classes
+@import "bootstrap-overrides/utilities"; // Has to be last to override when necessary

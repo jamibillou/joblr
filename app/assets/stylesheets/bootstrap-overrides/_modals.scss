@@ -1,0 +1,15 @@
+// MODALS
+// ------
+
+
+// Base modal
+.modal {
+  border:10px solid $grayLighter;
+}
+
+// Footer (for actions)
+.modal-footer {
+  padding-right:12px;
+  background-color:$white;
+  border-top-color:#eee;
+}

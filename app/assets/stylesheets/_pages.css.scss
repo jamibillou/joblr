@@ -14,7 +14,6 @@
     margin:15px 0 30px 0;
     padding:0;
     background-color:$bodyBackground;
-    @include box-shadow(none);
     border:0;
     border-bottom:5px solid $grayLighter;
     #catchphrase{
@@ -79,7 +78,7 @@
   .well{
     width:150px;
     height:150px;
-    margin:0 25px 10px 0;
+    margin:13px 25px 10px 0;
     padding:10px;
     border:0;
     @include box-shadow(0 1px 2px 1px #ddd);
@@ -100,7 +99,6 @@
     .grayDark{
       background-color:$grayDark;
     }
-    margin-top:13px;
     .red{
       background-color:$red;
     }

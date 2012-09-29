@@ -5,7 +5,7 @@
       %a.help{rel:'popover', 'data-content' => t('users.edit.education_popover'), 'data-original-title' => t('users.edit.education')}
         .icon-question-sign
     = f.text_area :education, value: field_value(:education, @linkedin), placeholder: t('users.edit.education_placeholder'), rows: 3, class: 'big'
-    %span.danger-text= link_to '*', '#required'
+    %span.danger-text *
 .row-fluid.skills
   .span12
     %h4

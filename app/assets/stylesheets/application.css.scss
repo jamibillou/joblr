@@ -2,9 +2,9 @@
 // the order of this list is vital, DO NOT MODIFIY!
 // ------------------------------------------------
 
-@import "variables-custom";
+@import "variables-overrides";
 @import "bootstrap";
-@import "bootstrap-custom/bootstrap";
+@import "bootstrap-overrides/bootstrap";
 @import "bootstrap-responsive";
 @import "font-awesome";
 @import "pages";

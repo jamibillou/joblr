@@ -13,30 +13,27 @@
           %br/
           = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f|
             - unless current_user.social?
-              %small= t('devise.registrations.username')
+              %label.inline= t('devise.registrations.username')
               %span.danger-text *
               %br/
               = f.text_field :username, class: 'span11'
               %br/
             - else
               = f.hidden_field :username
-            %small= t('devise.registrations.fullname')
+            %label.inline= t('devise.registrations.fullname')
             %span.danger-text *
             %br/
             = f.text_field :fullname, class: 'span11'
             %br/
-            %small= t('devise.registrations.email')
-            %br/
+            %label= t('devise.registrations.email')
             = f.email_field :email, class: 'span11'
             %br/
 
             - unless current_user.social?
-              %small= t('devise.registrations.new_password')
-              %br/
+              %label= t('devise.registrations.new_password')
               = f.password_field :password, :autocomplete => 'off', class: 'span11'
               %br/
-              %small= t('devise.registrations.new_password_confirm')
-              %br/
+              %label= t('devise.registrations.new_password_confirm')
               = f.password_field :password_confirmation, class: 'span11'
               %br/
             .buttons

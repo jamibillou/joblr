@@ -5,11 +5,7 @@
 .well{
   margin-bottom:5px;
   padding:40px 30px;
-  background-color:$wellBackground;
   border:10px solid $grayLighter;
   @include border-radius(0);
   @include box-shadow(none);
-  label{
-    color: $textColor;
-  }
 }

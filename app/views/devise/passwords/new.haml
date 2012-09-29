@@ -7,7 +7,7 @@
       .row-fluid
         .span8
           %h1=t 'devise.registrations.forgot_password'
-          %small=t 'devise.registrations.email'
+          %label.inline=t 'devise.registrations.email'
           %span.danger-text *
           %br/
           = f.email_field :email

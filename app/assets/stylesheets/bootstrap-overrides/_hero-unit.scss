@@ -3,9 +3,6 @@
 
 
 .hero-unit{
-  margin-bottom:5px;
-  background-color:$heroUnitBackground;
   border:10px solid $grayLighter;
   @include border-radius(0);
-  @include box-shadow(none);
 }

@@ -21,22 +21,22 @@
           .hidden-phone
             %br/
           = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-            %small=t 'devise.registrations.fullname'
+            %label.inline=t 'devise.registrations.fullname'
             %span.danger-text *
             %br/
             = f.text_field :fullname, class: 'span11'
             %br/
-            %small=t 'devise.registrations.username'
+            %label.inline=t 'devise.registrations.username'
             %span.danger-text *
             %br/
             = f.text_field :username, class: 'span11'
             %br/
-            %small=t 'devise.registrations.password'
+            %label.inline=t 'devise.registrations.password'
             %span.danger-text *
             %br/
             = f.password_field :password, class: 'span11'
             %br/
-            %small=t 'devise.registrations.password_confirmation'
+            %label.inline=t 'devise.registrations.password_confirmation'
             %span.danger-text *
             %br/
             = f.password_field :password_confirmation, class: 'span11'

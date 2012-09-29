@@ -1,8 +1,8 @@
 .row-fluid.identity
   .span3.visible-desktop
   .span9
-    %small=t 'users.edit.headline'
-    %span.danger-text= link_to '*', '#required'
+    %label.inline=t 'users.edit.headline'
+    %span.danger-text *
     %a.help{rel:'popover', 'data-content' => t('users.edit.headline_popover'), 'data-original-title' => t('users.edit.headline')}
       .icon-question-sign
     %br/
@@ -16,15 +16,14 @@
         .icon-question-sign
     .row-fluid
       .span3
-        %small=t 'users.edit.experience_label'
-        %span.danger-text= link_to '*', '#required'
+        %label.inline=t 'users.edit.experience_label'
+        %span.danger-text *
         %br/
         = f.text_field :experience, value: field_value(:experience, @linkedin), placeholder: t('users.edit.experience_placeholder'), class: 'input-mini'
       .span9
         .hidden-desktop
           %br/
-        %small=t 'users.edit.last_job'
-        %br/
+        %label=t 'users.edit.last_job'
         = f.text_area :last_job, value: field_value(:last_job, @linkedin), placeholder: t('users.edit.last_job_placeholder'), rows: 3, class: 'big'
         %p
           %small=t 'users.edit.past_companies'

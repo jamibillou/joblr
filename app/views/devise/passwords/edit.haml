@@ -8,12 +8,12 @@
         .span8
           %h1=t 'devise.passwords.edit.title'
           = f.hidden_field :reset_password_token
-          %small=t 'devise.passwords.new_password'
+          %label.inline=t 'devise.passwords.new_password'
           %span.danger-text *
           %br/
           = f.password_field :password
           %br/
-          %small=t 'devise.passwords.new_password_confirmation'
+          %label.inline=t 'devise.passwords.new_password_confirmation'
           %span.danger-text *
           %br/
           = f.password_field :password_confirmation
