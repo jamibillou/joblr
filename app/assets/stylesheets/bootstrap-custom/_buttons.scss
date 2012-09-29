@@ -13,8 +13,8 @@
   @include box-shadow(none);
   @include border-radius(8px);
   @include buttonBackground($btnBackground, $btnBackgroundHighlight, $grayDark, 0);
+  color:$grayDark; // TO DO! Check if Bootstrap fixes this after v2.1.0.0, this line shouldn't be needed
 }
-
 
 // Button Sizes
 // --------------------------------------------------
@@ -54,8 +54,6 @@
 // --------------------------------------------------
 
 
-// Set the backgrounds
-// -------------------------
 .btn-primary {
   @include buttonBackground($btnPrimaryBackground, $btnPrimaryBackgroundHighlight);
 }
@@ -76,7 +74,9 @@
   @include buttonBackground($btnInfoBackground, $btnInfoBackgroundHighlight);
 }
 .btn-inverse {
-  @include buttonBackground($btnInverseBackground, $btnInverseBackgroundHighlight);
+  @include buttonBackground($btnInverseBackground, $btnInverseBackgroundHighlight, $grayDark, 0);
+  color:$grayDark; // TO DO! Check if Bootstrap fixes this after v2.1.0.0, these two lines shouldn't be needed
+  text-shadow:none;
 }
 .btn-linkedin{
   @include buttonBackground($btnLinkedinBackground, $btnLinkedinBackgroundHighlight);
