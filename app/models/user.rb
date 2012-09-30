@@ -94,7 +94,7 @@ class User < ActiveRecord::Base
       else
         where(conditions).first
       end
-    end    
+    end   
 end
 
 # == Schema Information

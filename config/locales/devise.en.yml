@@ -72,6 +72,7 @@ en:
       already_member: 'Already a member?'
       fullname: 'Full name'
       username: 'Username'
+      login: 'Email or username'
       email: 'Email address'
       password: 'Password'
       password_confirmation: 'Confirm your password'

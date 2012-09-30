@@ -7,10 +7,10 @@
       .row-fluid
         .span8
           %h1=t 'devise.registrations.forgot_password'
-          %small=t 'devise.registrations.email'
+          %small=t 'devise.registrations.login'
           %span.danger-text *
           %br/
-          = f.email_field :email
+          = f.text_field :login
           %br/
           %a.btn{href: url_for(:back)}= t('cancel')
           = f.submit t('devise.passwords.email_me'), class: 'btn btn-primary'
