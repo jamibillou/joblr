@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :fullname, :email, :city, :country, :subdomain, :password, :password_confirmation, :remember_me, :image, :username, :admin,
                   :social, :remove_image, :remote_image_url, :profiles_attributes
+  # Virtual attribute for authenticating by either username or email
+  attr_accessor   :login
 
   has_many :authentifications,       dependent:  :destroy
   has_many :profiles,                dependent:  :destroy
@@ -23,7 +25,7 @@ class User < ActiveRecord::Base
   validates :email,     uniqueness: { case_sensitive: true },      allow_nil: true, if: :email_changed?
   validates :email,     format:     { with: Devise.email_regexp }, allow_nil: true, if: :email_changed?
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable, :authentication_keys => [:login]
 
   mount_uploader :image, UserImageUploader
 
@@ -84,6 +86,15 @@ class User < ActiveRecord::Base
         super
       end
     end
+
+    def self.find_first_by_auth_conditions(warden_conditions)
+      conditions = warden_conditions.dup
+      if login = conditions.delete(:login)
+        where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+      else
+        where(conditions).first
+      end
+    end    
 end
 
 # == Schema Information

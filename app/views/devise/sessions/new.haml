@@ -20,10 +20,10 @@
           .hidden-phone
             %br/
           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-            %small= t('devise.sessions.username')
+            %small= t('devise.sessions.login')
             %span.danger-text *
             %br/
-            = f.text_field :username, class: 'span4'
+            = f.text_field :login, class: 'span4'
             %small= t('devise.sessions.password')
             %span.danger-text *
             %br/

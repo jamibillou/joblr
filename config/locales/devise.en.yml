@@ -7,7 +7,7 @@ en:
     failure:
       already_authenticated: 'You are already signed in.'
       unauthenticated: 'You need to sign in or sign up before continuing.'
-      invalid: 'Invalid username or password.'
+      invalid: 'Invalid login or password.'
       invalid_token: 'Invalid authentication token.'
       timeout: 'Your session expired, please sign in again to continue.'
     sessions:
@@ -22,6 +22,7 @@ en:
         title: 'Sign in'
       sign_in: 'Sign in'
       username: 'Username'
+      login: 'Email or username'
       password: 'Password'
       remember_me: 'Remember me'
       signed_in: 'You are now signed in.'

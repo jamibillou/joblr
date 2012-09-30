@@ -7,7 +7,7 @@ fr:
     failure:
       already_authenticated: 'Vous êtes déjà connecté.'
       unauthenticated: 'Vous devez vous inscrire ou vous connecter avant de continuer.'
-      invalid: "Nom d'utilisateur ou mot de passe incorrect."
+      invalid: "Login ou mot de passe incorrect."
       invalid_token: "Clé d'authentification invalide."
       timeout: 'Votre session a expiré, merci de vous reconnecter.'
     sessions:
@@ -22,6 +22,7 @@ fr:
         title: "Connectez-vous"
       sign_in: "Se connecter"
       username: "Nom d'utilisateur"
+      login: "Email ou nom d'utilisateur"
       password: "Mot de passe"
       remember_me: 'Se souvenir de moi'
       signed_in: 'Vous êtes maintenant connecté.'
