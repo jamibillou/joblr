@@ -5,7 +5,7 @@
 <%=t 'mailers.email_sharing.public_user.text.profile', author_fullname: @email_sharing.author_fullname, user_fullname: @user.fullname %>
 <%=t 'mailers.email_sharing.public_user.text.short_n_easy' %>
 
-<%=t 'mailers.email_sharing.public_user.text.go_to_url', url: @user.public_url %>
+<%=t 'mailers.email_sharing.public_user.text.go_to_url', url: @user.public_url, fullname: @user.fullname %>
 
 
 <% t('mailers.team').length.times do %>-<% end %>

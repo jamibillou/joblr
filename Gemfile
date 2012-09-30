@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '1.9.3'
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.8'
 gem 'haml'
 gem 'pg'
 gem 'jquery-rails'
@@ -29,16 +29,16 @@ end
 
 group :assets do
   gem 'sass-rails'
-  gem 'bootstrap-sass', '2.0.4.1'
+  gem 'bootstrap-sass', '2.1.0.0'
   gem 'font-awesome-sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
-  gem 'therubyracer' # Javascript runtime needed for certain features of sass, coffeescript and uglifier to work.
+  gem 'therubyracer'
 end
 
 group :development do
   gem 'heroku'
-  gem 'annotate', '2.4.1.beta1'
+  gem 'annotate'
   gem 'faker'
 end
 

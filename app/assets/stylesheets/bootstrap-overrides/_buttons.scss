@@ -1,0 +1,65 @@
+// BUTTONS
+// -------
+
+
+// Base styles
+// -----------
+
+// Core
+.btn {
+  padding:8px 24px;
+  margin-right:7px;
+  font-size:$baseFontSize + 2px;
+  @include box-shadow(none);
+  @include border-radius(8px);
+}
+
+// Button Sizes
+// ------------
+
+// Large
+.btn-large {
+  padding:14px 42px;
+  margin-right:15px;
+  font-size:21px;
+  @include border-radius(10px);
+}
+.btn-large [class^="icon-"] {
+  margin-top:2px;
+}
+
+// Small
+.btn-small {
+  padding:5px 17px;
+  margin-right:3px;
+  font-size:$baseFontSize - 1px;
+  @include border-radius(7px);
+}
+.btn-small [class^="icon-"] {
+  margin-top:0px;
+}
+
+// Mini
+.btn-mini {
+  padding: 2px 12px;
+  margin-right:1px;
+  font-size:$baseFontSize - 2px;
+  @include border-radius(5px);
+}
+
+
+// Social buttons
+// --------------
+
+.btn-linkedin{
+  @include buttonBackground($btnLinkedinBackground, $btnLinkedinBackgroundHighlight);
+}
+.btn-twitter{
+  @include buttonBackground($btnTwitterBackground, $btnTwitterBackgroundHighlight);
+}
+.btn-facebook{
+  @include buttonBackground($btnFacebookBackground, $btnFacebookBackgroundHighlight);
+}
+.btn-google{
+  @include buttonBackground($btnGoogleBackground, $btnGoogleBackgroundHighlight);
+}

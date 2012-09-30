@@ -1,0 +1,86 @@
+// TYPOGRAPHY
+// ----------
+
+
+// BODY TEXT
+// ---------
+
+p{
+  margin-bottom: $baseLineHeight;
+}
+.big{
+  margin-bottom: $baseLineHeight * 2/3;
+  font-size:16px;
+  font-weight:300;
+  line-height:$baseLineHeight * 1.2;
+}
+
+// Colors
+// ------
+
+.graylight-text { color:$grayLight }
+.info-text      { color:$blue }
+.danger-text    { color:$errorText }
+.success-text   { color:$successText }
+
+.graylight-text a, .graylight-text a:hover,
+.info-text a, .info-text a:hover,
+.danger-text a, .danger-text a:hover,
+.success-text a, .success-text a:hover{
+  color:inherit;
+  text-decoration:underline;
+}
+
+
+// Emphasis & misc
+// ---------------
+
+small{
+  color:darken($grayLighter,15%);
+}
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small{
+  color:darken($grayLighter,15%);
+  font-weight:normal;
+}
+
+
+// HEADINGS
+// --------
+
+h1, h2, h3, h4, h5, h6{
+  margin:0;
+}
+h1{
+  font-size:34px;
+  line-height:34px;
+}
+h2{
+  font-size:26px;
+  line-height:26px;
+}
+h3{
+  font-size:20px;
+  line-height:20px;
+}
+h4{
+  width:100%;
+  padding-bottom:$baseLineHeight / 5;
+  margin-bottom:$baseLineHeight * 2/3;
+  border-bottom:1px solid $textColor;
+  font-size:$baseFontSize + 1;
+  font-weight:500;
+
+}
+
+// WELLS, HERO-UNIT, MODALS, POPOVERS
+//-----------------------------------
+.well, .hero-unit, .modal{
+  h4{
+    color:darken($grayLighter,15%);
+    border-bottom:1px solid darken($grayLighter,5%);
+    font-weight:200;
+  }
+  input[type="file"]{
+    color: $gray;
+  }
+}

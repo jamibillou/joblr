@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: email_sharings
+#
+#  id                 :integer          not null, primary key
+#  profile_id         :integer
+#  author_id          :integer
+#  author_fullname    :string(255)
+#  author_email       :string(255)
+#  recipient_fullname :string(255)
+#  recipient_email    :string(255)
+#  text               :string(255)
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  status             :string(255)
+#
+
 require 'spec_helper'
 
 describe EmailSharing do
@@ -64,21 +81,3 @@ describe EmailSharing do
     it { should validate_format_of(:recipient_email).with @email[:valid][rand(@email[:valid].size)] }
 	end
 end
-
-# == Schema Information
-#
-# Table name: email_sharings
-#
-#  id                 :integer         not null, primary key
-#  profile_id         :integer
-#  author_id          :integer
-#  author_fullname    :string(255)
-#  author_email       :string(255)
-#  recipient_fullname :string(255)
-#  recipient_email    :string(255)
-#  text               :string(255)
-#  created_at         :datetime        not null
-#  updated_at         :datetime        not null
-#  status             :string(255)
-#
-

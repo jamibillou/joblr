@@ -20,16 +20,18 @@
           .hidden-phone
             %br/
           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-            %small= t('devise.sessions.login')
+            %label.inline= t('devise.sessions.login')
             %span.danger-text *
             %br/
-            = f.text_field :login, class: 'span4'
-            %small= t('devise.sessions.password')
+            = f.text_field :username, class: 'span11'
+            %br/
+            %label.inline= t('devise.sessions.password')
             %span.danger-text *
             %br/
-            = f.password_field :password, class: 'span4'
+            = f.password_field :password, class: 'span11'
+            %br/
             - if devise_mapping.rememberable?
-              %small.delete=t 'devise.sessions.remember_me'
+              %label.inline=t 'devise.sessions.remember_me'
               &nbsp;
               = f.check_box :remember_me, class: 'inline', style: 'margin-top:0'
               %br/

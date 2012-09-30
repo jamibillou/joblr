@@ -1,3 +1,34 @@
+# == Schema Information
+#
+# Table name: profiles
+#
+#  id             :integer          not null, primary key
+#  user_id        :integer
+#  headline       :string(255)
+#  experience     :string(255)
+#  last_job       :string(255)
+#  past_companies :string(255)
+#  education      :string(255)
+#  skill_1        :string(255)
+#  skill_1_level  :string(255)
+#  skill_2        :string(255)
+#  skill_2_level  :string(255)
+#  skill_3        :string(255)
+#  skill_3_level  :string(255)
+#  quality_1      :string(255)
+#  quality_2      :string(255)
+#  quality_3      :string(255)
+#  file           :string(255)
+#  url            :string(255)
+#  text           :string(255)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  linkedin_url   :string(255)
+#  twitter_url    :string(255)
+#  facebook_url   :string(255)
+#  google_url     :string(255)
+#
+
 require 'spec_helper'
 
 describe Profile do
@@ -109,35 +140,3 @@ describe Profile do
     # end
   end
 end
-
-# == Schema Information
-#
-# Table name: profiles
-#
-#  id             :integer         not null, primary key
-#  user_id        :integer
-#  headline       :string(255)
-#  experience     :string(255)
-#  last_job       :string(255)
-#  past_companies :string(255)
-#  education      :string(255)
-#  skill_1        :string(255)
-#  skill_1_level  :string(255)
-#  skill_2        :string(255)
-#  skill_2_level  :string(255)
-#  skill_3        :string(255)
-#  skill_3_level  :string(255)
-#  quality_1      :string(255)
-#  quality_2      :string(255)
-#  quality_3      :string(255)
-#  file           :string(255)
-#  url            :string(255)
-#  text           :string(255)
-#  created_at     :datetime        not null
-#  updated_at     :datetime        not null
-#  linkedin_url   :string(255)
-#  twitter_url    :string(255)
-#  facebook_url   :string(255)
-#  google_url     :string(255)
-#
-

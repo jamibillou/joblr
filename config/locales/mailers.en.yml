@@ -8,7 +8,7 @@ en:
         title: 'Reset your password'
         content_html: "Go to %{url} to reset your password."
         wont_change: "It won't change until you follow that link and create a new password."
-        if_not: "Please ignore this email if you didn't request it."
+        if_not: "Ignore this email if you didn't request it."
     email_sharing:
       user:
         subject: "%{fullname} on Joblr"
@@ -20,9 +20,7 @@ en:
           no_thanks: 'No, thanks'
           more_about: 'More about %{fullname}'
           experience: 'Experience'
-          yrs:
-            one: '%{count} yr'
-            other: '%{count} yrs'
+          yr: 'yr'
           last_job: 'Last or current job'
           also_worked_for_html: "<small>Also worked for</small><br />%{past_companies}"
           education: 'Highest education'
@@ -31,8 +29,8 @@ en:
           view_complete_profile: "View %{fullname}'s complete profile on Joblr.co"
         text:
           title: "%{fullname} on Joblr"
-          content: "%{fullname} sent you a Joblr profile to start the conversation. They are short and easy to read so you don't waste your time."
-          go_to_url: 'Go to %{url} to check it out!'
+          content: "%{fullname} sent you a Joblr profile to start the conversation. Those profiles are short and easy to read so you don't waste your time."
+          go_to_url: "Go to %{url} to view %{fullname}'s profile!"
       other_user:
         subject: "%{fullname} through Joblr"
         html:
@@ -46,7 +44,7 @@ en:
           title: "%{fullname} through Joblr"
           profile: "%{author_fullname} sent you %{user_fullname}'s profile thinking you might be interested."
           short_n_easy: "Joblr profiles are short and easy to read so you don't waste your time."
-          go_to_url: 'Go to %{url} to check it out!'
+          go_to_url: "Go to %{url} to view %{fullname}'s profile!"
       public_user:
         subject: "%{fullname} through Joblr"
         html:
@@ -60,7 +58,7 @@ en:
           title: "%{fullname} through Joblr"
           profile: "%{author_fullname} sent you %{user_fullname}'s profile thinking you might be interested."
           short_n_easy: "Joblr profiles are short and easy to read so you don't waste your time."
-          go_to_url: 'Go to %{url} to check it out!'
+          go_to_url: "Go to %{url} to view %{fullname}'s profile!"
       decline:
         subject: "%{fullname} through Joblr"
         title: "%{fullname} is not interested"
@@ -81,7 +79,7 @@ en:
       send_code:
         subject: "Invitation to Joblr beta"
         title: "Congrats, here's your invitation to Joblr beta!"
-        content_html: "Click the button below to get started. This invitation code will be copy/pasted automatically:"
-        content_text: "Paste this invitation code at %{url} to get started."
+        content_html: "Click the button below to get access. This invitation code will be copy/pasted automatically.<br><br>You can also do it yourself at %{url}."
+        content_text: "Paste the invitation code below at %{url} to get access."
         code: "Code:"
-        button: 'Sign up!'
+        button: 'Get access!'

@@ -19,7 +19,7 @@
 // COLORS
 // ------
 
-// Danger (red)
-.progress-danger .bar {
+// Blue
+.progress-blue .bar {
   @include gradient-vertical($blue, #0076c9);
 }

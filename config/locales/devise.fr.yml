@@ -40,7 +40,7 @@ fr:
         title: 'Changez votre mot de passe'
       new_password: 'Nouveau mot de passe'
       new_password_confirmation: 'Confirmez ce mot de passe'
-      email_me: "M'envoyer les instructions"
+      email_me: "Envoyez-moi les instructions"
       sign_in: 'La mémoire vous revient ?'
       change_password: 'Changer mon mot de passe'
       send_instructions: "Vous allez recevoir d'ici quelques minutes un email avec les instructions pour réinitialiser votre mot de passe."

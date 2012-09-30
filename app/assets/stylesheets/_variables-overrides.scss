@@ -21,12 +21,10 @@ $white:                 #fff !default;
 $blue:                  #0083e0 !default;
 $red:                   #dd3b2e !default;
 
-
 // Scaffolding
 // -------------------------
 $bodyBackground:        #f1f3f4 !default;
 $textColor:             $grayDark !default;
-$wellTextColor:         $grayDark;
 
 // Links
 // -------------------------
@@ -60,8 +58,8 @@ $btnPrimaryBackgroundHighlight:     #006dba !default;
 $btnDangerBackground:               $red !default;
 $btnDangerBackgroundHighlight:      #b33a31 !default;
 
-$btnInverseBackground:              #fefefe !default;
-$btnInverseBackgroundHighlight:     #dedfe1 !default;
+$btnInverseBackground:              darken($grayLighter, 2%) !default;
+$btnInverseBackgroundHighlight:     darken($grayLighter, 9%) !default;
 
 $btnLinkedinBackground:             #0599cd !default;
 $btnLinkedinBackgroundHighlight:    darken(#0599cd, 7%) !default;
@@ -107,6 +105,10 @@ $navbarBrandWidth:              123px;
 // COMPONENT VARIABLES
 // --------------------------------------------------
 
+// Wells
+// -------------------------
+$wellBackground:                  $white !default;
+
 // Navbar
 // -------------------------
 $navbarHeight:                    90px !default;
@@ -125,25 +127,29 @@ $navbarSearchBackground:          lighten($navbarBackground, 25%) !default;
 
 // Hero unit
 // -------------------------
-$heroUnitBackground:              $white !default;
-$heroUnitHeadingColor:            $wellTextColor !default;
-$heroUnitLeadColor:               $wellTextColor !default;
+$heroUnitBackground:              $wellBackground !default;
+$heroUnitHeadingColor:            inherit !default;
+$heroUnitLeadColor:               inherit !default;
 
 // Form states and alerts
 // -------------------------
-$warningText:             $grayDark !default;
+$warningText:             darken(#e8d49f, 15%) !default;
+$warningAlertText:        $grayDark !default;
 $warningBackground:       #fff6ce !default;
 $warningBorder:           #e8d49f !default;
 
-$errorText:               $grayDark !default;
+$errorText:               darken(#e18c8c, 15%) !default;
+$errorAlertText:          $grayDark !default;
 $errorBackground:         #ebc0c0 !default;
 $errorBorder:             #e18c8c !default;
 
-$successText:             $grayDark !default;
+$successText:             darken(#a3ce94, 15%) !default;
+$successAlertText:        $grayDark !default;
 $successBackground:       #caecbf !default;
 $successBorder:           #a3ce94 !default;
 
-$infoText:                $grayDark !default;
+$infoText:                darken(#9dc0ea, 15%) !default;
+$infoAlertText:           $grayDark !default;
 $infoBackground:          #bedcff !default;
 $infoBorder:              #9dc0ea !default;
 

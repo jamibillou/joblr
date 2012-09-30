@@ -1,0 +1,8 @@
+// HERO UNIT
+// ---------
+
+
+.hero-unit{
+  border:10px solid $grayLighter;
+  @include border-radius(0);
+}
