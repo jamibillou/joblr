@@ -183,6 +183,11 @@ describe EmailSharingsController do
             EmailSharingMailer.deliveries.last.to.should include 'other_user@example.com'
             EmailSharingMailer.deliveries.last.subject.should == I18n.t('mailers.email_sharing.other_user.subject', fullname: @author.fullname)
           end
+
+          it "should have a flash message" do
+            xhr :post, :create, :email_sharing => @email_sharing_attr.merge(profile: @other_profile, recipient_email: 'other_user@example.com', recipient_fullname: 'Test Dude'), user_id: @other_user.id
+            flash[:success].should == I18n.t('flash.success.profile.shared.other_user', recipient_email: 'other_user@example.com', fullname: @other_user.fullname)
+          end
         end
       end
     end
