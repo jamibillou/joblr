@@ -31,6 +31,10 @@ describe PagesController do
 			response.body.should include I18n.t('pages.landing.benefit4_text')
 			response.body.should include I18n.t('pages.landing.disclaimer_html')
 		end
+
+		it 'should have kissmetrics event' do
+			response.body.should have_content "_kmq.push(['record', 'Viewed landing page'])"
+		end	
 	end
 
 	describe "GET 'admin'" do

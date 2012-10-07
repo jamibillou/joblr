@@ -138,6 +138,11 @@ describe BetaInvitesController do
 
   describe "GET 'thank_you'" do
     it { get :thank_you, beta_invite_id: @beta_invite ; be_success }
+
+    it 'should have kissmetrics event' do
+      get :thank_you, beta_invite_id: @beta_invite
+      response.body.should have_content "_kmq.push(['record', 'Requested a beta invite'])"
+    end
   end
 
   describe "GET 'send_code'" do
@@ -236,9 +241,16 @@ describe BetaInvitesController do
 
     context 'for public users' do
 
-      it 'should have a code text field' do
+      before :each do
         get :edit, id: @beta_invite
+      end
+
+      it 'should have a code text field' do
         response.body.should have_selector 'input#beta_invite_code'
+      end
+
+      it 'should have kissmetrics event' do
+        response.body.should have_content "_kmq.push(['record', 'Viewed use beta invite page'])"
       end
     end
   end
