@@ -51,12 +51,12 @@ module ApplicationHelper
         }, 1);
       }
       _kms('//i.kissmetrics.com/i.js');
-      _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');"
+      _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');".html_safe
     end
   end
 
   def kiss_event(type, value)
-    content_tag(:script, :type => 'text/javascript') { "_kmq.push(['#{type}', '#{value}']);".html_safe } if Rails.env.production?
+    content_tag(:script, :type => 'text/javascript') { "_kmq.push(['#{type}', '#{value}']);".html_safe } if Rails.env.production? || Rails.env.test?
   end
 
   def kiss_key(environment)

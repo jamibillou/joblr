@@ -11,26 +11,43 @@ describe PagesController do
 
 	describe "GET 'landing'" do
 
-		before :each do
-			get :landing
+		context 'for public users' do
+			before :each do
+				get :landing
+			end
+
+			it { response.should be_success }
+
+			it 'should have the right content' do
+				response.body.should include I18n.t('pages.landing.catchphrase')
+				response.body.should include I18n.t('pages.landing.saves')
+				response.body.should include I18n.t('pages.landing.join')
+				response.body.should include I18n.t('pages.landing.benefit1_title')
+				response.body.should include I18n.t('pages.landing.benefit1_text')
+				response.body.should include I18n.t('pages.landing.benefit2_title')
+				response.body.should include I18n.t('pages.landing.benefit2_text')
+				response.body.should include I18n.t('pages.landing.benefit3_title')
+				response.body.should include I18n.t('pages.landing.benefit3_text_html')
+				response.body.should include I18n.t('pages.landing.benefit4_title')
+				response.body.should include I18n.t('pages.landing.benefit4_text')
+				response.body.should include I18n.t('pages.landing.disclaimer_html')
+			end
+
+			it 'should have kissmetrics event' do
+				response.body.should have_content "_kmq.push(['record', 'Viewed landing page'])"
+			end
 		end
 
-		it { response.should be_success }
+		context 'for signed in users' do
+			before :each do
+				sign_in @user
+				get :landing
+			end
 
-		it 'should have the right content' do
-			response.body.should include I18n.t('pages.landing.catchphrase')
-			response.body.should include I18n.t('pages.landing.saves')
-			response.body.should include I18n.t('pages.landing.join')
-			response.body.should include I18n.t('pages.landing.benefit1_title')
-			response.body.should include I18n.t('pages.landing.benefit1_text')
-			response.body.should include I18n.t('pages.landing.benefit2_title')
-			response.body.should include I18n.t('pages.landing.benefit2_text')
-			response.body.should include I18n.t('pages.landing.benefit3_title')
-			response.body.should include I18n.t('pages.landing.benefit3_text_html')
-			response.body.should include I18n.t('pages.landing.benefit4_title')
-			response.body.should include I18n.t('pages.landing.benefit4_text')
-			response.body.should include I18n.t('pages.landing.disclaimer_html')
-		end
+			it 'should have kissmetrics event' do
+				response.body.should have_content "_kmq.push(['identity', '#{@user.username}'])"
+			end			
+		end	
 	end
 
 	describe "GET 'admin'" do
@@ -59,7 +76,7 @@ describe PagesController do
 				it 'should redirect to root path' do
 					response.should redirect_to(root_path)
 					flash[:error].should == I18n.t('flash.error.only.admin')
-				end
+				end			
 			end
 
 			context 'who are admin' do
@@ -73,6 +90,10 @@ describe PagesController do
 
 				it 'should have an admin block' do
 					response.body.should have_selector 'div.admin'
+				end
+
+				it 'should have kissmetrics event' do
+					response.body.should have_content "_kmq.push(['identity', '#{@admin.username}'])"
 				end
 			end
 		end

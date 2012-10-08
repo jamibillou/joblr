@@ -7,6 +7,8 @@ fr:
       subtitle_html: "Nous sommes actuellement en beta privée. Saisissez votre adresse email et nous vous inviterons dés que possible."
       placeholder: 'Adresse email'
       button: 'Invitez-moi !'
+    create:
+      title: "Demandez votre invitation Joblr !"  
     thank_you:
       title: 'Merci !'
       subtitle_html: "Merci de votre demande.<br />Nous invitons régulièrement de nouveaux utilisateurs, surveillez votre boîte de réception !"

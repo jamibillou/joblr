@@ -55,6 +55,11 @@ describe UsersController do
           it 'should have an email sharing modal' do
             find('div#email-sharing-modal').should  have_content I18n.t('email_sharings.new.title')
           end
+
+          it 'should have kissmetrics event' do
+            get :show, id: @user
+            response.body.should have_content "_kmq.push(['record', 'Viewed profile (public user)'])"
+          end
         end
       end
 
@@ -187,6 +192,16 @@ describe UsersController do
 
         it 'should have an email sharing modal' do
           find('div#email-sharing-modal').should  have_content I18n.t('email_sharings.new.title')
+        end
+
+        context 'visiting another user page' do
+
+          it 'should have kissmetrics event' do
+            sign_out @user
+            sign_in  @user2
+            get :show, id: @user
+            response.body.should have_content "_kmq.push(['record', 'Viewed profile (other user)'])"
+          end
         end
       end
     end
