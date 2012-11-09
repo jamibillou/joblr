@@ -2,7 +2,7 @@ en:
   pages:
     landing:
       title: 'Save your job hunting minutes'
-      title_alt: 'Landing'
+      title_alt: 'Home'
       catchphrase: 'Tired of writing cover letters and resumes?'
       saves: 'Joblr saves your job hunting minutes.'
       join: 'Join the beta!'
@@ -20,3 +20,5 @@ en:
       title_alt: 'Admin'
     style_tile:
       title: 'Style tile'
+    blog:
+      title_alt: 'Blog'

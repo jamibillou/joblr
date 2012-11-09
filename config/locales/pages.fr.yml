@@ -20,3 +20,5 @@ fr:
       title_alt: 'Admin'
     style_tile:
       title: 'Styles'
+    blog:
+      title_alt: 'Blog'
