@@ -11,9 +11,23 @@ class PagesController < ApplicationController
     @beta_invites    = BetaInvite.all
   end
 
-  def style_tile
+  def search
+    @title = 'Search'
   end
 
-  def close
+  def search2
+    @title = 'Search'
+  end
+
+  def search3
+    @title = 'Search'
+  end
+
+  def search4
+    @title = 'Search'
+  end
+
+  def search5
+    @title = 'Search'
   end
 end

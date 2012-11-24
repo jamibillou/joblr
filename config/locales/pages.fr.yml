@@ -21,4 +21,6 @@ fr:
     style_tile:
       title: 'Styles'
     blog:
-      title_alt: 'Blog'
+      title: 'Blog'
+    search:
+      title: 'Recherche'
