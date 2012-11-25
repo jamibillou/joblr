@@ -26,14 +26,17 @@ Joblr::Application.routes.draw do
   post 'users/share_profile' => 'users#share_profile'
 
   match 'landing',    to: 'pages#landing'
+  match 'admin',      to: 'pages#admin'
+  match 'style_tile', to: 'pages#style_tile'
+  match 'close',      to: 'pages#close'
+
   match 'search',     to: 'pages#search'
   match 'search2',    to: 'pages#search2'
   match 'search3',    to: 'pages#search3'
   match 'search4',    to: 'pages#search4'
   match 'search5',    to: 'pages#search5'
-  match 'admin',      to: 'pages#admin'
-  match 'style_tile', to: 'pages#style_tile'
-  match 'close',      to: 'pages#close'
+  match 'search6',    to: 'pages#search6'
+  match 'search7',    to: 'pages#search7'
 
   # Subdomain constraints
   match '', to: 'users#show', constraints: Subdomain.new(true) || MultiLevelSubdomain.new(true)

@@ -1,0 +1,109 @@
+%span12#search
+  .row-fluid
+    .span8.offset2
+      .row-fluid
+        %h2 Search companies by location, industry or name
+        %h6 You can also search people by full name
+        %input.span11{type: 'text', placeholder: 'Search', value: 'Amsterdam, internet'}
+        .pull-right
+          %a{href: search3_path}
+            search
+            .icon-search
+        %br/
+        %span.label.label-info
+          .icon-map-marker
+          Amsterdam
+        %span.label.label-inverse
+          internet
+        %br/
+        %br/
+        %br/
+        %br/
+  .row-fluid
+    .span10.offset1.well
+      .span2
+        =image_tag 'company_logos/company_logo13.png'
+      .span8
+        %h2 Joblr
+        .icon-map-marker
+        Amsterdam, Netherlands
+        %br/
+        .icon-briefcase
+        Internet
+        %br/
+        =link_to 'http://joblr.co', 'http://joblr.co', target: 'new'
+      .span2
+        %h4 Social Accounts
+        %h2
+          .icon-linkedin
+          .icon-twitter
+          .icon-facebook
+          .icon-github      
+        %br/
+        %br/
+        %br/
+      .span11
+        Joblr is an Amsterdam based startup dedicated to fixing the job search.
+        %br/ 
+        The website enables effortless job applications by helping work seekers import their info from LinkedIn and send their profile to companies through easy to read yet powerful profile emails.
+        %br/
+        Getting tips and contacts from social networks is also just one "share" button away.
+        %br/
+        %br/
+        %ul.nav.nav-tabs
+          %li.active=link_to 'News', '#'
+          %li=link_to 'People', search6_path
+          %li=link_to 'Jobs', search7_path
+        .row-fluid
+          .span1
+            =image_tag 'people_avatars/joel.jpg'
+          .span9
+            =link_to 'Joel Laumans', search6_path 
+            joined the company
+            %small on Linkedin
+          .span2
+            %h6.pull-right 3 hours ago
+        %br/
+        .row-fluid
+          .span1
+            =image_tag 'company_logos/company_logo13.png'
+          .span9
+            RT 
+            =link_to '@TomBolt:', 'https://twitter.com/TomBolt' 
+            A2: Really, what changed? Nothing has changed. Stick to your plan and don’t let interruptions put on the brakes. 
+            =link_to '#HFChat', 'https://twitter.com/search?q=%23HFChat&src=hash'
+            %small on Twitter
+          .span2
+            %h6.pull-right 5 hours ago
+        %br/        
+        .row-fluid
+          .span1
+            =image_tag 'company_logos/company_logo13.png'
+          .span9
+            A1 Less people are seeking, so you have less competiton
+            =link_to '#HFChat', 'https://twitter.com/search?q=%23HFChat&src=hash'
+            %small on Twitter
+          .span2
+            %h6.pull-right 5 hours ago
+        %br/
+        .row-fluid
+          .span1
+            =image_tag 'company_logos/company_logo13.png'
+          .span9
+            RT 
+            =link_to '@PeopleClues:', 'https://twitter.com/PeopleClues' 
+            Q4: Does a disruptive DNA in HR change the progression forever? and for the better? or worse? 
+            =link_to '#HFChat', 'https://twitter.com/search?q=%23peoplechat&src=hash'
+            %small on Twitter
+          .span2
+            %h6.pull-right 5 hours ago
+        %br/
+        .row-fluid
+          .span1
+            =image_tag 'company_logos/company_logo13.png'
+          .span9
+            Joblr published a new link:
+            = link_to 'Cover letter and personnality', '#'
+            %small on Facebook
+          .span2  
+            %h6.pull-right 2 days ago
