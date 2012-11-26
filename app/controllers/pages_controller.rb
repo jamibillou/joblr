@@ -30,4 +30,8 @@ class PagesController < ApplicationController
   def search5
     @title = 'Search'
   end
+
+  def search6
+    @title = 'Search'
+  end
 end

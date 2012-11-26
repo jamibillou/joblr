@@ -1,0 +1,167 @@
+%span12#search
+  .row-fluid
+    .span2
+      .row-fluid
+        %h5 Search companies by location, industry or name
+        %input.span11{type: 'text', placeholder: 'Search', value: 'Amsterdam, internet'}
+        %br/
+        %span.label.label-info
+          .icon-map-marker
+          Amsterdam
+        %span.label.label-inverse
+          internet
+        %br/
+        %br/
+        %a{href: search3_path}
+          search
+          .icon-search
+    .span10.well
+      .row-fluid
+        .span2
+          = image_tag 'people_avatars/dom.jpg'
+        .span7
+          %h2 Dominic Matheron
+          .icon-map-marker
+          Amsterdam, Netherlands
+          %br/
+          .icon-briefcase
+          Product Owner at 
+          =link_to 'Viadeo,', '#'
+          Co-founder at
+          =link_to 'Joblr', search5_path
+          %br/
+          .icon-briefcase
+          Education: Master's degree, Transnational Relations and International Cooperation at University of Lille
+        .span3
+          %h4 Social accounts
+          .icon-linkedin :
+          = link_to 'Dominic Matheron', 'http://www.linkedin.com/profile/view?id=35370917', target: 'new'
+          on LinkedIn
+          %br/
+          .icon-twitter :
+          = link_to '@dominic_m', 'http://twitter.com/dominic_m', target: 'new'
+          on Twitter
+          %br/
+          .icon-github :
+          = link_to 'dmatheron', 'https://github.com/dmatheron', target: 'new'
+          on Github
+      .row-fluid
+        .span11
+          %br/
+          %h5 About Dominic
+          %p
+          Especially receptive to lessons from The Lean Startup, Steven Blank and 37signals, I have a passion for technology companies and startups putting useful products out there.
+          %br/
+          This lead me to co-found Joblr.co, a website that enables effortless job applications through easy to read yet powerful "profile emails".
+          %br/
+          The end goal of Joblr.co is to fix the job search, so is mine.
+          %br/
+          %br/
+      .row-fluid
+        .span12
+          %ul.nav.nav-tabs
+            %li.active
+              %a{href: '#news', 'data-toggle' => 'tab'} News
+            %li
+              %a{href: '#jobs', 'data-toggle' => 'tab'} Jobs
+
+          .tab-content
+            .tab-pane.active#news
+              .row-fluid
+                .span1
+                  =image_tag 'people_avatars/dom.jpg'
+                .span9.big
+                  Why I walked away from $1 million, founded 
+                  =link_to '@vittana', 'http://twitter.com/vittana' 
+                  =link_to 'http://bit.ly/Y8qJLx', 'http://bit.ly/Y8qJLx' 
+                  by 
+                  =link_to '@kushalc', 'http://twitter.com/kushalc'
+                  %small on Twitter
+                .span2
+                  %h6.pull-right 5 hours ago
+              %br/
+              .row-fluid
+                .span1
+                  =image_tag 'people_avatars/joel.jpg'
+                .span9.big
+                  Dominic and
+                  =link_to 'Joel Laumans', '#'
+                  are now friend
+                  %small on Linkedin
+                .span2
+                  %h6.pull-right yesterday
+              %br/
+              .row-fluid
+                .span1
+                  =image_tag 'people_avatars/dom.jpg'
+                .span9.big
+                  Why I Left My Solo Gig to Form Copyblogger Media 
+                  =link_to 'http://bit.ly/KdpUJz', 'http://bit.ly/KdpUJz' 
+                  by 
+                  =link_to '@bgardner', 'http://twitter.com/bgardner'
+                  %small on Twitter
+                .span2
+                  %h6.pull-right 3 days ago
+              %br/
+              .row-fluid
+                .span1
+                  =image_tag 'people_avatars/dom.jpg'
+                .span9.big
+                  Dominic liked an article:
+                  = link_to 'The Perfect Job Interview in 8 Simple Steps', 'http://www.linkedin.com/today/post/article/20121121171031-20017018-the-perfect-job-interview-in-8-simple-steps', target: 'new'
+                  %small on Linkedin
+                .span2
+                  %h6.pull-right 4 days ago
+
+            .tab-pane#jobs
+              .row-fluid
+                .span1
+                  =image_tag 'company_logos/viadeo.jpg'
+                .span8
+                  %h5=link_to 'Viadeo', '#'
+                  .icon-briefcase
+                  Product Owner
+                  %br/
+                  .icon-map-marker
+                  Amsterdam, Netherlands
+                .span3
+                  %h6.pull-right June 2012 - Present
+              %br/
+              .row-fluid
+                .span1
+                  =image_tag 'company_logos/company_logo13.png'
+                .span8
+                  %h5=link_to 'Joblr', search5_path
+                  .icon-briefcase
+                  Co-founder
+                  %br/
+                  .icon-map-marker
+                  Amsterdam, Netherlands
+                .span3
+                  %h6.pull-right July 2011 - Present
+              %br/
+              .row-fluid
+                .span1
+                  =image_tag 'company_logos/ltb.png'
+                .span8
+                  %h5=link_to 'LTB Jeans', '#'
+                  .icon-briefcase
+                  Customer Service Representative
+                  %br/
+                  .icon-map-marker
+                  Rotterdam, Netherlands
+                .span3
+                  %h6.pull-right September 2011 - May 2012
+              %br/
+              .row-fluid
+                .span1
+                  =image_tag 'company_logos/tm.jpg'
+                .span8
+                  %h5=link_to 'Transport Marketplace', '#'
+                  .icon-briefcase
+                  Branch Manager
+                  %br/
+                  .icon-map-marker
+                  Rotterdam, Netherlands
+                .span3
+                  %h6.pull-right March 2010 - June 2011
