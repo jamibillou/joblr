@@ -68,9 +68,9 @@
             %li.active
               %a{href: '#people', 'data-toggle' => 'tab'} People
             %li
-              %a{href: '#news', 'data-toggle' => 'tab'} News
-            %li
               %a{href: '#jobs', 'data-toggle' => 'tab'} Jobs
+            %li
+              %a{href: '#feed', 'data-toggle' => 'tab'} Social feed
 
           .tab-content
             .tab-pane.active#people
@@ -126,7 +126,46 @@
                     .icon-facebook
                     .icon-google-plus
 
-            .tab-pane#news
+            .tab-pane#jobs
+              .row-fluid
+                .span3
+                  %h2 SEO Expert
+                  .icon-map-marker
+                  Amsterdam, Netherlands
+                  %br/
+                  .icon-info-sign
+                  2-5 yrs experience
+                .span8.offset1
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                  = link_to '» read more', '#'
+              %br/
+              %br/
+              .row-fluid
+                .span3
+                  %h2 Ruby on Rails Starter
+                  .icon-map-marker
+                  Amsterdam, Netherlands
+                  %br/
+                  .icon-info-sign
+                  Beginner or Junior
+                .span8.offset1
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                  = link_to '» read more', '#'
+              %br/
+              %br/
+              .row-fluid
+                .span3
+                  %h2 Project Manager
+                  .icon-map-marker
+                  Paris, France
+                  %br/
+                  .icon-info-sign
+                  10 yrs experience at least
+                .span8.offset1
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                  = link_to '» read more', '#'
+
+            .tab-pane#feed
               .row-fluid
                 .span1
                   =image_tag 'people_avatars/joel.jpg'
@@ -180,42 +219,3 @@
                   %small on Facebook
                 .span2
                   %h6.pull-right 2 days ago
-
-            .tab-pane#jobs
-              .row-fluid
-                .span3
-                  %h2 SEO Expert
-                  .icon-map-marker
-                  Amsterdam, Netherlands
-                  %br/
-                  .icon-info-sign
-                  2-5 yrs experience
-                .span8.offset1
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                  = link_to '» read more', '#'
-              %br/
-              %br/
-              .row-fluid
-                .span3
-                  %h2 Ruby on Rails Starter
-                  .icon-map-marker
-                  Amsterdam, Netherlands
-                  %br/
-                  .icon-info-sign
-                  Beginner or Junior
-                .span8.offset1
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                  = link_to '» read more', '#'
-              %br/
-              %br/
-              .row-fluid
-                .span3
-                  %h2 Project Manager
-                  .icon-map-marker
-                  Paris, France
-                  %br/
-                  .icon-info-sign
-                  10 yrs experience at least
-                .span8.offset1
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                  = link_to '» read more', '#'
