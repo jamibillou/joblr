@@ -70,7 +70,7 @@
             %li
               %a{href: '#jobs', 'data-toggle' => 'tab'} Jobs
             %li
-              %a{href: '#feed', 'data-toggle' => 'tab'} Activty feed
+              %a{href: '#feed', 'data-toggle' => 'tab'} Activity feed
 
           .tab-content
             .tab-pane.active#people
@@ -87,9 +87,12 @@
                   Co-founder
                 .span2
                   %h2
-                    .icon-linkedin
-                    .icon-twitter
-                    .icon-github
+                    %a{href: 'http://www.linkedin.com/profile/view?id=35370917', target: 'new', class: 'social_link'}
+                      .icon-linkedin{rel: 'tooltip', title: 'Dominic Matheron on LinkedIn'}
+                    %a{href: 'http://www.twitter.com/dmatheron', target: 'new', class: 'social_link'}
+                      .icon-twitter{  rel: 'tooltip', title: '@dominic on Twitter' }
+                    %a{href: 'http://www.github.com/dmatheron', target: 'new', class: 'social_link'}
+                      .icon-github{   rel: 'tooltip', title: 'dmatheron on Github' }
                 .span1
                   = image_tag 'people_avatars/franck.png'
                 .span3
@@ -102,11 +105,16 @@
                   Co-founder
                 .span2
                   %h2
-                    .icon-linkedin
-                    .icon-twitter
-                    .icon-facebook
-                    .icon-github
-                    .icon-google-plus
+                    %a{href: 'http://www.linkedin.com/profile/view?id=67594671', target: 'new', class: 'social_link'}
+                      .icon-linkedin{    rel: 'tooltip', title: 'Franck Sabattier on LinkedIn' }
+                    %a{href: 'http://www.twitter.com/fsabattier', target: 'new', class: 'social_link'}
+                      .icon-twitter{     rel: 'tooltip', title: '@fsabattier on Twitter' }
+                    %a{href: 'http://www.facebook.com/franck.sabattier', target: 'new', class: 'social_link'}
+                      .icon-facebook{    rel: 'tooltip', title: 'franck.sabattier on Facebook' }
+                    %a{href: 'http://www.github.com/jamibillou', target: 'new', class: 'social_link'}
+                      .icon-github{      rel: 'tooltip', title: 'jamibillou on Github' }
+                    %a{href: 'https://plus.google.com/110932121867842529455', target: 'new', class: 'social_link'}
+                      .icon-google-plus{ rel: 'tooltip', title: 'Franck Sabattier on Google+' }
               %br/
               %br/
               .row-fluid
@@ -122,9 +130,12 @@
                   User Experience Designer
                 .span2
                   %h2
-                    .icon-twitter
-                    .icon-facebook
-                    .icon-google-plus
+                    %a{href: 'http://www.twitter.com/jlaumans', target: 'new', class: 'social_link'}
+                      .icon-twitter{     rel: 'tooltip', title: '@jlaumans on Twitter' }
+                    %a{href: 'http://www.facebook.com/jlaumans', target: 'new', class: 'social_link'}
+                      .icon-facebook{    rel: 'tooltip', title: 'jlaumans on Facebook' }
+                    %a{href: 'https://plus.google.com/104393695929921306215', target: 'new', class: 'social_link'}
+                      .icon-google-plus{ rel: 'tooltip', title: 'Joel Laumans on Google+' }
 
             .tab-pane#jobs
               .row-fluid

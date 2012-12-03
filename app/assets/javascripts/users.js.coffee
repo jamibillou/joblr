@@ -39,6 +39,11 @@ $ ->
   $('.edit_user a.help').each -> $(@).popover('placement': 'right')
 
 
+  # Tooltips
+  # --------
+
+  $('[rel=tooltip]').tooltip()
+
   # Image picker
   # ------------
 
@@ -56,8 +61,6 @@ $ ->
 
   $('#social-url-triggers .btn').each -> $(@).click -> toggleSocialUrl($(@).attr('id').replace('trigger', 'field'))
   $('#social-url-fields div').each -> $(@).children().first().show() if $(@).hasClass('field_with_errors')
-
-
 
 # Adds <div class='field_with_errors'> around what's in the given div
 # -------------------------------------------------------------------

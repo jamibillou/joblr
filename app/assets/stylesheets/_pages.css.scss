@@ -142,3 +142,15 @@
   }
 }
 
+// Social links
+// ------------
+
+a.social_link{
+  color: inherit;
+  &:hover{
+    color: $black;
+    text-decoration:none;
+  }
+}
+
+
