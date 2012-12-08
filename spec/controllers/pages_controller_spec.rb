@@ -20,7 +20,7 @@ describe PagesController do
 
 			it 'should have the right content' do
 				response.body.should include I18n.t('pages.landing.catchphrase')
-				response.body.should include I18n.t('pages.landing.saves')
+				response.body.should include I18n.t('pages.landing.subtitle')
 				response.body.should include I18n.t('pages.landing.join')
 				response.body.should include I18n.t('pages.landing.benefit1_title')
 				response.body.should include I18n.t('pages.landing.benefit1_text')
@@ -46,8 +46,8 @@ describe PagesController do
 
 			it 'should have kissmetrics event' do
 				response.body.should have_content "_kmq.push(['identity', '#{@user.username}'])"
-			end			
-		end	
+			end
+		end
 	end
 
 	describe "GET 'admin'" do
@@ -76,7 +76,7 @@ describe PagesController do
 				it 'should redirect to root path' do
 					response.should redirect_to(root_path)
 					flash[:error].should == I18n.t('flash.error.only.admin')
-				end			
+				end
 			end
 
 			context 'who are admin' do
