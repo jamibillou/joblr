@@ -1,20 +1,20 @@
 fr:
   pages:
     landing:
-      title: "Accélérez votre recherche d'emploi"
+      title: "Le moyen le plus rapide de candidater"
       title_alt: 'Accueil'
       catchphrase: "Les lettres de motivation et CV vous épuisent ?"
-      saves: "Joblr accélère votre recherche d'emploi."
+      subtitle: "Joblr est le moyen le plus rapide de candidater."
       join: 'Essayez la beta !'
       benefit1_title: "Allez à l'essentiel"
-      benefit1_text: "Les recruteurs ont peu de temps, votre profil Joblr vous met en valeur et prend 5 secondes à lire !"
-      benefit2_title: "Rentrez en contact"
-      benefit2_text: "Chaque minute compte. Envoyez votre profil et récoltez les retours, un clic suffit de chaque côté."
+      benefit1_text: "Votre profil ne prend 5 secondes à lire et contient toutes les informations essentielles pour comprends vos compétences."
+      benefit2_title: "Rapide des deux côtés"
+      benefit2_text: "Il suffit de deux clics pour envoyer votre candidature, même chose pour les recruteurs et leur réponse. Le temps est précieux."
       benefit3_title: "Inscription simplissime"
-      benefit3_text_html: "Créer votre profil n'empiette pas sur vos recherches. Importez votre parcours depuis LinkedIn et c'est parti !"
+      benefit3_text_html: "Importez votre parcours depuis LinkedIn et c'est parti ! Une inscription simplifiée qui n'empiette pas sur vos recherches. "
       benefit4_title: "Un job autour de vous"
-      benefit4_text: "Partagez votre profil Joblr et profitez du bouche à oreille. Votre entourage a surement des contacts et conseils."
-      disclaimer_html: "<b>Remarque : </b> Notre modèle économique est en cours d'élaboration, la version beta de Joblr est par conséquent gratuite pour le moment."
+      benefit4_text: "Votre entourage a peut être les clés de votre prochain poste. Partagez votre profil Joblr et profitez du bouche à oreille."
+      disclaimer_html: "<b>Remarque : </b> Notre modèle économique est pour le moment en cours d'élaboration, la version beta de Joblr est donc gratuite jusqu'à nouvel ordre."
     admin:
       title: 'Tableau de bord admin'
       title_alt: 'Admin'
