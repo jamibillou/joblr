@@ -143,6 +143,11 @@ describe BetaInvitesController do
       get :thank_you, beta_invite_id: @beta_invite
       response.body.should have_content "_kmq.push(['record', 'Requested a beta invite'])"
     end
+
+    it 'should have mixpanel event' do
+      get :thank_you, beta_invite_id: @beta_invite
+      response.body.should have_content "mixpanel.track('Requested a beta invite')"
+    end
   end
 
   describe "GET 'send_code'" do
@@ -252,6 +257,10 @@ describe BetaInvitesController do
       it 'should have kissmetrics event' do
         response.body.should have_content "_kmq.push(['record', 'Viewed use beta invite page'])"
       end
+
+      it 'should have mixpanel event' do
+        response.body.should have_content "mixpanel.track('Viewed use beta invite page')"
+      end      
     end
   end
 

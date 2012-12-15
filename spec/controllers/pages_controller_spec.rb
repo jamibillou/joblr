@@ -51,6 +51,10 @@ describe PagesController do
 			it 'should have kissmetrics event' do
 				response.body.should have_content "_kmq.push(['identity', '#{@user.username}'])"
 			end
+
+			it 'should have mixpanel event' do
+				response.body.should have_content "mixpanel.identify('#{@user.username}')"
+			end
 		end
 	end
 
@@ -98,6 +102,10 @@ describe PagesController do
 
 				it 'should have kissmetrics event' do
 					response.body.should have_content "_kmq.push(['identity', '#{@admin.username}'])"
+				end
+
+				it 'should have mixpanel event' do
+					response.body.should have_content "mixpanel.identify('#{@admin.username}')"					
 				end
 			end
 		end

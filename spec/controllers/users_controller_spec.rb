@@ -196,11 +196,18 @@ describe UsersController do
 
         context 'visiting another user page' do
 
-          it 'should have kissmetrics event' do
+          before :each do
             sign_out @user
             sign_in  @user2
             get :show, id: @user
+          end  
+
+          it 'should have kissmetrics event' do
             response.body.should have_content "_kmq.push(['record', 'Viewed profile (other user)'])"
+          end
+
+          it 'should have mixpanel event' do
+            response.body.should have_content "mixpanel.track('Viewed profile (other user)')"
           end
         end
       end
