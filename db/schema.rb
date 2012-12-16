@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120910174805) do
+ActiveRecord::Schema.define(:version => 20121216121920) do
 
   create_table "authentifications", :force => true do |t|
     t.integer  "user_id"
@@ -35,17 +35,17 @@ ActiveRecord::Schema.define(:version => 20120910174805) do
     t.boolean  "sent",       :default => false
   end
 
-  create_table "sharing_emails", :force => true do |t|
-    t.integer  "profile_id"
-    t.integer  "author_id"
+  create_table "emails", :force => true do |t|
     t.string   "author_fullname"
     t.string   "author_email"
     t.string   "recipient_fullname"
     t.string   "recipient_email"
+    t.string   "cc"
+    t.string   "bcc"
+    t.string   "subject"
     t.string   "text"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
-    t.string   "status"
   end
 
   create_table "profiles", :force => true do |t|
@@ -73,6 +73,19 @@ ActiveRecord::Schema.define(:version => 20120910174805) do
     t.string   "twitter_url"
     t.string   "facebook_url"
     t.string   "google_url"
+  end
+
+  create_table "sharing_emails", :force => true do |t|
+    t.integer  "profile_id"
+    t.integer  "author_id"
+    t.string   "author_fullname"
+    t.string   "author_email"
+    t.string   "recipient_fullname"
+    t.string   "recipient_email"
+    t.string   "text"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "status"
   end
 
   create_table "sharings", :force => true do |t|

@@ -105,7 +105,7 @@ describe PagesController do
 				end
 
 				it 'should have mixpanel event' do
-					response.body.should have_content "mixpanel.identify('#{@admin.username}')"					
+					response.body.should have_content "mixpanel.identify('#{@admin.username}')"
 				end
 			end
 		end
