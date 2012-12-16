@@ -29,7 +29,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :fullname, :email, :city, :country, :subdomain, :password, :password_confirmation, :remember_me, :image, :username, :admin,
                   :social, :remove_image, :remote_image_url, :profiles_attributes
-  # Virtual attribute for authenticating by either username or email
+
+  # Virtual attribute to authenticate users by username or email
   attr_accessor   :login
 
   has_many :authentifications,       dependent:  :destroy

@@ -9,6 +9,10 @@ class CreateEmails < ActiveRecord::Migration
       t.string :bcc
       t.string :subject
       t.string :text
+      t.string :status
+      t.string :type
+      t.integer :profile_id
+      t.integer :author_id
 
       t.timestamps
     end

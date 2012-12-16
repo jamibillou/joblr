@@ -11,6 +11,10 @@
 #  bcc                :string(255)
 #  subject            :string(255)
 #  text               :string(255)
+#  status             :string(255)
+#  type               :string(255)
+#  profile_id         :integer
+#  author_id          :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
@@ -46,7 +50,7 @@ describe Email do
     it { should validate_format_of(:recipient_email).not_with(@emails[:invalid][rand(@emails[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.invalid')) }
     it { should validate_format_of(:recipient_email).with @emails[:valid][rand(@emails[:valid].size)] }
     it { should ensure_length_of(:subject).is_at_most 150 }
-    it { should validate_presence_of :subject }
+    it { should allow_value('').for(:subject) }
     it { should validate_presence_of :text }
   end
 end

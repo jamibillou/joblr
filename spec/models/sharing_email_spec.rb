@@ -1,18 +1,22 @@
 # == Schema Information
 #
-# Table name: sharing_emails
+# Table name: emails
 #
 #  id                 :integer          not null, primary key
-#  profile_id         :integer
-#  author_id          :integer
 #  author_fullname    :string(255)
 #  author_email       :string(255)
 #  recipient_fullname :string(255)
 #  recipient_email    :string(255)
+#  cc                 :string(255)
+#  bcc                :string(255)
+#  subject            :string(255)
 #  text               :string(255)
+#  status             :string(255)
+#  type               :string(255)
+#  profile_id         :integer
+#  author_id          :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
-#  status             :string(255)
 #
 
 require 'spec_helper'
