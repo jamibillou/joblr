@@ -1,14 +1,13 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
+
   factory :email do
-    author_fullname "MyString"
-    author_email "MyString"
-    recipient_fullname "MyString"
-    recipient_email "MyString"
-    cc "MyString"
-    bcc "MyString"
-    subject "MyString"
-    text "MyString"
+    author_fullname 'factory_author@example.com'
+    author_email 'Factory Author'
+    recipient_fullname 'Factory Recipient'
+    recipient_email 'factory_recipient@example.com'
+    cc ''
+    bcc ''
+    subject ''
+    text 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores'
   end
 end

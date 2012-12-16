@@ -24,7 +24,7 @@ require 'spec_helper'
 describe Email do
 
   before :each do
-    @email = FactoryGirl.create :email, author_email: FactoryGirl.generate(:email), recipient_email: FactoryGirl.generate(:email), cc: '', bcc: ''
+    @email = FactoryGirl.create :email, author_email: FactoryGirl.generate(:email), recipient_email: FactoryGirl.generate(:email)
   end
 
   describe 'Validations' do
