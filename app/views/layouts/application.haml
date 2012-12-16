@@ -10,7 +10,7 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-    = mixpanel_init          
+    = mixpanel_init
     - if Rails.env.production?
       = analytics_init
       - if request.subdomain.include? 'staging'
@@ -31,15 +31,7 @@
         = yield
 
     %footer
-      .container
-        .row-fluid
-          .span12
-            .pull-left
-              =t 'footer.joblr_in'
-            .pull-left= render 'layouts/navigation/languages_navigation'
-            .pull-right
-              %span.hidden-phone=t 'footer.questions'
-              = link_to t('footer.contact_us'), 'mailto:team@joblr.co'
+      = render 'layouts/footer'
 
   = kiss_event('identity', current_user.username) if user_signed_in?
   = mixpanel_identify(current_user.username) if user_signed_in?

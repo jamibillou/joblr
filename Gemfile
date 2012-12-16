@@ -29,7 +29,7 @@ end
 
 group :assets do
   gem 'sass-rails'
-  gem 'bootstrap-sass', '2.1.0.0'
+  gem 'bootstrap-sass'
   gem 'font-awesome-sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
