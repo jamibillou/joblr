@@ -15,13 +15,15 @@
       = render 'email_sharing_modal'
 
 - if user_signed_in?
+  = mixpanel_identify(current_user.id)    
   - if current_user == @user
     = kiss_event('record', 'Completed their profile')      if flash[:success] == t('flash.success.profile.created')
-    = mixpanel_event('Completed their profile')            if flash[:success] == t('flash.success.profile.created')
     = kiss_event('record', 'Sent profile by email (user)') if flash[:success] && flash[:success].match(Regexp.new(t('flash.success.profile.shared.user', recipient_email: '.+')))
     = mixpanel_event('Sent profile by email (user)')       if flash[:success] && flash[:success].match(Regexp.new(t('flash.success.profile.shared.user', recipient_email: '.+')))
     - if flash[:success] == t('flash.success.profile.created') || flash[:success] == t('flash.success.profile.updated')
       = mixpanel_people(current_user)
+    = mixpanel_event('Completed their profile')            if flash[:success] == t('flash.success.profile.created')
+    = mixpanel_event('Completed their profile')            if flash[:success] == t('flash.success.profile.created')
   - else
     - if flash[:success] && flash[:success].match(Regexp.new(t('flash.success.profile.shared.other_user', fullname: @user.fullname, recipient_email: '.+')))
       = kiss_event('record', 'Sent profile by email (other user)')
@@ -29,7 +31,6 @@
     - else
       = kiss_event('record', 'Viewed profile (other user)')
       = mixpanel_event('Viewed profile (other user)')    
-      = mixpanel_identify(@user.id)
 - else
   - if flash[:success] && flash[:success].match(Regexp.new(t('flash.success.profile.shared.public_user', fullname: @user.fullname, recipient_email: '.+')))
     = kiss_event('record', 'Sent profile by email (public user)')

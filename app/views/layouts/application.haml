@@ -42,4 +42,3 @@
               = link_to t('footer.contact_us'), 'mailto:team@joblr.co'
 
   = kiss_event('identity', current_user.username) if user_signed_in?
-  = mixpanel_identify(current_user.id) if user_signed_in?
