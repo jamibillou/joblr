@@ -19,12 +19,11 @@
 #  updated_at         :datetime         not null
 #
 
-class SharingEmail < Email
-  attr_accessible :author_id, :author, :profile_id, :profile, :status
+class SharingEmail < UserEmail
+  attr_accessible :profile_id, :profile, :status
 
-  belongs_to :author, class_name: 'User', foreign_key: :author_id
   belongs_to :profile
 
-  validates :text,   length: { maximum: 140 }, 								                                 presence: true
-  validates :status, inclusion: { :in => ['accepted', 'declined'] },                           allow_nil: true
+  validates :text,   length: { maximum: 140 }
+  validates :status, inclusion: { :in => ['accepted', 'declined'] }, allow_nil: true
 end

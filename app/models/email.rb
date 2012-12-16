@@ -31,7 +31,9 @@ class Email < ActiveRecord::Base
   validates :subject,            length: { maximum: 150 },              allow_blank: true
   validates :text,                                                      presence: true
 
-  def author_required?
-    author_id.nil?
-  end
+  private
+
+    def author_required?
+      author_id.nil?
+    end
 end

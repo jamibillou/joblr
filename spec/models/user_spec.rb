@@ -58,7 +58,7 @@ describe User do
     end
   end
 
-  describe 'email sharings associations' do
+  describe 'sharing emails associations' do
 
     it { @user.should respond_to :authored_sharing_emails }
 

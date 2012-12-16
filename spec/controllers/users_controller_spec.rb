@@ -52,7 +52,7 @@ describe UsersController do
             find('.btn.dropdown-toggle').should have_content I18n.t('users.show.share')
           end
 
-          it 'should have an email sharing modal' do
+          it 'should have an sharing email modal' do
             find('div#sharing-email-modal').should  have_content I18n.t('sharing_emails.new.title')
           end
 
@@ -190,7 +190,7 @@ describe UsersController do
           find('.btn.dropdown-toggle').should have_content I18n.t('users.show.share')
         end
 
-        it 'should have an email sharing modal' do
+        it 'should have an sharing email modal' do
           find('div#sharing-email-modal').should  have_content I18n.t('sharing_emails.new.title')
         end
 

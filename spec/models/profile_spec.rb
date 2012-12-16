@@ -73,7 +73,7 @@ describe Profile do
     end
   end
 
-  describe 'email sharings associations' do
+  describe 'sharing emails associations' do
 
     it { @profile.should respond_to :sharing_emails }
 

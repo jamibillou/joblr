@@ -33,10 +33,12 @@ class User < ActiveRecord::Base
   # Virtual attribute to authenticate users by username or email
   attr_accessor   :login
 
-  has_many :authentifications,       dependent:  :destroy
-  has_many :profiles,                dependent:  :destroy
-  has_many :authored_sharing_emails, class_name: 'SharingEmail', foreign_key: 'author_id'
-  has_one  :beta_invite,             dependent:  :destroy
+  has_many :authentifications,        dependent:  :destroy
+  has_many :profiles,                 dependent:  :destroy
+  has_one  :beta_invite,              dependent:  :destroy
+  has_many :authored_user_emails,     class_name: 'UserEmail',     foreign_key: 'author_id'
+  has_many :authored_sharing_emails,  class_name: 'SharingEmail',  foreign_key: 'author_id'
+  has_many :authored_feedback_emails, class_name: 'FeedbackEmail', foreign_key: 'author_id'
 
   accepts_nested_attributes_for :profiles, allow_destroy: true
 

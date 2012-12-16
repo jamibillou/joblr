@@ -33,22 +33,22 @@ describe Email do
       @emails = { :invalid => %w(invalid_email invalid@example invalid@user@example.com inv,alide@), :valid => %w(valid_email@example.com valid@example.co.kr vu@example.us) }
     end
 
-    it { @email.should validate_presence_of :author_fullname }
-    it { @email.should ensure_length_of(:author_fullname).is_at_most 100 }
-    it { @email.should validate_presence_of :author_email }
+    it { should validate_presence_of :author_fullname }
+    it { should ensure_length_of(:author_fullname).is_at_most 100 }
+    it { should validate_presence_of :author_email }
     it { should validate_format_of(:author_email).not_with(@emails[:invalid][rand(@emails[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.invalid')) }
     it { should validate_format_of(:author_email).with @emails[:valid][rand(@emails[:valid].size)] }
     it { should validate_presence_of :recipient_fullname }
     it { should ensure_length_of(:recipient_fullname).is_at_most 100 }
+    it { should validate_presence_of :recipient_email }
+    it { should validate_format_of(:recipient_email).not_with(@emails[:invalid][rand(@emails[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.invalid')) }
+    it { should validate_format_of(:recipient_email).with @emails[:valid][rand(@emails[:valid].size)] }
     it { should allow_value('').for(:cc) }
     it { should validate_format_of(:cc).not_with(@emails[:invalid][rand(@emails[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.invalid')) }
     it { should validate_format_of(:cc).with @emails[:valid][rand(@emails[:valid].size)] }
     it { should allow_value('').for(:bcc) }
     it { should validate_format_of(:bcc).not_with(@emails[:invalid][rand(@emails[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.invalid')) }
     it { should validate_format_of(:bcc).with @emails[:valid][rand(@emails[:valid].size)] }
-    it { should validate_presence_of :recipient_email }
-    it { should validate_format_of(:recipient_email).not_with(@emails[:invalid][rand(@emails[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.invalid')) }
-    it { should validate_format_of(:recipient_email).with @emails[:valid][rand(@emails[:valid].size)] }
     it { should ensure_length_of(:subject).is_at_most 150 }
     it { should allow_value('').for(:subject) }
     it { should validate_presence_of :text }

@@ -459,7 +459,7 @@ describe SharingEmailsController do
         @public_sharing_email = SharingEmail.create!(@sharing_email_attr.merge(profile: @author.profile, author: nil, author_email: @public_user[:email], author_fullname: @public_user[:fullname], recipient_email: 'recipient@example.com', recipient_fullname: 'Public User Recipient', status: nil))
       end
 
-      context 'for email sharings that were sent by the user himself' do
+      context 'for sharing emails that were sent by the user himself' do
 
         it { get :already_answered, sharing_email_id: @user_sharing_email   ; response.should be_success }
 
@@ -469,7 +469,7 @@ describe SharingEmailsController do
         end
       end
 
-      context 'for email sharings that were sent by another user' do
+      context 'for sharing emails that were sent by another user' do
 
         it { get :already_answered, sharing_email_id: @other_sharing_email  ; response.should be_success }
 
@@ -479,7 +479,7 @@ describe SharingEmailsController do
         end
       end
 
-      context 'for email sharings that were sent by a public user' do
+      context 'for sharing emails that were sent by a public user' do
 
         it { get :already_answered, sharing_email_id: @public_sharing_email ; response.should be_success }
 
