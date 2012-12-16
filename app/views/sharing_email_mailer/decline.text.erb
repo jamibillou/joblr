@@ -1,0 +1,11 @@
+<%=t 'mailers.sharing_email.decline.title', fullname: @sharing_email.recipient_fullname %>
+<% t('mailers.sharing_email.decline.title', fullname: @sharing_email.recipient_fullname).length.times do %>=<% end %>
+
+
+<%=t 'mailers.sharing_email.decline.content', fullname: @sharing_email.recipient_fullname %>
+
+<%=t 'mailers.sharing_email.decline.persevere' %>
+
+
+<% t('mailers.team').length.times do %>-<% end %>
+<%=t 'mailers.team' %>

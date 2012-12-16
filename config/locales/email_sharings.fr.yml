@@ -1,5 +1,5 @@
 fr:
-  email_sharings:
+  sharing_emails:
     new:
       title: 'Envoyer ce profil par email'
       from_label: 'De'

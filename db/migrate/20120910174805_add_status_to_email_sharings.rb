@@ -1,5 +1,5 @@
-class AddStatusToEmailSharings < ActiveRecord::Migration
+class AddStatusToSharingEmails < ActiveRecord::Migration
   def change
-    add_column :email_sharings, :status, :string
+    add_column :sharing_emails, :status, :string
   end
 end

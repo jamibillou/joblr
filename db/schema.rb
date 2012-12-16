@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20120910174805) do
     t.boolean  "sent",       :default => false
   end
 
-  create_table "email_sharings", :force => true do |t|
+  create_table "sharing_emails", :force => true do |t|
     t.integer  "profile_id"
     t.integer  "author_id"
     t.string   "author_fullname"

@@ -10,7 +10,7 @@
       =t 'users.show.share'
     %ul.dropdown-menu#share
       %li
-        %a{href: '#email-sharing-modal', 'data-toggle' => 'modal', title: t('users.show.send_email')}
+        %a{href: '#sharing-email-modal', 'data-toggle' => 'modal', title: t('users.show.send_email')}
           .icon-envelope
           &nbsp;
           =t 'users.show.email'
@@ -36,7 +36,7 @@
           Google
 
   .explanation
-    - if user_signed_in? && current_user == user && current_user.profile.email_sharings.empty?
+    - if user_signed_in? && current_user == user && current_user.profile.sharing_emails.empty?
       %h5=t 'users.show.whats_this'
       %p=t 'users.show.user_explanation'
     - elsif !user_signed_in? || current_user != user

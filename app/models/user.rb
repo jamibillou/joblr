@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
 
   has_many :authentifications,       dependent:  :destroy
   has_many :profiles,                dependent:  :destroy
-  has_many :authored_email_sharings, class_name: 'EmailSharing', foreign_key: 'author_id'
+  has_many :authored_sharing_emails, class_name: 'SharingEmail', foreign_key: 'author_id'
   has_one  :beta_invite,             dependent:  :destroy
 
   accepts_nested_attributes_for :profiles, allow_destroy: true
@@ -121,5 +121,5 @@ class User < ActiveRecord::Base
       else
         where(conditions).first
       end
-    end   
+    end
 end

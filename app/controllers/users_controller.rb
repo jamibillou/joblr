@@ -8,8 +8,8 @@ class UsersController < ApplicationController
 
   def show
     @title = @user.fullname
-    @email_sharing = EmailSharing.new
-    @email_sharing_text = (user_signed_in? && current_user == @user ? t('email_sharings.new.text_user') : t('email_sharings.new.text_other_user'))
+    @sharing_email = SharingEmail.new
+    @sharing_email_text = (user_signed_in? && current_user == @user ? t('sharing_emails.new.text_user') : t('sharing_emails.new.text_other_user'))
   end
 
   def edit

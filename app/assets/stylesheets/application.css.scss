@@ -2,16 +2,16 @@
 // the order of this list is vital, DO NOT MODIFIY!
 // ------------------------------------------------
 
-@import "variables-overrides";
+@import "variables_overrides";
 @import "bootstrap";
 @import "bootstrap-overrides/bootstrap";
 @import "bootstrap-responsive";
 @import "font-awesome";
 @import "pages";
-@import "beta-invite";
+@import "beta_invites";
 @import "devise";
 @import "users";
-@import "email_sharings";
+@import "sharing_emails";
 
 
 // FOOTER

@@ -68,7 +68,7 @@ en:
         user_id: "User's identifier"
         code: "Code"
         email: "Email address"
-      email_sharing:
+      sharing_email:
         text: "Personal message"
         author_email: "Your email"
         author_fullname: "Your full name"

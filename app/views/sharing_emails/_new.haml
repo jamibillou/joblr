@@ -1,0 +1,33 @@
+= form_for @sharing_email, remote: true do |f|
+  .modal-body
+    #sharing-email-error
+    - unless user_signed_in?
+      .row-fluid
+        .span1
+          %label.inline= "#{t('sharing_emails.new.from_label')}<span class='danger-text'>*</span>".html_safe
+        .span5
+          = f.text_field :author_fullname, placeholder: t('sharing_emails.new.from_fullname_placeholder'), class: 'span12'
+        .span5
+          = f.email_field :author_email, placeholder: t('sharing_emails.new.from_email_placeholder'), class: 'span12'
+    .row-fluid
+      .span1
+        %label.inline= "#{t('sharing_emails.new.to_label')}<span class='danger-text'>*</span>".html_safe
+      .span5
+        = f.text_field :recipient_fullname, placeholder: t('sharing_emails.new.to_fullname_placeholder'), class: 'span12'
+      .span5
+        = f.email_field :recipient_email, placeholder: t('sharing_emails.new.to_email_placeholder'), class: 'span12'
+    .row-fluid
+      .span1
+      .span10
+        %label.inline= "#{t('sharing_emails.new.text_label')}<span class='danger-text'>*</span>".html_safe
+        = char_counter_for @sharing_email, :text, class: 'pull-right'
+        = f.text_area :text, rows: 3, placeholder: @sharing_email_text
+        %input{type: 'hidden', name: 'user_id', value: @user.id}
+        .pull-right.danger-text *#{t('required_fields')}
+
+  .modal-footer
+    #loader.pull-left
+      = image_tag 'base/loader.gif'
+      = t('sharing_emails.new.sending')
+    %a.btn.btn-small{href:'#', 'data-dismiss' => 'modal'}= t('cancel')
+    = f.submit t('sharing_emails.new.send'), class: 'btn btn-small btn-primary'

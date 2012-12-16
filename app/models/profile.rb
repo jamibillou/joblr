@@ -35,7 +35,7 @@ class Profile < ActiveRecord::Base
                   :quality_1, :quality_2, :quality_3, :twitter_url, :linkedin_url, :facebook_url, :google_url, :url, :file, :user_id, :remove_file
 
   belongs_to :user
-  has_many   :email_sharings, dependent: :destroy
+  has_many   :sharing_emails, dependent: :destroy
 
   validates :user,                                                                                                   presence: true
   validates :headline,       length: { maximum: 100 }, headline_format: true,                                        presence: true
@@ -62,6 +62,6 @@ class Profile < ActiveRecord::Base
   mount_uploader :file, ProfileFileUploader
 
   def public_emails_sharings
-    email_sharings.where(author_id: nil)
+    sharing_emails.where(author_id: nil)
   end
 end

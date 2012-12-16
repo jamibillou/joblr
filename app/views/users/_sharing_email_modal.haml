@@ -1,0 +1,7 @@
+#sharing-email-modal.modal.hide
+  .modal-header
+    %a.close.hidden-phone{href: '#', 'data-dismiss' => 'modal'} &times;
+    %h3=t 'sharing_emails.new.title'
+
+  #sharing-email-form
+    = render 'sharing_emails/new'

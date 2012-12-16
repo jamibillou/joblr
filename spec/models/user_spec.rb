@@ -35,7 +35,7 @@ describe User do
     @profile       = FactoryGirl.create :profile, user: @user
     @beta_invite   = FactoryGirl.create :beta_invite, user: @user
     @providers     = %w(linkedin twitter facebook google)
-    @email_sharing = FactoryGirl.create :email_sharing, author: @user
+    @sharing_email = FactoryGirl.create :sharing_email, author: @user
   end
 
   describe 'authentifications associations' do
@@ -60,11 +60,11 @@ describe User do
 
   describe 'email sharings associations' do
 
-    it { @user.should respond_to :authored_email_sharings }
+    it { @user.should respond_to :authored_sharing_emails }
 
     it 'should not destroy associated sharings' do
       @user.destroy
-      EmailSharing.find_by_id(@email_sharing.id).should_not be_nil
+      SharingEmail.find_by_id(@sharing_email.id).should_not be_nil
     end
   end
 

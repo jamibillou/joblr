@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: email_sharings
+# Table name: sharing_emails
 #
 #  id                 :integer          not null, primary key
 #  profile_id         :integer
@@ -17,42 +17,42 @@
 
 require 'spec_helper'
 
-describe EmailSharing do
+describe SharingEmail do
 
 	before :each do
 		@author    = FactoryGirl.create :user
 		@profile   = FactoryGirl.create :profile, user: @author
-		@email_sharing_registered   = FactoryGirl.create :email_sharing, profile: @profile, author: @author
-		@email_sharing_public		= FactoryGirl.create :email_sharing, profile: @profile, author: nil
+		@sharing_email_registered   = FactoryGirl.create :sharing_email, profile: @profile, author: @author
+		@sharing_email_public		= FactoryGirl.create :sharing_email, profile: @profile, author: nil
 	end
 
 	describe 'Profile association' do
-		it { @email_sharing_registered.should respond_to :profile }
+		it { @sharing_email_registered.should respond_to :profile }
 
 		it 'should have the right associated profile' do
-			@email_sharing_registered.profile_id.should == @profile.id
-			@email_sharing_registered.profile.should == @profile
+			@sharing_email_registered.profile_id.should == @profile.id
+			@sharing_email_registered.profile.should == @profile
 		end
 
 		it 'should not destroy the associated profile' do
-			@email_sharing_registered.destroy
-			Profile.find_by_id(@email_sharing_registered.profile_id).should_not be_nil
+			@sharing_email_registered.destroy
+			Profile.find_by_id(@sharing_email_registered.profile_id).should_not be_nil
 		end
 	end
 
 	describe 'Registered author sharing' do
 
 		describe 'Author association' do
-			it { @email_sharing_registered.should respond_to :author }
+			it { @sharing_email_registered.should respond_to :author }
 
 			it 'should have the right associated author' do
-				@email_sharing_registered.author_id.should == @author.id
-				@email_sharing_registered.author.should    == @author
+				@sharing_email_registered.author_id.should == @author.id
+				@sharing_email_registered.author.should    == @author
 			end
 
 			it 'should not destroy the associated author' do
-				@email_sharing_registered.destroy
-				User.find_by_id(@email_sharing_registered.author_id).should_not be_nil
+				@sharing_email_registered.destroy
+				User.find_by_id(@sharing_email_registered.author_id).should_not be_nil
 			end
 		end
 	end
@@ -64,9 +64,9 @@ describe EmailSharing do
     end
 
 		context 'public email sharing' do
-  		it { @email_sharing_public.should validate_presence_of :author_fullname }
-  		it { @email_sharing_public.should ensure_length_of(:author_fullname).is_at_most 100 }
-  		it { @email_sharing_public.should validate_presence_of :author_email }
+  		it { @sharing_email_public.should validate_presence_of :author_fullname }
+  		it { @sharing_email_public.should ensure_length_of(:author_fullname).is_at_most 100 }
+  		it { @sharing_email_public.should validate_presence_of :author_email }
       it { should validate_format_of(:author_email).not_with(@email[:invalid][rand(@email[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.invalid')) }
       it { should validate_format_of(:author_email).with @email[:valid][rand(@email[:valid].size)] }
 		end

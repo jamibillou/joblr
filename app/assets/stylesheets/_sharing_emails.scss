@@ -6,9 +6,9 @@
 // New
 //----
 
-form#new_email_sharing{
+form#new_sharing_email{
   margin-bottom:0;
-  #email-sharing-error{
+  #sharing-email-error{
     color: $errorBorder;
     margin-bottom:30px;
     display:none;
@@ -30,6 +30,6 @@ form#new_email_sharing{
 }
 
 // Decline & Already answered
-#email_sharing h1{
+#sharing_email h1{
   margin-bottom:40px;
 }

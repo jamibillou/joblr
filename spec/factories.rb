@@ -33,7 +33,7 @@ FactoryGirl.define do
     association :user
   end
 
-  factory :email_sharing do
+  factory :sharing_email do
     text 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores'
     author_fullname 'Barack Obama'
     author_email 'b.obama@gov.us'

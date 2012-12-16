@@ -10,7 +10,7 @@ Joblr::Application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: 'authentifications', registrations: 'registrations'}
 
   resources :authentifications, only: [:destroy]
-  resources :email_sharings,    only: [:create] do
+  resources :sharing_emails,    only: [:create] do
     get :already_answered
     get :decline
   end
@@ -40,7 +40,7 @@ Joblr::Application.routes.draw do
 
   # Preview of emails
   if Rails.env.development?
-    mount EmailSharingMailer::Preview   => 'email_sharing_mailer'
+    mount SharingEmailMailer::Preview   => 'sharing_email_mailer'
     mount BetaInviteMailer::Preview     => 'beta_invite_mailer'
   end
 end

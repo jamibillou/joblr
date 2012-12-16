@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: email_sharings
+# Table name: sharing_emails
 #
 #  id                 :integer          not null, primary key
 #  profile_id         :integer
@@ -15,7 +15,7 @@
 #  status             :string(255)
 #
 
-class EmailSharing < ActiveRecord::Base
+class SharingEmail < ActiveRecord::Base
   attr_accessible :author_email, :author_fullname, :author_id, :author, :profile_id, :profile, :recipient_email, :recipient_fullname,
                   :text, :status
 
