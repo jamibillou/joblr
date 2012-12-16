@@ -39,7 +39,7 @@ class Profile < ActiveRecord::Base
 
   validates :user,                                                                                                   presence: true
   validates :headline,       length: { maximum: 100 }, headline_format: true,                                        presence: true
-  validates :experience,     :numericality => { :only_integer => true, greater_than: 0, less_than: 50 }, presence: true
+  validates :experience,     :numericality => { greater_than: 0, less_than: 50 }, presence: true
   validates :education,      length: { maximum: 100 },                                                               presence: true
   validates :text,           length: { maximum: 140 },                                                               presence: true
   validates :last_job,       length: { maximum: 100 }
@@ -58,10 +58,16 @@ class Profile < ActiveRecord::Base
   validates :twitter_url,    url_format:   true, allow_blank: true
   validates :facebook_url,   url_format:   true, allow_blank: true
   validates :google_url,     url_format:   true, allow_blank: true
+  before_validation :format_experience
 
   mount_uploader :file, ProfileFileUploader
 
   def public_emails_sharings
     email_sharings.where(author_id: nil)
   end
+
+  private
+    def format_experience
+      self.experience.gsub!(',','.') unless self.experience.is_a?(Numeric) || self.experience.nil?
+    end  
 end
