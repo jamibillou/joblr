@@ -1,15 +1,23 @@
 .container
   .row-fluid
-    .span5
-      %h5 Help us make Joblr better
-      .input-prepend
-        .add-on
-          %i.icon-comments
-        %input.span11{type: 'text', placeholder: 'Let us know about your ideas, questions, complaints, etc.'}
-    .span7
+    .span6
+      - if user_signed_in?
+        %h5 Help us make Joblr better
+        .row-fluid
+          .span10
+            .input-prepend
+              .add-on
+                %i.icon-comments
+              %input.span11{type: 'text', placeholder: 'Let us know about your ideas, questions, complaints, etc.'}
+          .span2
+            #error-text
+      - else
+        %h5.lang-nav=t 'footer.joblr_in'
+        %h5.lang-nav= render 'layouts/navigation/languages_navigation'
+    .span6
       .pull-right
-        %p Follow us:
         .social-links
+          %h5 Follow us
           %a{href: 'http://twitter.com/joblr_co', target: 'blank'}
             .icon-twitter{rel: 'tooltip', title: 'Joblr on Twitter'}
           %a{href: 'http://fb.me/joblr.co', target: 'blank'}
