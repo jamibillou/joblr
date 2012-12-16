@@ -1,0 +1,2 @@
+class FeedbackEmailsController < ApplicationController
+end
