@@ -9,18 +9,19 @@ Joblr::Application.routes.draw do
 
   devise_for :users, controllers: {omniauth_callbacks: 'authentifications', registrations: 'registrations'}
 
-  resources :authentifications, only: [:destroy]
-  resources :sharing_emails,    only: [:create] do
-    get :already_answered
-    get :decline
-  end
   resources :beta_invites, except: :index do
     get :thank_you
     get :send_code
   end
+  resources :authentifications, only: [:destroy]
   resources :users do
     resources :profiles
   end
+  resources :sharing_emails,    only: [:create] do
+    get :already_answered
+    get :decline
+  end
+  resources :feedback_emails
 
   get  'users/auth/failure'  => 'authentifications#failure'
   post 'users/share_profile' => 'users#share_profile'

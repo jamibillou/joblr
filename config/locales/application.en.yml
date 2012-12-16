@@ -49,8 +49,10 @@ en:
     locales:
       en: "english"
       fr: "french"
-    questions: "Questions or comments?"
-    contact_us: "Contact us"
+    feedback:
+      title: 'Help us make Joblr better'
+      placeholder: 'Let us know about your ideas, questions, complaints, etc.'
+      thank_you: 'Thank you!'
   errors:
     error_404:
       title: "The page you were looking for doesn't exist (404)"

@@ -75,6 +75,8 @@ fr:
         recipient_email: "Adresse email du destinataire"
         recipient_fullname:  "Nom et prénom du destinataire"
         status: "Statut"
+      feedback_email:
+        text: "Commentaire"
     errors:
       messages:
         level_format: "n'est pas formaté correctement (Débutant, Intermédiaire, Confirmé ou Expert)"

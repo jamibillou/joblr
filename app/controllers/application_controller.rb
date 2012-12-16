@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  before_filter :set_locale
+  before_filter :set_locale, :new_feedback_email
   before_filter :constrain_subdomain_path, if: :subdomain? || :multi_level_subdomain?
 
   private
@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
 
     def constrain_subdomain_path
       raise ActionController::RoutingError.new(t('errors.routing', path: request.path)) unless request.path.match(/^\/(404|422|500)?$/) || request.xhr?
+    end
+
+    def new_feedback_email
+      @feedback_email = FeedbackEmail.new
     end
 
     def load_user

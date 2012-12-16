@@ -75,6 +75,8 @@ en:
         recipient_email: "Recipient email"
         recipient_fullname:  "Recipient full name"
         status: "Status"
+      feedback_email:
+        text: "Comment"
     errors:
       messages:
         level_format: 'is not formatted properly (Beginner, Intermediate, Advanced or Expert)'

@@ -2,15 +2,20 @@
   .row-fluid
     .span6
       - if user_signed_in?
-        %h5 Help us make Joblr better
+        %h5=t 'footer.feedback.title'
         .row-fluid
-          .span10
-            .input-prepend
-              .add-on
-                %i.icon-comments
-              %input.span11{type: 'text', placeholder: 'Let us know about your ideas, questions, complaints, etc.'}
-          .span2
-            #error-text
+          .span9
+            = form_for @feedback_email, remote: true do |f|
+              .input-prepend
+                .add-on
+                  %i.icon-comments
+                = f.text_field :text, placeholder: t('footer.feedback.placeholder'), class: 'span11'
+                = f.hidden_field :page, value: request.fullpath
+              = f.submit 'Submit', class: 'btn btn-mini btn-primary hidden', id: 'submit'
+          .span3
+            #feedback-form-text
+            #loader{style: 'display:none'}
+              = image_tag 'base/loader.gif'
       - else
         %h5.lang-nav=t 'footer.joblr_in'
         %h5.lang-nav= render 'layouts/navigation/languages_navigation'

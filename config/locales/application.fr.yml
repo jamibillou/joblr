@@ -48,8 +48,10 @@ fr:
     locales:
       en: "anglais"
       fr: "français"
-    questions: "Questions ou commentaires ?"
-    contact_us: "Contactez-nous"
+    feedback:
+      title: 'Aidez-nous à améliorer Joblr'
+      placeholder: 'Faites-nous part de vos idées, commentaires, frustrations, etc.'
+      thank_you: 'Merci!'
   errors:
     error_404:
       title: "Le page demandée n'existe pas (404)"
