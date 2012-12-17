@@ -11,39 +11,38 @@ describe SharingEmailMailer do
 
     it 'should send the email with correct subject, author and recipient' do
       mail.subject.should == I18n.t('mailers.sharing_email.user.subject', fullname: user.fullname)
-      mail.to.should      == [sharing_email.recipient_email]
-      mail.from.should    == ['postman@joblr.co']
+      mail.to.should   include sharing_email.recipient_email
+      mail.from.should include 'postman@joblr.co'
     end
 
     it 'should have a title' do
-      mail.body.encoded.should match(I18n.t('mailers.sharing_email.user.html.title', fullname: user.fullname))
+      mail.body.encoded.should include I18n.t('mailers.sharing_email.user.html.title', fullname: user.fullname)
     end
 
     it 'should have a summary' do
-      mail.body.encoded.should match(I18n.t('mailers.sharing_email.user.html.summary', fullname: user.fullname))
+      mail.body.encoded.should include I18n.t('mailers.sharing_email.user.html.summary', fullname: user.fullname)
     end
 
     it 'should have a text' do
-      mail.body.encoded.should match(sharing_email.text)
+      mail.body.encoded.should include sharing_email.text
     end
 
     it "should have the user's picture" do
-      mail.body.encoded.should match('default_user.jpg')
+      mail.body.encoded.should include 'default_user.jpg'
     end
 
     it "should have the user's profile information" do
-      mail.body.encoded.should match(user.fullname)
-
-      mail.body.encoded.should match("#{profile.experience} yrs")
-      mail.body.encoded.should match(profile.last_job)
-      mail.body.encoded.should match(profile.past_companies)
-      mail.body.encoded.should match(profile.education)
-      mail.body.encoded.should match(profile.skill_1)
-      mail.body.encoded.should match(profile.skill_2)
-      mail.body.encoded.should match(profile.skill_3)
-      mail.body.encoded.should match(profile.quality_1)
-      mail.body.encoded.should match(profile.quality_2)
-      mail.body.encoded.should match(profile.quality_3)
+      mail.body.encoded.should include user.fullname
+      mail.body.encoded.should include "#{profile.experience} yrs"
+      mail.body.encoded.should include profile.last_job
+      mail.body.encoded.should include profile.past_companies
+      mail.body.encoded.should include profile.education
+      mail.body.encoded.should include profile.skill_1
+      mail.body.encoded.should include profile.skill_2
+      mail.body.encoded.should include profile.skill_3
+      mail.body.encoded.should include profile.quality_1
+      mail.body.encoded.should include profile.quality_2
+      mail.body.encoded.should include profile.quality_3
     end
 
     it 'should have a contact link' do
@@ -65,51 +64,51 @@ describe SharingEmailMailer do
 
     it 'should send the email with correct subject, author and recipient' do
       mail.subject.should == I18n.t('mailers.sharing_email.other_user.subject', fullname: current_user.fullname)
-      mail.to.should      == [sharing_email.recipient_email]
-      mail.from.should    == ['postman@joblr.co']
+      mail.to.should   include sharing_email.recipient_email
+      mail.from.should include 'postman@joblr.co'
     end
 
     it 'should have a title' do
-      mail.body.encoded.should match(I18n.t('mailers.sharing_email.other_user.html.title', fullname: user.fullname))
+      mail.body.encoded.should include I18n.t('mailers.sharing_email.other_user.html.title', fullname: user.fullname)
     end
 
     it 'should have a summary' do
-      mail.body.encoded.should match(I18n.t('mailers.sharing_email.other_user.html.summary', author_fullname: current_user.fullname, user_fullname: user.fullname))
+      mail.body.encoded.should include I18n.t('mailers.sharing_email.other_user.html.summary', author_fullname: current_user.fullname, user_fullname: user.fullname)
     end
 
     it 'should have a text' do
-      mail.body.encoded.should match(sharing_email.text)
+      mail.body.encoded.should include sharing_email.text
     end
 
     it "should have the author's information" do
-      mail.body.encoded.should match(current_user.fullname)
-      mail.body.encoded.should match(current_user.email)
+      mail.body.encoded.should include current_user.fullname
+      mail.body.encoded.should include current_user.email
     end
 
     it "should have the user's picture" do
-      mail.body.encoded.should match('default_user.jpg')
+      mail.body.encoded.should include 'default_user.jpg'
     end
 
     it "should have the user's profile information" do
-      mail.body.encoded.should match(user.fullname)
-      mail.body.encoded.should match("#{profile.experience} yrs")
-      mail.body.encoded.should match(profile.last_job)
-      mail.body.encoded.should match(profile.past_companies)
-      mail.body.encoded.should match(profile.education)
-      mail.body.encoded.should match(profile.skill_1)
-      mail.body.encoded.should match(profile.skill_2)
-      mail.body.encoded.should match(profile.skill_3)
-      mail.body.encoded.should match(profile.quality_1)
-      mail.body.encoded.should match(profile.quality_2)
-      mail.body.encoded.should match(profile.quality_3)
+      mail.body.encoded.should include user.fullname
+      mail.body.encoded.should include "#{profile.experience} yrs"
+      mail.body.encoded.should include profile.last_job
+      mail.body.encoded.should include profile.past_companies
+      mail.body.encoded.should include profile.education
+      mail.body.encoded.should include profile.skill_1
+      mail.body.encoded.should include profile.skill_2
+      mail.body.encoded.should include profile.skill_3
+      mail.body.encoded.should include profile.quality_1
+      mail.body.encoded.should include profile.quality_2
+      mail.body.encoded.should include profile.quality_3
     end
 
     it 'should have a contact link' do
-      mail.body.encoded.should match("mailto:#{user.email}")
+      mail.body.encoded.should include "mailto:#{user.email}"
     end
 
     it 'should have a decline link' do
-      mail.body.encoded.should match("http://joblr.co/sharing_emails/#{sharing_email.id}/decline")
+      mail.body.encoded.should include "http://joblr.co/sharing_emails/#{sharing_email.id}/decline"
     end
   end
 
@@ -122,25 +121,25 @@ describe SharingEmailMailer do
 
     it 'should send the email with correct subject, author and recipient' do
       mail.subject.should == I18n.t('mailers.sharing_email.public_user.subject', fullname: sharing_email.author_fullname)
-      mail.to.should      == [sharing_email.recipient_email]
-      mail.from.should    == ['postman@joblr.co']
+      mail.to.should   include sharing_email.recipient_email
+      mail.from.should include 'postman@joblr.co'
     end
 
     it 'should have a title' do
-      mail.body.encoded.should match(I18n.t('mailers.sharing_email.public_user.html.title', fullname: user.fullname))
+      mail.body.encoded.should include I18n.t('mailers.sharing_email.public_user.html.title', fullname: user.fullname)
     end
 
     it 'should have a summary' do
-      mail.body.encoded.should match(I18n.t('mailers.sharing_email.public_user.html.summary', author_fullname: sharing_email.author_fullname, user_fullname: user.fullname))
+      mail.body.encoded.should include I18n.t('mailers.sharing_email.public_user.html.summary', author_fullname: sharing_email.author_fullname, user_fullname: user.fullname)
     end
 
     it 'should have a text' do
-      mail.body.encoded.should match(sharing_email.text)
+      mail.body.encoded.should include sharing_email.text
     end
 
     it "should have the author's information" do
-      mail.body.encoded.should match(sharing_email.author_fullname)
-      mail.body.encoded.should match(sharing_email.author_email)
+      mail.body.encoded.should include sharing_email.author_fullname
+      mail.body.encoded.should include sharing_email.author_email
     end
 
     it "should have the user's picture" do
@@ -148,25 +147,25 @@ describe SharingEmailMailer do
     end
 
     it "should have the user's profile information" do
-      mail.body.encoded.should match(user.fullname)
-      mail.body.encoded.should match("#{profile.experience} yrs")
-      mail.body.encoded.should match(profile.last_job)
-      mail.body.encoded.should match(profile.past_companies)
-      mail.body.encoded.should match(profile.education)
-      mail.body.encoded.should match(profile.skill_1)
-      mail.body.encoded.should match(profile.skill_2)
-      mail.body.encoded.should match(profile.skill_3)
-      mail.body.encoded.should match(profile.quality_1)
-      mail.body.encoded.should match(profile.quality_2)
-      mail.body.encoded.should match(profile.quality_3)
+      mail.body.encoded.should include user.fullname
+      mail.body.encoded.should include "#{profile.experience} yrs"
+      mail.body.encoded.should include profile.last_job
+      mail.body.encoded.should include profile.past_companies
+      mail.body.encoded.should include profile.education
+      mail.body.encoded.should include profile.skill_1
+      mail.body.encoded.should include profile.skill_2
+      mail.body.encoded.should include profile.skill_3
+      mail.body.encoded.should include profile.quality_1
+      mail.body.encoded.should include profile.quality_2
+      mail.body.encoded.should include profile.quality_3
     end
 
     it 'should have a contact link' do
-      mail.body.encoded.should match("mailto:#{user.email}")
+      mail.body.encoded.should include "mailto:#{user.email}"
     end
 
     it 'should have a decline link' do
-      mail.body.encoded.should match("http://joblr.co/sharing_emails/#{sharing_email.id}/decline")
+      mail.body.encoded.should include "http://joblr.co/sharing_emails/#{sharing_email.id}/decline"
     end
   end
 
@@ -179,20 +178,20 @@ describe SharingEmailMailer do
 
     it 'should send the email with correct subject, author and recipient' do
       mail.subject.should == I18n.t('mailers.sharing_email.decline.subject', fullname: sharing_email.recipient_fullname)
-      mail.to.should      == [user.email]
-      mail.from.should    == ['postman@joblr.co']
+      mail.to.should   include user.email
+      mail.from.should include 'postman@joblr.co'
     end
 
     it 'should have a title' do
-      mail.body.encoded.should match(I18n.t('mailers.sharing_email.decline.title', fullname: sharing_email.recipient_fullname))
+      mail.body.encoded.should include I18n.t('mailers.sharing_email.decline.title', fullname: sharing_email.recipient_fullname)
     end
 
     it 'should have a content' do
-      mail.body.encoded.should match(I18n.t('mailers.sharing_email.decline.content', fullname: sharing_email.recipient_fullname))
+      mail.body.encoded.should include I18n.t('mailers.sharing_email.decline.content', fullname: sharing_email.recipient_fullname)
     end
 
     it 'should have a persevere message' do
-      mail.body.encoded.should match(I18n.t('mailers.sharing_email.decline.persevere'))
+      mail.body.encoded.should include I18n.t('mailers.sharing_email.decline.persevere')
     end
   end
 
@@ -206,12 +205,12 @@ describe SharingEmailMailer do
 
     it 'should send the email with correct subject, author and recipient' do
       mail.subject.should == I18n.t('mailers.sharing_email.decline_through_other.subject', fullname: sharing_email.recipient_fullname)
-      mail.to.should      == [user.email]
-      mail.from.should    == ['postman@joblr.co']
+      mail.to.should   include user.email
+      mail.from.should include 'postman@joblr.co'
     end
 
     it 'should have a title' do
-      mail.body.encoded.should match(I18n.t('mailers.sharing_email.decline_through_other.title', fullname: sharing_email.recipient_fullname))
+      mail.body.encoded.should include I18n.t('mailers.sharing_email.decline_through_other.title', fullname: sharing_email.recipient_fullname)
     end
 
     it 'should have a content' do
@@ -219,7 +218,7 @@ describe SharingEmailMailer do
     end
 
     it 'should have a persevere message' do
-      mail.body.encoded.should match(I18n.t('mailers.sharing_email.decline_through_other.persevere'))
+      mail.body.encoded.should include I18n.t('mailers.sharing_email.decline_through_other.persevere')
     end
   end
 end
