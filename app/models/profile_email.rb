@@ -20,7 +20,7 @@
 #  page               :string(255)
 #
 
-class SharingEmail < UserEmail
+class ProfileEmail < UserEmail
   attr_accessible :profile_id, :profile, :status
 
   belongs_to :profile

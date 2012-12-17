@@ -23,7 +23,7 @@ fr:
         content_html: "Allez à l'adresse %{url} pour réinitialiser votre mot de passe."
         wont_change: "Votre mot de passe ne sera pas modifié tant que vous n'aurez pas cliqué sur le lien et créé un nouveau mot de passe."
         if_not: "Ne tenez pas compte de cet email si vous ne l'avez pas demandé."
-    sharing_email:
+    profile_email:
       user:
         subject: "%{fullname} sur Joblr"
         html:

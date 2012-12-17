@@ -1,0 +1,11 @@
+<%=t 'mailers.profile_email.decline.title', fullname: @profile_email.recipient_fullname %>
+<% t('mailers.profile_email.decline.title', fullname: @profile_email.recipient_fullname).length.times do %>=<% end %>
+
+
+<%=t 'mailers.profile_email.decline.content', fullname: @profile_email.recipient_fullname %>
+
+<%=t 'mailers.profile_email.decline.persevere' %>
+
+
+<% t('mailers.team').length.times do %>-<% end %>
+<%=t 'mailers.team' %>

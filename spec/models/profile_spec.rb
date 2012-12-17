@@ -36,7 +36,7 @@ describe Profile do
   before :each do
     @user          = FactoryGirl.create :user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: FactoryGirl.generate(:email)
     @profile       = FactoryGirl.create :profile, user: @user
-    @sharing_email = FactoryGirl.create :sharing_email, author: @user, profile: @profile
+    @profile_email = FactoryGirl.create :profile_email, author: @user, profile: @profile
     @attr = { headline: 'fulltime',
               experience: 5,
               last_job: 'Financial director',
@@ -73,13 +73,13 @@ describe Profile do
     end
   end
 
-  describe 'sharing emails associations' do
+  describe 'profile emails associations' do
 
-    it { @profile.should respond_to :sharing_emails }
+    it { @profile.should respond_to :profile_emails }
 
-    it 'should destroy associated sharings' do
+    it 'should destroy associated profile emails' do
       @profile.destroy
-      SharingEmail.find_by_id(@sharing_email.id).should be_nil
+      ProfileEmail.find_by_id(@profile_email.id).should be_nil
     end
   end
 

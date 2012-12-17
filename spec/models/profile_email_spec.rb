@@ -22,45 +22,45 @@
 
 require 'spec_helper'
 
-describe SharingEmail do
+describe ProfileEmail do
 
 	before :each do
 		@author    = FactoryGirl.create :author
 		@profile   = FactoryGirl.create :profile, user: @author
-		@user_sharing_email   = FactoryGirl.create :sharing_email, profile: @profile, author: @author
-		@public_sharing_email	= FactoryGirl.create :sharing_email, profile: @profile, author: nil
+		@user_profile_email   = FactoryGirl.create :profile_email, profile: @profile, author: @author
+		@public_profile_email	= FactoryGirl.create :profile_email, profile: @profile, author: nil
 	end
 
   it 'should inherit from the UserEmail model' do
-    SharingEmail.should < UserEmail
+    ProfileEmail.should < UserEmail
   end
 
 	describe 'Profile association' do
-		it { @user_sharing_email.should respond_to :profile }
+		it { @user_profile_email.should respond_to :profile }
 
 		it 'should have the right associated profile' do
-			@user_sharing_email.profile_id.should == @profile.id
-			@user_sharing_email.profile.should == @profile
+			@user_profile_email.profile_id.should == @profile.id
+			@user_profile_email.profile.should == @profile
 		end
 
 		it 'should not destroy the associated profile' do
-			@user_sharing_email.destroy
-			Profile.find_by_id(@user_sharing_email.profile_id).should_not be_nil
+			@user_profile_email.destroy
+			Profile.find_by_id(@user_profile_email.profile_id).should_not be_nil
 		end
 	end
 
   describe 'Validations' do
 
-    context 'user sharing email' do
-      it { @user_sharing_email.should_not validate_presence_of :author_fullname }
-      it { @user_sharing_email.should_not ensure_length_of(:author_fullname).is_at_most 100 }
-      it { @user_sharing_email.should_not validate_presence_of :author_email }
+    context 'user profile email' do
+      it { @user_profile_email.should_not validate_presence_of :author_fullname }
+      it { @user_profile_email.should_not ensure_length_of(:author_fullname).is_at_most 100 }
+      it { @user_profile_email.should_not validate_presence_of :author_email }
     end
 
-		context 'public sharing email' do
-  		it { @public_sharing_email.should validate_presence_of :author_fullname }
-  		it { @public_sharing_email.should ensure_length_of(:author_fullname).is_at_most 100 }
-  		it { @public_sharing_email.should validate_presence_of :author_email }
+		context 'public profile email' do
+  		it { @public_profile_email.should validate_presence_of :author_fullname }
+  		it { @public_profile_email.should ensure_length_of(:author_fullname).is_at_most 100 }
+  		it { @public_profile_email.should validate_presence_of :author_email }
 		end
 
     it { should ensure_length_of(:text).is_at_most 140 }

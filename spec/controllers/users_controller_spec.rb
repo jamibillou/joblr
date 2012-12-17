@@ -52,8 +52,8 @@ describe UsersController do
             find('.btn.dropdown-toggle').should have_content I18n.t('users.show.share')
           end
 
-          it 'should have an sharing email modal' do
-            find('div#sharing-email-modal').should  have_content I18n.t('sharing_emails.new.title')
+          it 'should have an profile email modal' do
+            find('div#profile-email-modal').should  have_content I18n.t('profile_emails.new.title')
           end
 
           it 'should have kissmetrics event' do
@@ -190,8 +190,8 @@ describe UsersController do
           find('.btn.dropdown-toggle').should have_content I18n.t('users.show.share')
         end
 
-        it 'should have an sharing email modal' do
-          find('div#sharing-email-modal').should  have_content I18n.t('sharing_emails.new.title')
+        it 'should have an profile email modal' do
+          find('div#profile-email-modal').should  have_content I18n.t('profile_emails.new.title')
         end
 
         context 'visiting another user page' do

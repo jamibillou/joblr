@@ -23,7 +23,7 @@ en:
         content_html: "Go to %{url} to reset your password."
         wont_change: "It won't change until you follow that link and create a new password."
         if_not: "Ignore this email if you didn't request it."
-    sharing_email:
+    profile_email:
       user:
         subject: "%{fullname} on Joblr"
         html:

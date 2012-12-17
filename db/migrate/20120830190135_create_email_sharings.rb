@@ -1,6 +1,6 @@
-class CreateSharingEmails < ActiveRecord::Migration
+class CreateEmailSharings < ActiveRecord::Migration
   def change
-    create_table :sharing_emails do |t|
+    create_table :email_sharings do |t|
       t.integer :profile_id
       t.integer :author_id
       t.string :author_fullname

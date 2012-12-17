@@ -1,5 +1,5 @@
 en:
-  sharing_emails:
+  profile_emails:
     new:
       title: 'Send profile by email'
       from_label: 'From'

@@ -48,10 +48,10 @@
             %span{class: "#{signed_up?(user) ? 'success-text' : 'danger-text'}"}= signed_up?(user)
         .span1
           %td
-            = user.authored_sharing_emails.count
+            = user.authored_profile_emails.count
         .span1
           %td
-            = user.profile.public_emails_sharings.count unless user.profile.nil?
+            = user.profile.public_profile_emails.count unless user.profile.nil?
         .span1
           %td
             = user.authentifications.count

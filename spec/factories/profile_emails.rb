@@ -1,6 +1,6 @@
 FactoryGirl.define do
 
-  factory :sharing_email do
+  factory :profile_email do
     author_fullname 'Factory Author'
     author_email 'factory.author@example.com'
     recipient_fullname 'Factory Recipient'

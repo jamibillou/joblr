@@ -28,7 +28,7 @@ en:
       public_profile: 'Public profile:'
       send_email: 'Send by email'
       share_on: "Share on %{provider}"
-      sharings:
+      profile emails:
         catchphrase: 'Save your job hunting minutes'
         title: "%{fullname} on Joblr"
     index:

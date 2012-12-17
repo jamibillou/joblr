@@ -20,11 +20,11 @@ module UsersHelper
   def social_sharing_url(user, provider)
     case provider
       when 'linkedin'
-        "http://www.linkedin.com/shareArticle?mini=true&url=#{user.public_url}&title=#{t('users.show.sharings.title', fullname: user.fullname)}&summary=#{strip_tags t('users.show.public_explanation_html', fullname: user.fullname)}&source=Joblr"
+        "http://www.linkedin.com/shareArticle?mini=true&url=#{user.public_url}&title=#{t('users.show.profile emails.title', fullname: user.fullname)}&summary=#{strip_tags t('users.show.public_explanation_html', fullname: user.fullname)}&source=Joblr"
       when 'facebook'
         "https://www.facebook.com/dialog/feed?app_id=419105881446208&link=#{user.public_url}&redirect_uri=#{close_url}&description=#{t('users.show.public_explanation_html', fullname: user.fullname)}&display=popup"
       when 'twitter'
-        "http://www.twitter.com/share?url=#{user.public_url}&text=#{t('users.show.sharings.title', fullname: user.fullname).gsub(' ','+')}"
+        "http://www.twitter.com/share?url=#{user.public_url}&text=#{t('users.show.profile emails.title', fullname: user.fullname).gsub(' ','+')}"
       when 'google'
         "https://plus.google.com/share?url=#{user.public_url}"
     end

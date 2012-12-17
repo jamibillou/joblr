@@ -1,14 +1,14 @@
-// SHARINGS
-// Styles for all sharings views
-// -----------------------------
+// Profile emails
+// Styles for all profile emails views
+// -----------------------------------
 
 
 // New
 //----
 
-form#new_sharing_email{
+form#new_profile_email{
   margin-bottom:0;
-  #sharing-email-error{
+  #profile-email-error{
     color: $errorBorder;
     margin-bottom:30px;
     display:none;
@@ -30,6 +30,6 @@ form#new_sharing_email{
 }
 
 // Decline & Already answered
-#sharing_email h1{
+#profile_email h1{
   margin-bottom:40px;
 }

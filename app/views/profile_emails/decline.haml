@@ -1,0 +1,6 @@
+.span3.hidden-phone
+.span6
+  .row-fluid
+    .well#profile_email
+      %h1=t 'profile_emails.decline.thank_you'
+      .lead=t 'profile_emails.decline.close_page', fullname: @profile_email.profile.user.fullname

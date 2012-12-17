@@ -17,7 +17,7 @@ Joblr::Application.routes.draw do
   resources :users do
     resources :profiles
   end
-  resources :sharing_emails,    only: [:create] do
+  resources :profile_emails, only: [:create] do
     get :already_answered
     get :decline
   end
@@ -42,7 +42,7 @@ Joblr::Application.routes.draw do
   # Preview of emails
   if Rails.env.development?
     mount BetaInviteMailer::Preview     => 'beta_invite_mailer'
-    mount SharingEmailMailer::Preview   => 'sharing_email_mailer'
+    mount ProfileEmailMailer::Preview   => 'profile_email_mailer'
     mount FeedbackEmailMailer::Preview  => 'feedback_email_mailer'
   end
 end
