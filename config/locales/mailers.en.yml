@@ -1,7 +1,21 @@
 en:
   mailers:
     header: 'This is an automated notification, please do not reply.'
-    team: 'The Joblr team'
+    team: 'Joblr team'
+    beta_invite:
+      notify_team:
+        subject: "New beta invitation request!"
+        title: "Somebody wants to try Joblr!"
+        content_html: "Click the button below to send an invitation code to %{email}."
+        content_text: "Go to %{url} to send an invitation code to %{email}."
+        button: 'Send invite!'
+      send_code:
+        subject: "Invitation to Joblr beta"
+        title: "Congrats, here's your invitation to Joblr beta!"
+        content_html: "Click the button below to get access. This invitation code will be copy/pasted automatically.<br><br>You can also do it yourself at %{url}."
+        content_text: "Paste the invitation code below at %{url} to get access."
+        code: "Code:"
+        button: 'Get access!'
     devise:
       reset_password_instructions:
         subject: 'Reset your password'
@@ -69,17 +83,11 @@ en:
         title: "%{fullname} is not interested"
         content: "%{fullname} is not interested in your profile (it was sent by %{author_fullname}), better luck next time!"
         persevere: "Keep trying, it will pay off eventually."
-    beta_invite:
-      notify_team:
-        subject: "New beta invitation request!"
-        title: "Somebody wants to try Joblr!"
-        content_html: "Click the button below to send an invitation code to %{email}."
-        content_text: "Go to %{url} to send an invitation code to %{email}."
-        button: 'Send invite!'
-      send_code:
-        subject: "Invitation to Joblr beta"
-        title: "Congrats, here's your invitation to Joblr beta!"
-        content_html: "Click the button below to get access. This invitation code will be copy/pasted automatically.<br><br>You can also do it yourself at %{url}."
-        content_text: "Paste the invitation code below at %{url} to get access."
-        code: "Code:"
-        button: 'Get access!'
+    feedback_email:
+      footer_form:
+        subject: "Feedback from %{fullname}"
+        title: "Feedback from %{fullname}"
+        content: "%{fullname} just sent you some feedback from %{page}"
+        content_html: "%{fullname} just sent you some feedback from <u>%{page}</u>"
+        feedback: "Feedback:"
+        button: "Contact them"

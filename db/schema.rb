@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121216182813) do
+ActiveRecord::Schema.define(:version => 20121217091337) do
 
   create_table "authentifications", :force => true do |t|
     t.integer  "user_id"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20121216182813) do
     t.string   "cc"
     t.string   "bcc"
     t.string   "subject"
-    t.string   "text"
+    t.text     "text"
     t.string   "status"
     t.string   "type"
     t.integer  "profile_id"

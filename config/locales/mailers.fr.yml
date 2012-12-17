@@ -2,6 +2,20 @@ fr:
   mailers:
     header: 'Cet email a été envoyé automatiquement, merci de ne pas répondre.'
     team: "L'équipe Joblr"
+    beta_invite:
+      notify_team:
+        subject: "Nouvelle demande d'invitation à Joblr beta !"
+        title: "Quelqun souhaite utiliser Joblr !"
+        content_html: "Cliquez sur le bouton ci-dessous pour envoyer un code d'invitation à %{email}."
+        content_text: "Allez à l'adresse %{url} pour envoyer un code d'invitation à %{email}."
+        button: 'Envoyer !'
+      send_code:
+        subject: "Invitation à Joblr beta"
+        title: "Félicitations, voici votre invitation à Joblr beta !"
+        content_html: "Cliquez sur le bouton ci-dessous pour vous inscrire, le code d'invitation sera copié/collé automatiquement.<br><br>Vous pouvez aussi le faire vous même à l'adresse %{url}."
+        content_text: "Copiez/collez le code d'invitation ci-dessous à l'adresse %{url} pour vous inscrire."
+        code: "Code :"
+        button: "S'inscrire !"
     devise:
       reset_password_instructions:
         subject: 'Réinitialisez votre mot de passe'
@@ -69,17 +83,11 @@ fr:
         title: "%{fullname} n'est pas intéressé(e)"
         content: "%{fullname} n'est pas intéressé(e) par votre profil (il lui a été envoyé par %{author_fullname}), mais ce n'est que partie remise !"
         persevere: "Persévérez, ça finira par payer."
-    beta_invite:
-      notify_team:
-        subject: "Nouvelle demande d'invitation à Joblr beta !"
-        title: "Quelqun souhaite utiliser Joblr !"
-        content_html: "Cliquez sur le bouton ci-dessous pour envoyer un code d'invitation à %{email}."
-        content_text: "Allez à l'adresse %{url} pour envoyer un code d'invitation à %{email}."
-        button: 'Envoyer !'
-      send_code:
-        subject: "Invitation à Joblr beta"
-        title: "Félicitations, voici votre invitation à Joblr beta !"
-        content_html: "Cliquez sur le bouton ci-dessous pour vous inscrire, le code d'invitation sera copié/collé automatiquement.<br><br>Vous pouvez aussi le faire vous même à l'adresse %{url}."
-        content_text: "Copiez/collez le code d'invitation ci-dessous à l'adresse %{url} pour vous inscrire."
-        code: "Code :"
-        button: "S'inscrire !"
+    feedback_email:
+      footer_form:
+        subject: "Retour d'expérience de %{fullname}"
+        title: "Retour d'expérience de %{fullname}"
+        content: "%{fullname} vous à envoyé un retour d'expérience à propos de %{page}"
+        content_html: "%{fullname} vous à envoyé un retour d'expérience à propos de <u>%{page}</u>"
+        feedback: "Retour d'expérience :"
+        button: "Contacter"

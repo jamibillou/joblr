@@ -1,0 +1,7 @@
+<%=t 'mailers.feedback_email.footer_form.title', fullname: @feedback_email.author.fullname %>
+<% t('mailers.feedback_email.footer_form.title', fullname: @feedback_email.author.fullname).length.times do %>=<% end %>
+
+
+<%=t 'mailers.feedback_email.footer_form.content', fullname: @feedback_email.author.fullname, page: @feedback_email.page %>
+
+<%=t 'mailers.feedback_email.footer_form.feedback' %> "<%= @feedback_email.text %>"

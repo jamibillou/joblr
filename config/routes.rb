@@ -41,7 +41,8 @@ Joblr::Application.routes.draw do
 
   # Preview of emails
   if Rails.env.development?
-    mount SharingEmailMailer::Preview   => 'sharing_email_mailer'
     mount BetaInviteMailer::Preview     => 'beta_invite_mailer'
+    mount SharingEmailMailer::Preview   => 'sharing_email_mailer'
+    mount FeedbackEmailMailer::Preview  => 'feedback_email_mailer'
   end
 end
