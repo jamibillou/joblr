@@ -1,14 +1,14 @@
 fr:
-  beta_invites:
+  invite_emails:
     index:
-      title: 'Invitations à la beta'
+      title: 'Invitations à Joblr beta'
     new:
       title: "Demandez votre invitation !"
       subtitle_html: "Nous sommes actuellement en beta privée. Saisissez votre adresse email et nous vous inviterons dés que possible."
       placeholder: 'Adresse email'
       button: 'Invitez-moi !'
     create:
-      title: "Demandez votre invitation Joblr !"  
+      title: "Demandez votre invitation Joblr !"
     thank_you:
       title: 'Merci !'
       subtitle_html: "Merci de votre demande.<br />Nous invitons régulièrement de nouveaux utilisateurs, surveillez votre boîte de réception !"

@@ -1,0 +1,6 @@
+<%=t 'mailers.invite_email.send_code.content_html', url: link_to("<span>http://joblr.co/invite_emails/#{@invite_email.id}/edit</span>".html_safe, "http://joblr.co/invite_emails/#{@invite_email.id}/edit?code=#{@invite_email.code}", target: '_blank') %>
+<br />
+<br />
+<%=t 'mailers.invite_email.send_code.code' %>
+<br />
+<span class="code graylight-text"><%= @invite_email.code %></span>

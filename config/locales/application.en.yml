@@ -20,7 +20,7 @@ en:
           user: "Your profile was successfully sent to %{recipient_email}"
           other_user: "%{fullname}'s profile was successfully sent to %{recipient_email}"
           public_user: "%{fullname}'s profile was successfully sent to %{recipient_email}"
-      beta_invite:
+      invite_email:
         email_sent: 'The invitation email was sent successfully.'
         used: "Great, you can now sign up!"
         destroyed: 'The invitation was destroyed successfully.'
@@ -40,7 +40,7 @@ en:
         signed_in: "You cannot access this page."
         public: "You cannot access this page."
         admin: "You cannot access this page."
-      beta_invite:
+      invite_email:
         code_inexistant: "This invitation code doesn't seem to exist."
         used: "This invitation code has already been used. Did you already sign up?"
         required: "You need an invitation to sign up, you can ask for one here."

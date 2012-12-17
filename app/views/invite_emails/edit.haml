@@ -1,12 +1,12 @@
 .span3.hidden-phone
 .span6
   .row-fluid
-    .well#beta-invite
+    .well#invite-email
       %h1=t '.title'
       .lead=t '.subtitle'
       %p
-        = link_to t('.link'), new_beta_invite_path
-      = form_for @beta_invite do |f|
+        = link_to t('.link'), new_invite_email_path
+      = form_for @invite_email do |f|
         = f.text_field :code, placeholder: t('.placeholder'), value: (params[:code] unless params[:code].nil?)
         .hidden-desktop
           %br/
@@ -15,5 +15,5 @@
       %br/
       .danger-text=t '.asterisk'
 
-= kiss_event('record', 'Viewed use beta invite page')
-= mixpanel_event('Viewed use beta invite page')
+= kiss_event('record', 'Viewed use invite page')
+= mixpanel_event('Viewed use invite page')

@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
 
   has_many :authentifications,        dependent:  :destroy
   has_many :profiles,                 dependent:  :destroy
-  has_one  :beta_invite,              dependent:  :destroy
+  has_one  :invite_email,              dependent:  :destroy
   has_many :authored_user_emails,     class_name: 'UserEmail',     foreign_key: 'author_id'
   has_many :authored_profile_emails,  class_name: 'ProfileEmail',  foreign_key: 'author_id'
   has_many :authored_feedback_emails, class_name: 'FeedbackEmail', foreign_key: 'author_id'

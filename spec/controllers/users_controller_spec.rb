@@ -9,7 +9,7 @@ describe UsersController do
     @profile     = FactoryGirl.create :profile, user: @user
     @user2       = FactoryGirl.create :user, fullname: FactoryGirl.generate(:fullname), username: FactoryGirl.generate(:username), email: FactoryGirl.generate(:email)
     @attr        = { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China', profiles_attributes: { '0' => { headline: 'fulltime', experience: '10', education: 'none', text: 'A good and highly motivated guy.' } } }
-    @beta_invite = FactoryGirl.create :beta_invite, user: nil
+    @invite_email = FactoryGirl.create :invite_email, user: nil
     sign_in @user
   end
 
@@ -358,30 +358,30 @@ describe UsersController do
           flash[:success].should == I18n.t('flash.success.profile.created')
         end
 
-        context 'for users who signed up with a beta_invite' do
+        context 'for users who signed up with a invite_email' do
 
-          before(:each) { session[:beta_invite] = @beta_invite }
+          before(:each) { session[:invite_email] = @invite_email }
 
-          it 'should associate the user and the beta_invite' do
+          it 'should associate the user and the invite_email' do
             put :update, user: @attr, id: @user
-            @user.beta_invite.id.should == @beta_invite.id
-            @user.beta_invite.should == @beta_invite
+            @user.invite_email.id.should == @invite_email.id
+            @user.invite_email.should == @invite_email
           end
 
           it "should update the user's email if he didn't have one" # do
             # put :update, user: @attr, id: @user
-            # @user.email.should == @beta_invite.email
+            # @user.email.should == @invite_email.email
           # end
 
           it "should not update the user's email if he already had one" do
             @user.update_attributes email: 'user@example.com'
             put :update, user: @attr, id: @user
-            @user.email.should_not == @beta_invite.email
+            @user.email.should_not == @invite_email.email
           end
 
           it 'should destroy the session' do
             put :update, user: @attr, id: @user
-            session[:beta_invite].should be_nil
+            session[:invite_email].should be_nil
           end
         end
       end

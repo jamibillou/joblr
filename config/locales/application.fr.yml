@@ -19,7 +19,7 @@ fr:
         shared:  "Votre profil a bien été envoyé à %{recipient_email}"
         other_shared: "Le profil de %{fullname} a bien été envoyé à %{recipient_email}"
         public_shared: "Le profil de %{fullname} a bien été envoyé à %{recipient_email}"
-      beta_invite:
+      invite_email:
         email_sent: "L'invitation a bien été envoyée."
         used: "Ok, vous pouvez maintenant vous inscrire !"
         destroyed: "L'invitation a bien été supprimée."
@@ -39,7 +39,7 @@ fr:
         signed_in: "Vous ne pouvez pas à accéder à cette page."
         public: "Vous ne pouvez pas à accéder à cette page."
         admin: "Vous ne pouvez pas à accéder à cette page."
-      beta_invite:
+      invite_email:
         code_inexistant: "Ce code d'invitation n'existe pas."
         used: "Ce code d'invitation a déjà été utilisé. Vous-êtes vous déjà inscrit ?"
         required: "Il vous faut une invitation pour vous inscrire, vous pouvez en demander une ici."

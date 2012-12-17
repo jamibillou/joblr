@@ -2,9 +2,9 @@ en:
   mailers:
     header: 'This is an automated notification, please do not reply.'
     team: 'Joblr team'
-    beta_invite:
+    invite_email:
       notify_team:
-        subject: "New beta invitation request!"
+        subject: "New invitation request!"
         title: "Somebody wants to try Joblr!"
         content_html: "Click the button below to send an invitation code to %{email}."
         content_text: "Go to %{url} to send an invitation code to %{email}."

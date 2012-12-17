@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: beta_invites
+# Table name: invite_emails
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
@@ -13,24 +13,24 @@
 
 require 'spec_helper'
 
-describe BetaInvite do
+describe InviteEmail do
 
   before :each do
     @user        = FactoryGirl.create :user
-    @beta_invite = FactoryGirl.create :beta_invite, user: @user
+    @invite_email = FactoryGirl.create :invite_email, user: @user
   end
 
   describe 'user association' do
 
-    it { @beta_invite.should respond_to :user }
+    it { @invite_email.should respond_to :user }
 
     it 'should have the right associated user' do
-      @beta_invite.user_id.should == @user.id
-      @beta_invite.user.should == @user
+      @invite_email.user_id.should == @user.id
+      @invite_email.user.should == @user
     end
 
     it 'should not destroy the associated user' do
-      @beta_invite.destroy
+      @invite_email.destroy
       User.find_by_id(@user.id).should_not be_nil
     end
   end

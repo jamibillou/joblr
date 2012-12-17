@@ -1,10 +1,10 @@
 .span3.hidden-phone
 .span6
   .row-fluid
-    .well#beta-invite
+    .well#invite-email
       %h1=t '.title'
       .lead=t '.subtitle_html'
-      = form_for @beta_invite do |f|
+      = form_for @invite_email do |f|
         = f.text_field :email, placeholder: t('.placeholder')
         .hidden-desktop
           %br/

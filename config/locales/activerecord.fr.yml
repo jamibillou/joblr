@@ -4,7 +4,7 @@ fr:
       user: "Utilisateur"
       profile: "Profil"
       authentification: "Réseau social lié"
-      beta_invite: "Invitation"
+      invite_email: "Invitation"
     attributes:
       user:
         id: "Identifiant"
@@ -63,7 +63,7 @@ fr:
         uname: "Nom"
         uemail: "Adresse email"
         url: "Lien public"
-      beta_invite:
+      invite_email:
         id: "Identifiant"
         user_id: "Identifiant utilisateur"
         code: "Code"

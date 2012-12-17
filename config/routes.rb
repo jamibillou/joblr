@@ -9,7 +9,7 @@ Joblr::Application.routes.draw do
 
   devise_for :users, controllers: {omniauth_callbacks: 'authentifications', registrations: 'registrations'}
 
-  resources :beta_invites, except: :index do
+  resources :invite_emails, except: :index do
     get :thank_you
     get :send_code
   end
@@ -41,7 +41,7 @@ Joblr::Application.routes.draw do
 
   # Preview of emails
   if Rails.env.development?
-    mount BetaInviteMailer::Preview     => 'beta_invite_mailer'
+    mount InviteEmailMailer::Preview     => 'invite_email_mailer'
     mount ProfileEmailMailer::Preview   => 'profile_email_mailer'
     mount FeedbackEmailMailer::Preview  => 'feedback_email_mailer'
   end

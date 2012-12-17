@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: beta_invites
+# Table name: invite_emails
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
@@ -11,7 +11,7 @@
 #  sent       :boolean          default(FALSE)
 #
 
-class BetaInvite < ActiveRecord::Base
+class InviteEmail < ActiveRecord::Base
 
   attr_accessible :email, :code, :sent, :user_id
 

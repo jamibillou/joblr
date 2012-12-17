@@ -120,10 +120,10 @@ describe AuthentificationsController do
 
           before :each do
             request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => @auth.uid})
-            @beta_invite = FactoryGirl.create :beta_invite, user: nil
-            visit edit_beta_invite_path(@beta_invite)
-            find('#beta_invite_code').set(@beta_invite.code)
-            click_button I18n.t('beta_invites.edit.button')
+            @invite_email = FactoryGirl.create :invite_email, user: nil
+            visit edit_invite_email_path(@invite_email)
+            find('#invite_email_code').set(@invite_email.code)
+            click_button I18n.t('invite_emails.edit.button')
             visit user_omniauth_authorize_path('twitter')
           end
 
@@ -161,10 +161,10 @@ describe AuthentificationsController do
         context 'and was trying to sign up' do
 
           before :each do
-            @beta_invite = FactoryGirl.create :beta_invite, user: nil
-            visit edit_beta_invite_path(@beta_invite)
-            find('#beta_invite_code').set(@beta_invite.code)
-            click_button I18n.t('beta_invites.edit.button')
+            @invite_email = FactoryGirl.create :invite_email, user: nil
+            visit edit_invite_email_path(@invite_email)
+            find('#invite_email_code').set(@invite_email.code)
+            click_button I18n.t('invite_emails.edit.button')
           end
 
           it 'should create a new user object' do

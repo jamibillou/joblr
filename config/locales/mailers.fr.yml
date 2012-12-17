@@ -2,7 +2,7 @@ fr:
   mailers:
     header: 'Cet email a été envoyé automatiquement, merci de ne pas répondre.'
     team: "L'équipe Joblr"
-    beta_invite:
+    invite_email:
       notify_team:
         subject: "Nouvelle demande d'invitation à Joblr beta !"
         title: "Quelqun souhaite utiliser Joblr !"

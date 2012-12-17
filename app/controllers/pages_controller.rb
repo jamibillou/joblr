@@ -8,7 +8,7 @@ class PagesController < ApplicationController
 
   def admin
     @users           = User.all
-    @beta_invites    = BetaInvite.all
+    @invite_emails    = InviteEmail.all
   end
 
   def style_tile

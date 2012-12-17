@@ -1,0 +1,12 @@
+<%=t 'mailers.invite_email.send_code.title' %>
+<% t('mailers.invite_email.send_code.title').length.times do %>=<% end %>
+
+
+<%=t 'mailers.invite_email.send_code.content_text', url: "http://joblr.co/invite_emails/#{@invite_email.id}/edit" %>
+
+<%=t 'mailers.invite_email.send_code.code' %>
+<%= @invite_email.code %>
+
+
+<% t('mailers.team').length.times do %>=<% end %>
+<%=t 'mailers.team' %>

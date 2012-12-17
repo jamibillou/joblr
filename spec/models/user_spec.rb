@@ -33,7 +33,7 @@ describe User do
     @user          = FactoryGirl.create :user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: FactoryGirl.generate(:email)
     @auth          = FactoryGirl.create :authentification, user: @user, provider:'twitter'
     @profile       = FactoryGirl.create :profile, user: @user
-    @beta_invite   = FactoryGirl.create :beta_invite, user: @user
+    @invite_email   = FactoryGirl.create :invite_email, user: @user
     @providers     = %w(linkedin twitter facebook google)
     @profile_email = FactoryGirl.create :profile_email, author: @user
   end
@@ -68,13 +68,13 @@ describe User do
     end
   end
 
-  describe 'beta invite association' do
+  describe 'invite email association' do
 
-    it { @user.should respond_to :beta_invite }
+    it { @user.should respond_to :invite_email }
 
-    it 'should destroy associated beta_invite' do
+    it 'should destroy associated invite_email' do
       @user.destroy
-      BetaInvite.find_by_id(@beta_invite.id).should be_nil
+      InviteEmail.find_by_id(@invite_email.id).should be_nil
     end
   end
 

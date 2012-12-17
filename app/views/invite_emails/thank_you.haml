@@ -1,0 +1,9 @@
+.span3.hidden-phone
+.span6
+  .row-fluid
+    .well#invite-email
+      %h1=t '.title'
+      .lead=t '.subtitle_html'
+
+= kiss_event('record', 'Requested an invitation')
+= mixpanel_event('Requested an invitation')
