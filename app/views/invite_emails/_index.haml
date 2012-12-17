@@ -33,19 +33,19 @@
             = invite_email.created_at
         .span1
           %td{style: 'text-align:left'}
-            = invite_email.email
+            = invite_email.recipient_email
         .span1
           %td
-            %span{class: "#{invite_email.used? ? 'success-text' : 'danger-text'}"}= invite_email.used?
+            %span{class: "#{invite_email.invite_used? ? 'success-text' : 'danger-text'}"}= invite_email.invite_used?
         .span1
           %td
-            = invite_email.user.fullname if invite_email.used?
+            = invite_email.user.fullname if invite_email.invite_used?
         .span1
           %td
-            = invite_email.user.username if invite_email.used?
+            = invite_email.user.username if invite_email.invite_used?
         .span1
           %td
-            - if invite_email.used?
+            - if invite_email.invite_used?
               %span{class: "#{signed_up?(invite_email.user) ? 'success-text' : 'danger-text'}"}= signed_up?(invite_email.user)
         .span1
           %td
@@ -53,6 +53,6 @@
         .span1
           %td{style: 'text-align:right'}
             - unless invite_email.sent?
-              = link_to "<div class='icon-envelope'></div>".html_safe, "/invite_emails/#{invite_email.id}/send_code", data: {confirm: t('invite_emails.send_code.yes_send', email: invite_email.email)}, class: 'danger-text'
+              = link_to "<div class='icon-envelope'></div>".html_safe, "/invite_emails/#{invite_email.id}/send_code", data: {confirm: t('invite_emails.send_code.yes_send', email: invite_email.recipient_email)}, class: 'danger-text'
             - else
               .icon-envelope.success-text

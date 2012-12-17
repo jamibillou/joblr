@@ -1,14 +1,26 @@
 # == Schema Information
 #
-# Table name: invite_emails
+# Table name: emails
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  code       :string(255)
-#  email      :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  sent       :boolean          default(FALSE)
+#  id                 :integer          not null, primary key
+#  author_fullname    :string(255)
+#  author_email       :string(255)
+#  recipient_fullname :string(255)
+#  recipient_email    :string(255)
+#  cc                 :string(255)
+#  bcc                :string(255)
+#  subject            :string(255)
+#  text               :text
+#  status             :string(255)
+#  type               :string(255)
+#  profile_id         :integer
+#  author_id          :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  page               :string(255)
+#  code               :string(255)
+#  user_id            :integer
+#  sent               :boolean          default(FALSE)
 #
 
 require 'spec_helper'
@@ -16,8 +28,13 @@ require 'spec_helper'
 describe InviteEmail do
 
   before :each do
-    @user        = FactoryGirl.create :user
+    @user         = FactoryGirl.create :user
     @invite_email = FactoryGirl.create :invite_email, user: @user
+    @attr         = {recipient_email: FactoryGirl.generate(:email)}
+  end
+
+  it 'should inherit from the Email model' do
+    InviteEmail.should < Email
   end
 
   describe 'user association' do
@@ -36,15 +53,16 @@ describe InviteEmail do
   end
 
   describe 'validations' do
-
-    before :all do
-      @email = { :invalid => %w(invalid_email invalid@example invalid@user@example.com inv,alide@), :valid => %w(valid_email@example.com valid@example.co.kr vu@example.us) }
-    end
-
-    it { should validate_presence_of(:email) }
-    it { should validate_uniqueness_of(:email) }
-    it { should validate_format_of(:email).not_with(@email[:invalid][rand(@email[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.invalid')) }
-    it { should validate_format_of(:email).with @email[:valid][rand(@email[:valid].size)] }
+    it { should allow_value('').for(:recipient_fullname) }
+    it { should validate_uniqueness_of(:recipient_email) }
     it { should ensure_inclusion_of(:sent).in_array [true, false] }
+  end
+
+  it 'should fill in Joblr team as author before validation' do
+    invite_email = InviteEmail.new @attr
+    invite_email.should be_valid
+    invite_email.author_fullname.should == 'Joblr team'
+    invite_email.author_email.should == 'team@joblr.co'
+    invite_email.recipient_fullname.should == 'Unknown'
   end
 end

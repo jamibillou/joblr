@@ -18,6 +18,9 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  page               :string(255)
+#  code               :string(255)
+#  user_id            :integer
+#  sent               :boolean          default(FALSE)
 #
 
 require 'spec_helper'
@@ -63,6 +66,7 @@ describe ProfileEmail do
   		it { @public_profile_email.should validate_presence_of :author_email }
 		end
 
+    it { should validate_presence_of(:text) }
     it { should ensure_length_of(:text).is_at_most 140 }
     it { should ensure_inclusion_of(:status).in_array ['accepted', 'declined'] }
 	end

@@ -18,6 +18,9 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  page               :string(255)
+#  code               :string(255)
+#  user_id            :integer
+#  sent               :boolean          default(FALSE)
 #
 
 class ProfileEmail < UserEmail
@@ -25,6 +28,6 @@ class ProfileEmail < UserEmail
 
   belongs_to :profile
 
-  validates :text,   length: { maximum: 140 }
+  validates :text,   length: { maximum: 140 }, presence: true
   validates :status, inclusion: { :in => ['accepted', 'declined'] }, allow_nil: true
 end

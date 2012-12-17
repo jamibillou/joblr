@@ -376,7 +376,7 @@ describe UsersController do
           it "should not update the user's email if he already had one" do
             @user.update_attributes email: 'user@example.com'
             put :update, user: @attr, id: @user
-            @user.email.should_not == @invite_email.email
+            @user.email.should_not == @invite_email.recipient_email
           end
 
           it 'should destroy the session' do

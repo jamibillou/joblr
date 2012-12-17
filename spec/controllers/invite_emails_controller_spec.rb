@@ -5,9 +5,9 @@ describe InviteEmailsController do
   render_views
 
   before :each do
-    @user        = FactoryGirl.create :user
+    @user         = FactoryGirl.create :user
     @invite_email = FactoryGirl.create :invite_email, user: nil
-    @attr        = {email: 'user@example.com'}
+    @attr         = {recipient_email: 'user@example.com'}
   end
 
   describe "GET 'new'" do
@@ -28,7 +28,7 @@ describe InviteEmailsController do
 
       it 'should have an email field' do
         get :new
-        response.body.should have_selector 'input#invite_email_email'
+        response.body.should have_selector 'input#invite_email_recipient_email'
       end
     end
   end
@@ -78,13 +78,13 @@ describe InviteEmailsController do
 
         it 'should not create a new invite_email' do
           lambda do
-            post :create, invite_email: {email: ''}
+            post :create, invite_email: {recipient_email: ''}
           end.should_not change(InviteEmail, :count).by 1
         end
 
         it 'should not create a new user' do
           lambda do
-            post :create, invite_email: {email: ''}
+            post :create, invite_email: {recipient_email: ''}
           end.should_not change(User, :count).by 1
         end
 
@@ -92,13 +92,13 @@ describe InviteEmailsController do
           email = mock Mail::Message
           InviteEmailMailer.should_not_receive(:notify_team).with(kind_of(InviteEmail)).and_return(email)
           email.should_not_receive(:deliver)
-          post :create, invite_email: {email: ''}
+          post :create, invite_email: {recipient_email: ''}
         end
 
         it "should render 'new'" do
-          post :create, invite_email: {email: ''}
+          post :create, invite_email: {recipient_email: ''}
           response.should render_template 'new'
-          flash[:error].should == "#{I18n.t('activerecord.attributes.invite_email.email')} #{I18n.t('activerecord.errors.messages.blank')}."
+          flash[:error].should include I18n.t('activerecord.attributes.invite_email.recipient_email')
         end
       end
 
@@ -110,13 +110,13 @@ describe InviteEmailsController do
 
         it 'should not create a new invite_email' do
           lambda do
-            post :create, invite_email: {email: 'user@example.com'}
+            post :create, invite_email: {recipient_email: 'user@example.com'}
           end.should_not change(InviteEmail, :count).by 1
         end
 
         it 'should not create a new user' do
           lambda do
-            post :create, invite_email: {email: 'user@example.com'}
+            post :create, invite_email: {recipient_email: 'user@example.com'}
           end.should_not change(User, :count).by 1
         end
 
@@ -124,13 +124,13 @@ describe InviteEmailsController do
           email = mock Mail::Message
           InviteEmailMailer.should_not_receive(:notify_team).with(kind_of(InviteEmail)).and_return(email)
           email.should_not_receive(:deliver)
-          post :create, invite_email: {email: 'user@example.com'}
+          post :create, invite_email: {recipient_email: 'user@example.com'}
         end
 
         it "should render 'new'" do
-          post :create, invite_email: {email: 'user@example.com'}
+          post :create, invite_email: {recipient_email: 'user@example.com'}
           response.should render_template 'new'
-          flash[:error].should == "#{I18n.t('activerecord.attributes.invite_email.email')} #{I18n.t('activerecord.errors.messages.taken')}."
+          flash[:error].should == "#{I18n.t('activerecord.attributes.invite_email.recipient_email')} #{I18n.t('activerecord.errors.messages.taken')}."
         end
       end
     end

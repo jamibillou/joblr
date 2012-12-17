@@ -67,7 +67,7 @@ fr:
         id: "Identifiant"
         user_id: "Identifiant utilisateur"
         code: "Code"
-        email: "Adresse email"
+        recipient_email: "Adresse email"
       profile_email:
         text: "Message"
         author_email: "Votre adresse email"

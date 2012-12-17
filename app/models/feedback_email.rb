@@ -18,18 +18,22 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  page               :string(255)
+#  code               :string(255)
+#  user_id            :integer
+#  sent               :boolean          default(FALSE)
 #
 
 class FeedbackEmail < UserEmail
   attr_accessible :page
 
+  validates :text, presence: true
   validates :page, presence: true
 
-  before_validation :fill_in_recipient
+  before_validation :prefill_fields
 
   private
 
-    def fill_in_recipient
+    def prefill_fields
       self.recipient_fullname = 'Joblr team'
       self.recipient_email = 'team@joblr.co'
     end

@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
 
   before_filter :load_user
-  before_filter :profile_completed,     only: :show
-  before_filter :correct_user!,         only: [:edit, :update]
+  before_filter :profile_completed,      only: :show
+  before_filter :correct_user!,          only: [:edit, :update]
   before_filter :associate_invite_email, only: :update # REFACTOR ME!
-  before_filter :admin_user,            only: :destroy
+  before_filter :admin_user,             only: :destroy
 
   def show
     @title = @user.fullname

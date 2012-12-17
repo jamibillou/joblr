@@ -18,6 +18,9 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  page               :string(255)
+#  code               :string(255)
+#  user_id            :integer
+#  sent               :boolean          default(FALSE)
 #
 
 require 'spec_helper'
@@ -52,6 +55,5 @@ describe Email do
     it { should validate_format_of(:bcc).with @emails[:valid][rand(@emails[:valid].size)] }
     it { should ensure_length_of(:subject).is_at_most 150 }
     it { should allow_value('').for(:subject) }
-    it { should validate_presence_of :text }
   end
 end

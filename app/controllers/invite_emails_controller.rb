@@ -34,7 +34,7 @@ class InviteEmailsController < ApplicationController
 
   def update
     if @invite_email = InviteEmail.find_by_id_and_code(params[:id], params[:invite_email][:code])
-      if !@invite_email.used?
+      if !@invite_email.invite_used?
         session[:invite_email] = @invite_email
         redirect_to new_user_registration_path, flash: {success: t('flash.success.invite_email.used')}
       else

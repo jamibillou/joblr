@@ -18,6 +18,9 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  page               :string(255)
+#  code               :string(255)
+#  user_id            :integer
+#  sent               :boolean          default(FALSE)
 #
 
 class Email < ActiveRecord::Base
@@ -30,7 +33,6 @@ class Email < ActiveRecord::Base
   validates :cc,                 format: { with: Devise.email_regexp }, allow_blank: true
   validates :bcc,                format: { with: Devise.email_regexp }, allow_blank: true
   validates :subject,            length: { maximum: 150 },              allow_blank: true
-  validates :text,                                                      presence: true
 
   private
 

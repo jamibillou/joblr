@@ -16,7 +16,7 @@ class InviteEmailMailer < ActionMailer::Base
     @subject     = t('mailers.invite_email.send_code.subject')
     @title       = t('mailers.invite_email.send_code.title')
     @button      = { text: t('mailers.invite_email.send_code.button'), url: "http://joblr.co/invite_emails/#{invite_email.id}/edit?code=#{@invite_email.code}" }
-    mail to: invite_email.email, subject: @subject
+    mail to: invite_email.recipient_email, subject: @subject
   end
 
   class Preview < MailView
