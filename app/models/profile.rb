@@ -37,11 +37,11 @@ class Profile < ActiveRecord::Base
   belongs_to :user
   has_many   :email_sharings, dependent: :destroy
 
-  validates :user,                                                                                                   presence: true
-  validates :headline,       length: { maximum: 100 }, headline_format: true,                                        presence: true
+  validates :user,                                                                presence: true
+  validates :headline,       length: { maximum: 100 }, headline_format: true,     presence: true
   validates :experience,     :numericality => { greater_than: 0, less_than: 50 }, presence: true
-  validates :education,      length: { maximum: 100 },                                                               presence: true
-  validates :text,           length: { maximum: 140 },                                                               presence: true
+  validates :education,      length: { maximum: 100 },                            presence: true
+  validates :text,           length: { maximum: 140 },                            presence: true
   validates :last_job,       length: { maximum: 100 }
   validates :past_companies, length: { maximum: 100 }
   validates :skill_1,        length: { maximum: 50 }
@@ -58,6 +58,9 @@ class Profile < ActiveRecord::Base
   validates :twitter_url,    url_format:   true, allow_blank: true
   validates :facebook_url,   url_format:   true, allow_blank: true
   validates :google_url,     url_format:   true, allow_blank: true
+
+  # FIX ME!
+  #
   before_validation :format_experience
 
   mount_uploader :file, ProfileFileUploader
@@ -67,7 +70,10 @@ class Profile < ActiveRecord::Base
   end
 
   private
+
+    # FIX ME!
+    #
     def format_experience
-      self.experience.gsub!(',','.') unless self.experience.is_a?(Numeric) || self.experience.nil?
-    end  
+      experience.gsub!(',','.') unless experience.is_a?(Numeric) || experience.nil?
+    end
 end
