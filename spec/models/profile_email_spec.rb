@@ -35,8 +35,8 @@ describe ProfileEmail do
 		@public_profile_email	= FactoryGirl.create :profile_email, profile: @profile, author: nil
 	end
 
-  it 'should inherit from the UserEmail model' do
-    ProfileEmail.should < UserEmail
+  it 'should inherit from the FromUserEmail model' do
+    ProfileEmail.should < FromUserEmail
   end
 
 	describe 'Profile association' do

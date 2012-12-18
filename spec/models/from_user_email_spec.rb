@@ -24,8 +24,31 @@
 #  used               :boolean          default(FALSE)
 #
 
-class UserEmail < Email
-  attr_accessible :author_id, :author
+require 'spec_helper'
 
-  belongs_to :author, class_name: 'User', foreign_key: :author_id
+describe FromUserEmail do
+
+  before :each do
+    @author     = FactoryGirl.create :user
+    @from_user_email = FactoryGirl.create :from_user_email, author: @author
+  end
+
+  it 'should inherit from the Email model' do
+    FromUserEmail.should < Email
+  end
+
+  describe 'Author association' do
+
+    it { @from_user_email.should respond_to :author }
+
+    it 'should have the right associated author' do
+      @from_user_email.author_id.should == @author.id
+      @from_user_email.author.should    == @author
+    end
+
+    it 'should not destroy the associated author' do
+      @from_user_email.destroy
+      User.find_by_id(@from_user_email.author_id).should_not be_nil
+    end
+  end
 end

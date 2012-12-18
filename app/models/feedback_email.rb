@@ -24,7 +24,7 @@
 #  used               :boolean          default(FALSE)
 #
 
-class FeedbackEmail < UserEmail
+class FeedbackEmail < FromUserEmail
   attr_accessible :page
 
   validates :text, presence: true

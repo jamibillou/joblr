@@ -24,7 +24,7 @@
 #  used               :boolean          default(FALSE)
 #
 
-class ProfileEmail < UserEmail
+class ProfileEmail < FromUserEmail
   attr_accessible :profile_id, :profile, :status
 
   belongs_to :profile
