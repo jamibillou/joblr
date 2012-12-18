@@ -6,7 +6,7 @@ describe InviteEmailsController do
 
   before :each do
     @user         = FactoryGirl.create :user
-    @invite_email = FactoryGirl.create :invite_email, user: nil
+    @invite_email = FactoryGirl.create :invite_email, recipient: nil
     @attr         = {recipient_email: 'user@example.com'}
   end
 
@@ -322,7 +322,7 @@ describe InviteEmailsController do
     context 'for invitation codes that have already been used' do
 
       before :each do
-        @invite_email.user = @user
+        @invite_email.recipient = @user
         @invite_email.used = true
         @invite_email.save!
       end

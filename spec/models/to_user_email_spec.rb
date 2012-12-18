@@ -24,8 +24,31 @@
 #  updated_at         :datetime         not null
 #
 
-class FromUserEmail < Email
-  attr_accessible :author_id, :author
+require 'spec_helper'
 
-  belongs_to :author, class_name: 'User', foreign_key: :author_id
+describe ToUserEmail do
+
+  before :each do
+    @recipient     = FactoryGirl.create :recipient
+    @to_user_email = FactoryGirl.create :to_user_email, recipient: @recipient
+  end
+
+  it 'should inherit To the Email model' do
+    ToUserEmail.should < Email
+  end
+
+  describe 'Recipient association' do
+
+    it { @to_user_email.should respond_to :recipient }
+
+    it 'should have the right associated recipient' do
+      @to_user_email.recipient_id.should == @recipient.id
+      @to_user_email.recipient.should    == @recipient
+    end
+
+    it 'should not destroy the associated recipient' do
+      @to_user_email.destroy
+      User.find_by_id(@to_user_email.recipient_id).should_not be_nil
+    end
+  end
 end

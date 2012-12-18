@@ -10,18 +10,18 @@
 #  cc                 :string(255)
 #  bcc                :string(255)
 #  subject            :string(255)
-#  text               :text
 #  status             :string(255)
 #  type               :string(255)
-#  profile_id         :integer
-#  author_id          :integer
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
 #  page               :string(255)
 #  code               :string(255)
-#  user_id            :integer
+#  text               :text
 #  sent               :boolean          default(FALSE)
 #  used               :boolean          default(FALSE)
+#  profile_id         :integer
+#  author_id          :integer
+#  recipient_id       :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
 #
 
 require 'spec_helper'
@@ -29,27 +29,27 @@ require 'spec_helper'
 describe InviteEmail do
 
   before :each do
-    @user         = FactoryGirl.create :user
-    @invite_email = FactoryGirl.create :invite_email, user: @user
+    @recipient    = FactoryGirl.create :recipient
+    @invite_email = FactoryGirl.create :invite_email, recipient: @recipient
     @attr         = {recipient_email: FactoryGirl.generate(:email)}
   end
 
-  it 'should inherit from the Email model' do
-    InviteEmail.should < Email
+  it 'should inherit from the ToUserEmail model' do
+    InviteEmail.should < ToUserEmail
   end
 
-  describe 'user association' do
+  describe 'recipient association' do
 
-    it { @invite_email.should respond_to :user }
+    it { @invite_email.should respond_to :recipient }
 
-    it 'should have the right associated user' do
-      @invite_email.user_id.should == @user.id
-      @invite_email.user.should == @user
+    it 'should have the right associated recipient' do
+      @invite_email.recipient_id.should == @recipient.id
+      @invite_email.recipient.should == @recipient
     end
 
-    it 'should not destroy the associated user' do
+    it 'should not destroy the associated recipient' do
       @invite_email.destroy
-      User.find_by_id(@user.id).should_not be_nil
+      User.find_by_id(@recipient.id).should_not be_nil
     end
   end
 
@@ -79,22 +79,24 @@ describe InviteEmail do
 
   describe 'update_users_email filter' do
 
-    context 'for users who have already an email address' do
+    context 'for users who already have an email address' do
       it 'should not update it when invitation gets used' do
-        invite_email       = InviteEmail.new @attr.merge(used: true)
-        invite_email.user  = @user
+        invite_email           = InviteEmail.create! @attr
+        invite_email.recipient = @recipient
+        invite_email.used      = true
         invite_email.save
-        @user.email.should_not == invite_email.recipient_email
+        @recipient.email.should_not == invite_email.recipient_email
       end
     end
 
     context "for users don't have an email address yet" do
       it 'should update the users email address when invitation gets used' do
-        @user.update_attributes email: nil
-        invite_email       = InviteEmail.new @attr.merge(used: true)
-        invite_email.user  = @user
+        @recipient.update_attributes email: nil
+        invite_email           = InviteEmail.create! @attr
+        invite_email.recipient = @recipient
+        invite_email.used      = true
         invite_email.save
-        @user.email.should == invite_email.recipient_email
+        @recipient.email.should == invite_email.recipient_email
       end
     end
   end

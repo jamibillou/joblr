@@ -22,13 +22,13 @@ class InviteEmailMailer < ActionMailer::Base
   class Preview < MailView
 
     def notify_team
-      invite_email = FactoryGirl.create :invite_email, email: Faker::Internet.email, user: nil
+      invite_email = FactoryGirl.create :invite_email, email: Faker::Internet.email, recipient: nil
       email = InviteEmailMailer.notify_team invite_email
       email
     end
 
     def send_code
-      invite_email = FactoryGirl.create :invite_email, email: Faker::Internet.email, user: nil
+      invite_email = FactoryGirl.create :invite_email, email: Faker::Internet.email, recipient: nil
       email = InviteEmailMailer.send_code invite_email
       email
     end

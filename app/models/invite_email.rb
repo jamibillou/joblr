@@ -10,32 +10,29 @@
 #  cc                 :string(255)
 #  bcc                :string(255)
 #  subject            :string(255)
-#  text               :text
 #  status             :string(255)
 #  type               :string(255)
-#  profile_id         :integer
-#  author_id          :integer
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
 #  page               :string(255)
 #  code               :string(255)
-#  user_id            :integer
+#  text               :text
 #  sent               :boolean          default(FALSE)
 #  used               :boolean          default(FALSE)
+#  profile_id         :integer
+#  author_id          :integer
+#  recipient_id       :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
 #
 
-class InviteEmail < Email
-
-  attr_accessible :email, :code, :sent, :used, :user_id
-
-  belongs_to :user
+class InviteEmail < ToUserEmail
+  attr_accessible :email, :code, :sent, :used
 
   validates :recipient_email, uniqueness: { case_sensitive: true }
   validates :code, presence: true
   validates :sent, inclusion:  { :in => [true, false] }
 
   before_validation :prefill_fields, :make_code
-  after_save        :update_users_email, if: :used_changed?
+  after_save        :update_recipients_email, if: :used_changed?
 
   private
 
@@ -49,9 +46,9 @@ class InviteEmail < Email
       self.code = Digest::SHA2.hexdigest(Time.now.utc.to_s) unless persisted?
     end
 
-    def update_users_email
-      if used? && user && user.email.nil?
-        user.update_attributes email: recipient_email
+    def update_recipients_email
+      if used? && recipient && recipient.email.nil?
+        recipient.update_attributes email: recipient_email
       end
     end
 end

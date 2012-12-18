@@ -30,12 +30,15 @@ require 'spec_helper'
 describe User do
 
   before :each do
-    @user          = FactoryGirl.create :user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: FactoryGirl.generate(:email)
-    @auth          = FactoryGirl.create :authentification, user: @user, provider:'twitter'
-    @profile       = FactoryGirl.create :profile, user: @user
-    @invite_email  = FactoryGirl.create :invite_email, user: @user
-    @providers     = %w(linkedin twitter facebook google)
-    @profile_email = FactoryGirl.create :profile_email, author: @user
+    @user            = FactoryGirl.create :user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: FactoryGirl.generate(:email)
+    @auth            = FactoryGirl.create :authentification, user: @user, provider:'twitter'
+    @profile         = FactoryGirl.create :profile, user: @user
+    @providers       = %w(linkedin twitter facebook google)
+    @from_user_email = FactoryGirl.create :from_user_email, author: @user
+    @profile_email   = FactoryGirl.create :profile_email,   author: @user
+    @feedback_email  = FactoryGirl.create :feedback_email,  author: @user
+    @to_user_email   = FactoryGirl.create :to_user_email, recipient: @user
+    @invite_email    = FactoryGirl.create :invite_email,  recipient: @user
   end
 
   describe 'authentifications associations' do
@@ -58,17 +61,43 @@ describe User do
     end
   end
 
-  describe 'profile emails associations' do
+  describe 'from_user_emails associations' do
 
-    it { @user.should respond_to :authored_profile_emails }
+    it { @user.should respond_to :authored_emails }
 
-    it 'should not destroy associated profile emails' do
+    it 'should destroy associated from_user_emails' do
       @user.destroy
-      ProfileEmail.find_by_id(@profile_email.id).should_not be_nil
+      FromUserEmail.find_by_id(@from_user_email.id).should be_nil
     end
   end
 
-  describe 'invite email association' do
+  describe 'profile_emails associations' do
+
+    it 'should destroy associated profile_emails' do
+      @user.destroy
+      ProfileEmail.find_by_id(@profile_email.id).should be_nil
+    end
+  end
+
+  describe 'feedback_emails associations' do
+
+    it 'should destroy associated feedback_emails' do
+      @user.destroy
+      FeedbackEmail.find_by_id(@feedback_email.id).should be_nil
+    end
+  end
+
+  describe 'to_user_emails associations' do
+
+    it { @user.should respond_to :received_emails }
+
+    it 'should destroy associated to_user_emails' do
+      @user.destroy
+      ToUserEmail.find_by_id(@to_user_email.id).should be_nil
+    end
+  end
+
+  describe 'invite_email association' do
 
     it { @user.should respond_to :invite_email }
 

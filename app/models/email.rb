@@ -10,27 +10,27 @@
 #  cc                 :string(255)
 #  bcc                :string(255)
 #  subject            :string(255)
-#  text               :text
 #  status             :string(255)
 #  type               :string(255)
-#  profile_id         :integer
-#  author_id          :integer
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
 #  page               :string(255)
 #  code               :string(255)
-#  user_id            :integer
+#  text               :text
 #  sent               :boolean          default(FALSE)
 #  used               :boolean          default(FALSE)
+#  profile_id         :integer
+#  author_id          :integer
+#  recipient_id       :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
 #
 
 class Email < ActiveRecord::Base
-  attr_accessible :author_email, :author_fullname, :bcc, :cc, :recipient_email, :recipient_fullname, :subject, :text
+  attr_accessible :author_email, :author_fullname, :recipient_email, :recipient_fullname, :bcc, :cc, :subject, :text
 
-  validates :author_fullname,    length: { maximum: 100 },              if: :author_required?, presence: true
-  validates :author_email,       format: { with: Devise.email_regexp }, if: :author_required?, presence: true
-  validates :recipient_fullname, length: { maximum: 100 },              presence: true
-  validates :recipient_email,    format: { with: Devise.email_regexp }, presence: true
+  validates :author_fullname,    length: { maximum: 100 },              if: :author_required?,    presence: true
+  validates :author_email,       format: { with: Devise.email_regexp }, if: :author_required?,    presence: true
+  validates :recipient_fullname, length: { maximum: 100 },              if: :recipient_required?, presence: true
+  validates :recipient_email,    format: { with: Devise.email_regexp }, if: :recipient_required?, presence: true
   validates :cc,                 format: { with: Devise.email_regexp }, allow_blank: true
   validates :bcc,                format: { with: Devise.email_regexp }, allow_blank: true
   validates :subject,            length: { maximum: 150 },              allow_blank: true
@@ -39,5 +39,9 @@ class Email < ActiveRecord::Base
 
     def author_required?
       author_id.nil?
+    end
+
+    def recipient_required?
+      recipient_id.nil?
     end
 end

@@ -4,6 +4,7 @@ class CreateBetaInvites < ActiveRecord::Migration
       t.integer :user_id
       t.string  :code
       t.string  :email
+      t.boolean :sent, :default => false
 
       t.timestamps
     end

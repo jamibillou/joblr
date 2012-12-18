@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121218072857) do
+ActiveRecord::Schema.define(:version => 20121217214011) do
 
   create_table "authentifications", :force => true do |t|
     t.integer  "user_id"
@@ -34,27 +34,18 @@ ActiveRecord::Schema.define(:version => 20121218072857) do
     t.string   "cc"
     t.string   "bcc"
     t.string   "subject"
-    t.text     "text"
     t.string   "status"
     t.string   "type"
-    t.integer  "profile_id"
-    t.integer  "author_id"
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
     t.string   "page"
     t.string   "code"
-    t.integer  "user_id"
+    t.text     "text"
     t.boolean  "sent",               :default => false
     t.boolean  "used",               :default => false
-  end
-
-  create_table "invite_emails", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "code"
-    t.string   "email"
-    t.boolean  "sent",       :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.integer  "profile_id"
+    t.integer  "author_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
   end
 
   create_table "profiles", :force => true do |t|
@@ -76,12 +67,12 @@ ActiveRecord::Schema.define(:version => 20121218072857) do
     t.string   "file"
     t.string   "url"
     t.string   "text"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
     t.string   "linkedin_url"
     t.string   "twitter_url"
     t.string   "facebook_url"
     t.string   "google_url"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -101,10 +92,10 @@ ActiveRecord::Schema.define(:version => 20121218072857) do
     t.string   "city"
     t.string   "country"
     t.string   "subdomain"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
     t.boolean  "admin",                  :default => false
     t.boolean  "social",                 :default => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true

@@ -10,18 +10,18 @@
 #  cc                 :string(255)
 #  bcc                :string(255)
 #  subject            :string(255)
-#  text               :text
 #  status             :string(255)
 #  type               :string(255)
-#  profile_id         :integer
-#  author_id          :integer
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
 #  page               :string(255)
 #  code               :string(255)
-#  user_id            :integer
+#  text               :text
 #  sent               :boolean          default(FALSE)
 #  used               :boolean          default(FALSE)
+#  profile_id         :integer
+#  author_id          :integer
+#  recipient_id       :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
 #
 
 require 'spec_helper'
@@ -29,7 +29,7 @@ require 'spec_helper'
 describe FromUserEmail do
 
   before :each do
-    @author     = FactoryGirl.create :user
+    @author          = FactoryGirl.create :author
     @from_user_email = FactoryGirl.create :from_user_email, author: @author
   end
 

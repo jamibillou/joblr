@@ -6,6 +6,6 @@ FactoryGirl.define do
     recipient_fullname 'Factory Recipient'
     recipient_email 'factory.recipient@example.com'
     text 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores'
-    association :user
+    association :recipient
   end
 end

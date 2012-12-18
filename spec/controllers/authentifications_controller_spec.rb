@@ -120,7 +120,7 @@ describe AuthentificationsController do
 
           before :each do
             request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => @auth.uid})
-            @invite_email = FactoryGirl.create :invite_email, user: nil
+            @invite_email = FactoryGirl.create :invite_email, recipient: nil
             visit edit_invite_email_path(@invite_email)
             find('#invite_email_code').set(@invite_email.code)
             click_button I18n.t('invite_emails.edit.button')
@@ -161,7 +161,7 @@ describe AuthentificationsController do
         context 'and was trying to sign up' do
 
           before :each do
-            @invite_email = FactoryGirl.create :invite_email, user: nil
+            @invite_email = FactoryGirl.create :invite_email, recipient: nil
             visit edit_invite_email_path(@invite_email)
             find('#invite_email_code').set(@invite_email.code)
             click_button I18n.t('invite_emails.edit.button')

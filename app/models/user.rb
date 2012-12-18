@@ -26,19 +26,17 @@
 #
 
 class User < ActiveRecord::Base
-
   attr_accessible :fullname, :email, :city, :country, :subdomain, :password, :password_confirmation, :remember_me, :image, :username, :admin,
                   :social, :remove_image, :remote_image_url, :profiles_attributes
 
   # Virtual attribute to authenticate users by username or email
   attr_accessor   :login
 
-  has_many :authentifications,         dependent:  :destroy
-  has_many :profiles,                  dependent:  :destroy
-  has_one  :invite_email,              dependent:  :destroy
-  has_many :authored_from_user_emails, class_name: 'FromUserEmail', foreign_key: 'author_id'
-  has_many :authored_profile_emails,   class_name: 'ProfileEmail',  foreign_key: 'author_id'
-  has_many :authored_feedback_emails,  class_name: 'FeedbackEmail', foreign_key: 'author_id'
+  has_many :authentifications,        dependent: :destroy
+  has_many :profiles,                 dependent: :destroy
+  has_many :authored_emails,          dependent: :destroy, class_name: 'FromUserEmail', foreign_key: 'author_id'
+  has_many :received_emails,          dependent: :destroy, class_name: 'ToUserEmail',   foreign_key: 'recipient_id'
+  has_one  :invite_email,             dependent: :destroy,                              foreign_key: 'recipient_id'
 
   accepts_nested_attributes_for :profiles, allow_destroy: true
 

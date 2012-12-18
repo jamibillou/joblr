@@ -42,6 +42,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :city
       t.string   :country
       t.string   :subdomain
+      t.boolean  :admin, :default => false
+      t.boolean  :social, :default => false
 
       t.timestamps
     end

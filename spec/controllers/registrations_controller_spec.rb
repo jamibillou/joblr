@@ -6,7 +6,7 @@ describe RegistrationsController do
 
   before :each do
     @user         = FactoryGirl.create :user
-    @invite_email = FactoryGirl.create :invite_email, user: nil
+    @invite_email = FactoryGirl.create :invite_email, recipient: nil
     @attr         = { fullname: 'New User', username: 'newuser', password: 'pouetpouet', password_confirmation: 'pouetpouet' }
     @full_attr    = { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China', profiles_attributes: { '0' => { headline: 'fulltime', experience: 10, education: 'none', text: 'A good and highly motivated guy.' } } }
     request.env['devise.mapping'] = Devise.mappings[:user]

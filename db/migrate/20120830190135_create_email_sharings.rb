@@ -8,6 +8,7 @@ class CreateEmailSharings < ActiveRecord::Migration
       t.string :recipient_fullname
       t.string :recipient_email
       t.string :text
+      t.string :status
 
       t.timestamps
     end

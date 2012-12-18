@@ -19,6 +19,10 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :file
       t.string :url
       t.string :text
+      t.string :linkedin_url
+      t.string :twitter_url
+      t.string :facebook_url
+      t.string :google_url
 
       t.timestamps
     end

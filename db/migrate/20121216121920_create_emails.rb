@@ -8,12 +8,16 @@ class CreateEmails < ActiveRecord::Migration
       t.string :cc
       t.string :bcc
       t.string :subject
-      t.string :text
       t.string :status
       t.string :type
+      t.string :page
+      t.string :code
+      t.text   :text
+      t.boolean :sent, :default => false
+      t.boolean :used, :default => false
       t.integer :profile_id
       t.integer :author_id
-
+      t.integer :recipient_id
       t.timestamps
     end
   end

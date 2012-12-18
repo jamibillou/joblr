@@ -27,7 +27,7 @@ class RegistrationsController < Devise::RegistrationsController
 
     def associate_invite
       unless session[:invite_email].nil?
-        invite_email = resource.invite_email = InviteEmail.find session[:invite_email][:id]
+        resource.invite_email  = invite_email = InviteEmail.find session[:invite_email][:id]
         invite_email.update_attributes used: true
         session[:invite_email] = nil
       end

@@ -24,8 +24,8 @@
 #  updated_at         :datetime         not null
 #
 
-class FromUserEmail < Email
-  attr_accessible :author_id, :author
+class ToUserEmail < Email
+  attr_accessible :recipient_id, :recipient
 
-  belongs_to :author, class_name: 'User', foreign_key: :author_id
+  belongs_to :recipient, class_name: 'User', foreign_key: :recipient_id
 end
