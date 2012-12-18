@@ -33,7 +33,7 @@ describe User do
     @user          = FactoryGirl.create :user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: FactoryGirl.generate(:email)
     @auth          = FactoryGirl.create :authentification, user: @user, provider:'twitter'
     @profile       = FactoryGirl.create :profile, user: @user
-    @invite_email   = FactoryGirl.create :invite_email, user: @user
+    @invite_email  = FactoryGirl.create :invite_email, user: @user
     @providers     = %w(linkedin twitter facebook google)
     @profile_email = FactoryGirl.create :profile_email, author: @user
   end
@@ -103,6 +103,13 @@ describe User do
     it { should ensure_inclusion_of(:social).in_array [true, false] }
     it { should validate_format_of(:email).not_with(@email[:invalid][rand(@email[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.invalid')) }
     it { should validate_format_of(:email).with @email[:valid][rand(@email[:valid].size)] }
+  end
+
+  describe 'update_subdomain filter' do
+
+    it 'should update the subdmain after creating a user' do
+      @user.subdomain.should == @user.username
+    end
   end
 
   describe 'image' do

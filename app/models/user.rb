@@ -57,11 +57,13 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable, :authentication_keys => [:login]
 
+  after_create :update_subdomain
+
   mount_uploader :image, UserImageUploader
 
   class << self
 
-    # TEST ME!
+    # REFACTOR AND TEST ME!
     #
     def make_username(desired_username, fullname)
       unless username = username_available?(desired_username)
@@ -76,6 +78,15 @@ class User < ActiveRecord::Base
     #
     def username_available?(username)
       username if find_by_username(username).nil?
+    end
+
+    def find_first_by_auth_conditions(warden_conditions)
+      conditions = warden_conditions.dup
+      if login = conditions.delete(:login)
+        where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+      else
+        where(conditions).first
+      end
     end
   end
 
@@ -109,20 +120,15 @@ class User < ActiveRecord::Base
 
   private
 
+    def update_subdomain
+      self.update_attributes subdomain: username
+    end
+
     def update_with_password(params, *options)
       if encrypted_password.blank?
         update_attributes(params, *options)
       else
         super
-      end
-    end
-
-    def self.find_first_by_auth_conditions(warden_conditions)
-      conditions = warden_conditions.dup
-      if login = conditions.delete(:login)
-        where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
-      else
-        where(conditions).first
       end
     end
 end

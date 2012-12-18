@@ -9,7 +9,6 @@ describe UsersController do
     @profile     = FactoryGirl.create :profile, user: @user
     @user2       = FactoryGirl.create :user, fullname: FactoryGirl.generate(:fullname), username: FactoryGirl.generate(:username), email: FactoryGirl.generate(:email)
     @attr        = { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China', profiles_attributes: { '0' => { headline: 'fulltime', experience: '10', education: 'none', text: 'A good and highly motivated guy.' } } }
-    @invite_email = FactoryGirl.create :invite_email, user: nil
     sign_in @user
   end
 
@@ -66,7 +65,7 @@ describe UsersController do
       context 'requests with non-existing subdomains' do
 
         it 'should render the 404 error page' # do
-          # TO DO!
+          # FIX ME!
           # expect { visit bla }.to raise_error(ActionController::RoutingError)
           # response.should render_template(controller: 'errors', action: 'error_404')
         # end
@@ -77,7 +76,7 @@ describe UsersController do
         context "and a path other than '/'" do
 
           it 'should render the 404 error page' # do
-            # TO DO!
+            # FIX ME!
             # expect { visit bla }.to raise_error(ActionController::RoutingError)
             # response.should render_template(controller: 'errors', action: 'error_404')
           # end
@@ -86,7 +85,7 @@ describe UsersController do
         context "and '/' as path" do
 
           it 'should have the right user profile' # do
-            # TO DO!
+            # FIX ME!
             # visit bla
             # find("div#user-#{@user.id}").should have_content @user.fullname
           # end
@@ -98,7 +97,7 @@ describe UsersController do
         context "and a path other than '/'" do
 
           it 'should have the right content' # do
-            # TO DO!
+            # FIX ME!
             # visit bla
             # response.should render_template(controller: 'whatever', action: 'whatever')
           # end
@@ -107,7 +106,7 @@ describe UsersController do
         context "and '/' as path" do
 
           it 'should have the right content' # do
-            # TO DO!
+            # FIX ME!
             # visit bla
             # response.should render_template(controller: 'whatever', action: 'whatever')
           # end
@@ -119,7 +118,7 @@ describe UsersController do
         context "and a path other than '/'" do
 
           it 'should have the right content' # do
-            # TO DO!
+            # FIX ME!
             # visit bla
             # response.should render_template(controller: 'whatever', action: 'whatever')
           # end
@@ -128,7 +127,7 @@ describe UsersController do
         context "and '/' as path" do
 
           it 'should have the right content' # do
-            # TO DO!
+            # FIX ME!
             # visit bla
             # response.should render_template(controller: 'whatever', action: 'whatever')
           # end
@@ -140,7 +139,7 @@ describe UsersController do
         context "and a path other than '/'" do
 
           it 'should have the right content' # do
-            # TO DO!
+            # FIX ME!
             # visit bla
             # response.should render_template(controller: 'whatever', action: 'whatever')
           # end
@@ -149,7 +148,7 @@ describe UsersController do
         context "and '/' as path" do
 
           it 'should have the right content' # do
-            # TO DO!
+            # FIX ME!
             # visit bla
             # response.should render_template(controller: 'whatever', action: 'whatever')
           # end
@@ -274,7 +273,7 @@ describe UsersController do
         context "after signing up with linkedin" do
 
           it 'should not have a linkedin button' # do
-          # TO DO!
+          # FIX ME!
           # end
         end
       end
@@ -356,33 +355,6 @@ describe UsersController do
           put :update, user: @attr, id: @user
           response.should redirect_to @user
           flash[:success].should == I18n.t('flash.success.profile.created')
-        end
-
-        context 'for users who signed up with a invite_email' do
-
-          before(:each) { session[:invite_email] = @invite_email }
-
-          it 'should associate the user and the invite_email' do
-            put :update, user: @attr, id: @user
-            @user.invite_email.id.should == @invite_email.id
-            @user.invite_email.should == @invite_email
-          end
-
-          it "should update the user's email if he didn't have one" # do
-            # put :update, user: @attr, id: @user
-            # @user.email.should == @invite_email.email
-          # end
-
-          it "should not update the user's email if he already had one" do
-            @user.update_attributes email: 'user@example.com'
-            put :update, user: @attr, id: @user
-            @user.email.should_not == @invite_email.recipient_email
-          end
-
-          it 'should destroy the session' do
-            put :update, user: @attr, id: @user
-            session[:invite_email].should be_nil
-          end
         end
       end
 

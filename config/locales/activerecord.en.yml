@@ -86,3 +86,4 @@ en:
         blank: "can't be blank"
         invalid: "is invalid"
         taken: "has already been taken"
+        not_a_number: "is not a number"

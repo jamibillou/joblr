@@ -37,11 +37,11 @@ class Profile < ActiveRecord::Base
   belongs_to :user
   has_many   :profile_emails, dependent: :destroy
 
-  validates :user,                                                                                                   presence: true
-  validates :headline,       length: { maximum: 100 }, headline_format: true,                                        presence: true
+  validates :user,                                                                                       presence: true
+  validates :headline,       length: { maximum: 100 }, headline_format: true,                            presence: true
   validates :experience,     :numericality => { :only_integer => true, greater_than: 0, less_than: 50 }, presence: true
-  validates :education,      length: { maximum: 100 },                                                               presence: true
-  validates :text,           length: { maximum: 140 },                                                               presence: true
+  validates :education,      length: { maximum: 100 },                                                   presence: true
+  validates :text,           length: { maximum: 140 },                                                   presence: true
   validates :last_job,       length: { maximum: 100 }
   validates :past_companies, length: { maximum: 100 }
   validates :skill_1,        length: { maximum: 50 }

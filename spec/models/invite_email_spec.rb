@@ -21,6 +21,7 @@
 #  code               :string(255)
 #  user_id            :integer
 #  sent               :boolean          default(FALSE)
+#  used               :boolean          default(FALSE)
 #
 
 require 'spec_helper'
@@ -58,11 +59,43 @@ describe InviteEmail do
     it { should ensure_inclusion_of(:sent).in_array [true, false] }
   end
 
-  it 'should fill in Joblr team as author before validation' do
-    invite_email = InviteEmail.new @attr
-    invite_email.should be_valid
-    invite_email.author_fullname.should == 'Joblr team'
-    invite_email.author_email.should == 'team@joblr.co'
-    invite_email.recipient_fullname.should == 'Unknown'
+  describe 'prefill_fields filter' do
+    it 'should fill in Joblr team as author before validation' do
+      invite_email = InviteEmail.new @attr
+      invite_email.should be_valid
+      invite_email.author_fullname.should == 'Joblr'
+      invite_email.author_email.should == 'postman@joblr.co'
+      invite_email.recipient_fullname.should == 'Unknown'
+    end
+  end
+
+  describe 'make_code filter' do
+    it 'should make an invitation code before validation' do
+      invite_email = InviteEmail.new @attr
+      invite_email.should be_valid
+      invite_email.code.should_not be_nil
+    end
+  end
+
+  describe 'update_users_email filter' do
+
+    context 'for users who have already an email address' do
+      it 'should not update it when invitation gets used' do
+        invite_email       = InviteEmail.new @attr.merge(used: true)
+        invite_email.user  = @user
+        invite_email.save
+        @user.email.should_not == invite_email.recipient_email
+      end
+    end
+
+    context "for users don't have an email address yet" do
+      it 'should update the users email address when invitation gets used' do
+        @user.update_attributes email: nil
+        invite_email       = InviteEmail.new @attr.merge(used: true)
+        invite_email.user  = @user
+        invite_email.save
+        @user.email.should == invite_email.recipient_email
+      end
+    end
   end
 end

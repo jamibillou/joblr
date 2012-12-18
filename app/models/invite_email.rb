@@ -21,32 +21,37 @@
 #  code               :string(255)
 #  user_id            :integer
 #  sent               :boolean          default(FALSE)
+#  used               :boolean          default(FALSE)
 #
 
 class InviteEmail < Email
 
-  attr_accessible :email, :code, :sent, :user_id
+  attr_accessible :email, :code, :sent, :used, :user_id
 
   belongs_to :user
 
   validates :recipient_email, uniqueness: { case_sensitive: true }
-  validates :sent,  inclusion:  { :in => [true, false] }
+  validates :code, presence: true
+  validates :sent, inclusion:  { :in => [true, false] }
 
   before_validation :prefill_fields, :make_code
-
-  def invite_used?
-    !user.nil?
-  end
+  after_save        :update_users_email, if: :used_changed?
 
   private
 
     def prefill_fields
-      self.author_fullname = 'Joblr team'
-      self.author_email = 'team@joblr.co'
+      self.author_fullname    = 'Joblr'
+      self.author_email       = 'postman@joblr.co'
       self.recipient_fullname = 'Unknown'
     end
 
     def make_code
       self.code = Digest::SHA2.hexdigest(Time.now.utc.to_s) unless persisted?
+    end
+
+    def update_users_email
+      if used? && user && user.email.nil?
+        user.update_attributes email: recipient_email
+      end
     end
 end

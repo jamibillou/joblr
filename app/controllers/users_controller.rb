@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   before_filter :load_user
   before_filter :profile_completed,      only: :show
   before_filter :correct_user!,          only: [:edit, :update]
-  before_filter :associate_invite_email, only: :update # REFACTOR ME!
   before_filter :admin_user,             only: :destroy
 
   def show
@@ -43,18 +42,6 @@ class UsersController < ApplicationController
       unless current_user == @user
         error = user_signed_in? ? t('flash.error.other_user.profile') : t('flash.error.only.signed_in')
         redirect_to root_path, flash: {error: error}
-      end
-    end
-
-    # REFACTOR ME!
-    #
-    # This is as dirty as it gets
-    #
-    def associate_invite_email
-      unless session[:invite_email].nil? || signed_up?(@user)
-        @user.invite_email = InviteEmail.find session[:invite_email][:id]
-        @user.email = session[:invite_email][:email] if @user.email.blank? && User.find_by_email(session[:invite_email][:email]).nil?
-        session[:invite_email] = nil
       end
     end
 

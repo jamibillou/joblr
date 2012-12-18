@@ -36,16 +36,16 @@
             = invite_email.recipient_email
         .span1
           %td
-            %span{class: "#{invite_email.invite_used? ? 'success-text' : 'danger-text'}"}= invite_email.invite_used?
+            %span{class: "#{invite_email.used? ? 'success-text' : 'danger-text'}"}= invite_email.used?
         .span1
           %td
-            = invite_email.user.fullname if invite_email.invite_used?
+            = invite_email.user.fullname if invite_email.used?
         .span1
           %td
-            = invite_email.user.username if invite_email.invite_used?
+            = invite_email.user.username if invite_email.used?
         .span1
           %td
-            - if invite_email.invite_used?
+            - if invite_email.used?
               %span{class: "#{signed_up?(invite_email.user) ? 'success-text' : 'danger-text'}"}= signed_up?(invite_email.user)
         .span1
           %td

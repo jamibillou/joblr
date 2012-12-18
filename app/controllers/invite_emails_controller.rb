@@ -1,7 +1,8 @@
 class InviteEmailsController < ApplicationController
 
-  before_filter :not_signed_in,      except: [:send_code, :destroy]
-  before_filter :admin_user,         only:   [:send_code, :destroy]
+  before_filter :not_signed_in, except: [:send_code, :destroy]
+  before_filter :existing_user, only: :create
+  before_filter :admin_user,    only:   [:send_code, :destroy]
 
   def new
     @invite_email = InviteEmail.new
@@ -34,7 +35,7 @@ class InviteEmailsController < ApplicationController
 
   def update
     if @invite_email = InviteEmail.find_by_id_and_code(params[:id], params[:invite_email][:code])
-      if !@invite_email.invite_used?
+      unless @invite_email.used?
         session[:invite_email] = @invite_email
         redirect_to new_user_registration_path, flash: {success: t('flash.success.invite_email.used')}
       else
@@ -47,6 +48,14 @@ class InviteEmailsController < ApplicationController
 
   def destroy
    InviteEmail.find(params[:id]).destroy
-   redirect_to admin_path, :flash => {:success => t('flash.success.invite_email.destroyed')}
+   redirect_to admin_path, flash: {success: t('flash.success.invite_email.destroyed')}
   end
+
+  private
+
+    def existing_user
+      unless User.find_by_email(params[:invite_email][:recipient_email]).nil?
+        redirect_to new_invite_email_path, flash: {error: t('flash.error.invite_email.user_exists')}
+      end
+    end
 end

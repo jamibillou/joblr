@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121217220256) do
+ActiveRecord::Schema.define(:version => 20121218072857) do
 
   create_table "authentifications", :force => true do |t|
     t.integer  "user_id"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20121217220256) do
     t.string   "code"
     t.integer  "user_id"
     t.boolean  "sent",               :default => false
+    t.boolean  "used",               :default => false
   end
 
   create_table "invite_emails", :force => true do |t|

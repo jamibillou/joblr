@@ -86,3 +86,4 @@ fr:
         blank: "vide"
         invalid: "invalide"
         taken: "déjà pris"
+        not_a_number: "n'est pas un nombre"

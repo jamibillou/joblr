@@ -47,33 +47,6 @@ describe InviteEmailsController do
 
     context 'for public users' do
 
-      context 'who provided a valid email address' do
-
-        it 'should create a new invite_email' do
-          lambda do
-            post :create, invite_email: @attr
-          end.should change(InviteEmail, :count).by 1
-        end
-
-        it 'should not create a new user' do
-          lambda do
-            post :create, invite_email: @attr
-          end.should_not change(User, :count).by 1
-        end
-
-        it 'should notify the team' do
-          email = mock Mail::Message
-          InviteEmailMailer.should_receive(:notify_team).with(kind_of(InviteEmail)).and_return(email)
-          email.should_receive(:deliver)
-          post :create, invite_email: @attr
-        end
-
-        it "should redirect to thank you page" do
-          post :create, invite_email: @attr
-          response.should redirect_to invite_email_thank_you_path(InviteEmail.last)
-        end
-      end
-
       context "who didn't provide any email address" do
 
         it 'should not create a new invite_email' do
@@ -131,6 +104,61 @@ describe InviteEmailsController do
           post :create, invite_email: {recipient_email: 'user@example.com'}
           response.should render_template 'new'
           flash[:error].should == "#{I18n.t('activerecord.attributes.invite_email.recipient_email')} #{I18n.t('activerecord.errors.messages.taken')}."
+        end
+      end
+
+      context "who provided the email address of an existing user" do
+
+        it 'should not create a new invite_email' do
+          lambda do
+            post :create, invite_email: {recipient_email: @user.email}
+          end.should_not change(InviteEmail, :count).by 1
+        end
+
+        it 'should not create a new user' do
+          lambda do
+            post :create, invite_email: {recipient_email: @user.email}
+          end.should_not change(User, :count).by 1
+        end
+
+        it 'should not notify the team' do
+          email = mock Mail::Message
+          InviteEmailMailer.should_not_receive(:notify_team).with(kind_of(InviteEmail)).and_return(email)
+          email.should_not_receive(:deliver)
+          post :create, invite_email: {recipient_email: @user.email}
+        end
+
+        it "should render 'new'" do
+          post :create, invite_email: {recipient_email: @user.email}
+          response.should redirect_to new_invite_email_path
+          flash[:error].should == I18n.t('flash.error.invite_email.user_exists')
+        end
+      end
+
+      context 'who provided a valid email address' do
+
+        it 'should create a new invite_email' do
+          lambda do
+            post :create, invite_email: @attr
+          end.should change(InviteEmail, :count).by 1
+        end
+
+        it 'should not create a new user' do
+          lambda do
+            post :create, invite_email: @attr
+          end.should_not change(User, :count).by 1
+        end
+
+        it 'should notify the team' do
+          email = mock Mail::Message
+          InviteEmailMailer.should_receive(:notify_team).with(kind_of(InviteEmail)).and_return(email)
+          email.should_receive(:deliver)
+          post :create, invite_email: @attr
+        end
+
+        it "should redirect to thank you page" do
+          post :create, invite_email: @attr
+          response.should redirect_to invite_email_thank_you_path(InviteEmail.last)
         end
       end
     end
@@ -295,6 +323,7 @@ describe InviteEmailsController do
 
       before :each do
         @invite_email.user = @user
+        @invite_email.used = true
         @invite_email.save!
       end
 

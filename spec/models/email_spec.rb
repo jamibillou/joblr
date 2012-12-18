@@ -21,6 +21,7 @@
 #  code               :string(255)
 #  user_id            :integer
 #  sent               :boolean          default(FALSE)
+#  used               :boolean          default(FALSE)
 #
 
 require 'spec_helper'

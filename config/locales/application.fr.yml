@@ -43,6 +43,7 @@ fr:
         code_inexistant: "Ce code d'invitation n'existe pas."
         used: "Ce code d'invitation a déjà été utilisé. Vous-êtes vous déjà inscrit ?"
         required: "Il vous faut une invitation pour vous inscrire, vous pouvez en demander une ici."
+        user_exists: "Il y a déjà un utilisateur avec cette adresse email. Vous-êtes vous déjà inscrit ?"
   footer:
     joblr_in: "Joblr en"
     locales:

@@ -44,6 +44,7 @@ en:
         code_inexistant: "This invitation code doesn't seem to exist."
         used: "This invitation code has already been used. Did you already sign up?"
         required: "You need an invitation to sign up, you can ask for one here."
+        user_exists: "There is already a user with this email address. Did you already sign up?"
   footer:
     joblr_in: "Joblr in"
     locales:
