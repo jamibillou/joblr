@@ -29,9 +29,10 @@ require 'spec_helper'
 describe InviteEmail do
 
   before :each do
-    @recipient    = FactoryGirl.create :recipient
-    @invite_email = FactoryGirl.create :invite_email, recipient: @recipient
-    @attr         = {recipient_email: FactoryGirl.generate(:email)}
+    @recipient            = FactoryGirl.create :recipient, email: nil
+    @invite_email         = FactoryGirl.create :invite_email, recipient: nil
+    @used_invite_email    = FactoryGirl.create :invite_email, recipient_email: FactoryGirl.generate(:email), recipient: @recipient
+    @attr                 = {recipient_email: FactoryGirl.generate(:email)}
   end
 
   it 'should inherit from the ToUserEmail model' do
@@ -43,12 +44,12 @@ describe InviteEmail do
     it { @invite_email.should respond_to :recipient }
 
     it 'should have the right associated recipient' do
-      @invite_email.recipient_id.should == @recipient.id
-      @invite_email.recipient.should == @recipient
+      @used_invite_email.recipient_id.should == @recipient.id
+      @used_invite_email.recipient.should == @recipient
     end
 
     it 'should not destroy the associated recipient' do
-      @invite_email.destroy
+      @used_invite_email.destroy
       User.find_by_id(@recipient.id).should_not be_nil
     end
   end
@@ -77,26 +78,50 @@ describe InviteEmail do
     end
   end
 
-  describe 'update_users_email filter' do
+  describe 'use_invite(user) method' do
+
+    before :each do
+      @used_invite_email.destroy
+    end
 
     context 'for users who already have an email address' do
-      it 'should not update it when invitation gets used' do
-        invite_email           = InviteEmail.create! @attr
-        invite_email.recipient = @recipient
-        invite_email.used      = true
-        invite_email.save
-        @recipient.email.should_not == invite_email.recipient_email
+
+      before :each do
+        @recipient.update_attributes email: FactoryGirl.generate(:email)
+        @invite_email.use_invite(@recipient)
+      end
+
+      it "should not update the user's email address" do
+        @recipient.email.should_not == @invite_email.recipient_email
+      end
+
+      it 'should associate the invite_email and user' do
+        @recipient.invite_email.id.should == @invite_email.id
+        @recipient.invite_email.should == @invite_email
+      end
+
+      it 'should set the invte_email to used' do
+        @invite_email.should be_used
       end
     end
 
     context "for users don't have an email address yet" do
-      it 'should update the users email address when invitation gets used' do
-        @recipient.update_attributes email: nil
-        invite_email           = InviteEmail.create! @attr
-        invite_email.recipient = @recipient
-        invite_email.used      = true
-        invite_email.save
-        @recipient.email.should == invite_email.recipient_email
+
+      before :each do
+        @invite_email.use_invite(@recipient)
+      end
+
+      it "should update the user's email address when invitation gets used" do
+        @recipient.email.should == @invite_email.recipient_email
+      end
+
+      it 'should associate the invite_email and user' do
+        @recipient.invite_email.id.should == @invite_email.id
+        @recipient.invite_email.should == @invite_email
+      end
+
+      it 'should set the invte_email to used' do
+        @invite_email.should be_used
       end
     end
   end

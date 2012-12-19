@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 
   before_filter :redirect_uninvited,            only: :new
-  after_filter  :associate_invite,              only: :create
+  after_filter  :use_invite,                    only: :create
   before_filter :profile_completed, :load_user, only: :edit
   before_filter :ignore_blank_email,            only: :update
 
@@ -25,10 +25,9 @@ class RegistrationsController < Devise::RegistrationsController
       params[:user][:email] = nil if params[:user][:email].blank?
     end
 
-    def associate_invite
+    def use_invite
       unless session[:invite_email].nil?
-        resource.invite_email  = invite_email = InviteEmail.find session[:invite_email][:id]
-        invite_email.update_attributes used: true
+        InviteEmail.find(session[:invite_email][:id]).use_invite(resource)
         session[:invite_email] = nil
       end
     end

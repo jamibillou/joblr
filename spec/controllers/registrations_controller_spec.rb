@@ -129,7 +129,7 @@ describe RegistrationsController do
           User.last.email.should == @invite_email.recipient_email
         end
 
-        it 'should destroy the session' do
+        it 'should destroy the invte_email session' do
           post :create, user: @attr
           session[:invite_email].should be_nil
         end

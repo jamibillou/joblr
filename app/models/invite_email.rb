@@ -32,7 +32,13 @@ class InviteEmail < ToUserEmail
   validates :sent, inclusion:  { :in => [true, false] }
 
   before_validation :prefill_fields, :make_code
-  after_save        :update_recipients_email, if: :used_changed?
+
+  def use_invite(user)
+    self.recipient = user
+    self.used = true
+    save
+    recipient.update_attributes(email: recipient_email) if recipient.email.nil?
+  end
 
   private
 
@@ -44,11 +50,5 @@ class InviteEmail < ToUserEmail
 
     def make_code
       self.code = Digest::SHA2.hexdigest(Time.now.utc.to_s) unless persisted?
-    end
-
-    def update_recipients_email
-      if used? && recipient && recipient.email.nil?
-        recipient.update_attributes email: recipient_email
-      end
     end
 end

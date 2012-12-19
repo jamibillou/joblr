@@ -158,7 +158,7 @@ describe AuthenticationsController do
           end
         end
 
-        context 'and was trying to sign up' do
+        context 'and was trying to sign up with an invite_email' do
 
           before :each do
             @invite_email = FactoryGirl.create :invite_email, recipient: nil
@@ -179,6 +179,31 @@ describe AuthenticationsController do
               request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
               visit user_omniauth_authorize_path('twitter')
             end.should change(Authentication, :count).by(1)
+          end
+
+          it 'should associate the user and the invite_email' do
+            request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
+            visit user_omniauth_authorize_path('twitter')
+            User.last.invite_email.id.should == @invite_email.id
+            User.last.invite_email.should == @invite_email
+          end
+
+          it "should not update the user's email if he already had one" # do
+            # request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {uid: '987654', uemail: 'twitter.user@example.com'})
+            # visit user_omniauth_authorize_path('twitter')
+            # User.last.email.should_not == @invite_email.recipient_email
+          # end
+
+          it "should update the user's email if he didn't have one" do
+            request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
+            visit user_omniauth_authorize_path('twitter')
+            User.last.email.should == @invite_email.recipient_email
+          end
+
+          it 'should destroy the invte_email session' do
+            request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
+            visit user_omniauth_authorize_path('twitter')
+            session[:invite_email].should be_nil
           end
 
           it 'should sign the user in' do
