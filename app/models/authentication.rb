@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: authentifications
+# Table name: authentications
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
@@ -15,9 +15,9 @@
 #  updated_at :datetime         not null
 #
 
-class Authentification < ActiveRecord::Base
+class Authentication < ActiveRecord::Base
 
-  include Authentification::Linkedin
+  include Authentication::Linkedin
 
   attr_accessible :provider, :uemail, :uid, :uname, :user_id, :url, :utoken, :usecret
 

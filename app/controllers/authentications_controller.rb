@@ -1,14 +1,14 @@
-class AuthentificationsController < ApplicationController
+class AuthenticationsController < ApplicationController
 
   def create
     if user_signed_in?
-      if auth = Authentification.find_by_provider_and_uid(auth_hash.provider, auth_hash.uid)
+      if auth = Authentication.find_by_provider_and_uid(auth_hash.provider, auth_hash.uid)
         already_linked(auth.user)
       else
         add_auth
       end
     else
-      if auth = Authentification.find_by_provider_and_uid(auth_hash.provider, auth_hash.uid)
+      if auth = Authentication.find_by_provider_and_uid(auth_hash.provider, auth_hash.uid)
         social_sign_in(auth)
       else
         social_sign_up
@@ -21,9 +21,9 @@ class AuthentificationsController < ApplicationController
   end
 
   def destroy
-  	auth = Authentification.find(params[:id]) ; user = auth.user ; provider = auth.provider
+  	auth = Authentication.find(params[:id]) ; user = auth.user ; provider = auth.provider
     auth.destroy
-    user.update_attributes social: false if user.authentifications.empty?
+    user.update_attributes social: false if user.authentications.empty?
   	redirect_to_back flash: {success: t('flash.success.provider.removed', provider: humanize(provider))}
   end
 
@@ -82,7 +82,7 @@ class AuthentificationsController < ApplicationController
 
     def create_auth(user)
       user.update_attributes social: true unless user.social?
-      user.authentifications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, utoken: auth_token, usecret: auth_secret)
+      user.authentications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, utoken: auth_token, usecret: auth_secret)
       user
     end
 

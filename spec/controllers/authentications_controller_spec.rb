@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe AuthentificationsController do
+describe AuthenticationsController do
 
   render_views
 
@@ -9,8 +9,8 @@ describe AuthentificationsController do
     @user2     = FactoryGirl.create :user, fullname: FactoryGirl.generate(:fullname), username: FactoryGirl.generate(:username), email: FactoryGirl.generate(:email)
     @profile   = FactoryGirl.create :profile,          user: @user
     @profile2  = FactoryGirl.create :profile,          user: @user2
-    @auth      = FactoryGirl.create :authentification, user: @user
-    @auth2     = FactoryGirl.create :authentification, user: @user2, uid: 'generated_u'
+    @auth      = FactoryGirl.create :authentication, user: @user
+    @auth2     = FactoryGirl.create :authentication, user: @user2, uid: 'generated_u'
 
     request.env['devise.mapping'] = Devise.mappings[:user]
   end
@@ -23,7 +23,7 @@ describe AuthentificationsController do
         login_as(@user, scope: :user)
       end
 
-      context 'whose authentification is found' do
+      context 'whose authentication is found' do
 
         context 'and is theirs' do
 
@@ -62,14 +62,14 @@ describe AuthentificationsController do
         end
       end
 
-      context "whose authentification isn't found" do
+      context "whose authentication isn't found" do
 
-        it 'should create a new authentification object' do
+        it 'should create a new authentication object' do
           lambda do
             request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '123456'})
             visit edit_user_path(@user)
             visit user_omniauth_authorize_path('twitter')
-          end.should change(Authentification, :count).by(1)
+          end.should change(Authentication, :count).by(1)
         end
 
         it 'should redirect to previous location' do
@@ -91,7 +91,7 @@ describe AuthentificationsController do
 
     context 'for public vistors' do
 
-      context 'whose authentification is found' do
+      context 'whose authentication is found' do
 
         context 'and was trying to sign in' do
 
@@ -138,7 +138,7 @@ describe AuthentificationsController do
         end
       end
 
-      context "whose authentification isn't found" do
+      context "whose authentication isn't found" do
 
         context 'and was trying to sign in' do
 
@@ -174,11 +174,11 @@ describe AuthentificationsController do
             end.should change(User, :count).by(1)
           end
 
-          it 'should create a new authentification object' do
+          it 'should create a new authentication object' do
             lambda do
               request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
               visit user_omniauth_authorize_path('twitter')
-            end.should change(Authentification, :count).by(1)
+            end.should change(Authentication, :count).by(1)
           end
 
           it 'should sign the user in' do

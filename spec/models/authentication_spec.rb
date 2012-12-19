@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: authentifications
+# Table name: authentications
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
@@ -17,14 +17,14 @@
 
 require 'spec_helper'
 
-describe Authentification do
+describe Authentication do
 
   before :each do
     @user          = FactoryGirl.create :user
-    @twitter_auth  = FactoryGirl.create :authentification, user: @user
-    @linkedin_auth = FactoryGirl.create :authentification, user: @user, provider: 'linkedin'
-    @facebook_auth = FactoryGirl.create :authentification, user: @user, provider: 'facebook'
-    @google_auth   = FactoryGirl.create :authentification, user: @user, provider: 'google'
+    @twitter_auth  = FactoryGirl.create :authentication, user: @user
+    @linkedin_auth = FactoryGirl.create :authentication, user: @user, provider: 'linkedin'
+    @facebook_auth = FactoryGirl.create :authentication, user: @user, provider: 'facebook'
+    @google_auth   = FactoryGirl.create :authentication, user: @user, provider: 'google'
     @attr          = { provider: 'twitter', uid: 'john_d', uname: 'John Doe' }
   end
 
@@ -51,7 +51,7 @@ describe Authentification do
 
   describe 'image_url method' do
 
-    context 'for twitter authentifications' do
+    context 'for twitter authentications' do
 
       it 'should have the right format' do
         @twitter_auth.image_url.should =~ /^https:\/\/si0.twimg.com\/\w+/
@@ -66,10 +66,10 @@ describe Authentification do
       end
     end
 
-    context 'for linkedin authentifications' # do
+    context 'for linkedin authentications' # do
     # end
 
-    context 'for facebook authentifications' do
+    context 'for facebook authentications' do
 
       it 'should have the right format' do
         @facebook_auth.image_url.should =~ /^http:\/\/graph.facebook.com\/\w+\/picture/
@@ -84,7 +84,7 @@ describe Authentification do
       end
     end
 
-    context 'for google authentifications' do
+    context 'for google authentications' do
       it 'should have the right format' do
         @google_auth.image_url.should =~ /^https:\/\/profiles.google.com\/s2\/photos\/profile\/\w+$/
       end

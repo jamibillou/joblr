@@ -1,4 +1,4 @@
-module Authentification::Linkedin
+module Authentication::Linkedin
 
   def share(options = {})
     client.share(options)

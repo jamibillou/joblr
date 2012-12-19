@@ -54,7 +54,7 @@
             = user.profile.public_profile_emails.count unless user.profile.nil?
         .span1
           %td
-            = user.authentifications.count
+            = user.authentications.count
         .span1
           %td
             = link_to "<div class='icon-trash danger-text'></div>".html_safe, user, method: :delete, data: {confirm: t('users.destroy.yes_delete')}

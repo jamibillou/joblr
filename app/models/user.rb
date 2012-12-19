@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   # Virtual attribute to authenticate users by username or email
   attr_accessor   :login
 
-  has_many :authentifications,        dependent: :destroy
+  has_many :authentications,        dependent: :destroy
   has_many :profiles,                 dependent: :destroy
   has_many :authored_emails,          dependent: :destroy, class_name: 'FromUserEmail', foreign_key: 'author_id'
   has_many :received_emails,          dependent: :destroy, class_name: 'ToUserEmail',   foreign_key: 'recipient_id'
@@ -97,7 +97,7 @@ class User < ActiveRecord::Base
   end
 
   def auth(provider)
-    authentifications.find_by_provider(provider)
+    authentications.find_by_provider(provider)
   end
 
   def has_auth?(provider)

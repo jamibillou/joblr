@@ -2,7 +2,7 @@
   .modal-header
     %a.close.hidden-phone{href: '#', 'data-dismiss' => 'modal'} &times;
     %h3
-      - if @user.authentifications.empty?
+      - if @user.authentications.empty?
         =t 'users.image_modal.upload'
       - else
         =t 'users.image_modal.select_or_upload'
@@ -17,9 +17,9 @@
           .danger-text=t 'users.image_modal.delete'
           = f.check_box :remove_image
 
-    - unless @user.authentifications.empty?
+    - unless @user.authentications.empty?
       %h5=t 'users.image_modal.social_accounts'
-      - @user.authentifications.each do |auth|
+      - @user.authentications.each do |auth|
         - unless auth.image_url.blank?
           = link_to image_tag(auth.image_url, class: 'social pic', id: "auth_#{auth.id}_image"), '#'
           .hidden{id: "auth_#{auth.id}_image_url"}= auth.image_url(:original)

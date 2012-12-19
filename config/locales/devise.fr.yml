@@ -8,7 +8,7 @@ fr:
       already_authenticated: 'Vous êtes déjà connecté.'
       unauthenticated: 'Vous devez vous inscrire ou vous connecter avant de continuer.'
       invalid: "Login ou mot de passe incorrect."
-      invalid_token: "Clé d'authentification invalide."
+      invalid_token: "Clé d'authentication invalide."
       timeout: 'Votre session a expiré, merci de vous reconnecter.'
     sessions:
       new:

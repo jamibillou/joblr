@@ -7,13 +7,13 @@ Joblr::Application.routes.draw do
   match '/422', to: 'errors#error_422'
   match '/500', to: 'errors#error_500'
 
-  devise_for :users, controllers: {omniauth_callbacks: 'authentifications', registrations: 'registrations'}
+  devise_for :users, controllers: {omniauth_callbacks: 'authentications', registrations: 'registrations'}
 
   resources :invite_emails, except: :index do
     get :thank_you
     get :send_code
   end
-  resources :authentifications, only: [:destroy]
+  resources :authentications, only: [:destroy]
   resources :users do
     resources :profiles
   end
@@ -23,7 +23,7 @@ Joblr::Application.routes.draw do
   end
   resources :feedback_emails
 
-  get  'users/auth/failure'  => 'authentifications#failure'
+  get  'users/auth/failure'  => 'authentications#failure'
   post 'users/share_profile' => 'users#share_profile'
 
   match 'landing',                to: 'pages#landing'

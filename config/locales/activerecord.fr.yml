@@ -3,7 +3,7 @@ fr:
     models:
       user: "Utilisateur"
       profile: "Profil"
-      authentification: "Réseau social lié"
+      authentication: "Réseau social lié"
       invite_email: "Invitation"
     attributes:
       user:
@@ -55,7 +55,7 @@ fr:
         file: "CV"
         text: "Accroche"
         url: "Site internet ou blog"
-      authentification:
+      authentication:
         id: "Identifiant"
         user_id: "Identifiant utilisateur"
         provider: "Service"

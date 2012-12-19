@@ -1,6 +1,6 @@
 FactoryGirl.define do
 
-  factory :authentification do
+  factory :authentication do
     provider 'twitter'
     uid 'john_d'
     uname 'John Doe'

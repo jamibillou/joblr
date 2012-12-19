@@ -31,7 +31,7 @@ describe User do
 
   before :each do
     @user            = FactoryGirl.create :user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: FactoryGirl.generate(:email)
-    @auth            = FactoryGirl.create :authentification, user: @user, provider:'twitter'
+    @auth            = FactoryGirl.create :authentication, user: @user, provider:'twitter'
     @profile         = FactoryGirl.create :profile, user: @user
     @providers       = %w(linkedin twitter facebook google)
     @from_user_email = FactoryGirl.create :from_user_email, author: @user
@@ -41,13 +41,13 @@ describe User do
     @invite_email    = FactoryGirl.create :invite_email,  recipient: @user
   end
 
-  describe 'authentifications associations' do
+  describe 'authentications associations' do
 
-    it { @user.should respond_to :authentifications }
+    it { @user.should respond_to :authentications }
 
-    it 'should destroy associated authentifications' do
+    it 'should destroy associated authentications' do
       @user.destroy
-      Authentification.find_by_id(@auth.id).should be_nil
+      Authentication.find_by_id(@auth.id).should be_nil
     end
   end
 
@@ -186,12 +186,12 @@ describe User do
   describe 'auth method' do
 
     it 'facebook' do
-      auth = FactoryGirl.create :authentification, user: @user, provider:'facebook'
+      auth = FactoryGirl.create :authentication, user: @user, provider:'facebook'
       @user.auth('facebook').id.should == auth.id
     end
 
     it 'linkedin' do
-      auth = FactoryGirl.create :authentification, user: @user, provider:'linkedin'
+      auth = FactoryGirl.create :authentication, user: @user, provider:'linkedin'
       @user.auth('linkedin').id.should == auth.id
     end
 
@@ -200,7 +200,7 @@ describe User do
     end
 
     it 'google' do
-      auth = FactoryGirl.create :authentification, user: @user, provider:'google'
+      auth = FactoryGirl.create :authentication, user: @user, provider:'google'
       @user.auth('google').id.should == auth.id
     end
   end
