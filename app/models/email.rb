@@ -28,22 +28,12 @@
 class Email < ActiveRecord::Base
   attr_accessible :author_email, :author_fullname, :recipient_email, :recipient_fullname, :bcc, :cc, :subject, :text
 
-  validates :author_fullname,    length: { maximum: 100 },              if: :author_required?,    presence: true
-  validates :author_email,       format: { with: Devise.email_regexp }, if: :author_required?,    presence: true
-  validates :recipient_fullname, length: { maximum: 100 },              if: :recipient_required?, presence: true
-  validates :recipient_email,    format: { with: Devise.email_regexp }, if: :recipient_required?, presence: true
+  validates :author_fullname,    length: { maximum: 100 },              unless: :author_id,    presence: true
+  validates :author_email,       format: { with: Devise.email_regexp }, unless: :author_id,    presence: true
+  validates :recipient_fullname, length: { maximum: 100 },              unless: :recipient_id, presence: true
+  validates :recipient_email,    format: { with: Devise.email_regexp }, unless: :recipient_id, presence: true
   validates :cc,                 format: { with: Devise.email_regexp }, allow_blank: true
   validates :bcc,                format: { with: Devise.email_regexp }, allow_blank: true
-  validates :reply_to,            format: { with: Devise.email_regexp }, allow_blank: true
+  validates :reply_to,           format: { with: Devise.email_regexp }, allow_blank: true
   validates :subject,            length: { maximum: 150 },              allow_blank: true
-
-  private
-
-    def author_required?
-      author_id.nil?
-    end
-
-    def recipient_required?
-      recipient_id.nil?
-    end
 end
