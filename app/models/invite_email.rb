@@ -28,7 +28,7 @@
 class InviteEmail < ToUserEmail
   attr_accessible :email, :code, :sent, :used
 
-  validates :recipient_email, uniqueness: { case_sensitive: true }
+  validates :recipient_email, uniqueness: { case_sensitive: true }, presence: true
   validates :code, presence: true
   validates :sent, inclusion:  { :in => [true, false] }
 

@@ -57,6 +57,7 @@ describe InviteEmail do
 
   describe 'validations' do
     it { should allow_value('').for(:recipient_fullname) }
+    it { should validate_presence_of(:recipient_email) }
     it { should validate_uniqueness_of(:recipient_email) }
     it { should ensure_inclusion_of(:sent).in_array [true, false] }
   end
