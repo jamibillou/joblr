@@ -1,7 +1,8 @@
 class ProfileEmailMailer < ActionMailer::Base
 
-  default from: "postman@joblr.co"
-  layout 'mailers', only: [:decline, :decline_through_other]
+  default from: 'postman@joblr.co'
+  default reply_to: 'team@joblr.co'
+  layout 'emails', only: [:decline, :decline_through_other]
 
   def user(profile_email, user)
   	@user = user

@@ -1,7 +1,7 @@
 class InviteEmailMailer < ActionMailer::Base
 
   default from: 'postman@joblr.co'
-  layout 'mailers'
+  layout 'emails'
 
   def notify_team(invite_email)
     @invite_email = invite_email
