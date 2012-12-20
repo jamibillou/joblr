@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20121219072124) do
     t.string   "recipient_email"
     t.string   "cc"
     t.string   "bcc"
+    t.string   "reply_to"
     t.string   "subject"
     t.string   "status"
     t.string   "type"

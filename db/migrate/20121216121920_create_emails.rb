@@ -7,6 +7,7 @@ class CreateEmails < ActiveRecord::Migration
       t.string :recipient_email
       t.string :cc
       t.string :bcc
+      t.string :reply_to
       t.string :subject
       t.string :status
       t.string :type

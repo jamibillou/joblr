@@ -9,6 +9,7 @@
 #  recipient_email    :string(255)
 #  cc                 :string(255)
 #  bcc                :string(255)
+#  reply_to           :string(255)
 #  subject            :string(255)
 #  status             :string(255)
 #  type               :string(255)
@@ -54,6 +55,9 @@ describe Email do
     it { should allow_value('').for(:bcc) }
     it { should validate_format_of(:bcc).not_with(@emails[:invalid][rand(@emails[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.invalid')) }
     it { should validate_format_of(:bcc).with @emails[:valid][rand(@emails[:valid].size)] }
+    it { should allow_value('').for(:reply_to) }
+    it { should validate_format_of(:reply_to).not_with(@emails[:invalid][rand(@emails[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.invalid')) }
+    it { should validate_format_of(:reply_to).with @emails[:valid][rand(@emails[:valid].size)] }
     it { should ensure_length_of(:subject).is_at_most 150 }
     it { should allow_value('').for(:subject) }
   end

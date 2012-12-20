@@ -9,6 +9,7 @@
 #  recipient_email    :string(255)
 #  cc                 :string(255)
 #  bcc                :string(255)
+#  reply_to           :string(255)
 #  subject            :string(255)
 #  status             :string(255)
 #  type               :string(255)
@@ -33,6 +34,7 @@ class Email < ActiveRecord::Base
   validates :recipient_email,    format: { with: Devise.email_regexp }, if: :recipient_required?, presence: true
   validates :cc,                 format: { with: Devise.email_regexp }, allow_blank: true
   validates :bcc,                format: { with: Devise.email_regexp }, allow_blank: true
+  validates :reply_to,            format: { with: Devise.email_regexp }, allow_blank: true
   validates :subject,            length: { maximum: 150 },              allow_blank: true
 
   private

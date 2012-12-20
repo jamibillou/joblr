@@ -9,6 +9,7 @@
 #  recipient_email    :string(255)
 #  cc                 :string(255)
 #  bcc                :string(255)
+#  reply_to           :string(255)
 #  subject            :string(255)
 #  status             :string(255)
 #  type               :string(255)
