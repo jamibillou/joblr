@@ -1,7 +1,7 @@
 class FeedbackEmailMailer < ActionMailer::Base
 
   default from: "postman@joblr.co"
-  layout 'emails'
+  layout 'from_user_emails'
 
   def footer_form(feedback_email)
     @feedback_email = feedback_email

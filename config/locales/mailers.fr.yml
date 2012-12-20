@@ -4,33 +4,33 @@ fr:
     team: "L'équipe Joblr"
     invite_email:
       notify_team:
-        subject: "Nouvelle demande d'invitation à Joblr beta !"
-        title: "Quelqun souhaite utiliser Joblr !"
-        content_html: "Cliquez sur le bouton ci-dessous pour envoyer un code d'invitation à %{email}."
-        content_text: "Allez à l'adresse %{url} pour envoyer un code d'invitation à %{email}."
-        button: 'Envoyer !'
+        subject: "Nouvelle demande d'invitation !"
+        title: "Quelqun souhaite essayer Joblr !"
+        content_html: "Connectez-vous et envoyez une invitation à %{email}"
+        content_text: "Connectez-vous et envoyez une invitation à %{email}"
+        button: 'Se connecter'
       send_code:
         subject: "Invitation à Joblr beta"
-        title: "Félicitations, voici votre invitation à Joblr beta !"
-        content_html: "Cliquez sur le bouton ci-dessous pour vous inscrire, le code d'invitation sera copié/collé automatiquement.<br><br>Vous pouvez aussi le faire vous même à l'adresse %{url}."
-        content_text: "Copiez/collez le code d'invitation ci-dessous à l'adresse %{url} pour vous inscrire."
-        code: "Code :"
+        title: "Voici votre invitation à Joblr beta !"
+        content_html: "Inscrivez-vous à cette addresse: %{url}"
+        content_text: "Inscrivez-vous à cette addresse %{url} en y copiant votre code d'invitation."
+        code: "Code d'invitation:"
         button: "S'inscrire !"
     devise:
       reset_password_instructions:
         subject: 'Réinitialisez votre mot de passe'
         title: 'Réinitialisez votre mot de passe'
         content_html: "Allez à l'adresse %{url} pour réinitialiser votre mot de passe."
-        wont_change: "Votre mot de passe ne sera pas modifié tant que vous n'aurez pas cliqué sur le lien et créé un nouveau mot de passe."
+        wont_change: "Il sera uniquement modifié si vous cliquez sur le lien et créez un nouveau mot de passe."
         if_not: "Ne tenez pas compte de cet email si vous ne l'avez pas demandé."
     profile_email:
       user:
-        subject: "%{fullname} sur Joblr"
+        subject: "Candidature de %{fullname}"
         html:
           summary: "%{fullname} est à la recherche d'un emploi et aimerait vous rentrer en contact avec vous."
-          title: "%{fullname} sur Joblr"
-          lets_talk: "Parlons-en !"
-          lets_talk_subject: "%{recipient_fullname} via Joblr"
+          title: "Candidature de %{fullname}"
+          lets_talk: "Contacter"
+          lets_talk_subject: "RE : Candidature de %{fullname}"
           no_thanks: 'Non merci'
           more_about: "Plus d'infos sur %{fullname}"
           experience: 'Expérience'
@@ -40,48 +40,49 @@ fr:
           education: 'Diplôme principal'
           skills: 'Compétences professionnelles'
           qualities: 'Qualités personnelles'
-          view_complete_profile: "Profil complet de %{fullname} sur Joblr.co"
+          view_complete_profile: "Consultez le profil complet de %{fullname}"
         text:
-          title: "%{fullname} sur Joblr"
-          content: "%{fullname} vous a envoyé un profil Joblr pour lancer la discussion. Ces profils sont courts et faciles à lire pour que vous ne perdiez pas de temps."
-          go_to_url: "Allez à l'adresse %{url} pour voir le profil de %{fullname} !"
+          title: "Candidature de %{fullname}"
+          profile: "%{fullname} vous a envoyé son profil Joblr"
+          short_n_easy: "C'est une version rapide à lire de son CV."
+          go_to_url: "Consultez son profil à %{url}"
       other_user:
-        subject: "%{fullname} via Joblr"
+        subject: "Profil de %{user_fullname} (via %{author_fullname})"
         html:
           summary: "%{author_fullname} vous a envoyé le profil de %{user_fullname} en pensant que vous seriez intéressé(e)."
-          title: "%{fullname} via Joblr"
+          title: "Profil de %{fullname}"
           contact: "Contacter %{user_fullname}"
-          lets_talk: "Parlons-en !"
-          lets_talk_subject: "%{recipient_fullname} via Joblr"
+          lets_talk: "Contacter"
+          lets_talk_subject: "RE : Profil de %{user_fullname} (via %{author_fullname})"
           no_thanks: 'Non merci'
         text:
-          title: "%{fullname} via Joblr"
-          profile: "%{author_fullname} vous a envoyé le profil de %{user_fullname} en pensant que vous seriez intéressé(e)."
-          short_n_easy: "Les profils Joblr sont courts et faciles à lire pour que vous perdiez pas de temps."
-          go_to_url: "Allez à l'adresse %{url} pour voir le profil de %{fullname} !"
+          title: "Profil de %{fullname}"
+          profile: "%{author_fullname} vous a envoyé le profil Joblr de %{user_fullname} en pensant que vous seriez intéressé(e)."
+          short_n_easy: "C'est une version rapide à lire de son CV."
+          go_to_url: "Consultez le profil de %{fullname} à %{url}"
       public_user:
-        subject: "%{fullname} via Joblr"
+        subject: "Profil de %{user_fullname} (via %{author_fullname})"
         html:
           summary: "%{author_fullname} vous a envoyé le profil de %{user_fullname} en pensant que vous seriez intéressé(e)."
-          title: "%{fullname} via Joblr"
+          title: "Profil de %{fullname}"
           contact: "Contacter %{user_fullname}"
-          lets_talk: "Parlons-en !"
-          lets_talk_subject: "%{recipient_fullname} via Joblr"
+          lets_talk: "Contacter"
+          lets_talk_subject: "RE : Profil de %{user_fullname} (via %{author_fullname})"
           no_thanks: 'Non merci'
         text:
-          title: "%{fullname} via Joblr"
+          title: "Profil de %{fullname}"
           profile: "%{author_fullname} vous a envoyé le profil de %{user_fullname} en pensant que vous seriez intéressé(e)."
-          short_n_easy: "Les profiles Joblr sont courts et faciles à lire pour que vous perdiez pas de temps."
-          go_to_url: "Allez à l'adresse %{url} pour voir le profil de %{fullname} !"
+          short_n_easy: "C'est une version rapide à lire de son CV."
+          go_to_url: "Consultez le profil de %{fullname} à %{url}"
       decline:
-        subject: "%{fullname} via Joblr"
+        subject: "%{fullname} n'est pas intéressé(e)"
         title: "%{fullname} n'est pas intéressé(e)"
-        content: "%{fullname} n'est pas intéressé(e) par votre profil, mais ce n'est que partie remise !"
+        content: "%{fullname} n'est pas intéressé(e) par votre profil."
         persevere: "Persévérez, ça finira par payer."
       decline_through_other:
-        subject: "%{fullname} via Joblr"
-        title: "%{fullname} n'est pas intéressé(e)"
-        content: "%{fullname} n'est pas intéressé(e) par votre profil (il lui a été envoyé par %{author_fullname}), mais ce n'est que partie remise !"
+        subject: "%{recipient_fullname} n'est pas intéressé(e) (via %{author_fullname})"
+        title: "%{recipient_fullname} n'est pas intéressé(e)"
+        content: "%{recipient_fullname} n'est pas intéressé(e) par votre profil (envoyé par %{author_fullname})."
         persevere: "Persévérez, ça finira par payer."
     feedback_email:
       footer_form:

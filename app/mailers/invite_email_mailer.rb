@@ -7,7 +7,7 @@ class InviteEmailMailer < ActionMailer::Base
     @invite_email = invite_email
     @subject     = t('mailers.invite_email.notify_team.subject')
     @title       = t('mailers.invite_email.notify_team.title')
-    @button      = { text: t('mailers.invite_email.notify_team.button'), url: "http://joblr.co/admin" }
+    @button      = { text: t('mailers.invite_email.notify_team.button'), url: "http://joblr.co/users/sign_in" }
     mail to: 'team@joblr.co', subject: @subject
   end
 
@@ -22,13 +22,13 @@ class InviteEmailMailer < ActionMailer::Base
   class Preview < MailView
 
     def notify_team
-      invite_email = FactoryGirl.create :invite_email, email: Faker::Internet.email, recipient: nil
+      invite_email = FactoryGirl.create :invite_email, recipient_email: Faker::Internet.email, recipient: nil
       email = InviteEmailMailer.notify_team invite_email
       email
     end
 
     def send_code
-      invite_email = FactoryGirl.create :invite_email, email: Faker::Internet.email, recipient: nil
+      invite_email = FactoryGirl.create :invite_email, recipient_email: Faker::Internet.email, recipient: nil
       email = InviteEmailMailer.send_code invite_email
       email
     end

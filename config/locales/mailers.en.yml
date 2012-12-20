@@ -6,15 +6,15 @@ en:
       notify_team:
         subject: "New invitation request!"
         title: "Somebody wants to try Joblr!"
-        content_html: "Click the button below to send an invitation code to %{email}."
-        content_text: "Go to %{url} to send an invitation code to %{email}."
-        button: 'Send invite!'
+        content_html: "Sign in and send an invitation to: %{email}"
+        content_text: "Sign in and send an invitation to: %{email}"
+        button: 'Sign in now'
       send_code:
         subject: "Invitation to Joblr beta"
-        title: "Congrats, here's your invitation to Joblr beta!"
-        content_html: "Click the button below to get access. This invitation code will be copy/pasted automatically.<br><br>You can also do it yourself at %{url}."
-        content_text: "Paste the invitation code below at %{url} to get access."
-        code: "Code:"
+        title: "Here's your invitation to Joblr beta!"
+        content_html: "Get access at %{url}"
+        content_text: "Paste your invitation code at %{url} to get access."
+        code: "Invitation code:"
         button: 'Get access!'
     devise:
       reset_password_instructions:
@@ -25,12 +25,12 @@ en:
         if_not: "Ignore this email if you didn't request it."
     profile_email:
       user:
-        subject: "%{fullname} on Joblr"
+        subject: "Job application from %{fullname}"
         html:
           summary: "%{fullname} is looking for work and wants to talk to you."
           title: "%{fullname} on Joblr"
           lets_talk: "Let's talk!"
-          lets_talk_subject: "%{recipient_fullname} through Joblr"
+          lets_talk_subject: "RE: Job application from %{fullname}"
           no_thanks: 'No, thanks'
           more_about: 'More about %{fullname}'
           experience: 'Experience'
@@ -40,48 +40,49 @@ en:
           education: 'Highest education'
           skills: 'Professional skills'
           qualities: 'Personal qualities'
-          view_complete_profile: "View %{fullname}'s complete profile on Joblr.co"
+          view_complete_profile: "View %{fullname}'s complete profile"
         text:
           title: "%{fullname} on Joblr"
-          content: "%{fullname} sent you a Joblr profile to start the conversation. Those profiles are short and easy to read so you don't waste your time."
-          go_to_url: "Go to %{url} to view %{fullname}'s profile!"
+          profile: "%{fullname} sent you their Joblr profile."
+          short_n_easy: "It's a summary of their CV that's very quick to read."
+          go_to_url: "View %{fullname}'s profile at %{url}"
       other_user:
-        subject: "%{fullname} through Joblr"
+        subject: "%{user_fullname}'s profile (via %{author_fullname})"
         html:
           summary: "%{author_fullname} sent you %{user_fullname}'s profile thinking you might be interested."
-          title: "%{fullname} through Joblr"
+          title: "%{fullname}'s profile"
           contact: "Contact %{user_fullname}"
           lets_talk: "Let's talk!"
-          lets_talk_subject: "%{recipient_fullname} through Joblr"
+          lets_talk_subject: "RE: %{user_fullname}'s profile (via %{author_fullname})"
           no_thanks: 'No, thanks'
         text:
-          title: "%{fullname} through Joblr"
+          title: "%{fullname}'s profile"
           profile: "%{author_fullname} sent you %{user_fullname}'s profile thinking you might be interested."
-          short_n_easy: "Joblr profiles are short and easy to read so you don't waste your time."
-          go_to_url: "Go to %{url} to view %{fullname}'s profile!"
+          short_n_easy: "It's a summary of their CV that's very quick to read."
+          go_to_url: "View %{fullname}'s profile at %{url} "
       public_user:
-        subject: "%{fullname} through Joblr"
+        subject: "%{user_fullname}'s profile (via %{author_fullname})"
         html:
           summary: "%{author_fullname} sent you %{user_fullname}'s profile thinking you might be interested."
-          title: "%{fullname} through Joblr"
+          title: "%{fullname}'s profile"
           contact: "Contact %{user_fullname}"
           lets_talk: "Let's talk!"
-          lets_talk_subject: "%{recipient_fullname} through Joblr"
+          lets_talk_subject: "RE: %{user_fullname}'s profile (via %{author_fullname})"
           no_thanks: 'No, thanks'
         text:
-          title: "%{fullname} through Joblr"
+          title: "%{fullname}'s profile"
           profile: "%{author_fullname} sent you %{user_fullname}'s profile thinking you might be interested."
-          short_n_easy: "Joblr profiles are short and easy to read so you don't waste your time."
-          go_to_url: "Go to %{url} to view %{fullname}'s profile!"
+          short_n_easy: "It's a summary of their CV that's very quick to read."
+          go_to_url: "View %{fullname}'s profile at %{url} "
       decline:
-        subject: "%{fullname} through Joblr"
+        subject: "%{fullname} is not interested"
         title: "%{fullname} is not interested"
-        content: "%{fullname} is not interested in your profile, better luck next time!"
+        content: "%{fullname} is not interested in your profile."
         persevere: "Keep trying, it will pay off eventually."
       decline_through_other:
-        subject: "%{fullname} through Joblr"
-        title: "%{fullname} is not interested"
-        content: "%{fullname} is not interested in your profile (it was sent by %{author_fullname}), better luck next time!"
+        subject: "%{recipient_fullname} is not interested (via %{author_fullname})"
+        title: "%{recipient_fullname} is not interested"
+        content: "%{recipient_fullname} is not interested in your profile (sent by %{author_fullname})."
         persevere: "Keep trying, it will pay off eventually."
     feedback_email:
       footer_form:

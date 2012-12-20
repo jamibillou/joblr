@@ -1,11 +1,11 @@
-<%=t 'mailers.profile_email.decline_through_other.title', fullname: @profile_email.recipient_fullname %>
-<% t('mailers.profile_email.decline_through_other.title', fullname: @profile_email.recipient_fullname).length.times do %>=<% end %>
+<%=t 'mailers.profile_email.decline_through_other.title', recipient_fullname: @profile_email.recipient_fullname %>
+<% t('mailers.profile_email.decline_through_other.title', recipient_fullname: @profile_email.recipient_fullname).length.times do %>=<% end %>
 
 
-<%=t 'mailers.profile_email.decline_through_other.content', fullname: @profile_email.recipient_fullname, author_fullname: @author_fullname %>
+<%=t 'mailers.profile_email.decline_through_other.content', recipient_fullname: @profile_email.recipient_fullname, author_fullname: @author_fullname %>
 
 <%=t 'mailers.profile_email.decline_through_other.persevere' %>
 
 
-<% t('mailers.team').length.times do %>-<% end %>
+--
 <%=t 'mailers.team' %>

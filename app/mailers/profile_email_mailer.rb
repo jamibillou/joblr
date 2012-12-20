@@ -14,13 +14,13 @@ class ProfileEmailMailer < ActionMailer::Base
     @user = user
     @current_user = current_user
     @profile_email = profile_email
-    mail to: profile_email.recipient_email, subject: t('mailers.profile_email.other_user.subject', fullname: current_user.fullname), reply_to: @user.email
+    mail to: profile_email.recipient_email, subject: t('mailers.profile_email.other_user.subject', author_fullname: current_user.fullname, user_fullname: profile_email.profile.user.fullname), reply_to: @user.email
   end
 
   def public_user(profile_email, user)
     @user = user
     @profile_email = profile_email
-    mail to: profile_email.recipient_email, subject: t('mailers.profile_email.public_user.subject', fullname: profile_email.author_fullname), reply_to: @user.email
+    mail to: profile_email.recipient_email, subject: t('mailers.profile_email.public_user.subject', author_fullname: profile_email.author_fullname, user_fullname: profile_email.profile.user.fullname), reply_to: @user.email
   end
 
   def decline(profile_email)
@@ -33,8 +33,8 @@ class ProfileEmailMailer < ActionMailer::Base
   def decline_through_other(profile_email)
     @profile_email = profile_email
     @author_fullname = profile_email.author.nil? ? profile_email.author_fullname : profile_email.author.fullname
-    @subject = t('mailers.profile_email.decline_through_other.subject', fullname: profile_email.recipient_fullname)
-    @title   = t('mailers.profile_email.decline_through_other.title',   fullname: profile_email.recipient_fullname)
+    @subject = t('mailers.profile_email.decline_through_other.subject', author_fullname: @author_fullname, recipient_fullname: profile_email.recipient_fullname)
+    @title   = t('mailers.profile_email.decline_through_other.title', recipient_fullname: profile_email.recipient_fullname)
     mail to: profile_email.profile.user.email, subject: @subject
   end
 

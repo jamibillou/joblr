@@ -1,12 +1,13 @@
-<%=t 'mailers.profile_email.public_user.text.title', fullname: @profile_email.author_fullname %>
-<% t('mailers.profile_email.public_user.text.title', fullname: @profile_email.author_fullname).length.times do %>=<% end %>
+<%=t 'mailers.profile_email.public_user.text.title', fullname: @user.fullname %>
+<% t('mailers.profile_email.public_user.text.title', fullname: @user.fullname).length.times do %>=<% end %>
 
 
 <%=t 'mailers.profile_email.public_user.text.profile', author_fullname: @profile_email.author_fullname, user_fullname: @user.fullname %>
+
 <%=t 'mailers.profile_email.public_user.text.short_n_easy' %>
 
 <%=t 'mailers.profile_email.public_user.text.go_to_url', url: @user.public_url, fullname: @user.fullname %>
 
 
-<% t('mailers.team').length.times do %>-<% end %>
+--
 <%=t 'mailers.team' %>
