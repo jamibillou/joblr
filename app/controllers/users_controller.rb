@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       flash[:error] = error_messages(@user)
       render :edit, id: @user, user: params[:user]
     else
-      remove_files! unless Rails.env.test? # FIX ME!
+      remove_files! unless Rails.env.test? # KILL ME!
       redirect_to @user, flash: {success: (signed_up ? t('flash.success.profile.created') : t('flash.success.profile.updated'))}
     end
   end
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
       end
     end
 
-    # FIX ME!
+    # KILL ME!
     #
     # Kludge until https://github.com/jnicklas/carrierwave/pull/712 is included the gem
     # Still doesn't work though: the file is deleted as excpected but the column isn't emptied.

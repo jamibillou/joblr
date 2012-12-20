@@ -1,6 +1,6 @@
 module UsersHelper
 
-  # FIX ME!
+  # REFACTOR ME!
   # too many database accesses here, profile and user should be given as arguments
   #
   def field_value(attribute, linkedin_profile)
