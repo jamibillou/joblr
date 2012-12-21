@@ -108,7 +108,7 @@ describe Profile do
     it { should ensure_length_of(:quality_1).is_at_most 50 }
     it { should ensure_length_of(:quality_2).is_at_most 50 }
     it { should ensure_length_of(:quality_3).is_at_most 50 }
-    it { should validate_numericality_of(:experience).only_integer }
+    it { should validate_numericality_of(:experience) }
     it { should validate_format_of(:headline).not_with(@headline[:invalid][rand(@headline[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.headline_format')) }
     it { should validate_format_of(:headline).with @headline[:valid][rand(@headline[:valid].size)] }
     %w(skill_1_level skill_2_level skill_3_level).each {|skill_level| it { should validate_format_of(skill_level.to_sym).not_with(@level[:invalid][rand(@level[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.level_format')) }}

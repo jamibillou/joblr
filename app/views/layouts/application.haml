@@ -34,4 +34,3 @@
       = render 'layouts/footer'
 
   = kiss_event('identity', current_user.username) if user_signed_in?
-  = mixpanel_identify(current_user.username) if user_signed_in?
