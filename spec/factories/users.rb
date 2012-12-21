@@ -5,5 +5,7 @@ FactoryGirl.define do
     username 'j_doe'
     password 'pouetpouet38'
     email 'j.doe@example.com'
+    city 'Amsterdam'
+    country 'Netherlands'
   end
 end

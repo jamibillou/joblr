@@ -7,20 +7,20 @@ class ProfileEmailMailer < ActionMailer::Base
   def user(profile_email, user)
   	@user = user
     @profile_email = profile_email
-    mail to: profile_email.recipient_email, subject: t('mailers.profile_email.user.subject', fullname: user.fullname), reply_to: @user.email
+    mail to: profile_email.recipient_email, subject: t('mailers.profile_email.user.subject', fullname: user.fullname), reply_to: user.email
   end
 
   def other_user(profile_email, user, current_user)
     @user = user
     @current_user = current_user
     @profile_email = profile_email
-    mail to: profile_email.recipient_email, subject: t('mailers.profile_email.other_user.subject', author_fullname: current_user.fullname, user_fullname: profile_email.profile.user.fullname), reply_to: @user.email
+    mail to: profile_email.recipient_email, subject: t('mailers.profile_email.other_user.subject', author_fullname: current_user.fullname, user_fullname: profile_email.profile.user.fullname), reply_to: current_user.email
   end
 
   def public_user(profile_email, user)
     @user = user
     @profile_email = profile_email
-    mail to: profile_email.recipient_email, subject: t('mailers.profile_email.public_user.subject', author_fullname: profile_email.author_fullname, user_fullname: profile_email.profile.user.fullname), reply_to: @user.email
+    mail to: profile_email.recipient_email, subject: t('mailers.profile_email.public_user.subject', author_fullname: profile_email.author_fullname, user_fullname: user.fullname), reply_to: profile_email.author_email
   end
 
   def decline(profile_email)
@@ -61,13 +61,12 @@ class ProfileEmailMailer < ActionMailer::Base
     end
 
     def public_user
-      name1         = Faker::Name.name
-      user1         = FactoryGirl.create :user, fullname: name1, username: name1.parameterize, email: "#{name1.parameterize}@example.com"
-      name2         = Faker::Name.name
-      user2         = FactoryGirl.create :user, fullname: name2, username: name2.parameterize, email: "#{name2.parameterize}@example.com"
-      profile       = FactoryGirl.create :profile, user: user1
-      profile_email = FactoryGirl.create :profile_email, author: user2, profile: profile
-      email         = ProfileEmailMailer.public_user(profile_email, user1)
+      user_name      = Faker::Name.name
+      user           = FactoryGirl.create :user, fullname: user_name, username: user_name.parameterize, email: "#{user_name.parameterize}@example.com"
+      author_name    = Faker::Name.name
+      profile        = FactoryGirl.create :profile, user: user
+      profile_email  = FactoryGirl.create :profile_email, profile: profile, author_fullname: author_name, author_email: "#{author_name.parameterize}@example.com", author: nil
+      email          = ProfileEmailMailer.public_user(profile_email, user)
       email
     end
 

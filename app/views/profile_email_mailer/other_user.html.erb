@@ -74,7 +74,7 @@
                                             <tr>
                                               <td align="left" valign="top" height="68" width="480">
                                                 <h2><span><%= @current_user.fullname %></span></h2>
-                                                <p class="graylight-text"><%= @current_user.email %></p>
+                                                <a href="mailto:<%= @current_user.email %>?subject=<%=t 'mailers.profile_email.other_user.html.lets_talk_subject', author_fullname: @profile_email.author.fullname, user_fullname: @user.fullname %>"><span><%= @current_user.email %></span></a>
                                               </td>
                                             </tr>
                                           </table>
@@ -303,7 +303,7 @@
                                           <table border="0" cellpadding="0" cellspacing="0" id="button-left-table">
                                             <tr>
                                               <td align="center" valign="middle" height="51" width="170">
-                                                <a href="mailto:<%= @user.email %>?subject=<%=t 'mailers.profile_email.other_user.html.lets_talk_subject', author_fullname: @profile_email.author_fullname, user_fullname: @user.fullname %>"><span><%=t 'mailers.profile_email.other_user.html.lets_talk' %></span></a>
+                                                <a href="mailto:<%= @user.email %>?subject=<%=t 'mailers.profile_email.other_user.html.lets_talk_subject', author_fullname: @profile_email.author.fullname, user_fullname: @user.fullname %>"><span><%=t 'mailers.profile_email.other_user.html.lets_talk' %></span></a>
                                               </td>
                                             </tr>
                                           </table>

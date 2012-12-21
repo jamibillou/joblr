@@ -74,7 +74,7 @@
                                             <tr>
                                               <td align="left" valign="top" height="68" width="480">
                                                 <h2><span><%= @profile_email.author_fullname %></span></h2>
-                                                <p class="graylight-text"><%= @profile_email.author_email %></p>
+                                                <a href="mailto:<%= @profile_email.author_email %>?subject=<%=t 'mailers.profile_email.public_user.html.lets_talk_subject', author_fullname: @profile_email.author_fullname, user_fullname: @user.fullname %>"><span><%= @profile_email.author_email %></span></a>
                                               </td>
                                             </tr>
                                           </table>

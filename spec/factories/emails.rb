@@ -1,8 +1,8 @@
 FactoryGirl.define do
 
   factory :email do
-    author_fullname 'factory_author@example.com'
-    author_email 'Factory Author'
+    author_fullname 'Factory Author'
+    author_email 'factory_author@example.com'
     recipient_fullname 'Factory Recipient'
     recipient_email 'factory_recipient@example.com'
     cc ''
