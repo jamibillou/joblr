@@ -6,8 +6,8 @@ en:
       notify_team:
         subject: "New invitation request!"
         title: "Somebody wants to try Joblr!"
-        content_html: "Sign in and send an invitation to: %{email}"
-        content_text: "Sign in and send an invitation to: %{email}"
+        content_html: "Sign in and send an invitation to %{email}"
+        content_text: "Sign in and send an invitation to %{email}"
         button: 'Sign in now'
       send_code:
         subject: "Invitation to Joblr beta"

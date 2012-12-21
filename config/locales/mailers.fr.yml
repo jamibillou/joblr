@@ -12,15 +12,15 @@ fr:
       send_code:
         subject: "Invitation à Joblr beta"
         title: "Voici votre invitation à Joblr beta !"
-        content_html: "Inscrivez-vous à cette addresse: %{url}"
-        content_text: "Inscrivez-vous à cette addresse %{url} en y copiant votre code d'invitation."
+        content_html: "Inscrivez-vous à %{url}"
+        content_text: "Inscrivez-vous à %{url} en y copiant votre code d'invitation."
         code: "Code d'invitation:"
         button: "S'inscrire !"
     devise:
       reset_password_instructions:
         subject: 'Réinitialisez votre mot de passe'
         title: 'Réinitialisez votre mot de passe'
-        content_html: "Allez à l'adresse %{url} pour réinitialiser votre mot de passe."
+        content_html: "Allez à %{url} pour réinitialiser votre mot de passe."
         wont_change: "Il sera uniquement modifié si vous cliquez sur le lien et créez un nouveau mot de passe."
         if_not: "Ne tenez pas compte de cet email si vous ne l'avez pas demandé."
     profile_email:
