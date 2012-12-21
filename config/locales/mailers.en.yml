@@ -88,7 +88,6 @@ en:
       footer_form:
         subject: "Feedback from %{fullname}"
         title: "Feedback from %{fullname}"
-        content: "%{fullname} just sent you some feedback from %{page}"
-        content_html: "%{fullname} just sent you some feedback from <u>%{page}</u>"
-        feedback: "Feedback:"
+        header: "%{fullname} sent you some feedback about <u>%{page}</u>"
+        content: "%{fullname} you some feedback about %{page}."
         button: "Contact them"

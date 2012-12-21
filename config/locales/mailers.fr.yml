@@ -88,7 +88,6 @@ fr:
       footer_form:
         subject: "Retour d'expérience de %{fullname}"
         title: "Retour d'expérience de %{fullname}"
-        content: "%{fullname} vous à envoyé un retour d'expérience à propos de %{page}"
-        content_html: "%{fullname} vous à envoyé un retour d'expérience à propos de <u>%{page}</u>"
-        feedback: "Retour d'expérience :"
+        header: "%{fullname} vous à envoyé un retour d'expérience à propos de <u>%{page}</u>"
+        content: "%{fullname} vous à envoyé un retour d'expérience à propos de %{page}."
         button: "Contacter"

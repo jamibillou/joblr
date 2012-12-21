@@ -31,11 +31,6 @@ p{
   font-weight:300;
   color:#444;
 }
-p small{
-  font-family:Helvetica, Arial, sans-serif;
-  font-size:13px;
-  color:#a1a1a1;
-}
 .graylight-text{
   font-family:Helvetica, Arial, sans-serif;
   color:#a1a1a1;
@@ -45,16 +40,26 @@ p small{
 /* HEADINGS
    -------- */
 
+h1, h2{
+  color:#444;
+  font-family:Helvetica, Arial, sans-serif;
+}
+h1 span, h2 span{
+  color:#444;
+  font-family:Helvetica, Arial, sans-serif;
+}
+h1{
+  margin:0;
+  padding-top:5px;
+  padding-bottom:10px;
+  font-size:34px;
+  font-weight:200;
+  line-height:40px;
+}
 h2{
   margin:0;
-  font-family:Helvetica, Arial, sans-serif;
   font-size:26px;
   line-height:30px;
-  color:#444;
-}
-h2 span{
-  font-family:Helvetica, Arial, sans-serif;
-  color:#444;
 }
 
 
@@ -79,8 +84,20 @@ h2 span{
   background-color:white;
   border:10px solid #e1e2e5;
 }
-#message-table .code{
-  font-size:13px;
+
+/* Identity & Author */
+
+#identity-table img{
+  margin-top:5px;
+}
+#identity-table h2, #author-table h2{
+  margin-top:0;
+  margin-bottom:10px;
+}
+#identity-table p.graylight-text{
+  margin-bottom:4px;
+  font-weight:300;
+  line-height:15px;
 }
 
 /* Fine line */

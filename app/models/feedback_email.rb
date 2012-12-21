@@ -36,7 +36,7 @@ class FeedbackEmail < FromUserEmail
   private
 
     def prefill_fields
-      self.recipient_fullname = 'Joblr team'
+      self.recipient_fullname = 'Joblr'
       self.recipient_email = 'team@joblr.co'
     end
 end
