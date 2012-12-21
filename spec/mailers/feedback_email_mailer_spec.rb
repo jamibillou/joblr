@@ -18,17 +18,33 @@ describe FeedbackEmailMailer do
       mail.body.encoded.should include I18n.t('mailers.feedback_email.footer_form.title', fullname: feedback_email.author.fullname)
     end
 
-    it 'should send the email with a feedback' do
-      mail.body.encoded.should include "<b>#{I18n.t('mailers.feedback_email.footer_form.feedback')}</b>"
+    it 'should send the email with the correct header' do
+      mail.body.encoded.should include I18n.t('mailers.feedback_email.footer_form.header', fullname: feedback_email.author.fullname, page: feedback_email.page)
     end
 
-    it 'should send the email with the correct content' do
-      mail.body.encoded.should include I18n.t('mailers.feedback_email.footer_form.content_html', fullname: feedback_email.author.fullname, page: feedback_email.page)
+    it 'should send the email with the correct text' do
+      mail.body.encoded.should include feedback_email.text
+    end
+
+    it 'should send the email with a picture' do
+      mail.body.encoded.should include 'alt="profile picture"'.html_safe
+    end
+
+    it 'should send the email with the correct fullname' do
+      mail.body.encoded.should include feedback_email.author.fullname
+    end
+
+    it 'should send the email with the correct location' do
+      mail.body.encoded.should include "#{feedback_email.author.city}, #{feedback_email.author.country}"
+    end
+
+    it 'should send the email with the correct email address' do
+      mail.body.encoded.should include feedback_email.author.email
     end
 
     it 'should send the email with the correct Contact button' do
       mail.body.encoded.should include "#{I18n.t('mailers.feedback_email.footer_form.button')}"
-      mail.body.encoded.should include "mailto:#{feedback_email.author.email}?subject=RE: #{I18n.t('mailers.feedback_email.footer_form.subject', fullname: feedback_email.author.fullname)}".gsub!(' ','%20')
+      mail.body.encoded.should include "mailto:#{feedback_email.author.email}?subject=#{I18n.t('mailers.re')} #{I18n.t('mailers.feedback_email.footer_form.subject', fullname: feedback_email.author.fullname)}".gsub!(' ','%20')
     end
   end
 end

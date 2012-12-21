@@ -63,7 +63,7 @@ describe ProfileEmailMailer do
     let (:mail)          { ProfileEmailMailer.other_user(profile_email, user, current_user) }
 
     it 'should send the email with correct subject, author and recipient' do
-      mail.subject.should == I18n.t('mailers.profile_email.other_user.subject', fullname: current_user.fullname)
+      mail.subject.should == I18n.t('mailers.profile_email.other_user.subject', author_fullname: current_user.fullname, user_fullname: user.fullname)
       mail.to.should   include profile_email.recipient_email
       mail.from.should include 'postman@joblr.co'
     end
@@ -120,7 +120,7 @@ describe ProfileEmailMailer do
     let (:mail)          { ProfileEmailMailer.public_user(profile_email, user) }
 
     it 'should send the email with correct subject, author and recipient' do
-      mail.subject.should == I18n.t('mailers.profile_email.public_user.subject', fullname: profile_email.author_fullname)
+      mail.subject.should == I18n.t('mailers.profile_email.public_user.subject', author_fullname: profile_email.author_fullname, user_fullname: user.fullname)
       mail.to.should   include profile_email.recipient_email
       mail.from.should include 'postman@joblr.co'
     end
@@ -204,17 +204,17 @@ describe ProfileEmailMailer do
     let (:mail)          { ProfileEmailMailer.decline_through_other(profile_email) }
 
     it 'should send the email with correct subject, author and recipient' do
-      mail.subject.should == I18n.t('mailers.profile_email.decline_through_other.subject', fullname: profile_email.recipient_fullname)
+      mail.subject.should == I18n.t('mailers.profile_email.decline_through_other.subject', author_fullname: author.fullname, recipient_fullname: profile_email.recipient_fullname)
       mail.to.should   include user.email
       mail.from.should include 'postman@joblr.co'
     end
 
     it 'should have a title' do
-      mail.body.encoded.should include I18n.t('mailers.profile_email.decline_through_other.title', fullname: profile_email.recipient_fullname)
+      mail.body.encoded.should include I18n.t('mailers.profile_email.decline_through_other.title', recipient_fullname: profile_email.recipient_fullname)
     end
 
     it 'should have a content' do
-      mail.body.encoded.should include I18n.t('mailers.profile_email.decline_through_other.content', fullname: profile_email.recipient_fullname, author_fullname: author.fullname)
+      mail.body.encoded.should include I18n.t('mailers.profile_email.decline_through_other.content', recipient_fullname: profile_email.recipient_fullname, author_fullname: author.fullname)
     end
 
     it 'should have a persevere message' do

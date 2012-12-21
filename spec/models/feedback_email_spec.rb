@@ -42,7 +42,7 @@ describe FeedbackEmail do
   it 'should fill in Joblr team as recipient before validation' do
     feedback_email = FeedbackEmail.new @attr
     feedback_email.should be_valid
-    feedback_email.recipient_fullname.should == 'Joblr team'
+    feedback_email.recipient_fullname.should == 'Joblr'
     feedback_email.recipient_email.should == 'team@joblr.co'
   end
 end

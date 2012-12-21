@@ -2,6 +2,7 @@ en:
   mailers:
     header: 'This is an automated notification, please do not reply.'
     team: 'Joblr team'
+    re: 'RE:'
     invite_email:
       notify_team:
         subject: "New invitation request!"

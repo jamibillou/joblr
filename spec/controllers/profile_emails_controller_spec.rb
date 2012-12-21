@@ -181,7 +181,7 @@ describe ProfileEmailsController do
           it "should send the email to the right person with the right subject and profile" do
             xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_email: 'other_user@example.com', recipient_fullname: 'Test Dude'), user_id: @other_user.id
             ProfileEmailMailer.deliveries.last.to.should include 'other_user@example.com'
-            ProfileEmailMailer.deliveries.last.subject.should == I18n.t('mailers.profile_email.other_user.subject', fullname: @author.fullname)
+            ProfileEmailMailer.deliveries.last.subject.should == I18n.t('mailers.profile_email.other_user.subject', user_fullname: @other_user.fullname, author_fullname: @author.fullname)
           end
 
           it "should have a flash message" do
@@ -300,7 +300,7 @@ describe ProfileEmailsController do
         it "should send the email to the right person with the right subject and profile" do
           xhr :post, :create, :profile_email => @profile_email_attr.merge(author_email: @public_user[:email], author_fullname: @public_user[:fullname], recipient_email: 'recipient@example.com', recipient_fullname: 'Test Dude'), user_id: @other_user.id
           ProfileEmailMailer.deliveries.last.to.should include 'recipient@example.com'
-          ProfileEmailMailer.deliveries.last.subject.should == I18n.t('mailers.profile_email.public_user.subject', fullname: @public_user[:fullname])
+          ProfileEmailMailer.deliveries.last.subject.should == I18n.t('mailers.profile_email.public_user.subject', user_fullname: @other_user.fullname, author_fullname: @public_user[:fullname])
         end
 
         it "should have a flash message" do
@@ -407,7 +407,7 @@ describe ProfileEmailsController do
         it "should send the email to the right user with the right subject" do
           get :decline, profile_email_id: @other_profile_email
           ProfileEmailMailer.deliveries.last.to.should include @author.email
-          ProfileEmailMailer.deliveries.last.subject.should == I18n.t('mailers.profile_email.decline.subject', fullname: @other_profile_email.recipient_fullname)
+          ProfileEmailMailer.deliveries.last.subject.should == I18n.t('mailers.profile_email.decline_through_other.subject', author_fullname: @other_profile_email.author.fullname, recipient_fullname: @other_profile_email.recipient_fullname)
         end
 
         it 'should a have thank you message' do
@@ -440,7 +440,7 @@ describe ProfileEmailsController do
         it "should send the email to the right user with the right subject" do
           get :decline, profile_email_id: @public_profile_email
           ProfileEmailMailer.deliveries.last.to.should include @author.email
-          ProfileEmailMailer.deliveries.last.subject.should == I18n.t('mailers.profile_email.decline.subject', fullname: @public_profile_email.recipient_fullname)
+          ProfileEmailMailer.deliveries.last.subject.should == I18n.t('mailers.profile_email.decline_through_other.subject', author_fullname: @public_profile_email.author_fullname, recipient_fullname: @public_profile_email.recipient_fullname)
         end
 
         it 'should a have thank you message' do
