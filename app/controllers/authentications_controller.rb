@@ -77,7 +77,7 @@ class AuthenticationsController < ApplicationController
     end
 
     def create_user_auth(username)
-      create_auth User.create(username: username, fullname: auth_hash.info.name, email: auth_hash.info.email, remote_image_url: auth_hash.info.image)
+      create_auth User.create(username: username, fullname: auth_hash.info.name, email: auth_email, remote_image_url: auth_hash.info.image)
     end
 
     def create_auth(user)
@@ -92,6 +92,10 @@ class AuthenticationsController < ApplicationController
         InviteEmail.find(session[:invite_email][:id]).use_invite(user)
         session[:invite_email] = nil
       end
+    end
+
+    def auth_email
+      auth_hash.info.email if User.find_by_email(auth_hash.info.email).nil?
     end
 
     def auth_url
