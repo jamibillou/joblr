@@ -39,14 +39,14 @@
             %span{class: "#{invite_email.used? ? 'success-text' : 'danger-text'}"}= invite_email.used?
         .span1
           %td
-            = invite_email.user.fullname if invite_email.used?
+            = invite_email.recipient.fullname if invite_email.used?
         .span1
           %td
-            = invite_email.user.username if invite_email.used?
+            = invite_email.recipient.username if invite_email.used?
         .span1
           %td
             - if invite_email.used?
-              %span{class: "#{signed_up?(invite_email.user) ? 'success-text' : 'danger-text'}"}= signed_up?(invite_email.user)
+              %span{class: "#{signed_up?(invite_email.recipient) ? 'success-text' : 'danger-text'}"}= signed_up?(invite_email.recipient)
         .span1
           %td
             = link_to "<div class='icon-trash danger-text'></div>".html_safe, invite_email, method: :delete, confirm: t('invite_emails.destroy.yes_delete')

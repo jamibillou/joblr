@@ -48,7 +48,7 @@
             %span{class: "#{signed_up?(user) ? 'success-text' : 'danger-text'}"}= signed_up?(user)
         .span1
           %td
-            = user.authored_emails.where(type: 'profile_email').count
+            = user.authored_emails.where(type: 'ProfileEmail').count
         .span1
           %td
             = user.profile.public_profile_emails.count unless user.profile.nil?
