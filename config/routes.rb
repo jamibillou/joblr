@@ -26,10 +26,10 @@ Joblr::Application.routes.draw do
   get  'users/auth/failure'  => 'authentications#failure'
   post 'users/share_profile' => 'users#share_profile'
 
-  match 'landing',                to: 'pages#landing'
-  match 'admin',                  to: 'pages#admin'
-  match 'style_tile',             to: 'pages#style_tile'
-  match 'close',                  to: 'pages#close'
+  match 'landing',    to: 'pages#landing'
+  match 'admin',      to: 'pages#admin'
+  match 'style_tile', to: 'pages#style_tile'
+  match 'close',      to: 'pages#close'
 
   # Subdomain constraints
   match '', to: 'users#show', constraints: Subdomain.new(true) || MultiLevelSubdomain.new(true)
@@ -41,8 +41,8 @@ Joblr::Application.routes.draw do
 
   # Preview of emails
   if Rails.env.development?
-    mount InviteEmailMailer::Preview     => 'invite_email_mailer'
-    mount ProfileEmailMailer::Preview   => 'profile_email_mailer'
-    mount FeedbackEmailMailer::Preview  => 'feedback_email_mailer'
+    mount InviteEmailMailer::Preview   => 'invite_email_mailer'
+    mount ProfileEmailMailer::Preview  => 'profile_email_mailer'
+    mount FeedbackEmailMailer::Preview => 'feedback_email_mailer'
   end
 end
