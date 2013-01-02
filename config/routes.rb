@@ -45,4 +45,7 @@ Joblr::Application.routes.draw do
     mount ProfileEmailMailer::Preview  => 'profile_email_mailer'
     mount FeedbackEmailMailer::Preview => 'feedback_email_mailer'
   end
+
+  # Old beta_invites compatibility
+  get 'beta_invites/(:id)/edit' => 'invite_emails#edit'
 end
