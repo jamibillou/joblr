@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   def show
     @title = @user.fullname
     @profile_email = ProfileEmail.new
-    @profile_email_text = (user_signed_in? && current_user == @user ? t('profile_emails.new.text_user') : t('profile_emails.new.text_other_user'))
   end
 
   def edit

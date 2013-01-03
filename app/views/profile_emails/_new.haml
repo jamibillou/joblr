@@ -19,8 +19,12 @@
     .row-fluid
       .span1
       .span10
-        %label.inline= "#{t('profile_emails.new.text_label')}<span class='danger-text'>*</span>".html_safe
-        = f.text_area :text, rows: 3, placeholder: @profile_email_text
+        - if user_signed_in? && current_user == @user && !subdomain?
+          %label.inline= "#{t('profile_emails.new.coverletter_label')}<span class='danger-text'>*</span>".html_safe
+          = f.text_area :text, rows: 10
+        - else
+          %label.inline= "#{t('profile_emails.new.message_label')}<span class='danger-text'>*</span>".html_safe
+          = f.text_area :text, rows: 3, placeholder: t('profile_emails.new.message_placeholder')
         %input{type: 'hidden', name: 'user_id', value: @user.id}
         .pull-right.danger-text *#{t('required_fields')}
 

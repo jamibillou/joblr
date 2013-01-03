@@ -1,20 +1,20 @@
 en:
   profile_emails:
     new:
-      title: 'Send profile by email'
+      title: 'Send by email'
       from_label: 'From'
       from_fullname_placeholder: 'Your full name'
       from_email_placeholder: 'Your email address'
       to_label: 'To'
       to_fullname_placeholder: 'Recipient full name'
       to_email_placeholder: 'Recipient email address'
-      text_label: 'Personal message'
-      text_user: "e.g. Hi, I'm really keen to work for your company and would love to go over a few ideas together soon."
-      text_other_user: "e.g. Hi, I found this profile and thought you might be interested. You should definitely get in touch if that's the case."
+      coverletter_label: 'Cover letter'
+      message_label: 'Personal message'
+      message_placeholder: "e.g. I found this profile and thought you might be interested. You should get in touch if I was right."
       send: 'Send'
       sending: 'sending...'
     create:
-      title: 'Send profile by email'
+      title: 'Send by email'
     decline:
       title: 'Thanks for your answer'
       thank_you: 'Thanks for letting us know'
