@@ -47,12 +47,12 @@ describe UsersController do
             find('a.btn.btn-primary').should have_content I18n.t('users.show.contact')
           end
 
-          it 'should have a share dropdown button' do
-            find('.btn.dropdown-toggle').should have_content I18n.t('users.show.share')
+          it 'should have a send button' do
+            find('a.btn.btn-default').should have_content I18n.t('users.show.send')
           end
 
-          it 'should have an profile email modal' do
-            find('div#profile-email-modal').should  have_content I18n.t('profile_emails.new.title')
+          it 'should have a profile email modal' do
+            find('div#profile-email-modal').should have_content I18n.t('profile_emails.new.title')
           end
 
           it 'should have kissmetrics event' do
@@ -185,12 +185,12 @@ describe UsersController do
           find('a.btn.btn-primary').should have_content I18n.t('users.show.edit')
         end
 
-        it 'should have a share dropdown button' do
-          find('.btn.dropdown-toggle').should have_content I18n.t('users.show.share')
+        it 'should have a send button' do
+          find('a.btn.btn-default').should have_content I18n.t('users.show.send')
         end
 
-        it 'should have an profile email modal' do
-          find('div#profile-email-modal').should  have_content I18n.t('profile_emails.new.title')
+        it 'should have a profile email modal' do
+          find('div#profile-email-modal').should have_content I18n.t('profile_emails.new.title')
         end
 
         context 'visiting another user page' do

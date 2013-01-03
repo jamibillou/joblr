@@ -5,39 +5,12 @@
   - else
     %a.btn.btn-large.btn-primary.btn-top#contact-button{href: "mailto:#{user.email}"}
       =t 'users.show.contact'
-  .btn-group
-    .btn.btn-large.dropdown-toggle{"data-toggle" => 'dropdown', href:'#'}
-      =t 'users.show.share'
-    %ul.dropdown-menu#share
-      %li
-        %a{href: '#profile-email-modal', 'data-toggle' => 'modal', title: t('users.show.send_email')}
-          .icon-envelope
-          &nbsp;
-          =t 'users.show.email'
-      %li
-        %a.social#linkedin-sharing{href: social_sharing_url(user, 'linkedin'), title: t('users.show.share_on', provider: 'Linkedin')}
-          .icon-linkedin
-          &nbsp;
-          Linkedin
-      %li
-        %a.social#twitter-sharing{href: social_sharing_url(user, 'twitter'), title: t('users.show.share_on', provider: 'Twitter')}
-          .icon-twitter
-          &nbsp;
-          Twitter
-      %li
-        %a.social#facebook-sharing{href: social_sharing_url(user, 'facebook'), title: t('users.show.share_on', provider: 'Facebook') }
-          .icon-facebook
-          &nbsp;
-          Facebook
-      %li
-        %a.social#google-sharing{href: social_sharing_url(user, 'google'), title: t('users.show.share_on', provider: 'Google')}
-          .icon-google-plus
-          &nbsp;
-          Google
+  %a.btn.btn-large.btn-default{href: '#profile-email-modal', 'data-toggle' => 'modal', title: t('users.show.send_email')}
+    =t 'users.show.send'
 
   .explanation
     - if user_signed_in? && current_user == user && current_user.profile.profile_emails.empty?
-      %h5=t 'users.show.whats_this'
+      %h5=t 'users.show.what_now'
       %p=t 'users.show.user_explanation'
     - elsif !user_signed_in? || current_user != user
       %h5=t 'users.show.whats_this'

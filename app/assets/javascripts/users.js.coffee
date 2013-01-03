@@ -51,11 +51,6 @@ $ ->
   $('#image-modal .modal-footer a.btn-primary').click -> closeImageModal()
 
 
-  # Social sharing popups
-  # ---------------------
-  $('ul.dropdown-menu#share .social').each -> $(@).click -> openSocialSharingPopup(@href, @innerHTML)
-
-
   # Social urls
   # -----------
 
@@ -103,13 +98,3 @@ toggleSocialUrl = (id) ->
     else
       $(@).hide() if $(@).is(':visible')
 
-
-# Opens a social sharing popup window
-# -----------------------------------
-
-openSocialSharingPopup = (href, content) ->
-  if content.match(/linkedin/) then window.open(href, 'popup', 'left=200, top=200, width=550, height=360, toolbar=0, resizable=0, scrollbars=1')
-  if content.match(/facebook/) then window.open(href, 'popup', 'left=200, top=200, width=500, height=330, toolbar=0, resizable=0')
-  if content.match(/twitter/) then window.open(href, 'popup', 'left=200, top=200, width=500, height=260, toolbar=0, resizable=0, scrollbars=1')
-  if content.match(/google/) then window.open(href, 'popup', 'left=200, top=200, width=850, height=500, toolbar=0, resizable=0')
-  return false

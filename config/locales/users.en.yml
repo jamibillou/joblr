@@ -17,20 +17,15 @@ en:
       download_cv: 'CV'
       view_social: "View %{fullname}'s %{provider} profile"
       site: 'www'
-      email: 'Email'
       edit: 'Edit'
       contact: 'Contact'
-      share: 'Share'
-      whats_this: "What's this?"
-      public_whats_this: "What's this?"
-      user_explanation: "Send your Joblr profile by email and share it on your networks to reach companies and spread the word!"
-      public_explanation_html: "%{fullname} is looking for work and needs your help. Get in contact if you have a job or a tip. <br />Otherwise, share this profile around!"
-      public_profile: 'Public profile:'
+      share: 'Send'
       send_email: 'Send by email'
-      share_on: "Share on %{provider}"
-      profile emails:
-        catchphrase: 'Save your job hunting minutes'
-        title: "%{fullname} on Joblr"
+      what_now: "What now?"
+      whats_this: "What's this?"
+      user_explanation: "Send your Joblr profile by email and get the conversation started with companies you are interested in."
+      public_explanation_html: "%{fullname} is looking for work.<br />Get in contact if you are interested or send this profile to people who might be."
+      public_profile: 'Public profile:'
     index:
       title: 'Users'
     edit:
