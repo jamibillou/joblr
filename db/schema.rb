@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130103124852) do
+ActiveRecord::Schema.define(:version => 20130103145034) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(:version => 20130103124852) do
 
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
-    t.string   "headline"
     t.string   "experience"
     t.string   "last_job"
     t.string   "past_companies"
@@ -67,7 +66,6 @@ ActiveRecord::Schema.define(:version => 20130103124852) do
     t.string   "quality_3"
     t.string   "file"
     t.string   "url"
-    t.string   "text"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "linkedin_url"

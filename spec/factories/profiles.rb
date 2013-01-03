@@ -1,7 +1,6 @@
 FactoryGirl.define do
 
   factory :profile do
-    headline 'fulltime'
     education 'Master of Business Administration'
     experience 5
     last_job 'Financial controller at Eneco'
@@ -15,7 +14,6 @@ FactoryGirl.define do
     quality_1 'Drive'
     quality_2 'Work ethics'
     quality_3 'Punctuality'
-    text "I'm extremely brilliant, motivated and genuinely modest."
     association :user
   end
 end

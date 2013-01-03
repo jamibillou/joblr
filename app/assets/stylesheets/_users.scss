@@ -6,25 +6,6 @@
 // SHOW & EDIT
 // -----------
 
-// Text bubble
-// -----------
-
-#text{
-  margin-bottom:40px;
-  border:10px solid $grayLighter;
-  @include box-shadow(none);
-  h1{
-    font-weight:200;
-    line-height:40px;
-  }
-  .lead{
-    margin-bottom:0;
-  }
-  textarea{
-    width:98%;
-  }
-}
-
 // ? link
 // ------
 
@@ -63,10 +44,6 @@ a.help{
       margin-left:0;
       h2{
         margin:-3px 0 10px 0;
-      }
-      .headline{
-        line-height:1;
-        font-weight:500;
       }
     }
   }

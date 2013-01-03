@@ -8,7 +8,7 @@ describe UsersController do
     @user        = FactoryGirl.create :user, subdomain: 'jdoe', email: nil
     @profile     = FactoryGirl.create :profile, user: @user
     @user2       = FactoryGirl.create :user, fullname: FactoryGirl.generate(:fullname), username: FactoryGirl.generate(:username), email: FactoryGirl.generate(:email)
-    @attr        = { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China', profiles_attributes: { '0' => { headline: 'fulltime', experience: '10', education: 'none', text: 'A good and highly motivated guy.' } } }
+    @attr        = { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China', profiles_attributes: { '0' => {experience: '10', education: 'none'} } }
     sign_in @user
   end
 
@@ -381,7 +381,7 @@ describe UsersController do
           put :update, user: @attr, id: @user
           updated_user = assigns(:user)
           @user.reload
-          @user.profile.text.should == updated_user.profile.text
+          @user.profile.experience.should == updated_user.profile.experience
         end
 
         it 'should not create a new profile' do

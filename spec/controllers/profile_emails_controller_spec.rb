@@ -9,8 +9,7 @@ describe ProfileEmailsController do
     @other_user    = FactoryGirl.create :user, fullname: FactoryGirl.generate(:fullname), username: FactoryGirl.generate(:username), email: FactoryGirl.generate(:email)
     @other_profile = FactoryGirl.create :profile, user: @other_user
     @public_user   = { fullname: 'Public User', email: 'public_user@example.com' }
-    @profile_attr  = { headline: 'fulltime',
-                      experience: 5,
+    @profile_attr  = { experience: 5,
                       last_job: 'Financial director',
                       past_companies: 'Cathay Pacific, Bank of China',
                       education: 'Master of Business Administration',
@@ -22,8 +21,7 @@ describe ProfileEmailsController do
                       skill_3_level: 'Intermediate',
                       quality_1: 'Drive',
                       quality_2: 'Work ethics',
-                      quality_3: 'Punctuality',
-                      text: 'Do or do not, there is no try.' }
+                      quality_3: 'Punctuality' }
     @profile_email_attr = { text: "Hi, I'm really keen to work for your company and would love to go over a few ideas together soon." }
   end
 

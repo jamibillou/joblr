@@ -3,15 +3,7 @@ $ ->
   # Placeholders
   # ------------
 
-  $('#submit-placeholder').click ->
-    $('#hidden-text').val($('#text_placeholder').val())
-    $('#hidden-submit').click()
-
-
-  # Field with errors
-  # -----------------
-
-  addFieldWithErrors('#text-container') if $('.field_with_errors #hidden-text').html() isnt undefined
+  $('#submit-placeholder').click -> $('#hidden-submit').click()
 
 
   # URLs
@@ -57,12 +49,6 @@ $ ->
   $('#social-url-triggers .btn').each -> $(@).click -> toggleSocialUrl($(@).attr('id').replace('trigger', 'field'))
   $('#social-url-fields div').each -> $(@).children().first().show() if $(@).hasClass('field_with_errors')
 
-
-
-# Adds <div class='field_with_errors'> around what's in the given div
-# -------------------------------------------------------------------
-
-addFieldWithErrors = (id) -> $(id).html("<div class='field_with_errors'>#{$(id).html()}</div>")
 
 
 # Selects the clicked pic, unselects others, fills #remote_image_url appropriately and replaces profile pic

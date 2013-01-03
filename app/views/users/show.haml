@@ -2,7 +2,6 @@
   .row-fluid
     .span2.hidden-phone
     .span6
-      = render 'show_text', text: @profile.text
       .well#profile
         = render 'show_identity',             user: @user
         = render 'show_experience_education', profile: @profile

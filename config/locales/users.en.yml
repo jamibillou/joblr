@@ -1,11 +1,6 @@
 en:
   users:
     show:
-      headline:
-        fulltime: 'Looking for a full-time job!'
-        partime: 'Looking for a part-time job!'
-        internship: 'Looking for an internship!'
-        freelance: 'Looking for freelance projects!'
       experience: 'Experience'
       yr: 'yr'
       last_job: "Current or most relevant job"
@@ -31,9 +26,6 @@ en:
     edit:
       title: 'Edit your profile'
       title_alt: 'Create your profile'
-      text: "Summary"
-      text_placeholder: "e.g. User experience designer. Ready to help you create something people will love."
-      text_popover: "Keep it simple and catchy. Talk about your values, your approach to your job, what you're looking for, etc."
       fullname: 'Full name'
       fullname_placeholder: 'Full name'
       location_label: 'Location'
@@ -41,8 +33,6 @@ en:
       city_placeholder: 'City'
       country: 'Country'
       country_placeholder: 'Country'
-      headline: 'Headline'
-      headline_popover: 'So potential employers know exactly what you want.'
       experience: 'Experience'
       experience_label: 'Total'
       experience_placeholder: 'in years'

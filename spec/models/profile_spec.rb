@@ -4,7 +4,6 @@
 #
 #  id             :integer          not null, primary key
 #  user_id        :integer
-#  headline       :string(255)
 #  experience     :string(255)
 #  last_job       :string(255)
 #  past_companies :string(255)
@@ -20,7 +19,6 @@
 #  quality_3      :string(255)
 #  file           :string(255)
 #  url            :string(255)
-#  text           :string(255)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  linkedin_url   :string(255)
@@ -37,8 +35,7 @@ describe Profile do
     @user          = FactoryGirl.create :user, username: FactoryGirl.generate(:username), fullname: FactoryGirl.generate(:fullname), email: FactoryGirl.generate(:email)
     @profile       = FactoryGirl.create :profile, user: @user
     @profile_email = FactoryGirl.create :profile_email, author: @user, profile: @profile
-    @attr = { headline: 'fulltime',
-              experience: 5,
+    @attr = { experience: 5,
               last_job: 'Financial director',
               past_companies: 'Cathay Pacific, Bank of China',
               education: 'Master of Business Administration',
@@ -50,8 +47,7 @@ describe Profile do
               skill_3_level: 'Intermediate',
               quality_1: 'Drive',
               quality_2: 'Work ethics',
-              quality_3: 'Punctuality',
-              text: 'Do or do not, there is no try.' }
+              quality_3: 'Punctuality' }
   end
 
   it 'should create a profile given valid attributes' do
@@ -86,20 +82,15 @@ describe Profile do
   describe 'validations' do
 
     before :all do
-      @headline = { valid: %w(fulltime partime internship freelance), invalid: %(Looking Unemployed Broke) }
       @level    = { valid: %w(Beginner Intermediate Advanced Expert), invalid: %w(crap good okish) }
       @url      = { valid: %w(http://www.engaccino.com https://engaccino.com https://dom.engaccino.com http://franck.engaccino.com http://www.engaccino.co.uk https://dom.engaccino.com.hk http://engaccino.me http://www.engaccino.ly http://fr.engaccino/users/1/edit),
                     invalid: %w(invalid_url engaccino.com pouetpouetpouet http:www.engaccino.com http//engaccino.com http/ccino.co htp://ccino.me http:/www.engaccino.com) }
     end
 
     it { should validate_presence_of :user }
-    it { should validate_presence_of :headline }
     it { should validate_presence_of :experience }
     it { should validate_presence_of :education }
-    it { should validate_presence_of :text }
-    it { should ensure_length_of(:headline).is_at_most 100 }
     it { should ensure_length_of(:education).is_at_most 100 }
-    it { should ensure_length_of(:text).is_at_most 140 }
     it { should ensure_length_of(:last_job).is_at_most 100 }
     it { should ensure_length_of(:past_companies).is_at_most 100 }
     it { should ensure_length_of(:skill_1).is_at_most 50 }
@@ -109,8 +100,6 @@ describe Profile do
     it { should ensure_length_of(:quality_2).is_at_most 50 }
     it { should ensure_length_of(:quality_3).is_at_most 50 }
     it { should validate_numericality_of(:experience) }
-    it { should validate_format_of(:headline).not_with(@headline[:invalid][rand(@headline[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.headline_format')) }
-    it { should validate_format_of(:headline).with @headline[:valid][rand(@headline[:valid].size)] }
     %w(skill_1_level skill_2_level skill_3_level).each {|skill_level| it { should validate_format_of(skill_level.to_sym).not_with(@level[:invalid][rand(@level[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.level_format')) }}
     %w(skill_1_level skill_2_level skill_3_level).each {|skill_level| it { should validate_format_of(skill_level.to_sym).with @level[:valid][rand(@level[:valid].size)] }}
     it { should validate_format_of(:url).not_with(@url[:invalid][rand(@url[:invalid].size)]).with_message(I18n.t('activerecord.errors.messages.url_format')) }
