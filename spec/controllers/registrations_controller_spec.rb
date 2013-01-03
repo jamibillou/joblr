@@ -8,7 +8,7 @@ describe RegistrationsController do
     @user         = FactoryGirl.create :user
     @invite_email = FactoryGirl.create :invite_email, recipient: nil
     @attr         = { fullname: 'New User', username: 'newuser', password: 'pouetpouet', password_confirmation: 'pouetpouet' }
-    @full_attr    = { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China', profiles_attributes: { '0' => { headline: 'fulltime', experience: 10, education: 'none', text: 'A good and highly motivated guy.' } } }
+    @full_attr    = { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China', profiles_attributes: { '0' => { experience: 10, education: 'none' } } }
     request.env['devise.mapping'] = Devise.mappings[:user]
   end
 
@@ -26,25 +26,9 @@ describe RegistrationsController do
       end
     end
 
-    context "for users who didn't provide a summary" do
-      it 'should redirect to user' do
-        put :update, user: @full_attr.merge(profiles_attributes: {'0' => {headline: 'fulltime', experience: 10, education: 'none', text: ''}}), id: @user.id
-        response.should render_template(:edit)
-        flash[:error].should == errors('user/profiles.text', 'blank')
-      end
-    end
-
-    context "for users who didn't provide a headline" do
-      it 'should redirect to user' do
-        put :update, user: @full_attr.merge(profiles_attributes: {'0' => {headline: '', experience: 10, education: 'none', text: 'A good and highly motivated guy.'}}), id: @user.id
-        response.should render_template(:edit)
-        flash[:error].should == errors('user/profiles.headline', 'headline_format')
-      end
-    end
-
     context "for users who didn't provide an experience" do
       it 'should redirect to user' do
-        put :update, user: @full_attr.merge(profiles_attributes: {'0' => {headline: 'fulltime', experience: '', education: 'none', text: 'A good and highly motivated guy.'}}), id: @user.id
+        put :update, user: @full_attr.merge(profiles_attributes: {'0' => {experience: '', education: 'none'}}), id: @user.id
         response.should render_template(:edit)
         flash[:error].should == errors('user/profiles.experience', 'not_a_number')
       end
@@ -52,7 +36,7 @@ describe RegistrationsController do
 
     context "for users who didn't provide an education" do
       it 'should redirect to user' do
-        put :update, user: @full_attr.merge(profiles_attributes: {'0' => {headline: 'fulltime', experience: 10, education: '', text: 'A good and highly motivated guy.'}}), id: @user.id
+        put :update, user: @full_attr.merge(profiles_attributes: {'0' => {experience: 10, education: ''}}), id: @user.id
         response.should render_template(:edit)
         flash[:error].should == errors('user/profiles.education', 'blank')
       end

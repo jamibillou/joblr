@@ -1,8 +1,7 @@
-= render 'fields_headline_experience', f: f
-= render 'fields_education_skills',    f: f
-= render 'fields_qualities',           f: f
-= render 'fields_more',                f: f
+= render 'fields_experience', 			f: f
+= render 'fields_education_skills', f: f
+= render 'fields_qualities',        f: f
+= render 'fields_more',             f: f
 
 .hidden
-  = f.text_field :text, value: field_value(:text, @linkedin), id: 'hidden-text'
   = f.submit t('users.edit.save'), id: 'hidden-submit'

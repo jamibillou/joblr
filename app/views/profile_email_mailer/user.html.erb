@@ -81,7 +81,6 @@
                                                 <% unless @user.city.blank? && @user.country.blank? %>
                                                   <p class="graylight-text"><%= "#{@user.city}#{', ' unless @user.city.blank? || @user.country.blank?}#{@user.country}" %></p>
                                                 <% end %>
-                                                <p class="info-text"><%=t "users.show.headline.#{@user.profile.headline}" %></p>
                                               </td>
                                             </tr>
                                           </table>

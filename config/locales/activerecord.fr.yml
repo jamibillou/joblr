@@ -18,7 +18,6 @@ fr:
       user/profiles:
         id: "Identifiant"
         user_id: "Identifiant utilisateur"
-        headline: "statut"
         experience: "Expérience"
         last_job: "Poste actuel ou le plus important"
         past_companies: "Anciens employeurs"
@@ -33,12 +32,10 @@ fr:
         quality_2: "2nde qualité personnelle"
         quality_3: "3ème qualité personnelle"
         file: "CV"
-        text: "Accroche"
         url: "Site internet ou blog"
       profile:
         id: "Identifiant"
         user_id: "Identifiant utilisateur"
-        headline: "statut"
         experience: "Expérience"
         last_job: "Poste actuel ou le plus important"
         past_companies: "Anciens employeurs"
@@ -53,7 +50,6 @@ fr:
         quality_2: "2nde qualité personnelle"
         quality_3: "3ème qualité personnelle"
         file: "CV"
-        text: "Accroche"
         url: "Site internet ou blog"
       authentication:
         id: "Identifiant"
@@ -81,7 +77,6 @@ fr:
       messages:
         level_format: "n'est pas formaté correctement (Débutant, Intermédiaire, Confirmé ou Expert)"
         url_format: "n'est pas formaté correctement"
-        headline_format: "n'est pas formaté correctement (Recherche un empoi à temps plein, à temps partiel, un stage, des projets en freelance)"
         subdomain_format: "n'est pas formaté correctement (2 à 63 lettres/chiffres, accents non autorisés)"
         blank: "vide"
         invalid: "invalide"

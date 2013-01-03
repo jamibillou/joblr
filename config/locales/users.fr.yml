@@ -1,11 +1,6 @@
 fr:
   users:
     show:
-      headline:
-        fulltime: "Recherche un emploi à temps plein"
-        partime: "Recherche un emploi à temps partiel"
-        internship: "Recherche un stage"
-        freelance: "Recherche des projets en freelance"
       experience: 'Expérience'
       yr: 'an'
       last_job: "Poste actuel ou le plus important"
@@ -36,9 +31,6 @@ fr:
     edit:
       title: 'Modifiez votre profil'
       title_alt: 'Créez votre profil'
-      text: "Accroche"
-      text_placeholder: "ex : Passioné de design depuis toujours, je cherche actuellement un poste en région parisienne."
-      text_popover: "Valorisez vous de manière simple. Parlez de vos qualités, de votre rapport au travail, ce que vous recherchez, etc."
       fullname: "Nom et prénom"
       fullname_placeholder: "Nom et prénom"
       location_label: 'Adresse'
@@ -46,8 +38,6 @@ fr:
       city_placeholder: 'Ville'
       country: 'Pays'
       country_placeholder: 'Pays'
-      headline: 'Statut'
-      headline_popover: 'Afin que les recruteurs sachent exactement ce que vous cherchez.'
       experience: 'Expérience'
       experience_label: 'Total'
       experience_placeholder: "en années"
