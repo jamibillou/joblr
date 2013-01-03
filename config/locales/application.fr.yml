@@ -16,9 +16,10 @@ fr:
       profile:
         created: "Parfait, envoyez votre profil par email et partagez-le sur vos réseaux sociaux maintenant qu'il est prêt."
         updated: 'Modifications enregistrées.'
-        shared:  "Votre profil a bien été envoyé à %{recipient_email}"
-        other_shared: "Le profil de %{fullname} a bien été envoyé à %{recipient_email}"
-        public_shared: "Le profil de %{fullname} a bien été envoyé à %{recipient_email}"
+        shared:
+          user: "Votre profil a bien été envoyé à %{recipient_email}"
+          other_user: "Le profil de %{fullname} a bien été envoyé à %{recipient_email}"
+          public_user: "Le profil de %{fullname} a bien été envoyé à %{recipient_email}"
       invite_email:
         email_sent: "L'invitation a bien été envoyée."
         used: "Ok, vous pouvez maintenant vous inscrire !"

@@ -8,7 +8,7 @@ fr:
       to_label: 'À'
       to_fullname_placeholder: 'Nom et prénom du destinataire'
       to_email_placeholder: 'Adresse email du destinataire'
-      coverletter_label: 'Lettre de motivation'
+      coverletter_label: 'Message de candidature'
       message_label: 'Message'
       message_placeholder: "ex : Bonjour, j'ai trouvé ce profil et pensé qu'il pouvait vous intéresser. N'hésitez pas à rentrer en contact si j'ai vu juste."
       send: 'Envoyer'

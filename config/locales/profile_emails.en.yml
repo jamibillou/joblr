@@ -8,7 +8,7 @@ en:
       to_label: 'To'
       to_fullname_placeholder: 'Recipient full name'
       to_email_placeholder: 'Recipient email address'
-      coverletter_label: 'Cover letter'
+      coverletter_label: 'Application letter'
       message_label: 'Personal message'
       message_placeholder: "e.g. I found this profile and thought you might be interested. You should get in touch if I was right."
       send: 'Send'
