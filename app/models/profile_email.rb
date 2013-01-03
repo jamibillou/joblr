@@ -30,6 +30,6 @@ class ProfileEmail < FromUserEmail
 
   belongs_to :profile
 
-  validates :text,   length: { maximum: 140 }, presence: true
+  validates :text, presence: true
   validates :status, inclusion: { :in => ['accepted', 'declined'] }, allow_nil: true
 end
