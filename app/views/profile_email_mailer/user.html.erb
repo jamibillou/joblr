@@ -53,7 +53,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0" id="text-table">
                                       <tr>
                                         <td align="left" valign="top" width="480">
-                                          <h1><span><%= @profile_email.text %></span></h1>
+                                          <p><%= simple_format(@profile_email.text).html_safe %></p>
                                         </td>
                                       </tr>
                                     </table>

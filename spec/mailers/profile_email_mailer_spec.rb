@@ -23,10 +23,6 @@ describe ProfileEmailMailer do
       mail.body.encoded.should include I18n.t('mailers.profile_email.user.html.summary', fullname: user.fullname)
     end
 
-    it 'should have a text' do
-      mail.body.encoded.should include profile_email.text
-    end
-
     it "should have the user's picture" do
       mail.body.encoded.should include 'default_user.jpg'
     end
@@ -74,10 +70,6 @@ describe ProfileEmailMailer do
 
     it 'should have a summary' do
       mail.body.encoded.should include I18n.t('mailers.profile_email.other_user.html.summary', author_fullname: current_user.fullname, user_fullname: user.fullname)
-    end
-
-    it 'should have a text' do
-      mail.body.encoded.should include profile_email.text
     end
 
     it "should have the author's information" do
@@ -131,10 +123,6 @@ describe ProfileEmailMailer do
 
     it 'should have a summary' do
       mail.body.encoded.should include I18n.t('mailers.profile_email.public_user.html.summary', author_fullname: profile_email.author_fullname, user_fullname: user.fullname)
-    end
-
-    it 'should have a text' do
-      mail.body.encoded.should include profile_email.text
     end
 
     it "should have the author's information" do
