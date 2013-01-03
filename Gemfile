@@ -21,7 +21,6 @@ gem 'roadie'
 gem 'thin'
 gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
 gem 'curb'
-gem 'char_counter', :path => 'lib/char_counter'
 
 group :production, :staging do
   gem 'google-analytics-rails'

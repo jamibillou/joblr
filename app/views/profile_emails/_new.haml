@@ -20,7 +20,6 @@
       .span1
       .span10
         %label.inline= "#{t('profile_emails.new.text_label')}<span class='danger-text'>*</span>".html_safe
-        = char_counter_for @profile_email, :text, class: 'pull-right'
         = f.text_area :text, rows: 3, placeholder: @profile_email_text
         %input{type: 'hidden', name: 'user_id', value: @user.id}
         .pull-right.danger-text *#{t('required_fields')}

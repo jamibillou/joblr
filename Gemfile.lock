@@ -14,11 +14,6 @@ GIT
       nokogiri (~> 1.5.0)
       oauth (~> 0.4.0)
 
-PATH
-  remote: lib/char_counter
-  specs:
-    char_counter (0.0.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -294,7 +289,6 @@ DEPENDENCIES
   capybara
   capybara-webkit
   carrierwave
-  char_counter!
   coffee-rails
   curb
   devise
