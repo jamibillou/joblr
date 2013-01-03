@@ -1,9 +1,0 @@
-.well#text
-	.row-fluid
-		.span11#text-container
-			%label.inline=t 'users.edit.text'
-			%span.danger-text *
-			%a.help{rel:'popover', 'data-content' => t('users.edit.text_popover'), 'data-original-title' => t('users.edit.text')}
-				.icon-question-sign
-			= char_counter_for @user.profile, :text, class: 'pull-right'
-			= text_area :text, :placeholder, value: field_value(:text, @linkedin), placeholder: t('users.edit.text_placeholder'), rows: 3, class: 'lead'
