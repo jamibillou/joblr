@@ -46,6 +46,6 @@ Joblr::Application.routes.draw do
     mount FeedbackEmailMailer::Preview => 'feedback_email_mailer'
   end
 
-  # Old beta_invites compatibility
+  # Kludge to preserve compatibility with deprecated BetaInvite model
   get 'beta_invites/(:id)/edit' => 'invite_emails#edit'
 end
