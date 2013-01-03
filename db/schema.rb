@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130102093624) do
+ActiveRecord::Schema.define(:version => 20130103124852) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -26,26 +26,13 @@ ActiveRecord::Schema.define(:version => 20130102093624) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "email_sharings", :force => true do |t|
-    t.integer  "profile_id"
-    t.integer  "author_id"
-    t.string   "author_fullname"
-    t.string   "author_email"
-    t.string   "recipient_fullname"
-    t.string   "recipient_email"
-    t.string   "text"
-    t.string   "status"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-  end
-
   create_table "emails", :force => true do |t|
     t.integer  "recipient_id"
     t.string   "code"
     t.string   "recipient_email"
-    t.boolean  "sent",               :default => false
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
+    t.boolean  "sent",               :default => false
     t.string   "author_fullname"
     t.string   "author_email"
     t.string   "recipient_fullname"
@@ -81,12 +68,12 @@ ActiveRecord::Schema.define(:version => 20130102093624) do
     t.string   "file"
     t.string   "url"
     t.string   "text"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.string   "linkedin_url"
     t.string   "twitter_url"
     t.string   "facebook_url"
     t.string   "google_url"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -106,10 +93,10 @@ ActiveRecord::Schema.define(:version => 20130102093624) do
     t.string   "city"
     t.string   "country"
     t.string   "subdomain"
-    t.boolean  "admin",                  :default => false
-    t.boolean  "social",                 :default => false
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
+    t.boolean  "admin",                  :default => false
+    t.boolean  "social",                 :default => false
   end
 
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
