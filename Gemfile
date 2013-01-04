@@ -51,4 +51,5 @@ group :test do
   gem 'capybara-webkit'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
+  gem 'fuubar'
 end
