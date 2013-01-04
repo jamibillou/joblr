@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(:version => 20130103182119) do
     t.integer  "recipient_id"
     t.string   "code"
     t.string   "recipient_email"
-    t.boolean  "sent",               :default => false
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
+    t.boolean  "sent",               :default => false
     t.string   "author_fullname"
     t.string   "author_email"
     t.string   "recipient_fullname"
@@ -66,12 +66,12 @@ ActiveRecord::Schema.define(:version => 20130103182119) do
     t.string   "quality_3"
     t.string   "file"
     t.string   "url"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.string   "linkedin_url"
     t.string   "twitter_url"
     t.string   "facebook_url"
     t.string   "google_url"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -91,10 +91,10 @@ ActiveRecord::Schema.define(:version => 20130103182119) do
     t.string   "city"
     t.string   "country"
     t.string   "subdomain"
-    t.boolean  "admin",                  :default => false
-    t.boolean  "social",                 :default => false
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
+    t.boolean  "admin",                  :default => false
+    t.boolean  "social",                 :default => false
   end
 
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
