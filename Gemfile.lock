@@ -321,7 +321,7 @@ DEPENDENCIES
   roadie
   rspec-rails
   sass-rails
-  selenium-webdriver (= 2.24)
+  selenium-webdriver
   shoulda-matchers
   spork
   therubyracer

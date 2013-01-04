@@ -42,7 +42,7 @@ group :development do
   gem 'faker'
 end
 
-group :test, :development do
+group :test do
   gem 'rspec-rails'
   gem 'spork'
   gem 'autotest'
@@ -50,6 +50,6 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'capybara-webkit'
-  gem 'selenium-webdriver', '2.24'
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers'
 end
