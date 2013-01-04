@@ -39,6 +39,7 @@ group :development do
   gem 'heroku'
   gem 'annotate'
   gem 'faker'
+  gem 'parallel_tests'
 end
 
 group :test do
