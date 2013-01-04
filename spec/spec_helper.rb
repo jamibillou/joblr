@@ -1,7 +1,6 @@
 require 'spork'
 
 Spork.prefork do
-
   # This file is copied to spec/ when you run 'rails generate rspec:install'
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
@@ -31,7 +30,6 @@ Spork.prefork do
   Rails.logger.level = 4
 
   RSpec.configure do |config|
-
     # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures.
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -46,6 +44,7 @@ Spork.prefork do
     # Run specs in random order to surface order dependencies.
     config.order = 'random'
 
+    # Lower garbage collection frequency
     config.before(:all) do
       DeferredGarbageCollection.start
     end

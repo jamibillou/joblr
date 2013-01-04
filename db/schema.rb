@@ -26,19 +26,6 @@ ActiveRecord::Schema.define(:version => 20130103182119) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "email_sharings", :force => true do |t|
-    t.integer  "profile_id"
-    t.integer  "author_id"
-    t.string   "author_fullname"
-    t.string   "author_email"
-    t.string   "recipient_fullname"
-    t.string   "recipient_email"
-    t.string   "text"
-    t.string   "status"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-  end
-
   create_table "emails", :force => true do |t|
     t.integer  "recipient_id"
     t.string   "code"
