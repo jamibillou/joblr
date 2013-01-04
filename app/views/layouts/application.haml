@@ -11,13 +11,14 @@
     = javascript_include_tag 'application'
     = javascript_tag '$.fx.off = true;' if Rails.env.test?
     = csrf_meta_tags
-    = mixpanel_init
     - if Rails.env.production?
       = analytics_init
       - if request.subdomain.include? 'staging'
-        = kiss_init :staging
+        = mixpanel_init :staging
+        = kiss_init     :staging
       - else
-        = kiss_init :production
+        = mixpanel_init :production
+        = kiss_init     :production
 
   %body
     %header.navbar.navbar-fixed-top
