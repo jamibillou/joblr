@@ -21,18 +21,10 @@ gem 'roadie'
 gem 'thin'
 gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
 gem 'curb'
+gem 'newrelic_rpm'
 
 group :production, :staging do
   gem 'google-analytics-rails'
-end
-
-group :assets do
-  gem 'sass-rails'
-  gem 'bootstrap-sass', '2.1.0.0'
-  gem 'font-awesome-sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-  gem 'therubyracer'
 end
 
 group :development do
@@ -53,4 +45,13 @@ group :test do
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'fuubar'
+end
+
+group :assets do
+  gem 'sass-rails'
+  gem 'bootstrap-sass', '2.1.0.0'
+  gem 'font-awesome-sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
+  gem 'therubyracer'
 end
