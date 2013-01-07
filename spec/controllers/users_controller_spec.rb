@@ -47,8 +47,8 @@ describe UsersController do
             find('a.btn.btn-primary').should have_content I18n.t('users.show.contact')
           end
 
-          it 'should have a send button' do
-            find('a.btn.btn-default').should have_content I18n.t('users.show.send')
+          it 'should have a share button' do
+            find('a.btn.btn-default').should have_content I18n.t('users.show.share')
           end
 
           it 'should have a profile email modal' do
