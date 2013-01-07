@@ -97,7 +97,7 @@ describe PagesController do
 				it { response.should be_success }
 
 				it 'should have an admin block' do
-					response.body.should have_selector 'div.admin'
+					response.body.should have_selector 'div#admin'
 				end
 
 				it 'should have kissmetrics event' do
