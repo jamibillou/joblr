@@ -59,9 +59,6 @@
 // ---------------
 
 .admin{
-  .hero-unit{
-    margin-bottom:25px;
-  }
   td{
     text-align:center;
     p{
@@ -74,19 +71,12 @@
 // Style tile
 // ----------
 
-#style-tile{
+#style-tile, #admin-tiles{
   .well{
-    width:150px;
-    height:150px;
-    margin:13px 25px 10px 0;
     padding:10px;
     border:0;
     @include box-shadow(0 1px 2px 1px #ddd);
     display:inline-block;
-    div{
-      width:inherit;
-      height:inherit;
-    }
     .background-light{
       background-color:$bodyBackground;
     }
@@ -104,6 +94,33 @@
     }
     .blue{
       background-color:$blue;
+    }
+  }
+}
+#style-tile{
+  .well{
+    width:150px;
+    height:150px;
+    margin:13px 25px 10px 0;
+    div{
+      width:inherit;
+      height:inherit;
+    }
+  }
+}
+#admin-tiles{
+  .well{
+    margin-bottom:25px;
+    .hero-unit{
+      padding:60px 5% 60px 20%;
+      margin:0;
+      border:0;
+      &.grayDark div, &.grayDark h1{
+        color:$white;
+      }
+      &.grayDark div{
+        font-weight:100;
+      }
     }
   }
 }

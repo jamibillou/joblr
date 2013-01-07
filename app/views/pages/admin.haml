@@ -1,40 +1,25 @@
 .row-fluid.admin
   .span12
-    .row-fluid
-      .span4
-        .hero-unit
+    .row-fluid#admin-tiles
+      .span3.well
+        .hero-unit.white
           %h1= InviteEmail.count
           .big invites
           %br/
-      .span4
-        .hero-unit
+      .span3.well
+        .hero-unit.background-light
           %h1= User.count
           .big users
           %br/
-      .span4
-        .hero-unit
-          %h1= User.select{|user| user.social?}.count
-          .big
-            social
-            %br/
-            users
-    .row-fluid
-      .span4
-        .hero-unit
+      .span3.well
+        .hero-unit.background-dark
           %h1= User.select{|user| signed_up?(user)}.count
-          .big
-            completed
-            %br/
-            profiles
-      .span4
-        .hero-unit
-          %h1= ProfileEmail.count
-          .big profile emails
+          .big profiles
           %br/
-      .span4
-        .hero-unit
-          %h1= User.select{|user| user.admin?}.count
-          .big admins
+      .span3.well
+        .hero-unit.grayDark
+          %h1= ProfileEmail.count
+          .big active
           %br/
 .row-fluid.admin
   = render 'users/index'
