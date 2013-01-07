@@ -53,7 +53,8 @@ GEM
       ZenTest (>= 4.4.1)
     autotest-growl (0.2.16)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.1.0.0)
+    bootstrap-sass (2.2.2.0)
+      sass (~> 3.2)
     builder (3.0.4)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -298,7 +299,7 @@ DEPENDENCIES
   annotate
   autotest
   autotest-growl
-  bootstrap-sass (= 2.1.0.0)
+  bootstrap-sass (= 2.2.2.0)
   capybara
   capybara-webkit
   carrierwave
