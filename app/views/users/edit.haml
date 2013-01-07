@@ -12,12 +12,8 @@
         = render 'edit_buttons',    f: f
 
 - if flash[:notice] == t('devise.registrations.signed_up')
-  = kiss_event('record', 'Signed up')
-  = kiss_event('record', 'Signed up manually')
   = mixpanel_event('Signed up')
-  = mixpanel_event('Signed up manually')  
+  = mixpanel_event('Signed up manually')
 - elsif flash[:success] && flash[:success].match(Regexp.new(t('flash.success.provider.signed_up', provider: '.+')))
-  = kiss_event('record', 'Signed up')
-  = kiss_event('record', 'Signed up with social account')
   = mixpanel_event('Signed up')
-  = mixpanel_event('Signed up with social account') 
+  = mixpanel_event('Signed up with social account')

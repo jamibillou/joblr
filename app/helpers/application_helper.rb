@@ -101,34 +101,4 @@ module ApplicationHelper
         'e70b5bbc81f1c962a60d97a27cfe1552'
     end
   end
-
-  def kiss_init(environment)
-    content_tag(:script, :type => 'text/javascript') do
-      "var _kmq = _kmq || [];
-      var _kmk = _kmk || '#{kiss_key(environment)}';
-      function _kms(u){
-        setTimeout(function(){
-          var d = document, f = d.getElementsByTagName('script')[0],
-          s = d.createElement('script');
-          s.type = 'text/javascript'; s.async = true; s.src = u;
-          f.parentNode.insertBefore(s, f);
-        }, 1);
-      }
-      _kms('//i.kissmetrics.com/i.js');
-      _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');".html_safe
-    end
-  end
-
-  def kiss_event(type, value)
-    content_tag(:script, :type => 'text/javascript') { "_kmq.push(['#{type}', '#{value}']);".html_safe } if Rails.env.production? || Rails.env.test?
-  end
-
-  def kiss_key(environment)
-    case environment
-      when :production
-        'e8e98ddeeceb420cd63d5953d02ac7558550011a'
-      when :staging
-        '970f5363f87388ae16820996704438e1bedb68c2'
-    end
-  end
 end

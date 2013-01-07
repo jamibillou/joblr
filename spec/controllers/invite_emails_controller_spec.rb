@@ -167,11 +167,6 @@ describe InviteEmailsController do
   describe "GET 'thank_you'" do
     it { get :thank_you, invite_email_id: @invite_email ; be_success }
 
-    it 'should have kissmetrics event' do
-      get :thank_you, invite_email_id: @invite_email
-      response.body.should have_content "_kmq.push(['record', 'Requested an invitation'])"
-    end
-
     it 'should have mixpanel event' do
       get :thank_you, invite_email_id: @invite_email
       response.body.should have_content "mixpanel.track('Requested an invitation')"
@@ -280,10 +275,6 @@ describe InviteEmailsController do
 
       it 'should have a code text field' do
         response.body.should have_selector 'input#invite_email_code'
-      end
-
-      it 'should have kissmetrics event' do
-        response.body.should have_content "_kmq.push(['record', 'Viewed use invite page'])"
       end
 
       it 'should have mixpanel event' do

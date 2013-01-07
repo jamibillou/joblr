@@ -15,10 +15,8 @@
       = analytics_init
       - if request.subdomain.include? 'staging'
         = mixpanel_init :staging
-        = kiss_init     :staging
       - else
         = mixpanel_init :production
-        = kiss_init     :production
 
   %body
     %header.navbar.navbar-fixed-top
@@ -36,4 +34,3 @@
       = render 'layouts/footer'
 
   = mixpanel_people(current_user) if user_signed_in?
-  = kiss_event('identity', current_user.username) if user_signed_in?

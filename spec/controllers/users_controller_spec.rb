@@ -55,9 +55,9 @@ describe UsersController do
             find('div#profile-email-modal').should have_content I18n.t('profile_emails.new.title')
           end
 
-          it 'should have kissmetrics event' do
+          it 'should have mixpanel event' do
             get :show, id: @user
-            response.body.should have_content "_kmq.push(['record', 'Viewed profile (public user)'])"
+            response.body.should have_content "mixpanel.track('Viewed profile (public user)')"
           end
         end
       end
@@ -199,10 +199,6 @@ describe UsersController do
             sign_out @user
             sign_in  @user2
             get :show, id: @user
-          end
-
-          it 'should have kissmetrics event' do
-            response.body.should have_content "_kmq.push(['record', 'Viewed profile (other user)'])"
           end
 
           it 'should have mixpanel event' do

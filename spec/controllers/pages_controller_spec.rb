@@ -33,10 +33,6 @@ describe PagesController do
 				response.body.should include I18n.t('pages.landing.disclaimer_html')
 			end
 
-			it 'should have kissmetrics event' do
-				response.body.should have_content "_kmq.push(['record', 'Viewed landing page'])"
-			end
-
 			it 'should have mixpanel event' do
 				response.body.should have_content "mixpanel.track('Viewed landing page')"
 			end
@@ -46,10 +42,6 @@ describe PagesController do
 			before :each do
 				sign_in @user
 				get :landing
-			end
-
-			it 'should have kissmetrics event' do
-				response.body.should have_content "_kmq.push(['identity', '#{@user.username}'])"
 			end
 
 			it 'should have mixpanel event' do
@@ -98,10 +90,6 @@ describe PagesController do
 
 				it 'should have an admin block' do
 					response.body.should have_selector 'div#admin'
-				end
-
-				it 'should have kissmetrics event' do
-					response.body.should have_content "_kmq.push(['identity', '#{@admin.username}'])"
 				end
 			end
 		end
