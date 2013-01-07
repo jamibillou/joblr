@@ -22,10 +22,10 @@
     .span6
       .pull-right
         .social-links
-          %h5 Follow us
+          %h5=t 'footer.follow_us.title'
           %a{href: 'http://twitter.com/joblr_co', target: 'blank'}
-            .icon-twitter{rel: 'tooltip', title: 'Joblr on Twitter'}
+            .icon-twitter{rel: 'tooltip', title: t('footer.follow_us.joblr_on', provider: 'Twitter')}
           %a{href: 'http://fb.me/joblr.co', target: 'blank'}
-            .icon-facebook{rel: 'tooltip', title: 'Joblr on Facebook'}
+            .icon-facebook{rel: 'tooltip', title: t('footer.follow_us.joblr_on', provider: 'Facebook')}
           %a{href: 'http://linkedin.com/company/joblr', target: 'blank'}
-            .icon-linkedin{rel: 'tooltip', title: 'Joblr on LinkedIn'}
+            .icon-linkedin{rel: 'tooltip', title: t('footer.follow_us.joblr_on', provider: 'LinkedIn')}

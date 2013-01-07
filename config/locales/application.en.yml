@@ -46,7 +46,7 @@ en:
         required: "You need an invitation to sign up, you can ask for one here."
         user_exists: "There is already a user with this email address. Did you already sign up?"
   footer:
-    joblr_in: "Joblr in"
+    joblr_in: "Language:"
     locales:
       en: "english"
       fr: "french"
@@ -54,6 +54,9 @@ en:
       title: 'Help us make Joblr better'
       placeholder: 'Let us know about your ideas, questions, complaints, etc.'
       thank_you: 'Thank you!'
+    follow_us:
+      title: 'Follow us'
+      joblr_on: 'on %{provider}'
   errors:
     error_404:
       title: "The page you were looking for doesn't exist (404)"
