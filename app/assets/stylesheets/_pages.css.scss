@@ -120,4 +120,12 @@
   .tabbable{
     margin-top:35px;
   }
+  td.actions{
+    a{
+      margin-right: 10px;
+      &:hover{
+        text-decoration:none;
+      }
+    }
+  }
 }

@@ -1,60 +1,40 @@
 %table.table.table-striped
   %thead
     %tr
-      .span1
-        %td{style: 'text-align:left'}
-          %h5 Full name
-      .span1
-        %td{style: 'text-align:left'}
-          %h5 Username
-      .span1
-        %td
-          %h5 Signed in
-      .span1
-        %td
-          %h5 Last signed in
-      .span1
-        %td
-          %h5 Signed up
-      .span1
-        %td
-          %h5 Shared by user
-      .span1
-        %td
-          %h5 Shared by others
-      .span1
-        %td
-          %h5 Services
-      .span1
-        %td
-          %h5 Delete
+      %td
+        %h5 Full name
+      %td
+        %h5 Signed up
+      %td
+        %h5 Signed in
+      %td
+        %h5 Completed profile
+      %td
+        %h5 Profile emails
+      %td
+        %h5 Actions
   %tbody
     - @users.each do |user|
       %tr
-        .span1
-          %td{style: 'text-align:left'}
-            = user.fullname
-        .span1
-          %td{style: 'text-align:left'}
-            = user.username
-        .span1
-          %td
-            = user.sign_in_count
-        .span1
-          %td
-            = time_ago_in_words(user.last_sign_in_at).gsub('about', '') unless user.last_sign_in_at.nil?
-        .span1
-          %td
-            %span{class: "#{signed_up?(user) ? 'success-text' : 'danger-text'}"}= signed_up?(user)
-        .span1
-          %td
-            = user.authored_emails.where(type: 'ProfileEmail').count
-        .span1
-          %td
-            = user.profile.public_profile_emails.count unless user.profile.nil?
-        .span1
-          %td
-            = user.authentications.count
-        .span1
-          %td
-            = link_to "<div class='icon-trash danger-text'></div>".html_safe, user, method: :delete, data: {confirm: t('users.destroy.yes_delete')}
+        %td
+          = user.fullname
+        %td
+          = user.created_at.to_formatted_s :short
+        %td
+          = "#{time_ago_in_words(user.last_sign_in_at)} ago (#{user.sign_in_count} total)" unless user.last_sign_in_at.nil?
+        %td
+          %span{class: "#{signed_up?(user) ? 'success-text' : 'danger-text'}"}= signed_up?(user)
+        %td
+          - unless user.profile.nil?
+            - user_profile_emails = ProfileEmail.where(author_id: user.id, profile_id: user.profile.id).count
+            - if user_profile_emails > 0
+              - all_profile_emails = ProfileEmail.where(profile_id: user.profile.id).count
+              .success-text
+                = "#{user_profile_emails} themselves (#{all_profile_emails} total)"
+            - else
+              .danger-text none
+        %td.actions
+          - unless user.profile.nil?
+            %a{href: "#{user_path(user)}", target: '_blank'}
+              .icon-eye-open.graydark-text
+          = link_to "<div class='icon-trash danger-text'></div>".html_safe, user, method: :delete, data: {confirm: t('users.destroy.yes_delete')}

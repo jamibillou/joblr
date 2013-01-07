@@ -14,13 +14,13 @@
             %br/
         .span3.well
           .hero-unit.background-dark
-            %h1= User.select{|user| signed_up?(user)}.count
+            %h1= User.all.select{|user| signed_up?(user)}.count
             .big profiles
             %br/
         .span3.well
           .hero-unit.grayDark
-            %h1= ProfileEmail.count
-            .big active
+            %h1= ProfileEmail.all.select{|pe| pe.profile.user.id == pe.author_id}.map{|pe| pe.author_id}.uniq.count
+            .big actived
             %br/
   .row-fluid
     .tabbable

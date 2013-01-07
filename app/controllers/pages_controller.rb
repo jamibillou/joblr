@@ -7,8 +7,8 @@ class PagesController < ApplicationController
   end
 
   def admin
-    @users           = User.all
-    @invite_emails    = InviteEmail.all
+    @users         = User.all
+    @invite_emails = InviteEmail.all
   end
 
   def style_tile
