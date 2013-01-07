@@ -1,58 +1,27 @@
 %table.table.table-striped
   %thead
     %tr
-      .span1
-        %td{style: 'text-align:left'}
-          %h5 Date
-      .span1
-        %td{style: 'text-align:left'}
-          %h5 Email
-      .span1
-        %td
-          %h5 Used
-      .span1
-        %td
-          %h5 Full name
-      .span1
-        %td
-          %h5 Username
-      .span1
-        %td
-          %h5 Signed up
-      .span1
-        %td
-          %h5 Delete
-      .span1
-        %td{style: 'text-align:right'}
-          %h5 Email
+      %td
+        %h5 Requested
+      %td
+        %h5 Email
+      %td
+        %h5 Used
+      %td
+        %h5 Actions
   %tbody
     - @invite_emails.each do |invite_email|
       %tr
-        .span1
-          %td{style: 'text-align:left'}
-            = invite_email.created_at
-        .span1
-          %td{style: 'text-align:left'}
-            = invite_email.recipient_email
-        .span1
-          %td
-            %span{class: "#{invite_email.used? ? 'success-text' : 'danger-text'}"}= invite_email.used?
-        .span1
-          %td
-            = invite_email.recipient.fullname if invite_email.used?
-        .span1
-          %td
-            = invite_email.recipient.username if invite_email.used?
-        .span1
-          %td
-            - if invite_email.used?
-              %span{class: "#{signed_up?(invite_email.recipient) ? 'success-text' : 'danger-text'}"}= signed_up?(invite_email.recipient)
-        .span1
-          %td
-            = link_to "<div class='icon-trash danger-text'></div>".html_safe, invite_email, method: :delete, confirm: t('invite_emails.destroy.yes_delete')
-        .span1
-          %td{style: 'text-align:right'}
-            - unless invite_email.sent?
-              = link_to "<div class='icon-envelope'></div>".html_safe, "/invite_emails/#{invite_email.id}/send_code", data: {confirm: t('invite_emails.send_code.yes_send', email: invite_email.recipient_email)}, class: 'danger-text'
-            - else
-              .icon-envelope.success-text
+        %td
+          = invite_email.created_at.to_formatted_s :short
+        %td
+          = invite_email.recipient_email
+        %td
+          %span{class: "#{invite_email.used? ? 'success-text' : 'danger-text'}"}= invite_email.used?
+        %td.actions
+          - unless invite_email.sent?
+            = link_to "<div class='icon-envelope graydark-text'></div>".html_safe, "/invite_emails/#{invite_email.id}/send_code", data: {confirm: t('invite_emails.send_code.yes_send', email: invite_email.recipient_email)}
+          - else
+            %a
+              .icon-envelope.graylight-text
+          = link_to "<div class='icon-trash danger-text'></div>".html_safe, invite_email, method: :delete, confirm: t('invite_emails.destroy.yes_delete')
