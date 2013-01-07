@@ -75,15 +75,15 @@ module ApplicationHelper
   end
 
   def mixpanel_event(value)
-    content_tag(:script, type: 'text/javascript') {"mixpanel.track('#{value}');".html_safe}
+    content_tag(:script, type: 'text/javascript') {"mixpanel.track('#{value}');".html_safe} if Rails.env.production?
   end
 
   def mixpanel_identify(id)
-    content_tag(:script, type: 'text/javascript') {"mixpanel.identify('#{id}');".html_safe}
+    content_tag(:script, type: 'text/javascript') {"mixpanel.identify('#{id}');".html_safe} if Rails.env.production?
   end
 
   def mixpanel_people(user)
-    if Rails.env.production? || Rails.env.test?
+    if Rails.env.production?
       content_tag(:script, type: 'text/javascript') {
         "mixpanel.people.set({
           $email: '#{user.email}',
@@ -100,7 +100,7 @@ module ApplicationHelper
       when :staging
         'e70b5bbc81f1c962a60d97a27cfe1552'
     end
-  end    
+  end
 
   def kiss_init(environment)
     content_tag(:script, :type => 'text/javascript') do
