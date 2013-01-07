@@ -9,12 +9,12 @@ fr:
       benefit1_title: "Allez à l'essentiel"
       benefit1_text: "Votre profil ne prend que 5 secondes à lire et contient toutes les informations essentielles pour comprendre vos compétences."
       benefit2_title: "Rapide des deux côtés"
-      benefit2_text: "Il suffit de deux clics pour envoyer votre candidature, même chose pour les recruteurs et leur réponse. Le temps est précieux."
+      benefit2_text: "Il suffit de deux clics pour envoyer votre candidature, même chose pour les recruteurs et leur réponse. Le temps est précieux pour tout le monde."
       benefit3_title: "Inscription simplissime"
       benefit3_text_html: "Importez votre parcours depuis LinkedIn et c'est parti ! Une inscription simplifiée qui n'empiette pas sur vos recherches. "
       benefit4_title: "Un job autour de vous"
       benefit4_text: "Votre entourage a peut être les clés de votre prochain poste. Partagez votre profil Joblr et profitez du bouche à oreille."
-      disclaimer_html: "<b>Remarque : </b> Notre modèle économique est pour le moment en cours d'élaboration, la version beta de Joblr est donc gratuite jusqu'à nouvel ordre."
+      disclaimer_html: "<b>Remarque : </b> Nos tarifs sont pour le moment en cours de réflexion, la version beta est donc gratuite jusqu'à nouvel ordre."
     admin:
       title: 'Tableau de bord admin'
       title_alt: 'Admin'
