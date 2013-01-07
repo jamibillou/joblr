@@ -75,15 +75,15 @@ module ApplicationHelper
   end
 
   def mixpanel_event(value)
-    content_tag(:script, type: 'text/javascript') {"mixpanel.track('#{value}');".html_safe} if Rails.env.production?
+    content_tag(:script, type: 'text/javascript') {"mixpanel.track('#{value}');".html_safe} if Rails.env.production? || Rails.env.test?
   end
 
   def mixpanel_identify(id)
-    content_tag(:script, type: 'text/javascript') {"mixpanel.identify('#{id}');".html_safe} if Rails.env.production?
+    content_tag(:script, type: 'text/javascript') {"mixpanel.identify('#{id}');".html_safe} if Rails.env.production? || Rails.env.test?
   end
 
   def mixpanel_people(user)
-    if Rails.env.production?
+    if Rails.env.production? || Rails.env.test?
       content_tag(:script, type: 'text/javascript') {
         "mixpanel.people.set({
           $email: '#{user.email}',
