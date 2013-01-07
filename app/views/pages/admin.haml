@@ -1,26 +1,34 @@
-.row-fluid.admin
-  .span12
-    .row-fluid#admin-tiles
-      .span3.well
-        .hero-unit.white
-          %h1= InviteEmail.count
-          .big invites
-          %br/
-      .span3.well
-        .hero-unit.background-light
-          %h1= User.count
-          .big users
-          %br/
-      .span3.well
-        .hero-unit.background-dark
-          %h1= User.select{|user| signed_up?(user)}.count
-          .big profiles
-          %br/
-      .span3.well
-        .hero-unit.grayDark
-          %h1= ProfileEmail.count
-          .big active
-          %br/
-.row-fluid.admin
-  = render 'users/index'
-  = render 'invite_emails/index'
+#admin
+  .row-fluid
+    .span12
+      .row-fluid#tiles
+        .span3.well
+          .hero-unit.white
+            %h1= InviteEmail.count
+            .big invites
+            %br/
+        .span3.well
+          .hero-unit.background-light
+            %h1= User.count
+            .big users
+            %br/
+        .span3.well
+          .hero-unit.background-dark
+            %h1= User.select{|user| signed_up?(user)}.count
+            .big profiles
+            %br/
+        .span3.well
+          .hero-unit.grayDark
+            %h1= ProfileEmail.count
+            .big active
+            %br/
+  .row-fluid
+    .tabbable
+      %ul.nav.nav-pills
+        %li.active= link_to 'Users', '#users',   'data-toggle' => 'tab'
+        %li= link_to 'Invites',      '#invites', 'data-toggle' => 'tab'
+      .tab-content
+        .tab-pane.active#users
+          = render 'users/index'
+        .tab-pane#invites
+          = render 'invite_emails/index'

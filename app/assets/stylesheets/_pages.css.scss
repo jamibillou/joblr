@@ -55,23 +55,10 @@
 }
 
 
-// Admin dashboard
-// ---------------
-
-.admin{
-  td{
-    text-align:center;
-    p{
-      margin-bottom:0;
-    }
-  }
-}
-
-
 // Style tile
 // ----------
 
-#style-tile, #admin-tiles{
+#style-tile, #admin #tiles{
   .well{
     padding:10px;
     border:0;
@@ -108,20 +95,29 @@
     }
   }
 }
-#admin-tiles{
-  .well{
-    margin-bottom:25px;
-    .hero-unit{
-      padding:60px 5% 60px 20%;
-      margin:0;
-      border:0;
-      &.grayDark div, &.grayDark h1{
-        color:$white;
-      }
-      &.grayDark div{
-        font-weight:100;
+
+
+// Admin dashboard
+// ---------------
+
+#admin{
+  #tiles{
+    .well{
+      margin-bottom:25px;
+      .hero-unit{
+        padding:60px 5% 60px 20%;
+        margin:0;
+        border:0;
+        &.grayDark div, &.grayDark h1{
+          color:$white;
+        }
+        &.grayDark div{
+          font-weight:100;
+        }
       }
     }
   }
+  .tabbable{
+    margin-top:35px;
+  }
 }
-
