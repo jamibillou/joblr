@@ -82,7 +82,7 @@ module ApplicationHelper
     content_tag(:script, type: 'text/javascript') {"mixpanel.identify('#{id}');".html_safe} if Rails.env.production? || Rails.env.test?
   end
 
-  def mixpanel_nametag(name)
+  def mixpanel_name_tag(name)
     content_tag(:script, type: 'text/javascript') {"mixpanel.name_tag('#{name}');".html_safe} if Rails.env.production? || Rails.env.test?
   end
 
