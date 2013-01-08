@@ -2,11 +2,11 @@
   %thead
     %tr
       %td
-        %h5 Full name
-      %td
         %h5 Signed up
       %td
-        %h5 First signed in
+        %h5 Full name
+      %td
+        %h5 Last signed in
       %td
         %h5 Count
       %td
@@ -21,9 +21,9 @@
     - @users.each do |user|
       %tr
         %td
-          = user.fullname
-        %td
           = user.created_at.to_formatted_s :short
+        %td
+          = user.fullname
         %td
           = "#{time_ago_in_words(user.last_sign_in_at)} ago" unless user.last_sign_in_at.nil?
         %td
