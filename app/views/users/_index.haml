@@ -6,11 +6,15 @@
       %td
         %h5 Signed up
       %td
-        %h5 Signed in
+        %h5 First signed in
       %td
-        %h5 Completed profile
+        %h5 Count
       %td
-        %h5 Profile emails
+        %h5 Profile
+      %td
+        %h5 Applications
+      %td
+        %h5 Profile shared
       %td
         %h5 Actions
   %tbody
@@ -21,18 +25,29 @@
         %td
           = user.created_at.to_formatted_s :short
         %td
-          = "#{time_ago_in_words(user.last_sign_in_at)} ago (#{user.sign_in_count} total)" unless user.last_sign_in_at.nil?
+          = "#{time_ago_in_words(user.last_sign_in_at)} ago" unless user.last_sign_in_at.nil?
+        %td
+          = user.sign_in_count
         %td
           %span{class: "#{signed_up?(user) ? 'success-text' : 'danger-text'}"}= signed_up?(user)
         %td
           - unless user.profile.nil?
-            - user_profile_emails = ProfileEmail.where(author_id: user.id, profile_id: user.profile.id).count
-            - if user_profile_emails > 0
-              - all_profile_emails = ProfileEmail.where(profile_id: user.profile.id).count
-              .success-text
-                = "#{user_profile_emails} themselves (#{all_profile_emails} total)"
+            - application_emails = ProfileEmail.where(author_id: user.id, profile_id: user.profile.id).count
+            - if application_emails > 0
+              .success-text= application_emails
             - else
               .danger-text none
+          - else
+            n/a
+        %td
+          - unless user.profile.nil?
+            - all_profile_emails = ProfileEmail.where(profile_id: user.profile.id).count
+            - if all_profile_emails > 0
+              .success-text= all_profile_emails
+            - else
+              .danger-text none
+          - else
+            n/a
         %td.actions
           - unless user.profile.nil?
             %a{href: "#{user_path(user)}", target: '_blank'}

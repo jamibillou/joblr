@@ -2,26 +2,44 @@
   .row-fluid
     .span12
       .row-fluid#tiles
-        .span3.well
+        .span2.well
           .hero-unit.white
-            %h1= InviteEmail.count
+            %h1= @invites_count
             .big invites
             %br/
-        .span3.well
+        .span1
+          %h5.conversion
+            = @invites_count != 0 ? "#{@users_count * 100 / @invites_count}%" : 'n/a'
+            .icon-chevron-right
+        .span2.well
           .hero-unit.background-light
-            %h1= User.count
+            %h1= @users_count
             .big users
             %br/
-        .span3.well
+        .span1
+          %h5.conversion
+            = @users_count != 0 ? "#{@profiles_count * 100 / @users_count}%" : 'n/a'
+            .icon-chevron-right
+        .span2.well
           .hero-unit.background-dark
-            %h1= User.all.select{|user| signed_up?(user)}.count
+            %h1= @profiles_count
             .big profiles
             %br/
-        .span3.well
+        .span1
+          %h5.conversion
+            = @profiles_count != 0 ? "#{@activation_count * 100 / @profiles_count}%" : 'n/a'
+            .icon-chevron-right
+        .span2.well
           .hero-unit.grayDark
-            %h1= ProfileEmail.all.select{|pe| pe.profile.user.id == pe.author_id}.map{|pe| pe.author_id}.uniq.count
+            %h1= @activation_count
             .big actived
             %br/
+        .span1
+          %h5.conversion.total
+            total:
+            %br/
+            .icon-filter
+            = @invites_count != 0 ? "#{@activation_count * 100 / @invites_count}%" : 'n/a'
   .row-fluid
     .tabbable
       %ul.nav.nav-pills
