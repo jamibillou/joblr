@@ -1,0 +1,20 @@
+- @dates.each do |date|
+  %h2= t("date.month_names")[date.first].capitalize+" #{date.second}"
+  %br/
+  %table.table.table-striped
+    %thead
+      %tr
+        %td
+          %h5=t 'profile_emails.index.sent_on'
+        %td 
+          %h5=t 'profile_emails.index.recipient_fullname'
+        %td
+          %h5=t 'profile_emails.index.recipient_email'
+        %td
+    %tbody
+      - current_user.get_profiles_emails_by_date(date.first,date.second).each do |profile_email|
+        %tr
+          %td=profile_email.created_at.strftime("%d-%m-%Y")
+          %td=profile_email.recipient_fullname
+          %td=profile_email.recipient_email
+  %br/

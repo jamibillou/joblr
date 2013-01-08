@@ -33,10 +33,10 @@ class User < ActiveRecord::Base
   attr_accessor   :login
 
   has_many :authentications,        dependent: :destroy
-  has_many :profiles,                 dependent: :destroy
-  has_many :authored_emails,          dependent: :destroy, class_name: 'FromUserEmail', foreign_key: 'author_id'
-  has_many :received_emails,          dependent: :destroy, class_name: 'ToUserEmail',   foreign_key: 'recipient_id'
-  has_one  :invite_email,             dependent: :destroy,                              foreign_key: 'recipient_id'
+  has_many :profiles,               dependent: :destroy
+  has_many :authored_emails,        dependent: :destroy, class_name: 'FromUserEmail', foreign_key: 'author_id'
+  has_many :received_emails,        dependent: :destroy, class_name: 'ToUserEmail',   foreign_key: 'recipient_id'
+  has_one  :invite_email,           dependent: :destroy,                              foreign_key: 'recipient_id'
 
   accepts_nested_attributes_for :profiles, allow_destroy: true
 
@@ -94,6 +94,22 @@ class User < ActiveRecord::Base
 
   def initials
     fullname.parameterize.split('-').map{|name| name.chars.first}.join
+  end
+
+  def get_profile_emails_dates
+    profile_emails.select(:created_at).order('created_at DESC').map{|pe| [pe.created_at.month,pe.created_at.year]}.uniq
+  end
+
+  def get_profiles_emails_by_date(month,year)
+    profile_emails.where('EXTRACT(month from created_at) = ? AND EXTRACT(year from created_at) = ?', month, year).order('created_at DESC')
+  end
+
+  def has_profile_emails?
+    !profile_emails.blank?
+  end
+
+  def profile_emails
+    authored_emails.where("type='ProfileEmail'")
   end
 
   def auth(provider)

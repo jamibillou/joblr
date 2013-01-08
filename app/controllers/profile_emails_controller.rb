@@ -23,7 +23,7 @@ class ProfileEmailsController < ApplicationController
   end
 
   def index
-
+    @dates = current_user.get_profile_emails_dates
   end
 
   private
