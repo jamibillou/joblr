@@ -96,20 +96,17 @@ class User < ActiveRecord::Base
     fullname.parameterize.split('-').map{|name| name.chars.first}.join
   end
 
-  def get_profile_emails_dates
-    profile_emails.select(:created_at).order('created_at DESC').map{|pe| [pe.created_at.month,pe.created_at.year]}.uniq
-  end
-
-  def get_profiles_emails_by_date(month,year)
-    profile_emails.where('EXTRACT(month from created_at) = ? AND EXTRACT(year from created_at) = ?', month, year).order('created_at DESC')
-  end
-
   def has_profile_emails?
-    !profile_emails.blank?
+    !profile_emails.nil?
   end
 
-  def profile_emails
-    authored_emails.where("type='ProfileEmail'")
+  def profile_emails(date = nil)
+    profile_emails = authored_emails.where type: 'ProfileEmail'
+    if date
+      profile_emails.where('EXTRACT(month from created_at) = ? AND EXTRACT(year from created_at) = ?', date[:month], date[:year]).order('created_at DESC')
+    else
+      profile_emails
+    end
   end
 
   def auth(provider)

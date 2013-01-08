@@ -13,7 +13,7 @@
     - @invite_emails.each do |invite_email|
       %tr
         %td
-          = invite_email.created_at.to_formatted_s :short
+          = invite_email.created_at.strftime '%d-%m-%Y'
         %td
           = invite_email.recipient_email
         %td
