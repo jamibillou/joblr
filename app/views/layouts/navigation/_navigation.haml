@@ -7,7 +7,7 @@
 = link_to image_tag('base/logo.png', alt: 'Joblr'), root_path, class: 'brand'
 
 - if user_signed_in?
-  .visible-desktop.nav-collapse= render 'layouts/navigation/left_navigation' if current_user.admin?
+  .visible-desktop.nav-collapse= render 'layouts/navigation/left_navigation'
   .nav-collapse.hidden-desktop= render 'layouts/navigation/mobile_navigation'
   .visible-desktop= render 'layouts/navigation/right_navigation'
 - else

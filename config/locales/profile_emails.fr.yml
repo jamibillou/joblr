@@ -23,3 +23,5 @@ fr:
       title: 'Réponse déjà envoyée'
       thank_you: "Vous avez déjà répondu à %{fullname}, merci encore !"
       close_page: 'Vous pouvez fermer cette page.'
+    index:
+      title: 'Candidatures'

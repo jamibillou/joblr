@@ -43,6 +43,10 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, flash: {error: t('flash.error.only.public')} if user_signed_in?
     end
 
+    def signed_in
+      redirect_to root_path, flash: {error: t('flash.error.only.signed_in')} unless user_signed_in?
+    end
+
     def profile_completed
       unless signed_up?(@user)
         if user_signed_in?

@@ -1,6 +1,7 @@
 fr:
   users:
     show:
+      title: 'Profil'
       experience: 'Expérience'
       yr: 'an'
       last_job: "Poste actuel ou le plus important"

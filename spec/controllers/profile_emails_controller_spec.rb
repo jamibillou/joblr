@@ -487,5 +487,25 @@ describe ProfileEmailsController do
         end
       end
     end
+
+    describe "GET 'index'" do
+
+      context 'for public users' do
+        it 'should redirect to root_path' do
+          get :index
+          response.should redirect_to(root_path)
+          flash[:error].should == I18n.t('flash.error.only.signed_in')
+        end  
+      end
+
+      context 'for signed_in users' do
+        before :each do
+          sign_in @author
+          get :index
+        end 
+
+        it { response.should be_success }
+      end
+    end
   end
 end
