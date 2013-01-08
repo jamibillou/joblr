@@ -1,52 +1,49 @@
-#admin
-  .row-fluid
-    .span12
-      .row-fluid#tiles
-        .span2.well
-          .hero-unit.white
-            %h1= @invites_count
-            .big invites
-            %br/
-        .span1
-          %h5.conversion
-            = @invites_count != 0 ? "#{@users_count * 100 / @invites_count}%" : 'n/a'
-            .icon-chevron-right
-        .span2.well
-          .hero-unit.background-light
-            %h1= @users_count
-            .big users
-            %br/
-        .span1
-          %h5.conversion
-            = @users_count != 0 ? "#{@profiles_count * 100 / @users_count}%" : 'n/a'
-            .icon-chevron-right
-        .span2.well
-          .hero-unit.background-dark
-            %h1= @profiles_count
-            .big profiles
-            %br/
-        .span1
-          %h5.conversion
-            = @profiles_count != 0 ? "#{@activation_count * 100 / @profiles_count}%" : 'n/a'
-            .icon-chevron-right
-        .span2.well
-          .hero-unit.grayDark
-            %h1= @activation_count
-            .big actived
-            %br/
-        .span1
-          %h5.conversion.total
-            total:
-            %br/
-            .icon-filter
-            = @invites_count != 0 ? "#{@activation_count * 100 / @invites_count}%" : 'n/a'
-  .row-fluid
-    .tabbable
-      %ul.nav.nav-pills
-        %li.active= link_to 'Users', '#users',   'data-toggle' => 'tab'
-        %li= link_to 'Invites',      '#invites', 'data-toggle' => 'tab'
-      .tab-content
-        .tab-pane.active#users
-          = render 'users/index'
-        .tab-pane#invites
-          = render 'invite_emails/index'
+.span12#admin
+  .row-fluid#tiles
+    .span2.well
+      .hero-unit.white
+        %h1= @invites_count
+        .big invites
+        %br/
+    .span1
+      %h5.conversion
+        = @invites_count != 0 ? "#{@users_count * 100 / @invites_count}%" : 'n/a'
+        .icon-chevron-right
+    .span2.well
+      .hero-unit.background-light
+        %h1= @users_count
+        .big users
+        %br/
+    .span1
+      %h5.conversion
+        = @users_count != 0 ? "#{@profiles_count * 100 / @users_count}%" : 'n/a'
+        .icon-chevron-right
+    .span2.well
+      .hero-unit.background-dark
+        %h1= @profiles_count
+        .big profiles
+        %br/
+    .span1
+      %h5.conversion
+        = @profiles_count != 0 ? "#{@activation_count * 100 / @profiles_count}%" : 'n/a'
+        .icon-chevron-right
+    .span2.well
+      .hero-unit.grayDark
+        %h1= @activation_count
+        .big actived
+        %br/
+    .span1
+      %h5.conversion.total
+        total:
+        %br/
+        .icon-filter
+        = @invites_count != 0 ? "#{@activation_count * 100 / @invites_count}%" : 'n/a'
+  .tabbable
+    %ul.nav.nav-pills
+      %li.active= link_to 'Users', '#users',   'data-toggle' => 'tab'
+      %li= link_to 'Invites',      '#invites', 'data-toggle' => 'tab'
+    .tab-content
+      .tab-pane.active#users
+        = render 'users/index'
+      .tab-pane#invites
+        = render 'invite_emails/index'
