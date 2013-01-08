@@ -1,6 +1,7 @@
 en:
   users:
     show:
+      title: 'Profile'
       experience: 'Experience'
       yr: 'yr'
       last_job: "Current or most relevant job"

@@ -1,6 +1,7 @@
 class ProfileEmailsController < ApplicationController
 
-  before_filter :load_profile_email, except: :create
+  before_filter :load_profile_email, except: [:create, :index]
+  before_filter :signed_in,          only: :index
 
 	def create
 		@user = User.find params[:user_id]
@@ -19,6 +20,10 @@ class ProfileEmailsController < ApplicationController
       @profile_email.update_attributes status: 'declined'
       deliver_decline
     end
+  end
+
+  def index
+
   end
 
   private

@@ -17,6 +17,9 @@
         = mixpanel_init :staging
       - else
         = mixpanel_init :production
+      - if user_signed_in?
+        = mixpanel_identify(current_user.id) 
+        = mixpanel_name_tag(current_user.fullname)
 
   %body
     %header.navbar.navbar-fixed-top
@@ -33,4 +36,4 @@
     %footer
       = render 'layouts/footer'
 
-  = mixpanel_people(current_user) if user_signed_in?
+

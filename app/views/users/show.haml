@@ -14,7 +14,6 @@
       = render 'profile_email_modal'
 
 - if user_signed_in?
-  = mixpanel_identify(current_user.id)
   - if current_user == @user
     = mixpanel_event('Completed their profile')      if flash[:success] == t('flash.success.profile.created')
     = mixpanel_event('Sent profile by email (user)') if flash[:success] && flash[:success].match(Regexp.new(t('flash.success.profile.shared.user', recipient_email: '.+')))
