@@ -46,6 +46,5 @@
     .span12
       .alert.alert-info=t 'pages.landing.disclaimer_html'
 
-= mixpanel_identify(current_user.username) if user_signed_in?
 = mixpanel_event('Viewed landing page')    if flash.blank?
 = mixpanel_event('Signed in')              if flash[:success] == t('flash.success.provider.signed_in')
