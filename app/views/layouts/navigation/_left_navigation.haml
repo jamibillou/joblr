@@ -1,6 +1,11 @@
 %ul.nav
-	%li= link_to t('users.show.title'), user_path(current_user)
-	%li= link_to t('profile_emails.index.title'), profile_emails_path if current_user.has_authored_profile_emails?
-	- if current_user.admin?
-		%li= link_to t('pages.admin.title_alt'), admin_path
-		%li= link_to t('pages.style_tile.title'), style_tile_path
+  %li= link_to t('users.show.title'), user_path(current_user)
+  %li= link_to t('profile_emails.index.title'), profile_emails_path if current_user.has_authored_profile_emails?
+  - if current_user.admin?
+    %li.dropdown
+      %a.dropdown-toggle{href: '#', 'data-toggle' =>'dropdown'}
+        = t('pages.admin.title')
+        .caret
+      %ul.dropdown-menu
+        %li= link_to t('pages.admin.title_alt'), admin_path
+        %li= link_to t('pages.style_tile.title'), style_tile_path

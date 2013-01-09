@@ -50,6 +50,9 @@
             n/a
         %td.actions
           - unless user.profile.nil?
-            %a{href: "#{user_path(user)}", target: '_blank'}
+            %a{href: "#profile-modal-#{user.id}", 'data-toggle' => 'modal'}
               .icon-eye-open.graydark-text
           = link_to "<div class='icon-trash danger-text'></div>".html_safe, user, method: :delete, data: {confirm: t('users.destroy.yes_delete')}
+
+- @users.each do |user|
+  = render 'profile_modal', user: user

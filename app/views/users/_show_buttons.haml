@@ -11,7 +11,7 @@
     - else
       =t 'users.show.share'
   .explanation
-    - if user_signed_in? && current_user == user && current_user.profile.profile_emails.empty?
+    - if user_signed_in? && current_user == user && !current_user.has_authored_profile_emails?
       %h5=t 'users.show.what_now'
       %p=t 'users.show.user_explanation'
     - elsif !user_signed_in? || current_user != user

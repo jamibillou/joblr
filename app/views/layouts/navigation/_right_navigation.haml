@@ -1,8 +1,8 @@
 %ul.nav.pull-right
   - if user_signed_in?
     %li.dropdown
-      %a.dropdown-toggle{src: '#', 'data-toggle' => 'dropdown'}
-        = image_tag(current_user.image_url(:thumb), style: 'width:28px; height:28px; margin-right:10px') unless current_user.image.blank?
+      %a.dropdown-toggle{href: '#', 'data-toggle' => 'dropdown'}
+        = image_tag(current_user.image_url(:thumb)) unless current_user.image.blank?
         = current_user.fullname
         .caret
       %ul.dropdown-menu

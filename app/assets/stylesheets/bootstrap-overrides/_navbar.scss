@@ -31,13 +31,14 @@
   }
 }
 
-// .caret
-// ------
+// image
+// -----
 
-.navbar .nav li.dropdown .dropdown-toggle .caret, .navbar .nav li.dropdown.open .dropdown-toggle .caret {
-  margin-top:6%;
-  border-top-color:$grayDark;
-  border-bottom-color:$grayDark;
+.navbar .nav img {
+  width:28px;
+  height:28px;
+  margin:-2px 10px 0 0;
+  float:left;
 }
 
 // Navbar button for responsive layouts
