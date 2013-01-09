@@ -16,8 +16,8 @@ fr:
       benefit4_text: "Votre entourage a peut être les clés de votre prochain poste. Partagez votre profil Joblr et profitez du bouche à oreille."
       disclaimer_html: "<b>Remarque : </b> Nos tarifs sont pour le moment en cours de réflexion, la version beta est donc gratuite jusqu'à nouvel ordre."
     admin:
-      title: 'Tableau de bord admin'
-      title_alt: 'Admin'
+      title: 'Admin'
+      title_alt: 'Tableau de bord'
     style_tile:
       title: 'Styles'
     blog:
