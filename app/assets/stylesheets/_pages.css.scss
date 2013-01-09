@@ -58,7 +58,7 @@
 // Style tile
 // ----------
 
-#style-tile, #admin #tiles{
+#style-tile, #admin #conversion-dashboard{
   .well{
     padding:10px;
     border:0;
@@ -101,7 +101,7 @@
 // ---------------
 
 #admin{
-  #tiles{
+  #conversion-dashboard{
     .well{
       margin-bottom:25px;
       .hero-unit{
@@ -135,5 +135,8 @@
         text-decoration:none;
       }
     }
+  }
+  .modal{
+    padding:40px 30px;
   }
 }
