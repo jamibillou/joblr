@@ -79,7 +79,7 @@ class User < ActiveRecord::Base
       username if find_by_username(username).nil?
     end
 
-    def find_first_by_auth_conditions(warden_conditions)
+    def find_first_by_auth_conditions(conditions)
       if login = conditions.delete(:login)
         where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
       else
