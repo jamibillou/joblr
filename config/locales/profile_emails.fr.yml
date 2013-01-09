@@ -25,6 +25,5 @@ fr:
       close_page: 'Vous pouvez fermer cette page.'
     index:
       title: 'Candidatures'
-      sent_on: 'Envoyé le'
-      recipient_fullname: 'Nom et prénom du destinataire'
-      recipient_email: 'Adresse email du destinataire'
+      to_fullname: 'à %{fullname}'
+      on_date: 'le %{date}'
