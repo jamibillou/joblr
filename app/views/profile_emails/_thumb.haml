@@ -1,4 +1,4 @@
-.profile-email-thumb
+.profile-email-thumb{id: "profile-email-#{profile_email.id}"}
   .well
     = simple_format(profile_email.text).html_safe
     = image_tag profile_email.profile.user.image_url :thumb

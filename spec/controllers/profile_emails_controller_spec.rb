@@ -491,20 +491,57 @@ describe ProfileEmailsController do
     describe "GET 'index'" do
 
       context 'for public users' do
+
         it 'should redirect to root_path' do
           get :index
           response.should redirect_to(root_path)
+        end
+
+        it 'should have an error message' do
+          get :index
           flash[:error].should == I18n.t('flash.error.only.signed_in')
-        end  
+        end
       end
 
       context 'for signed_in users' do
+
         before :each do
           sign_in @author
-          get :index
-        end 
+        end
 
-        it { response.should be_success }
+        context 'for users without profile_emails' do
+
+          before :each do
+            @author.authored_profile_emails.each(&:destroy)
+            get :index
+          end
+
+          it 'should redirect to root_path' do
+            response.should redirect_to(root_path)
+          end
+
+          it 'should have an error message' do
+            flash[:error].should == I18n.t('flash.error.profile_email.none')
+          end
+        end
+
+        context 'for users who have profile_emails' do
+
+          before :each do
+            FactoryGirl.create :profile_email, author: @author, profile: @author.profile
+            FactoryGirl.create :profile_email, author: @author, profile: @author.profile
+            FactoryGirl.create :profile_email, author: @author, profile: @author.profile
+            get :index
+          end
+
+          it { response.should be_success }
+
+          it 'should have a thumbnail per authored profile_email' do
+            @author.authored_profile_emails.each do |pe|
+              response.body.should include "profile-email-#{pe.id}"
+            end
+          end
+        end
       end
     end
   end
