@@ -35,54 +35,56 @@ form#new_profile_email{
 #profile-emails{
   #date{
     margin-bottom:20px;
-    h2{
-      margin-bottom:20px;
-    }
-    .miniature{
-      margin:0 20px 15px 0;
+    .profile-email-thumb{
+      margin:16px 20px 15px 0;
       display:inline-block;
-      .well{
-        width:150px;
-        margin-bottom:10px;
-        border-width:3px;
-        border-height:3px;
-        font-size: 4px;
-        line-height:4px;
-        padding:13px 9px;
-        p{
-          margin-bottom:4px;
-        }
-        img{
-          width:25px;
-          height:25px;
-          margin:6px 6px 0 0;
-          float:left;
-        }
-        h2{
-          margin:10px 0 2px 0;
-          font-size:7px;
-          line-height:1;
-        }
-        .fine-line{
-          margin:10px 0 10px 0;
-          border-top:1px solid #eee;
-        }
-        .btn{
-          padding: 0 10px;
-          margin-right:6px;
-          font-size:7px;
-          font-weight:bold;
-          line-height:14px;
-          @include border-radius(3px);
-        }
-        a{
-          font-size:6px;
-          color:$blue;
-          &:hover{
-            text-decoration:none;
-          }
-        }
-      }
+    }
+  }
+}
+
+
+// Thumbnails
+//-----------
+
+.profile-email-thumb .well{
+  width:150px;
+  margin-bottom:10px;
+  border-width:3px;
+  border-height:3px;
+  font-size: 4px;
+  line-height:4px;
+  padding:13px 9px;
+  p{
+    margin-bottom:4px;
+  }
+  img{
+    width:25px;
+    height:25px;
+    margin:6px 6px 0 0;
+    float:left;
+  }
+  h2{
+    margin:10px 0 2px 0;
+    font-size:7px;
+    line-height:1;
+  }
+  .fine-line{
+    margin:21px 0 10px 0;
+    border-top:1px solid #eee;
+  }
+  .btn{
+    padding: 0 10px;
+    margin-right:6px;
+    font-size:7px;
+    font-weight:bold;
+    line-height:14px;
+    @include border-radius(3px);
+  }
+  a{
+    font-size:6px;
+    color:$blue;
+    &:hover{
+      text-decoration:none;
     }
   }
 }

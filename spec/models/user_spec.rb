@@ -172,12 +172,6 @@ describe User do
     end
   end
 
-  describe 'initials method' do
-    it "should be the initials of the user's full name" do
-      @user.initials.should == @user.fullname.parameterize.split('-').map{|name| name.chars.first}.join
-    end
-  end
-
   describe 'has_auth? method' do
     it { @user.has_auth?('twitter').should be_true }
     it { @user.has_auth?('facebook').should be_false }
@@ -202,6 +196,31 @@ describe User do
     it 'google' do
       auth = FactoryGirl.create :authentication, user: @user, provider:'google'
       @user.auth('google').id.should == auth.id
+    end
+  end
+
+  describe 'has_authored_profile_emails? method' do
+
+    context 'for users without profile emails' do
+      it 'should be false' do
+        @profile_email.destroy
+        @user.has_authored_profile_emails?.should be_false
+      end
+    end
+
+    context 'for users with profile emails' do
+      it 'should be true' do
+        @user.has_authored_profile_emails?.should be_true
+      end
+    end
+  end
+
+  describe 'authored_profile_emails_by_date method' # do
+  # end
+
+  describe 'initials method' do
+    it "should be the initials of the user's full name" do
+      @user.initials.should == @user.fullname.parameterize.split('-').map{|name| name.chars.first}.join
     end
   end
 end
