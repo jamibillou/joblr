@@ -1,11 +1,11 @@
 .span12#profile-emails
-  - @profile_emails_by_date.each do |date_hash|
+  - @profile_emails_by_date.each do |profile_emails_hash|
     %br/
     #date
       .row-fluid
         .span12
-          %h2= "#{t('date.month_names')[date_hash[:date][:month]].humanize} #{date_hash[:date][:year]}"
+          %h2= "#{t('date.month_names')[profile_emails_hash[:date][:month]].humanize} #{profile_emails_hash[:date][:year]}"
       .row-fluid
         .span12
-          - date_hash[:profile_emails].each do |profile_email|
+          - profile_emails_hash[:profile_emails].each do |profile_email|
             = render 'profile_emails/thumb', profile_email: profile_email
