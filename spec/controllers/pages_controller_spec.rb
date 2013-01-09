@@ -6,8 +6,8 @@ describe PagesController do
 
 	before :each do
 		@user    = FactoryGirl.create :user
-		@profile = FactoryGirl.create :profile, user: @user
 		@admin   = FactoryGirl.create :user, fullname: FactoryGirl.generate(:fullname), username: FactoryGirl.generate(:username), email: FactoryGirl.generate(:email), admin: true
+		@profile = FactoryGirl.create :profile, user: @user
 	end
 
 	describe "GET 'landing'" do
