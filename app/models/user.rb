@@ -93,8 +93,11 @@ class User < ActiveRecord::Base
   end
 
   def authored_profile_emails_by_date
-    authored_profile_emails.order('created_at DESC').map{|pe| [pe.created_at.month, pe.created_at.year]}.uniq.map do |date|
-      { date: date, profile_emails: authored_profile_emails.where('EXTRACT(month from created_at) = ? AND EXTRACT(year from created_at) = ?', date.first, date.second).order('created_at DESC')}
+    profile_emails = authored_profile_emails.order('created_at DESC')
+
+    profile_emails.map{|pe| {month: pe.created_at.month, year: pe.created_at.year}}.uniq.map do |date|
+      { date: date,
+        profile_emails: profile_emails.select{|pe| pe.created_at.month == date[:month] && pe.created_at.year == date[:year]} }
     end
   end
 

@@ -1,7 +1,8 @@
 class ProfileEmailsController < ApplicationController
 
-  before_filter :load_profile_email, except: [:create, :index]
-  before_filter :signed_in,          only: :index
+  before_filter :load_profile_email,             except: [:create, :index]
+  before_filter :not_answered,                   only: :decline
+  before_filter :signed_in, :has_profile_emails, only: :index
 
 	def create
 		@user = User.find params[:user_id]
@@ -14,12 +15,8 @@ class ProfileEmailsController < ApplicationController
 	end
 
   def decline
-    unless @profile_email.status.nil?
-      redirect_to profile_email_already_answered_path
-    else
-      @profile_email.update_attributes status: 'declined'
-      deliver_decline
-    end
+    @profile_email.update_attributes status: 'declined'
+    deliver_decline
   end
 
   def index
@@ -54,5 +51,13 @@ class ProfileEmailsController < ApplicationController
 
     def load_profile_email
       @profile_email = ProfileEmail.find(params[:profile_email_id])
+    end
+
+    def not_answered
+      redirect_to profile_email_already_answered_path unless @profile_email.status.nil?
+    end
+
+    def has_profile_emails
+      redirect_to root_path, flash: {error: t('flash.error.profile_email.none')} unless current_user.has_authored_profile_emails?
     end
 end

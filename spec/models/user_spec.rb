@@ -215,8 +215,39 @@ describe User do
     end
   end
 
-  describe 'authored_profile_emails_by_date method' # do
-  # end
+  describe 'authored_profile_emails_by_date method' do
+
+    context 'for users without profile emails' do
+      it 'should be empty' do
+        @profile_email.destroy
+        @user.authored_profile_emails_by_date.should be_empty
+      end
+    end
+
+    context 'for users with profile emails' do
+
+      before :each do
+        FactoryGirl.create :profile_email, author: @user, profile: @profile
+        FactoryGirl.create :profile_email, author: @user, profile: @profile
+        FactoryGirl.create :profile_email, author: @user, profile: @profile
+      end
+
+      it 'should have a date_hash with correct content' do
+
+        @user.authored_profile_emails_by_date.each do |profile_emails_hash|
+          profile_emails_hash[:date].class.should          == Hash
+          profile_emails_hash[:date][:month].class.should  == Fixnum
+          profile_emails_hash[:date][:year].class.should   == Fixnum
+
+          profile_emails_hash[:profile_emails].each do |pe|
+            pe.class.should == ProfileEmail
+            profile_emails_hash[:date][:month].should == pe.created_at.month
+            profile_emails_hash[:date][:year].should  == pe.created_at.year
+          end
+        end
+      end
+    end
+  end
 
   describe 'initials method' do
     it "should be the initials of the user's full name" do

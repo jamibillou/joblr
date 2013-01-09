@@ -1,6 +1,6 @@
 class ErrorsController < ApplicationController
 
-	before_filter: :set_honeybadger_context
+	#before_filter: :set_honeybadger_context
 
   def error_404
   	notify_honeybadger(env["action_dispatch.exception"])

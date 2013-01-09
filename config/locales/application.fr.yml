@@ -45,6 +45,8 @@ fr:
         used: "Ce code d'invitation a déjà été utilisé. Vous-êtes vous déjà inscrit ?"
         required: "Il vous faut une invitation pour vous inscrire, vous pouvez en demander une ici."
         user_exists: "Il y a déjà un utilisateur avec cette adresse email. Vous-êtes vous déjà inscrit ?"
+      profile_email:
+        none: "Vous n'avez pas encore envoyé de candidature."
   footer:
     joblr_in: "Langue :"
     locales:
