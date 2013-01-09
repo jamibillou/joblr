@@ -1,27 +1,11 @@
 .span12#profile-emails
-  - @dates.each do |date|
+  - @profile_emails_by_date.each do |date_hash|
+    %br/
     #date
       .row-fluid
         .span12
-          %h2= "#{t('date.month_names')[date[:month]].humanize} #{date[:year]}"
+          %h2= "#{t('date.month_names')[date_hash[:date].first].humanize} #{date_hash[:date].second}"
       .row-fluid
         .span12
-          - current_user.profile_emails(date).each do |profile_email|
-            .miniature
-              .well
-                = simple_format(profile_email.text).html_safe
-                = image_tag profile_email.profile.user.image_url :thumb
-                %h2= current_user.fullname
-                - unless current_user.city.blank? && current_user.country.blank?
-                  .graylight-text
-                    .icon-map-marker
-                    &nbsp;
-                    #{current_user.city}#{', ' unless current_user.city.blank? || current_user.country.blank?}#{current_user.country}
-                %br/
-                %br/
-                %br/
-                .fine-line
-                .btn.btn-primary.disabled Let's talk!
-                %a No, thanks
-              =t 'profile_emails.index.to_fullname', fullname: profile_email.recipient_fullname
-              .graylight-text=t 'profile_emails.index.on_date', date: profile_email.created_at.strftime('%d-%m-%Y')
+          - date_hash[:profile_emails].each do |profile_email|
+            = render 'profile_emails/thumb', profile_email: profile_email

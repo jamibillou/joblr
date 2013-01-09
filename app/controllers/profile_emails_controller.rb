@@ -23,7 +23,7 @@ class ProfileEmailsController < ApplicationController
   end
 
   def index
-    @dates = current_user.profile_emails.order('created_at DESC').map{|pe| {month: pe.created_at.month, year: pe.created_at.year}}.uniq
+    @profile_emails_by_date = current_user.authored_profile_emails_by_date
   end
 
   private

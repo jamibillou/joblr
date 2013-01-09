@@ -32,11 +32,12 @@ class User < ActiveRecord::Base
   # Virtual attribute to authenticate users by username or email
   attr_accessor   :login
 
-  has_many :authentications,        dependent: :destroy
-  has_many :profiles,               dependent: :destroy
-  has_many :authored_emails,        dependent: :destroy, class_name: 'FromUserEmail', foreign_key: 'author_id'
-  has_many :received_emails,        dependent: :destroy, class_name: 'ToUserEmail',   foreign_key: 'recipient_id'
-  has_one  :invite_email,           dependent: :destroy,                              foreign_key: 'recipient_id'
+  has_many :authentications,         dependent: :destroy
+  has_many :profiles,                dependent: :destroy
+  has_many :authored_emails,         dependent: :destroy, class_name: 'FromUserEmail', foreign_key: 'author_id'
+  has_many :received_emails,         dependent: :destroy, class_name: 'ToUserEmail',   foreign_key: 'recipient_id'
+  has_many :authored_profile_emails, dependent: :destroy, class_name: 'ProfileEmail',  foreign_key: 'author_id'
+  has_one  :invite_email,            dependent: :destroy,                              foreign_key: 'recipient_id'
 
   accepts_nested_attributes_for :profiles, allow_destroy: true
 
@@ -79,7 +80,6 @@ class User < ActiveRecord::Base
     end
 
     def find_first_by_auth_conditions(warden_conditions)
-      conditions = warden_conditions.dup
       if login = conditions.delete(:login)
         where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
       else
@@ -92,21 +92,14 @@ class User < ActiveRecord::Base
     profiles.first
   end
 
-  def initials
-    fullname.parameterize.split('-').map{|name| name.chars.first}.join
-  end
-
-  def has_profile_emails?
-    !profile_emails.nil?
-  end
-
-  def profile_emails(date = nil)
-    profile_emails = authored_emails.where type: 'ProfileEmail'
-    if date
-      profile_emails.where('EXTRACT(month from created_at) = ? AND EXTRACT(year from created_at) = ?', date[:month], date[:year]).order('created_at DESC')
-    else
-      profile_emails
+  def authored_profile_emails_by_date
+    authored_profile_emails.order('created_at DESC').map{|pe| [pe.created_at.month, pe.created_at.year]}.uniq.map do |date|
+      { date: date, profile_emails: authored_profile_emails.where('EXTRACT(month from created_at) = ? AND EXTRACT(year from created_at) = ?', date.first, date.second).order('created_at DESC')}
     end
+  end
+
+  def has_authored_profile_emails?
+    !authored_profile_emails.blank?
   end
 
   def auth(provider)
@@ -123,6 +116,10 @@ class User < ActiveRecord::Base
     else
       social
     end
+  end
+
+  def initials
+    fullname.parameterize.split('-').map{|name| name.chars.first}.join
   end
 
   def public_url
