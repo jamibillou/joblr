@@ -55,4 +55,4 @@
           = link_to "<div class='icon-trash danger-text'></div>".html_safe, user, method: :delete, data: {confirm: t('users.destroy.yes_delete')}
 
 - @users.each do |user|
-  = render 'profile_modal', user: user
+  = render 'profile_modal', user: user unless user.profile.nil?

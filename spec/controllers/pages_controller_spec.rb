@@ -5,8 +5,9 @@ describe PagesController do
 	render_views
 
 	before :each do
-		@user  = FactoryGirl.create :user
-		@admin = FactoryGirl.create :user, fullname: FactoryGirl.generate(:fullname), username: FactoryGirl.generate(:username), email: FactoryGirl.generate(:email), admin: true
+		@user    = FactoryGirl.create :user
+		@profile = FactoryGirl.create :profile, user: @user
+		@admin   = FactoryGirl.create :user, fullname: FactoryGirl.generate(:fullname), username: FactoryGirl.generate(:username), email: FactoryGirl.generate(:email), admin: true
 	end
 
 	describe "GET 'landing'" do
