@@ -14,7 +14,7 @@
       %td
         %h5 Applications
       %td
-        %h5 Profile shared
+        %h5 Shared
       %td
         %h5 Actions
   %tbody
@@ -36,7 +36,7 @@
             - if application_emails > 0
               .success-text= application_emails
             - else
-              .danger-text none
+              .danger-text 0
           - else
             n/a
         %td
@@ -45,7 +45,7 @@
             - if all_profile_emails > 0
               .success-text= all_profile_emails
             - else
-              .danger-text none
+              .danger-text 0
           - else
             n/a
         %td.actions
