@@ -1,7 +1,0 @@
-.modal.hide{id: "profile-modal-#{user.id}"}
-  .modal-body
-    = render 'users/show_identity',             user: user
-    = render 'users/show_experience_education', profile: user.profile
-    = render 'users/show_skills',               profile: user.profile
-    = render 'users/show_qualities',            profile: user.profile
-    = render 'users/show_more',                 user: user, profile: user.profile
