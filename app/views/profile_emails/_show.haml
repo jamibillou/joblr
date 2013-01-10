@@ -1,0 +1,11 @@
+= simple_format(profile_email.text).html_safe
+= image_tag profile_email.profile.user.image_url :thumb
+%h2= current_user.fullname
+- unless profile_email.profile.user.city.blank? && profile_email.profile.user.country.blank?
+  .graylight-text
+    .icon-map-marker
+    &nbsp;
+    = "#{profile_email.profile.user.city}#{', ' unless profile_email.profile.user.city.blank? || profile_email.profile.user.country.blank?}#{profile_email.profile.user.country}"
+.fine-line
+.btn.btn-large.btn-primary.disabled Let's talk!
+%a No, thanks

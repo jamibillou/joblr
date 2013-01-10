@@ -8,4 +8,15 @@
       .row-fluid
         .span12
           - profile_emails_hash[:profile_emails].each do |profile_email|
-            = render 'profile_emails/thumb', profile_email: profile_email
+            %a{href: "#profile-email-modal-#{profile_email.id}", 'data-toggle' => 'modal'}
+              .profile-email-thumb{id: "profile-email-thumb-#{profile_email.id}"}
+                .well
+                  = render 'profile_emails/show', profile_email: profile_email
+                =t 'profile_emails.index.to_fullname', fullname: profile_email.recipient_fullname
+                .graylight-text=t 'profile_emails.index.on_date', date: profile_email.created_at.strftime('%d-%m-%Y')
+
+- @profile_emails.each do |profile_email|
+  .modal.hide{id: "profile-email-modal-#{profile_email.id}"}
+    .modal-body
+      .profile-email-show
+        = render 'show', profile_email: profile_email

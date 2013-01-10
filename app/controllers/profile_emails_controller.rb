@@ -20,6 +20,7 @@ class ProfileEmailsController < ApplicationController
   end
 
   def index
+    @profile_emails         = current_user.authored_profile_emails
     @profile_emails_by_date = current_user.authored_profile_emails_by_date
   end
 

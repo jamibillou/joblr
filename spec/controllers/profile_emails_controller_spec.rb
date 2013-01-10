@@ -538,7 +538,13 @@ describe ProfileEmailsController do
 
           it 'should have a thumbnail per authored profile_email' do
             @author.authored_profile_emails.each do |pe|
-              response.body.should include "profile-email-#{pe.id}"
+              response.body.should include "profile-email-thumb-#{pe.id}"
+            end
+          end
+
+          it 'should have a modal per authored profile_email' do
+            @author.authored_profile_emails.each do |pe|
+              response.body.should include "profile-email-modal-#{pe.id}"
             end
           end
         end

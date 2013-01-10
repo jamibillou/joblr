@@ -43,6 +43,48 @@ form#new_profile_email{
 }
 
 
+// Show
+//-----
+
+.modal .profile-email-show{
+  padding:18px 20px 20px 12px;
+  font-size: 16px;
+  font-weight:300;
+  p{
+    margin-bottom:9px;
+    font-size:15px;
+    line-height:18px;
+    text-decoration:none;
+    color:$grayDark;
+  }
+  img{
+    margin:24px 20px 0 0;
+    float:left;
+  }
+  h2{
+    margin-top:32px;
+    margin-bottom:7px;
+  }
+  .fine-line{
+    margin:64px 0 36px 0;
+    border-top:1px solid #ccc;
+  }
+  .btn{
+    margin-right:21px;
+    font-size:20px;
+    font-weight:bold;
+    text-decoration:underline;
+  }
+  a{
+    color:$blue;
+    text-decoration:underline;
+    &:hover{
+      text-decoration:underline;
+    }
+  }
+}
+
+
 // Thumbnails
 //-----------
 
@@ -52,24 +94,31 @@ form#new_profile_email{
   border-width:3px;
   border-height:3px;
   font-size: 4px;
-  line-height:4px;
-  padding:13px 9px;
+  font-weight:300;
+  padding:13px 10px;
+  line-height:5px;
   p{
-    margin-bottom:4px;
+    margin-bottom:3px;
+    font-size:4px;
+    text-decoration:none;
+    color:$grayDark;
   }
   img{
     width:25px;
     height:25px;
-    margin:6px 6px 0 0;
+    margin:8px 6px 0 0;
     float:left;
   }
   h2{
-    margin:10px 0 2px 0;
+    margin:12px 0 1px 0;
     font-size:7px;
     line-height:1;
   }
+  .graylight-text{
+    font-size:5px;
+  }
   .fine-line{
-    margin:21px 0 10px 0;
+    margin:20px 0 11px 0;
     border-top:1px solid #eee;
   }
   .btn{
