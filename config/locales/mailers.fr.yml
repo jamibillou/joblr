@@ -28,7 +28,7 @@ fr:
       user:
         subject: "Candidature de %{fullname}"
         html:
-          summary: "%{fullname} est à la recherche d'un emploi et aimerait vous rentrer en contact avec vous."
+          summary: "%{fullname} est à la recherche d'un emploi et aimerait rentrer en contact avec vous."
           title: "Candidature de %{fullname}"
           lets_talk: "Contacter"
           lets_talk_subject: "RE : Candidature de %{fullname}"

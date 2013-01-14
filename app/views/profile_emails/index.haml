@@ -17,6 +17,8 @@
 
 - @profile_emails.each do |profile_email|
   .modal.hide{id: "profile-email-modal-#{profile_email.id}"}
+    .modal-header
+      %a.close.hidden-phone{href: '#', 'data-dismiss' => 'modal'} &times;
     .modal-body
       .profile-email-show
         = render 'show', profile_email: profile_email

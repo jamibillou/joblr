@@ -4,7 +4,7 @@ fr:
       title: 'Invitations à Joblr beta'
     new:
       title: "Demandez votre invitation !"
-      subtitle_html: "Nous sommes actuellement en beta privée. Saisissez votre adresse email et nous vous inviterons dés que possible."
+      subtitle_html: "Nous sommes actuellement en beta privée. Saisissez votre adresse email et nous vous inviterons dès que possible."
       placeholder: 'Adresse email'
       button: 'Invitez-moi !'
     create:
