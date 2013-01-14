@@ -44,7 +44,7 @@ group :test do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'selenium-webdriver'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '1.3.0'
   gem 'fuubar'
 end
 
