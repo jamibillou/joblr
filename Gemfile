@@ -41,7 +41,7 @@ group :test do
   gem 'autotest'
   gem 'autotest-growl'
   gem 'factory_girl_rails'
-  gem 'capybara'
+  gem 'capybara', '1.1.2'
   gem 'capybara-webkit'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '1.3.0'

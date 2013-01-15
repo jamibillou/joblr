@@ -89,7 +89,7 @@ describe AuthenticationsController do
       end
     end
 
-    context 'for public vistors' do
+    context 'for public visitors' do
 
       context 'whose authentication is found' do
 
