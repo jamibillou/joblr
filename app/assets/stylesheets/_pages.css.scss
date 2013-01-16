@@ -78,8 +78,12 @@
   }
   #screenshots{
     margin-top: 390px;
+    padding:0;
+    a{
+      margin:10px;    
+    }
     img{
-      margin:10px;
+      margin:10px 0;
       border:10px solid white;
     }
   }
