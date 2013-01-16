@@ -6,6 +6,10 @@ class PagesController < ApplicationController
     @title = t('pages.landing.title')
   end
 
+  def landing_new
+    @title = t('pages.landing.title')    
+  end
+
   def admin
     @users            = User.all(order: 'created_at DESC')
     @users_count      = @users.count

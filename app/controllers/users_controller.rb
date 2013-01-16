@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_filter :profile_completed,      only: :show
   before_filter :correct_user!,          only: [:edit, :update]
   before_filter :admin_user,             only: :destroy
+  after_filter  :set_default_picture,    only: [:create, :update]
 
   def show
     @title = @user.fullname
