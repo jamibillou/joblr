@@ -4,10 +4,14 @@
 			%h1 La candidature spontanée qui donne envie de vous répondre.
 	#email
 	#screenshots
-		=image_tag 'screenshots/signup.jpg'
-		=image_tag 'screenshots/profile.jpg'
-		=image_tag 'screenshots/apply.jpg'
-		=image_tag 'screenshots/applications.jpg'
+		%a{ href:'#modal_signup', 'data-toggle'=>'modal'}
+			=image_tag 'screenshots/signup.jpg'
+		%a{ href:'#modal_profile', 'data-toggle'=>'modal'}		
+			=image_tag 'screenshots/profile.jpg'
+		%a{ href:'#modal_apply', 'data-toggle'=>'modal'}
+			=image_tag 'screenshots/apply.jpg'
+		%a{ href:'#modal_applications', 'data-toggle'=>'modal'}
+			=image_tag 'screenshots/applications.jpg'
 	.alert.alert-info=t 'pages.landing.disclaimer_html'
 
 #grey_block
@@ -29,3 +33,19 @@
 			%br/
 			%p.pull-right - Aenean Dolor
 
+.modal.hide{id:'modal_signup'}
+	.modal-body
+		= image_tag 'screenshots/signup_big.png'
+		%h5.pull-right Une inscription simple et rapide
+.modal.hide{id:'modal_profile'}
+	.modal-body
+		= image_tag 'screenshots/profile_big.png'
+		%h5.pull-right Editez votre profil en quelques clics
+.modal.hide{id:'modal_apply'}
+	.modal-body
+		= image_tag 'screenshots/apply_big.png'
+		%h5.pull-right Envoyez vos candidatures à l'aide d'un simple formulaire
+.modal.hide{id:'modal_applications'}
+	.modal-body
+		= image_tag 'screenshots/applications_big.png'
+		%h5.pull-right Visualisez et suivez vos candidatures
