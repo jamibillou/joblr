@@ -8,6 +8,10 @@ module ApplicationHelper
     "Joblr | #{title}"
   end
 
+  def footer
+    render 'layouts/footer' unless controller_name == 'pages' && action_name == 'new_landing'
+  end
+
   def subdomain?
     request.subdomain.present? && request.subdomain != 'www' && !request.host.match(/^staging.joblr.co|joblr.herokuapp.com|joblr-staging.herokuapp.com$/)
   end
