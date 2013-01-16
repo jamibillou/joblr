@@ -6,9 +6,8 @@ class PagesController < ApplicationController
     @title = t('pages.landing.title')
   end
 
-  def landing_new
-    @title = t('pages.landing.title') 
-    @no_footer = true   
+  def new_landing
+    @title = t('pages.landing.title')
   end
 
   def admin

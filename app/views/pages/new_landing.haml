@@ -1,0 +1,59 @@
+.span12#new_landing
+  .row-fluid
+    .span12
+      .hero-unit
+        .row-fluid
+          .span8.offset2
+            %h1 La candidature spontanée qui donne envie de vous répondre.
+        .row-fluid
+          .span12
+            #the-hero
+  .row-fluid#screenshots
+    .span12
+      %a{href: '#modal_signup', 'data-toggle'       => 'modal'}= image_tag 'screenshots/signup.jpg'
+      %a{href: '#modal_profile', 'data-toggle'      => 'modal'}= image_tag 'screenshots/profile.jpg'
+      %a{href: '#modal_apply', 'data-toggle'        => 'modal'}= image_tag 'screenshots/apply.jpg'
+      %a{href: '#modal_applications', 'data-toggle' => 'modal'}= image_tag 'screenshots/applications.jpg'
+  .row-fluid
+    .span12
+      .alert.alert-info=t 'pages.landing.disclaimer_html'
+  #grey_background
+    .container
+      .row-fluid#cta_testimonials
+        .span12
+          .row-fluid#cta
+            .span9
+              %h1 Joblr est entièrement gratuit, commencez à postulez en quelques clics !
+            .span3
+              %a.btn.btn-large.btn-primary.btn-top{href: new_invite_email_path}=t 'pages.landing.join'
+          .row-fluid#testimonials
+            .span3
+              %p
+                “Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+                %br/
+                Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.”
+                %span.by.pull-right - Porta Ipsum
+            .span3.offset1
+              %p
+                “Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil.
+                %br/
+                Impedit quo minus id quod maxime placeat facere possimus.”
+                %br/
+                %span.by.pull-right - Aenean Dolor
+
+.modal#modal_signup.hide
+  .modal-body
+    = image_tag 'screenshots/signup_big.png'
+    %h5.pull-right Une inscription simple et rapide
+.modal#modal_profile.hide
+  .modal-body
+    = image_tag 'screenshots/profile_big.png'
+    %h5.pull-right Editez votre profil en quelques clics
+.modal#modal_apply.hide
+  .modal-body
+    = image_tag 'screenshots/apply_big.png'
+    %h5.pull-right Envoyez vos candidatures à l'aide d'un simple formulaire
+.modal#modal_applications.hide
+  .modal-body
+    = image_tag 'screenshots/applications_big.png'
+    %h5.pull-right Visualisez et suivez vos candidatures

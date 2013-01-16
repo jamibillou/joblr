@@ -24,16 +24,11 @@
   %body
     %header.navbar.navbar-fixed-top
       %nav.navbar-inner
-        .container
-          = render 'layouts/navigation/navigation'
+        .container= render 'layouts/navigation/navigation'
 
     .container
       = render 'layouts/alerts'
 
-      #content.row-fluid
-        = yield
+      #content.row-fluid= yield
 
-    %footer
-      = footer
-
-
+    %footer= footer

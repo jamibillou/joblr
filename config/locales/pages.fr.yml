@@ -14,7 +14,7 @@ fr:
       benefit3_text_html: "Importez votre parcours depuis LinkedIn et c'est parti ! Une inscription simplifiée qui n'empiette pas sur vos recherches. "
       benefit4_title: "Un job autour de vous"
       benefit4_text: "Votre entourage a peut être les clés de votre prochain poste. Partagez votre profil Joblr et profitez du bouche à oreille."
-      disclaimer_html: "<b>Remarque : </b> Nos tarifs sont pour le moment en cours de réflexion, la version beta est donc gratuite jusqu'à nouvel ordre."
+      disclaimer_html: "<b>Remarque : </b> Nos tarifs n'étant pour l'instant pas finalisés, la version beta de Joblr est entièrement gratuite jusqu'à nouvel ordre."
     admin:
       title: 'Admin'
       title_alt: 'Tableau de bord'
