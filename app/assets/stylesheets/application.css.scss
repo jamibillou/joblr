@@ -71,3 +71,18 @@ footer{
     margin-bottom:0;
   }
 }
+
+
+// SCREENSHOT MODALS
+// -----------------
+
+.modal.screenshot{
+  @include border-radius(0);
+  border:0;
+  .modal-body{
+    padding:20px;
+  }
+  h5{
+    margin-top:15px;
+  }
+}
