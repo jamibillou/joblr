@@ -57,5 +57,5 @@
 - @users.each do |user|
   - unless user.profile.nil?
     .modal.hide{id: "profile-modal-#{user.id}"}
-      .modal-body
+      .modal-body#profile
         = render 'users/show_profile', user: user
