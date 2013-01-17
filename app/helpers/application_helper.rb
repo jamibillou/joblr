@@ -78,8 +78,8 @@ module ApplicationHelper
     end
   end
 
-  def mixpanel_event(value)
-    content_tag(:script, type: 'text/javascript') {"mixpanel.track('#{value}');".html_safe} if Rails.env.production? || Rails.env.test?
+  def mixpanel_event(value,properties={})
+    content_tag(:script, type: 'text/javascript') {"mixpanel.track('#{value}',#{properties});".html_safe} if Rails.env.production? || Rails.env.test?
   end
 
   def mixpanel_identify(id)
@@ -88,6 +88,10 @@ module ApplicationHelper
 
   def mixpanel_name_tag(name)
     content_tag(:script, type: 'text/javascript') {"mixpanel.name_tag('#{name}');".html_safe} if Rails.env.production? || Rails.env.test?
+  end
+
+  def mixpanel_alias(id)
+    content_tag(:script, type: 'text/javascript') {"mixpanel.alias('#{id}');".html_safe} if Rails.env.production? || Rails.env.test?
   end
 
   def mixpanel_people(user)
