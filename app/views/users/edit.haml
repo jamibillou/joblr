@@ -13,7 +13,7 @@
 
 - if flash[:notice] == t('devise.registrations.signed_up')
   = mixpanel_alias(current_user.id)
-  = mixpanel_event('Signed up',"{'Type':'Manual'}")
+  = mixpanel_event('Signed up', "{'Type': 'Manual'}")
 - elsif flash[:success] && flash[:success].match(Regexp.new(t('flash.success.provider.signed_up', provider: '.+')))
   = mixpanel_alias(current_user.id)
-  = mixpanel_event('Signed up',"{'Type':'Social account'}")
+  = mixpanel_event('Signed up', "{'Type': 'Social account'}")
