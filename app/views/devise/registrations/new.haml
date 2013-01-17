@@ -45,4 +45,3 @@
     .pull-right.danger-text * #{t('required_fields')}
 
 = mixpanel_event('Submitted correct invitation code') if flash[:success] == t('flash.success.invite_email.used')
-= mixpanel_event('Viewed sign up page') unless flash[:error]
