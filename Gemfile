@@ -23,6 +23,7 @@ gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
 gem 'curb'
 gem 'newrelic_rpm'
 gem 'honeybadger'
+gem 'split'
 
 group :production, :staging do
   gem 'google-analytics-rails'
