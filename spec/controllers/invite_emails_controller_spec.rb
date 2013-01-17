@@ -169,7 +169,7 @@ describe InviteEmailsController do
 
     it 'should have mixpanel event' do
       get :thank_you, invite_email_id: @invite_email
-      response.body.should have_content "mixpanel.track('Requested an invitation')"
+      response.body.should have_content "mixpanel.track('Requested an invitation',{})"
     end
   end
 
@@ -278,7 +278,7 @@ describe InviteEmailsController do
       end
 
       it 'should have mixpanel event' do
-        response.body.should have_content "mixpanel.track('Viewed use invite page')"
+        response.body.should have_content "mixpanel.track('Viewed use invite page',{})"
       end
     end
   end
