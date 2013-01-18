@@ -18,8 +18,8 @@
       - else
         = mixpanel_init :production
       - if user_signed_in?
-        = mixpanel_identify(current_user.id)
-        = mixpanel_name_tag(current_user.fullname)
+        = mixpanel_call('identify', current_user.id)
+        = mixpanel_call('name_tag', current_user.fullname)
 
   %body
     %header.navbar.navbar-fixed-top
@@ -32,3 +32,6 @@
       #content.row-fluid= yield
 
     %footer= footer
+
+  = mixpanel_call('track', 'Signed in', "{'Signin type':'Social'}") if flash[:success] == t('flash.success.provider.signed_in')
+  = mixpanel_call('track', 'Signed in', "{'Signin type':'Manual'}") if flash[:notice]  == t('devise.sessions.signed_in')
