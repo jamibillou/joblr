@@ -12,7 +12,6 @@
 - if user_signed_in?
 
   - if current_user == @user
-    = mixpanel_call('track', 'Completed their profile')                                if flash[:success] == t('flash.success.profile.created')
     = mixpanel_call('track', 'Sent profile by email', "{'User type': 'Current user'}") if flash[:success] && flash[:success].match(Regexp.new(t('flash.success.profile.shared.user', recipient_email: '.+')))
     = mixpanel_people(current_user)                                                    if flash[:success] == t('flash.success.profile.created') || flash[:success] == t('flash.success.profile.updated')
 

@@ -27,9 +27,11 @@
         .container= render 'layouts/navigation/navigation'
 
     .container
-      = mixpanel_call('track', 'Signed in') if flash[:success] == t('flash.success.provider.signed_in')
       = render 'layouts/alerts'
 
       #content.row-fluid= yield
 
     %footer= footer
+
+  = mixpanel_call('track', 'Signed in', "{'Signin type':'Social'}") if flash[:success] == t('flash.success.provider.signed_in')
+  = mixpanel_call('track', 'Signed in', "{'Signin type':'Manual'}") if flash[:notice]  == t('devise.sessions.signed_in')
