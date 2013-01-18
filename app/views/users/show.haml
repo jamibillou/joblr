@@ -10,18 +10,23 @@
       = render 'profile_email_modal'
 
 - if user_signed_in?
+
   - if current_user == @user
-    = mixpanel_event('Completed their profile')      if flash[:success] == t('flash.success.profile.created')
-    = mixpanel_event('Sent profile by email',"{'From':'User'}") if flash[:success] && flash[:success].match(Regexp.new(t('flash.success.profile.shared.user', recipient_email: '.+')))
-    - if flash[:success] == t('flash.success.profile.created') || flash[:success] == t('flash.success.profile.updated')
-      = mixpanel_people(current_user)
+
+    = mixpanel_event('Completed their profile')                                if flash[:success] == t('flash.success.profile.created')
+    = mixpanel_event('Sent profile by email', "{'User type': 'Current user'}") if flash[:success] && flash[:success].match(Regexp.new(t('flash.success.profile.shared.user', recipient_email: '.+')))
+    = mixpanel_people(current_user)                                            if flash[:success] == t('flash.success.profile.created') || flash[:success] == t('flash.success.profile.updated')
+
   - else
+
     - if flash[:success] && flash[:success].match(Regexp.new(t('flash.success.profile.shared.other_user', fullname: @user.fullname, recipient_email: '.+')))
-      = mixpanel_event('Sent profile by email',"{'From':'Other user'}")
+      = mixpanel_event('Sent profile by email', "{'User type': 'Other user'}")
     - else
-      = mixpanel_event('Viewed profile',"{'From':'Other user'}")
+      = mixpanel_event('Viewed profile', "{'User type': 'Other user'}")
+
 - else
+
   - if flash[:success] && flash[:success].match(Regexp.new(t('flash.success.profile.shared.public_user', fullname: @user.fullname, recipient_email: '.+')))
-    = mixpanel_event('Sent profile by email',"{'From':'Public user'}")
+    = mixpanel_event('Sent profile by email', "{'User type': 'Public user'}")
   - else
-    = mixpanel_event('Viewed profile',"{'From':'Public user'}")
+    = mixpanel_event('Viewed profile', "{'User type': 'Public user'}")

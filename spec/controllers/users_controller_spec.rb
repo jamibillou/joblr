@@ -57,7 +57,7 @@ describe UsersController do
 
           it 'should have mixpanel event' do
             get :show, id: @user
-            response.body.should have_content "mixpanel.track('Viewed profile',{'From':'Public user'})"
+            response.body.should have_content "mixpanel.track('Viewed profile', {'User type': 'Public user'})"
           end
         end
       end
@@ -202,7 +202,7 @@ describe UsersController do
           end
 
           it 'should have mixpanel event' do
-            response.body.should have_content "mixpanel.track('Viewed profile',{'From':'Other user'})"
+            response.body.should have_content "mixpanel.track('Viewed profile', {'User type': 'Other user'})"
           end
         end
       end
