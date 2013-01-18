@@ -1,39 +1,52 @@
 .span12#new_landing
   .row-fluid
     .span12
+
       .hero-unit
-        .row-fluid
-          .span8.offset2
-            %h1 La candidature spontanée qui donne envie de vous répondre.
-        .row-fluid
-          .span12
-            #the-hero
-  .row-fluid#screenshots
-    .span12
-      %a{href: '#modal_signup', 'data-toggle'       => 'modal'}= image_tag 'screenshots/signup.jpg'
-      %a{href: '#modal_profile', 'data-toggle'      => 'modal'}= image_tag 'screenshots/profile.jpg'
-      %a{href: '#modal_apply', 'data-toggle'        => 'modal'}= image_tag 'screenshots/apply.jpg'
-      %a{href: '#modal_applications', 'data-toggle' => 'modal'}= image_tag 'screenshots/applications.jpg'
-  .row-fluid
-    .span12
-      .alert.alert-info=t 'pages.landing.disclaimer_html'
-  #grey_background
+        .visible-desktop
+          .row-fluid
+            .span1
+            .span10
+              %h1 La candidature spontanée qui donne envie de vous répondre.
+          .row-fluid
+            .span12
+              .the-hero
+                = image_tag "screenshots/new_landing/hero_#{locale}.jpg"
+        .visible-tablet
+          .row-fluid
+            .span1
+            .span10
+              %h1 La candidature spontanée qui donne envie de vous répondre.
+          .row-fluid
+            .span12
+              .the-hero
+                = image_tag "screenshots/new_landing/hero_mobile_#{locale}.jpg"
+        .visible-phone
+          .row-fluid
+            .span10
+              %h1 La candidature spontanée qui donne envie de vous répondre.
+          .row-fluid
+            .span12
+              .the-hero
+                = image_tag "screenshots/new_landing/hero_mobile_#{locale}.jpg"
+
+  #grey_background.visible-desktop
     .container
       .row-fluid#cta_testimonials
         .span12
           .row-fluid#cta
             .span9
-              %h1 Joblr est entièrement gratuit, commencez à postulez en quelques clics !
+              %h1 Ils recrutent grâce aux candidatures Joblr, rejoignez-les !
             .span3
               %a.btn.btn-large.btn-primary.btn-top{href: new_invite_email_path}=t 'pages.landing.join'
           .row-fluid#testimonials
-            .span3
+            .span4
               %p
                 “Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
                 %br/
                 Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.”
                 %span.by.pull-right - Porta Ipsum
-            .span3.offset1
+            .span4.offset1
               %p
                 “Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil.
                 %br/
@@ -41,19 +54,69 @@
                 %br/
                 %span.by.pull-right - Aenean Dolor
 
+  #grey_background.visible-tablet
+    .container
+      .row-fluid#cta_testimonials
+        .span12
+          .row-fluid#cta
+            .span9
+              %h1 Ils recrutent grâce aux candidatures Joblr, rejoignez-les !
+            .span3
+              %a.btn.btn-large.btn-primary.btn-top{href: new_invite_email_path}=t 'pages.landing.join'
+          .row-fluid#testimonials
+            .span5
+              %p
+                “Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+                %br/
+                Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.”
+                %span.by.pull-right - Porta Ipsum
+            .span5.offset1
+              %p
+                “Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil.
+                %br/
+                Impedit quo minus id quod maxime placeat facere possimus.”
+                %br/
+                %span.by.pull-right - Aenean Dolor
+
+  #grey_background.visible-phone
+    .container
+      .row-fluid#cta_testimonials
+        .span12
+          .row-fluid#cta
+            .span12
+              %h1 Ils recrutent sur Joblr, rejoignez-les !
+              %a.btn.btn-large.btn-primary.btn-top{href: new_invite_email_path}=t 'pages.landing.join'
+          .row-fluid#testimonials
+            .span12
+              %p
+                “Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+                %br/
+                Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.”
+                %span.by.pull-right - Porta Ipsum
+
+  .row-fluid#screenshots
+    .span12
+      %a{href: '#modal_signup', 'data-toggle'       => 'modal'}= image_tag 'screenshots/new_landing/signup.jpg'
+      %a{href: '#modal_profile', 'data-toggle'      => 'modal'}= image_tag 'screenshots/new_landing/profile.jpg'
+      %a{href: '#modal_apply', 'data-toggle'        => 'modal'}= image_tag 'screenshots/new_landing/apply.jpg'
+      %a{href: '#modal_applications', 'data-toggle' => 'modal'}= image_tag 'screenshots/new_landing/applications.jpg'
+  .row-fluid
+    .span12
+      .alert.alert-info=t 'pages.landing.disclaimer_html'
+
   .modal.screenshot#modal_signup.hide
     .modal-body
-      = image_tag 'screenshots/signup_big.png'
+      = image_tag 'screenshots/new_landing/signup_big.png'
       %h5.pull-right Une inscription simple et rapide
   .modal.screenshot#modal_profile.hide
     .modal-body
-      = image_tag 'screenshots/profile_big.png'
+      = image_tag 'screenshots/new_landing/profile_big.png'
       %h5.pull-right Editez votre profil en quelques clics
   .modal.screenshot#modal_apply.hide
     .modal-body
-      = image_tag 'screenshots/apply_big.png'
+      = image_tag 'screenshots/new_landing/apply_big.png'
       %h5.pull-right Envoyez vos candidatures à l'aide d'un simple formulaire
   .modal.screenshot#modal_applications.hide
     .modal-body
-      = image_tag 'screenshots/applications_big.png'
+      = image_tag 'screenshots/new_landing/applications_big.png'
       %h5.pull-right Visualisez et suivez vos candidatures

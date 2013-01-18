@@ -16,7 +16,7 @@
     background-color:$bodyBackground;
     border:0;
     border-bottom:5px solid $grayLighter;
-    #catchphrase{
+    #valupe-prop{
       padding-bottom:50px;
       h1{
         margin:20px 0 30px 0;
@@ -72,20 +72,43 @@
       line-height:55px;
       text-align:center;
     }
-    #the-hero{
-      background:url('screenshots/landing_new.png') no-repeat center;
-      width:980px;
-      height:1300px;
-      padding:0;
-      margin:0 auto 440px auto;
+    .the-hero{
+      text-align:center;
+      img{
+        width:inherit;
+      }
     }
+    // REFACTOR ME! =======>
+    .visible-desktop{
+      .the-hero img{
+        width:980px;
+        height:1400px;
+        margin-bottom:440px;
+      }
+    }
+    .visible-tablet{
+      h1{
+        font-size:40px;
+        line-height:45px;
+        margin-bottom:52px;
+      }
+      .the-hero img{
+        margin-bottom:437px;
+      }
+    }
+    .visible-phone{
+      h1{
+        font-size:30px;
+        line-height:35px;
+        margin-bottom:50px;
+      }
+    }
+    // <====================
   }
   #grey_background{
     background-color:$grayLighter;
     width:100%;
-    position:absolute;
-    top:1700px;
-    left:0;
+    height:300px;
     #cta_testimonials{
       #cta{
         padding:40px 0 35px 0;
@@ -94,8 +117,8 @@
           font-size:24px;
         }
         .btn{
-          float:right;
-          margin-right:10px;
+          float:left;
+          margin-left:30px;
         }
       }
       #testimonials{
@@ -112,6 +135,51 @@
         }
       }
     }
+    // REFACTOR ME! ============>
+    &.visible-desktop{
+      position:absolute;
+      left:0;
+      top:1800px;
+    }
+    &.visible-tablet{
+      position:absolute;
+      left:0;
+      top:1770px;
+      #cta_testimonials{
+        #cta h1{
+          font-size:19px;
+        }
+        #testimonials p{
+          font-size:15px;
+          span.by{
+            font-size:15px;
+          }
+        }
+      }
+    }
+    &.visible-phone{
+      height:auto;
+      margin:70px -30px 70px;
+      padding-left:30px;
+      padding-right:20px;
+      #cta_testimonials{
+        #cta{
+          h1{
+            font-size:19px;
+          }
+          .btn{
+            margin:20px 0 10px 0;
+          }
+        }
+        #testimonials p{
+          font-size:15px;
+          span.by{
+            font-size:15px;
+          }
+        }
+      }
+    }
+    // <=========================
   }
   #screenshots{
     padding:0;
