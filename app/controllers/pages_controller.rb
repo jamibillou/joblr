@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   def landing
     @title = t('pages.landing.title')
-    @version = ab_test('landing_design','current','new')
+    @version = ab_test('landing_design', 'old', 'new')
   end
 
   def admin

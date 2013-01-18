@@ -34,8 +34,7 @@ describe PagesController do
 		end
 
 		it 'should have mixpanel event' do
-			##TO BE CHANGED WHEN A/B TESTING IS DONE
-			response.body.should have_content "mixpanel.track('Viewed landing page',{'version':"
+			response.body.should match /mixpanel.track\('Viewed landing page', {'Landing version': '(old|new)'/
 		end
 	end
 
