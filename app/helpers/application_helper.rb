@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def footer
-    render 'layouts/footer' unless controller_name == 'pages' && action_name == 'new_landing'
+    render 'layouts/footer' unless controller_name == 'pages' && action_name == 'landing'
   end
 
   def subdomain?
@@ -78,8 +78,8 @@ module ApplicationHelper
     end
   end
 
-  def mixpanel_event(value,properties={})
-    content_tag(:script, type: 'text/javascript') {"mixpanel.track('#{value}',#{properties});".html_safe} if Rails.env.production? || Rails.env.test?
+  def mixpanel_event(value, properties = nil)
+    content_tag(:script, type: 'text/javascript') {"mixpanel.track('#{value}'#{', '+properties if properties});".html_safe} # if Rails.env.production? || Rails.env.test?
   end
 
   def mixpanel_identify(id)
