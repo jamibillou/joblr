@@ -26,7 +26,6 @@ Joblr::Application.routes.draw do
   get  'users/auth/failure'  => 'authentications#failure'
   post 'users/share_profile' => 'users#share_profile'
 
-  match 'landing',    to: 'pages#landing'
   match 'home',       to: 'pages#landing'
   match 'admin',      to: 'pages#admin'
   match 'style_tile', to: 'pages#style_tile'
