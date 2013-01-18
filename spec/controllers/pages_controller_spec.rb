@@ -19,18 +19,22 @@ describe PagesController do
 		it { response.should be_success }
 
 		it 'should have the right content' do
-			response.body.should include I18n.t('pages.landing.catchphrase')
-			response.body.should include I18n.t('pages.landing.subtitle')
-			response.body.should include I18n.t('pages.landing.join')
-			response.body.should include I18n.t('pages.landing.benefit1_title')
-			response.body.should include I18n.t('pages.landing.benefit1_text')
-			response.body.should include I18n.t('pages.landing.benefit2_title')
-			response.body.should include I18n.t('pages.landing.benefit2_text')
-			response.body.should include I18n.t('pages.landing.benefit3_title')
-			response.body.should include I18n.t('pages.landing.benefit3_text_html')
-			response.body.should include I18n.t('pages.landing.benefit4_title')
-			response.body.should include I18n.t('pages.landing.benefit4_text')
-			response.body.should include I18n.t('pages.landing.disclaimer_html')
+			if @version == 'old'
+				response.body.should include I18n.t('pages.landing.catchphrase')
+				response.body.should include I18n.t('pages.landing.subtitle')
+				response.body.should include I18n.t('pages.landing.join')
+				response.body.should include I18n.t('pages.landing.benefit1_title')
+				response.body.should include I18n.t('pages.landing.benefit1_text')
+				response.body.should include I18n.t('pages.landing.benefit2_title')
+				response.body.should include I18n.t('pages.landing.benefit2_text')
+				response.body.should include I18n.t('pages.landing.benefit3_title')
+				response.body.should include I18n.t('pages.landing.benefit3_text_html')
+				response.body.should include I18n.t('pages.landing.benefit4_title')
+				response.body.should include I18n.t('pages.landing.benefit4_text')
+				response.body.should include I18n.t('pages.landing.disclaimer_html')
+			else
+				# TO DO!
+			end
 		end
 
 		it 'should have mixpanel event' do
