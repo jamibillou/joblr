@@ -95,7 +95,7 @@ describe ProfileEmailsController do
 
           it "should send the user's profile by email" do
             email = mock Mail::Message
-            ProfileEmailMailer.should_receive(:user).with(kind_of(ProfileEmail), kind_of(User)).and_return(email)
+            ProfileEmailMailer.should_receive(:current_user).with(kind_of(ProfileEmail), kind_of(User)).and_return(email)
             email.should_receive(:deliver)
             xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
           end
@@ -103,7 +103,7 @@ describe ProfileEmailsController do
           it "should send the email to the right person with the right subject and profile" do
             xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
             ProfileEmailMailer.deliveries.last.to.should include 'user@example.com'
-            ProfileEmailMailer.deliveries.last.subject.should == I18n.t('mailers.profile_email.user.subject', fullname: @author.fullname)
+            ProfileEmailMailer.deliveries.last.subject.should == I18n.t('mailers.profile_email.current_user.subject', fullname: @author.fullname)
           end
 
           it "should have a flash message" do

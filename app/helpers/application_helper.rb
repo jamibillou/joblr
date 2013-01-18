@@ -79,7 +79,7 @@ module ApplicationHelper
   end
 
   def mixpanel_event(value, properties = nil)
-    content_tag(:script, type: 'text/javascript') {"mixpanel.track('#{value}'#{', '+properties if properties});".html_safe} # if Rails.env.production? || Rails.env.test?
+    content_tag(:script, type: 'text/javascript') {"mixpanel.track('#{value}'#{', '+properties if properties});".html_safe} if Rails.env.production? || Rails.env.test?
   end
 
   def mixpanel_identify(id)

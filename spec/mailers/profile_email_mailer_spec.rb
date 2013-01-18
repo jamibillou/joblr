@@ -7,20 +7,20 @@ describe ProfileEmailMailer do
     let (:user)          { FactoryGirl.create :user }
     let (:profile)       { FactoryGirl.create :profile, user: user }
     let (:profile_email) { FactoryGirl.create :profile_email, profile: profile, author: user }
-    let (:mail)          { ProfileEmailMailer.user(profile_email, user) }
+    let (:mail)          { ProfileEmailMailer.current_user(profile_email, user) }
 
     it 'should send the email with correct subject, author and recipient' do
-      mail.subject.should == I18n.t('mailers.profile_email.user.subject', fullname: user.fullname)
+      mail.subject.should == I18n.t('mailers.profile_email.current_user.subject', fullname: user.fullname)
       mail.to.should   include profile_email.recipient_email
       mail.from.should include 'postman@joblr.co'
     end
 
     it 'should have a title' do
-      mail.body.encoded.should include I18n.t('mailers.profile_email.user.html.title', fullname: user.fullname)
+      mail.body.encoded.should include I18n.t('mailers.profile_email.current_user.html.title', fullname: user.fullname)
     end
 
     it 'should have a summary' do
-      mail.body.encoded.should include I18n.t('mailers.profile_email.user.html.summary', fullname: user.fullname)
+      mail.body.encoded.should include I18n.t('mailers.profile_email.current_user.html.summary', fullname: user.fullname)
     end
 
     it "should have the user's picture" do

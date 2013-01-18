@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title><%=t 'mailers.profile_email.user.html.title', fullname: @user.fullname %></title>
+    <title><%=t 'mailers.profile_email.current_user.html.title', fullname: @user.fullname %></title>
     <link href="mailers/profile_emails.css" rel="stylesheet" media="all" type="text/css" />
   </head>
 
@@ -23,7 +23,7 @@
                   <table border="0" cellpadding="0" cellspacing="0" id="header-table">
                     <tr>
                       <td align="center" valign="bottom" height="54" width="560">
-                        <p><%=t 'mailers.profile_email.user.html.summary', fullname: @user.fullname %></p>
+                        <p><%=t 'mailers.profile_email.current_user.html.summary', fullname: @user.fullname %></p>
                       </td>
                     </tr>
                   </table>
@@ -118,7 +118,7 @@
                                           <table border="0" cellpadding="0" cellspacing="0" id="button-left-table">
                                             <tr>
                                               <td align="center" valign="middle" height="51" width="170">
-                                                <a href="mailto:<%= @user.email %>?subject=<%=t 'mailers.profile_email.user.html.lets_talk_subject', fullname: @user.fullname %>"><span><%=t 'mailers.profile_email.user.html.lets_talk' %></span></a>
+                                                <a href="mailto:<%= @user.email %>?subject=<%=t 'mailers.profile_email.current_user.html.lets_talk_subject', fullname: @user.fullname %>"><span><%=t 'mailers.profile_email.current_user.html.lets_talk' %></span></a>
                                               </td>
                                             </tr>
                                           </table>
@@ -132,7 +132,7 @@
                                           <table border="0" cellpadding="0" cellspacing="0" id="button-right-table">
                                             <tr>
                                               <td align="left" valign="middle" height="51" width="280">
-                                                <a href="<%= "http://joblr.co/profile_emails/#{@profile_email.id}/decline" %>"><span><%=t 'mailers.profile_email.user.html.no_thanks' %></span></a>
+                                                <a href="<%= "http://joblr.co/profile_emails/#{@profile_email.id}/decline" %>"><span><%=t 'mailers.profile_email.current_user.html.no_thanks' %></span></a>
                                               </td>
                                             </tr>
                                           </table>
@@ -172,7 +172,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0" id="more-about-table">
                                       <tr>
                                         <td align="left" valign="top" width="480">
-                                          <h2><span><%=t 'mailers.profile_email.user.html.more_about', fullname: @user.fullname %></span></h2>
+                                          <h2><span><%=t 'mailers.profile_email.current_user.html.more_about', fullname: @user.fullname %></span></h2>
                                         </td>
                                       </tr>
                                     </table>
@@ -197,8 +197,8 @@
                                                 <table border="0" cellpadding="0" cellspacing="0">
                                                   <tr>
                                                     <td align="left" valign="top" width="90">
-                                                      <h4><span><%=t 'mailers.profile_email.user.html.experience' %></span></h4>
-                                                      <p class="lead"><%= pluralize(@user.profile.experience, t('mailers.profile_email.user.html.yr')) %></p>
+                                                      <h4><span><%=t 'mailers.profile_email.current_user.html.experience' %></span></h4>
+                                                      <p class="lead"><%= pluralize(@user.profile.experience, t('mailers.profile_email.current_user.html.yr')) %></p>
                                                     </td>
                                                   </tr>
                                                 </table>
@@ -206,15 +206,15 @@
                                               <td align="left"  valign="top" width="30"></td>
                                               <td align="left" valign="top" width="360">
                                                 <% unless @user.profile.last_job.blank? %>
-                                                  <h4><span><%=t 'mailers.profile_email.user.html.last_job' %></span></h4>
+                                                  <h4><span><%=t 'mailers.profile_email.current_user.html.last_job' %></span></h4>
                                                   <p class="lead"><%= @user.profile.last_job %></p>
                                                   <% unless @user.profile.past_companies.blank? %>
                                                     <p class="past-companies">
-                                                      <%=t 'mailers.profile_email.user.html.also_worked_for_html', past_companies: @user.profile.past_companies %>
+                                                      <%=t 'mailers.profile_email.current_user.html.also_worked_for_html', past_companies: @user.profile.past_companies %>
                                                     </p>
                                                   <% end %>
                                                 <% else %>
-                                                  <h4><span><%=t 'mailers.profile_email.user.html.education' %></span></h4>
+                                                  <h4><span><%=t 'mailers.profile_email.current_user.html.education' %></span></h4>
                                                   <p class="lead"><%= @user.profile.education %></p>
                                                 <% end %>
                                               </td>
@@ -242,7 +242,7 @@
                                             <table border="0" cellpadding="0" cellspacing="0" class="education-content">
                                               <tr>
                                                 <td align="left" valign="top" width="480">
-                                                  <h4><span><%=t 'mailers.profile_email.user.html.education' %></span></h4>
+                                                  <h4><span><%=t 'mailers.profile_email.current_user.html.education' %></span></h4>
                                                   <p class="lead"><%= @user.profile.education %></p>
                                                 </td>
                                               </tr>
@@ -270,7 +270,7 @@
                                             <table border="0" cellpadding="0" cellspacing="0" class="skills-content">
                                               <tr>
                                                 <td align="left" valign="top" width="480">
-                                                  <h4><span><%=t 'mailers.profile_email.user.html.skills' %></span></h4>
+                                                  <h4><span><%=t 'mailers.profile_email.current_user.html.skills' %></span></h4>
                                                   <% unless @user.profile.skill_1.blank? %>
                                                     <p class="lead"><%= @user.profile.skill_1 %></p>
                                                   <% end %>
@@ -306,7 +306,7 @@
                                             <table border="0" cellpadding="0" cellspacing="0" class="qualities-content">
                                               <tr>
                                                 <td align="left" valign="top" width="480">
-                                                  <h4><span><%=t 'mailers.profile_email.user.html.qualities' %></span></h4>
+                                                  <h4><span><%=t 'mailers.profile_email.current_user.html.qualities' %></span></h4>
                                                   <% unless @user.profile.quality_1.blank? %>
                                                     <p class="lead"><%= @user.profile.quality_1 %></p>
                                                   <% end %>
@@ -336,7 +336,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0" id="more-table">
                                       <tr>
                                         <td align="left" valign="middle" height="38" width="480">
-                                          <a href="http://<%= @user.subdomain %>.joblr.co"><span><%=t 'mailers.profile_email.user.html.view_complete_profile', fullname: @user.fullname %></span></a>
+                                          <a href="http://<%= @user.subdomain %>.joblr.co"><span><%=t 'mailers.profile_email.current_user.html.view_complete_profile', fullname: @user.fullname %></span></a>
                                         </td>
                                       </tr>
                                     </table>

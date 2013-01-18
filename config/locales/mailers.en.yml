@@ -25,7 +25,7 @@ en:
         wont_change: "It won't change until you follow that link and create a new password."
         if_not: "Ignore this email if you didn't request it."
     profile_email:
-      user:
+      current_user:
         subject: "Job application from %{fullname}"
         html:
           summary: "%{fullname} is looking for work and wants to talk to you."

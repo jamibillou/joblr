@@ -4,10 +4,10 @@ class ProfileEmailMailer < ActionMailer::Base
   default reply_to: 'team@joblr.co'
   layout 'emails', only: [:decline, :decline_through_other]
 
-  def user(profile_email, user)
+  def current_user(profile_email, user)
   	@user = user
     @profile_email = profile_email
-    mail to: profile_email.recipient_email, subject: t('mailers.profile_email.user.subject', fullname: user.fullname), reply_to: user.email
+    mail to: profile_email.recipient_email, subject: t('mailers.profile_email.current_user.subject', fullname: user.fullname), reply_to: user.email
   end
 
   def other_user(profile_email, user, current_user)
@@ -40,7 +40,7 @@ class ProfileEmailMailer < ActionMailer::Base
 
   class Preview < MailView
 
-    def user
+    def current_user
       name          = Faker::Name.name
       user          = FactoryGirl.create :user, fullname: name, username: name.parameterize, email: "#{name.parameterize}@example.com"
       profile       = FactoryGirl.create :profile, user: user

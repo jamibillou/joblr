@@ -29,7 +29,7 @@ class ProfileEmailsController < ApplicationController
     def deliver_profile_email
       if user_signed_in?
         if current_user == @user
-          ProfileEmailMailer.user(@profile_email, @user).deliver
+          ProfileEmailMailer.current_user(@profile_email, @user).deliver
           flash[:success] = t('flash.success.profile.shared.user', recipient_email: @profile_email.recipient_email)
         else
           ProfileEmailMailer.other_user(@profile_email, @user, current_user).deliver

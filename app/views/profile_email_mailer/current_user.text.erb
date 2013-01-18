@@ -1,0 +1,13 @@
+<%=t 'mailers.profile_email.current_user.text.title', fullname: @user.fullname %>
+<% t('mailers.profile_email.current_user.text.title', fullname: @user.fullname).length.times do %>=<% end %>
+
+
+<%=t 'mailers.profile_email.current_user.text.profile', fullname: @user.fullname %>
+
+<%=t 'mailers.profile_email.current_user.text.short_n_easy' %>
+
+<%=t 'mailers.profile_email.current_user.text.go_to_url', url: @user.public_url, fullname: @user.fullname %>
+
+
+--
+<%=t 'mailers.team' %>

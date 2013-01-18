@@ -25,7 +25,7 @@ fr:
         wont_change: "Il sera uniquement modifié si vous cliquez sur le lien et créez un nouveau mot de passe."
         if_not: "Ne tenez pas compte de cet email si vous ne l'avez pas demandé."
     profile_email:
-      user:
+      current_user:
         subject: "Candidature de %{fullname}"
         html:
           summary: "%{fullname} est à la recherche d'un emploi et aimerait rentrer en contact avec vous."
