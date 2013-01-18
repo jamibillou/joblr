@@ -44,4 +44,4 @@
             = f.submit t('devise.registrations.sign_up'), class: 'btn btn-primary'
     .pull-right.danger-text * #{t('required_fields')}
 
-= mixpanel_event('Submitted correct invitation code') if flash[:success] == t('flash.success.invite_email.used')
+= mixpanel_call('track', 'Submitted correct invitation code') if flash[:success] == t('flash.success.invite_email.used')

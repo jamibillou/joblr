@@ -18,8 +18,8 @@
       - else
         = mixpanel_init :production
       - if user_signed_in?
-        = mixpanel_identify(current_user.id)
-        = mixpanel_name_tag(current_user.fullname)
+        = mixpanel_call('identify', current_user.id)
+        = mixpanel_call('name_tag', current_user.fullname)
 
   %body
     %header.navbar.navbar-fixed-top
@@ -27,6 +27,7 @@
         .container= render 'layouts/navigation/navigation'
 
     .container
+      = mixpanel_call('track', 'Signed in') if flash[:success] == t('flash.success.provider.signed_in')
       = render 'layouts/alerts'
 
       #content.row-fluid= yield
