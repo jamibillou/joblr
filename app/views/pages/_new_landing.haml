@@ -5,7 +5,7 @@
         .row-fluid
           .span1.hidden-phone
           .span10
-            %h1 La candidature spontanée qui donne envie de vous répondre.
+            %h1=t 'pages.new_landing.title'
         .row-fluid
           .span12
             .the-hero
@@ -18,44 +18,32 @@
         .span12
           .row-fluid#cta
             .span9
-              %h1 Ils recrutent grâce aux candidatures Joblr, rejoignez-les !
+              %h1=t 'pages.new_landing.cta_title'
             .span3
               %a.btn.btn-large.btn-primary.btn-top{href: new_invite_email_path}=t 'pages.landing.join'
           .row-fluid#testimonials
             .visible-desktop
               .span4
                 %p
-                  “Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-                  %br/
-                  Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.”
+                  =t 'pages.new_landing.testimonial_1_html'
                 %span.by - Porta Ipsum
               .span4.offset1
                 %p
-                  “Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil.
-                  %br/
-                  Impedit quo minus id quod maxime placeat facere possimus.”
-                  %br/
+                  =t 'pages.new_landing.testimonial_2_html'
                 %span.by - Aenean Dolor
             .visible-tablet
               .span5
                 %p
-                  “Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-                  %br/
-                  Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.”
+                  =t 'pages.new_landing.testimonial_1_html'
                 %span.by - Porta Ipsum
               .span5.offset1
                 %p
-                  “Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil.
-                  %br/
-                  Impedit quo minus id quod maxime placeat facere possimus.”
-                  %br/
+                  =t 'pages.new_landing.testimonial_2_html'
                 %span.by - Aenean Dolor
             .visible-phone
               .span12
                 %p
-                  “Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-                  %br/
-                  Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.”
+                  =t 'pages.new_landing.testimonial_1_html'
                 %span.by - Porta Ipsum
 
   .row-fluid#screenshots
@@ -72,16 +60,16 @@
   .modal.screenshot#modal_signup.hide
     .modal-body
       = image_tag 'screenshots/new_landing/signup_big.png'
-      %h5.pull-right Une inscription simple et rapide
+      %h5.pull-right=t 'pages.new_landing.screenshot_1'
   .modal.screenshot#modal_profile.hide
     .modal-body
       = image_tag 'screenshots/new_landing/profile_big.png'
-      %h5.pull-right Editez votre profil en quelques clics
+      %h5.pull-right=t 'pages.new_landing.screenshot_2'
   .modal.screenshot#modal_apply.hide
     .modal-body
       = image_tag 'screenshots/new_landing/apply_big.png'
-      %h5.pull-right Envoyez vos candidatures à l'aide d'un simple formulaire
+      %h5.pull-right=t 'pages.new_landing.screenshot_3'
   .modal.screenshot#modal_applications.hide
     .modal-body
       = image_tag 'screenshots/new_landing/applications_big.png'
-      %h5.pull-right Visualisez et suivez vos candidatures
+      %h5.pull-right=t 'pages.new_landing.screenshot_4'
