@@ -9,8 +9,8 @@
         .row-fluid
           .span12
             .the-hero
-              .visible-desktop= image_tag "screenshots/new_landing/hero_#{locale}.jpg"
-              .hidden-desktop= image_tag "screenshots/new_landing/hero_mobile_#{locale}.jpg"
+              .visible-desktop= image_tag "screenshots/new_landing/#{locale}/hero.jpg"
+              .hidden-desktop= image_tag "screenshots/new_landing/#{locale}/hero_mobile.jpg"
 
   #grey_background
     .container
@@ -48,10 +48,10 @@
 
   .row-fluid#screenshots
     .span12
-      %a{href: '#modal_signup', 'data-toggle'       => 'modal'}= image_tag 'screenshots/new_landing/signup.jpg'
-      %a{href: '#modal_profile', 'data-toggle'      => 'modal'}= image_tag 'screenshots/new_landing/profile.jpg'
-      %a{href: '#modal_apply', 'data-toggle'        => 'modal'}= image_tag 'screenshots/new_landing/apply.jpg'
-      %a{href: '#modal_applications', 'data-toggle' => 'modal'}= image_tag 'screenshots/new_landing/applications.jpg'
+      %a{href: '#modal_signup', 'data-toggle'       => 'modal'}= image_tag "screenshots/new_landing/#{locale}/signup_thumb.gif"
+      %a{href: '#modal_profile', 'data-toggle'      => 'modal'}= image_tag "screenshots/new_landing/#{locale}/profile_thumb.gif"
+      %a{href: '#modal_apply', 'data-toggle'        => 'modal'}= image_tag "screenshots/new_landing/#{locale}/apply_thumb.gif"
+      %a{href: '#modal_applications', 'data-toggle' => 'modal'}= image_tag "screenshots/new_landing/#{locale}/applications_thumb.gif"
 
   .row-fluid
     .span12
@@ -59,17 +59,17 @@
 
   .modal.screenshot#modal_signup.hide
     .modal-body
-      = image_tag 'screenshots/new_landing/signup_big.png'
+      = image_tag "screenshots/new_landing/#{locale}/signup.gif"
       %h5.pull-right=t 'pages.new_landing.screenshot_1'
   .modal.screenshot#modal_profile.hide
     .modal-body
-      = image_tag 'screenshots/new_landing/profile_big.png'
+      = image_tag "screenshots/new_landing/#{locale}/profile.gif"
       %h5.pull-right=t 'pages.new_landing.screenshot_2'
   .modal.screenshot#modal_apply.hide
     .modal-body
-      = image_tag 'screenshots/new_landing/apply_big.png'
+      = image_tag "screenshots/new_landing/#{locale}/apply.gif"
       %h5.pull-right=t 'pages.new_landing.screenshot_3'
   .modal.screenshot#modal_applications.hide
     .modal-body
-      = image_tag 'screenshots/new_landing/applications_big.png'
+      = image_tag "screenshots/new_landing/#{locale}/applications.gif"
       %h5.pull-right=t 'pages.new_landing.screenshot_4'
