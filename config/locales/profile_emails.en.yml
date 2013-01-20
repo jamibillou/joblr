@@ -25,5 +25,5 @@ en:
       close_page: 'You can close this page.'
     index:
       title: 'Applications'
-      to_fullname: 'to %{fullname}'
+      to_email_html: 'to %{email_link}'
       on_date: 'on %{date}'

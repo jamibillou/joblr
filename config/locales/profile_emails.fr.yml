@@ -25,5 +25,5 @@ fr:
       close_page: 'Vous pouvez fermer cette page.'
     index:
       title: 'Candidatures'
-      to_fullname: 'à %{fullname}'
+      to_email_html: 'à %{email_link}'
       on_date: 'le %{date}'

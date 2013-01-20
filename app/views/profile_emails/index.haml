@@ -12,7 +12,7 @@
               .profile-email-thumb{id: "profile-email-thumb-#{profile_email.id}"}
                 .well
                   = render 'profile_emails/show', profile_email: profile_email
-                =t 'profile_emails.index.to_fullname', fullname: profile_email.recipient_email
+                =t 'profile_emails.index.to_email_html', email_link: link_to(profile_email.recipient_email, "mailto:#{profile_email.recipient_email}")
                 .graylight-text=t 'profile_emails.index.on_date', date: profile_email.created_at.strftime('%d-%m-%Y')
 
 - @profile_emails.each do |profile_email|
