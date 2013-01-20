@@ -1,7 +1,7 @@
 fr:
   profile_emails:
     new:
-      title: 'Envoyer par email'
+      title: 'Envoyer une candidature par email'
       from_label: 'De'
       from_fullname_placeholder: 'Votre nom et prénom'
       from_email_placeholder: 'Votre adresse email'
@@ -14,7 +14,7 @@ fr:
       send: 'Envoyer'
       sending: 'envoi en cours...'
     create:
-      title: 'Envoyer par email'
+      title: 'Envoyer une candidature par email'
     decline:
       title: 'Merci de votre réponse'
       thank_you: 'Merci de votre réponse'

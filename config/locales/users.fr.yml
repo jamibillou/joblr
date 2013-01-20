@@ -15,8 +15,8 @@ fr:
       site: 'www'
       edit: 'Modifier'
       contact: 'Contacter'
-      send: 'Envoyer'
-      send_email: 'Envoyer par email'
+      send: 'Candidater'
+      send_email: 'Envoyer une candidature par email'
       share: 'Partager'
       what_now: "Et maintenant ?"
       whats_this: "Qu'est-ce que c'est ?"

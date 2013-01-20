@@ -15,8 +15,8 @@ en:
       site: 'www'
       edit: 'Edit'
       contact: 'Contact'
-      send: 'Send'
-      send_email: 'Send by email'
+      send: 'Apply'
+      send_email: 'Send a job application via email'
       share: 'Share'
       what_now: "What now?"
       whats_this: "What's this?"

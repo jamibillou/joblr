@@ -1,7 +1,7 @@
 en:
   profile_emails:
     new:
-      title: 'Send by email'
+      title: 'Send a job application via email'
       from_label: 'From'
       from_fullname_placeholder: 'Your full name'
       from_email_placeholder: 'Your email address'
@@ -14,7 +14,7 @@ en:
       send: 'Send'
       sending: 'sending...'
     create:
-      title: 'Send by email'
+      title: 'Send a job application via email'
     decline:
       title: 'Thanks for your answer'
       thank_you: 'Thanks for letting us know'
