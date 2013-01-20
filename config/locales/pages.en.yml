@@ -15,6 +15,15 @@ en:
       benefit4_title: "Ask around"
       benefit4_text: "Your network has the potential to get you your next job. Share your Joblr profile around to get contacts and tips!"
       disclaimer_html: "<b>Note:</b> We are currently working on our pricing model. For the time being all beta members can enjoy Joblr for free."
+    new_landing:
+      title: "The open application which gives you feedback"
+      cta_title: "They trust Joblr for their recruitment process, join them!"
+      testimonial_1_html: "“Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.<br/>Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.”"
+      testimonial_2_html: "“Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil.<br/>Impedit quo minus id quod maxime placeat facere possimus.”<br/>"
+      screenshot_1: "Fast and clear registration"
+      screenshot_2: "Update your profile in a few clicks"
+      screenshot_3: "Send your applications using this single form"
+      screenshot_4: "Show and follow your applications"
     admin:
       title: 'Admin'
       title_alt: 'Dashboard'
