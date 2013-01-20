@@ -17,12 +17,12 @@ fr:
       disclaimer_html: "<b>Remarque : </b> Nos tarifs n'étant pour l'instant pas finalisés, la version beta de Joblr est entièrement gratuite jusqu'à nouvel ordre."
     new_landing:
       title: "La candidature spontanée qui donne envie de vous répondre"
-      cta_title: "Ils utilisent Joblr pour leur recrutement, rejoignez-les !"
+      cta_title: "Ils utilisent Joblr pour leur recrutement, contactez-les !"
       testimonial_1_html: "“Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.<br/>Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.”"
       testimonial_2_html: "“Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil.<br/>Impedit quo minus id quod maxime placeat facere possimus.”<br/>"
-      screenshot_1: "Une inscription simple et rapide"
-      screenshot_2: "Editez votre profil en quelques clics"
-      screenshot_3: "Envoyez vos candidatures à l'aide d'un simple formulaire"
+      screenshot_1: "Inscription rapide"
+      screenshot_2: "Créez votre profil en quelques clics"
+      screenshot_3: "Envoyez vos candidatures via un formulaire très simple"
       screenshot_4: "Visualisez et suivez vos candidatures"
     admin:
       title: 'Admin'
