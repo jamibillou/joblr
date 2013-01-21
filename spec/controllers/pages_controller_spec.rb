@@ -131,4 +131,27 @@ describe PagesController do
 			end
 		end
 	end
+
+	describe "GET 'signup choice'" do
+
+		context 'for public users' do
+			before :each do
+				get :signup_choice
+			end
+
+			it { response.should be_success }
+		end	
+
+		context 'for signed in users' do
+			before :each do
+				sign_in @user
+				get :signup_choice
+			end
+
+			it 'should redirect to root path' do
+				response.should redirect_to(root_path)
+				flash[:error].should == I18n.t('flash.error.only.public')
+			end	
+		end
+	end
 end

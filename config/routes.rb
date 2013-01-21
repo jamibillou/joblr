@@ -26,10 +26,11 @@ Joblr::Application.routes.draw do
   get  'users/auth/failure'  => 'authentications#failure'
   post 'users/share_profile' => 'users#share_profile'
 
-  match 'home',       to: 'pages#landing'
-  match 'admin',      to: 'pages#admin'
-  match 'style_tile', to: 'pages#style_tile'
-  match 'close',      to: 'pages#close'
+  match 'home',          to: 'pages#landing'
+  match 'admin',         to: 'pages#admin'
+  match 'style_tile',    to: 'pages#style_tile'
+  match 'signup_choice', to: 'pages#signup_choice'
+  match 'close',         to: 'pages#close'
 
   # Subdomain constraints
   match '', to: 'users#show', constraints: Subdomain.new(true) || MultiLevelSubdomain.new(true)

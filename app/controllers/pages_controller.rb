@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
-  before_filter :admin_user, only: [:admin, :style_tile]
+  before_filter :admin_user,    only: [:admin, :style_tile]
+  before_filter :not_signed_in, only: :signup_choice
 
   def landing
     @version = ab_test('landing_design', 'old', 'new')
@@ -20,5 +21,8 @@ class PagesController < ApplicationController
   end
 
   def close
+  end
+
+  def signup_choice
   end
 end
