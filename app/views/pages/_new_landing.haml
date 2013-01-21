@@ -5,7 +5,7 @@
         .row-fluid
           .span1.hidden-phone
           .span10
-            %h1=t 'pages.new_landing.title'
+            %h1=t 'pages.landing.new.title'
         .row-fluid
           .span12
             .the-hero
@@ -18,8 +18,8 @@
         .span12
           .row-fluid#cta
             .span12
-              %h1=t 'pages.new_landing.cta_title'
-              %a.btn.btn-large.btn-primary.btn-top{href: "#{new_invite_email_path}?landing_version=#{@version}"}=t 'pages.landing.join'
+              %h1=t 'pages.landing.new.cta_title'
+              %a.btn.btn-large.btn-primary.btn-top{href: "#{new_invite_email_path}?landing_version=#{@version}"}=t 'pages.landing.new.join'
           / .row-fluid#testimonials
           /   .visible-desktop
           /     .span4
@@ -54,21 +54,21 @@
 
   .row-fluid
     .span12
-      .alert.alert-info=t 'pages.landing.disclaimer_html'
+      .alert.alert-info=t 'pages.landing.new.disclaimer_html'
 
   .modal.screenshot#modal_signup.hide
     .modal-body
       = image_tag "screenshots/new_landing/#{locale}/signup.gif"
-      %h5.pull-right=t 'pages.new_landing.screenshot_1'
+      %h5.pull-right=t 'pages.landing.new.screenshot_1'
   .modal.screenshot#modal_profile.hide
     .modal-body
       = image_tag "screenshots/new_landing/#{locale}/profile.gif"
-      %h5.pull-right=t 'pages.new_landing.screenshot_2'
+      %h5.pull-right=t 'pages.landing.new.screenshot_2'
   .modal.screenshot#modal_apply.hide
     .modal-body
       = image_tag "screenshots/new_landing/#{locale}/apply.gif"
-      %h5.pull-right=t 'pages.new_landing.screenshot_3'
+      %h5.pull-right=t 'pages.landing.new.screenshot_3'
   .modal.screenshot#modal_applications.hide
     .modal-body
       = image_tag "screenshots/new_landing/#{locale}/applications.gif"
-      %h5.pull-right=t 'pages.new_landing.screenshot_4'
+      %h5.pull-right=t 'pages.landing.new.screenshot_4'

@@ -3,8 +3,8 @@ class PagesController < ApplicationController
   before_filter :admin_user, only: [:admin, :style_tile]
 
   def landing
-    @title = t('pages.landing.title')
     @version = ab_test('landing_design', 'old', 'new')
+    @title = t("pages.landing.#{@version}.title")
   end
 
   def admin

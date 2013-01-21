@@ -48,10 +48,10 @@ en:
       profile_email:
         none: "You haven't sent any job application yet."
   footer:
-    joblr_in: "joblr.co in"
+    joblr_in: 'joblr.co in'
     locales:
-      en: "english"
-      fr: "french"
+      en: "English"
+      fr: "French"
     feedback:
       title: 'Help us make Joblr better'
       placeholder: 'Let us know about your ideas, questions, complaints, etc.'

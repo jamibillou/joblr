@@ -1,29 +1,32 @@
 fr:
   pages:
     landing:
-      title: "Le moyen le plus rapide de candidater"
-      title_alt: 'Accueil'
-      catchphrase: "Les lettres de motivation et CV vous épuisent ?"
-      subtitle: "Joblr est le moyen le plus rapide de candidater."
-      join: "Oui !"
-      benefit1_title: "Allez à l'essentiel"
-      benefit1_text: "Votre profil ne prend que 5 secondes à lire et contient toutes les informations essentielles pour comprendre vos compétences."
-      benefit2_title: "Rapide des deux côtés"
-      benefit2_text: "Il suffit de deux clics pour envoyer votre candidature, même chose pour les recruteurs et leur réponse. Le temps est précieux pour tout le monde."
-      benefit3_title: "Inscription simplissime"
-      benefit3_text_html: "Importez votre parcours depuis LinkedIn et c'est parti ! Une inscription simplifiée qui n'empiette pas sur vos recherches. "
-      benefit4_title: "Un job autour de vous"
-      benefit4_text: "Votre entourage a peut être les clés de votre prochain poste. Partagez votre profil Joblr et profitez du bouche à oreille."
-      disclaimer_html: "<b>Remarque : </b> Nos tarifs n'étant pour l'instant pas finalisés, la version beta de Joblr est entièrement gratuite jusqu'à nouvel ordre."
-    new_landing:
-      title: "La candidature spontanée qui donne envie de vous répondre"
-      cta_title: "Besoin d'un second souffle dans votre recherche d'emploi ?"
-      testimonial_1_html: "“Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.<br/>Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.”"
-      testimonial_2_html: "“Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil.<br/>Impedit quo minus id quod maxime placeat facere possimus.”<br/>"
-      screenshot_1: "Inscription rapide"
-      screenshot_2: "Créez votre profil en quelques clics"
-      screenshot_3: "Envoyez vos candidatures via un formulaire très simple"
-      screenshot_4: "Visualisez et suivez vos candidatures"
+      old:
+        title: "Le moyen le plus rapide de candidater"
+        title_alt: 'Accueil'
+        catchphrase: "Les lettres de motivation et CV vous épuisent ?"
+        subtitle: "Joblr est le moyen le plus rapide de candidater."
+        join: "S'inscrire"
+        benefit1_title: "Allez à l'essentiel"
+        benefit1_text: "Votre profil ne prend que 5 secondes à lire et contient toutes les informations essentielles pour comprendre vos compétences."
+        benefit2_title: "Rapide des deux côtés"
+        benefit2_text: "Il suffit de deux clics pour envoyer votre candidature, même chose pour les recruteurs et leur réponse. Le temps est précieux pour tout le monde."
+        benefit3_title: "Inscription simplissime"
+        benefit3_text_html: "Importez votre parcours depuis LinkedIn et c'est parti ! Une inscription simplifiée qui n'empiette pas sur vos recherches. "
+        benefit4_title: "Un job autour de vous"
+        benefit4_text: "Votre entourage a peut être les clés de votre prochain poste. Partagez votre profil Joblr et profitez du bouche à oreille."
+        disclaimer_html: "<b>Remarque : </b> Nos tarifs n'étant pour l'instant pas finalisés, la version beta de Joblr est entièrement gratuite jusqu'à nouvel ordre."
+      new:
+        title: "La candidature spontanée qui donne envie de vous répondre"
+        cta_title: "Besoin d'un second souffle dans votre recherche d'emploi ?"
+        testimonial_1_html: "“Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.<br/>Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.”"
+        testimonial_2_html: "“Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil.<br/>Impedit quo minus id quod maxime placeat facere possimus.”<br/>"
+        join: "Oui !"
+        screenshot_1: "Inscription rapide"
+        screenshot_2: "Créez votre profil en quelques clics"
+        screenshot_3: "Envoyez vos candidatures via un formulaire très simple"
+        screenshot_4: "Visualisez et suivez vos candidatures"
+        disclaimer_html: "<b>Remarque : </b> Nos tarifs n'étant pour l'instant pas finalisés, la version beta de Joblr est entièrement gratuite jusqu'à nouvel ordre."
     admin:
       title: 'Admin'
       title_alt: 'Tableau de bord'
