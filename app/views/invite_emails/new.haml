@@ -11,6 +11,6 @@
         = f.submit t('.button'), class: 'btn btn-small btn-primary'
 
 - if flash[:error].nil?
-  = mixpanel_call('track', 'Viewed email invitation page')
+  = mixpanel_call('track', 'Viewed invitation page')
 - else
   = mixpanel_call('track', 'Failed to fill email invitation form', "{'Invitation email':'#{@invite_email.recipient_email}'}")
