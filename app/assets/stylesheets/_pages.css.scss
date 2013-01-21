@@ -73,21 +73,21 @@
     margin:0;
     border:0;
     h1{
-      margin-bottom:60px;
+      margin-bottom:57px;
       font-size:48px;
-      line-height:55px;
+      line-height:57px;
       text-align:center;
       // tablet
       @media (min-width:768px) and (max-width: 979px) {
         font-size:40px;
         line-height:45px;
-        margin-bottom:52px;
+        margin-bottom:47px;
       }
       // phone
       @media (max-width:767px) {
         font-size:30px;
         line-height:35px;
-        margin-bottom:50px;
+        margin-bottom:48px;
       }
     }
     .the-hero{
@@ -97,12 +97,12 @@
         // desktop
         @media (min-width:980px){
           width:980px;
-          height:1400px;
-          margin-bottom:275px;
+          height:1693px;
+          margin-bottom:272px;
         }
         // tablet
         @media (min-width:768px) and (max-width: 979px){
-          margin-bottom:273px;
+          margin-bottom:272px;
         }
       }
     }
@@ -115,18 +115,18 @@
     @media (min-width:980px){
       position:absolute;
       left:0;
-      top:1800px;
+      top:2091px;
     }
     // tablet
     @media (min-width:768px) and (max-width: 979px){
       position:absolute;
       left:0;
-      top:1770px;
+      top:2057px;
     }
     // phone
     @media (max-width:767px) {
       height:auto;
-      margin:70px -30px 70px;
+      margin:68px -30px 70px;
       padding-left:30px;
       padding-right:20px;
     }
