@@ -25,7 +25,7 @@ describe FeedbackEmailsController do
 
       it "should not send the feedback by email" do
         email = mock Mail::Message
-        FeedbackEmailMailer.should_not_receive(:footer_form).with(kind_of(FeedbackEmail)).and_return(email)
+        FeedbackEmailMailer.should_not_receive(:footer_form).with kind_of(FeedbackEmail)
         email.should_not_receive(:deliver)
         xhr :post, :create, feedback_email: @attr.merge(text: '')
       end

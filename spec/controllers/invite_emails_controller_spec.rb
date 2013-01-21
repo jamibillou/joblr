@@ -63,7 +63,7 @@ describe InviteEmailsController do
 
         it 'should not notify the team' do
           email = mock Mail::Message
-          InviteEmailMailer.should_not_receive(:notify_team).with(kind_of(InviteEmail)).and_return(email)
+          InviteEmailMailer.should_not_receive(:notify_team).with kind_of(InviteEmail)
           email.should_not_receive(:deliver)
           post :create, invite_email: {recipient_email: ''}
         end
@@ -95,7 +95,7 @@ describe InviteEmailsController do
 
         it 'should not notify the team' do
           email = mock Mail::Message
-          InviteEmailMailer.should_not_receive(:notify_team).with(kind_of(InviteEmail)).and_return(email)
+          InviteEmailMailer.should_not_receive(:notify_team).with kind_of(InviteEmail)
           email.should_not_receive(:deliver)
           post :create, invite_email: {recipient_email: 'user@example.com'}
         end
@@ -123,7 +123,7 @@ describe InviteEmailsController do
 
         it 'should not notify the team' do
           email = mock Mail::Message
-          InviteEmailMailer.should_not_receive(:notify_team).with(kind_of(InviteEmail)).and_return(email)
+          InviteEmailMailer.should_not_receive(:notify_team).with kind_of(InviteEmail)
           email.should_not_receive(:deliver)
           post :create, invite_email: {recipient_email: @user.email}
         end
@@ -179,7 +179,7 @@ describe InviteEmailsController do
 
       it 'should not send the invitation code' do
         email = mock Mail::Message
-        InviteEmailMailer.should_not_receive(:send_code).with(kind_of(InviteEmail)).and_return(email)
+        InviteEmailMailer.should_not_receive(:send_code).with kind_of(InviteEmail)
         email.should_not_receive(:deliver)
         get :send_code, invite_email_id: @invite_email
       end
@@ -207,7 +207,7 @@ describe InviteEmailsController do
 
         it 'should not send the invitation code' do
           email = mock Mail::Message
-          InviteEmailMailer.should_not_receive(:send_code).with(kind_of(InviteEmail)).and_return(email)
+          InviteEmailMailer.should_not_receive(:send_code).with kind_of(InviteEmail)
           email.should_not_receive(:deliver)
           get :send_code, invite_email_id: @invite_email
         end

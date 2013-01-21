@@ -49,7 +49,7 @@ describe ProfileEmailsController do
 
           it "should not send the user's profile by email" do
             email = mock Mail::Message
-            ProfileEmailMailer.should_not_receive(:user).with(kind_of(ProfileEmail), kind_of(User)).and_return(email)
+            ProfileEmailMailer.should_not_receive(:user).with kind_of(ProfileEmail), kind_of(User)
             email.should_not_receive(:deliver)
             xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
           end
@@ -70,7 +70,7 @@ describe ProfileEmailsController do
 
           it "should send the user's profile by email" do
             email = mock Mail::Message
-            ProfileEmailMailer.should_not_receive(:user).with(kind_of(ProfileEmail), kind_of(User)).and_return(email)
+            ProfileEmailMailer.should_not_receive(:user).with kind_of(ProfileEmail), kind_of(User)
             email.should_not_receive(:deliver)
             xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com'), user_id: @author.id
           end
@@ -125,7 +125,7 @@ describe ProfileEmailsController do
 
           it "should not send the other user's profile by email" do
             email = mock Mail::Message
-            ProfileEmailMailer.should_not_receive(:other_user).with(kind_of(ProfileEmail), kind_of(User), kind_of(User)).and_return(email)
+            ProfileEmailMailer.should_not_receive(:other_user).with kind_of(ProfileEmail), kind_of(User), kind_of(User)
             email.should_not_receive(:deliver)
             xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_fullname: 'Test Dude'), user_id: @other_user.id
           end
@@ -146,7 +146,7 @@ describe ProfileEmailsController do
 
           it "should not send the other user's profile by email" do
             email = mock Mail::Message
-            ProfileEmailMailer.should_not_receive(:other_user).with(kind_of(ProfileEmail), kind_of(User), kind_of(User)).and_return(email)
+            ProfileEmailMailer.should_not_receive(:other_user).with kind_of(ProfileEmail), kind_of(User), kind_of(User)
             email.should_not_receive(:deliver)
             xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_email: 'other_user@example.com'), user_id: @other_user.id
           end
@@ -202,7 +202,7 @@ describe ProfileEmailsController do
 
         it "should not send the user's profile by email" do
           email = mock Mail::Message
-          ProfileEmailMailer.should_not_receive(:public_user).with(kind_of(ProfileEmail), kind_of(User)).and_return(email)
+          ProfileEmailMailer.should_not_receive(:public_user).with kind_of(ProfileEmail), kind_of(User)
           email.should_not_receive(:deliver)
           xhr :post, :create, :profile_email => @profile_email_attr.merge(author_fullname: @public_user[:fullname], recipient_email: 'recipient@example.com', recipient_fullname: 'Test Dude'), user_id: @other_user.id
         end
@@ -223,7 +223,7 @@ describe ProfileEmailsController do
 
         it "should not send the user's profile by email" do
           email = mock Mail::Message
-          ProfileEmailMailer.should_not_receive(:public_user).with(kind_of(ProfileEmail), kind_of(User)).and_return(email)
+          ProfileEmailMailer.should_not_receive(:public_user).with kind_of(ProfileEmail), kind_of(User)
           email.should_not_receive(:deliver)
           xhr :post, :create, :profile_email => @profile_email_attr.merge(author_email: @public_user[:email], recipient_email: 'recipient@example.com', recipient_fullname: 'Test Dude'), user_id: @other_user.id
         end
@@ -244,7 +244,7 @@ describe ProfileEmailsController do
 
         it "should not send the user's profile by email" do
           email = mock Mail::Message
-          ProfileEmailMailer.should_not_receive(:public_user).with(kind_of(ProfileEmail), kind_of(User)).and_return(email)
+          ProfileEmailMailer.should_not_receive(:public_user).with kind_of(ProfileEmail), kind_of(User)
           email.should_not_receive(:deliver)
           xhr :post, :create, :profile_email => @profile_email_attr.merge(author_fullname: @public_user[:fullname], author_email: @public_user[:email], recipient_fullname: 'Test Dude'), user_id: @other_user.id
         end
@@ -265,7 +265,7 @@ describe ProfileEmailsController do
 
         it "should not send the user's profile by email" do
           email = mock Mail::Message
-          ProfileEmailMailer.should_not_receive(:public_user).with(kind_of(ProfileEmail), kind_of(User)).and_return(email)
+          ProfileEmailMailer.should_not_receive(:public_user).with kind_of(ProfileEmail), kind_of(User)
           email.should_not_receive(:deliver)
           xhr :post, :create, :profile_email => @profile_email_attr.merge(author_fullname: @public_user[:fullname], author_email: @public_user[:email], recipient_email: 'recipient@example.com'), user_id: @other_user.id
         end
@@ -337,8 +337,8 @@ describe ProfileEmailsController do
 
       it 'should not send any email' do
         email = mock Mail::Message
-        ProfileEmailMailer.should_not_receive(:decline).with(kind_of(ProfileEmail)).and_return(email)
-        ProfileEmailMailer.should_not_receive(:decline_through_other).with(kind_of(ProfileEmail)).and_return(email)
+        ProfileEmailMailer.should_not_receive(:decline).with kind_of(ProfileEmail)
+        ProfileEmailMailer.should_not_receive(:decline_through_other).with kind_of(ProfileEmail)
         email.should_not_receive(:deliver)
         get :decline, profile_email_id: @user_profile_email
         get :decline, profile_email_id: @other_profile_email
