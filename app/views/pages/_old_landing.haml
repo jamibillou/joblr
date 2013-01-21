@@ -6,7 +6,7 @@
           .span6#value-prop
             %h1=t 'pages.landing.catchphrase'
             %h3=t 'pages.landing.subtitle'
-            %a.btn.btn-large.btn-primary#join-beta{href: new_invite_email_path}=t 'pages.landing.join'
+            %a.btn.btn-large.btn-primary#join-beta{href: "#{new_invite_email_path}?landing_version=#{@version}"}=t 'pages.landing.join'
           .span6#screenshot.hidden-phone
           .span6#screenshot-phone.visible-phone
   .row-fluid#benefits

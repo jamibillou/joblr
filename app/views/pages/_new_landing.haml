@@ -19,7 +19,7 @@
           .row-fluid#cta
             .span12
               %h1=t 'pages.new_landing.cta_title'
-              %a.btn.btn-large.btn-primary.btn-top{href: new_invite_email_path}=t 'pages.landing.join'
+              %a.btn.btn-large.btn-primary.btn-top{href: "#{new_invite_email_path}?landing_version=#{@version}"}=t 'pages.landing.join'
           / .row-fluid#testimonials
           /   .visible-desktop
           /     .span4
