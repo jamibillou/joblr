@@ -5,7 +5,7 @@ class PagesController < ApplicationController
 
   def landing
     @version = ab_test('landing_design', 'old', 'new')
-    @title = t("pages.landing.#{@version}.title")
+    @title   = t("pages.landing.#{@version}.title")
   end
 
   def admin
@@ -24,5 +24,6 @@ class PagesController < ApplicationController
   end
 
   def signup_choice
+    @user = User.new  #TO REMOVE
   end
 end

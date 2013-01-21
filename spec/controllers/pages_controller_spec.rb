@@ -140,6 +140,10 @@ describe PagesController do
 			end
 
 			it { response.should be_success }
+
+			it 'should have a no-worries block' do
+				response.body.should have_selector 'div.no-worries'
+			end
 		end	
 
 		context 'for signed in users' do

@@ -34,3 +34,6 @@ fr:
       title: 'Styles'
     blog:
       title_alt: 'Blog'
+    signup_choice:
+      title: "S'inscrire"
+      manual: "Je préfère m'inscrire manuellement"

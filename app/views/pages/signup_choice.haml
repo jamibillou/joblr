@@ -1,0 +1,12 @@
+.row-fluid.devise
+  .span2.hidden-phone
+  .span8
+    .header
+      %h1=t 'devise.registrations.new.welcome'
+      .lead=t 'devise.registrations.new.choose'
+    .well
+      %h3=t 'devise.registrations.new.social'
+      .big=t 'devise.registrations.new.convenient'
+      = render 'devise/shared/omniauth_links', user: @user, size: 'btn-large'
+      .no-worries=t 'devise.registrations.new.no_worries'
+      = link_to t('pages.signup_choice.manual'), '#'
