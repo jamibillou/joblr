@@ -48,7 +48,7 @@ en:
       profile_email:
         none: "You haven't sent any job application yet."
   footer:
-    joblr_in: "Language:"
+    joblr_in: "joblr.co in"
     locales:
       en: "english"
       fr: "french"

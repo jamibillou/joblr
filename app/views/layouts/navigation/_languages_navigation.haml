@@ -1,5 +1,5 @@
-%ul.nav
-  %li.dropup
+%ul.nav.pull-right
+  %li.dropdown
     %a.dropdown-toggle{src: '#', 'data-toggle' => 'dropdown'}
       =t "footer.locales.#{I18n.locale.to_s}"
       .caret
@@ -7,3 +7,4 @@
       - ['en', 'fr'].each do |locale|
         - unless locale == I18n.locale.to_s
           %li= link_to t("footer.locales.#{locale}"), url_for(locale: locale)
+.joblr-in=t 'footer.joblr_in'

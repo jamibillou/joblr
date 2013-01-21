@@ -8,8 +8,8 @@ module ApplicationHelper
     "Joblr | #{title}"
   end
 
-  def footer
-    render 'layouts/footer' unless controller_name == 'pages' && action_name == 'landing'
+  def footer?
+    controller_name != 'pages' || action_name != 'landing'
   end
 
   def subdomain?
