@@ -18,6 +18,8 @@
       - else
         = mixpanel_init :production
       - if user_signed_in?
+        - if flash[:notice] == t('devise.registrations.signed_up') || (flash[:success] && flash[:success].match(Regexp.new(t('flash.success.provider.signed_up', provider: '.+'))))
+          = mixpanel_call('alias', current_user.id)
         = mixpanel_call('identify', current_user.id)
         = mixpanel_call('name_tag', current_user.fullname)
 
