@@ -1,5 +1,3 @@
-- devise_error_messages! unless resource.errors.empty?
-
 .row-fluid.devise
   .span4.hidden-phone
   .span4
@@ -23,15 +21,16 @@
         %br/
         = f.text_field :username, class: 'span11'
         %br/
-        %label.inline=t 'devise.registrations.password'
-        %span.danger-text *
-        %br/
-        = f.password_field :password, class: 'span11'
-        %br/
-        %label.inline=t 'devise.registrations.password_confirmation'
-        %span.danger-text *
-        %br/
-        = f.password_field :password_confirmation, class: 'span11'
+        - if session[:auth_hash].nil?
+          %label.inline=t 'devise.registrations.password'
+          %span.danger-text *
+          %br/
+          = f.password_field :password, class: 'span11'
+          %br/
+          %label.inline=t 'devise.registrations.password_confirmation'
+          %span.danger-text *
+          %br/
+          = f.password_field :password_confirmation, class: 'span11'
         %br/
         = f.submit t('devise.registrations.sign_up'), class: 'btn btn-primary'
     .pull-right.danger-text * #{t('required_fields')}

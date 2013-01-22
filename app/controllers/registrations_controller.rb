@@ -5,7 +5,21 @@ class RegistrationsController < Devise::RegistrationsController
   before_filter :ignore_blank_email,            only: :update
 
   def new
-    @user = User.new session[:auth_hash][:user]
+    @user = social_auth? ? User.new(session[:auth_hash][:user]) : User.new
+  end
+
+  def create
+    @user = User.new params[:user]
+    @user.social = social_auth?
+    if @user.save
+      @user.authentications.create(session[:auth_hash][:authentication]) if social_auth?
+      session[:auth_hash] = nil
+      sign_in @user, bypass: true
+      redirect_to root_path, flash: {success: t('flash.success.welcome')}
+    else
+      flash[:error] = error_messages @user
+      render :new
+    end
   end
 
   def update
@@ -33,5 +47,9 @@ class RegistrationsController < Devise::RegistrationsController
         InviteEmail.find(session[:invite_email][:id]).use_invite(resource)
         session[:invite_email] = nil
       end
+    end
+
+    def social_auth?
+      !session[:auth_hash].nil?
     end
 end
