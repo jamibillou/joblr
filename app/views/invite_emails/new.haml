@@ -13,4 +13,4 @@
 - if flash[:error].nil?
   = mixpanel_call('track', 'Viewed invitation page', "{'Landing version':'#{params[:landing_version]}'}")
 - else
-  = mixpanel_call('track', 'Failed to fill email invitation form', "{'Invitation email':'#{@invite_email.recipient_email}'}")
+  = mixpanel_call('track', 'Submitted invalid email (invite)', "{'Invitation email':'#{@invite_email.recipient_email}'}")
