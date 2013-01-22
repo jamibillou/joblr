@@ -65,15 +65,22 @@ class AuthenticationsController < ApplicationController
     end
 
     def social_sign_up
-      if auth_origin.include? new_user_registration_path
-        sign_in create_user_auth(User.make_username(auth_hash.info.nickname, auth_hash.info.name))
-        redirect_path   = root_path
+      if auth_origin.include? signup_choice_path
+        session[:auth_hash] = session_auth_hash
+        #sign_in create_user_auth(User.make_username(auth_hash.info.nickname, auth_hash.info.name))
+        #redirect_path   = root_path
+        redirect_path = new_user_registration_path
         flash[:success] = t('flash.success.provider.signed_up', provider: humanize(auth_hash.provider))
       else
         redirect_path = auth_origin
         flash[:error] = t('flash.error.provider.no_user', provider: humanize(auth_hash.provider))
       end
       redirect_to redirect_path
+    end
+
+    def session_auth_hash
+      {user:           {username: User.make_username(auth_hash.info.nickname, auth_hash.info.name), fullname: auth_hash.info.name, email: auth_email, remote_image_url: auth_hash.info.image},
+       authentication: {provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, utoken: auth_token, usecret: auth_secret}}
     end
 
     def create_user_auth(username)

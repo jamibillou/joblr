@@ -4,6 +4,10 @@ class RegistrationsController < Devise::RegistrationsController
   before_filter :profile_completed, :load_user, only: :edit
   before_filter :ignore_blank_email,            only: :update
 
+  def new
+    @user = User.new session[:auth_hash][:user]
+  end
+
   def update
     @user = User.find current_user.id
     if @user.update_attributes(params[:user])
