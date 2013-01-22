@@ -1,6 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
 
-  #before_filter :redirect_uninvited,            only: :new
   after_filter  :use_invite,                    only: :create
   before_filter :profile_completed, :load_user, only: :edit
   before_filter :ignore_blank_email,            only: :update

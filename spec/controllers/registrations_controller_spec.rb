@@ -10,7 +10,7 @@ describe RegistrationsController do
     @attr         = { fullname: 'New User', username: 'newuser', password: 'pouetpouet', password_confirmation: 'pouetpouet' }
     @full_attr    = { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China', profiles_attributes: { '0' => { experience: 10, education: 'none' } } }
     request.env['devise.mapping'] = Devise.mappings[:user]
-  end
+  end  
 
   describe "PUT 'update'" do
 
@@ -119,5 +119,32 @@ describe RegistrationsController do
         end
       end
     end
+  end
+
+  describe "GET 'new'" do
+
+    context 'for signed in users' do
+      before :each do
+        sign_in @user
+        get :new              
+      end
+
+      it 'should redirect to root path' do
+        response.should redirect_to(root_path)
+        flash[:error].should == I18n.t('devise.failure.already_authenticated')
+      end
+    end
+
+    context 'for public users' do
+      before :each do
+        get :new
+      end
+
+      it { response.should be_success }
+
+      it 'should have the right title' do
+        find("div.lead").should have_content I18n.t('devise.registrations.new.title')
+      end
+    end 
   end
 end

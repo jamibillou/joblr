@@ -57,6 +57,7 @@ en:
         no_worries: "Don't worry we won't post anything on your networks without your permission!"
         convenient: '(more convenient)'
         joblr: 'Or sign up manually'
+        connection_info: 'We need your sign in information'
       create:
         title: 'Sign up!'
       edit:
