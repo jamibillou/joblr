@@ -14,7 +14,7 @@ fr:
         imported: "Votre parcours a été importé depuis %{provider}, vérifiez quand même que tout est correct et qu'il ne manque rien."
         removed: "Le lien avec votre compte %{provider} a bien été supprimé."
       profile:
-        created: "Parfait ! Maintenant que votre profil est prêt, envoyez-le par email aux recruteurs ciblés."
+        created: "Parfait ! Maintenant que votre profil est prêt, postulez auprès des entreprises qui vous intéressent."
         updated: 'Modifications enregistrées.'
         shared:
           user: "Votre profil a bien été envoyé à %{recipient_email}"

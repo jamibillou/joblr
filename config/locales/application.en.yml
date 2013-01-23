@@ -14,7 +14,7 @@ en:
         imported: "Your information was imported from %{provider}, don't forget to check it and fill the blanks."
         removed: "Your %{provider} account is now unlinked."
       profile:
-        created: "Perfect, send your profile by email or share it on your networks now that it's done."
+        created: "Perfect, now that your profile is complete you can start applying to jobs you're interested in."
         updated: 'Your changes were saved.'
         shared:
           user: "Your profile was successfully sent to %{recipient_email}"
