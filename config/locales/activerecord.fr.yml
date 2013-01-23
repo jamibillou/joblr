@@ -80,5 +80,5 @@ fr:
         subdomain_format: "n'est pas formaté correctement (2 à 63 lettres/chiffres, accents non autorisés)"
         blank: "vide"
         invalid: "invalide"
-        taken: "déjà pris"
+        taken: "déjà pris(e)"
         not_a_number: "n'est pas un nombre"

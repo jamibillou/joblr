@@ -50,16 +50,13 @@ en:
       no_token: "You can't access this page without coming from a password reset email."
     registrations:
       new:
-        title: 'Sign up!'
+        title: 'Sign up'
         welcome: 'Welcome to Joblr!'
-        choose: 'Choose how you would like to sign up'
-        social: 'Use one of your existing accounts'
-        no_worries: "Don't worry we won't post anything on your networks without your permission!"
-        convenient: '(more convenient)'
-        joblr: 'Or sign up manually'
-        connection_info: 'We need your sign in information'
+        account_info: "Account information"
+        fill_account_info: "Fill in your account information"
+        so_we_know: 'So we know who you are'
       create:
-        title: 'Sign up!'
+        title: 'Sign up'
       edit:
         title: 'Account settings'
         subtitle: 'Change your details and social accounts'

@@ -4,17 +4,17 @@ fr:
   required_fields: 'champs obligatoires'
   flash:
     success:
-      welcome: 'Bienvenue sur Joblr !'
+      welcome: "Votre compte a bien été créé, plus qu'à remplir votre profil !"
       user:
         destroyed: "L'utilisateur a bien été supprimé."
       provider:
         signed_in: 'Vous êtes maintenant connecté.'
-        signed_up: "Vous vous êtes bien inscrit avec votre compte %{provider}, il ne vous reste plus qu'à remplir votre profil."
+        signed_up: "Vous vous êtes bien inscrit avec votre compte %{provider}, plus que quleques détails."
         added:  "Votre compte %{provider} a bien été lié, vous pouvez l'utiliser pour vous connecter."
         imported: "Votre parcours a été importé depuis %{provider}, vérifiez quand même que tout est correct et qu'il ne manque rien."
         removed: "Le lien avec votre compte %{provider} a bien été supprimé."
       profile:
-        created: "Parfait ! Maintenant que votre profil est prêt, envoyez-le par email aux recruteurs ciblés."
+        created: "Parfait ! Maintenant que votre profil est prêt, postulez auprès des entreprises qui vous intéressent."
         updated: 'Modifications enregistrées.'
         shared:
           user: "Votre profil a bien été envoyé à %{recipient_email}"
@@ -27,7 +27,7 @@ fr:
     error:
       something_wrong:
         base: "Oups, quelque chose ne s'est pas passé comme prévu."
-        auth: "Un problème est survenu en essayant de lier votre compte."
+        auth: "Un problème est survenu lors de la liaison de votre compte."
       provider:
         already_linked: "Nous n'avons pas pu lier votre compte %{provider} car il est déjà lié à votre profil."
         other_user: "Nous n'avons pas pu lier votre compte %{provider} car il est déjà lié au profil d'un autre utilisateur."

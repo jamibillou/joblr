@@ -6,7 +6,7 @@ en:
         title_alt: 'Home'
         catchphrase: 'Tired of writing cover letters and resumes?'
         subtitle: 'Joblr is the quickest way to send job applications.'
-        join: 'Sign up'
+        join: 'Sign up!'
         benefit1_title: "Only what matters"
         benefit1_text: "Joblr profiles take 5 seconds to read and contain all a company needs to understand who you are and what you can do."
         benefit2_title: "Quick on both sides"
@@ -36,4 +36,7 @@ en:
       title_alt: 'Blog'
     signup_choice:
       title: "Sign up"
-      manual: "I want to sign up manually"
+      welcome: 'Welcome to Joblr!'
+      choose: 'Sign up with a social account, or manually'
+      no_worries: "Don't worry we won't post anything on your networks without your permission."
+      manual: "I prefer to signing up manually."
