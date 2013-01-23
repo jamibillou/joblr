@@ -3,20 +3,6 @@ en:
     header: 'This is an automated notification, please do not reply.'
     team: 'Joblr team'
     re: 'RE:'
-    invite_email:
-      notify_team:
-        subject: "New invitation request!"
-        title: "Somebody wants to try Joblr!"
-        content_html: "Sign in and send an invitation to %{email}"
-        content_text: "Sign in and send an invitation to %{email}"
-        button: 'Sign in now'
-      send_code:
-        subject: "Invitation to Joblr beta"
-        title: "Here's your invitation to Joblr beta!"
-        content_html: "Get access at %{url}"
-        content_text: "Paste your invitation code at %{url} to get access."
-        code: "Invitation code:"
-        button: 'Get access!'
     devise:
       reset_password_instructions:
         subject: 'Reset your password'

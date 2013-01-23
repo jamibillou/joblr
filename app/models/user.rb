@@ -37,7 +37,6 @@ class User < ActiveRecord::Base
   has_many :authored_emails,         dependent: :destroy, class_name: 'FromUserEmail', foreign_key: 'author_id'
   has_many :received_emails,         dependent: :destroy, class_name: 'ToUserEmail',   foreign_key: 'recipient_id'
   has_many :authored_profile_emails, dependent: :destroy, class_name: 'ProfileEmail',  foreign_key: 'author_id'
-  has_one  :invite_email,            dependent: :destroy,                              foreign_key: 'recipient_id'
 
   accepts_nested_attributes_for :profiles, allow_destroy: true
 

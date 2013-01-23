@@ -20,10 +20,6 @@ en:
           user: "Your profile was successfully sent to %{recipient_email}"
           other_user: "%{fullname}'s profile was successfully sent to %{recipient_email}"
           public_user: "%{fullname}'s profile was successfully sent to %{recipient_email}"
-      invite_email:
-        email_sent: 'The invitation email was sent successfully.'
-        used: "Great, you can now sign up!"
-        destroyed: 'The invitation was destroyed successfully.'
     error:
       something_wrong:
         base: "Oops, something went wrong."
@@ -40,11 +36,6 @@ en:
         signed_in: "You cannot access this page."
         public: "You cannot access this page."
         admin: "You cannot access this page."
-      invite_email:
-        code_inexistant: "This invitation code doesn't seem to exist."
-        used: "This invitation code has already been used. Did you already sign up?"
-        required: "You need an invitation to sign up, you can ask for one here."
-        user_exists: "There is already a user with this email address. Did you already sign up?"
       profile_email:
         none: "You haven't sent any job application yet."
   footer:

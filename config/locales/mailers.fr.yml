@@ -3,20 +3,6 @@ fr:
     header: 'Cet email a été envoyé automatiquement, merci de ne pas répondre.'
     team: "L'équipe Joblr"
     re: 'RE :'
-    invite_email:
-      notify_team:
-        subject: "Nouvelle demande d'invitation !"
-        title: "Quelqun souhaite essayer Joblr !"
-        content_html: "Connectez-vous et envoyez une invitation à %{email}"
-        content_text: "Connectez-vous et envoyez une invitation à %{email}"
-        button: 'Se connecter'
-      send_code:
-        subject: "Invitation à Joblr beta"
-        title: "Voici votre invitation à Joblr beta !"
-        content_html: "Inscrivez-vous à %{url}"
-        content_text: "Inscrivez-vous à %{url} en y copiant votre code d'invitation."
-        code: "Code d'invitation:"
-        button: "S'inscrire !"
     devise:
       reset_password_instructions:
         subject: 'Réinitialisez votre mot de passe'

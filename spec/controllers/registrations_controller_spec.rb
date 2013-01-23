@@ -6,7 +6,6 @@ describe RegistrationsController do
 
   before :each do
     @user         = FactoryGirl.create :user
-    @invite_email = FactoryGirl.create :invite_email, recipient: nil
     @attr         = { fullname: 'New User', username: 'newuser', password: 'pouetpouet', password_confirmation: 'pouetpouet' }
     @full_attr    = { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China', profiles_attributes: { '0' => { experience: 10, education: 'none' } } }
     request.env['devise.mapping'] = Devise.mappings[:user]
@@ -53,7 +52,7 @@ describe RegistrationsController do
 
   describe "POST 'create'" do
 
-    context 'for users who signed up with an invite_email' do
+    context 'for users who signed up' do
 
       context "and didn't provide any fullname" do
         it 'should not create a new user' do

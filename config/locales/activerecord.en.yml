@@ -4,7 +4,6 @@ en:
       user: "User"
       profile: "Profile"
       authentication: "Linked social account"
-      invite_email: "Invitation"
     attributes:
       user:
         id: "Identifier"
@@ -59,11 +58,6 @@ en:
         uname: "Name"
         uemail: "Email address"
         url: "Public URL"
-      invite_email:
-        id: "Identifier"
-        user_id: "User's identifier"
-        code: "Code"
-        recipient_email: "Email address"
       profile_email:
         text: "Personal message"
         author_email: "Your email"

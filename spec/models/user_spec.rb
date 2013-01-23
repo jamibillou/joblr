@@ -38,7 +38,6 @@ describe User do
     @profile_email   = FactoryGirl.create :profile_email,   author: @user
     @feedback_email  = FactoryGirl.create :feedback_email,  author: @user
     @to_user_email   = FactoryGirl.create :to_user_email, recipient: @user
-    @invite_email    = FactoryGirl.create :invite_email,  recipient: @user
   end
 
   describe 'authentications associations' do
@@ -94,16 +93,6 @@ describe User do
     it 'should destroy associated to_user_emails' do
       @user.destroy
       ToUserEmail.find_by_id(@to_user_email.id).should be_nil
-    end
-  end
-
-  describe 'invite_email association' do
-
-    it { @user.should respond_to :invite_email }
-
-    it 'should destroy associated invite_email' do
-      @user.destroy
-      InviteEmail.find_by_id(@invite_email.id).should be_nil
     end
   end
 
