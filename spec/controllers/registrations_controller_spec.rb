@@ -11,6 +11,34 @@ describe RegistrationsController do
     request.env['devise.mapping'] = Devise.mappings[:user]
   end  
 
+  describe "GET 'new'" do
+
+    context 'for signed in users' do
+      before :each do
+        sign_in @user              
+      end
+
+      it 'should redirect to root path' do
+        get :new
+        response.should redirect_to(root_path)
+        #flash[:error].should == I18n.t('devise.failure.already_authenticated')
+        response.body.should include I18n.t('devise.failure.already_authenticated')
+      end
+    end
+
+    context 'for public users' do
+      before :each do
+        get :new
+      end
+
+      it { response.should be_success }
+
+      it 'should have the right title' do
+        response.body.should have_selector 'div', class: 'lead', text: I18n.t('devise.registrations.new.fill_account_info')
+      end
+    end 
+  end
+
   describe "PUT 'update'" do
 
     before :each do
@@ -101,32 +129,5 @@ describe RegistrationsController do
         end
       end
     end
-  end
-
-  describe "GET 'new'" do
-
-    context 'for signed in users' do
-      before :each do
-        sign_in @user
-        get :new              
-      end
-
-      it 'should redirect to root path' do
-        response.should redirect_to(root_path)
-        flash[:error].should == I18n.t('devise.failure.already_authenticated')
-      end
-    end
-
-    context 'for public users' do
-      before :each do
-        get :new
-      end
-
-      it { response.should be_success }
-
-      it 'should have the right title' do
-        find("div.lead").should have_content I18n.t('devise.registrations.new.title')
-      end
-    end 
   end
 end

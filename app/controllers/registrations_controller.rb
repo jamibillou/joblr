@@ -31,7 +31,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   private
-  
+
     def ignore_blank_email
       params[:user][:email] = nil if params[:user][:email].blank?
     end
