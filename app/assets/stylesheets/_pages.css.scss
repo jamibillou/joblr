@@ -309,6 +309,12 @@
 // Signup choice
 // -------------
 
-.no-worries{
-  margin: 20px 0;
+#signup-choice{
+  .well{
+    padding-top:35px;
+    text-align:center;
+    .no-worries{
+      margin-top:32px;
+    }
+  }
 }

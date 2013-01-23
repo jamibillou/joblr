@@ -52,11 +52,6 @@ fr:
       new:
         title: "Inscrivez-vous !"
         welcome: 'Bienvenue sur Joblr !'
-        choose: "Choisissez comment vous préférez vous inscrire"
-        social: "Utilisez un de vos réseaux sociaux"
-        no_worries: "Nous ne publions rien sur vos profils sans votre autorisation, pas de soucis à se faire."
-        convenient: '(plus pratique)'
-        joblr: 'Ou inscrivez-vous manuellement'
         connection_info: 'Saisissez vos informations de connexion'
       create:
         title: "Inscrivez-vous !"
