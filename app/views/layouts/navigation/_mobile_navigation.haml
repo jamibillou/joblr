@@ -1,8 +1,9 @@
 %ul.nav
-	%li= link_to t('users.show.title'), user_path(current_user)
-	%li= link_to t('profile_emails.index.title'), profile_emails_path if current_user.has_authored_profile_emails?
-	- if current_user.admin?
-		%li= link_to t('pages.admin.title_alt'), admin_path
-		%li= link_to t('pages.style_tile.title'), style_tile_path
-	%li= link_to t('devise.registrations.account_settings'), edit_user_registration_path
-	%li= link_to t('devise.sessions.logout'), destroy_user_session_path, method: 'delete'
+  - if current_user.has_authored_profile_emails?
+    %li= link_to t('users.show.title'), user_path(current_user)
+    %li= link_to t('profile_emails.index.title'), profile_emails_path
+  - if current_user.admin?
+    %li= link_to t('pages.admin.title_alt'), admin_path
+    %li= link_to t('pages.style_tile.title'), style_tile_path
+  %li= link_to t('devise.registrations.account_settings'), edit_user_registration_path
+  %li= link_to t('devise.sessions.logout'), destroy_user_session_path, method: 'delete'
