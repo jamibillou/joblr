@@ -81,22 +81,10 @@ class AuthenticationsController < ApplicationController
        authentication: {provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, utoken: auth_token, usecret: auth_secret}}
     end
 
-    def create_user_auth(username)
-      create_auth User.create(username: username, fullname: auth_hash.info.name, email: auth_email, remote_image_url: auth_hash.info.image)
-    end
-
     def create_auth(user)
       user.update_attributes social: true unless user.social?
       user.authentications.create(provider: auth_hash.provider, uid: auth_hash.uid, url: auth_url, utoken: auth_token, usecret: auth_secret)
-      use_invite(user)
       user
-    end
-
-    def use_invite(user)
-      unless session[:invite_email].nil?
-        InviteEmail.find(session[:invite_email][:id]).use_invite(user)
-        session[:invite_email] = nil
-      end
     end
 
     def auth_email
