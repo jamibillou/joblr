@@ -9,10 +9,6 @@ Joblr::Application.routes.draw do
 
   devise_for :users, controllers: {omniauth_callbacks: 'authentications', registrations: 'registrations'}
 
-  resources :invite_emails, except: :index do
-    get :thank_you
-    get :send_code
-  end
   resources :authentications, only: [:destroy]
   resources :users do
     resources :profiles
@@ -42,11 +38,7 @@ Joblr::Application.routes.draw do
 
   # Preview of emails
   if Rails.env.development?
-    mount InviteEmailMailer::Preview   => 'invite_email_mailer'
     mount ProfileEmailMailer::Preview  => 'profile_email_mailer'
     mount FeedbackEmailMailer::Preview => 'feedback_email_mailer'
   end
-
-  # Kludge to preserve compatibility with deprecated BetaInvite model
-  get 'beta_invites/(:id)/edit' => 'invite_emails#edit'
 end
