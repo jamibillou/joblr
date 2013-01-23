@@ -26,7 +26,7 @@ en:
       password: 'Password'
       remember_me: 'Remember me'
       signed_in: 'You are now signed in.'
-      signed_out: 'You just signed out.'
+      signed_out: 'You are now signed out.'
       logout: 'Sign out'
       problem: "Sign in problem"
     passwords:
@@ -50,13 +50,12 @@ en:
       no_token: "You can't access this page without coming from a password reset email."
     registrations:
       new:
-        title: 'Sign up'
-        welcome: 'Welcome to Joblr!'
-        account_info: "Account information"
+        title: 'Sign up to Joblr'
         fill_account_info: "Fill in your account information"
-        so_we_know: 'So we know who you are'
+        account_info: "Account information"
+        so_we_know: 'To finish signing up'
       create:
-        title: 'Sign up'
+        title: 'Sign up to Joblr'
       edit:
         title: 'Account settings'
         subtitle: 'Change your details and social accounts'

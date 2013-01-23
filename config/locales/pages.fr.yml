@@ -35,8 +35,7 @@ fr:
     blog:
       title_alt: 'Blog'
     signup_choice:
-      title: "S'inscrire"
-      welcome: 'Bienvenue sur Joblr !'
-      choose: "Inscrivez-vous via un de vos réseaux sociaux, ou manuellement"
+      title: "S'inscrire sur Joblr"
+      choose: "En utilisant un de vos réseaux sociaux, ou manuellement"
       no_worries: "Nous ne publions rien sur vos réseaux sans votre autorisation, pas d'inquiétude."
       manual: "Je préfère m'inscrire manuellement."
