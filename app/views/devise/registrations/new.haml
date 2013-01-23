@@ -1,36 +1,42 @@
 .row-fluid.devise
-  .span4.hidden-phone
-  .span4
+  .span12
     .header
-      %h1=t 'devise.registrations.new.welcome'
-      .lead=t 'devise.registrations.new.connection_info'
-    .well
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        %label.inline=t 'devise.registrations.email'
-        %span.danger-text *
-        %br/
-        = f.email_field :email, class: 'span11'
-        %br/
-        %label.inline=t 'devise.registrations.fullname'
-        %span.danger-text *
-        %br/
-        = f.text_field :fullname, class: 'span11'
-        %br/
-        %label.inline=t 'devise.registrations.username'
-        %span.danger-text *
-        %br/
-        = f.text_field :username, class: 'span11'
-        %br/
-        - if session[:auth_hash].nil?
-          %label.inline=t 'devise.registrations.password'
-          %span.danger-text *
-          %br/
-          = f.password_field :password, class: 'span11'
-          %br/
-          %label.inline=t 'devise.registrations.password_confirmation'
-          %span.danger-text *
-          %br/
-          = f.password_field :password_confirmation, class: 'span11'
-        %br/
-        = f.submit t('devise.registrations.sign_up'), class: 'btn btn-primary'
-    .pull-right.danger-text * #{t('required_fields')}
+      - if session[:auth_hash].nil?
+        %h1= t('devise.registrations.new.welcome')
+        .lead=t 'devise.registrations.new.fill_account_info'
+      - else
+        %h1=t 'devise.registrations.new.account_info'
+        .lead=t 'devise.registrations.new.so_we_know'
+    .row-fluid
+      .span4.hidden-phone
+      .span4
+        .well
+          = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+            %label.inline=t 'devise.registrations.fullname'
+            %span.danger-text *
+            %br/
+            = f.text_field :fullname, class: 'span12'
+            %br/
+            %label.inline=t 'devise.registrations.username'
+            %span.danger-text *
+            %br/
+            = f.text_field :username, class: 'span12'
+            %br/
+            %label.inline=t 'devise.registrations.email'
+            %span.danger-text *
+            %br/
+            = f.email_field :email, class: 'span12'
+            %br/
+            - if session[:auth_hash].nil?
+              %label.inline=t 'devise.registrations.password'
+              %span.danger-text *
+              %br/
+              = f.password_field :password, class: 'span12'
+              %br/
+              %label.inline=t 'devise.registrations.password_confirmation'
+              %span.danger-text *
+              %br/
+              = f.password_field :password_confirmation, class: 'span12'
+              %br/
+            = f.submit t('devise.registrations.sign_up'), class: 'btn btn-primary'
+        .pull-right.danger-text * #{t('required_fields')}

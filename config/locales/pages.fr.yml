@@ -6,7 +6,7 @@ fr:
         title_alt: 'Accueil'
         catchphrase: "Les lettres de motivation et CV vous épuisent ?"
         subtitle: "Joblr est le moyen le plus rapide de postuler."
-        join: "S'inscrire"
+        join: "S'inscrire !"
         benefit1_title: "Allez à l'essentiel"
         benefit1_text: "Votre profil ne prend que 5 secondes à lire et contient toutes les informations essentielles pour comprendre vos compétences."
         benefit2_title: "Rapide des deux côtés"
@@ -39,4 +39,4 @@ fr:
       welcome: 'Bienvenue sur Joblr !'
       choose: "Inscrivez-vous via un de vos réseaux sociaux, ou manuellement"
       no_worries: "Nous ne publions rien sur vos réseaux sans votre autorisation, pas d'inquiétude."
-      manual: "Je préfère m'inscrire de manière classique."
+      manual: "Je préfère m'inscrire manuellement."

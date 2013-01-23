@@ -4,12 +4,12 @@ en:
   required_fields: 'required fields'
   flash:
     success:
-      welcome: 'Welcome to Joblr!'
+      welcome: "Your account was successfully created, you can now fill in your profile."
       user:
         destroyed: 'The user destroyed successfully.'
       provider:
         signed_in: "You are now signed in."
-        signed_up: "You have successfully signed up with your %{provider} account, fill in your profile now."
+        signed_up: "You have successfully signed up with your %{provider} account, just a few details left."
         added:  "Your %{provider} account is now linked, you can sign in with it next time."
         imported: "Your information was imported from %{provider}, don't forget to check it and fill the blanks."
         removed: "Your %{provider} account is now unlinked."

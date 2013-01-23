@@ -50,11 +50,13 @@ fr:
       no_token: "Vous ne pouvez pas accéder à cette page sans passer par un email de réinitialisation de mot de passe."
     registrations:
       new:
-        title: "Inscrivez-vous !"
+        title: "S'inscrire"
         welcome: 'Bienvenue sur Joblr !'
-        connection_info: 'Saisissez vos informations de connexion'
+        account_info: 'Informations de compte'
+        fill_account_info: 'Saisissez les informations de votre compte'
+        so_we_know: "Pour qu'on sâche qui vous êtes"
       create:
-        title: "Inscrivez-vous !"
+        title: "S'inscrire"
       edit:
         title: 'Paramètres'
         subtitle: 'Modifiez votre compte et vos réseaux sociaux'
@@ -75,7 +77,7 @@ fr:
       new_password: 'Nouveau mot de passe'
       new_password_confirm: 'Confirmez ce mot de passe'
       sign_in: "Se connecter"
-      sign_up: "S'inscrire"
+      sign_up: "S'inscrire !"
       forgot_password: 'Mot de passe oublié ?'
       signed_up: 'Bienvenue sur Joblr !'
       updated: 'Modifications enregistrées.'
