@@ -7,8 +7,8 @@ describe AuthenticationsController do
   before :each do
     @user      = FactoryGirl.create :user
     @user2     = FactoryGirl.create :user, fullname: FactoryGirl.generate(:fullname), username: FactoryGirl.generate(:username), email: FactoryGirl.generate(:email)
-    @profile   = FactoryGirl.create :profile,          user: @user
-    @profile2  = FactoryGirl.create :profile,          user: @user2
+    @profile   = FactoryGirl.create :profile,        user: @user
+    @profile2  = FactoryGirl.create :profile,        user: @user2
     @auth      = FactoryGirl.create :authentication, user: @user
     @auth2     = FactoryGirl.create :authentication, user: @user2, uid: 'generated_u'
 
@@ -120,15 +120,13 @@ describe AuthenticationsController do
 
           before :each do
             request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => @auth.uid})
-            @invite_email = FactoryGirl.create :invite_email, recipient: nil
-            visit edit_invite_email_path(@invite_email)
-            find('#invite_email_code').set(@invite_email.code)
-            click_button I18n.t('invite_emails.edit.button')
+            visit signup_choice_path
+            click_link 'Twitter'
             visit user_omniauth_authorize_path('twitter')
           end
 
           it 'should redirect to previous location' do
-            current_path.should == new_user_registration_path
+            current_path.should == signup_choice_path
           end
 
           it 'have an error alert message' do
@@ -158,72 +156,47 @@ describe AuthenticationsController do
           end
         end
 
-        context 'and was trying to sign up with an invite_email' do
+        context 'and was trying to sign up' do
 
           before :each do
-            @invite_email = FactoryGirl.create :invite_email, recipient: nil
-            visit edit_invite_email_path(@invite_email)
-            find('#invite_email_code').set(@invite_email.code)
-            click_button I18n.t('invite_emails.edit.button')
+            request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => @auth.uid})
+            visit signup_choice_path
+            click_link 'Twitter'
+            visit user_omniauth_authorize_path('twitter')
+            visit new_user_registration_path
+            fill_in 'user[email]',                 with: 'example@example.com'
+            fill_in 'user[username]',              with: 'example'
+            fill_in 'user[fullname]',              with: @user.fullname
+            fill_in 'user[password]',              with: @user.password
+            fill_in 'user[password_confirmation]', with: @user.password
+            click_button I18n.t('devise.registrations.new.title')
           end
 
           it 'should create a new user object' do
             lambda do
-              request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
-              visit user_omniauth_authorize_path('twitter')
             end.should change(User, :count).by(1)
           end
 
           it 'should create a new authentication object' do
             lambda do
-              request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
-              visit user_omniauth_authorize_path('twitter')
             end.should change(Authentication, :count).by(1)
           end
 
-          it 'should associate the user and the invite_email' do
-            request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
-            visit user_omniauth_authorize_path('twitter')
-            User.last.invite_email.id.should == @invite_email.id
-            User.last.invite_email.should == @invite_email
-          end
-
-          it "should not update the user's email if he already had one" # do
-            # request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {uid: '987654', uemail: 'twitter.user@example.com'})
-            # visit user_omniauth_authorize_path('twitter')
-            # User.last.email.should_not == @invite_email.recipient_email
-          # end
-
-          it "should update the user's email if he didn't have one" do
-            request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
-            visit user_omniauth_authorize_path('twitter')
-            User.last.email.should == @invite_email.recipient_email
-          end
-
-          it 'should destroy the invte_email session' do
-            request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
-            visit user_omniauth_authorize_path('twitter')
-            session[:invite_email].should be_nil
+          it 'should destroy the auth_hash session' do
+            session[:auth_hash].should be_nil
           end
 
           it 'should sign the user in' do
-            request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
-            visit user_omniauth_authorize_path('twitter')
             find('.navbar li.dropdown ul.dropdown-menu li:first-child').should have_content I18n.t('devise.registrations.account_settings')
             find('.navbar li.dropdown ul.dropdown-menu li:last-child').should have_content I18n.t('devise.sessions.logout')
           end
 
           it 'should redirect to previous location' do
-            request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
-            visit user_omniauth_authorize_path('twitter')
             current_path.should == root_path
           end
 
-          it 'have a success alert message' do
-            request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '987654'})
-            visit user_omniauth_authorize_path('twitter')
-            # find('div.alert.alert-success span').should have_content I18n.t('flash.success.provider.signed_in', provider: 'twitter')
-            find('div.alert.alert-success span').should have_content "You have successfully signed up with your Twitter account, fill in your profile now."
+          it 'should have a success alert message' do
+            find('div.alert.alert-success span').should have_content I18n.t('flash.success.welcome')
           end
         end
       end

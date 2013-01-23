@@ -55,8 +55,6 @@ describe RegistrationsController do
 
     context 'for users who signed up with an invite_email' do
 
-      before(:each) { session[:invite_email] = @invite_email }
-
       context "and didn't provide any fullname" do
         it 'should not create a new user' do
           lambda do
@@ -97,25 +95,10 @@ describe RegistrationsController do
           end.should change(User, :count).by 1
         end
 
-        it 'should associate the user and the invite_email' do
+        it 'should redirect to root path' do
           post :create, user: @attr
-          User.last.invite_email.id.should == @invite_email.id
-          User.last.invite_email.should == @invite_email
-        end
-
-        it "should not update the user's email if he already had one" do
-          post :create, user: @attr.merge(email: 'one.email@example.com')
-          User.last.email.should_not == @invite_email.recipient_email
-        end
-
-        it "should update the user's email if he didn't have one" do
-          post :create, user: @attr
-          User.last.email.should == @invite_email.recipient_email
-        end
-
-        it 'should destroy the invte_email session' do
-          post :create, user: @attr
-          session[:invite_email].should be_nil
+          response.should redirect_to(root_path)
+          flash[:success].should == I18n.t('flash.success.welcome')
         end
       end
     end
