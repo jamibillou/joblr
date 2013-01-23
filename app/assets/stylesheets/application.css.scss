@@ -37,11 +37,28 @@ footer{
       background-color:white;
       color:$gray;
     }
-    input{
-      border-left-width:0px;
-    }
-    .span3{
-      margin:6px 0 0 0;
+    form{
+      margin-right:10px;
+      .input-prepend{
+        display:inline;
+        input{
+          border-left-width:0px;
+        }
+      }
+      #feedback-sign{
+        margin-left:10px;
+        font-size:14px;
+        line-height:30px;
+        display:inline;
+      }
+      #loader{
+        display:inline;
+        img{
+          vertical-align:top;
+          margin-top:7px;
+          display:none;
+        }
+      }
     }
     .social-links{
       h5{

@@ -4,21 +4,19 @@
       - if user_signed_in?
         %h5=t 'footer.feedback.title'
         .row-fluid
-          .span9
+          .span10
             = form_for @feedback_email, remote: true do |f|
               .input-prepend
                 .add-on
                   %i.icon-comments
-                = f.text_field :text, placeholder: t('footer.feedback.placeholder'), class: 'span11'
+                = f.text_field :text, placeholder: t('footer.feedback.placeholder'), class: 'span9'
                 = f.hidden_field :page, value: request.fullpath
+              #feedback-sign
+              #loader= image_tag 'base/loader.gif'
               = f.submit 'Submit', class: 'btn btn-mini btn-primary hidden', id: 'submit'
-          .span3
-            #feedback-form-text
-            #loader{style: 'display:none'}
-              = image_tag 'base/loader.gif'
       - else
         %h5.copyright &copy; Joblr 2013
-    .span6
+    .span6.hidden-phone
       .pull-right
         .social-links
           %h5=t 'footer.follow_us.title'
