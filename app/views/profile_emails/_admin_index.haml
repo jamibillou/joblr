@@ -4,11 +4,13 @@
       %td
         %h5 Sent on
       %td
-        %h5 Author Name
+        %h5 Author name
       %td
-        %h5 Recipient Name
+        %h5 Author email
       %td
-        %h5 Recipient Email
+        %h5 Recipient name
+      %td
+        %h5 Recipient email
       %td
         %h5 Actions
     %tbody
@@ -17,7 +19,9 @@
           %td
             = profile_email.created_at.strftime '%d-%m-%Y'
           %td
-            = profile_email.author.fullname
+            = profile_email.author.nil? ? profile_email.author_fullname : profile_email.author.fullname
+          %td
+            = profile_email.author.nil? ? profile_email.author_email : profile_email.author.email
           %td
             = profile_email.recipient_id.nil? ? profile_email.recipient_fullname : profile_email.recipient.fullname
           %td

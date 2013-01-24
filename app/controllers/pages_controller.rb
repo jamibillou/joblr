@@ -13,7 +13,7 @@ class PagesController < ApplicationController
     @profile_emails   = ProfileEmail.all(order: 'created_at DESC')
     @users_count      = @users.count
     @profiles_count   = @users.select{|user| signed_up?(user)}.count
-    @activation_count = ProfileEmail.all.select{|pe| pe.profile.user.id == pe.author_id}.map{|pe| pe.author_id}.uniq.count
+    @activation_count = @profile_emails.select{|pe| pe.profile.user.id == pe.author_id}.map{|pe| pe.author_id}.uniq.count
   end
 
   def style_tile

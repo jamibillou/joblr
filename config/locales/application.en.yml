@@ -21,7 +21,7 @@ en:
           other_user: "%{fullname}'s profile was successfully sent to %{recipient_email}"
           public_user: "%{fullname}'s profile was successfully sent to %{recipient_email}"
       profile_email:
-        destroyed: 'The profile email was successfully destroyed.'
+        destroyed: 'The application was successfully destroyed.'
     error:
       something_wrong:
         base: "Oops, something went wrong."
