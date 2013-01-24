@@ -27,3 +27,5 @@ fr:
       title: 'Candidatures'
       to_email_html: 'à %{email_link}'
       on_date: 'le %{date}'
+    destroy:
+      yes_delete: 'Voulez-vous vraiment supprimer cette candidature ?'

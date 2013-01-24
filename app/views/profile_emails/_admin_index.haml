@@ -1,0 +1,37 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %td
+        %h5 Sent on
+      %td
+        %h5 Author Name
+      %td
+        %h5 Recipient Name
+      %td
+        %h5 Recipient Email
+      %td
+        %h5 Actions
+    %tbody
+      - @profile_emails.each do |profile_email|
+        %tr
+          %td
+            = profile_email.created_at.strftime '%d-%m-%Y'
+          %td
+            = profile_email.author.fullname
+          %td
+            = profile_email.recipient_id.nil? ? profile_email.recipient_fullname : profile_email.recipient.fullname
+          %td
+            = profile_email.recipient_id.nil? ? profile_email.recipient_email : profile_email.recipient.email
+          %td
+          %td.actions
+            %a{href: "#profile-email-modal-#{profile_email.id}", 'data-toggle' => 'modal'}
+              .icon-eye-open.graydark-text
+            = link_to "<div class='icon-trash danger-text'></div>".html_safe, profile_email, method: :delete, data: {confirm: t('profile_emails.destroy.yes_delete')}
+
+- @profile_emails.each do |profile_email|
+  .modal.hide{id: "profile-email-modal-#{profile_email.id}"}
+    .modal-header.no-border
+      %a.close.hidden-phone{href: '#', 'data-dismiss' => 'modal'} &times;
+    .modal-body
+      .profile-email-show
+        = render 'profile_emails/show', profile_email: profile_email

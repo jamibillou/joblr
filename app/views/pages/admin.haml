@@ -1,3 +1,11 @@
 .span12#admin
   = render 'conversion_dashboard'
-  = render 'users/index'
+  .tabbable
+    %ul.nav.nav-pills
+      %li.active= link_to 'Users',   '#users',          'data-toggle' => 'tab'
+      %li= link_to 'Applications', '#profile_emails', 'data-toggle' => 'tab'
+    .tab-content
+      .tab-pane.active#users
+        = render 'users/index'
+      .tab-pane#profile_emails
+        = render 'profile_emails/admin_index'

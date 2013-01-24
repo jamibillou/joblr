@@ -27,3 +27,5 @@ en:
       title: 'Applications'
       to_email_html: 'to %{email_link}'
       on_date: 'on %{date}'
+    destroy:
+      yes_delete: 'Do you really want to delete this application?'
