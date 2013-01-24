@@ -13,7 +13,7 @@ Joblr::Application.routes.draw do
   resources :users do
     resources :profiles
   end
-  resources :profile_emails, only: [:create, :index] do
+  resources :profile_emails, only: [:create, :index, :destroy] do
     get :already_answered
     get :decline
   end

@@ -6,7 +6,7 @@ en:
     success:
       welcome: "Your account was successfully created, you can now fill in your profile."
       user:
-        destroyed: 'The user destroyed successfully.'
+        destroyed: 'The user was successfully destroyed.'
       provider:
         signed_in: "You are now signed in."
         signed_up: "Your %{provider} account was successfully linked, just a few details left."
@@ -20,6 +20,8 @@ en:
           user: "Your profile was successfully sent to %{recipient_email}"
           other_user: "%{fullname}'s profile was successfully sent to %{recipient_email}"
           public_user: "%{fullname}'s profile was successfully sent to %{recipient_email}"
+      profile_email:
+        destroyed: 'The profile email was successfully destroyed.'
     error:
       something_wrong:
         base: "Oops, something went wrong."

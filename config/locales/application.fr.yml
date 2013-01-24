@@ -20,6 +20,8 @@ fr:
           user: "Votre profil a bien été envoyé à %{recipient_email}"
           other_user: "Le profil de %{fullname} a bien été envoyé à %{recipient_email}"
           public_user: "Le profil de %{fullname} a bien été envoyé à %{recipient_email}"
+      profile_email:
+        destroyed: 'La candidature a bien été supprimée.'
     error:
       something_wrong:
         base: "Oups, quelque chose ne s'est pas passé comme prévu."
