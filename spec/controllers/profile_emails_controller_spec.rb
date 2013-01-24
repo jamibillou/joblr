@@ -23,6 +23,7 @@ describe ProfileEmailsController do
                       quality_2: 'Work ethics',
                       quality_3: 'Punctuality' }
     @profile_email_attr = { text: "Hi, I'm really keen to work for your company and would love to go over a few ideas together soon." }
+    @profile_email = FactoryGirl.create :profile_email, author: @author, profile: @other_profile
   end
 
   describe "POST 'create'" do
@@ -550,5 +551,46 @@ describe ProfileEmailsController do
         end
       end
     end
+  end
+
+  describe "DESTROY 'delete'" do
+
+    before :each do
+      sign_in @author
+    end
+
+    context "for public users" do
+
+      it 'should redirect to the root path' do
+        delete :destroy, id: @profile_email
+        response.should redirect_to root_path
+        flash[:error].should == I18n.t('flash.error.only.admin')
+      end
+
+      it 'should not destroy the profile email' do
+        lambda do
+          delete :destroy, id: @profile_email
+        end.should_not change(ProfileEmail, :count).by 1
+      end    
+    end
+
+    context "for admin users" do
+
+      before :each do
+        @author.toggle! :admin
+      end
+
+      it 'should destroy the profile email' do
+        lambda do
+          delete :destroy, id: @profile_email
+        end.should change(ProfileEmail, :count).by -1
+      end
+
+      it 'should redirect to the admin page' do
+        delete :destroy, id: @profile_email
+        response.should redirect_to admin_path
+        flash[:success].should == I18n.t('flash.success.profile_email.destroyed')
+      end
+    end 
   end
 end
