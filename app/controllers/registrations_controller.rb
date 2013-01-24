@@ -10,7 +10,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new params[:user].merge(social: (session[:auth_hash] ? true : false))
     if @user.save
-      @user.authentications.create(session[:auth_hash][:authentication]) if session[:auth_hash]
+      @user.authentications.create(session[:auth_hash][:authentication]) unless session[:auth_hash].nil?
       session[:auth_hash] = nil
       sign_in @user, bypass: true
       redirect_to root_path, flash: {success: t('flash.success.welcome')}

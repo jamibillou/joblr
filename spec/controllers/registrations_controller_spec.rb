@@ -6,7 +6,7 @@ describe RegistrationsController do
 
   before :each do
     @user         = FactoryGirl.create :user
-    @attr         = { fullname: 'New User', username: 'newuser', password: 'pouetpouet', password_confirmation: 'pouetpouet' }
+    @attr         = { fullname: 'New User', username: 'newuser', email: 'newuser@example.com', password: 'pouetpouet', password_confirmation: 'pouetpouet' }
     @full_attr    = { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China', profiles_attributes: { '0' => { experience: 10, education: 'none' } } }
     request.env['devise.mapping'] = Devise.mappings[:user]
   end
@@ -14,6 +14,7 @@ describe RegistrationsController do
   describe "GET 'new'" do
 
     context 'for signed in users' do
+
       before :each do
         sign_in @user
       end
@@ -26,14 +27,31 @@ describe RegistrationsController do
     end
 
     context 'for public users' do
-      before :each do
-        get :new
+
+      it { get :new ; response.should be_success }
+
+      context 'who used social_signup' do
+
+        it 'should have the right titles' do
+          session[:auth_hash] = {user: @attr}
+          get :new
+          response.body.should have_selector 'h1', text: I18n.t('devise.registrations.new.account_info')
+          response.body.should have_content I18n.t('devise.registrations.new.so_we_know')
+        end
       end
 
-      it { response.should be_success }
+      context 'who are signing up manually' do
 
-      it 'should have the right title' do
-        response.body.should have_selector 'div', class: 'lead', text: I18n.t('devise.registrations.new.fill_account_info')
+        it 'should have the right titles' do
+          get :new
+          response.body.should have_selector 'h1', text: I18n.t('devise.registrations.new.title')
+          response.body.should have_content I18n.t('devise.registrations.new.fill_account_info')
+        end
+      end
+
+      it 'should have a signup form' do
+        get :new
+        response.body.should have_selector '#new_user'
       end
     end
   end

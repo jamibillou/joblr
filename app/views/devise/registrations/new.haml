@@ -2,7 +2,7 @@
   .span12
     .header
       - if session[:auth_hash].nil?
-        %h1= t('devise.registrations.new.title')
+        %h1=t 'devise.registrations.new.title'
         .lead=t 'devise.registrations.new.fill_account_info'
       - else
         %h1=t 'devise.registrations.new.account_info'
@@ -27,7 +27,7 @@
             %br/
             = f.email_field :email, class: 'span12'
             %br/
-            - if session[:auth_hash].nil?
+            - unless session[:auth_hash]
               %label.inline=t 'devise.registrations.password'
               %span.danger-text *
               %br/
