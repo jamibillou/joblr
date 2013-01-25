@@ -114,12 +114,12 @@ describe AuthenticationsController do
 
           before :each do
             request.env['omniauth.auth']   = OmniAuth.config.add_mock(:twitter, {:uid => @auth.uid})
-            request.env['omniauth.origin'] =  signup_choice_path
+            request.env['omniauth.origin'] =  sign_up_path
             get :twitter
           end
 
           it 'should redirect to previous location' do
-            response.should redirect_to signup_choice_path
+            response.should redirect_to sign_up_path
           end
 
           it 'have an error alert message' do
@@ -155,7 +155,7 @@ describe AuthenticationsController do
 
           before :each do
             request.env['omniauth.auth']   = OmniAuth.config.add_mock(:twitter, {:uid => '123456'})
-            request.env['omniauth.origin'] = signup_choice_path
+            request.env['omniauth.origin'] = sign_up_path
           end
 
           it 'should not create a new user object' do

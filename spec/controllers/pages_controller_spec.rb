@@ -132,11 +132,11 @@ describe PagesController do
 		end
 	end
 
-	describe "GET 'signup choice'" do
+	describe "GET 'sign_up'" do
 
 		context 'for public users' do
 			before :each do
-				get :signup_choice
+				get :sign_up
 			end
 
 			it { response.should be_success }
@@ -162,14 +162,14 @@ describe PagesController do
 			end
 
 			it 'should have a manual signup link' do
-				response.body.should have_content I18n.t('pages.signup_choice.manual')
+				response.body.should have_content I18n.t('pages.sign_up.manual')
 			end
 		end
 
 		context 'for signed in users' do
 			before :each do
 				sign_in @user
-				get :signup_choice
+				get :sign_up
 			end
 
 			it 'should redirect to root path' do

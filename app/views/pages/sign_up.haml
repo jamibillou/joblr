@@ -1,0 +1,12 @@
+.row-fluid.devise#sign-up
+  .span3.hidden-phone
+  .span6
+    .header
+      %h1=t 'pages.sign_up.title'
+      .lead=t 'pages.sign_up.choose'
+    .well
+      = render 'devise/shared/omniauth_links', user: @user, size: 'btn-large'
+      .no-worries=t 'pages.sign_up.no_worries'
+      = link_to t('pages.sign_up.manual'), new_user_registration_path
+
+= mixpanel_call('track', 'Clicked on Signup button', "{'Landing version': '#{params[:landing_version]}'}")

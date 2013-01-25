@@ -65,7 +65,7 @@ class AuthenticationsController < ApplicationController
     end
 
     def social_sign_up
-      if auth_origin.include? signup_choice_path
+      if auth_origin.include? sign_up_path
         session[:auth_hash] = session_auth_hash
         redirect_path = new_user_registration_path
         flash[:success] = t('flash.success.provider.signed_up', provider: humanize(auth_hash.provider))
