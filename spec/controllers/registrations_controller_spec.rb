@@ -97,7 +97,7 @@ describe RegistrationsController do
 
   describe "POST 'create'" do
 
-    context 'for users who signed up' do
+    context 'for users who signed up manually' do
 
       context "and didn't provide any fullname" do
         it 'should not create a new user' do
@@ -138,11 +138,36 @@ describe RegistrationsController do
             post :create, user: @attr
           end.should change(User, :count).by 1
         end
+      end
 
-        it 'should redirect to root path' do
+      it 'should redirect to root path' do
+        post :create, user: @attr
+        response.should redirect_to(root_path)
+        flash[:success].should == I18n.t('flash.success.welcome')
+      end
+
+      context 'after using social signup' do
+
+        before :each do
+          session[:auth_hash] = {user: {username: 'username', fullname: 'Full name', email: '', remote_image_url: ''}, authentication: {provider: 'twitter', uid: '123456', url: 'http://twitter.com/username', utoken: '987654', usecret: '456789'}}
+        end
+
+        it 'should create a new social user' do
+          lambda do
+            post :create, user: @attr
+            User.find_by_email(@attr[:email]).should be_social
+          end.should change(User, :count).by 1
+        end
+
+        it 'should create a new authentication' do
+          lambda do
+            post :create, user: @attr
+          end.should change(Authentication, :count).by 1
+        end
+
+        it 'should destroy the session' do
           post :create, user: @attr
-          response.should redirect_to(root_path)
-          flash[:success].should == I18n.t('flash.success.welcome')
+          session[:auth_hash].should be_nil
         end
       end
     end
