@@ -100,34 +100,78 @@ describe RegistrationsController do
     context 'for users who signed up manually' do
 
       context "and didn't provide any fullname" do
+
         it 'should not create a new user' do
           lambda do
             post :create, user: @attr.merge(fullname: '')
           end.should_not change(User, :count).by 1
         end
+
+        it "it should render 'new'" do
+          post :create, user: @attr.merge(fullname: '')
+          response.should render_template :new
+        end
+
+        it 'should have an error message' do
+          post :create, user: @attr.merge(fullname: '')
+          flash[:error].should == errors('user.fullname', 'blank')
+        end
       end
 
       context "and didn't provide any username" do
+
         it 'should not create a new user' do
           lambda do
             post :create, user: @attr.merge(username: '')
           end.should_not change(User, :count).by 1
         end
+
+        it "it should render 'new'" do
+          post :create, user: @attr.merge(username: '')
+          response.should render_template :new
+        end
+
+        it 'should have an error message' do
+          post :create, user: @attr.merge(username: '')
+          flash[:error].should == errors('user.username', 'blank')
+        end
       end
 
       context "and didn't provide any password" do
+
         it 'should not create a new user' do
           lambda do
             post :create, user: @attr.merge(password: '')
           end.should_not change(User, :count).by 1
         end
+
+        it "it should render 'new'" do
+          post :create, user: @attr.merge(password: '')
+          response.should render_template :new
+        end
+
+        it 'should have an error message' do
+          post :create, user: @attr.merge(password: '')
+          flash[:error].should_not be_nil
+        end
       end
 
       context "and didn't provide any password confirmation" do
+
         it 'should not create a new user' do
           lambda do
             post :create, user: @attr.merge(password_confirmation: '')
           end.should_not change(User, :count).by 1
+        end
+
+        it "it should render 'new'" do
+          post :create, user: @attr.merge(password_confirmation: '')
+          response.should render_template :new
+        end
+
+        it 'should have an error message' do
+          post :create, user: @attr.merge(password_confirmation: '')
+          flash[:error].should_not be_nil
         end
       end
 
