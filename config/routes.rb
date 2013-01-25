@@ -25,7 +25,7 @@ Joblr::Application.routes.draw do
   match 'home',          to: 'pages#landing'
   match 'admin',         to: 'pages#admin'
   match 'style_tile',    to: 'pages#style_tile'
-  match 'signup_choice', to: 'pages#signup_choice'
+  match 'sign_up', to: 'pages#sign_up'
   match 'close',         to: 'pages#close'
 
   # Subdomain constraints

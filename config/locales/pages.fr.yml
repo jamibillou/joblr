@@ -34,7 +34,7 @@ fr:
       title: 'Styles'
     blog:
       title_alt: 'Blog'
-    signup_choice:
+    sign_up:
       title: "S'inscrire sur Joblr"
       choose: "En utilisant un de vos réseaux sociaux, ou manuellement"
       no_worries: "Nous ne publions rien sur vos réseaux sans votre autorisation, pas d'inquiétude."
