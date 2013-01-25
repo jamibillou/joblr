@@ -8,7 +8,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    @user = User.new params[:user].merge(social: (session[:auth_hash] ? true : false))
+    @user = User.new params[:user].merge(social: !session[:auth_hash].nil?)
     if @user.save
       @user.authentications.create(session[:auth_hash][:authentication]) unless session[:auth_hash].nil?
       session[:auth_hash] = nil

@@ -110,10 +110,6 @@ describe RegistrationsController do
         it "it should render 'new'" do
           post :create, user: @attr.merge(fullname: '')
           response.should render_template :new
-        end
-
-        it 'should have an error message' do
-          post :create, user: @attr.merge(fullname: '')
           flash[:error].should == errors('user.fullname', 'blank')
         end
       end
@@ -127,11 +123,6 @@ describe RegistrationsController do
         end
 
         it "it should render 'new'" do
-          post :create, user: @attr.merge(username: '')
-          response.should render_template :new
-        end
-
-        it 'should have an error message' do
           post :create, user: @attr.merge(username: '')
           flash[:error].should == errors('user.username', 'blank')
         end
@@ -148,10 +139,6 @@ describe RegistrationsController do
         it "it should render 'new'" do
           post :create, user: @attr.merge(password: '')
           response.should render_template :new
-        end
-
-        it 'should have an error message' do
-          post :create, user: @attr.merge(password: '')
           flash[:error].should_not be_nil
         end
       end
@@ -165,11 +152,6 @@ describe RegistrationsController do
         end
 
         it "it should render 'new'" do
-          post :create, user: @attr.merge(password_confirmation: '')
-          response.should render_template :new
-        end
-
-        it 'should have an error message' do
           post :create, user: @attr.merge(password_confirmation: '')
           flash[:error].should_not be_nil
         end

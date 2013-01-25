@@ -39,9 +39,6 @@ class Authentication < ActiveRecord::Base
   end
 
   def get_redirected_url(url)
-    result = Curl::Easy.perform(url) do |curl|
-      curl.follow_location = true
-    end
-    result.last_effective_url
+    Curl::Easy.perform(url) {|curl| curl.follow_location = true}.last_effective_url
   end
 end
