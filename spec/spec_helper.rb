@@ -23,9 +23,6 @@ Spork.prefork do
     end
   end
 
-  # Lower cost of BCrypt encryption
-  BCrypt::Engine::DEFAULT_COST = 1
-
   # Increase log level
   Rails.logger.level = 4
 

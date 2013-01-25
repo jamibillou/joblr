@@ -9,4 +9,4 @@
       .no-worries=t 'pages.signup_choice.no_worries'
       = link_to t('pages.signup_choice.manual'), new_user_registration_path
 
-= mixpanel_call('track','Clicked on Signup button',"{'Landing version':'#{params[:landing_version]}'}")
+= mixpanel_call('track', 'Clicked on Signup button', "{'Landing version': '#{params[:landing_version]}'}")
