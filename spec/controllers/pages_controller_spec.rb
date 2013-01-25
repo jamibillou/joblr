@@ -141,10 +141,30 @@ describe PagesController do
 
 			it { response.should be_success }
 
+			it 'should have a LinkedIn button' do
+				response.body.should have_selector 'a.btn-linkedin'
+			end
+
+			it 'should have a Twitter button' do
+				response.body.should have_selector 'a.btn-twitter'
+			end
+
+			it 'should have a Facebook button' do
+				response.body.should have_selector 'a.btn-facebook'
+			end
+
+			it 'should have a Google button' do
+				response.body.should have_selector 'a.btn-google'
+			end
+
 			it 'should have a no-worries block' do
 				response.body.should have_selector 'div.no-worries'
 			end
-		end	
+
+			it 'should have a manual signup link' do
+				response.body.should have_content I18n.t('pages.signup_choice.manual')
+			end
+		end
 
 		context 'for signed in users' do
 			before :each do
@@ -155,7 +175,7 @@ describe PagesController do
 			it 'should redirect to root path' do
 				response.should redirect_to(root_path)
 				flash[:error].should == I18n.t('flash.error.only.public')
-			end	
+			end
 		end
 	end
 end

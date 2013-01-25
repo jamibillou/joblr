@@ -16,13 +16,7 @@ class PagesController < ApplicationController
     @activation_count = @profile_emails.select{|pe| pe.profile.user.id == pe.author_id}.map{|pe| pe.author_id}.uniq.count
   end
 
-  def style_tile
-  end
-
-  def close
-  end
-
   def signup_choice
-    @user = User.new  #TO REMOVE
+    @user = User.new
   end
 end
