@@ -49,7 +49,7 @@ class AuthenticationsController < ApplicationController
     end
 
     def add_auth_message(user)
-      if auth_origin.include?(edit_user_path(user)) && auth_hash.provider == 'linkedin' && !signed_up?(user) then 'imported' else 'added' end
+      if auth_hash.provider == 'linkedin' && !signed_up?(user) then 'imported' else 'added' end
     end
 
     def social_sign_in(auth)

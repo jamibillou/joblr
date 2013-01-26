@@ -18,8 +18,7 @@
       - else
         = mixpanel_init :production
       - if user_signed_in?
-        - if flash[:notice] == t('devise.registrations.signed_up') || (flash[:success] && flash[:success].match(Regexp.new(t('flash.success.provider.signed_up', provider: '.+'))))
-          = mixpanel_call('alias', current_user.id)
+        = mixpanel_call('alias', current_user.id) if flash[:success] == t('flash.success.welcome')
         = mixpanel_call('identify', current_user.id)
         = mixpanel_call('name_tag', current_user.fullname)
 
@@ -36,5 +35,4 @@
 
     %footer= render 'layouts/footer' if footer?
 
-  = mixpanel_call('track', 'Signed in', "{'Signin type':'Social'}") if flash[:success] == t('flash.success.provider.signed_in')
-  = mixpanel_call('track', 'Signed in', "{'Signin type':'Manual'}") if flash[:notice]  == t('devise.sessions.signed_in')
+  = mixpanel_call('track', 'Signed in') if flash[:success] == t('flash.success.provider.signed_in') || flash[:notice]  == t('devise.sessions.signed_in')

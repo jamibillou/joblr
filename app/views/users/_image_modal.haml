@@ -11,7 +11,7 @@
     - unless @user.image.blank?
       .pull-right
         %h5=t 'users.image_modal.current_pic'
-        .pull-right= image_tag @user.image_url(:thumb).to_s, class:'current pic'
+        .pull-right= image_tag @user.image_url(:thumb).to_s, class: 'current pic'
         %br/
         %br/
         %br/
@@ -28,7 +28,7 @@
 
     %h5=t 'users.image_modal.upload'
     = f.file_field :image
-    = f.hidden_field :remote_image_url, id:'remote_image_url'
+    = f.hidden_field :remote_image_url, id: 'remote_image_url', value: (@user.authentications.first.image_url(:original) if @user.social? && !signed_up?(@user))
 
   .modal-footer
     %a.btn.btn-small{href:'#', 'data-dismiss' => 'modal'}= t('cancel')

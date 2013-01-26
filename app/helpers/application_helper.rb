@@ -88,8 +88,9 @@ module ApplicationHelper
         "mixpanel.people.set({
           $email: '#{user.email}',
           $name: '#{user.fullname}',
+          $username: '#{user.username}',
           $last_login: '#{user.last_sign_in_at}',
-          $username: '#{user.username}'});".html_safe}
+          $created: '#{user.created_at}'});".html_safe}
     end
   end
 

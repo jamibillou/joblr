@@ -26,7 +26,6 @@
             = profile_email.recipient_id.nil? ? profile_email.recipient_fullname : profile_email.recipient.fullname
           %td
             = profile_email.recipient_id.nil? ? profile_email.recipient_email : profile_email.recipient.email
-          %td
           %td.actions
             %a{href: "#profile-email-modal-#{profile_email.id}", 'data-toggle' => 'modal'}
               .icon-eye-open.graydark-text
@@ -34,8 +33,7 @@
 
 - @profile_emails.each do |profile_email|
   .modal.hide{id: "profile-email-modal-#{profile_email.id}"}
-    .modal-header.no-border
-      %a.close.hidden-phone{href: '#', 'data-dismiss' => 'modal'} &times;
     .modal-body
+      %a.close.hidden-phone{href: '#', 'data-dismiss' => 'modal'} &times;
       .profile-email-show
         = render 'profile_emails/show', profile_email: profile_email
