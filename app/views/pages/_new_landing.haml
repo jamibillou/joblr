@@ -9,8 +9,8 @@
         .row-fluid
           .span12
             .the-hero
-              .visible-desktop= link_to image_tag("screenshots/new_landing/#{locale}/hero.jpg"), "#{sign_up_path}?landing_version=#{@version}"
-              .hidden-desktop= link_to image_tag("screenshots/new_landing/#{locale}/hero_mobile.jpg"), "#{sign_up_path}?landing_version=#{@version}"
+              .visible-desktop= link_to image_tag("screenshots/new_landing/#{locale}/hero.jpg"), sign_up_path
+              .hidden-desktop= link_to image_tag("screenshots/new_landing/#{locale}/hero_mobile.jpg"), sign_up_path
 
   #grey-background
     .container

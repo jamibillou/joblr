@@ -20,25 +20,34 @@ describe PagesController do
 
 		it 'should have the right content' do
 			if @version == 'old'
-				response.body.should include I18n.t('pages.landing.catchphrase')
-				response.body.should include I18n.t('pages.landing.subtitle')
-				response.body.should include I18n.t('pages.landing.join')
-				response.body.should include I18n.t('pages.landing.benefit1_title')
-				response.body.should include I18n.t('pages.landing.benefit1_text')
-				response.body.should include I18n.t('pages.landing.benefit2_title')
-				response.body.should include I18n.t('pages.landing.benefit2_text')
-				response.body.should include I18n.t('pages.landing.benefit3_title')
-				response.body.should include I18n.t('pages.landing.benefit3_text_html')
-				response.body.should include I18n.t('pages.landing.benefit4_title')
-				response.body.should include I18n.t('pages.landing.benefit4_text')
-				response.body.should include I18n.t('pages.landing.disclaimer_html')
-			else
-				# TO DO!
+				response.body.should have_content I18n.t('pages.landing.catchphrase')
+				response.body.should have_content I18n.t('pages.landing.subtitle')
+				response.body.should have_content I18n.t('pages.landing.join')
+				response.body.should have_content I18n.t('pages.landing.benefit1_title')
+				response.body.should have_content I18n.t('pages.landing.benefit1_text')
+				response.body.should have_content I18n.t('pages.landing.benefit2_title')
+				response.body.should have_content I18n.t('pages.landing.benefit2_text')
+				response.body.should have_content I18n.t('pages.landing.benefit3_title')
+				response.body.should have_content I18n.t('pages.landing.benefit3_text_html')
+				response.body.should have_content I18n.t('pages.landing.benefit4_title')
+				response.body.should have_content I18n.t('pages.landing.benefit4_text')
+				response.body.should have_content I18n.t('pages.landing.disclaimer_html')
+			elsif @version == 'new'
+				response.body.should have_content I18n.t('pages.landing.new.title')
+				response.body.should have_content I18n.t('pages.landing.new.join')
+				response.body.should have_selector '#modal_signup'
+				response.body.should have_selector '#modal_profile'
+				response.body.should have_selector '#modal_apply'
+				response.body.should have_selector '#modal_applications'
 			end
 		end
 
-		it 'should have mixpanel event' do
-			response.body.should match /mixpanel.track\('Viewed landing page', {'Landing version': '(old|new)'/
+		it 'should have the right mixpanel event' do
+			if @version == 'old'
+			  response.body.should have_content "mixpanel.track('Viewed landing page', {'Landing version': 'old'})"
+			elsif @version == 'new'
+				response.body.should have_content "mixpanel.track('Viewed landing page', {'Landing version': 'new'})"
+			end
 		end
 	end
 
@@ -135,6 +144,7 @@ describe PagesController do
 	describe "GET 'sign_up'" do
 
 		context 'for public users' do
+
 			before :each do
 				get :sign_up
 			end
@@ -163,6 +173,10 @@ describe PagesController do
 
 			it 'should have a manual signup link' do
 				response.body.should have_content I18n.t('pages.sign_up.manual')
+			end
+
+			it 'should have the right mixpanel event' do
+				response.body.should have_content "mixpanel.track('Clicked Signup button')"
 			end
 		end
 

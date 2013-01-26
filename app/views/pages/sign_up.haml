@@ -9,4 +9,4 @@
       .no-worries=t 'pages.sign_up.no_worries'
       = link_to t('pages.sign_up.manual'), new_user_registration_path
 
-= mixpanel_call('track', 'Clicked on Signup button', "{'Landing version': '#{params[:landing_version]}'}")
+= mixpanel_call('track', 'Clicked Signup button') if flash.blank?

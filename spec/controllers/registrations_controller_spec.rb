@@ -28,29 +28,42 @@ describe RegistrationsController do
 
     context 'for public users' do
 
-      it { get :new ; response.should be_success }
+      before :each do
+        get :new
+      end
+
+      it { response.should be_success }
 
       context 'who used social_signup' do
 
-        it 'should have the right titles' do
+        before :each do
           session[:auth_hash] = {user: @attr}
           get :new
+        end
+
+        it 'should have the right titles' do
           response.body.should have_selector 'h1', text: I18n.t('devise.registrations.new.account_info')
           response.body.should have_content I18n.t('devise.registrations.new.so_we_know')
+        end
+
+        it 'should have the right mixpanel event' do
+          response.body.should have_content "mixpanel.track('Viewed signup form', {'Signup type': 'Social'})"
         end
       end
 
       context 'who are signing up manually' do
 
         it 'should have the right titles' do
-          get :new
           response.body.should have_selector 'h1', text: I18n.t('devise.registrations.new.title')
           response.body.should have_content I18n.t('devise.registrations.new.fill_account_info')
+        end
+
+        it 'should have the right mixpanel event' do
+          response.body.should have_content "mixpanel.track('Viewed signup form', {'Signup type': 'Manual'})"
         end
       end
 
       it 'should have a signup form' do
-        get :new
         response.body.should have_selector '#new_user'
       end
     end
