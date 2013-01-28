@@ -28,34 +28,21 @@ describe RegistrationsController do
 
     context 'for public users' do
 
-      before :each do
-        get :new
-      end
-
-      it { response.should be_success }
-
-      context 'who used social_signup' do
+      context 'who are signing up manually' do
 
         before :each do
-          session[:auth_hash] = {user: @attr}
           get :new
         end
 
-        it 'should have the right titles' do
-          response.body.should have_selector 'h1', text: I18n.t('devise.registrations.new.account_info')
-          response.body.should have_content I18n.t('devise.registrations.new.so_we_know')
-        end
-
-        it 'should have the right mixpanel event' do
-          response.body.should have_content "mixpanel.track('Viewed signup form', {'Signup type': 'Social'})"
-        end
-      end
-
-      context 'who are signing up manually' do
+        it { response.should be_success }
 
         it 'should have the right titles' do
           response.body.should have_selector 'h1', text: I18n.t('devise.registrations.new.title')
           response.body.should have_content I18n.t('devise.registrations.new.fill_account_info')
+        end
+
+        it 'should have a signup form' do
+          response.body.should have_selector '#new_user'
         end
 
         it 'should have the right mixpanel event' do
@@ -63,8 +50,28 @@ describe RegistrationsController do
         end
       end
 
-      it 'should have a signup form' do
-        response.body.should have_selector '#new_user'
+      context 'who used social_signup' do
+
+        before :each do
+          request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '123456'})
+          visit sign_up_path
+          visit user_omniauth_authorize_path('twitter')
+        end
+
+        it { response.should be_success }
+
+        it 'should have the right titles' do
+          page.body.should have_selector 'h1', text: I18n.t('devise.registrations.new.account_info')
+          page.body.should have_content I18n.t('devise.registrations.new.so_we_know')
+        end
+
+        it 'should have a signup form' do
+          page.body.should have_selector '#new_user'
+        end
+
+        it 'should have the right mixpanel event' do
+          page.body.should have_content "mixpanel.track('Viewed signup form', {'Signup type': 'Social'})"
+        end
       end
     end
   end
@@ -191,11 +198,15 @@ describe RegistrationsController do
           session[:auth_hash] = {user: {username: 'username', fullname: 'Full name', email: '', remote_image_url: ''}, authentication: {provider: 'twitter', uid: '123456', url: 'http://twitter.com/username', utoken: '987654', usecret: '456789'}}
         end
 
-        it 'should create a new social user' do
+        it 'should create a new user' do
           lambda do
             post :create, user: @attr
-            User.find_by_email(@attr[:email]).should be_social
           end.should change(User, :count).by 1
+        end
+
+        it 'should set social to true' do
+          post :create, user: @attr
+          User.find_by_email(@attr[:email]).should be_social
         end
 
         it 'should create a new authentication' do

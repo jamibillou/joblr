@@ -11,4 +11,4 @@
       .span2
         = render 'edit_buttons',    f: f
 
-= mixpanel_call('track', 'Signed up') if flash[:success] == t('flash.success.welcome')
+= mixpanel_call('track', 'Signed up', "{'Signup type': '#{@user.social? ? 'Social' : 'Manual'}'}") if flash[:success] == t('flash.success.welcome')

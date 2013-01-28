@@ -170,7 +170,7 @@ describe UsersController do
           response.body.should have_content I18n.t('users.edit.save')
         end
 
-        context "just after signing up" do
+        context "just after signing up manually" do
 
           it 'should have the right mixpanel event' do
             visit new_user_registration_path
@@ -180,7 +180,21 @@ describe UsersController do
             fill_in 'user_password', with: 'password'
             fill_in 'user_password_confirmation', with: 'password'
             click_button I18n.t('devise.registrations.sign_up')
-            page.body.should have_content "mixpanel.track('Signed up')"
+            page.body.should have_content "mixpanel.track('Signed up', {'Signup type': 'Manual'})"
+          end
+        end
+
+        context "just after using social_signup" do
+
+          it 'should have the right mixpanel event' do
+            request.env['omniauth.auth'] = OmniAuth.config.add_mock(:twitter, {:uid => '123456'})
+            visit sign_up_path
+            visit user_omniauth_authorize_path('twitter')
+            fill_in 'user_fullname', with: 'New User'
+            fill_in 'user_username', with: 'new_user'
+            fill_in 'user_email',    with: 'new_user@example.com'
+            click_button I18n.t('devise.registrations.sign_up')
+            page.body.should have_content "mixpanel.track('Signed up', {'Signup type': 'Social'})"
           end
         end
       end

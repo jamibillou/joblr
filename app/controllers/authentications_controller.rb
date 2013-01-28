@@ -74,7 +74,6 @@ class AuthenticationsController < ApplicationController
         flash[:error] = t('flash.error.provider.no_user', provider: humanize(auth_hash.provider))
       end
       redirect_to redirect_path
-      # raise "no session: #{session[:auth_hash].nil?}"
     end
 
     def session_auth_hash

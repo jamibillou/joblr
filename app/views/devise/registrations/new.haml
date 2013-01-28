@@ -41,7 +41,7 @@
             = f.submit t('devise.registrations.sign_up'), class: 'btn btn-primary'
         .pull-right.danger-text * #{t('required_fields')}
 
-- if flash[:success] && flash[:success].match(Regexp.new(t('flash.success.provider.signed_up', provider: '.+'))) || flash.blank? && session[:auth_hash]
+- if flash[:success] && flash[:success].match(Regexp.new(t('flash.success.provider.signed_up', provider: '.+')))
   = mixpanel_call('track', 'Viewed signup form', "{'Signup type': 'Social'}")
-- elsif flash.blank?
+- elsif flash.blank? && session[:auth_hash].nil?
   = mixpanel_call('track', 'Viewed signup form', "{'Signup type': 'Manual'}")
