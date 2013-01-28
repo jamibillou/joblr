@@ -4,7 +4,6 @@ fr:
       user: "Utilisateur"
       profile: "Profil"
       authentication: "Réseau social lié"
-      invite_email: "Invitation"
     attributes:
       user:
         id: "Identifiant"
@@ -59,11 +58,6 @@ fr:
         uname: "Nom"
         uemail: "Adresse email"
         url: "Lien public"
-      invite_email:
-        id: "Identifiant"
-        user_id: "Identifiant utilisateur"
-        code: "Code"
-        recipient_email: "Adresse email"
       profile_email:
         text: "Message"
         author_email: "Votre adresse email"
@@ -80,5 +74,5 @@ fr:
         subdomain_format: "n'est pas formaté correctement (2 à 63 lettres/chiffres, accents non autorisés)"
         blank: "vide"
         invalid: "invalide"
-        taken: "déjà pris"
+        taken: "déjà pris(e)"
         not_a_number: "n'est pas un nombre"

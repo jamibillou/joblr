@@ -4,26 +4,24 @@ en:
   required_fields: 'required fields'
   flash:
     success:
-      welcome: 'Welcome to Joblr!'
+      welcome: "Your account was successfully created, you can now fill in your profile."
       user:
-        destroyed: 'The user destroyed successfully.'
+        destroyed: 'The user was successfully destroyed.'
       provider:
         signed_in: "You are now signed in."
-        signed_up: "You have successfully signed up with your %{provider} account, fill in your profile now."
-        added:  "Your %{provider} account is now linked, you can sign in with it next time."
-        imported: "Your information was imported from %{provider}, don't forget to check it and fill the blanks."
-        removed: "Your %{provider} account is now unlinked."
+        signed_up: "Your %{provider} account was successfully linked, just a few details left."
+        added:  "Your %{provider} account was successfully linked, you can sign in with it from now on."
+        imported: "Your information was imported from %{provider}, don't forget to check it and fill in the blanks."
+        removed: "Your %{provider} account was successfully unlinked."
       profile:
-        created: "Perfect, send your profile by email or share it on your networks now that it's done."
+        created: "Perfect, now that your profile is complete you can start applying to jobs you're interested in."
         updated: 'Your changes were saved.'
         shared:
           user: "Your profile was successfully sent to %{recipient_email}"
           other_user: "%{fullname}'s profile was successfully sent to %{recipient_email}"
           public_user: "%{fullname}'s profile was successfully sent to %{recipient_email}"
-      invite_email:
-        email_sent: 'The invitation email was sent successfully.'
-        used: "Great, you can now sign up!"
-        destroyed: 'The invitation was destroyed successfully.'
+      profile_email:
+        destroyed: 'The application was successfully destroyed.'
     error:
       something_wrong:
         base: "Oops, something went wrong."
@@ -40,11 +38,6 @@ en:
         signed_in: "You cannot access this page."
         public: "You cannot access this page."
         admin: "You cannot access this page."
-      invite_email:
-        code_inexistant: "This invitation code doesn't seem to exist."
-        used: "This invitation code has already been used. Did you already sign up?"
-        required: "You need an invitation to sign up, you can ask for one here."
-        user_exists: "There is already a user with this email address. Did you already sign up?"
       profile_email:
         none: "You haven't sent any job application yet."
   footer:

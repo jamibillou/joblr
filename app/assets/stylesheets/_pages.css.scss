@@ -301,7 +301,20 @@
       }
     }
   }
-  .modal{
+  #users .modal{
     padding:40px 30px;
+  }
+}
+
+// Sign up
+// -------
+
+#sign-up{
+  .well{
+    padding-top:35px;
+    text-align:center;
+    .no-worries{
+      margin-top:32px;
+    }
   }
 }

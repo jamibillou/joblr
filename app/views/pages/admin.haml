@@ -2,10 +2,10 @@
   = render 'conversion_dashboard'
   .tabbable
     %ul.nav.nav-pills
-      %li.active= link_to 'Users', '#users',   'data-toggle' => 'tab'
-      %li= link_to 'Invites',      '#invites', 'data-toggle' => 'tab'
+      %li.active= link_to 'Users',   '#users',          'data-toggle' => 'tab'
+      %li= link_to 'Applications', '#profile_emails', 'data-toggle' => 'tab'
     .tab-content
       .tab-pane.active#users
-        = render 'users/index'
-      .tab-pane#invites
-        = render 'invite_emails/index'
+        = render 'users/admin_index'
+      .tab-pane#profile_emails
+        = render 'profile_emails/admin_index'

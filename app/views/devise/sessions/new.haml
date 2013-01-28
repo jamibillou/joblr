@@ -8,13 +8,13 @@
       .lead=t 'devise.sessions.new.choose'
     .well
       .row-fluid
-        .span7#social
+        .span6#social
           %h3= t('devise.sessions.new.social')
           %br/
           = render 'devise/shared/omniauth_links', user: resource, size: 'btn-large'
         .span1
         .span1.visible-phone
-        .span4#joblr
+        .span5
           %h3= t('devise.sessions.new.joblr')
           .big= t 'devise.sessions.new.if_joblr'
           .hidden-phone

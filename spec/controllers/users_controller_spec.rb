@@ -34,124 +34,30 @@ describe UsersController do
         context 'for completed profiles' do
 
           before :each do
-            visit user_path(@user)
+            get :show, id: @user
           end
 
           it { response.should be_success }
 
           it 'should have a the right user profile' do
-            find("div#user-#{@user.id}").should have_content @user.fullname
+            response.body.should have_selector "div#user-#{@user.id}"
           end
 
-          it 'should have an edit button with a primary style' do
-            find('a.btn.btn-primary').should have_content I18n.t('users.show.contact')
+          it 'should have a contact button' do
+            response.body.should have_content I18n.t('users.show.contact')
           end
 
           it 'should have a share button' do
-            find('a.btn.btn-default').should have_content I18n.t('users.show.share')
+            response.body.should have_content I18n.t('users.show.share')
           end
 
           it 'should have a profile email modal' do
-            find('div#profile-email-modal').should have_content I18n.t('profile_emails.new.title')
+            response.body.should have_selector '#profile-email-modal'
           end
 
-          it 'should have mixpanel event' do
-            get :show, id: @user
+          it 'should have the right mixpanel event' do
             response.body.should have_content "mixpanel.track('Viewed profile', {'User type': 'Public user'})"
           end
-        end
-      end
-
-      context 'requests with non-existing subdomains' do
-
-        it 'should render the 404 error page' # do
-          # FIX ME!
-          # expect { visit bla }.to raise_error(ActionController::RoutingError)
-          # response.should render_template(controller: 'errors', action: 'error_404')
-        # end
-      end
-
-      context 'requests with an existing user subdomain' do
-
-        context "and a path other than '/'" do
-
-          it 'should render the 404 error page' # do
-            # FIX ME!
-            # expect { visit bla }.to raise_error(ActionController::RoutingError)
-            # response.should render_template(controller: 'errors', action: 'error_404')
-          # end
-        end
-
-        context "and '/' as path" do
-
-          it 'should have the right user profile' # do
-            # FIX ME!
-            # visit bla
-            # find("div#user-#{@user.id}").should have_content @user.fullname
-          # end
-        end
-      end
-
-      context 'requests with staging.joblr.co as a host' do
-
-        context "and a path other than '/'" do
-
-          it 'should have the right content' # do
-            # FIX ME!
-            # visit bla
-            # response.should render_template(controller: 'whatever', action: 'whatever')
-          # end
-        end
-
-        context "and '/' as path" do
-
-          it 'should have the right content' # do
-            # FIX ME!
-            # visit bla
-            # response.should render_template(controller: 'whatever', action: 'whatever')
-          # end
-        end
-      end
-
-      context 'requests with joblr-staging.herokuapp.com as host' do
-
-        context "and a path other than '/'" do
-
-          it 'should have the right content' # do
-            # FIX ME!
-            # visit bla
-            # response.should render_template(controller: 'whatever', action: 'whatever')
-          # end
-        end
-
-        context "and '/' as path" do
-
-          it 'should have the right content' # do
-            # FIX ME!
-            # visit bla
-            # response.should render_template(controller: 'whatever', action: 'whatever')
-          # end
-        end
-      end
-
-      context 'requests with joblr.herokuapp.com as host' do
-
-        context "and a path other than '/'" do
-
-          it 'should have the right content' # do
-            # FIX ME!
-            # visit bla
-            # response.should render_template(controller: 'whatever', action: 'whatever')
-          # end
-        end
-
-        context "and '/' as path" do
-
-          it 'should have the right content' # do
-            # FIX ME!
-            # visit bla
-            # response.should render_template(controller: 'whatever', action: 'whatever')
-          # end
         end
       end
     end
@@ -171,29 +77,33 @@ describe UsersController do
       context 'who have completed their profile' do
 
         before :each do
-          login_as(@user, scope: :user)
-          visit user_path(@user)
+          sign_in @user
+          get :show, id: @user
         end
 
         it { response.should be_success }
 
         it 'should have a the right user profile' do
-          find("div#user-#{@user.id}").should have_content @user.fullname
+          response.body.should have_selector "div#user-#{@user.id}"
         end
 
-        it 'should have an edit button with a primary style' do
-          find('a.btn.btn-primary').should have_content I18n.t('users.show.edit')
+        it 'should have an edit button' do
+          response.body.should have_content I18n.t('users.show.edit')
         end
 
         it 'should have a send button' do
-          find('a.btn.btn-default').should have_content I18n.t('users.show.send')
+          response.body.should have_content I18n.t('users.show.send')
         end
 
         it 'should have a profile email modal' do
-          find('div#profile-email-modal').should have_content I18n.t('profile_emails.new.title')
+          response.body.should have_selector '#profile-email-modal'
         end
 
-        context 'visiting another user page' do
+        it 'should not have a mixpanel event' do
+          response.body.should_not have_content "mixpanel.track"
+        end
+
+        context "and are visiting another user's profile" do
 
           before :each do
             sign_out @user
@@ -201,7 +111,7 @@ describe UsersController do
             get :show, id: @user
           end
 
-          it 'should have mixpanel event' do
+          it 'should have the right mixpanel event' do
             response.body.should have_content "mixpanel.track('Viewed profile', {'User type': 'Other user'})"
           end
         end
@@ -216,7 +126,7 @@ describe UsersController do
       it 'should redirect to the root path' do
         sign_out @user
         get :edit, id: @user
-        response.body.should redirect_to root_path
+        response.should redirect_to root_path
         flash[:error].should == I18n.t('flash.error.only.signed_in')
       end
     end
@@ -227,7 +137,7 @@ describe UsersController do
         sign_out @user
         sign_in @user2
         get :edit, id: @user
-        response.body.should redirect_to root_path
+        response.should redirect_to root_path
         flash[:error].should == I18n.t('flash.error.other_user.profile')
       end
     end
@@ -235,63 +145,64 @@ describe UsersController do
     context 'for correct users' do
 
       before :each do
-        login_as(@user, scope: :user)
+        sign_in @user
       end
 
       context "who haven't completed their profile" do
 
         before :each do
           @user.profile.destroy
+          get :edit, id: @user
         end
 
-        context "after signing up with anything else than linkedin" do
+        it { response.should be_success }
 
-          before :each do
-            visit edit_user_path(@user)
-          end
-
-          it { response.should be_success }
-
-          it 'should have the right edit form' do
-            find("form.edit_user#edit_user_#{@user.id}")
-          end
-
-          it 'should have a linkedin button' do
-            find('#buttons label').should have_content I18n.t('users.edit.import_from')
-            all('a.btn.btn-large').first.should have_content I18n.t('users.edit.linkedin')
-          end
-
-          it 'should have an save button with a primary style' do
-            find('a.btn.btn-large.btn-primary').should have_content I18n.t('users.edit.save')
-          end
+        it 'should have the right edit form' do
+          response.body.should have_selector "#edit_user_#{@user.id}"
         end
 
-        context "after signing up with linkedin" do
+        it 'should have a linkedin button' do
+          response.body.should have_content I18n.t('users.edit.import_from')
+          response.body.should have_content I18n.t('users.edit.linkedin')
+        end
 
-          it 'should not have a linkedin button' # do
-          # FIX ME!
-          # end
+        it 'should have an save button' do
+          response.body.should have_content I18n.t('users.edit.save')
+        end
+
+        context "just after signing up" do
+
+          it 'should have the right mixpanel event' do
+            visit new_user_registration_path
+            fill_in 'user_fullname', with: 'New User'
+            fill_in 'user_username', with: 'new_user'
+            fill_in 'user_email',    with: 'new_user@example.com'
+            fill_in 'user_password', with: 'password'
+            fill_in 'user_password_confirmation', with: 'password'
+            click_button I18n.t('devise.registrations.sign_up')
+            page.body.should have_content "mixpanel.track('Signed up')"
+          end
         end
       end
 
       context 'who have completed their profile' do
 
         before :each do
-          visit edit_user_path(@user)
+          get :edit, id: @user
         end
 
         it { response.should be_success }
 
         it 'should have the right edit form' do
-          find("form.edit_user#edit_user_#{@user.id}")
+          response.body.should have_selector "#edit_user_#{@user.id}"
         end
 
-        it 'should have an save button with a primary style' do
-          find('a.btn.btn-large.btn-primary').should have_content I18n.t('users.edit.save')
+        it 'should have an save button' do
+          response.body.should have_content I18n.t('users.edit.save')
         end
 
         it 'should have a cancel button' do
-          all('a.btn.btn-large').last.should have_content I18n.t('cancel')
+          response.body.should have_content I18n.t('cancel')
         end
       end
     end

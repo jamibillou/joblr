@@ -6,10 +6,67 @@ describe RegistrationsController do
 
   before :each do
     @user         = FactoryGirl.create :user
-    @invite_email = FactoryGirl.create :invite_email, recipient: nil
-    @attr         = { fullname: 'New User', username: 'newuser', password: 'pouetpouet', password_confirmation: 'pouetpouet' }
+    @attr         = { fullname: 'New User', username: 'newuser', email: 'newuser@example.com', password: 'pouetpouet', password_confirmation: 'pouetpouet' }
     @full_attr    = { fullname: 'Tony Leung', city: 'Hong Kong', country: 'China', profiles_attributes: { '0' => { experience: 10, education: 'none' } } }
     request.env['devise.mapping'] = Devise.mappings[:user]
+  end
+
+  describe "GET 'new'" do
+
+    context 'for signed in users' do
+
+      before :each do
+        sign_in @user
+      end
+
+      it 'should redirect to root path' do
+        get :new
+        response.should redirect_to(root_path)
+        flash[:alert].should == I18n.t('devise.failure.already_authenticated')
+      end
+    end
+
+    context 'for public users' do
+
+      before :each do
+        get :new
+      end
+
+      it { response.should be_success }
+
+      context 'who used social_signup' do
+
+        before :each do
+          session[:auth_hash] = {user: @attr}
+          get :new
+        end
+
+        it 'should have the right titles' do
+          response.body.should have_selector 'h1', text: I18n.t('devise.registrations.new.account_info')
+          response.body.should have_content I18n.t('devise.registrations.new.so_we_know')
+        end
+
+        it 'should have the right mixpanel event' do
+          response.body.should have_content "mixpanel.track('Viewed signup form', {'Signup type': 'Social'})"
+        end
+      end
+
+      context 'who are signing up manually' do
+
+        it 'should have the right titles' do
+          response.body.should have_selector 'h1', text: I18n.t('devise.registrations.new.title')
+          response.body.should have_content I18n.t('devise.registrations.new.fill_account_info')
+        end
+
+        it 'should have the right mixpanel event' do
+          response.body.should have_content "mixpanel.track('Viewed signup form', {'Signup type': 'Manual'})"
+        end
+      end
+
+      it 'should have a signup form' do
+        response.body.should have_selector '#new_user'
+      end
+    end
   end
 
   describe "PUT 'update'" do
@@ -53,39 +110,63 @@ describe RegistrationsController do
 
   describe "POST 'create'" do
 
-    context 'for users who signed up with an invite_email' do
-
-      before(:each) { session[:invite_email] = @invite_email }
+    context 'for users who signed up manually' do
 
       context "and didn't provide any fullname" do
+
         it 'should not create a new user' do
           lambda do
             post :create, user: @attr.merge(fullname: '')
           end.should_not change(User, :count).by 1
         end
+
+        it "it should render 'new'" do
+          post :create, user: @attr.merge(fullname: '')
+          response.should render_template :new
+          flash[:error].should == errors('user.fullname', 'blank')
+        end
       end
 
       context "and didn't provide any username" do
+
         it 'should not create a new user' do
           lambda do
             post :create, user: @attr.merge(username: '')
           end.should_not change(User, :count).by 1
         end
+
+        it "it should render 'new'" do
+          post :create, user: @attr.merge(username: '')
+          flash[:error].should == errors('user.username', 'blank')
+        end
       end
 
       context "and didn't provide any password" do
+
         it 'should not create a new user' do
           lambda do
             post :create, user: @attr.merge(password: '')
           end.should_not change(User, :count).by 1
         end
+
+        it "it should render 'new'" do
+          post :create, user: @attr.merge(password: '')
+          response.should render_template :new
+          flash[:error].should_not be_nil
+        end
       end
 
       context "and didn't provide any password confirmation" do
+
         it 'should not create a new user' do
           lambda do
             post :create, user: @attr.merge(password_confirmation: '')
           end.should_not change(User, :count).by 1
+        end
+
+        it "it should render 'new'" do
+          post :create, user: @attr.merge(password_confirmation: '')
+          flash[:error].should_not be_nil
         end
       end
 
@@ -96,26 +177,36 @@ describe RegistrationsController do
             post :create, user: @attr
           end.should change(User, :count).by 1
         end
+      end
 
-        it 'should associate the user and the invite_email' do
-          post :create, user: @attr
-          User.last.invite_email.id.should == @invite_email.id
-          User.last.invite_email.should == @invite_email
+      it 'should redirect to root path' do
+        post :create, user: @attr
+        response.should redirect_to(root_path)
+        flash[:success].should == I18n.t('flash.success.welcome')
+      end
+
+      context 'after using social signup' do
+
+        before :each do
+          session[:auth_hash] = {user: {username: 'username', fullname: 'Full name', email: '', remote_image_url: ''}, authentication: {provider: 'twitter', uid: '123456', url: 'http://twitter.com/username', utoken: '987654', usecret: '456789'}}
         end
 
-        it "should not update the user's email if he already had one" do
-          post :create, user: @attr.merge(email: 'one.email@example.com')
-          User.last.email.should_not == @invite_email.recipient_email
+        it 'should create a new social user' do
+          lambda do
+            post :create, user: @attr
+            User.find_by_email(@attr[:email]).should be_social
+          end.should change(User, :count).by 1
         end
 
-        it "should update the user's email if he didn't have one" do
-          post :create, user: @attr
-          User.last.email.should == @invite_email.recipient_email
+        it 'should create a new authentication' do
+          lambda do
+            post :create, user: @attr
+          end.should change(Authentication, :count).by 1
         end
 
-        it 'should destroy the invte_email session' do
+        it 'should destroy the session' do
           post :create, user: @attr
-          session[:invite_email].should be_nil
+          session[:auth_hash].should be_nil
         end
       end
     end

@@ -37,7 +37,6 @@ class User < ActiveRecord::Base
   has_many :authored_emails,         dependent: :destroy, class_name: 'FromUserEmail', foreign_key: 'author_id'
   has_many :received_emails,         dependent: :destroy, class_name: 'ToUserEmail',   foreign_key: 'recipient_id'
   has_many :authored_profile_emails, dependent: :destroy, class_name: 'ProfileEmail',  foreign_key: 'author_id'
-  has_one  :invite_email,            dependent: :destroy,                              foreign_key: 'recipient_id'
 
   accepts_nested_attributes_for :profiles, allow_destroy: true
 
@@ -50,7 +49,7 @@ class User < ActiveRecord::Base
   validates :username,  length:     { maximum: 63 }, subdomain_format: true
   validates :subdomain, length:     { maximum: 63 }, subdomain_format: true, allow_nil: true
   validates :subdomain, uniqueness: { case_sensitive: true }
-  validates :admin,     inclusion:  { :in => [true, false] }
+  validates :admin,     inclusion:  { in: [true, false] }
   validates :email,     uniqueness: { case_sensitive: true },      allow_nil: true, if: :email_changed?
   validates :email,     format:     { with: Devise.email_regexp }, allow_nil: true, if: :email_changed?
 
@@ -81,7 +80,7 @@ class User < ActiveRecord::Base
 
     def find_first_by_auth_conditions(conditions)
       if login = conditions.delete(:login)
-        where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+        where(conditions).where(["lower(username) = :value OR lower(email) = :value", {value: login.downcase}]).first
       else
         where(conditions).first
       end

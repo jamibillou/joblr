@@ -17,7 +17,6 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    ZenTest (4.8.3)
     actionmailer (3.2.11)
       actionpack (= 3.2.11)
       mail (~> 2.4.4)
@@ -49,9 +48,6 @@ GEM
     annotate (2.5.0)
       rake
     arel (3.0.2)
-    autotest (4.4.6)
-      ZenTest (>= 4.4.1)
-    autotest-growl (0.2.16)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.1.0.0)
     builder (3.0.4)
@@ -316,8 +312,6 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
-  autotest
-  autotest-growl
   bootstrap-sass (= 2.1.0.0)
   capybara (= 1.1.2)
   capybara-webkit

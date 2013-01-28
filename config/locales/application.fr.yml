@@ -4,30 +4,28 @@ fr:
   required_fields: 'champs obligatoires'
   flash:
     success:
-      welcome: 'Bienvenue sur Joblr !'
+      welcome: "Votre compte a bien été créé, vous pouvez maintenant remplir votre profil !"
       user:
         destroyed: "L'utilisateur a bien été supprimé."
       provider:
         signed_in: 'Vous êtes maintenant connecté.'
-        signed_up: "Vous vous êtes bien inscrit avec votre compte %{provider}, il ne vous reste plus qu'à remplir votre profil."
-        added:  "Votre compte %{provider} a bien été lié, vous pouvez l'utiliser pour vous connecter."
+        signed_up: "Votre compte %{provider} a bien été lié, plus que quleques détails."
+        added:  "Votre compte %{provider} a bien été lié, vous pouvez dorénavant l'utiliser pour vous connecter."
         imported: "Votre parcours a été importé depuis %{provider}, vérifiez quand même que tout est correct et qu'il ne manque rien."
         removed: "Le lien avec votre compte %{provider} a bien été supprimé."
       profile:
-        created: "Parfait ! Maintenant que votre profil est prêt, envoyez-le par email aux recruteurs ciblés."
+        created: "Parfait ! Maintenant que votre profil est prêt, postulez auprès des entreprises qui vous intéressent."
         updated: 'Modifications enregistrées.'
         shared:
           user: "Votre profil a bien été envoyé à %{recipient_email}"
           other_user: "Le profil de %{fullname} a bien été envoyé à %{recipient_email}"
           public_user: "Le profil de %{fullname} a bien été envoyé à %{recipient_email}"
-      invite_email:
-        email_sent: "L'invitation a bien été envoyée."
-        used: "Ok, vous pouvez maintenant vous inscrire !"
-        destroyed: "L'invitation a bien été supprimée."
+      profile_email:
+        destroyed: 'La candidature a bien été supprimée.'
     error:
       something_wrong:
         base: "Oups, quelque chose ne s'est pas passé comme prévu."
-        auth: "Un problème est survenu en essayant de lier votre compte."
+        auth: "Un problème est survenu lors de la liaison de votre compte."
       provider:
         already_linked: "Nous n'avons pas pu lier votre compte %{provider} car il est déjà lié à votre profil."
         other_user: "Nous n'avons pas pu lier votre compte %{provider} car il est déjà lié au profil d'un autre utilisateur."
@@ -40,11 +38,6 @@ fr:
         signed_in: "Vous ne pouvez pas à accéder à cette page."
         public: "Vous ne pouvez pas à accéder à cette page."
         admin: "Vous ne pouvez pas à accéder à cette page."
-      invite_email:
-        code_inexistant: "Ce code d'invitation n'existe pas."
-        used: "Ce code d'invitation a déjà été utilisé. Vous-êtes vous déjà inscrit ?"
-        required: "Il vous faut une invitation pour vous inscrire, vous pouvez en demander une ici."
-        user_exists: "Il y a déjà un utilisateur avec cette adresse email. Vous-êtes vous déjà inscrit ?"
       profile_email:
         none: "Vous n'avez pas encore envoyé de candidature."
   footer:

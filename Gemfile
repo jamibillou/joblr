@@ -39,8 +39,6 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'spork'
-  gem 'autotest'
-  gem 'autotest-growl'
   gem 'factory_girl_rails'
   gem 'capybara', '1.1.2'
   gem 'capybara-webkit'

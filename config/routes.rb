@@ -9,15 +9,11 @@ Joblr::Application.routes.draw do
 
   devise_for :users, controllers: {omniauth_callbacks: 'authentications', registrations: 'registrations'}
 
-  resources :invite_emails, except: :index do
-    get :thank_you
-    get :send_code
-  end
   resources :authentications, only: [:destroy]
   resources :users do
     resources :profiles
   end
-  resources :profile_emails, only: [:create, :index] do
+  resources :profile_emails, only: [:create, :index, :destroy] do
     get :already_answered
     get :decline
   end
@@ -29,6 +25,7 @@ Joblr::Application.routes.draw do
   match 'home',       to: 'pages#landing'
   match 'admin',      to: 'pages#admin'
   match 'style_tile', to: 'pages#style_tile'
+  match 'sign_up',    to: 'pages#sign_up'
   match 'close',      to: 'pages#close'
 
   # Subdomain constraints
@@ -41,11 +38,7 @@ Joblr::Application.routes.draw do
 
   # Preview of emails
   if Rails.env.development?
-    mount InviteEmailMailer::Preview   => 'invite_email_mailer'
     mount ProfileEmailMailer::Preview  => 'profile_email_mailer'
     mount FeedbackEmailMailer::Preview => 'feedback_email_mailer'
   end
-
-  # Kludge to preserve compatibility with deprecated BetaInvite model
-  get 'beta_invites/(:id)/edit' => 'invite_emails#edit'
 end

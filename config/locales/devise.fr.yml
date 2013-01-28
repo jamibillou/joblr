@@ -26,7 +26,7 @@ fr:
       password: "Mot de passe"
       remember_me: 'Se souvenir de moi'
       signed_in: 'Vous êtes maintenant connecté.'
-      signed_out: 'Vous êtes bien déconnecté.'
+      signed_out: 'Vous êtes maintenant déconnecté.'
       logout: 'Se déconnecter'
       problem: "Problème de connexion"
     passwords:
@@ -50,15 +50,12 @@ fr:
       no_token: "Vous ne pouvez pas accéder à cette page sans passer par un email de réinitialisation de mot de passe."
     registrations:
       new:
-        title: "Inscrivez-vous !"
-        welcome: 'Bienvenue sur Joblr !'
-        choose: "Choisissez comment vous préférez vous inscrire"
-        social: "Utilisez un de vos réseaux sociaux"
-        no_worries: "Nous ne publions rien sur vos profils sans votre autorisation, pas de soucis à se faire."
-        convenient: '(plus pratique)'
-        joblr: 'Ou inscrivez-vous manuellement'
+        title: "S'inscrire sur Joblr"
+        fill_account_info: 'Saisissez les informations de votre compte'
+        account_info: 'Informations de votre compte'
+        so_we_know: "Pour terminer votre inscription"
       create:
-        title: "Inscrivez-vous !"
+        title: "S'inscrire sur Joblr"
       edit:
         title: 'Paramètres'
         subtitle: 'Modifiez votre compte et vos réseaux sociaux'
@@ -79,7 +76,7 @@ fr:
       new_password: 'Nouveau mot de passe'
       new_password_confirm: 'Confirmez ce mot de passe'
       sign_in: "Se connecter"
-      sign_up: "S'inscrire"
+      sign_up: "S'inscrire !"
       forgot_password: 'Mot de passe oublié ?'
       signed_up: 'Bienvenue sur Joblr !'
       updated: 'Modifications enregistrées.'

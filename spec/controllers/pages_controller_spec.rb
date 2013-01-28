@@ -20,25 +20,34 @@ describe PagesController do
 
 		it 'should have the right content' do
 			if @version == 'old'
-				response.body.should include I18n.t('pages.landing.catchphrase')
-				response.body.should include I18n.t('pages.landing.subtitle')
-				response.body.should include I18n.t('pages.landing.join')
-				response.body.should include I18n.t('pages.landing.benefit1_title')
-				response.body.should include I18n.t('pages.landing.benefit1_text')
-				response.body.should include I18n.t('pages.landing.benefit2_title')
-				response.body.should include I18n.t('pages.landing.benefit2_text')
-				response.body.should include I18n.t('pages.landing.benefit3_title')
-				response.body.should include I18n.t('pages.landing.benefit3_text_html')
-				response.body.should include I18n.t('pages.landing.benefit4_title')
-				response.body.should include I18n.t('pages.landing.benefit4_text')
-				response.body.should include I18n.t('pages.landing.disclaimer_html')
-			else
-				# TO DO!
+				response.body.should have_content I18n.t('pages.landing.catchphrase')
+				response.body.should have_content I18n.t('pages.landing.subtitle')
+				response.body.should have_content I18n.t('pages.landing.join')
+				response.body.should have_content I18n.t('pages.landing.benefit1_title')
+				response.body.should have_content I18n.t('pages.landing.benefit1_text')
+				response.body.should have_content I18n.t('pages.landing.benefit2_title')
+				response.body.should have_content I18n.t('pages.landing.benefit2_text')
+				response.body.should have_content I18n.t('pages.landing.benefit3_title')
+				response.body.should have_content I18n.t('pages.landing.benefit3_text_html')
+				response.body.should have_content I18n.t('pages.landing.benefit4_title')
+				response.body.should have_content I18n.t('pages.landing.benefit4_text')
+				response.body.should have_content I18n.t('pages.landing.disclaimer_html')
+			elsif @version == 'new'
+				response.body.should have_content I18n.t('pages.landing.new.title')
+				response.body.should have_content I18n.t('pages.landing.new.join')
+				response.body.should have_selector '#modal_signup'
+				response.body.should have_selector '#modal_profile'
+				response.body.should have_selector '#modal_apply'
+				response.body.should have_selector '#modal_applications'
 			end
 		end
 
-		it 'should have mixpanel event' do
-			response.body.should match /mixpanel.track\('Viewed landing page', {'Landing version': '(old|new)'/
+		it 'should have the right mixpanel event' do
+			if @version == 'old'
+			  response.body.should have_content "mixpanel.track('Viewed landing page', {'Landing version': 'old'})"
+			elsif @version == 'new'
+				response.body.should have_content "mixpanel.track('Viewed landing page', {'Landing version': 'new'})"
+			end
 		end
 	end
 
@@ -128,6 +137,58 @@ describe PagesController do
 				it 'should have a style_tile block' do
 					response.body.should have_selector 'div#style-tile'
 				end
+			end
+		end
+	end
+
+	describe "GET 'sign_up'" do
+
+		context 'for public users' do
+
+			before :each do
+				get :sign_up
+			end
+
+			it { response.should be_success }
+
+			it 'should have a LinkedIn button' do
+				response.body.should have_selector 'a.btn-linkedin'
+			end
+
+			it 'should have a Twitter button' do
+				response.body.should have_selector 'a.btn-twitter'
+			end
+
+			it 'should have a Facebook button' do
+				response.body.should have_selector 'a.btn-facebook'
+			end
+
+			it 'should have a Google button' do
+				response.body.should have_selector 'a.btn-google'
+			end
+
+			it 'should have a no-worries block' do
+				response.body.should have_selector 'div.no-worries'
+			end
+
+			it 'should have a manual signup link' do
+				response.body.should have_content I18n.t('pages.sign_up.manual')
+			end
+
+			it 'should have the right mixpanel event' do
+				response.body.should have_content "mixpanel.track('Clicked Signup button')"
+			end
+		end
+
+		context 'for signed in users' do
+			before :each do
+				sign_in @user
+				get :sign_up
+			end
+
+			it 'should redirect to root path' do
+				response.should redirect_to(root_path)
+				flash[:error].should == I18n.t('flash.error.only.public')
 			end
 		end
 	end

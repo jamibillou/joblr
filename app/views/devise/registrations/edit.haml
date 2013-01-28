@@ -8,7 +8,7 @@
       .lead=t 'devise.registrations.edit.subtitle'
     .well
       .row-fluid
-        .span5#joblr
+        .span5
           %h3= t('devise.registrations.edit.details')
           %br/
           = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f|
