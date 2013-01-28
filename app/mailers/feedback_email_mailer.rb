@@ -12,14 +12,16 @@ class FeedbackEmailMailer < ActionMailer::Base
     mail to: feedback_email.recipient_email, subject: t('mailers.feedback_email.footer_form.subject', fullname: @author.fullname), reply_to: @author.email
   end
 
-  class Preview < MailView
+  if Rails.env.development?
+    class Preview < MailView
 
-    def footer_form
-      name           = Faker::Name.name
-      author         = FactoryGirl.create :author, fullname: name, username: name.parameterize, email: "#{name.parameterize}@example.com"
-      feedback_email = FactoryGirl.create :feedback_email, author: author
-      email          = FeedbackEmailMailer.footer_form(feedback_email)
-      email
+      def footer_form
+        name           = Faker::Name.name
+        author         = FactoryGirl.create :author, fullname: name, username: name.parameterize, email: "#{name.parameterize}@example.com"
+        feedback_email = FactoryGirl.create :feedback_email, author: author
+        email          = FeedbackEmailMailer.footer_form(feedback_email)
+        email
+      end
     end
   end
 end
