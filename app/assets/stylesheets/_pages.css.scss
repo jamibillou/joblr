@@ -302,7 +302,12 @@
     }
   }
   #users .modal{
-    padding:40px 30px;
+    padding:25px 25px 10px 25px;
+    a.close{
+      position:absolute;
+      top:12px;
+      right:14px;
+    }
   }
 }
 

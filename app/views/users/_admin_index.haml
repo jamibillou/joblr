@@ -57,5 +57,6 @@
 - @users.each do |user|
   - unless user.profile.nil?
     .modal.hide{id: "profile-modal-#{user.id}"}
+      %a.close.hidden-phone{href: '#', 'data-dismiss' => 'modal'} &times;
       .modal-body#profile
         = render 'users/show_profile', user: user
