@@ -1,5 +1,5 @@
 - unless profile.file.blank? && profile.url.blank? && profile.twitter_url.blank? && profile.linkedin_url.blank? && profile.facebook_url.blank? && profile.google_url.blank?
-  .row-fluid#more-about
+  .row-fluid.more-about
     .span12
       %h4=t 'users.show.more_about', fullname: "#{user.fullname}"
       - unless profile.file.blank?

@@ -33,11 +33,16 @@ form#new_profile_email{
 //------
 
 #profile-emails{
-  #date{
+  .date{
     margin-bottom:20px;
-    .profile-email-thumb{
-      margin:20px 20px 0 0;
+    .thumb-container{
       display:inline-block;
+      .well.profile-email.thumb{
+        margin:20px 20px 0 0;
+      }
+      p.thumb-text{
+        margin-top:10px;
+      }
     }
   }
 }
@@ -46,42 +51,48 @@ form#new_profile_email{
 // Show
 //-----
 
-.modal .profile-email-show{
-  padding:18px 20px 20px 12px;
-  font-size: 16px;
-  font-weight:300;
-  p{
-    margin-bottom:9px;
-    font-size:15px;
-    line-height:18px;
-    text-decoration:none;
-    color:$grayDark;
+.modal.profile-email{
+  padding:22px 25px 25px 25px;
+  a.close{
+    position:absolute;
+    top:10px;
+    right:14px;
   }
-  img{
-    margin:24px 20px 0 0;
-    float:left;
-    max-width:80px;
-    max-height:80px;
-  }
-  h2{
-    margin-top:32px;
-    margin-bottom:7px;
-  }
-  .fine-line{
-    margin:64px 0 36px 0;
-    border-top:1px solid #ccc;
-  }
-  .btn{
-    margin-right:21px;
-    font-size:20px;
-    font-weight:bold;
-    text-decoration:underline;
-  }
-  a{
-    color:$blue;
-    text-decoration:underline;
-    &:hover{
+  .modal-body{
+    font-size: 16px;
+    font-weight:300;
+    p{
+      margin-bottom:9px;
+      line-height:18px;
+      text-decoration:none;
+      color:$grayDark;
+    }
+    .identity{
+      height:120px;
+      margin:35px 0 40px 0;
+      border-bottom:1px solid #ccc;
+      img{
+        margin-right:20px;
+        float:left;
+        width:80px;
+        height:80px;
+      }
+      h2{
+        margin:32px 0 6px 0;
+      }
+    }
+    .btn{
+      margin-right:21px;
+      font-size:20px;
+      font-weight:bold;
       text-decoration:underline;
+    }
+    a{
+      color:$blue;
+      text-decoration:underline;
+      &:hover{
+        text-decoration:underline;
+      }
     }
   }
 }
@@ -90,38 +101,39 @@ form#new_profile_email{
 // Thumbnails
 //-----------
 
-.profile-email-thumb .well{
+.well.profile-email.thumb {
   width:150px;
   margin-bottom:10px;
   border-width:3px;
   border-height:3px;
   font-size: 4px;
   font-weight:300;
-  padding:13px 10px;
+  padding:7px 11px 11px 11px;
   line-height:5px;
   p{
-    margin-bottom:3px;
+    margin:3px 0 0 0;
     font-size:4px;
     text-decoration:none;
     color:$grayDark;
   }
-  img{
-    width:25px;
-    height:25px;
-    margin:8px 6px 0 0;
-    float:left;
-  }
-  h2{
-    margin:12px 0 1px 0;
-    font-size:7px;
-    line-height:1;
-  }
-  .graylight-text{
-    font-size:5px;
-  }
-  .fine-line{
-    margin:20px 0 11px 0;
-    border-top:1px solid #eee;
+  .identity{
+    height:36px;
+    margin:-2px 0 11px 0;
+    border-bottom:1px solid #eee;
+    img{
+      width:25px;
+      height:25px;
+      margin-right:6px;
+      float:left;
+    }
+    h2{
+      margin:12px 0 1px 0;
+      font-size:7px;
+      line-height:1;
+    }
+    .graylight-text{
+      font-size:5px;
+    }
   }
   .btn{
     padding: 0 10px;

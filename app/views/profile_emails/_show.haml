@@ -1,11 +1,13 @@
 = simple_format(profile_email.text).html_safe
-= image_tag (profile_email.profile.user.image_url.blank? ? 'default_user.jpg' : profile_email.profile.user.image_url(:thumb).to_s)
-%h2= current_user.fullname
-- unless profile_email.profile.user.city.blank? && profile_email.profile.user.country.blank?
-  .graylight-text
-    .icon-map-marker
-    &nbsp;
-    = "#{profile_email.profile.user.city}#{', ' unless profile_email.profile.user.city.blank? || profile_email.profile.user.country.blank?}#{profile_email.profile.user.country}"
-.fine-line
-.btn.btn-large.btn-primary.disabled Let's talk!
-%a No, thanks
+.identity
+  = image_tag (profile_email.author.image_url.blank? ? 'default_user.jpg' : profile_email.author.image_url(:thumb).to_s)
+  %h2= profile_email.author.fullname
+  - if profile_email.author.city.blank? && profile_email.author.country.blank?
+    %a= profile_email.author.email
+  - else
+    .graylight-text
+      .icon-map-marker
+      &nbsp;
+      = "#{profile_email.author.city}#{', ' unless profile_email.author.city.blank? || profile_email.author.blank?}#{profile_email.author.country}"
+.btn.btn-large.btn-primary.disabled=t 'profile_emails.show.lets_talk'
+%a=t 'profile_emails.show.no_thanks'

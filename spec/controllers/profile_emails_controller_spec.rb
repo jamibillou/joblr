@@ -539,13 +539,13 @@ describe ProfileEmailsController do
 
           it 'should have a thumbnail per authored profile_email' do
             @author.authored_profile_emails.each do |pe|
-              response.body.should include "profile-email-thumb-#{pe.id}"
+              response.body.should include "thumb-#{pe.id}"
             end
           end
 
           it 'should have a modal per authored profile_email' do
             @author.authored_profile_emails.each do |pe|
-              response.body.should include "profile-email-modal-#{pe.id}"
+              response.body.should include "modal-#{pe.id}"
             end
           end
         end
@@ -571,7 +571,7 @@ describe ProfileEmailsController do
         lambda do
           delete :destroy, id: @profile_email
         end.should_not change(ProfileEmail, :count).by 1
-      end    
+      end
     end
 
     context "for admin users" do
@@ -591,6 +591,6 @@ describe ProfileEmailsController do
         response.should redirect_to admin_path
         flash[:success].should == I18n.t('flash.success.profile_email.destroyed')
       end
-    end 
+    end
   end
 end

@@ -27,5 +27,8 @@ fr:
       title: 'Candidatures'
       to_email_html: 'à %{email_link}'
       on_date: 'le %{date}'
+    show:
+      lets_talk: "Contacter"
+      no_thanks: 'Non merci'
     destroy:
       yes_delete: 'Voulez-vous vraiment supprimer cette candidature ?'

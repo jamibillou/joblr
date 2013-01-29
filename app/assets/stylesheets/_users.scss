@@ -22,11 +22,19 @@ a.help{
 // Profile
 // -------
 
-#profile{
+.profile{
   &.well{
     border:10px solid $grayLighter;
     @include box-shadow(none);
     padding-bottom:30px;
+  }
+  &.modal{
+    padding:25px 25px 15px 25px;
+    a.close{
+      position:absolute;
+      top:10px;
+      right:14px;
+    }
   }
   h4{
     margin-top:15px;
@@ -86,7 +94,7 @@ a.help{
       margin-bottom:11px;
     }
   }
-  #more-about{
+  .more-about{
     .btn-small{
       margin-bottom:8px;
     }
