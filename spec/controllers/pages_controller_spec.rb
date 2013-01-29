@@ -22,7 +22,7 @@ describe PagesController do
 			if @version == 'old'
 				response.body.should have_content I18n.t('pages.landing.catchphrase')
 				response.body.should have_content I18n.t('pages.landing.subtitle')
-				response.body.should have_content I18n.t('pages.landing.join')
+				response.body.should have_content I18n.t('pages.landing.signup')
 				response.body.should have_content I18n.t('pages.landing.benefit1_title')
 				response.body.should have_content I18n.t('pages.landing.benefit1_text')
 				response.body.should have_content I18n.t('pages.landing.benefit2_title')
@@ -34,7 +34,14 @@ describe PagesController do
 				response.body.should have_content I18n.t('pages.landing.disclaimer_html')
 			elsif @version == 'new'
 				response.body.should have_content I18n.t('pages.landing.new.title')
-				response.body.should have_content I18n.t('pages.landing.new.join')
+				response.body.should have_content I18n.t('pages.landing.new.signup')
+				response.body.should have_selector '#modal_signup'
+				response.body.should have_selector '#modal_profile'
+				response.body.should have_selector '#modal_apply'
+				response.body.should have_selector '#modal_applications'
+			elsif @version == 'alt'
+				response.body.should have_content I18n.t('pages.landing.alt.title_html', link: I18n.t('pages.landing.alt.click'))
+				response.body.should have_content I18n.t('pages.landing.alt.signup')
 				response.body.should have_selector '#modal_signup'
 				response.body.should have_selector '#modal_profile'
 				response.body.should have_selector '#modal_apply'

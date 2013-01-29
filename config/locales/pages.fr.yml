@@ -6,7 +6,7 @@ fr:
         title_alt: 'Accueil'
         catchphrase: "Les lettres de motivation et CV vous épuisent ?"
         subtitle: "Joblr est le moyen le plus rapide de postuler."
-        join: "S'inscrire !"
+        signup: "S'inscrire !"
         benefit1_title: "Allez à l'essentiel"
         benefit1_text: "Votre profil ne prend que 5 secondes à lire et contient toutes les informations essentielles pour comprendre vos compétences."
         benefit2_title: "Rapide des deux côtés"
@@ -21,12 +21,17 @@ fr:
         cta_title: "Besoin d'un second souffle dans votre recherche d'emploi ?"
         testimonial_1_html: "“Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.<br/>Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.”"
         testimonial_2_html: "“Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil.<br/>Impedit quo minus id quod maxime placeat facere possimus.”<br/>"
-        join: "Oui !"
+        signup: "Oui !"
         screenshot_1: "Inscription rapide"
         screenshot_2: "Créez votre profil en quelques clics"
         screenshot_3: "Envoyez vos candidatures via un formulaire très simple"
         screenshot_4: "Visualisez et suivez vos candidatures"
         disclaimer_html: "<b>Remarque : </b> Nos tarifs n'étant pour l'instant pas finalisés, la version beta de Joblr est entièrement gratuite jusqu'à nouvel ordre."
+      alt:
+        title: "La candidature spontanée qui donne envie de vous cliquer"
+        title_html: "La candidature spontanée qui donne envie de vous %{link}"
+        click: "cliquer"
+        signup: "S'inscrire !"
     admin:
       title: 'Admin'
       title_alt: 'Tableau de bord'

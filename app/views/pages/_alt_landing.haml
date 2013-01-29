@@ -5,7 +5,7 @@
         .row-fluid
           .span1.hidden-phone
           .span10
-            %h1=t 'pages.landing.new.title'
+            %h1=t 'pages.landing.alt.title_html', link: link_to(t('pages.landing.alt.click'), sign_up_path)
         .row-fluid
           .span12
             .the-hero
@@ -19,7 +19,7 @@
           .row-fluid#cta
             .span12
               %h1=t 'pages.landing.new.cta_title'
-              %a.btn.btn-large.btn-primary.btn-top{href: sign_up_path}=t 'pages.landing.new.signup'
+              %a.btn.btn-large.btn-primary.btn-top{href: sign_up_path}=t 'pages.landing.alt.signupj'
           / .row-fluid#testimonials
           /   .visible-desktop
           /     .span4
