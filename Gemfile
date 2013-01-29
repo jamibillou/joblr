@@ -50,7 +50,7 @@ end
 group :assets do
   gem 'sass-rails'
   gem 'bootstrap-sass', '2.1.0.0'
-  gem 'font-awesome-sass-rails'
+  gem 'font-awesome-rails'
   gem 'coffee-rails'
   gem 'uglifier'
   gem 'therubyracer'
