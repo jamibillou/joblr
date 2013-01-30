@@ -1,10 +1,11 @@
 class ProfileEmailsController < ApplicationController
 
-  before_filter :load_profile_email,                                            only: [:decline, :already_answered]
-  before_filter :not_answered,                                                  only: :decline
-  before_filter :signed_in, :has_profile_emails,                                only: :index
-  before_filter :admin_user,                                                    only: :destroy
-  before_filter :signed_in, :load_user, :profile_completed, :no_profile_emails, only: :new
+  before_filter :load_profile_email,                                only: [:decline, :already_answered]
+  before_filter :signed_in,                                         only: [:new, :index]
+  before_filter :not_answered,                                      only: :decline
+  before_filter :has_profile_emails,                                only: :index
+  before_filter :admin_user,                                        only: :destroy
+  before_filter :load_user, :profile_completed, :no_profile_emails, only: :new
 
   def new
     @user = current_user

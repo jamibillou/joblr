@@ -61,12 +61,12 @@ describe ProfileEmailsController do
         end
       end
 
-      context "who have a profile and have already sent their profile" do
+      context "who have a profile and have already sent it by email" do
 
         before :each do
           sign_in @author
           @author.profiles.create @profile_attr
-          @author.authored_emails.create @profile_email_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude')
+          FactoryGirl.create :profile_email, author: @author, profile: @author.profile
         end
 
         it 'should redirect to root path' do
@@ -80,7 +80,7 @@ describe ProfileEmailsController do
         end
       end
 
-      context "who have a profile but haven't sent their profile yet" do
+      context "who have a profile but haven't sent it by email yet" do
 
         before :each do
           sign_in @other_user

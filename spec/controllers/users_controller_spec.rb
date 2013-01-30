@@ -66,10 +66,10 @@ describe UsersController do
 
       context "who haven't completed their profile" do
 
-        it "should redirect to 'edit'" do
+        it "should redirect to root path (profile edit)" do
           @user.profile.destroy
           get :show, id: @user
-          response.should redirect_to edit_user_path(@user)
+          response.should redirect_to root_path
           flash[:error].should == I18n.t('flash.error.only.signed_up')
         end
       end
