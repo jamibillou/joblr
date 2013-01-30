@@ -2,6 +2,7 @@ en:
   profile_emails:
     new:
       title: 'Send a job application via email'
+      menu_title: 'Apply'
       from_label: 'From'
       from_fullname_placeholder: 'Your full name'
       from_email_placeholder: 'Your email address'

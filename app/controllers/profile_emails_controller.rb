@@ -5,6 +5,11 @@ class ProfileEmailsController < ApplicationController
   before_filter :signed_in, :has_profile_emails, only: :index
   before_filter :admin_user,                     only: :destroy
 
+  def new
+    @user = current_user
+    @profile_email = ProfileEmail.new(author: current_user, profile: current_user.profile)
+  end
+
 	def create
 		@user = User.find params[:user_id]
 		@profile_email = ProfileEmail.new params[:profile_email].merge(profile: @user.profile, author: current_user)

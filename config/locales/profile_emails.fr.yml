@@ -2,6 +2,7 @@ fr:
   profile_emails:
     new:
       title: 'Envoyer une candidature par email'
+      menu_title: 'Postuler'
       from_label: 'De'
       from_fullname_placeholder: 'Votre nom et prénom'
       from_email_placeholder: 'Votre adresse email'
