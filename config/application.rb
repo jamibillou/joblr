@@ -61,7 +61,7 @@ module Joblr
 
     # Devise: forces the application to not access the DB or load models when
     # precompiling your assets. Good idea when deploying Rails 3.1 on Heroku.
-    config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = true
 
     # Postmark emailing configuration
     config.action_mailer.delivery_method   = :postmark
