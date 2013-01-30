@@ -22,3 +22,10 @@ class SignedUp < Struct.new(:value)
     (!request.session['warden.user.user.key'].nil? && !user.profiles.empty? && user.profile.valid?) == value
   end
 end
+
+class Activated < Struct.new(:value)
+  def matches?(request)
+    user = User.find(request.session['warden.user.user.key'][1][0].to_i)
+    (!request.session['warden.user.user.key'].nil? && user.activated?) == value
+  end
+end

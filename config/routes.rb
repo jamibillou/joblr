@@ -13,7 +13,7 @@ Joblr::Application.routes.draw do
   resources :users do
     resources :profiles
   end
-  resources :profile_emails, only: [:create, :index, :destroy] do
+  resources :profile_emails do
     get :already_answered
     get :decline
   end
@@ -32,9 +32,10 @@ Joblr::Application.routes.draw do
   match '', to: 'users#show', constraints: Subdomain.new(true) || MultiLevelSubdomain.new(true)
 
   # Dynamic root_path
-  root to: 'pages#landing', constraints: SignedIn.new(false)
-  root to: 'users#edit',    constraints: SignedIn.new(true) && SignedUp.new(false)
-  root to: 'users#show',    constraints: SignedIn.new(true) && SignedUp.new(true)
+  root to: 'pages#landing',        constraints: SignedIn.new(false)
+  root to: 'users#edit',           constraints: SignedIn.new(true) && SignedUp.new(false)
+  root to: 'profile_emails#new',   constraints: SignedIn.new(true) && SignedUp.new(true) && Activated.new(false)
+  root to: 'profile_emails#index', constraints: SignedIn.new(true) && SignedUp.new(true) && Activated.new(true)
 
   # Preview of emails
   if Rails.env.development?

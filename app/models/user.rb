@@ -100,6 +100,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def activated?
+    !authored_profile_emails.where(profile_id:profile.id).empty?
+  end
+
   def has_authored_profile_emails?
     !authored_profile_emails.blank?
   end
