@@ -40,6 +40,7 @@ en:
         admin: "You cannot access this page."
       profile_email:
         none: "You haven't sent any job application yet."
+        already_sent: "You cannot access this page."
   footer:
     joblr_in: 'joblr.co in'
     locales:

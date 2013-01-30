@@ -1,6 +1,8 @@
 %ul.nav
   - if signed_up? current_user
     %li= link_to t('users.show.title'), user_path(current_user)
+    - unless current_user.activated?
+      %li= link_to t('profile_emails.new.menu_title'), new_profile_email_path
   - if current_user.has_authored_profile_emails?
     %li= link_to t('profile_emails.index.title'), profile_emails_path
   - if current_user.admin?

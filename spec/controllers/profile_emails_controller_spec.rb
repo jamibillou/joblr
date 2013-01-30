@@ -24,6 +24,75 @@ describe ProfileEmailsController do
                       quality_3: 'Punctuality' }
     @profile_email_attr = { text: "Hi, I'm really keen to work for your company and would love to go over a few ideas together soon." }
     @profile_email = FactoryGirl.create :profile_email, author: @author, profile: @other_profile
+    
+  end
+
+  describe "GET 'new'" do
+
+    context 'for public users' do
+
+      it 'should redirect to root path' do
+        get :new
+        response.should redirect_to(root_path)
+      end
+
+      it 'should have an error message' do
+        get :new
+        flash[:error].should == I18n.t('flash.error.only.signed_in')
+      end
+    end
+
+    context 'for signed-in users' do
+
+      context "who haven't created their profile yet" do
+
+        before :each do
+          sign_in @author
+        end
+
+        it 'should redirect to root path' do
+          get :new
+          response.should redirect_to(root_path)
+        end
+
+        it 'should have an error message' do
+          get :new
+          flash[:error].should == I18n.t('flash.error.only.signed_up')
+        end
+      end
+
+      context "who have a profile and have already sent their profile" do
+
+        before :each do
+          sign_in @author
+          @author.profiles.create @profile_attr
+          @author.authored_emails.create @profile_email_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude')
+        end
+
+        it 'should redirect to root path' do
+          get :new
+          response.should redirect_to(root_path)
+        end
+
+        it 'should have an error message' do
+          get :new
+          flash[:error].should == I18n.t('flash.error.profile_email.already_sent')
+        end
+      end
+
+      context "who have a profile but haven't sent their profile yet" do
+
+        before :each do
+          sign_in @other_user
+          @other_user.profiles.create @profile_attr
+          visit new_profile_email_path
+        end
+
+        it { response.should be_success }
+
+        ## Add a test for page content
+      end
+    end
   end
 
   describe "POST 'create'" do
