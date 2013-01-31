@@ -5,7 +5,7 @@
         .row-fluid
           .span1.hidden-phone
           .span10
-            %h1=t 'pages.landing.new.title'
+            %h1=t 'pages.landing.new.title_html', link: link_to(t('pages.landing.new.click'), sign_up_path)
         .row-fluid
           .span12
             .the-hero

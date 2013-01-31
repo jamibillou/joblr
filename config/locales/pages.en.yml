@@ -3,7 +3,6 @@ en:
     landing:
       old:
         title: 'The quickest way to send job applications'
-        title_alt: 'Home'
         catchphrase: 'Tired of writing cover letters and resumes?'
         subtitle: 'Joblr is the quickest way to send job applications.'
         signup: 'Sign up!'
@@ -17,21 +16,33 @@ en:
         benefit4_text: "Your network has the potential to get you your next job. Share your Joblr profile around to get contacts and tips!"
         disclaimer_html: "<b>Note:</b> We are currently working on our pricing model. For the time being all beta members can enjoy Joblr for free."
       new:
-        title: "The job application that encourages positive feedback"
+        title: "The job application that will make them click with you"
+        title_html: "The job application that will make them %{link} with you"
+        click: "click"
         cta_title: "Stuck in your job search and ready for a fresh start?"
         testimonial_1_html: "“Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.<br/>Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.”"
         testimonial_2_html: "“Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil.<br/>Impedit quo minus id quod maxime placeat facere possimus.”<br/>"
-        signup: 'Definitely!'
+        signup: "Sign up!"
         screenshot_1: "Quick sign up"
         screenshot_2: "Create your profile in a couple of clicks"
         screenshot_3: "Send job applications via a very simple form"
         screenshot_4: "Visualize and track your applications"
         disclaimer_html: "<b>Note:</b> We are currently working on our pricing model. For the time being all beta members can enjoy Joblr for free."
       alt:
-        title: "The job application that will make them click with you"
-        title_html: "The job application that will make them %{link} with you"
-        click: "click"
-        signup: "Sign up!"
+        title: 'Job applications that make a good first impression'
+        catchphrase: 'Job applications that make a good first impression'
+        subtitle: 'Send elegant yet professionial emails, easily.'
+        signup: 'Sign up!'
+        benefit1_title: "1 clic signup"
+        benefit1_text: "Use one of your social networks, we won't post anything behind your back."
+        benefit2_title: "Create your profile"
+        benefit2_text: "Every email you send includes this nice summary of your career."
+        benefit3_title: "Write your letter"
+        benefit3_text_html: "It's the core of your application, take your time and tell them your story."
+        benefit4_title: "We send it"
+        benefit4_text: "The recipient then receives an elegant email with your profile and letter."
+        anatomy: "Anatomy of an application email sent via Joblr"
+        disclaimer_html: "<b>Note:</b> We are currently working on our pricing model. For the time being all beta members can enjoy Joblr for free."
     admin:
       title: 'Admin'
       title_alt: 'Dashboard'

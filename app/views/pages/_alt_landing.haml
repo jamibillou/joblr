@@ -1,74 +1,36 @@
-.span12#new-landing
+.span12#alt-landing
   .row-fluid
     .span12
       .hero-unit
         .row-fluid
-          .span1.hidden-phone
-          .span10
-            %h1=t 'pages.landing.alt.title_html', link: link_to(t('pages.landing.alt.click'), sign_up_path)
-        .row-fluid
-          .span12
-            .the-hero
-              .visible-desktop= link_to image_tag("screenshots/new_landing/#{locale}/hero.jpg"), sign_up_path
-              .hidden-desktop= link_to image_tag("screenshots/new_landing/#{locale}/hero_mobile.jpg"), sign_up_path
-
-  #grey-background
-    .container
-      .row-fluid#cta-testimonials
-        .span12
-          .row-fluid#cta
-            .span12
-              %h1=t 'pages.landing.new.cta_title'
-              %a.btn.btn-large.btn-primary.btn-top{href: sign_up_path}=t 'pages.landing.alt.signup'
-          / .row-fluid#testimonials
-          /   .visible-desktop
-          /     .span4
-          /       %p
-          /         =t 'pages.new_landing.testimonial_1_html'
-          /       %span.by - Porta Ipsum
-          /     .span4.offset1
-          /       %p
-          /         =t 'pages.new_landing.testimonial_2_html'
-          /       %span.by - Aenean Dolor
-          /   .visible-tablet
-          /     .span5
-          /       %p
-          /         =t 'pages.new_landing.testimonial_1_html'
-          /       %span.by - Porta Ipsum
-          /     .span5.offset1
-          /       %p
-          /         =t 'pages.new_landing.testimonial_2_html'
-          /       %span.by - Aenean Dolor
-          /   .visible-phone
-          /     .span12
-          /       %p
-          /         =t 'pages.new_landing.testimonial_1_html'
-          /       %span.by - Porta Ipsum
-
-  .row-fluid#screenshots
-    .span12
-      %a{href: '#modal_signup', 'data-toggle'       => 'modal'}= image_tag "screenshots/new_landing/#{locale}/signup_thumb.gif"
-      %a{href: '#modal_profile', 'data-toggle'      => 'modal'}= image_tag "screenshots/new_landing/#{locale}/profile_thumb.gif"
-      %a{href: '#modal_apply', 'data-toggle'        => 'modal'}= image_tag "screenshots/new_landing/#{locale}/apply_thumb.gif"
-      %a{href: '#modal_applications', 'data-toggle' => 'modal'}= image_tag "screenshots/new_landing/#{locale}/applications_thumb.gif"
+          .span6#value-prop
+            %h1=t 'pages.landing.alt.catchphrase'
+            %h3=t 'pages.landing.alt.subtitle'
+            %a.btn.btn-large.btn-primary{href: sign_up_path}=t 'pages.landing.old.signup'
+          .span6.the-hero.hidden-phone
+            = link_to image_tag("screenshots/landing/#{locale}/hero.jpg"), sign_up_path
+  .row-fluid#benefits
+    .span3
+      .icon
+        .icon-bolt
+      %h3=t 'pages.landing.alt.benefit1_title'
+      %p=t 'pages.landing.alt.benefit1_text'
+    .span3
+      .icon
+        .icon-user
+      %h3=t 'pages.landing.alt.benefit2_title'
+      %p=t 'pages.landing.alt.benefit2_text'
+    .span3
+      .icon
+        .icon-edit
+      %h3=t 'pages.landing.alt.benefit3_title'
+      %p=t 'pages.landing.alt.benefit3_text_html'
+    .span3
+      .icon
+        .icon-envelope
+      %h3=t 'pages.landing.alt.benefit4_title'
+      %p=t 'pages.landing.alt.benefit4_text'
 
   .row-fluid
     .span12
-      .alert.alert-info=t 'pages.landing.new.disclaimer_html'
-
-  .modal.screenshot#modal_signup.hide
-    .modal-body
-      = image_tag "screenshots/new_landing/#{locale}/signup.gif"
-      %h5.pull-right=t 'pages.landing.new.screenshot_1'
-  .modal.screenshot#modal_profile.hide
-    .modal-body
-      = image_tag "screenshots/new_landing/#{locale}/profile.gif"
-      %h5.pull-right=t 'pages.landing.new.screenshot_2'
-  .modal.screenshot#modal_apply.hide
-    .modal-body
-      = image_tag "screenshots/new_landing/#{locale}/apply.gif"
-      %h5.pull-right=t 'pages.landing.new.screenshot_3'
-  .modal.screenshot#modal_applications.hide
-    .modal-body
-      = image_tag "screenshots/new_landing/#{locale}/applications.gif"
-      %h5.pull-right=t 'pages.landing.new.screenshot_4'
+      .alert.alert-info=t 'pages.landing.alt.disclaimer_html'
