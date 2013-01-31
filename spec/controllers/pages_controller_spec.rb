@@ -33,9 +33,9 @@ describe PagesController do
 			response.body.should have_content I18n.t('pages.landing.old.benefit4_text')
 		end
 		it 'should have the right content' do
-			get :landing, landing_version: 'new'
-			response.body.should have_content I18n.t('pages.landing.new.title')
-			response.body.should have_content I18n.t('pages.landing.new.signup')
+			get :landing, landing_version: 'alt'
+			response.body.should have_content I18n.t('pages.landing.alt.title')
+			response.body.should have_content I18n.t('pages.landing.alt.signup')
 			response.body.should have_selector '#modal_signup'
 			response.body.should have_selector '#modal_profile'
 			response.body.should have_selector '#modal_apply'
@@ -61,8 +61,8 @@ describe PagesController do
 		it 'should have the right mixpanel event' do
 			if @version == 'old'
 			  response.body.should have_content "mixpanel.track('Viewed landing page', {'Landing version': 'old'})"
-			elsif @version == 'new'
-				response.body.should have_content "mixpanel.track('Viewed landing page', {'Landing version': 'new'})"
+			elsif @version == 'alt'
+				response.body.should have_content "mixpanel.track('Viewed landing page', {'Landing version': 'alt'})"
 			elsif @version == 'fourth'
 				response.body.should have_content "mixpanel.track('Viewed landing page', {'Landing version': 'fourth'})"
 			end
