@@ -13,7 +13,7 @@ describe PagesController do
 	describe "GET 'landing'" do
 
 		before :each do
-			get :landing, landing_version: 'alt'
+			get :landing, landing_version: 'fourth'
 		end
 
 		it { response.should be_success }
@@ -42,13 +42,20 @@ describe PagesController do
 			response.body.should have_selector '#modal_applications'
 		end
 		it 'should have the right content' do
-			get :landing, landing_version: 'alt'
-			response.body.should have_content I18n.t('pages.landing.alt.title_html', link: I18n.t('pages.landing.alt.click'))
-			response.body.should have_content I18n.t('pages.landing.alt.signup')
-			response.body.should have_selector '#modal_signup'
-			response.body.should have_selector '#modal_profile'
-			response.body.should have_selector '#modal_apply'
-			response.body.should have_selector '#modal_applications'
+			get :landing, landing_version: 'fourth'
+			response.body.should have_content I18n.t('pages.landing.fourth.title', link: I18n.t('pages.landing.fourth.click'))
+			response.body.should have_content I18n.t('pages.landing.fourth.signup')
+			response.body.should have_content I18n.t('pages.landing.fourth.catchphrase')
+			response.body.should have_content I18n.t('pages.landing.fourth.subtitle')
+			response.body.should have_content I18n.t('pages.landing.fourth.signup')
+			response.body.should have_content I18n.t('pages.landing.fourth.benefit1_title')
+			response.body.should have_content I18n.t('pages.landing.fourth.benefit1_text')
+			response.body.should have_content I18n.t('pages.landing.fourth.benefit2_title')
+			response.body.should have_content I18n.t('pages.landing.fourth.benefit2_text')
+			response.body.should have_content I18n.t('pages.landing.fourth.benefit3_title')
+			response.body.should have_content I18n.t('pages.landing.fourth.benefit3_text_html')
+			response.body.should have_content I18n.t('pages.landing.fourth.benefit4_title')
+			response.body.should have_content I18n.t('pages.landing.fourth.benefit4_text')
 		end
 
 		it 'should have the right mixpanel event' do
@@ -56,6 +63,8 @@ describe PagesController do
 			  response.body.should have_content "mixpanel.track('Viewed landing page', {'Landing version': 'old'})"
 			elsif @version == 'new'
 				response.body.should have_content "mixpanel.track('Viewed landing page', {'Landing version': 'new'})"
+			elsif @version == 'fourth'
+				response.body.should have_content "mixpanel.track('Viewed landing page', {'Landing version': 'fourth'})"
 			end
 		end
 	end
