@@ -272,9 +272,9 @@ describe UsersController do
           end.should change(Profile, :count).by(1)
         end
 
-        it "should redirect to the 'show' page with a profile created message" do
+        it "should redirect to the root path with a profile created message" do
           put :update, user: @attr, id: @user
-          response.should redirect_to @user
+          response.should redirect_to root_path
           flash[:success].should == I18n.t('flash.success.profile.created')
         end
       end

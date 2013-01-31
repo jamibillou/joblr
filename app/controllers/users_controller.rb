@@ -26,7 +26,11 @@ class UsersController < ApplicationController
       render :edit, id: @user, user: params[:user]
     else
       remove_files! unless Rails.env.test? # KILL ME!
-      redirect_to @user, flash: {success: (signed_up ? t('flash.success.profile.created') : t('flash.success.profile.updated'))}
+      if signed_up
+        redirect_to root_path, flash: {success: t('flash.success.profile.created')}
+      else
+        redirect_to @user,     flash: {success: t('flash.success.profile.updated')}
+      end
     end
   end
 
