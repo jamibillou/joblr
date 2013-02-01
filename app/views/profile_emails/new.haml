@@ -1,12 +1,13 @@
 .row-fluid
-  .span8.well.offset2
+  .span6.well.offset3
     = form_for @profile_email do |f|
       = render 'new', f: f
-      = f.submit t('profile_emails.new.send'), class: 'btn btn-primary'
-    %hr/
-    = render 'users/show_identity', user: current_user
+      %hr/
+      = render 'users/show_identity', user: current_user
+      %br/
+      .pull-right= f.submit t('profile_emails.new.send'), class: 'btn btn-primary'
 .row-fluid
-  .span8.well.offset2
+  .span6.well.offset3
     %h2=t 'mailers.profile_email.current_user.html.more_about', fullname: @user.fullname
     %br/
     = render 'users/show_experience_education', profile: current_user.profile
