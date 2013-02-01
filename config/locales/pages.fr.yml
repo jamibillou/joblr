@@ -15,7 +15,7 @@ fr:
         benefit4_title: "Un job autour de vous"
         benefit4_text: "Votre entourage a peut être les clés de votre prochain poste. Partagez votre profil Joblr et profitez du bouche à oreille."
         disclaimer_html: "<b>Remarque : </b> Nos tarifs n'étant pour l'instant pas finalisés, la version beta de Joblr est entièrement gratuite jusqu'à nouvel ordre."
-      new:
+      alt:
         title: "La candidature spontanée qui donne envie de vous cliquer"
         title_html: "La candidature spontanée qui donne envie de vous %{link}"
         click: "cliquer"
@@ -28,7 +28,7 @@ fr:
         screenshot_3: "Envoyez vos candidatures via un formulaire très simple"
         screenshot_4: "Visualisez et suivez vos candidatures"
         disclaimer_html: "<b>Remarque : </b> Nos tarifs n'étant pour l'instant pas finalisés, la version beta de Joblr est entièrement gratuite jusqu'à nouvel ordre."
-      alt:
+      fourth:
         title: "La candidature spontanée qui fait bonne impression"
         catchphrase: "La candidature spontanée qui fait bonne impression"
         subtitle: "Envoyez des emails élégants et professionels, facilement."

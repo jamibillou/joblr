@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   before_filter :not_signed_in, only: :sign_up
 
   def landing
-    @version = ab_test('landing_version', 'old', 'new', 'alt')
+    @version = ab_test('landing_version', 'old', 'alt', 'fourth')
     @title   = t("pages.landing.#{@version}.title")
   end
 
