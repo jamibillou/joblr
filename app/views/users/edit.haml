@@ -1,3 +1,10 @@
+- unless signed_up? current_user
+  .span4
+    %h3 Complétez votre profil
+    %br/
+    .progress.progress-info.progress-striped
+      .bar{style: "width:50%"}
+    %br/
 .span12
   = form_for @user do |f|
     .row-fluid
