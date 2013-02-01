@@ -43,6 +43,13 @@ fr:
         benefit4_text: "Un email élegant est alors envoyé à votre destinataire, il y trouve votre lettre et profil."
         anatomy: "Anatomie d'un email de candidature envoyé via Joblr"
         disclaimer_html: "<b>Remarque : </b> Nos tarifs n'étant pour l'instant pas finalisés, la version beta de Joblr est entièrement gratuite."
+      fifth:
+        testimonials:
+          title: "Ils recrutent grâce aux candidatures Joblr"
+          text_1: "“Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. Sed quia consequuntur magni dolores eos qui ratione.”"
+          job_1: "Directeur des Resources Humains, PX'Therapeutics"
+          text_2: "“Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil.Impedit quo minus id quod maxime placeat facere possimus.”"
+          job_2: "Directeur, HipCom, Isère Telecom"
     admin:
       title: 'Admin'
       title_alt: 'Tableau de bord'

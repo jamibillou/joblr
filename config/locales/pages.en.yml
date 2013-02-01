@@ -43,6 +43,13 @@ en:
         benefit4_text: "The recipient then receives an elegant email with your profile and letter."
         anatomy: "Anatomy of an application email sent via Joblr"
         disclaimer_html: "<b>Note:</b> We are currently working on our pricing model. For the time being all beta members can enjoy Joblr for free."
+      fifth:
+        testimonials:
+          title: "They trust Joblr with their hiring process"
+          text_1: "“Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. Sed quia consequuntur magni dolores eos qui ratione.”"
+          job_1: "Human Resources Director at PX'Therapeutics"
+          text_2: "“Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil. Impedit quo minus id quod maxime placeat facere possimus.”"
+          job_2: "Director at HipCom, Isère Telecom"
     admin:
       title: 'Admin'
       title_alt: 'Dashboard'

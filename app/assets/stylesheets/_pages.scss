@@ -62,76 +62,164 @@
 }
 
 #alt-landing{
-  h1, h3, p, .icon{
+  h1, h2, h3, p, .icon{
     color:$black;
   }
   .hero-unit{
-    padding-bottom:30px;
-    padding:0;
+    padding:10px 0 0 0;
     background-color:$bodyBackground;
     border:0;
     border-bottom:5px solid $grayLighter;
-    // phone
-    @media (max-width: 767px) {
-      padding-bottom:50px;
-      border-bottom:none;
-    }
     #value-prop{
-      padding-top:15px;
+      padding-top:40px;
       h1{
         font-size:55px;
         line-height:60px;
-        // mobile
-        @media (max-width: 979px) {
-          font-size:45px;
-          line-height:50px;
-        }
       }
       h3{
         padding:30px 0 40px 0;
         line-height:25px;
-        // tablet
-        @media (min-width:768px) and (max-width: 979px) {
-          padding:20px 0 30px 0;
-          font-size:18px;
-          line-height:22px;
-        }
       }
       // phone
       @media (max-width: 767px) {
         padding:0 10px 0 10px;
         text-align:center;
       }
+      // mobile
+      @media (max-width: 979px) {
+        h1{
+          font-size:40px;
+          line-height:45px;
+        }
+        h3{
+          padding:20px 0 30px 0;
+          font-size:18px;
+          line-height:22px;
+        }
+      }
     }
-    .the-hero img{
-      float:right;
-      padding-right:25px;
+    #the-hero{
+      // desktop
+      @media (min-width: 980px){
+        img{
+          margin-right:25px;
+          float:right;
+        }
+      }
       // tablet
-      @media (min-width:768px) and (max-width: 979px) {
-        padding-right:10px;
+      @media (min-width:768px) and (max-width: 979px){
+        img{
+          margin-right:10px;
+          float:right;
+        }
+      }
+      // phone
+      @media (max-width:767px) {
+        text-align:center;
+        img{
+          margin:60px 0 0 0;
+        }
       }
     }
   }
   #benefits{
-    padding-top:40px;
+    padding:17px 15px 50px 15px;
     text-align:center;
     h3{
       font-size:18px;
     }
     p{
       padding:15px;
+      margin-bottom:0px;
     }
     .icon{
-      margin-bottom:35px;
+      margin-bottom:28px;
       font-size:55px;
     }
-  }
-  .alert{
-    margin-top:33px;
     // phone
     @media (max-width: 767px) {
-      margin-top:83px;
+      padding-bottom:15px;
+      p{
+        margin-bottom:20px;
+      }
+      .icon{
+        margin-bottom:20px;
+      }
     }
+  }
+  #testimonials{
+    border-top:5px solid $grayLighter;
+    .testimonials{
+      h2{
+        margin:106px 0 55px 0;
+      }
+      .guillaume{
+        margin-top:40px;
+        text-align:right;
+      }
+      p{
+        padding:0 10px 0 10px;
+        margin-bottom:0px;
+        span{
+          &.text{
+            display:block;
+            margin-bottom:10px;
+            font-family:Times;
+            font-size:16px;
+            font-weight:100;
+            color:$grayDark;
+          }
+          &.name{
+            font-size:14px;
+            font-weight:bold;
+          }
+          &.job{
+            font-size:13px;
+          }
+        }
+      }
+      // small desktop
+      @media (min-width:980px) and (max-width:1200px) {
+        h2{
+          margin-top:68px;
+          font-size:23px;
+        }
+      }
+      // tablet
+      @media (min-width:768px) and (max-width: 979px) {
+        width:100%;
+        h2{
+          margin-top:70px;
+        }
+      }
+      // phone
+      @media (max-width:767px) {
+        padding-top:50px;
+        p{
+          padding:0;
+        }
+        .delphine{
+          img{
+            margin-bottom:20px;
+          }
+        }
+        .guillaume{
+          img{
+            margin-top:20px;
+          }
+        }
+      }
+    }
+    .hero-bottom img{
+      float:right;
+      margin-right:7px;
+    }
+  }
+  .alert.fourth{
+    margin-top:30px;
+  }
+  .alert.fifth{
+    margin-top:100px;
   }
 }
 
