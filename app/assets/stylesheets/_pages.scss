@@ -172,6 +172,9 @@
           &.name{
             font-size:14px;
             font-weight:bold;
+            a, a:hover{
+              color:$black;
+            }
           }
           &.job{
             font-size:13px;

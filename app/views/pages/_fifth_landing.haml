@@ -43,14 +43,18 @@
           %p
             %span.text
               =t 'pages.landing.fifth.testimonials.text_1'
-            %span.name – Delphine Pau,
+            %span.name
+              – 
+              = link_to('Delphine Pau', 'http://www.px-therapeutics.com', target: '_blank')+','
             %span.job=t 'pages.landing.fifth.testimonials.job_1'
       .row-fluid.guillaume
         .span10
           %p
             %span.text
               =t 'pages.landing.fifth.testimonials.text_2'
-            %span.name – Guillaume Masuit,
+            %span.name 
+              – 
+              = link_to('Guillaume Masuit', 'http://www.hipcom.fr', target: '_blank')+','
             %span.job=t 'pages.landing.fifth.testimonials.job_2'
         .span2
           = link_to image_tag("screenshots/fifth_landing/guillaume.jpg"), 'http://fr.viadeo.com/profile/00224fae1r9mj5zk', target: '_blank'

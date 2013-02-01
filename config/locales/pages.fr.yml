@@ -31,7 +31,7 @@ fr:
       fourth:
         title: "La candidature spontanée qui fait bonne impression"
         catchphrase: "La candidature spontanée qui fait bonne impression"
-        subtitle: "Envoyez des emails élégants et professionels, facilement."
+        subtitle: "Envoyez des emails élégants et professionnels, facilement."
         signup: "S'inscrire"
         benefit1_title: "Inscription en 1 clic"
         benefit1_text: "Utilisez un de vos réseaux sociaux, nous ne publierons rien dans votre dos."
@@ -44,12 +44,13 @@ fr:
         anatomy: "Anatomie d'un email de candidature envoyé via Joblr"
         disclaimer_html: "<b>Remarque : </b> Nos tarifs n'étant pour l'instant pas finalisés, la version beta de Joblr est entièrement gratuite."
       fifth:
+        title: "La candidature spontanée qui fait bonne impression"
         testimonials:
           title: "Ils recrutent grâce aux candidatures Joblr"
-          text_1: "“Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. Sed quia consequuntur magni dolores eos qui ratione.”"
-          job_1: "Directeur des Resources Humains, PX'Therapeutics"
-          text_2: "“Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil.Impedit quo minus id quod maxime placeat facere possimus.”"
-          job_2: "Directeur, HipCom, Isère Telecom"
+          text_1: "“Joblr permet au recruteur de visualiser un aperçu simplifié du candidat et d'identifier rapidement les profils intéressants.”"
+          job_1: "Directrice des Ressources Humaines"
+          text_2: "“Grâce à Joblr je gagne en temps et surtout en qualité de recrutement, pour mes offres d'emploi comme pour les candidatures spontanées.”"
+          job_2: "Directeur d'agence"
     admin:
       title: 'Admin'
       title_alt: 'Tableau de bord'

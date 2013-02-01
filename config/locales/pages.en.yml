@@ -31,9 +31,9 @@ en:
       fourth:
         title: 'Job applications that make a good first impression'
         catchphrase: 'Job applications that make a good first impression'
-        subtitle: 'Send elegant yet professionial emails, easily.'
+        subtitle: 'Send elegant yet professional emails, easily.'
         signup: 'Sign up!'
-        benefit1_title: "1 clic signup"
+        benefit1_title: "1 click signup"
         benefit1_text: "Use one of your social networks, we won't post anything behind your back."
         benefit2_title: "Create your profile"
         benefit2_text: "Every email you send includes this nice summary of your career."
@@ -44,6 +44,7 @@ en:
         anatomy: "Anatomy of an application email sent via Joblr"
         disclaimer_html: "<b>Note:</b> We are currently working on our pricing model. For the time being all beta members can enjoy Joblr for free."
       fifth:
+        title: 'Job applications that make a good first impression'
         testimonials:
           title: "They trust Joblr with their hiring process"
           text_1: "“Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. Sed quia consequuntur magni dolores eos qui ratione.”"
