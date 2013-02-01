@@ -29,6 +29,55 @@ form#new_profile_email{
   }
 }
 
+#full_profile_email{
+  .identity{
+    margin-top:40px;
+    h2{
+      line-height:30px;
+      margin-bottom:5px;
+    }
+  }
+  .lead{
+    margin-bottom:10px;
+  }
+  .progress{
+    display:none;
+  }  
+  .bottom_block{
+    margin-top:40px;
+  }
+  input.btn{
+    text-decoration:underline;
+  }
+  hr{
+    margin:40px 0px;
+  }
+  a{
+    font-family:Helvetica, Arial, sans-serif;
+    font-size:16px;
+    font-weight:300;
+    color:#0076ca;
+    margin-top:15px;
+    text-decoration:underline;
+  }
+  .experience{
+    margin:20px 0 10px 0;
+    p{
+      font-family: Helvetica,Arial,sans-serif;
+      color:$grayDark;
+      font-size:13pt;
+      font-weight:300;
+      small{
+        font-size:11pt;
+        color:$grayLight;
+      }
+    }
+  }
+  .skills{
+    margin:20px 0;
+  }
+}
+
 // Index
 //------
 
