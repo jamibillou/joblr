@@ -17,14 +17,8 @@ class ProfileEmailsController < ApplicationController
 		@profile_email = ProfileEmail.new params[:profile_email].merge(profile: @user.profile, author: current_user)
     unless @profile_email.save
       respond_to do |format| 
-        format.html{ 
-          if request.xhr?
-            render :json => error_messages(@profile_email), :status => :unprocessable_entity
-          else
-            flash[:error] = error_messages @profile_email
-            render :new
-          end
-        }
+        format.js   { render json: error_messages(@profile_email) }
+        format.html { flash[:error] = error_messages @profile_email ; render :new }
       end
     else
       respond_to {|format| format.html { deliver_profile_email } }
