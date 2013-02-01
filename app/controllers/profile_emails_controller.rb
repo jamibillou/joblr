@@ -16,7 +16,16 @@ class ProfileEmailsController < ApplicationController
 		@user = User.find params[:user_id]
 		@profile_email = ProfileEmail.new params[:profile_email].merge(profile: @user.profile, author: current_user)
     unless @profile_email.save
-      respond_to {|format| format.html { render :json => error_messages(@profile_email), :status => :unprocessable_entity if request.xhr? }}
+      respond_to do |format| 
+        format.html{ 
+          if request.xhr?
+            render :json => error_messages(@profile_email), :status => :unprocessable_entity
+          else
+            flash[:error] = error_messages @profile_email
+            render :new
+          end
+        }
+      end
     else
       respond_to {|format| format.html { deliver_profile_email } }
     end
@@ -52,7 +61,11 @@ class ProfileEmailsController < ApplicationController
         ProfileEmailMailer.public_user(@profile_email, @user).deliver
         flash[:success] = t('flash.success.profile.shared.public_user', recipient_email: @profile_email.recipient_email, fullname: @user.fullname)
       end
-      render :json => 'create!' if request.xhr?
+      if request.xhr?
+        render :json => 'create!'
+      else
+        redirect_to root_path
+      end
     end
 
     def deliver_decline

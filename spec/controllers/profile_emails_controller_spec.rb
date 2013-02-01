@@ -109,76 +109,170 @@ describe ProfileEmailsController do
 
       context 'sharing their own profile' do
 
-        context "and not providing any email address" do
+        context 'using modal from user page' do
 
-          it 'should not create a new profile_email object' do
-            lambda do
+          context "and not providing any email address" do
+
+            it 'should not create a new profile_email object' do
+              lambda do
+                xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
+              end.should_not change(ProfileEmail, :count).by 1
+            end
+
+            it "should not send the user's profile by email" do
+              email = mock Mail::Message
+              ProfileEmailMailer.should_not_receive(:user).with kind_of(ProfileEmail), kind_of(User)
+              email.should_not_receive(:deliver)
               xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
-            end.should_not change(ProfileEmail, :count).by 1
+            end
+
+            it 'should have an error messsage' do
+              xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
+              response.body.should == "#{I18n.t('activerecord.attributes.profile_email.recipient_email')} #{I18n.t('activerecord.errors.messages.invalid')}."
+            end
           end
 
-          it "should not send the user's profile by email" do
-            email = mock Mail::Message
-            ProfileEmailMailer.should_not_receive(:user).with kind_of(ProfileEmail), kind_of(User)
-            email.should_not_receive(:deliver)
-            xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
-          end
+          context "and not providing any full name" do
 
-          it 'should have an error messsage' do
-            xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
-            response.body.should == "#{I18n.t('activerecord.attributes.profile_email.recipient_email')} #{I18n.t('activerecord.errors.messages.invalid')}."
-          end
-        end
+            it 'should not create a new profile_email object' do
+              lambda do
+                xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com'), user_id: @author.id
+              end.should_not change(ProfileEmail, :count).by 1
+            end
 
-        context "and not providing any full name" do
-
-          it 'should not create a new profile_email object' do
-            lambda do
+            it "should send the user's profile by email" do
+              email = mock Mail::Message
+              ProfileEmailMailer.should_not_receive(:user).with kind_of(ProfileEmail), kind_of(User)
+              email.should_not_receive(:deliver)
               xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com'), user_id: @author.id
-            end.should_not change(ProfileEmail, :count).by 1
+            end
+
+            it 'should have an error messsage' do
+              xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com'), user_id: @author.id
+              response.body.should == "#{I18n.t('activerecord.attributes.profile_email.recipient_fullname')} #{I18n.t('activerecord.errors.messages.blank')}."
+            end
           end
 
-          it "should send the user's profile by email" do
-            email = mock Mail::Message
-            ProfileEmailMailer.should_not_receive(:user).with kind_of(ProfileEmail), kind_of(User)
-            email.should_not_receive(:deliver)
-            xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com'), user_id: @author.id
-          end
+          context 'and providing an email address and full name' do
 
-          it 'should have an error messsage' do
-            xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com'), user_id: @author.id
-            response.body.should == "#{I18n.t('activerecord.attributes.profile_email.recipient_fullname')} #{I18n.t('activerecord.errors.messages.blank')}."
+            after :each do
+              ProfileEmailMailer.deliveries.clear
+            end
+
+            it 'should create a new profile_email object' do
+              lambda do
+                xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+              end.should change(ProfileEmail, :count).by 1
+            end
+
+            it "should send the user's profile by email" do
+              email = mock Mail::Message
+              ProfileEmailMailer.should_receive(:current_user).with(kind_of(ProfileEmail), kind_of(User)).and_return(email)
+              email.should_receive(:deliver)
+              xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+            end
+
+            it "should send the email to the right person with the right subject and profile" do
+              xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+              ProfileEmailMailer.deliveries.last.to.should include 'user@example.com'
+              ProfileEmailMailer.deliveries.last.subject.should == I18n.t('mailers.profile_email.current_user.subject', fullname: @author.fullname)
+            end
+
+            it "should have a flash message" do
+              xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+              flash[:success].should == I18n.t('flash.success.profile.shared.user', recipient_email: 'user@example.com')
+            end
           end
         end
 
-        context 'and providing an email address and full name' do
+        context 'using the first time form' do
 
-          after :each do
-            ProfileEmailMailer.deliveries.clear
+          context "and not providing any email address" do
+
+            it 'should not create a new profile_email object' do
+              lambda do
+                post :create, :profile_email => @profile_email_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
+              end.should_not change(ProfileEmail, :count).by 1
+            end
+
+            it "should not send the user's profile by email" do
+              email = mock Mail::Message
+              ProfileEmailMailer.should_not_receive(:user).with kind_of(ProfileEmail), kind_of(User)
+              email.should_not_receive(:deliver)
+              post :create, :profile_email => @profile_email_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
+            end
+
+            it "should render 'new'" do
+              post :create, :profile_email => @profile_email_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
+              response.should render_template :new
+            end
+
+            it 'should have an error messsage' do
+              post :create, :profile_email => @profile_email_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
+              flash[:error].should == errors('profile_email.recipient_email', 'invalid')
+            end
           end
 
-          it 'should create a new profile_email object' do
-            lambda do
-              xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-            end.should change(ProfileEmail, :count).by 1
+          context "and not providing any full name" do
+
+            it 'should not create a new profile_email object' do
+              lambda do
+                post :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com'), user_id: @author.id
+              end.should_not change(ProfileEmail, :count).by 1
+            end
+
+            it "should send the user's profile by email" do
+              email = mock Mail::Message
+              ProfileEmailMailer.should_not_receive(:user).with kind_of(ProfileEmail), kind_of(User)
+              email.should_not_receive(:deliver)
+              post :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com'), user_id: @author.id
+            end
+
+            it "should render 'new'" do
+              post :create, :profile_email => @profile_email_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
+              response.should render_template :new
+            end
+
+            it 'should have an error messsage' do
+              post :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com'), user_id: @author.id
+              flash[:error].should == errors('profile_email.recipient_fullname', 'blank')
+            end
           end
 
-          it "should send the user's profile by email" do
-            email = mock Mail::Message
-            ProfileEmailMailer.should_receive(:current_user).with(kind_of(ProfileEmail), kind_of(User)).and_return(email)
-            email.should_receive(:deliver)
-            xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-          end
+          context 'and providing an email address and full name' do
 
-          it "should send the email to the right person with the right subject and profile" do
-            xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-            ProfileEmailMailer.deliveries.last.to.should include 'user@example.com'
-            ProfileEmailMailer.deliveries.last.subject.should == I18n.t('mailers.profile_email.current_user.subject', fullname: @author.fullname)
-          end
+            after :each do
+              ProfileEmailMailer.deliveries.clear
+            end
 
-          it "should have a flash message" do
-            xhr :post, :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-            flash[:success].should == I18n.t('flash.success.profile.shared.user', recipient_email: 'user@example.com')
+            it 'should create a new profile_email object' do
+              lambda do
+                post :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+              end.should change(ProfileEmail, :count).by 1
+            end
+
+            it "should send the user's profile by email" do
+              email = mock Mail::Message
+              ProfileEmailMailer.should_receive(:current_user).with(kind_of(ProfileEmail), kind_of(User)).and_return(email)
+              email.should_receive(:deliver)
+              post :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+            end
+
+            it "should send the email to the right person with the right subject and profile" do
+              post :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+              ProfileEmailMailer.deliveries.last.to.should include 'user@example.com'
+              ProfileEmailMailer.deliveries.last.subject.should == I18n.t('mailers.profile_email.current_user.subject', fullname: @author.fullname)
+            end
+
+            it "should redirect to root path" do
+              post :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+              response.should redirect_to(root_path)
+            end
+
+            it "should have a flash message" do
+              post :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
+              flash[:success].should == I18n.t('flash.success.profile.shared.user', recipient_email: 'user@example.com')
+            end
           end
         end
       end
