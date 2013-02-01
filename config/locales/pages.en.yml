@@ -15,19 +15,6 @@ en:
         benefit4_title: "Ask around"
         benefit4_text: "Your network has the potential to get you your next job. Share your Joblr profile around to get contacts and tips!"
         disclaimer_html: "<b>Note:</b> We are currently working on our pricing model. For the time being all beta members can enjoy Joblr for free."
-      alt:
-        title: "The job application that will make them click with you"
-        title_html: "The job application that will make them %{link} with you"
-        click: "click"
-        cta_title: "Stuck in your job search and ready for a fresh start?"
-        testimonial_1_html: "“Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.<br/>Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.”"
-        testimonial_2_html: "“Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil.<br/>Impedit quo minus id quod maxime placeat facere possimus.”<br/>"
-        signup: "Sign up!"
-        screenshot_1: "Quick sign up"
-        screenshot_2: "Create your profile in a couple of clicks"
-        screenshot_3: "Send job applications via a very simple form"
-        screenshot_4: "Visualize and track your applications"
-        disclaimer_html: "<b>Note:</b> We are currently working on our pricing model. For the time being all beta members can enjoy Joblr for free."
       fourth:
         title: 'Job applications that make a good first impression'
         catchphrase: 'Job applications that make a good first impression'

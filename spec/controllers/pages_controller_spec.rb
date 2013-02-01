@@ -33,15 +33,6 @@ describe PagesController do
 			response.body.should have_content I18n.t('pages.landing.old.benefit4_text')
 		end
 		it 'should have the right content' do
-			get :landing, landing_version: 'alt'
-			response.body.should have_content I18n.t('pages.landing.alt.title')
-			response.body.should have_content I18n.t('pages.landing.alt.signup')
-			response.body.should have_selector '#modal_signup'
-			response.body.should have_selector '#modal_profile'
-			response.body.should have_selector '#modal_apply'
-			response.body.should have_selector '#modal_applications'
-		end
-		it 'should have the right content' do
 			get :landing, landing_version: 'fourth'
 			response.body.should have_content I18n.t('pages.landing.fourth.title', link: I18n.t('pages.landing.fourth.click'))
 			response.body.should have_content I18n.t('pages.landing.fourth.signup')
@@ -57,14 +48,35 @@ describe PagesController do
 			response.body.should have_content I18n.t('pages.landing.fourth.benefit4_title')
 			response.body.should have_content I18n.t('pages.landing.fourth.benefit4_text')
 		end
+		it 'should have the right content' do
+			get :landing, landing_version: 'fifth'
+			response.body.should have_content I18n.t('pages.landing.fourth.title', link: I18n.t('pages.landing.fourth.click'))
+			response.body.should have_content I18n.t('pages.landing.fourth.signup')
+			response.body.should have_content I18n.t('pages.landing.fourth.catchphrase')
+			response.body.should have_content I18n.t('pages.landing.fourth.subtitle')
+			response.body.should have_content I18n.t('pages.landing.fourth.signup')
+			response.body.should have_content I18n.t('pages.landing.fourth.benefit1_title')
+			response.body.should have_content I18n.t('pages.landing.fourth.benefit1_text')
+			response.body.should have_content I18n.t('pages.landing.fourth.benefit2_title')
+			response.body.should have_content I18n.t('pages.landing.fourth.benefit2_text')
+			response.body.should have_content I18n.t('pages.landing.fourth.benefit3_title')
+			response.body.should have_content I18n.t('pages.landing.fourth.benefit3_text_html')
+			response.body.should have_content I18n.t('pages.landing.fourth.benefit4_title')
+			response.body.should have_content I18n.t('pages.landing.fourth.benefit4_text')
+			response.body.should have_content I18n.t('pages.landing.fifth.testimonials.title')
+			response.body.should have_content I18n.t('pages.landing.fifth.testimonials.text_1')
+			response.body.should have_content I18n.t('pages.landing.fifth.testimonials.job_1')
+			response.body.should have_content I18n.t('pages.landing.fifth.testimonials.text_2')
+			response.body.should have_content I18n.t('pages.landing.fifth.testimonials.job_2')
+		end
 
 		it 'should have the right mixpanel event' do
 			if @version == 'old'
 			  response.body.should have_content "mixpanel.track('Viewed landing page', {'Landing version': 'old'})"
-			elsif @version == 'alt'
-				response.body.should have_content "mixpanel.track('Viewed landing page', {'Landing version': 'alt'})"
 			elsif @version == 'fourth'
 				response.body.should have_content "mixpanel.track('Viewed landing page', {'Landing version': 'fourth'})"
+			elsif @version == 'fifth'
+				response.body.should have_content "mixpanel.track('Viewed landing page', {'Landing version': 'fifth'})"
 			end
 		end
 	end
