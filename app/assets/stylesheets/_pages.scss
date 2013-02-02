@@ -195,34 +195,19 @@
           margin-top:70px;
         }
       }
-      // phone
-      @media (max-width:767px) {
-        padding-top:50px;
-        p{
-          padding:0;
-        }
-        .delphine{
-          img{
-            margin-bottom:20px;
-          }
-        }
-        .guillaume{
-          img{
-            margin-top:20px;
-          }
-        }
-      }
     }
     .hero-bottom img{
       float:right;
       margin-right:7px;
     }
   }
-  .alert.fourth{
-    margin-top:30px;
-  }
-  .alert.fifth{
-    margin-top:100px;
+  .alert{
+    &.fourth{
+      margin-top:30px;
+    }
+    &.fifth{
+      margin-top:100px;
+    }
   }
 }
 

@@ -33,9 +33,9 @@
       %h3=t 'pages.landing.fourth.benefit4_title'
       %p=t 'pages.landing.fourth.benefit4_text'
 
-  .row-fluid#testimonials
+  .row-fluid#testimonials.hidden-phone
     .span6.testimonials
-      %h2.hidden-phone=t 'pages.landing.fifth.testimonials.title'
+      %h2=t 'pages.landing.fifth.testimonials.title'
       .row-fluid.delphine
         .span2
           = link_to image_tag("screenshots/fifth_landing/delphine.jpg"), 'http://fr.linkedin.com/pub/delphine-pau/1a/5b8/245/', target: '_blank'
@@ -44,7 +44,7 @@
             %span.text
               =t 'pages.landing.fifth.testimonials.text_1'
             %span.name
-              – 
+              –
               = link_to('Delphine Pau', 'http://www.px-therapeutics.com', target: '_blank')+','
             %span.job=t 'pages.landing.fifth.testimonials.job_1'
       .row-fluid.guillaume
@@ -52,8 +52,8 @@
           %p
             %span.text
               =t 'pages.landing.fifth.testimonials.text_2'
-            %span.name 
-              – 
+            %span.name
+              –
               = link_to('Guillaume Masuit', 'http://www.hipcom.fr', target: '_blank')+','
             %span.job=t 'pages.landing.fifth.testimonials.job_2'
         .span2
@@ -63,4 +63,5 @@
 
   .row-fluid
     .span12
-      .alert.fifth.alert-info=t 'pages.landing.fourth.disclaimer_html'
+      .alert.fourth.alert-info.visible-phone=t 'pages.landing.fourth.disclaimer_html'
+      .alert.fifth.alert-info.hidden-phone=t 'pages.landing.fourth.disclaimer_html'
