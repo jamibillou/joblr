@@ -28,7 +28,7 @@
         .container= render 'layouts/navigation/navigation'
 
     .container
-      = render 'layouts/alerts'
+      = render 'layouts/alerts' # unless user_signed_in? && !current_user.activated?
       #content.row-fluid= yield
 
     = render 'layouts/footer' if footer?

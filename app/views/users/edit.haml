@@ -1,4 +1,4 @@
-.span12
+.span12#edit-user
   = form_for @user do |f|
     - unless signed_up? current_user
       = render 'layouts/activation_bar', step: 2

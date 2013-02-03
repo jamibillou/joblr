@@ -22,7 +22,11 @@ class UsersController < ApplicationController
     had_profile = signed_up?(@user)
     @title = t('users.update.title_alt') unless signed_up?(@user)
     unless @user.update_attributes params[:user]
-      flash[:error] = error_messages(@user) if signed_up?(@user)
+      if signed_up?(@user)
+        flash[:error] = error_messages(@user)
+      else
+        @linkedin = @user.auth('linkedin').profile if @user.has_auth?('linkedin')
+      end
       render :edit, id: @user, user: params[:user]
     else
       remove_files! unless Rails.env.test? # KILL ME!

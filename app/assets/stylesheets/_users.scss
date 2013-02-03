@@ -5,27 +5,30 @@
 
 // SHOW & EDIT
 // -----------
+#edit-user{
 
-// ? link
-// ------
+  h1{
+    margin-bottom:35px;
+    text-align:center;
+  }
 
-a.help{
-  padding:2px 0 0 5px;
-  color:inherit;
-  font-size:14px;
-  &:hover{
+  // ? link
+  // ------
+
+  a.help{
+    padding:2px 0 0 5px;
     color:inherit;
-    text-decoration:none;
+    font-size:14px;
+    &:hover{
+      color:inherit;
+      text-decoration:none;
+    }
   }
 }
 
+
 // Profile
 // -------
-
-h1{
-  margin-bottom:30px;
-  text-align:center;
-}
 
 .profile{
   &.well{
