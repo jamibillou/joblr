@@ -41,6 +41,11 @@ en:
       profile_email:
         none: "You haven't sent any job application yet."
         already_sent: "You cannot access this page."
+  activation:
+    step_x_of_3: "step %{x} of 3"
+    title_1: "First, let's create your account"
+    title_2: "Now, time to create your profile"
+    title_3: "Great, let's send a job application!"
   footer:
     joblr_in: 'joblr.co in'
     locales:

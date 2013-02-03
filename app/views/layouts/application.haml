@@ -27,6 +27,8 @@
       %nav.navbar-inner
         .container= render 'layouts/navigation/navigation'
 
+    .hidden-phone= render 'layouts/activation_bar', step: params[:activation_step] if params[:activation_step]
+
     .container
       = render 'layouts/alerts'
       #content.row-fluid= yield

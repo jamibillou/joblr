@@ -1,0 +1,19 @@
+.container
+  #activation-bar
+    .row-fluid.bar
+      .span4
+        %h3=t "activation.title_#{params[:activation_step]}"
+      .span7
+        .row-fluid
+          .span4
+            .progress.progress-blue
+              .bar{style: 'width:100%'}
+          .span4{style: 'margin-left:2px;'}
+            .progress.progress-blue
+              .bar{style: "width:#{params[:activation_step] == '1' ? '0' : '100'}%"}
+          .span4{style: 'margin-left:2px;'}
+            .progress.progress-blue
+              .bar{style: "width:#{params[:activation_step] == '3' ? '100' : '0'}%"}
+      .span1
+        %h5=t 'activation.step_x_of_3', x: params[:activation_step]
+    .row-fluid.margin

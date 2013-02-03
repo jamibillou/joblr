@@ -31,12 +31,6 @@ $ ->
   $('.edit_user a.help').each -> $(@).popover('placement': 'right')
 
 
-  # Tooltips
-  # --------
-
-  $('[rel=tooltip]').tooltip()
-
-
   # Image picker
   # ------------
 

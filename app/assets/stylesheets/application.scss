@@ -13,6 +13,61 @@
 @import "profile_emails";
 
 
+// ACTIVATION BAR
+// --------------
+#activation-bar{
+  .row-fluid{
+    &.bar{
+      height:20px;
+      width:100%;
+      padding:20px 0;
+      position:absolute;
+      left:0;
+      top:30px;
+      background-color:$grayLighter;
+      color:$black;
+      z-index:0;
+      @include transition(top 1s);
+      @include transition-delay(1s);
+      .span4{
+        h3{
+          font-size:18px;
+          font-weight:500;
+          margin-left:20px;
+          white-space:nowrap;
+          // tablet
+          @media (min-width:768px) and (max-width: 979px){
+            margin-left:10px;
+          }
+        }
+        .progress{
+          height:10px;
+          margin:5px 0;
+          .bar{
+            height:10px;
+          }
+        }
+      }
+      .span1{
+        h5{
+          float:right;
+          font-size:12px;
+          margin-right:20px;
+          white-space:nowrap;
+          // tablet
+          @media (min-width:768px) and (max-width: 979px){
+            margin-right:10px;
+          }
+        }
+      }
+    }
+    &.margin{
+      height:60px;
+    }
+  }
+}
+
+
 // FOOTER
 // ------
 
