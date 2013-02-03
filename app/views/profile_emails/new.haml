@@ -5,7 +5,7 @@
     .row-fluid
       .span2.hidden-phone
       .span6
-        %h1 Your 1st application
+        %h1=t 'profile_emails.new.1st_application'
     .row-fluid
       .span2.hidden-phone
       .span6
@@ -25,7 +25,7 @@
         = render 'users/show_qualities',            profile: current_user.profile
         %br/
         = link_to t('mailers.profile_email.current_user.html.view_complete_profile', fullname: @user.fullname), "http://#{current_user.subdomain}.joblr.co"
-        
+
 - if params[:mixpanel_profile_created]
   = mixpanel_call('track', 'Completed their profile')
   = mixpanel_people(current_user)
