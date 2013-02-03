@@ -30,9 +30,7 @@
     .container
       = render 'layouts/alerts'
       #content.row-fluid= yield
-      #lang-nav{class: "#{'no-footer' unless footer?}"}
-        = render 'layouts/navigation/languages_navigation'
 
-    %footer= render 'layouts/footer' if footer?
+    = render 'layouts/footer' if footer?
 
   = mixpanel_call('track', 'Signed in') if flash[:success] == t('flash.success.provider.signed_in') || flash[:notice]  == t('devise.sessions.signed_in')

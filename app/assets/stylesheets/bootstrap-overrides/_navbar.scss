@@ -22,8 +22,11 @@
         text-shadow:none;
       }
     }
-    .nav.pull-right .dropdown-toggle{
-      padding-right:0;
+    .nav.pull-right{
+      margin-right:0;
+      .dropdown-toggle{
+        padding-right:0;
+      }
     }
     .navbar-text{
       padding-right:5px;

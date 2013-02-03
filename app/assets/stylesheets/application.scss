@@ -17,13 +17,14 @@
 // ------
 
 footer{
+  margin-top:95px;
   position:absolute;
   width:100%;
   left:0;
   background-color:$grayLighter;
   color:$black;
   .container{
-    padding:15px 10px;
+    padding:15px 0;
     h5{
       margin-bottom:5px;
       &.copyright{
@@ -59,11 +60,25 @@ footer{
         }
       }
     }
-    .social-links{
-      h5{
-        margin-bottom:10px;
-        text-align:right;
+    .lang-nav{
+      text-align:right;
+      // Weird background out of nowhere
+      ul.nav{
+        margin-bottom:15px;
+        .dropdown-toggle{
+          background:none;
+        }
       }
+      .joblr-in{
+        margin-right:5px;
+        float:right;
+      }
+      .dropdown-menu{
+        min-width: 70px;
+      }
+    }
+    .social-links{
+      float:right;
       a{
         font-size:25px;
         margin-left:10px;
@@ -76,26 +91,3 @@ footer{
     }
   }
 }
-
-#lang-nav{
-  float:right;
-  margin-top:65px;
-  &.no-footer{
-    margin:15px 10px 22px 0;
-  }
-  // Weird background out of nowhere
-  ul.nav{
-    margin-bottom:15px;
-    .dropdown-toggle{
-      background:none;
-    }
-  }
-  .joblr-in{
-    margin-right:5px;
-    float:right;
-  }
-  .dropdown-menu{
-    min-width: 70px;
-  }
-}
-

@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def footer?
-    controller_name != 'pages' || action_name != 'landing'
+    user_signed_in? && current_user.activated?
   end
 
   def subdomain?
