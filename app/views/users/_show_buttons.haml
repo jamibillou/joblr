@@ -5,11 +5,8 @@
   - else
     %a.btn.btn-large.btn-primary.btn-top#contact-button{href: "mailto:#{user.email}"}
       =t 'users.show.contact'
-  %a.btn.btn-large.btn-default{href: '#profile-email-modal', 'data-toggle' => 'modal', title: t('users.show.send_email')}
-    - if current_user == user
-      =t 'users.show.send'
-    - else
-      =t 'users.show.share'
+  - unless current_user == user
+    %a.btn.btn-large.btn-default{href: '#profile-email-modal', 'data-toggle' => 'modal', title: t('users.show.send_email')}=t 'users.show.share'
   .explanation
     - if user_signed_in? && current_user == user && !current_user.has_authored_profile_emails?
       %h5=t 'users.show.what_now'

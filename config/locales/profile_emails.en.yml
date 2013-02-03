@@ -27,7 +27,7 @@ en:
       thank_you: "Your had already told us that you are not interested in %{fullname}'s profile, but thanks anyway!"
       close_page: 'You can close this page.'
     index:
-      title: 'Applications dashboardf'
+      title: 'Applications dashboard'
       to_email_html: 'to %{email_link}'
       on_date: 'on %{date}'
     show:
