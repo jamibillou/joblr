@@ -118,6 +118,15 @@ form#new_profile_email{
       }
     }
   }
+  #buttons{
+    float:right;
+    .btn{
+      width:75%;
+    }
+    .btn-top{
+      margin-bottom:10px;
+    }
+  }
 }
 
 

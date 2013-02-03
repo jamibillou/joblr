@@ -31,6 +31,8 @@ class ProfileEmailsController < ApplicationController
   end
 
   def index
+    @user = current_user
+    @profile_email = ProfileEmail.new author: current_user, profile: current_user.profile
     @profile_emails         = current_user.authored_profile_emails
     @profile_emails_by_date = current_user.authored_profile_emails_by_date
   end

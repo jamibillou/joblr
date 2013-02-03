@@ -1,21 +1,26 @@
 .span12#profile-emails
-  - @profile_emails_by_date.each do |profile_emails_hash|
-    %br/
-    .date
-      .row-fluid
-        .span12
-          %h2= "#{t('date.month_names')[profile_emails_hash[:date][:month]].humanize} #{profile_emails_hash[:date][:year]}"
-      .row-fluid
-        .span12
-          - profile_emails_hash[:profile_emails].each do |profile_email|
-            %a{href: "#modal-#{profile_email.id}", 'data-toggle' => 'modal'}
-              .thumb-container
-                .well.profile-email.thumb{id: "thumb-#{profile_email.id}"}
-                  = render 'profile_emails/show', profile_email: profile_email
-                %p.thumb-text
-                  =t 'profile_emails.index.to_email_html', email_link: link_to(profile_email.recipient_email, "mailto:#{profile_email.recipient_email}")
-                  %br/
-                  %span.graylight-text=t 'profile_emails.index.on_date', date: profile_email.created_at.strftime('%d-%m-%Y')
+  .row-fluid
+    .span10
+      - @profile_emails_by_date.each do |profile_emails_hash|
+        %br/
+        .date
+          .row-fluid
+            .span12
+              %h2= "#{t('date.month_names')[profile_emails_hash[:date][:month]].humanize} #{profile_emails_hash[:date][:year]}"
+          .row-fluid
+            .span12
+              - profile_emails_hash[:profile_emails].each do |profile_email|
+                %a{href: "#modal-#{profile_email.id}", 'data-toggle' => 'modal'}
+                  .thumb-container
+                    .well.profile-email.thumb{id: "thumb-#{profile_email.id}"}
+                      = render 'profile_emails/show', profile_email: profile_email
+                    %p.thumb-text
+                      =t 'profile_emails.index.to_email_html', email_link: link_to(profile_email.recipient_email, "mailto:#{profile_email.recipient_email}")
+                      %br/
+                      %span.graylight-text=t 'profile_emails.index.on_date', date: profile_email.created_at.strftime('%d-%m-%Y')
+    .span2#buttons
+      = render 'index_buttons'
+  = render 'users/profile_email_modal'
 
 - @profile_emails.each do |profile_email|
   .modal.profile-email.hide{id: "modal-#{profile_email.id}"}
