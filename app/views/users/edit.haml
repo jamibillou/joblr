@@ -1,10 +1,3 @@
-- unless signed_up? current_user
-  .span4
-    %h3 Complétez votre profil
-    %br/
-    .progress.progress-info.progress-striped
-      .bar{style: "width:50%"}
-    %br/
 .span12
   = form_for @user do |f|
     .row-fluid
@@ -18,4 +11,4 @@
       .span2
         = render 'edit_buttons',    f: f
 
-= mixpanel_call('track', 'Signed up', "{'Signup type': '#{@user.social? ? 'Social' : 'Manual'}'}") if flash[:success] == t('flash.success.welcome')
+= mixpanel_call('track', 'Signed up', "{'Signup type': '#{@user.social? ? 'Social' : 'Manual'}'}") if params[:mixpanel_signup]

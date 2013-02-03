@@ -18,7 +18,7 @@
       - else
         = mixpanel_init :production
       - if user_signed_in?
-        = mixpanel_call('alias', current_user.id) if flash[:success] == t('flash.success.welcome')
+        = mixpanel_call('alias', current_user.id) if params[:mixpanel_signup]
         = mixpanel_call('identify', current_user.id)
         = mixpanel_call('name_tag', current_user.fullname)
 

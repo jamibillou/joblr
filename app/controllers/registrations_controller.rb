@@ -13,7 +13,7 @@ class RegistrationsController < Devise::RegistrationsController
       @user.authentications.create(session[:auth_hash][:authentication]) unless session[:auth_hash].nil?
       session[:auth_hash] = nil
       sign_in @user, bypass: true
-      redirect_to root_path, flash: {success: t('flash.success.welcome')}
+      redirect_to root_path(mixpanel_signup: true)
     else
       flash[:error] = error_messages @user
       render :new
