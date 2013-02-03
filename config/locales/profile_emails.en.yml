@@ -4,6 +4,7 @@ en:
       title: 'Send a job application via email'
       menu_title: 'Your first application'
       1st_application: 'Your 1st application'
+      preview: 'Preview'
       from_label: 'From'
       from_fullname_placeholder: 'Your full name'
       from_email_placeholder: 'Your email address'

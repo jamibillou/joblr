@@ -11,11 +11,11 @@
       .span6
         .well
           = render 'new', f: f
-          = render 'users/show_identity', user: current_user
+          .hidden-preview.hidden= render 'users/show_identity', user: current_user
       .span2
       .span2
         = render 'buttons', f: f
-    .row-fluid
+    .row-fluid.hidden-preview.hidden
       .span2.hidden-phone
       .span6.well.profile
         %h2=t 'mailers.profile_email.current_user.html.more_about', fullname: @user.fullname
