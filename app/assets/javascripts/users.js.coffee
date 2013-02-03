@@ -30,6 +30,7 @@ $ ->
 
   $('.edit_user a.help').each -> $(@).popover('placement': 'right')
 
+
   # Tooltips
   # --------
 

@@ -1,0 +1,67 @@
+.span12#alt-landing
+
+  .row-fluid
+    .span12
+      .hero-unit
+        .row-fluid
+          .span6#value-prop
+            %h1=t 'pages.landing.fourth.catchphrase'
+            %h3=t 'pages.landing.fourth.subtitle'
+            %a.btn.btn-large.btn-primary{href: sign_up_path}=t 'pages.landing.old.signup'
+          .span6#the-hero
+            = link_to image_tag("screenshots/fourth_landing/#{locale}/hero.jpg"), sign_up_path
+
+  .row-fluid#benefits
+    .span3
+      .icon
+        .icon-bolt
+      %h3=t 'pages.landing.fourth.benefit1_title'
+      %p=t 'pages.landing.fourth.benefit1_text'
+    .span3
+      .icon
+        .icon-user
+      %h3=t 'pages.landing.fourth.benefit2_title'
+      %p=t 'pages.landing.fourth.benefit2_text'
+    .span3
+      .icon
+        .icon-edit
+      %h3=t 'pages.landing.fourth.benefit3_title'
+      %p=t 'pages.landing.fourth.benefit3_text_html'
+    .span3
+      .icon
+        .icon-envelope
+      %h3=t 'pages.landing.fourth.benefit4_title'
+      %p=t 'pages.landing.fourth.benefit4_text'
+
+  .row-fluid#testimonials.hidden-phone
+    .span6.testimonials
+      %h2=t 'pages.landing.fifth.testimonials.title'
+      .row-fluid.delphine
+        .span2
+          = link_to image_tag("screenshots/fifth_landing/delphine.jpg"), 'http://fr.linkedin.com/pub/delphine-pau/1a/5b8/245/', target: '_blank'
+        .span10
+          %p
+            %span.text
+              =t 'pages.landing.fifth.testimonials.text_1'
+            %span.name
+              –
+              = link_to('Delphine Pau', 'http://www.px-therapeutics.com', target: '_blank')+','
+            %span.job=t 'pages.landing.fifth.testimonials.job_1'
+      .row-fluid.guillaume
+        .span10
+          %p
+            %span.text
+              =t 'pages.landing.fifth.testimonials.text_2'
+            %span.name
+              –
+              = link_to('Guillaume Masuit', 'http://www.hipcom.fr', target: '_blank')+','
+            %span.job=t 'pages.landing.fifth.testimonials.job_2'
+        .span2
+          = link_to image_tag("screenshots/fifth_landing/guillaume.jpg"), 'http://fr.viadeo.com/profile/00224fae1r9mj5zk', target: '_blank'
+    .span6.hero-bottom.visible-desktop
+      = link_to image_tag("screenshots/fifth_landing/#{locale}/hero_bottom.jpg"), sign_up_path
+
+  .row-fluid
+    .span12
+      .alert.fourth.alert-info.visible-phone=t 'pages.landing.fourth.disclaimer_html'
+      .alert.fifth.alert-info.hidden-phone=t 'pages.landing.fourth.disclaimer_html'

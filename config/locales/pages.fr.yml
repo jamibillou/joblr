@@ -3,7 +3,6 @@ fr:
     landing:
       old:
         title: "Le moyen le plus rapide de postuler."
-        title_alt: 'Accueil'
         catchphrase: "Les lettres de motivation et CV vous épuisent ?"
         subtitle: "Joblr est le moyen le plus rapide de postuler."
         signup: "S'inscrire !"
@@ -16,22 +15,28 @@ fr:
         benefit4_title: "Un job autour de vous"
         benefit4_text: "Votre entourage a peut être les clés de votre prochain poste. Partagez votre profil Joblr et profitez du bouche à oreille."
         disclaimer_html: "<b>Remarque : </b> Nos tarifs n'étant pour l'instant pas finalisés, la version beta de Joblr est entièrement gratuite jusqu'à nouvel ordre."
-      new:
-        title: "La candidature spontanée qui donne envie de vous répondre"
-        cta_title: "Besoin d'un second souffle dans votre recherche d'emploi ?"
-        testimonial_1_html: "“Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.<br/>Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.”"
-        testimonial_2_html: "“Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil.<br/>Impedit quo minus id quod maxime placeat facere possimus.”<br/>"
-        signup: "Oui !"
-        screenshot_1: "Inscription rapide"
-        screenshot_2: "Créez votre profil en quelques clics"
-        screenshot_3: "Envoyez vos candidatures via un formulaire très simple"
-        screenshot_4: "Visualisez et suivez vos candidatures"
-        disclaimer_html: "<b>Remarque : </b> Nos tarifs n'étant pour l'instant pas finalisés, la version beta de Joblr est entièrement gratuite jusqu'à nouvel ordre."
-      alt:
-        title: "La candidature spontanée qui donne envie de vous cliquer"
-        title_html: "La candidature spontanée qui donne envie de vous %{link}"
-        click: "cliquer"
-        signup: "S'inscrire !"
+      fourth:
+        title: "Candidatures élégantes et professionnelles via email"
+        catchphrase: "Besoin d'un meilleur format pour vos candidatures?"
+        subtitle: "Joblr vous permet d'envoyer des emails élégants et professionnels."
+        signup: "S'inscrire"
+        benefit1_title: "Inscription en 1 clic"
+        benefit1_text: "Utilisez un de vos réseaux sociaux pour vous inscrire, nous n'y publierons rien."
+        benefit2_title: "Créez votre profil"
+        benefit2_text: "Chaque email envoyé contient votre profil, un aperçu de votre carrière."
+        benefit3_title: "Écrivez votre message"
+        benefit3_text_html: "Racontez votre histoire et séduisez les, c'est le coeur de votre candidature."
+        benefit4_title: "Nous l'envoyons"
+        benefit4_text: "Votre destinataire reçoit alors un email élégant et professionel."
+        disclaimer_html: "<b>Remarque : </b> Nos tarifs n'étant pour l'instant pas finalisés, la version beta de Joblr est entièrement gratuite."
+      fifth:
+        title: "Candidatures élégantes et professionnelles via email"
+        testimonials:
+          title: "Ils recrutent grâce aux candidatures Joblr"
+          text_1: "“Joblr donne au recruteur un aperçu simplifié et convivial du candidat et permet d'identifier rapidement les profils intéressants.”"
+          job_1: "Directrice des Ressources Humaines"
+          text_2: "“Grâce à Joblr je gagne en temps et surtout en qualité de recrutement, pour mes offres d'emploi comme pour les candidatures spontanées.”"
+          job_2: "Directeur d'agence"
     admin:
       title: 'Admin'
       title_alt: 'Tableau de bord'
