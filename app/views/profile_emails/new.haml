@@ -1,22 +1,31 @@
 = render 'layouts/activation_bar', step: 3
 
-.row-fluid#full_profile_email
-  .span6.well.offset3
-    = form_for @profile_email do |f|
-      = render 'new', f: f
-      = render 'users/show_identity', user: current_user
-      %hr/
-      = f.submit t('profile_emails.new.send'), class: 'btn btn-large btn-primary'
-.row-fluid#full_profile_email
-  .span6.well.offset3.bottom_block
-    %h2=t 'mailers.profile_email.current_user.html.more_about', fullname: @user.fullname
-    %br/
-    = render 'users/show_experience_education', profile: current_user.profile
-    = render 'users/show_skills',               profile: current_user.profile
-    = render 'users/show_qualities',            profile: current_user.profile
-    %br/
-    = link_to t('mailers.profile_email.current_user.html.view_complete_profile', fullname: @user.fullname), "http://#{current_user.subdomain}.joblr.co"
-
+.span12#full_profile_email
+  = form_for @profile_email do |f|
+    .row-fluid
+      .span2.hidden-phone
+      .span6
+        %h1 Your 1st application
+    .row-fluid
+      .span2.hidden-phone
+      .span6
+        .well
+          = render 'new', f: f
+          = render 'users/show_identity', user: current_user
+      .span2
+      .span2
+        = render 'buttons', f: f
+    .row-fluid
+      .span2.hidden-phone
+      .span6.well.profile
+        %h2=t 'mailers.profile_email.current_user.html.more_about', fullname: @user.fullname
+        %br/
+        = render 'users/show_experience_education', profile: current_user.profile
+        = render 'users/show_skills',               profile: current_user.profile
+        = render 'users/show_qualities',            profile: current_user.profile
+        %br/
+        = link_to t('mailers.profile_email.current_user.html.view_complete_profile', fullname: @user.fullname), "http://#{current_user.subdomain}.joblr.co"
+        
 - if params[:mixpanel_profile_created]
   = mixpanel_call('track', 'Completed their profile')
   = mixpanel_people(current_user)

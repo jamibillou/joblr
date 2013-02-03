@@ -2,6 +2,11 @@
   - unless signed_up? current_user
     = render 'layouts/activation_bar', step: 2
   = form_for @user do |f|
+    - unless signed_up? current_user
+      .row-fluid
+        .span2.hidden-phone
+        .span6
+          %h1=t 'users.edit.fill_in'
     .row-fluid
       .span2.hidden-phone
       .span6

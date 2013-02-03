@@ -28,6 +28,7 @@ fr:
     edit:
       title: 'Modifiez votre profil'
       title_alt: 'Créez votre profil'
+      fill_in: 'Complétez votre profil' 
       fullname: "Nom et prénom"
       fullname_placeholder: "Nom et prénom"
       location_label: 'Adresse'

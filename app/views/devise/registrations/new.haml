@@ -3,12 +3,7 @@
 .row-fluid.devise
   .span12
     .header
-      - if session[:auth_hash].nil?
-        %h1=t 'devise.registrations.new.title'
-        .lead=t 'devise.registrations.new.fill_account_info'
-      - else
-        %h1=t 'devise.registrations.new.account_info'
-        .lead=t 'devise.registrations.new.so_we_know'
+      %h1=t 'devise.registrations.new.fill_info'
     .row-fluid
       .span4.hidden-phone
       .span4

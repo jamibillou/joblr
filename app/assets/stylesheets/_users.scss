@@ -22,6 +22,11 @@ a.help{
 // Profile
 // -------
 
+h1{
+  margin-bottom:30px;
+  text-align:center;
+}
+
 .profile{
   &.well{
     border:10px solid $grayLighter;
