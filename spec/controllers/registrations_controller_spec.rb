@@ -188,7 +188,7 @@ describe RegistrationsController do
 
       it 'should redirect to root path' do
         post :create, user: @attr
-        response.should redirect_to(root_path)
+        response.should redirect_to(root_path(mixpanel_signup: true))
       end
 
       context 'after using social signup' do

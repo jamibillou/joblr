@@ -9,21 +9,11 @@
       = render 'show_buttons', user: @user
       = render 'profile_email_modal'
 
+= mixpanel_people(current_user) if flash[:success] == t('flash.success.profile.updated')
+
 - if user_signed_in?
 
-  - if current_user == @user
-
-    - if flash[:success] == t('flash.success.profile.created')
-      = mixpanel_call('track', 'Completed their profile')
-      = mixpanel_people(current_user)
-
-    - elsif flash[:success] && flash[:success].match(Regexp.new(t('flash.success.profile.shared.user', recipient_email: '.+')))
-      = mixpanel_call('track', 'Sent profile by email', "{'User type': 'Current user'}")
-
-    - elsif flash[:success] == t('flash.success.profile.updated')
-      = mixpanel_people(current_user)
-
-  - else
+  - unless current_user == @user
 
     - if flash[:success] && flash[:success].match(Regexp.new(t('flash.success.profile.shared.other_user', fullname: @user.fullname, recipient_email: '.+')))
       = mixpanel_call('track', 'Sent profile by email', "{'User type': 'Other user'}")

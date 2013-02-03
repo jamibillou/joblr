@@ -274,8 +274,7 @@ describe UsersController do
 
         it "should redirect to the root path with a profile created message" do
           put :update, user: @attr, id: @user
-          response.should redirect_to root_path
-          flash[:success].should == I18n.t('flash.success.profile.created')
+          response.should redirect_to root_path(mixpanel_profile_created: true)
         end
       end
 

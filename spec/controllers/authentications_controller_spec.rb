@@ -177,7 +177,7 @@ describe AuthenticationsController do
 
           it 'should redirect to new_user_registration_path' do
             get :twitter
-            response.should redirect_to new_user_registration_path
+            response.should redirect_to new_user_registration_path(mixpanel_social_signin: true)
           end
         end
       end

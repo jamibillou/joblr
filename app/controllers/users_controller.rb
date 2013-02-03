@@ -27,9 +27,9 @@ class UsersController < ApplicationController
     else
       remove_files! unless Rails.env.test? # KILL ME!
       if signed_up
-        redirect_to root_path, flash: {success: t('flash.success.profile.created')}
+        redirect_to root_path(mixpanel_profile_created: true)
       else
-        redirect_to @user,     flash: {success: t('flash.success.profile.updated')}
+        redirect_to @user, flash: {success: t('flash.success.profile.updated')}
       end
     end
   end
