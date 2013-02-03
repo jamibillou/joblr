@@ -4,7 +4,6 @@ en:
   required_fields: 'required fields'
   flash:
     success:
-      welcome: "Your account was successfully created, you can now fill in your profile."
       user:
         destroyed: 'The user was successfully destroyed.'
       provider:

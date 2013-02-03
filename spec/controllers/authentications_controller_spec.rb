@@ -177,12 +177,7 @@ describe AuthenticationsController do
 
           it 'should redirect to new_user_registration_path' do
             get :twitter
-            response.should redirect_to new_user_registration_path
-          end
-
-          it 'should have a success alert message' do
-            get :twitter
-            flash[:success].should == I18n.t('flash.success.provider.signed_up', provider: 'Twitter')
+            response.should redirect_to new_user_registration_path(mixpanel_social_signin: true)
           end
         end
       end

@@ -1,15 +1,9 @@
-.span8.offset2
-  %h3=t 'devise.registrations.new.fill_account_info'
-  %br/
-  .progress.progress-info.progress-striped
-    .bar{style: "width:25%"}
-  %br/
 .row-fluid.devise
   .span12
     .header
       - if session[:auth_hash].nil?
-        //%h1=t 'devise.registrations.new.title'
-        //.lead=t 'devise.registrations.new.fill_account_info'
+        %h1=t 'devise.registrations.new.title'
+        .lead=t 'devise.registrations.new.fill_account_info'
       - else
         %h1=t 'devise.registrations.new.account_info'
         .lead=t 'devise.registrations.new.so_we_know'
@@ -47,7 +41,7 @@
             = f.submit t('devise.registrations.sign_up'), class: 'btn btn-primary'
         .pull-right.danger-text * #{t('required_fields')}
 
-- if flash[:success] && flash[:success].match(Regexp.new(t('flash.success.provider.signed_up', provider: '.+')))
+- if params[:mixpanel_social_signin]
   = mixpanel_call('track', 'Viewed signup form', "{'Signup type': 'Social'}")
-- elsif flash.blank? && session[:auth_hash].nil?
+- elsif !params[:mixpanel_social_signin] && session[:auth_hash].nil?
   = mixpanel_call('track', 'Viewed signup form', "{'Signup type': 'Manual'}")
