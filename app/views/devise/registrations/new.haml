@@ -1,9 +1,9 @@
-= render 'layouts/activation_bar', step: 1
+= render 'layouts/activation_bar', step: 1, social: !session[:auth_hash].nil?
 
 .row-fluid.devise
   .span12
     .header
-      %h1=t 'devise.registrations.new.fill_info'
+      %h1=t 'devise.registrations.new.account_info'
     .row-fluid
       .span4.hidden-phone
       .span4

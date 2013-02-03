@@ -51,9 +51,7 @@ en:
     registrations:
       new:
         title: 'Sign up to Joblr'
-        fill_info: "Fill in your information"
         account_info: "Account information"
-        so_we_know: 'To finish signing up'
       create:
         title: 'Sign up to Joblr'
       edit:

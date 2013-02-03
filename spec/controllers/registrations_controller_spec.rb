@@ -36,9 +36,16 @@ describe RegistrationsController do
 
         it { response.should be_success }
 
-        it 'should have the right titles' do
-          response.body.should have_selector 'h1', text: I18n.t('devise.registrations.new.title')
-          response.body.should have_content I18n.t('devise.registrations.new.fill_account_info')
+        it 'should have an activation bar' do
+          response.body.should have_selector '#activation-bar'
+        end
+
+        it 'should have the right activation bar title' do
+          response.body.should have_content I18n.t('activation.title_1')
+        end
+
+        it 'should have a title' do
+          response.body.should have_selector 'h1', text: I18n.t('devise.registrations.new.account_info')
         end
 
         it 'should have a signup form' do
@@ -60,9 +67,16 @@ describe RegistrationsController do
 
         it { response.should be_success }
 
-        it 'should have the right titles' do
+        it 'should have an activation bar' do
+          page.body.should have_selector '#activation-bar'
+        end
+
+        it 'should have the right activation bar title' do
+          page.body.should have_content I18n.t('activation.title_1_social')
+        end
+
+        it 'should have a title' do
           page.body.should have_selector 'h1', text: I18n.t('devise.registrations.new.account_info')
-          page.body.should have_content I18n.t('devise.registrations.new.so_we_know')
         end
 
         it 'should have a signup form' do
@@ -130,7 +144,6 @@ describe RegistrationsController do
         it "it should render 'new'" do
           post :create, user: @attr.merge(fullname: '')
           response.should render_template :new
-          flash[:error].should == errors('user.fullname', 'blank')
         end
       end
 
@@ -144,7 +157,6 @@ describe RegistrationsController do
 
         it "it should render 'new'" do
           post :create, user: @attr.merge(username: '')
-          flash[:error].should == errors('user.username', 'blank')
         end
       end
 
@@ -159,7 +171,6 @@ describe RegistrationsController do
         it "it should render 'new'" do
           post :create, user: @attr.merge(password: '')
           response.should render_template :new
-          flash[:error].should_not be_nil
         end
       end
 
@@ -173,7 +184,6 @@ describe RegistrationsController do
 
         it "it should render 'new'" do
           post :create, user: @attr.merge(password_confirmation: '')
-          flash[:error].should_not be_nil
         end
       end
 

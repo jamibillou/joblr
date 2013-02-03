@@ -44,8 +44,9 @@ fr:
   activation:
     step_x_of_3: "étape %{x} sur 3"
     title_1: "Commençons par créer votre compte"
-    title_2: "Ok, au tour de votre profil maintenant"
-    title_3: "Parfait, envoyons une candidature !"
+    title_1_social: "Finissons maintenant de créer votre compte"
+    title_2: "Parfait, au tour de votre profil"
+    title_3: "Envoyez votre 1ère candidature !"
   footer:
     joblr_in: "joblr.co en"
     locales:
