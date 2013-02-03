@@ -51,9 +51,7 @@ fr:
     registrations:
       new:
         title: "S'inscrire sur Joblr"
-        fill_info: 'Saisissez les informations de votre compte'
         account_info: 'Informations de votre compte'
-        so_we_know: "Pour terminer votre inscription"
       create:
         title: "S'inscrire sur Joblr"
       edit:

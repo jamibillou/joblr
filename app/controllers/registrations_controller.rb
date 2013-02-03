@@ -15,7 +15,6 @@ class RegistrationsController < Devise::RegistrationsController
       sign_in @user, bypass: true
       redirect_to root_path(mixpanel_signup: true)
     else
-      flash[:error] = error_messages @user
       render :new
     end
   end

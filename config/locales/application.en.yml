@@ -43,8 +43,9 @@ en:
   activation:
     step_x_of_3: "step %{x} of 3"
     title_1: "First, let's create your account"
-    title_2: "Now, time to create your profile"
-    title_3: "Great, let's send a job application!"
+    title_1_social: "Now, let's finish creating your account"
+    title_2: "Great, time to create your profile"
+    title_3: "You can now send your first job application!"
   footer:
     joblr_in: 'joblr.co in'
     locales:
