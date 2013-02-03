@@ -29,17 +29,19 @@
       z-index:0;
       @include transition(top 1s);
       @include transition-delay(1s);
+      h3{
+        font-size:18px;
+        font-weight:500;
+        margin-left:20px;
+        white-space:nowrap;
+      }
+      h5{
+        float:right;
+        font-size:12px;
+        margin-right:20px;
+        white-space:nowrap;
+      }
       .span4{
-        h3{
-          font-size:18px;
-          font-weight:500;
-          margin-left:20px;
-          white-space:nowrap;
-          // tablet
-          @media (min-width:768px) and (max-width: 979px){
-            margin-left:10px;
-          }
-        }
         .progress{
           height:10px;
           margin:5px 0;
@@ -48,16 +50,16 @@
           }
         }
       }
-      .span1{
+      // tablet
+      @media (min-width:768px) and (max-width: 979px){
+        padding:10px 0;
+        h3{
+          font-size:15px;
+          margin-left:10px;
+        }
         h5{
-          float:right;
-          font-size:12px;
-          margin-right:20px;
-          white-space:nowrap;
-          // tablet
-          @media (min-width:768px) and (max-width: 979px){
-            margin-right:10px;
-          }
+          margin-right:10px;
+          font-size:11px;
         }
       }
     }
