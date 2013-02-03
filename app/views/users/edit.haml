@@ -1,4 +1,6 @@
 .span12
+  - unless signed_up? current_user
+    = render 'layouts/activation_bar', step: 2
   = form_for @user do |f|
     .row-fluid
       .span2.hidden-phone
