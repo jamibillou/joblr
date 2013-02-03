@@ -1,9 +1,9 @@
 $ ->
 
-	# New profile email preview button
-	# --------------------------------
+  # New profile email preview button
+  # --------------------------------
 
-  $('#preview').click -> togglePreview()
+  $('#buttons .btn-preview').click -> togglePreview()
 
   # New profile email form
   # ----------------------
@@ -21,11 +21,13 @@ $ ->
 # Show/hide the full profile email
 # --------------------------------
 
-togglePreview = -> 
-	$('.hidden-preview').each ->
-	  if $(@).is(':visible') 
-	  	$(@).addClass('hidden')
-	  	$('#icon-preview').removeClass('icon-eye-close').addClass('icon-eye-open')
-	  else
-	  	$(@).removeClass('hidden')
-	  	$('#icon-preview').removeClass('icon-eye-open').addClass('icon-eye-close')
+togglePreview = ->
+  $('.hidden-preview').each ->
+    if $(@).is(':visible')
+      $(@).addClass('hidden')
+      $('#buttons i').removeClass('icon-eye-close').addClass('icon-eye-open')
+      $('#buttons .btn-preview').removeClass('active')
+    else
+      $(@).removeClass('hidden')
+      $('#buttons i').removeClass('icon-eye-open').addClass('icon-eye-close')
+      $('#buttons .btn-preview').addClass('active')
