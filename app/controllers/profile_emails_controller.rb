@@ -16,7 +16,7 @@ class ProfileEmailsController < ApplicationController
 		@user = User.find params[:user_id]
 		@profile_email = ProfileEmail.new params[:profile_email].merge(profile: @user.profile, author: current_user)
     unless @profile_email.save
-      respond_to do |format| 
+      respond_to do |format|
         format.js   { render json: error_messages(@profile_email) }
         format.html { flash[:error] = error_messages @profile_email ; render :new }
       end

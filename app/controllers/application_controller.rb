@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
     def profile_completed
       unless signed_up?(@user)
         if user_signed_in?
-          redirect_to root_path, flash: {error: t('flash.error.only.signed_up')}
+          redirect_to root_path
         else
           raise ActionController::RoutingError.new(t('errors.routing', path: request.path))
         end

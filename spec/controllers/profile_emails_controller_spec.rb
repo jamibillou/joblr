@@ -24,7 +24,7 @@ describe ProfileEmailsController do
                       quality_3: 'Punctuality' }
     @profile_email_attr = { text: "Hi, I'm really keen to work for your company and would love to go over a few ideas together soon." }
     @profile_email = FactoryGirl.create :profile_email, author: @author, profile: @other_profile
-    
+
   end
 
   describe "GET 'new'" do
@@ -55,9 +55,9 @@ describe ProfileEmailsController do
           response.should redirect_to(root_path)
         end
 
-        it 'should have an error message' do
+        it 'should not have an error message' do
           get :new
-          flash[:error].should == I18n.t('flash.error.only.signed_up')
+          flash[:error].should be_nil
         end
       end
 

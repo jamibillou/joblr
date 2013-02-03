@@ -143,6 +143,7 @@ describe RegistrationsController do
 
         it "it should render 'new'" do
           post :create, user: @attr.merge(fullname: '')
+          flash[:error].should be_nil
           response.should render_template :new
         end
       end
@@ -157,6 +158,8 @@ describe RegistrationsController do
 
         it "it should render 'new'" do
           post :create, user: @attr.merge(username: '')
+          flash[:error].should be_nil
+          response.should render_template :new
         end
       end
 
@@ -170,6 +173,7 @@ describe RegistrationsController do
 
         it "it should render 'new'" do
           post :create, user: @attr.merge(password: '')
+          flash[:error].should be_nil
           response.should render_template :new
         end
       end
@@ -184,6 +188,8 @@ describe RegistrationsController do
 
         it "it should render 'new'" do
           post :create, user: @attr.merge(password_confirmation: '')
+          flash[:error].should be_nil
+          response.should render_template :new
         end
       end
 
