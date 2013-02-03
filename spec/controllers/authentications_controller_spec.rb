@@ -179,11 +179,6 @@ describe AuthenticationsController do
             get :twitter
             response.should redirect_to new_user_registration_path
           end
-
-          it 'should have a success alert message' do
-            get :twitter
-            flash[:success].should == I18n.t('flash.success.provider.signed_up', provider: 'Twitter')
-          end
         end
       end
     end

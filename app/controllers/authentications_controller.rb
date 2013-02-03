@@ -67,8 +67,7 @@ class AuthenticationsController < ApplicationController
     def social_sign_up
       if auth_origin.include? sign_up_path
         session[:auth_hash] = session_auth_hash
-        redirect_path = new_user_registration_path
-        flash[:success] = t('flash.success.provider.signed_up', provider: humanize(auth_hash.provider))
+        redirect_path = new_user_registration_path(mixpanel_social_signin: true)
       else
         redirect_path = auth_origin
         flash[:error] = t('flash.error.provider.no_user', provider: humanize(auth_hash.provider))
