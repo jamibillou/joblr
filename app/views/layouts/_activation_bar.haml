@@ -1,7 +1,7 @@
 #activation-bar.hidden-phone
   .row-fluid.bar
     .span4
-      %h3=t "activation.title_#{step}#{'_social' if social == true}"
+      %h3=t "activation.title_#{step}#{'_social' if step == 1 && !session[:auth_hash].nil?}"
     .span7
       .row-fluid
         .span4

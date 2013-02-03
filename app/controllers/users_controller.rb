@@ -19,15 +19,15 @@ class UsersController < ApplicationController
   end
 
   def update
+    had_profile = signed_up?(@user)
     @title = t('users.update.title_alt') unless signed_up?(@user)
-    signed_up = !signed_up?(@user)
     unless @user.update_attributes params[:user]
-      flash[:error] = error_messages(@user)
+      flash[:error] = error_messages(@user) if signed_up?(@user)
       render :edit, id: @user, user: params[:user]
     else
       remove_files! unless Rails.env.test? # KILL ME!
-      if signed_up
-        redirect_to root_path(mixpanel_profile_created: true)
+      unless had_profile
+        redirect_to new_profile_email_path(mixpanel_profile_created: true)
       else
         redirect_to @user, flash: {success: t('flash.success.profile.updated')}
       end

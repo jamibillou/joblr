@@ -4,17 +4,14 @@ fr:
   required_fields: 'champs obligatoires'
   flash:
     success:
-      welcome: "Votre compte a bien été créé, vous pouvez maintenant remplir votre profil !"
       user:
         destroyed: "L'utilisateur a bien été supprimé."
       provider:
         signed_in: 'Vous êtes maintenant connecté.'
         signed_up: "Votre compte %{provider} a bien été lié, plus que quleques détails."
         added:  "Votre compte %{provider} a bien été lié, vous pouvez dorénavant l'utiliser pour vous connecter."
-        imported: "Votre parcours a été importé depuis %{provider}, vérifiez quand même que tout est correct et qu'il ne manque rien."
         removed: "Le lien avec votre compte %{provider} a bien été supprimé."
       profile:
-        created: "Parfait ! Maintenant que votre profil est prêt, postulez auprès des entreprises qui vous intéressent."
         updated: 'Modifications enregistrées.'
         shared:
           user: "Votre profil a bien été envoyé à %{recipient_email}"

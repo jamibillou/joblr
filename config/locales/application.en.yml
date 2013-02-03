@@ -10,10 +10,8 @@ en:
         signed_in: "You are now signed in."
         signed_up: "Your %{provider} account was successfully linked, just a few details left."
         added:  "Your %{provider} account was successfully linked, you can sign in with it from now on."
-        imported: "Your information was imported from %{provider}, don't forget to check it and fill in the blanks."
         removed: "Your %{provider} account was successfully unlinked."
       profile:
-        created: "Perfect, now that your profile is complete you can start applying to jobs you're interested in."
         updated: 'Your changes were saved.'
         shared:
           user: "Your profile was successfully sent to %{recipient_email}"

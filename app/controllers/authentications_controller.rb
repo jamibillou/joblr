@@ -45,11 +45,8 @@ class AuthenticationsController < ApplicationController
 
     def add_auth
       create_auth(current_user)
-      redirect_to auth_origin, flash: {success: t("flash.success.provider.#{add_auth_message(current_user)}", provider: humanize(auth_hash.provider))}
-    end
-
-    def add_auth_message(user)
-      if auth_hash.provider == 'linkedin' && !signed_up?(user) then 'imported' else 'added' end
+      flash[:success] = t('flash.success.provider.added', provider: humanize(auth_hash.provider)) if signed_up?(current_user)
+      redirect_to auth_origin
     end
 
     def social_sign_in(auth)

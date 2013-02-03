@@ -70,7 +70,7 @@ describe UsersController do
           @user.profile.destroy
           get :show, id: @user
           response.should redirect_to root_path
-          flash[:error].should == I18n.t('flash.error.only.signed_up')
+          flash[:error].should be_nil
         end
       end
 
@@ -157,6 +157,11 @@ describe UsersController do
 
         it { response.should be_success }
 
+        it 'should have an activation bar' do
+          response.body.should have_selector '#activation-bar'
+          response.body.should have_content I18n.t('activation.title_2')
+        end
+
         it 'should have the right edit form' do
           response.body.should have_selector "#edit_user_#{@user.id}"
         end
@@ -207,6 +212,11 @@ describe UsersController do
 
         it { response.should be_success }
 
+        it 'should not have an activation bar' do
+          response.body.should_not have_selector '#activation-bar'
+          response.body.should_not have_content I18n.t('activation.title_2')
+        end
+
         it 'should have the right edit form' do
           response.body.should have_selector "#edit_user_#{@user.id}"
         end
@@ -253,28 +263,38 @@ describe UsersController do
           @user.profile.destroy
         end
 
-        it 'should update the user' do
-          put :update, user: @attr, id: @user
-          updated_user = assigns :user
-          @user.reload
-          @user.fullname.should == updated_user.fullname
-        end
-
-        it 'should not create a new user' do
-          lambda do
+        context "and filled in all required fields" do
+          it 'should update the user' do
             put :update, user: @attr, id: @user
-          end.should_not change(User, :count)
-        end
+            updated_user = assigns :user
+            @user.reload
+            @user.fullname.should == updated_user.fullname
+          end
 
-        it 'should create a new profile' do
-          lambda do
+          it 'should not create a new user' do
+            lambda do
+              put :update, user: @attr, id: @user
+            end.should_not change(User, :count)
+          end
+
+          it 'should create a new profile' do
+            lambda do
+              put :update, user: @attr, id: @user
+            end.should change(Profile, :count).by(1)
+          end
+
+          it "should redirect to the new_profile_email_path" do
             put :update, user: @attr, id: @user
-          end.should change(Profile, :count).by(1)
+            response.should redirect_to new_profile_email_path(mixpanel_profile_created: true)
+          end
         end
 
-        it "should redirect to the root path with a profile created message" do
-          put :update, user: @attr, id: @user
-          response.should redirect_to root_path(mixpanel_profile_created: true)
+        context "and failed filling in one or more required fields" do
+
+          it "should not have an error message" do
+            put :update, user: { fullname: '', city: 'Hong Kong', country: 'China', profiles_attributes: { '0' => {experience: '10', education: 'none'} } }, id: @user
+            flash[:error].should be_nil
+          end
         end
       end
 
@@ -314,6 +334,14 @@ describe UsersController do
           put :update, user: @attr, id: @user
           response.should redirect_to @user
           flash[:success].should == I18n.t('flash.success.profile.updated')
+        end
+
+        context "and failed filling in one or more required fields" do
+
+          it "should have an error message" do
+            put :update, user: { fullname: '', city: 'Hong Kong', country: 'China', profiles_attributes: { '0' => {experience: '10', education: 'none'} } }, id: @user
+            flash[:error].should == errors('user.fullname', 'blank')
+          end
         end
       end
     end
