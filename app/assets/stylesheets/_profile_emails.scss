@@ -71,7 +71,7 @@ form#new_profile_email{
   .experience{
     margin:20px 0 10px 0;
     p{
-      font-family: Helvetica,Arial,sans-serif;
+      font-family:Helvetica,Arial,sans-serif;
       color:$grayDark;
       font-size:13pt;
       font-weight:300;
@@ -97,6 +97,22 @@ form#new_profile_email{
       text-decoration:none;
       margin-top:0;
     }
+  }
+  #links{
+    .btn{
+      font-family:Helvetica,Arial,sans-serif;
+      font-size:20px;
+      font-weight:500;
+      margin-top:0;
+      color:$white; 
+    }
+  }
+  #application_text{
+    font-family:Helvetica,Arial,sans-serif;
+    font-size:16pt;
+    color:$grayDark;
+    font-weight:300;
+    margin:10px 0;
   }
 }
 

@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       @title = t('users.edit.title_alt')
       @user.profiles.build
       @linkedin = @user.auth('linkedin').profile if @user.has_auth?('linkedin')
-      @activation_step = 2
+      @activation_step = 2 if flash[:error].nil?
     end
   end
 

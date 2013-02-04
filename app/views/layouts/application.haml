@@ -29,7 +29,7 @@
 
     .container
       = render 'layouts/activation_bar', step: @activation_step unless @activation_step.nil?
-      = render 'layouts/alerts' # unless user_signed_in? && !current_user.activated?
+      = render 'layouts/alerts' unless user_signed_in? && !current_user.activated? && flash[:error].nil?
       #content.row-fluid= yield
 
     = render 'layouts/footer' if footer?
