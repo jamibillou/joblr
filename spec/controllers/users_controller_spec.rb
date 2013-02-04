@@ -91,6 +91,10 @@ describe UsersController do
           response.body.should have_content I18n.t('users.show.edit')
         end
 
+        it 'should have a help button' do
+          response.body.should have_content I18n.t('users.show.need_help')
+        end
+
         it 'should not have a profile email modal' do
           response.body.should_not have_selector '#profile-email-modal'
         end

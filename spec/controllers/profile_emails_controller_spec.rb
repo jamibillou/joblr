@@ -711,6 +711,14 @@ describe ProfileEmailsController do
               response.body.should include "modal-#{pe.id}"
             end
           end
+
+          it 'should have a new application button' do
+            response.body.should have_content I18n.t('profile_emails.index.new_application')
+          end
+
+          it 'should have a help button' do
+            response.body.should have_content I18n.t('profile_emails.index.need_help')
+          end
         end
       end
     end

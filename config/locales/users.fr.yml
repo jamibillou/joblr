@@ -14,6 +14,7 @@ fr:
       view_social: "Consulter la page %{provider} de %{fullname}"
       site: 'www'
       edit: 'Modifier'
+      need_help: "Besoin d'aide?"
       contact: 'Contacter'
       send: 'Postuler'
       send_email: 'Envoyer une candidature par email'

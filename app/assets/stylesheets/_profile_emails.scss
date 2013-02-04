@@ -32,7 +32,7 @@ form#new_profile_email{
 #full_profile_email{
   h1{
     text-align:center;
-    margin-bottom:35px;
+    margin-bottom:25px;
   }
   .identity{
     margin-top:40px;
@@ -50,7 +50,7 @@ form#new_profile_email{
   }
   .progress{
     display:none;
-  }
+  }  
   .profile{
     margin-top:40px;
   }
@@ -87,17 +87,15 @@ form#new_profile_email{
   #buttons{
     float:right;
     .btn{
-      width:50%;
+      width:75%;
     }
     .btn-top{
       margin-bottom:10px;
     }
-    input[type="submit"]{
-      width:100%;
+    a{
+      color:$white;
       text-decoration:none;
-    }
-    .btn-preview{
-      font-size:13pt;
+      margin-top:0;
     }
   }
 }

@@ -14,6 +14,7 @@ en:
       view_social: "View %{fullname}'s %{provider} profile"
       site: 'www'
       edit: 'Edit'
+      need_help: 'Need help?'
       contact: 'Contact'
       send: 'Apply'
       send_email: 'Send a job application via email'

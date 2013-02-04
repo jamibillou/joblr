@@ -1,12 +1,12 @@
 #buttons
   - unless signed_up?(@user) || @linkedin
     %label=t 'users.edit.import_from'
-    %a.btn.btn-large.btn-top{href: omniauth_authorize_path(:user, 'linkedin')}=t 'users.edit.linkedin'
+    %a.btn.btn-top{href: omniauth_authorize_path(:user, 'linkedin')}=t 'users.edit.linkedin'
 
-  %a#submit-placeholder.btn.btn-large.btn-primary.btn-top=t 'users.edit.save'
+  %a#submit-placeholder.btn.btn-primary.btn-top=t 'users.edit.save'
 
   - if signed_up?(@user)
-    %a.btn.btn-large{href: user_path(@user)}
+    %a.btn{href: user_path(@user)}
       = t('cancel')
     .explanation
       %h5=t 'users.edit.public_profile'
