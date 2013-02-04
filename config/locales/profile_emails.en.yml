@@ -30,6 +30,8 @@ en:
       title: 'Applications dashboard'
       to_email_html: 'to %{email_link}'
       on_date: 'on %{date}'
+      new_application: 'New application'
+      need_help: 'Need help?'
     show:
       lets_talk: "Let's talk!"
       no_thanks: 'No, thanks'

@@ -30,6 +30,8 @@ fr:
       title: 'Candidatures'
       to_email_html: 'à %{email_link}'
       on_date: 'le %{date}'
+      new_application: 'Nouvelle candidature'
+      need_help: "Besoin d'aide ?"
     show:
       lets_talk: "Contacter"
       no_thanks: 'Non merci'
