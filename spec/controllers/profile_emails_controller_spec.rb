@@ -109,7 +109,7 @@ describe ProfileEmailsController do
 
       context 'sharing their own profile' do
 
-        context 'using modal from user page' do
+        context 'using modal from dashboard' do
 
           context "and not providing any email address" do
 
@@ -185,7 +185,7 @@ describe ProfileEmailsController do
           end
         end
 
-        context 'using the first time form' do
+        context 'using the first application form' do
 
           context "and not providing any email address" do
 
@@ -209,7 +209,7 @@ describe ProfileEmailsController do
 
             it 'should have an error messsage' do
               post :create, :profile_email => @profile_email_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
-              flash[:error].should == errors('profile_email.recipient_email', 'invalid')
+              flash[:error].should == "#{I18n.t('activerecord.attributes.profile_email.recipient_email')} #{I18n.t('activerecord.errors.messages.invalid')}."
             end
           end
 

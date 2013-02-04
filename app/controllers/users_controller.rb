@@ -15,6 +15,7 @@ class UsersController < ApplicationController
       @title = t('users.edit.title_alt')
       @user.profiles.build
       @linkedin = @user.auth('linkedin').profile if @user.has_auth?('linkedin')
+      @activation_step = 2
     end
   end
 
@@ -22,7 +23,8 @@ class UsersController < ApplicationController
     had_profile = signed_up?(@user)
     @title = t('users.update.title_alt') unless signed_up?(@user)
     unless @user.update_attributes params[:user]
-      flash[:error] = error_messages(@user) if signed_up?(@user)
+      @linkedin = @user.auth('linkedin').profile if !signed_up?(@user) && @user.has_auth?('linkedin')
+      flash[:error] = error_messages(@user)
       render :edit, id: @user, user: params[:user]
     else
       remove_files! unless Rails.env.test? # KILL ME!

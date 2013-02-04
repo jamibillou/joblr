@@ -1,15 +1,16 @@
 class ProfileEmailsController < ApplicationController
 
   before_filter :load_profile_email,                                only: [:decline, :already_answered]
-  before_filter :signed_in,                                         only: [:new, :index]
+  before_filter :signed_in, :load_user,                             only: [:new, :index]
   before_filter :not_answered,                                      only: :decline
   before_filter :has_profile_emails,                                only: :index
   before_filter :admin_user,                                        only: :destroy
-  before_filter :load_user, :profile_completed, :no_profile_emails, only: :new
+  before_filter :profile_completed, :no_profile_emails,             only: :new
 
   def new
     @user = current_user
     @profile_email = ProfileEmail.new author: current_user, profile: current_user.profile
+    @activation_step = 3
   end
 
 	def create
@@ -18,7 +19,7 @@ class ProfileEmailsController < ApplicationController
     unless @profile_email.save
       respond_to do |format|
         format.js   { render json: error_messages(@profile_email) }
-        format.html { flash[:error] = error_messages @profile_email ; render :new }
+        format.html { flash[:error] = error_messages(@profile_email) ; render :new }
       end
     else
       respond_to {|format| format.html { deliver_profile_email } }
