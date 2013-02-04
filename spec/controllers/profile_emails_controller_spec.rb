@@ -209,7 +209,7 @@ describe ProfileEmailsController do
 
             it 'should have an error messsage' do
               post :create, :profile_email => @profile_email_attr.merge(recipient_fullname: 'Test Dude'), user_id: @author.id
-              flash[:error].should be_nil
+              flash[:error].should == "#{I18n.t('activerecord.attributes.profile_email.recipient_email')} #{I18n.t('activerecord.errors.messages.invalid')}."
             end
           end
 
@@ -235,7 +235,7 @@ describe ProfileEmailsController do
 
             it 'should have an error messsage' do
               post :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com'), user_id: @author.id
-              flash[:error].should be_nil
+              flash[:error].should == errors('profile_email.recipient_fullname', 'blank')
             end
           end
 
@@ -271,7 +271,7 @@ describe ProfileEmailsController do
 
             it "should have a flash message" do
               post :create, :profile_email => @profile_email_attr.merge(recipient_email: 'user@example.com', recipient_fullname: 'Test Dude'), user_id: @author.id
-              flash[:error].should be_nil
+              flash[:success].should == I18n.t('flash.success.profile.shared.user', recipient_email: 'user@example.com')
             end
           end
         end

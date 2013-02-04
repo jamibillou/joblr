@@ -91,12 +91,8 @@ describe UsersController do
           response.body.should have_content I18n.t('users.show.edit')
         end
 
-        it 'should have a send button' do
-          response.body.should have_content I18n.t('users.show.send')
-        end
-
-        it 'should have a profile email modal' do
-          response.body.should have_selector '#profile-email-modal'
+        it 'should not have a profile email modal' do
+          response.body.should_not have_selector '#profile-email-modal'
         end
 
         it 'should not have a mixpanel event' do
@@ -293,7 +289,7 @@ describe UsersController do
 
           it "should not have an error message" do
             put :update, user: { fullname: '', city: 'Hong Kong', country: 'China', profiles_attributes: { '0' => {experience: '10', education: 'none'} } }, id: @user
-            flash[:error].should be_nil
+            flash[:error].should == errors('user.fullname', 'blank')
           end
         end
       end

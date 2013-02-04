@@ -28,6 +28,7 @@
         .container= render 'layouts/navigation/navigation'
 
     .container
+      = render 'layouts/activation_bar', step: @activation_step unless @activation_step.nil?
       = render 'layouts/alerts' # unless user_signed_in? && !current_user.activated?
       #content.row-fluid= yield
 

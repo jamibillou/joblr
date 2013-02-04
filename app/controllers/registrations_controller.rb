@@ -5,6 +5,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def new
     @user = session[:auth_hash] ? User.new(session[:auth_hash][:user]) : User.new
+    @activation_step = 1
   end
 
   def create
@@ -15,6 +16,7 @@ class RegistrationsController < Devise::RegistrationsController
       sign_in @user, bypass: true
       redirect_to root_path(mixpanel_signup: true)
     else
+      flash[:error] = error_messages(@user)
       render :new
     end
   end
