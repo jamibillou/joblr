@@ -29,7 +29,7 @@ togglePreview = ->
       $('#buttons .btn-preview').removeClass('active')
       $('#inputs').show()
     else
-      $('#application_text').html($('#profile_email_text').val())
+      $('#application_text').html($('#profile_email_text').val().replace(/\n/g,"<br>")) unless $('#profile_email_text').val() is ''
       $(@).removeClass('hidden')
       $('#buttons i').removeClass('icon-eye-open').addClass('icon-eye-close')
       $('#buttons .btn-preview').addClass('active')

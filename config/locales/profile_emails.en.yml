@@ -16,6 +16,7 @@ en:
       message_placeholder: "e.g. I found this profile and thought you might be interested. You should get in touch if I was right."
       send: 'Send'
       sending: 'sending...'
+      type_application_text: 'Please type an application text'
     create:
       title: 'Send a job application via email'
     decline:

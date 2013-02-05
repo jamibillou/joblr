@@ -16,6 +16,7 @@ fr:
       message_placeholder: "ex : Bonjour, j'ai trouvé ce profil et pensé qu'il pouvait vous intéresser. N'hésitez pas à rentrer en contact si j'ai vu juste."
       send: 'Envoyer'
       sending: 'envoi en cours...'
+      type_application_text: 'Saisissez votre texte de candidature'
     create:
       title: 'Envoyer une candidature par email'
     decline:

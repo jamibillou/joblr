@@ -10,7 +10,7 @@
         .well
           #inputs= render 'new', f: f
           .hidden-preview.hidden
-            .row-fluid#application_text
+            .row-fluid#application_text=t 'profile_emails.new.type_application_text'
           .hidden-preview.hidden= render 'users/show_identity', user: current_user
           .hidden-preview.hidden= render 'links'
       .span2
