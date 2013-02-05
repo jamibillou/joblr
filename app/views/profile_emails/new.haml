@@ -1,4 +1,4 @@
-.span12#full_profile_email
+.span12#new-profile-email
   = form_for @profile_email do |f|
     .row-fluid
       .span2.hidden-phone
@@ -10,8 +10,18 @@
         .well
           #inputs= render 'new', f: f
           .hidden-preview.hidden
-            .row-fluid#application_text
-          .hidden-preview.hidden= render 'users/show_identity', user: current_user
+            #application-text
+          .hidden-preview.hidden
+            .identity
+              = image_tag (current_user.image.blank? ? 'default_user.jpg' : current_user.image_url(:thumb).to_s)
+              .name-location
+                %h2= current_user.fullname
+                .big
+                  - unless current_user.city.blank? && current_user.country.blank?
+                    .graylight-text
+                      .icon-map-marker
+                      &nbsp;
+                      #{current_user.city}#{', ' unless current_user.city.blank? || current_user.country.blank?}#{current_user.country}
           .hidden-preview.hidden= render 'links'
       .span2
       .span2
@@ -20,12 +30,10 @@
       .span2.hidden-phone
       .span6.well.profile
         %h2=t 'mailers.profile_email.current_user.html.more_about', fullname: @user.fullname
-        %br/
         = render 'users/show_experience_education', profile: current_user.profile
         = render 'users/show_skills',               profile: current_user.profile
         = render 'users/show_qualities',            profile: current_user.profile
-        %br/
-        = link_to t('mailers.profile_email.current_user.html.view_complete_profile', fullname: @user.fullname), "http://#{current_user.subdomain}.joblr.co"
+        .bottom-link= link_to t('mailers.profile_email.current_user.html.view_complete_profile', fullname: @user.fullname), "http://#{current_user.subdomain}.joblr.co"
     .hidden= f.submit t('users.edit.save'), id: 'hidden-submit'
 
 - if params[:mixpanel_profile_created]

@@ -14,6 +14,6 @@
         .pull-right.danger-text * #{t('required_fields')}
       .span2
       .span2
-        = render 'edit_buttons',    f: f
+        = render 'edit_buttons',  f: f
 
 = mixpanel_call('track', 'Signed up', "{'Signup type': '#{@user.social? ? 'Social' : 'Manual'}'}") if params[:mixpanel_signup]

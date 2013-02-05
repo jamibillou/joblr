@@ -5,8 +5,8 @@
 
 // SHOW & EDIT
 // -----------
-#edit-user{
 
+#edit-user{
   h1{
     margin-bottom:35px;
     text-align:center;
@@ -136,15 +136,16 @@
 // -------
 
 #buttons{
-  float:right;
+  label{
+    text-align:right;
+  }
   .btn{
-    width:75%;
+    float:right;
+    width:70%;
+    margin-right:0;
   }
   .btn-top{
     margin-bottom:10px;
-  }
-  input[type="submit"]{
-    width:100%;
   }
   .explanation{
     width:84%;

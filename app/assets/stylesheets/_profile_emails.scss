@@ -29,90 +29,110 @@ form#new_profile_email{
   }
 }
 
-#full_profile_email{
+#new-profile-email{
   h1{
     text-align:center;
-    margin-bottom:25px;
+    margin-bottom:30px;
   }
-  .identity{
-    margin-top:40px;
-    h2{
-      line-height:30px;
-      margin-bottom:5px;
-    }
-    img{
-      max-width:80px;
-      max-height:80px;
-    }
-  }
-  .lead{
-    margin-bottom:10px;
-  }
-  .progress{
-    display:none;
-  }  
-  .profile{
-    margin-top:40px;
-  }
-  input.btn{
-    text-decoration:underline;
-  }
-  hr{
-    margin:40px 0px;
-  }
-  a{
-    font-family:Helvetica, Arial, sans-serif;
+  .well a, .profile a{
     font-size:16px;
     font-weight:300;
-    color:#0076ca;
-    margin-top:15px;
     text-decoration:underline;
   }
-  .experience{
-    margin:20px 0 10px 0;
-    p{
-      font-family:Helvetica,Arial,sans-serif;
-      color:$grayDark;
-      font-size:13pt;
+  .well{
+    padding-bottom:30px;
+    #application-text{
+      margin-top:-3px;
+      font-size:16px;
       font-weight:300;
-      small{
-        font-size:11pt;
-        color:$grayLight;
+    }
+    .identity{
+      margin-top:32px;
+      img{
+        max-width:80px;
+        max-height:80px;
+        margin:0 22px 5px 0;
+        display:inline-block;
+      }
+      .name-location{
+        display:inline-block;
+        h2{
+          line-height:26px;
+          margin-bottom:6px;
+          display:block;
+        }
+        .big{
+          margin-bottom:0;
+        }
+      }
+    }
+    hr{
+      margin:35px 0 39px 0;
+    }
+    #links{
+      .btn{
+        margin-bottom:10px;
+        font-size:16px;
+      }
+    }
+    // phone
+    @media (max-width: 767px) {
+      .identity h2{
+        margin-top:20px;
+      }
+      #links a, #links .btn{
+        font-size:14px;
+      }
+    }
+    &.profile{
+      margin-top:40px;
+      padding-top:37px;
+      .lead{
+        margin-bottom:10px;
+      }
+      h4{
+        margin-top:17px;
+      }
+      a{
+        margin-top:25px;
+      }
+      .experience{
+        margin-top:23px;
+        .lead{
+          margin-bottom:10px;
+        }
+        p{
+          margin-bottom:10px;
+          font-size:13px;
+          line-height:17px;
+          font-weight:300;
+          color:$grayDark;
+          small{
+            font-size:11px;
+            color:$grayLight;
+          }
+        }
+      }
+      .skills{
+        .span3{
+          display:none;
+        }
+      }
+      .bottom-link{
+        margin:28px 0 6px 0;
       }
     }
   }
-  .skills{
-    margin:20px 0;
-  }
   #buttons{
-    float:right;
     .btn{
-      width:75%;
+      float:right;
+      width:70%;
+      margin-right:0;
+      white-space:nowrap;
     }
     .btn-top{
       margin-bottom:10px;
     }
-    a{
-      color:$white;
-      text-decoration:none;
-      margin-top:0;
-    }
-  }
-  #links{
-    .btn{
-      font-family:Helvetica,Arial,sans-serif;
-      font-size:20px;
-      font-weight:500;
-      margin-top:0;
-      color:$white; 
-    }
-  }
-  #application_text{
-    font-family:Helvetica,Arial,sans-serif;
-    font-size:16pt;
-    color:$grayDark;
-    font-weight:300;
-    margin:10px 0;
   }
 }
 
