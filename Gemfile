@@ -24,6 +24,7 @@ gem 'curb'
 gem 'newrelic_rpm'
 gem 'honeybadger'
 gem 'split'
+gem 'exceptional'
 
 group :production, :staging do
   gem 'google-analytics-rails'
