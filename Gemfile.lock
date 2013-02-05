@@ -131,9 +131,6 @@ GEM
     heroku-api (0.3.7)
       excon (~> 0.16.10)
     hike (1.2.1)
-    honeybadger (1.4.0)
-      activesupport
-      json
     httpauth (0.2.0)
     i18n (0.6.1)
     journey (1.0.4)
@@ -330,7 +327,6 @@ DEPENDENCIES
   google-analytics-rails
   haml
   heroku
-  honeybadger
   jquery-rails
   linkedin!
   mail_view!
