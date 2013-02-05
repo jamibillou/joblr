@@ -11,9 +11,9 @@
 
   - if signed_up?(@user)
     %a.btn{href: user_path(@user)}
-      = t('cancel')
+      =t 'cancel'
     .explanation
       %h5=t 'users.edit.public_profile'
       %p= link_to(@user.public_url, @user.public_url, target: '_blank')
       %p=t 'users.edit.explanation'
-      = f.text_field :subdomain, class:'input-medium'
+      = f.text_field :subdomain, class:'input-small'
