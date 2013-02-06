@@ -1,9 +1,7 @@
 fr:
   profile_emails:
     new:
-      title: 'Envoyer une candidature par email'
-      menu_title: '1ère candidature'
-      1st_application: 'Votre 1ère candidature'
+      title: 'Votre 1ère candidature'
       preview: 'Aperçu'
       from_label: 'De'
       from_fullname_placeholder: 'Votre nom et prénom'

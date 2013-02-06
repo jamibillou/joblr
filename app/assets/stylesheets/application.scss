@@ -74,7 +74,7 @@
 // ------
 
 footer{
-  margin-top:95px;
+  margin-top:55px;
   position:absolute;
   width:100%;
   left:0;
@@ -117,23 +117,6 @@ footer{
         }
       }
     }
-    .lang-nav{
-      text-align:right;
-      // Weird background out of nowhere
-      ul.nav{
-        margin-bottom:15px;
-        .dropdown-toggle{
-          background:none;
-        }
-      }
-      .joblr-in{
-        margin-right:5px;
-        float:right;
-      }
-      .dropdown-menu{
-        min-width: 70px;
-      }
-    }
     .social-links{
       float:right;
       a{
@@ -146,5 +129,27 @@ footer{
         }
       }
     }
+  }
+}
+
+
+// LANGUAGES NAVIGATION
+// --------------------
+
+.lang-nav{
+  text-align:right;
+  // Weird background out of nowhere
+  ul.nav{
+    margin-bottom:15px;
+    .dropdown-toggle{
+      background:none;
+    }
+  }
+  .joblr-in{
+    margin-right:5px;
+    float:right;
+  }
+  .dropdown-menu{
+    min-width: 70px;
   }
 }

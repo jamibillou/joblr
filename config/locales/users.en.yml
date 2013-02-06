@@ -28,8 +28,7 @@ en:
       title: 'Users'
     edit:
       title: 'Edit your profile'
-      title_alt: 'Create your profile'
-      fill_in: 'Fill in your profile'
+      title_alt: 'Fill in your profile'
       fullname: 'Full name'
       fullname_placeholder: 'Full name'
       location_label: 'Location'
