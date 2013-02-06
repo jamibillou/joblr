@@ -79,7 +79,7 @@ module ApplicationHelper
   end
 
   def mixpanel_call(action, value, properties = nil)
-    content_tag(:script, type: 'text/javascript') {"mixpanel.#{action}('#{value}'#{', '+properties if properties});".html_safe} #if Rails.env.production? || Rails.env.test?
+    content_tag(:script, type: 'text/javascript') {"mixpanel.#{action}('#{value}'#{', '+properties if properties});".html_safe} if Rails.env.production? || Rails.env.test?
   end
 
   def mixpanel_people(user)
