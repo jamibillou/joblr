@@ -3,7 +3,8 @@
     %a.btn.btn-top.btn-primary{href: edit_user_path(user)}
       .icon-edit
       =t 'users.show.edit'
-    //.btn=t 'users.show.need_help'
+    %a.btn.btn-default{href: '#help-modal', 'data-toggle' => 'modal', title: t('users.show.send_email')}
+      =t 'users.show.need_help'
   - else
     %a.btn.btn-primary.btn-top#contact-button{href: "mailto:#{user.email}"}
       .icon-comment-alt

@@ -8,6 +8,7 @@
     .span2
       = render 'show_buttons', user: @user
       = render 'profile_email_modal' unless user_signed_in? && @user == current_user
+      = render 'help_modal'
 
 = mixpanel_people(current_user) if flash[:success] == t('flash.success.profile.updated')
 

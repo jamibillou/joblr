@@ -79,5 +79,21 @@ en:
       upload: 'Upload'
       delete: 'delete'
       current_pic: 'Current picture'
+    help_modal:
+      title: 'Tips to complete your profile'
+      photo_title: 'Profile picture'
+      photo_text: 'Make your profile more human and put a recent picture of you. Recruiters will appreciate!'
+      experience_title: 'Experience'
+      experience_text: "When you are a young graduate, every experience is important: don't hesitate to include your internships, summer jobs, or volunteering."
+      job_title: 'Current or most relevant job'
+      job_text: "Give the job title and the company you (have) work(ed) for. If you think your current job doesn't match your job search, feel free to put the one your consider as the most relevant."
+      education_title: 'Highest education'
+      education_text: "As the previous tip, show the diploma that represents you the most. You can also put two diplomas if you think both are important."
+      skills_title: 'Professional skills'
+      skills_text: 'Give the technical domains that you master.'
+      qualities_title: 'Personal qualities'
+      qualities_text: 'Tell what makes you someone different than the other candidates. It must be related to your personnality and your life experience.'
+      online_presence_title: 'Online presence'
+      online_presence_text: 'Give recruiters links to your social accounts. They will go into if they like your profile anyway, help them saving time!'
     destroy:
       yes_delete: 'Do you really want to delete this user?'

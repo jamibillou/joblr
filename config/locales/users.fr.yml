@@ -79,5 +79,21 @@ fr:
       upload: 'Uploader'
       delete: 'supprimer'
       current_pic: 'Image actuelle'
+    help_modal:
+      title: 'Astuces pour remplir son profil'
+      photo_title: 'Photo de profil'
+      photo_text: "N'hésitez pas à mettre une photo récente de vous. Les recruteurs aiment mettre un visage sur un nom. Votre profil est plus vivant, et par conséquent plus attractif !"
+      experience_title: 'Expérience'
+      experience_text: "Lorsque vous êtes jeune diplômé, comptabilisez la moindre expérience professionnelle : stages, jobs d'été ou volontariats doivent être pris en compte."
+      job_title: 'Poste actuel ou le plus important'
+      job_text: "Spécifiez l'intitulé de votre poste, ainsi que l'entreprise pour laquelle vous travaillez. Vous n'êtes pas obligé d'indiquer votre dernière expérience en date, nous vous conseillons de mettre celle qui est la plus pertinente avec votre recherche d'emploi."
+      education_title: 'Diplôme principal'
+      education_text: "Comme pour l'intitulé de poste, mettez en avant le diplôme qui vous représente le plus. Si vous possédez une double compétence, indiquez-là, elles sont très appréciées !"
+      skills_title: 'Compétences professionnelles'
+      skills_text: 'Elles doivent indiquer les caractéristiques techniques de votre domaine que vous maitrisez, voire dont vous êtes expert.'
+      qualities_title: 'Qualités personnelles'
+      qualities_text: "Indiquez ce qui fait votre force en tant qu'être humain, et qui est propre à votre personnalité et à votre caractère."
+      online_presence_title: 'Présence en ligne'
+      online_presence_text: 'Saisissez les adresses de vos comptes sociaux, beaucoup de recruteurs le font si votre profil les intéressent. Autant leur faire gagner du temps !'
     destroy:
       yes_delete: 'Voulez-vous vraiment supprimer cet utilisateur ?'
