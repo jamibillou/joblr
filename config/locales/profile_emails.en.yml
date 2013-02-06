@@ -2,6 +2,10 @@ en:
   profile_emails:
     new:
       title: 'Your 1st job application'
+      modal_title:
+        current_user: "Send a new job application"
+        other_user: "Send this profile to your contacts via email"
+        public_user: "Send this profile to your contacts via email"
       preview: 'Preview'
       from_label: 'From'
       from_fullname_placeholder: 'Your full name'

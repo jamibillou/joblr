@@ -1,7 +1,7 @@
 #profile-email-modal.modal.hide
   .modal-header
     %a.close.hidden-phone{href: '#', 'data-dismiss' => 'modal'} &times;
-    %h3=t 'profile_emails.new.title'
+    %h3=t "profile_emails.new.modal_title.#{user_signed_in? ? (current_user == @user ? 'current_user' : 'other_user') : 'public_user'}"
 
   #profile-email-form
   = form_for @profile_email, remote: true do |f|

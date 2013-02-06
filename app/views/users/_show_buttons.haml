@@ -9,7 +9,7 @@
       .icon-comment-alt
       =t 'users.show.contact'
   - unless current_user == user
-    %a.btn.btn-default{href: '#profile-email-modal', 'data-toggle' => 'modal', title: t('users.show.send_email')}
+    %a.btn.btn-default{href: '#profile-email-modal', 'data-toggle' => 'modal', title: t("profile_emails.new.modal_title.#{user_signed_in? ? (current_user == @user ? 'current_user' : 'other_user') : 'public_user'}")}
       =t 'users.show.share'
   .explanation
     - if user_signed_in? && current_user == user && !current_user.has_authored_profile_emails?

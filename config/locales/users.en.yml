@@ -17,12 +17,11 @@ en:
       need_help: 'Need help?'
       contact: 'Contact'
       send: 'Apply'
-      send_email: 'Send a job application via email'
-      share: 'Share'
+      share: 'Share this profile'
       what_now: "What now?"
       whats_this: "What's this?"
       user_explanation: "Send your Joblr profile by email and get the conversation started with companies you are interested in."
-      public_explanation_html: "%{fullname} is looking for work.<br />Get in contact if you are interested or send this profile to people who might be."
+      public_explanation_html: "%{fullname} is looking for work.<br />Get in contact if you are interested or share this profile with people who might be."
       public_profile: 'Public profile:'
     index:
       title: 'Users'

@@ -2,6 +2,10 @@ fr:
   profile_emails:
     new:
       title: 'Votre 1ère candidature'
+      modal_title:
+        current_user: "Envoyer une nouvelle candidature"
+        other_user: "Envoyer ce profil à vos contacts via email"
+        public_user: "Envoyer ce profil à vos contacts via email"
       preview: 'Aperçu'
       from_label: 'De'
       from_fullname_placeholder: 'Votre nom et prénom'

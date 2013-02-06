@@ -17,12 +17,11 @@ fr:
       need_help: "Besoin d'aide?"
       contact: 'Contacter'
       send: 'Postuler'
-      send_email: 'Envoyer une candidature par email'
-      share: 'Partager'
+      share: 'Partager ce profil'
       what_now: "Et maintenant ?"
       whats_this: "Qu'est-ce que c'est ?"
       user_explanation: "Envoyez votre profil par email pour lancer la discussion avec les entreprises qui vous intéressent."
-      public_explanation_html: "%{fullname} est à la recherche d'un emploi. <br />Rentrez en contact ou faites passer le mot !"
+      public_explanation_html: "%{fullname} est à la recherche d'un emploi. <br />Rentrez en contact ou partagez ce profil avec vos contacts !"
       public_profile: 'Profil public :'
     index:
       title: 'Utilisateurs'
