@@ -14,7 +14,6 @@ en:
       new:
         title: 'Sign in'
         welcome_back: 'Welcome back to Joblr'
-        choose: 'How you would like to sign in?'
         social: 'Sign in with one of your existing accounts'
         joblr: 'Or sign in manually'
         if_joblr: '(if you have a Joblr account)'
@@ -56,7 +55,6 @@ en:
         title: 'Sign up to Joblr'
       edit:
         title: 'Account settings'
-        subtitle: 'Change your details and social accounts'
         details: 'Personal details'
         add_accounts: "Link your social accounts"
         easy_signin: "(to easily sign in)"

@@ -28,8 +28,7 @@ fr:
       title: 'Utilisateurs'
     edit:
       title: 'Modifiez votre profil'
-      title_alt: 'Créez votre profil'
-      fill_in: 'Complétez votre profil' 
+      title_alt: 'Complétez votre profil'
       fullname: "Nom et prénom"
       fullname_placeholder: "Nom et prénom"
       location_label: 'Adresse'
@@ -68,7 +67,7 @@ fr:
       delete: 'Supprimer le CV actuel'
       public_profile: 'Profil public'
       explanation: 'Vous pouvez modifier votre sous-domaine ici à tout moment:'
-      import_from: 'Importer de'
+      import_from: 'Importer depuis'
       linkedin: 'LinkedIn'
       save: 'Enregistrer'
     update:

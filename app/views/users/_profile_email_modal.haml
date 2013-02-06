@@ -8,9 +8,9 @@
     .modal-body
       #profile-email-error
       = render 'profile_emails/new', f: f
-      .modal-footer
-        #loader.pull-left
-          = image_tag 'base/loader.gif'
-          = t('profile_emails.new.sending')
-        %a.btn.btn-small{href:'#', 'data-dismiss' => 'modal'}= t('cancel')
-        = f.submit t('profile_emails.new.send'), class: 'btn btn-small btn-primary'
+    .modal-footer
+      #loader.pull-left
+        = image_tag 'base/loader.gif'
+        = t('profile_emails.new.sending')
+      %a.btn.btn-small{href:'#', 'data-dismiss' => 'modal'}= t('cancel')
+      = f.submit t('profile_emails.new.send'), class: 'btn btn-small btn-primary'

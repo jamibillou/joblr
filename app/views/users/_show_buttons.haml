@@ -1,11 +1,16 @@
 #buttons
   - if user_signed_in? && current_user == user && !subdomain?
-    %a.btn.btn-top.btn-primary{href: edit_user_path(user)}=t 'users.show.edit'
-    %a.btn{href: '#'}=t 'users.show.need_help'
+    %a.btn.btn-top.btn-primary{href: edit_user_path(user)}
+      .icon-edit
+      =t 'users.show.edit'
+    //.btn=t 'users.show.need_help'
   - else
-    %a.btn.btn-large.btn-primary.btn-top#contact-button{href: "mailto:#{user.email}"}=t 'users.show.contact'
+    %a.btn.btn-primary.btn-top#contact-button{href: "mailto:#{user.email}"}
+      .icon-comment-alt
+      =t 'users.show.contact'
   - unless current_user == user
-    %a.btn.btn-large.btn-default{href: '#profile-email-modal', 'data-toggle' => 'modal', title: t('users.show.send_email')}=t 'users.show.share'
+    %a.btn.btn-default{href: '#profile-email-modal', 'data-toggle' => 'modal', title: t('users.show.send_email')}
+      =t 'users.show.share'
   .explanation
     - if user_signed_in? && current_user == user && !current_user.has_authored_profile_emails?
       %h5=t 'users.show.what_now'

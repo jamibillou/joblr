@@ -1,9 +1,7 @@
 en:
   profile_emails:
     new:
-      title: 'Send a job application via email'
-      menu_title: 'Your first application'
-      1st_application: 'Your 1st application'
+      title: 'Your 1st job application'
       preview: 'Preview'
       from_label: 'From'
       from_fullname_placeholder: 'Your full name'
@@ -28,7 +26,7 @@ en:
       thank_you: "Your had already told us that you are not interested in %{fullname}'s profile, but thanks anyway!"
       close_page: 'You can close this page.'
     index:
-      title: 'Applications dashboard'
+      title: 'Job applications'
       to_email_html: 'to %{email_link}'
       on_date: 'on %{date}'
       new_application: 'New application'

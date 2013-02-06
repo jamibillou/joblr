@@ -14,7 +14,6 @@ fr:
       new:
         title: "Connectez-vous"
         welcome_back: 'Bienvenue sur Joblr !'
-        choose: "Comment préférez-vous vous connecter ?"
         social: "Connectez-vous avec un de vos réseaux sociaux"
         joblr: "Ou manuellement"
         if_joblr: '(si vous avez déjà un compte Joblr)'
@@ -56,7 +55,6 @@ fr:
         title: "S'inscrire sur Joblr"
       edit:
         title: 'Paramètres'
-        subtitle: 'Modifiez votre compte et vos réseaux sociaux'
         details: 'Détails de votre compte'
         add_accounts: "Liez vos réseaux sociaux"
         easy_signin: "(pour vous connecter plus facilement sur Joblr)"

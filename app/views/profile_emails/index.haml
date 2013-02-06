@@ -2,7 +2,6 @@
   .row-fluid
     .span10
       - @profile_emails_by_date.each do |profile_emails_hash|
-        %br/
         .date
           .row-fluid
             .span12
@@ -20,6 +19,7 @@
                       %span.graylight-text=t 'profile_emails.index.on_date', date: profile_email.created_at.strftime('%d-%m-%Y')
     .span2#buttons
       = render 'index_buttons'
+
   = render 'users/profile_email_modal'
 
 - @profile_emails.each do |profile_email|
