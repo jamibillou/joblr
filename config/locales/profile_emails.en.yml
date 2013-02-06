@@ -3,7 +3,7 @@ en:
     new:
       title: 'Your 1st job application'
       modal_title:
-        current_user: "Send a new job application"
+        current_user: "Send a new job application via email"
         other_user: "Send this profile to your contacts via email"
         public_user: "Send this profile to your contacts via email"
       preview: 'Preview'

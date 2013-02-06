@@ -3,7 +3,7 @@ fr:
     new:
       title: 'Votre 1ère candidature'
       modal_title:
-        current_user: "Envoyer une nouvelle candidature"
+        current_user: "Envoyer une nouvelle candidature via email"
         other_user: "Envoyer ce profil à vos contacts via email"
         public_user: "Envoyer ce profil à vos contacts via email"
       preview: 'Aperçu'
@@ -33,7 +33,7 @@ fr:
       title: 'Candidatures'
       to_email_html: 'à %{email_link}'
       on_date: 'le %{date}'
-      new_application: 'Nouvelle candidature'
+      new_application: 'Candidater'
       need_help: "Besoin d'aide ?"
     show:
       lets_talk: "Contacter"
