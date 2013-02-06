@@ -124,8 +124,8 @@ form#new_profile_email{
     }
   }
   #buttons{
+    float:right;
     .btn{
-      float:right;
       width:70%;
       margin-right:0;
       white-space:nowrap;
@@ -155,7 +155,9 @@ form#new_profile_email{
   #buttons{
     float:right;
     .btn{
-      width:75%;
+      width:70%;
+      margin-right:0;
+      white-space:nowrap;
     }
     .btn-top{
       margin-bottom:10px;
