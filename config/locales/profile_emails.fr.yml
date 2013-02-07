@@ -34,5 +34,14 @@ fr:
     show:
       lets_talk: "Contacter"
       no_thanks: 'Non merci'
+    help_modal:
+      title: 'Comment candidater ?'
+      application_tips_title: 'Conseils pour rédiger votre texte de candidature'
+      application_tips_html: >
+        Votre texte de motivation ne doit pas être un simple copier/coller. Il doit être unique à chacune de votre candidature. Le recruteur lit des dizaines de candidatures, il faut donc sortir du lot !
+        <br/>Nous vous conseillons de personnaliser au maximum, pourquoi ne pas parler de votre propre expérience ? 
+        <br/>Décrivez par exemple une anecdote passée lors d'un poste antérieur, caractérisant votre personnalité et ainsi expliquer en quoi vous êtes la personne idéale pour le poste. 
+        <br/>Captivez votre interlocuteur, il doit lire votre histoire comme un roman dont il se souviendra. 
+        <br/>Vous sortirez ainsi du lot, et il y a de fortes chances que votre profil l'intéresse !
     destroy:
       yes_delete: 'Voulez-vous vraiment supprimer cette candidature ?'

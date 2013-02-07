@@ -1,0 +1,9 @@
+#help-modal.modal.hide
+  .modal-header
+    %a.close.hidden-phone{href: '#', 'data-dismiss' => 'modal'} &times;
+    %h3=t 'profile_emails.help_modal.title'
+  .modal-body
+    %p=t 'profile_emails.help_modal.how_to_html'
+
+    %h5=t 'profile_emails.help_modal.application_tips_title'
+    %p=t 'profile_emails.help_modal.application_tips_html'

@@ -34,5 +34,15 @@ en:
     show:
       lets_talk: "Let's talk!"
       no_thanks: 'No, thanks'
+    help_modal:
+      title: 'How to apply?'
+      how_to_html: "Applying with Joblr is simple: click the 'New Application' button, fill in the first lines with the name and the email of the recipient.<br/>Then type your application text, and send it! <br/>The application will appear in your dashboard, so you can remember which recruiters you have already contacted."
+      application_tips_title: 'Application tips'
+      application_tips_html: >
+        Votre texte de motivation ne doit pas être un simple copier/coller. Il doit être unique à chacune de votre candidature. Le recruteur lit des dizaines de candidatures, il faut donc sortir du lot !
+        <br/>Nous vous conseillons de personnaliser au maximum, pourquoi ne pas parler de votre propre expérience ? 
+        <br/>Décrivez par exemple une anecdote passée lors d'un poste antérieur, caractérisant votre personnalité et ainsi expliquer en quoi vous êtes la personne idéale pour le poste. 
+        <br/>Captivez votre interlocuteur, il doit lire votre histoire comme un roman dont il se souviendra. 
+        <br/>Vous sortirez ainsi du lot, et il y a de fortes chances que votre profil l'intéresse !
     destroy:
       yes_delete: 'Do you really want to delete this application?'

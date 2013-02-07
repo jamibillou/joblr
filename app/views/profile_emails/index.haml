@@ -21,6 +21,7 @@
       = render 'index_buttons'
 
   = render 'users/profile_email_modal'
+  = render 'help_modal'
 
 - @profile_emails.each do |profile_email|
   .modal.profile-email.hide{id: "modal-#{profile_email.id}"}
