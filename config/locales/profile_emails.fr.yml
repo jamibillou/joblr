@@ -36,6 +36,10 @@ fr:
       no_thanks: 'Non merci'
     help_modal:
       title: 'Comment candidater ?'
+      how_to_html: >
+        Candidater avec Joblr est un jeu d'enfant : cliquez sur le bouton 'Nouvelle candidature', remplissez les premières lignes avec le nom et l'email du destinataire.
+        <br/>Saisissez ensuite votre texte de motivation, et envoyez ! 
+        <br/>La candidature apparaîtra dans votre page d'accueil. Vous pourrez ainsi suivre les recruteurs que vous avez déjà contactés.
       application_tips_title: 'Conseils pour rédiger votre texte de candidature'
       application_tips_html: >
         Votre texte de motivation ne doit pas être un simple copier/coller. Il doit être unique à chacune de votre candidature. Le recruteur lit des dizaines de candidatures, il faut donc sortir du lot !
