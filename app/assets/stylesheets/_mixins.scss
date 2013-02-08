@@ -1,0 +1,11 @@
+// MIXINS
+// Boostrap is missing a few, here they are
+// ----------------------------------------
+
+
+// Text shadows
+@mixin text-shadow($shadow...) {
+  -webkit-text-shadow: $shadow;
+     -moz-text-shadow: $shadow;
+          text-shadow: $shadow;
+}
