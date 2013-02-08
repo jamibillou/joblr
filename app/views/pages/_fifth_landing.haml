@@ -9,7 +9,7 @@
             %h3=t 'pages.landing.fourth.subtitle'
             %a.btn.btn-large.btn-primary{href: sign_up_path}=t 'pages.landing.old.signup'
           .span6#the-hero
-            = link_to image_tag("screenshots/fourth_landing/#{locale}/hero.jpg"), sign_up_path
+            = link_to image_tag("screenshots/fourth_landing/#{%w(en fr).include?(locale) ? locale : 'en'}/hero.jpg"), sign_up_path
 
   .row-fluid#benefits
     .span3
@@ -59,7 +59,7 @@
         .span2
           = link_to image_tag("screenshots/fifth_landing/guillaume.jpg"), 'http://fr.viadeo.com/profile/00224fae1r9mj5zk', target: '_blank'
     .span6.hero-bottom.visible-desktop
-      = link_to image_tag("screenshots/fifth_landing/#{locale}/hero_bottom.jpg"), sign_up_path
+      = link_to image_tag("screenshots/fifth_landing/#{%w(en fr).include?(locale) ? locale : 'en'}/hero_bottom.jpg"), sign_up_path
 
   .row-fluid
     .span12
