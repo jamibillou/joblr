@@ -23,9 +23,9 @@ Joblr::Application.configure do
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
-  # Specifies the header that your server uses for sending files
-  # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
-  # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
+  # Configure the sendfile headers for Heroku.
+  # "X-Accel-Redirect" is also a good value for this since Heroku use Nginx.
+  config.action_dispatch.x_sendfile_header = nil
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -66,7 +66,7 @@ Joblr::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # In production, :host should be set to the actual host of your application.
-  config.action_mailer.default_url_options = { :host => "www.joblr.co" }
+  config.action_mailer.default_url_options = { :host => "staging.joblr.co" }
 
   # Google analytics gem tracker
   GA.tracker = "UA-34334309-1"

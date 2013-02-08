@@ -35,6 +35,10 @@ Joblr::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
+  # the I18n.default_locale when a translation can not be found)
+  config.i18n.fallbacks = true
+
   # In production, :host should be set to the actual host of your application.
-  config.action_mailer.default_url_options = { :host => "localhost", :port => "3000" }
+  config.action_mailer.default_url_options = { :host => "joblr.dev", :port => "3000" }
 end
