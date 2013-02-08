@@ -1,6 +1,6 @@
 .row-fluid.identity
   .span3
-    %a{href: '#image-modal', 'data-toggle' => 'modal'}
+    %a{href: '#image-modal', 'data-toggle' => 'modal', title: t('users.edit.click_to_edit')}
       %i.icon-camera
       - if @user.social? && !signed_up?(@user)
         = image_tag (@user.authentications.first.image_url(:thumb).blank? ? 'default_user.jpg' : @user.authentications.first.image_url(:thumb)), id: 'profile-picture'
