@@ -73,9 +73,10 @@ fr:
       title: 'Modifiez votre profil'
       title_alt: 'Créez votre profil'
     image_modal:
-      select_or_upload: 'Choisissez ou uploadez une image'
+      upload_image: 'Téléchargez une image'
+      select_or_upload: 'Choisissez ou téléchargez une image'
       social_accounts: 'Sur vos réseaux sociaux'
-      upload: 'Uploader'
+      upload: 'Télécharger'
       delete: 'supprimer'
       current_pic: 'Image actuelle'
     destroy:

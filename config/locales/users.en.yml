@@ -73,6 +73,7 @@ en:
       title: 'Edit your profile'
       title_alt: 'Create your profile'
     image_modal:
+      upload_image: 'Upload a picture'
       select_or_upload: 'Select or upload a picture'
       social_accounts: 'From your social accounts'
       upload: 'Upload'

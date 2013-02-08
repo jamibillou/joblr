@@ -2,8 +2,8 @@
   .modal-header
     %a.close.hidden-phone{href: '#', 'data-dismiss' => 'modal'} &times;
     %h3
-      - if @user.authentications.empty?
-        =t 'users.image_modal.upload'
+      - if @user.authentications.empty? || @user.authentications.select{|a| !a.image_url.blank?}.empty?
+        =t 'users.image_modal.upload_image'
       - else
         =t 'users.image_modal.select_or_upload'
 
@@ -19,7 +19,7 @@
           .danger-text=t 'users.image_modal.delete'
           = f.check_box :remove_image
 
-    - unless @user.authentications.empty?
+    - unless @user.authentications.empty? || @user.authentications.select{|a| !a.image_url.blank?}.empty?
       %h5=t 'users.image_modal.social_accounts'
       - @user.authentications.each do |auth|
         - unless auth.image_url.blank?
@@ -28,7 +28,7 @@
 
     %h5=t 'users.image_modal.upload'
     = f.file_field :image
-    = f.hidden_field :remote_image_url, id: 'remote_image_url', value: (@user.authentications.first.image_url(:original) if @user.social? && !signed_up?(@user))
+    = f.hidden_field :remote_image_url, id: 'remote_image_url', value: (@user.authentications.first.image_url(:original) if @user.social? && !signed_up?(@user) && !@user.authentications.first.image_url(:original).blank?)
 
   .modal-footer
     %a.btn.btn-small{href:'#', 'data-dismiss' => 'modal'}= t('cancel')
