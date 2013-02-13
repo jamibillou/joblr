@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def subdomain?
-    request.subdomain.present? && request.subdomain != 'www' && !request.host.match(/^staging.joblr.co|joblr.herokuapp.com|joblr-staging.herokuapp.com$/)
+    request.subdomain.present? && !request.subdomain.match(/^www|join|signup|register$/) && !request.host.match(/^staging.joblr.co|joblr.herokuapp.com|joblr-staging.herokuapp.com$/)
   end
 
   def multi_level_subdomain?
