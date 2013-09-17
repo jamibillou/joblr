@@ -13,7 +13,7 @@
 - else
   .navbar-text.pull-right
     %span.hidden-phone=t 'devise.registrations.already_member'
-    - unless request.subdomain == 'staging'
-      = link_to t('devise.registrations.sign_in'), new_user_session_url(subdomain: false)
+    - if subdomain? || multi_level_subdomain?
+      = link_to t('devise.registrations.sign_in'), new_user_session_url(subdomain: 'www')
     - else
-      = link_to t('devise.registrations.sign_in'), new_user_session_url(subdomain: request.subdomains[1])
+      = link_to t('devise.registrations.sign_in'), new_user_session_path
